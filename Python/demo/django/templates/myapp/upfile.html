@@ -1,0 +1,17 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UPFILE</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}"/>
+</head>
+<body>
+	<h1>UPFILE</h1>
+	<form method="post" action="/savefile/" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="file" name="file"/>
+		<input type="submit" value="upload"/>
+	</form>
+</body>
+</html>

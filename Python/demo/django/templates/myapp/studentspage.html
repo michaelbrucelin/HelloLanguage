@@ -1,0 +1,26 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STUDENTSPAGE</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}"/>
+</head>
+<body>
+	<h1>STUDENTSPAGE</h1>
+	<ul>
+		{% for stu in students %}
+		<li>{{stu.sname}}=={{stu.sage}}==={{stu.sgender}}</li>
+		{% endfor %}
+	</ul>
+	<ul>
+		{% for index in students.paginator.page_range %}
+			{% if index == students.number %}
+				<li>{{index}}</li>
+			{% else %}
+				<li><a href="/studentspage/{{index}}/">{{index}}</a></li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</body>
+</html>

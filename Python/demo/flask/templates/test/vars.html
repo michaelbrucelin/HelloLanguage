@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vars</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <h4>This is a template.</h4>
+    <h4>today is {{date}}</h4>
+    今天值班的有：<br>
+    {% for data in name %}
+        <li>{{data}}</li>
+    {% endfor %}
+    任务：<br>
+    <table border="1">
+        {% for key,value in task.items() %}
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
