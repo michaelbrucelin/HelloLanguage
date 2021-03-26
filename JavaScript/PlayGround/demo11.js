@@ -3,7 +3,7 @@ function checkPassword3(fieldId, tipMsg) {
     //返回密码的强度级别
     function checkStrong(sPW) {
         if (sPW.length < 8 || sPW.length > 20) {
-            return 0; //密码太短或太长
+            return 0;  //密码太短或太长
         }
         Modes = 0;
         for (i = 0; i < sPW.length; i++) {
@@ -14,8 +14,8 @@ function checkPassword3(fieldId, tipMsg) {
     }
     //判断字符类型
     function CharMode(iN) {
-        if (iN >= 48 && iN <= 57) { return 1; }  //数字
-        if (iN >= 65 && iN <= 90) { return 2; }  //大写字母
+        if (iN >= 48 && iN <= 57) { return 1; }   //数字
+        if (iN >= 65 && iN <= 90) { return 2; }   //大写字母
         if (iN >= 97 && iN <= 122) { return 4; }  //小写
         else { return 8; }  //特殊字符
     }
