@@ -11,9 +11,9 @@ x, y = y, x
 print(x, y)
 
 # 3. r表示输出原始字符串，相当于C#中的@
-print("C:\three\two\one\zero\now")
-print("C:\\three\\two\\one\\zero\\now")
-print(r"C:\three\two\one\zero\now")
+print(r"C:\three\two\one\zero\now:", "C:\three\two\one\zero\now")
+print(r"C:\\three\\two\\one\\zero\\now:", "C:\\three\\two\\one\\zero\\now")
+print(r'r"C:\three\two\one\zero\now"', r"C:\three\two\one\zero\now")
 
 # 4. 多行字符串
 poetry1 = """
@@ -39,10 +39,10 @@ poetry2 = '''
 print(poetry1, poetry2)
 
 # 5. 重复字符串
-print("Hello" * 3)
+print("Hello * 3:", "Hello" * 3)
 
 # 6. 随机数
-print(random.randint(1, 100))
+print("random.randint(1, 100):", random.randint(1, 100))
 
 # 7. 记录伪随机数的状态（种子），实现伪随机攻击
 seed = random.getstate()
@@ -61,11 +61,11 @@ while i > 0:
 # 8. 精确的数字需要使用decimal
 a = 0.1
 b = 0.2
-print(a + b)
+print("%s + %s =" %(a, b), a + b)
 
 a = decimal.Decimal('0.1')
 b = decimal.Decimal('0.2')
-print(a + b)
+print("decimal %s + %s=" %(a, b), a + b)
 
 # 9. 复数
 x = 1 + 2j
@@ -74,11 +74,14 @@ print(x.imag)
 
 # 10. 有理数（分数）
 x = fractions.Fraction(2, 3)
-print(x)
+print("Fraction(2, 3):", x)
 
 # 11. 逻辑运算符的短路行为
-print(3 and 4)
-print(3 or 4)
-print("mlin" and "micha")
-print("mlin" or "micha")
-print((not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9))
+print("3 and 4:", 3 and 4)
+print("3 or 4:", 3 or 4)
+print('"mlin" and "micha":', "mlin" and "micha")
+print('"mlin" or "micha":', "mlin" or "micha")
+print("(not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9):",
+        (not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9))
+
+# 12. 一行语句想要换行，除了使用 \ 之外，还可以用 () 括起来
