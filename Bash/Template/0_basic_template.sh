@@ -5,9 +5,11 @@ export PATH
 
 LANG=C
 
-set -u  # 或set -o nounset，遇到不存在的变量，报错并停止脚本
-set -e  # 或set -o errexit，脚本只要发生错误，就终止执行脚本
-set -o pipefail  # -e对管道无效，这个是保证管道中发生错误，终止执行脚本
+# set -e 或 set -o errexit，脚本只要发生错误，就终止执行脚本
+# set -u 或 set -o nounset，遇到不存在的变量，报错并停止脚本
+# set -o pipefail， -e对管道无效，这个是保证管道中发生错误，终止执行脚本
+set -eu
+set -o pipefail
 
 : '
 
