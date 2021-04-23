@@ -1,0 +1,81 @@
+/* @mixin 指令允许我们定义一个可以在整个样式表中重复使用的样式。
+   @include 指令可以将混入（mixin）引入到文档中。 */
+
+/* 定义一个混入 */
+@mixin important-text {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid blue;
+}
+
+/* 使用混入 */
+.danger {
+    @include important-text;
+    background-color: green;
+}
+
+/* 混入中也可以包含混入 */
+@mixin special-text {
+    @include important-text;
+    @include link;
+    @include special-border;
+}
+
+/* 向混入传递变量 */
+/* 混入接收两个参数 */
+@mixin bordered($color, $width) {
+    border: $width solid $color;
+}
+
+.myArticle {
+    @include bordered(blue, 1px); // 调用混入，并传递两个参数
+}
+
+.myNotes {
+    @include bordered(red, 2px); // 调用混入，并传递两个参数
+}
+
+/* 混入的参数也可以定义默认值 */
+@mixin bordered($color: blue, $width: 1px) {
+    border: $width solid $color;
+}
+
+@mixin sexy-border($color, $width: 1in) {
+    border: {
+        color: $color;
+        width: $width;
+        style: dashed;
+    }
+}
+
+p {
+    @include sexy-border(blue);
+}
+
+h1 {
+    @include sexy-border(blue, 2in);
+}
+
+/* 可变参数 */
+//有时，不能确定一个混入（mixin）或者一个函数（function）使用多少个参数，这时我们就可以使用 ... 来设置可变参数。
+@mixin box-shadow($shadows...) {
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+
+.shadows {
+    @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+
+/* 浏览器前缀使用混入 */
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+.myBox {
+    @include transform(rotate(20deg));
+}

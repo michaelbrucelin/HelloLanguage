@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* @extend 指令告诉 Sass 一个选择器的样式从另一选择器继承。 */
+.button-basic, .button-submit, .button-report {
+  border: none;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-report {
+  background-color: red;
+}
+
+.button-submit {
+  background-color: green;
+  color: white;
+}
+
+/*# sourceMappingURL=06-extend.css.map */

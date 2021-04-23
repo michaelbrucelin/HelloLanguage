@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body {
+  font-family: "Helvetica, sans-serif";
+  font-size: 18px;
+  color: red;
+}
+
+#container {
+  width: 680px;
+}
+
+/* Sass变量的作用域只能在当前的层级上有效果 */
+h1 {
+  color: green;
+}
+
+p {
+  color: red;
+}
+
+/* Sass中我们可以使用 !global 关键词来设置变量是全局的 */
+div {
+  color: blue;
+}
+
+span {
+  color: blue;
+}
+
+/*# sourceMappingURL=02-variable.css.map */

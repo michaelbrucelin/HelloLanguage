@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* @import 指令可以让我们导入其他文件等内容 */
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  color: red;
+}
+
+/*# sourceMappingURL=04-import.css.map */

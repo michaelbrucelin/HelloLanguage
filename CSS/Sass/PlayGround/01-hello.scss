@@ -1,0 +1,14 @@
+/* 定义变量与值 */
+$bgcolor: lightblue;
+$textcolor: darkblue;
+$fontsize: 18px;
+
+/* 使用变量 */
+body {
+    background-color: $bgcolor;
+    color: $textcolor;
+    font-size: $fontsize;
+}
+
+// sass 01-hello.scss
+// sass 01-hello.scss 01-hello.css

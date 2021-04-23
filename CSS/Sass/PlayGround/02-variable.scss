@@ -1,0 +1,36 @@
+$myFont: "Helvetica, sans-serif";
+$myColor: red;
+$myFontSize: 18px;
+$myWidth: 680px;
+
+body {
+    font-family: $myFont;
+    font-size: $myFontSize;
+    color: $myColor;
+}
+
+#container {
+    width: $myWidth;
+}
+
+/* Sass变量的作用域只能在当前的层级上有效果 */
+h1 {
+    $myColor: green; // 只在h1里头有用，局部作用域
+    color: $myColor; // green
+}
+
+p {
+    color: $myColor; // red
+}
+
+/* Sass中我们可以使用 !global 关键词来设置变量是全局的 */
+div {
+    $myColor: blue !global; // 全局作用域
+    color: $myColor;
+}
+
+span {
+    color: $myColor; // blue
+}
+
+//注意：所有的全局变量我们一般定义在同一个文件，如：_globals.scss，然后我们使用 @include 来包含该文件。

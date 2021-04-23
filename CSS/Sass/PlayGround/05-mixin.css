@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* @mixin 指令允许我们定义一个可以在整个样式表中重复使用的样式。
+   @include 指令可以将混入（mixin）引入到文档中。 */
+/* 定义一个混入 */
+/* 使用混入 */
+.danger {
+  color: red;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid blue;
+  background-color: green;
+}
+
+/* 混入中也可以包含混入 */
+/* 向混入传递变量 */
+/* 混入接收两个参数 */
+.myArticle {
+  border: 1px solid blue;
+}
+
+.myNotes {
+  border: 2px solid red;
+}
+
+/* 混入的参数也可以定义默认值 */
+p {
+  border-color: blue;
+  border-width: 1in;
+  border-style: dashed;
+}
+
+h1 {
+  border-color: blue;
+  border-width: 2in;
+  border-style: dashed;
+}
+
+/* 可变参数 */
+.shadows {
+  -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+}
+
+/* 浏览器前缀使用混入 */
+.myBox {
+  -webkit-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+
+/*# sourceMappingURL=05-mixin.css.map */

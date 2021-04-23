@@ -1,0 +1,11 @@
+/* @import 指令可以让我们导入其他文件等内容 */
+//如果你不希望将一个 Sass 的代码文件编译到一个 CSS 文件，你可以在文件名的开头添加一个下划线。这将告诉 Sass 不要将其编译到 CSS 文件。
+
+@import "04-reset";
+@import "04-colors";
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    color: red;
+}
