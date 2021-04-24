@@ -61,11 +61,11 @@ while i > 0:
 # 8. 精确的数字需要使用decimal
 a = 0.1
 b = 0.2
-print("%s + %s =" %(a, b), a + b)
+print("%s + %s =" % (a, b), a + b)
 
 a = decimal.Decimal('0.1')
 b = decimal.Decimal('0.2')
-print("decimal %s + %s=" %(a, b), a + b)
+print("decimal %s + %s=" % (a, b), a + b)
 
 # 9. 复数
 x = 1 + 2j
@@ -82,6 +82,10 @@ print("3 or 4:", 3 or 4)
 print('"mlin" and "micha":', "mlin" and "micha")
 print('"mlin" or "micha":', "mlin" or "micha")
 print("(not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9):",
-        (not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9))
+      (not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9))
 
 # 12. 一行语句想要换行，除了使用 \ 之外，还可以用 () 括起来
+
+# 13. 临时变量 _
+_ = 1024
+print(_)
