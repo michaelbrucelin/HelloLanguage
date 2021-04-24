@@ -91,3 +91,8 @@ print("(not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9):",
 # 13. 临时变量 _
 _ = 1024
 print(_)
+
+# 14. 检查是否为Python的保留字或合法标识符
+"if".isidentifier()      # 检查是否为合法的Python标识符
+import keyword
+keyword.iskeyword("if")  # 检查是否为Python的保留字
