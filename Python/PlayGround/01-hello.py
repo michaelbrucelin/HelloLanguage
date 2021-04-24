@@ -4,7 +4,9 @@ import decimal
 import random
 print(dir(__builtins__))  # 在IDLE中可以执行，不确认为什么在脚本中提示错误，但是可执行
 
-# 2. 交换变量的值
+# 2. 多重赋值与交换变量的值
+x, y = 3, 5  # 其实先将 3, 5 打包为元组，然后将元组赋值给前面的变量
+
 x = 3
 y = 5
 x, y = y, x
