@@ -1,4 +1,5 @@
 # 1. 打印内置函数
+import keyword
 import fractions
 import decimal
 import random
@@ -94,5 +95,6 @@ print(_)
 
 # 14. 检查是否为Python的保留字或合法标识符
 "if".isidentifier()      # 检查是否为合法的Python标识符
-import keyword
 keyword.iskeyword("if")  # 检查是否为Python的保留字
+
+# 15. 在Python中每个对象都有3个属性。唯一标志、对象类型、值
