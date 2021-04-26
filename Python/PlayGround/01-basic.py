@@ -4,6 +4,8 @@ import fractions
 import decimal
 import random
 print(dir(__builtins__))  # 在IDLE中可以执行，不确认为什么在脚本中提示错误，但是可执行
+# import keyword
+print(keyword.kwlist)     # 打印Python内置的关键字
 
 # 2. 多重赋值与交换变量的值
 x, y = 3, 5  # 其实先将 3, 5 打包为元组，然后将元组赋值给前面的变量
@@ -48,6 +50,7 @@ print("Hello * 3:", "Hello" * 3)
 print("random.randint(1, 100):", random.randint(1, 100))
 
 # 7. 记录伪随机数的状态（种子），实现伪随机攻击
+# import random
 seed = random.getstate()
 print("第一次随机")
 i = 3
@@ -62,6 +65,7 @@ while i > 0:
     i = i - 1
 
 # 8. 精确的数字需要使用decimal
+# import decimal
 a = 0.1
 b = 0.2
 print("%s + %s =" % (a, b), a + b)
@@ -76,6 +80,7 @@ print(x.real)
 print(x.imag)
 
 # 10. 有理数（分数）
+# import fractions
 x = fractions.Fraction(2, 3)
 print("Fraction(2, 3):", x)
 

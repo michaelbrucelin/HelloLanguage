@@ -53,7 +53,7 @@ for i in matrix:
     print()
 
 # 7. 只有一个元素的元组
-x = (520)
+x = (520)       # 这里括号被解释为改变运算优先级的括号
 print(type(x))  # <class 'int'>  这样声明是一个整型，而不是元组
 x = (520,)
 print(type(x))  # <class 'tuple'>  这是只有一个元素的元组

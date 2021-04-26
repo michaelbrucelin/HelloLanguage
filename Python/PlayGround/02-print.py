@@ -1,17 +1,15 @@
-import keyword
-print(keyword.kwlist)
-
-print("hello world.")
-print("="*10)
+# print()
 
 name1 = "mlin"
 country1 = "CN"
 age1 = 10
 print("this is the var: ", age1)
-#格式化字符串的两种方式：
+# 格式化字符串的两种方式：
 print("格式化字符串的两种方式：")
-print("my name is %s, I am from %s, I am %d age now." %(name1, country1, age1))
-print("my name is {0}, I am from {1}, I am {2} age now.".format(name1, country1, age1))
+print("my name is %s, I am from %s, I am %d age now." %
+      (name1, country1, age1))
+print("my name is {0}, I am from {1}, I am {2} age now.".format(
+    name1, country1, age1))
 
 s1 = "www"
 s2 = "baidu"
@@ -26,7 +24,7 @@ print("end")
 
 password = input("please input your password: ")
 print("your input: ", password)
-print(type(password))
+print(type(password))  # <class 'str'>
 
 s4 = "123"
 print("now s4 is: ", type(s4))
