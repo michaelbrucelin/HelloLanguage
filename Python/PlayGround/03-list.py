@@ -37,6 +37,7 @@ s.insert(len(s), 6)  # 在列表的尾部追加元素
 # 6. 从列表中删除元素
 heros.remove("灭霸")  # 如果列表中有多个匹配的元素，只删除第一个，如果列表中不存在匹配的元素，会报错
 heros.pop(2)
+del heros[2]
 heros.clear()  # 清空列表
 
 # 7. 更改列表中的元素
@@ -47,11 +48,13 @@ heros[3:] = ["林冲", "武松", "鲁智深"]
 
 # 8. 列表排序
 nums = [3, 1, 9, 6, 8, 3, 5, 3]
-nums.sort()
+nums.sort()              # 永久排序，彻底的更改了nums列表
 nums.sort(reverse=True)
+sorted(nums)             # 临时排序，输出排序后的列表，原始列表没有变化
+sorted(nums, reverse=True)
 # 先正序，再反转也可以逆序排序，可惜不支持函数式编程
 nums.sort()
-nums.reverse()
+nums.reverse()  # 永久更改，彻底的更改了nums列表
 
 # 9. 列表的一些其他方法
 nums.count(3)  # 列表中元素3的个数
