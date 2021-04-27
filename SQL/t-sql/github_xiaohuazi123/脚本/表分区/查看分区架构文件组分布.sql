@@ -1,9 +1,7 @@
 -- =============================================
 -- Create date: <2019/4/18>
--- Description: ²é¿´·ÖÇø¼Ü¹¹ÎÄ¼þ×é·Ö²¼
+-- Description: æŸ¥çœ‹åˆ†åŒºæž¶æž„æ–‡ä»¶ç»„åˆ†å¸ƒ
 -- =============================================
-
-
 
 use DBNAME
 GO
@@ -27,4 +25,3 @@ FROM    sys.indexes i
 WHERE   i.object_id = OBJECT_ID('tablename')  --tablename
         AND i.index_id IN ( 0, 1 )
 ORDER BY p.partition_number
-
