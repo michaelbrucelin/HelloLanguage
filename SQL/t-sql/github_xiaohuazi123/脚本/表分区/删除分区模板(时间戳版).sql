@@ -3,8 +3,6 @@
 -- Description: 删除分区方案模板，用时间戳来分区，统一使用UTC时间
 -- =============================================
 
-
-
 DECLARE @begin INT --开始值
 DECLARE @end INT --结束值
 DECLARE @add INT --分区分段值增量
@@ -19,15 +17,15 @@ set @utc_time='1970-01-01'
 DECLARE @FunValueStr NVARCHAR(MAX) 
 WHILE (@begin<@end)
 BEGIN
-	-- 时间计算
-	set @next_time=dateadd(mm,1,dateadd(hh,8,dateadd(ss,@begin,@utc_time))) --一个月一个分区，得出下一个月的月份时间
-	set @add=datediff(ss, @utc_time,dateadd(hh,-8,@next_time))-@begin  --得出月份 转换后的时间戳值
-	
-	SET @FunValueStr = convert(NVARCHAR(50),(@begin+@add))   --本月+下一个月秒数
-	SET @sql = 'ALTER PARTITION FUNCTION [Fun_Archive_Id]() MERGE RANGE('+@FunValueStr+')'
-	PRINT @sql
-	PRINT ('GO')
-	PRINT CHAR(13)
-	SET @begin=@begin+@add
+    -- 时间计算
+    set @next_time=dateadd(mm,1,dateadd(hh,8,dateadd(ss,@begin,@utc_time))) --一个月一个分区，得出下一个月的月份时间
+    set @add=datediff(ss, @utc_time,dateadd(hh,-8,@next_time))-@begin  --得出月份 转换后的时间戳值
+    
+    SET @FunValueStr = convert(NVARCHAR(50),(@begin+@add))   --本月+下一个月秒数
+    SET @sql = 'ALTER PARTITION FUNCTION [Fun_Archive_Id]() MERGE RANGE('+@FunValueStr+')'
+    PRINT @sql
+    PRINT ('GO')
+    PRINT CHAR(13)
+    SET @begin=@begin+@add
 END
 

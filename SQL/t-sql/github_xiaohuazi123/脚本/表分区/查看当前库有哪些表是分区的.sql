@@ -6,7 +6,8 @@
 DECLARE @DBNAME NVARCHAR(MAX)
 DECLARE @SQL NVARCHAR(MAX)
 
-SET @DBNAME='dbname'  --★Do
+SET @DBNAME='dbname'
+--★Do
 
 SET @SQL='SELECT  so.[name]
 FROM    ['+@DBNAME+'].sys.partitions sp ,
