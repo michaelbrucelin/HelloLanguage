@@ -9,3 +9,4 @@ slmgr /ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX    rem 指定新密钥，这不可以�
 slmgr /skms your.kms.org    rem 指定KMS服务器
 slmgr /ato                  rem 激活
 slmgr /xpr                  rem 检查激活状态
+slmgr /dlv                  rem 查看注册信息
