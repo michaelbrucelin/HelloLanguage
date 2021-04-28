@@ -67,6 +67,8 @@ nums = [3, 1, 9, 6, 8, 3, 5, 3]
 nums.count(3)  # 列表中元素3的个数
 nums.index(3)  # 列表中元素3的索引
 nums.index(3, 1, 7)
+3 in nums
+3 not in nums
 max(nums)
 min(nums)
 sum(nums)
