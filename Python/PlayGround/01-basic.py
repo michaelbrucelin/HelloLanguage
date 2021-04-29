@@ -98,8 +98,12 @@ print("(not 1) or (0 and 1) or (3 and 4) or (5 and 6) or (7 and 8 and 9):",
 _ = 1024
 print(_)
 
-# 14. 检查是否为Python的保留字或合法标识符
+# 14. 接收用户输入
+message = input("Tell me something, and I will repeat it back to you: ")
+print(message)
+
+# 15. 检查是否为Python的保留字或合法标识符
 "if".isidentifier()      # 检查是否为合法的Python标识符
 keyword.iskeyword("if")  # 检查是否为Python的保留字
 
-# 15. 在Python中每个对象都有3个属性。唯一标志、对象类型、值
+# 16. 在Python中每个对象都有3个属性。唯一标志、对象类型、值
