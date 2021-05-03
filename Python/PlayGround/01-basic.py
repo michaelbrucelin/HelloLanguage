@@ -21,6 +21,7 @@ print(r"C:\\three\\two\\one\\zero\\now:", "C:\\three\\two\\one\\zero\\now")
 print(r'r"C:\three\two\one\zero\now"', r"C:\three\two\one\zero\now")
 
 # 4. 多行字符串
+# 文档字符串，可用来做注释，python使用它们来生成有关程序中函数等的文档
 poetry1 = """
 从明天起，做一个幸福的人
 喂马，劈柴，周游世界
