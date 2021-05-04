@@ -55,8 +55,13 @@ def test02():
 
 
 # 可变参数，类似于C#的params数组
-# *args，python会创建一个空元祖，接收所有传入的实参
-def VariableArgs(*args):
+# 形参*args，使用*作为前缀，python会创建一个空元祖，接收所有传入的实参
+def variable_args(*args):
     print(args)
     for arg in args:
         print(arg)
+
+# 形参**kwargs，使用**作为前缀，python会创建一个空字典，接收所有传入的键值对实参
+def variable_kwvrgs(**kwargs):
+    for key, value in kwargs.items():
+        print(f"key:{key}, value:{value}")
