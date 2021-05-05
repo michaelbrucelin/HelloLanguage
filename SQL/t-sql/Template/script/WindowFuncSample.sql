@@ -53,7 +53,7 @@ group by gid
     union all
     -- recursive member
     select t.id, t.start_time, t.end_time
-           , case when datediff(second, r.end_time, t.start_time) <= 120
+           , case when DATEDIFF(SECOND, r.end_time, t.start_time) <= 120
                       then r.grp_start
                   else t.start_time
              end as grp_start
