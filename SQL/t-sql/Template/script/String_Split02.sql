@@ -24,7 +24,7 @@ declare @len as int = 4
 ;with c0 as(
 select @str as s
 ), c1 as(
-select number as n from master.dbo.spt_values where type = 'P' and number > 0 and number%4 = 1
+select number+1 as n from master.dbo.spt_values where type = 'P' and number >= 0 and number%@len = 0
 )
 select SUBSTRING(c0.s, c1.n, @len) as item
        , ROW_NUMBER() over(order by c1.n) as pos
