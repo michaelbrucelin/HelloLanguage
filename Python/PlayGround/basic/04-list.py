@@ -1,5 +1,7 @@
 # 列表
 
+import bisect
+
 # 1. python中列表可以包含不同数据类型的元素
 rhyme = [1, 2, 3, 4, 5, "上山打老虎"]
 print("rhyme:", rhyme)
@@ -29,6 +31,15 @@ nums[::-1]   # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  全部列表元素倒序
 heros = ["钢铁侠", "绿巨人"]
 heros.append("黑寡妇")
 heros.extend(["鹰眼", "灭霸", "雷神"])
+# 尽管可以直接使用 + 来给列表添加元素，但是效率比extend()低，因为 + 创建了新的列表对象，并且还要复制对象
+# 下面两种方式第一种更快
+list_of_lists = [[], [], [], []]
+everything = []
+for chunk in list_of_lists:
+    everything.extend(chunk)         # 这样更快
+everything = []
+for chunk in list_of_lists:
+    everything = everything + chunk  # 这样较慢
 
 s = [1, 2, 3, 4, 5]
 s[len(s):] = [6]
@@ -61,6 +72,11 @@ sorted(nums, reverse=True)
 # 先正序，再反转也可以逆序排序，可惜不支持函数式编程
 nums.sort()
 nums.reverse()  # 永久更改，彻底的更改了nums列表
+# bisect可以将元素插入到排序好的列表的合适位置，但是不会检查列表是否是排序后的
+# bisect使用的二分法
+# import bisect
+nums = [1, 2, 3, 4, 5, 6, 7]
+bisect.insort(nums, 6)
 
 # 10. 列表的一些其他方法
 nums = [3, 1, 9, 6, 8, 3, 5, 3]
