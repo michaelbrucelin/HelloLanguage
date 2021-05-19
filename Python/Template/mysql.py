@@ -25,7 +25,15 @@ try:
     # 获取所有记录列表
     results = cursor.fetchall()
     for row in results:
-        
+        host = row[0]
+        user = row[1]
+        pwd = row[2]
+        print(f"host: {host}\tuser: {user}\tpassword: {pwd}")
+except:
+    print("Error: unable to fetch data.")
+
+# 关闭数据库连接
+db.close()
 
 
 # https://stackoverflow.com/questions/4960048/how-can-i-connect-to-mysql-in-python-3-on-windows
