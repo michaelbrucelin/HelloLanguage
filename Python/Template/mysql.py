@@ -5,10 +5,12 @@
 # pip install mysqlclient
 
 import MySQLdb as mysql
+from getpass import getpass
 
+# 获取信息
 hostname = input("Enter Hostname: ")
 account = input("Enter Account: ")
-password = input("Enter Password: ")
+password = getpass("Enter Password: ")
 
 # 打开数据库连接
 db = mysql.connect(hostname, account, password, "mysql")
@@ -17,7 +19,7 @@ db = mysql.connect(hostname, account, password, "mysql")
 cursor = db.cursor()
 
 # sql语句
-sql = "select host, user, password from mysql.user;"
+sql = "select host, user, plugin from mysql.user;"
 
 try:
     # 执行sql语句
@@ -28,7 +30,7 @@ try:
         host = row[0]
         user = row[1]
         pwd = row[2]
-        print(f"host: {host}\tuser: {user}\tpassword: {pwd}")
+        print(f"host: {host:<15}user: {user:<20}\tpassword: {pwd}")
 except:
     print("Error: unable to fetch data.")
 
