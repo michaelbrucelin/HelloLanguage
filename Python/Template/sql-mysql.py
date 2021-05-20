@@ -12,7 +12,7 @@ hostname = input("Enter Hostname: ")
 account = input("Enter Account: ")
 password = getpass("Enter Password: ")
 
-# 打开数据库连接
+# 创建数据库连接
 db = mysql.connect(hostname, account, password, "mysql")
 
 # 使用cursor()方法获取操作游标
