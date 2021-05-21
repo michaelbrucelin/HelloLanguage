@@ -15,6 +15,7 @@ dic2["jen"] = "python"
 dic2["sarah"] = "c"
 dic2["edward"] = "ruby"
 
+set0 = set()
 set0 = {"C", "C++", "C#", "Python", "SQL", "JavaScript", "R", "Go"}
 set1 = set([1, 2, 3])           # set(列表)是集合，可以看做没有值的字典
 set2 = set([1, 1, 2, 2, 3, 3])  # 集合中没有重复值，可以使用集合给列表去重复
