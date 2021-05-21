@@ -1,0 +1,26 @@
+{
+    "oa": {
+        "host": "192.168.1.1",
+        "port": 1433,
+        "user": "sa",
+        "password": "oaoaoaoaoaoaoaoa"
+    },
+    "ob": {
+        "host": "192.168.1.2",
+        "port": 32767,
+        "user": "toor",
+        "password": "obobobobobobobob"
+    },
+    "oc": {
+        "host": "192.168.1.3",
+        "port": 3306,
+        "user": "root",
+        "password": "ococococococococ"
+    },
+    "od": {
+        "host": "192.168.1.4",
+        "port": 3306,
+        "user": "root",
+        "password": "odododododododod"
+    }
+}

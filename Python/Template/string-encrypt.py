@@ -23,7 +23,7 @@ def decode(key, enc):
     return "".join(dec)
 
 
-# 测试
+# 测试1
 mykey = "y@4><h2+qfLNKrEhAo@dArgfY#MvXj62zen1"
 
 str_secure = encode(mykey, "hello world.")
@@ -33,3 +33,15 @@ str_plain2 = decode("123456", str_secure)
 print(str_secure)
 print(str_plain)
 print(str_plain2)
+
+# 测试2
+mykey = "y@4><h2+qfLNKrEhAo@dArgfY#MvXj62zen1"
+file_plain = 'user_plain.json'
+file_secure = 'user_secure.json'
+with open(file_plain) as f:
+    str_plain = f.read()
+print(str_plain)
+
+str_secure = encode(mykey, str_plain)
+with open(file_secure, 'w') as f:
+    f.write(str_secure)
