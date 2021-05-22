@@ -9,5 +9,5 @@ print(f"Status code: {r.status_code}")
 # 探索数据的结构
 response_dict = r.json()
 readable_file = 'readable_hn_data.json'
-with open(readable_file) as f:
+with open(readable_file, 'w') as f:
     json.dump(response_dict, f, indent=4)
