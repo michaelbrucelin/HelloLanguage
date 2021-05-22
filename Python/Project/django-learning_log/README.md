@@ -22,6 +22,11 @@ python manage.py makemigrations learning_logs  # 创建将实体（类）生成�
 python manage.py migrate                       # 执行上面生成的映射信息
 
 python manage.py createsuperuser         # 创建超级用户，这里创建的是ll_admin:123456
+python manage.py shell                   # 打开django shell，查看数据
+    from learning_logs.models import Topic
+    topics = Topic.objects.all()
+        for topic in topics:
+            print(topic.id, topic)
 
 
 deactivate  # 停止虚拟环境
