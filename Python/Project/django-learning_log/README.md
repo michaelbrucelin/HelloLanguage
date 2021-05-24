@@ -16,10 +16,11 @@ python manage.py runserver 192.168.1.1:8000  # 需要将设置的ip添加到sett
 # 再打开另一个终端，前一个终端拖着服务
 cd /.../django-learning_log
 source ll_env/bin/activate
-python manage.py startapp learning_logs  # 搭建创建应用程序的基础设施
+python manage.py startapp learning_logs  # 创建一个应用程序
 
 python manage.py makemigrations learning_logs  # 创建将实体（类）生成数据库表的映射信息
 python manage.py migrate                       # 执行上面生成的映射信息
+# 只要更改了Model，就需要迁移？
 
 python manage.py createsuperuser         # 创建超级用户，这里创建的是ll_admin:123456
 python manage.py shell                   # 打开django shell，查看数据
@@ -27,6 +28,8 @@ python manage.py shell                   # 打开django shell，查看数据
     topics = Topic.objects.all()
         for topic in topics:
             print(topic.id, topic)
+
+python manage.py startapp users  # 创建一个名为user的应用程序
 
 
 deactivate  # 停止虚拟环境

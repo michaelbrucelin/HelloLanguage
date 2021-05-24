@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '192.168.91.223']
 INSTALLED_APPS = [
     # 我的应用程序
     'learning_logs',
+    'users',
     # 默认添加的应用程序
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,3 +127,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 我的设置
+LOGIN_URL = 'users:login'
