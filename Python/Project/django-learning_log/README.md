@@ -31,6 +31,9 @@ python manage.py shell                   # 打开django shell，查看数据
 
 python manage.py startapp users  # 创建一个名为user的应用程序
 
+pip install django-bootstrap4    # 使用bootstrap4美化页面
+
+pip freeze > requirements.txt    # 创建文件并记录项目所依赖的包
 
 deactivate  # 停止虚拟环境
 ```
