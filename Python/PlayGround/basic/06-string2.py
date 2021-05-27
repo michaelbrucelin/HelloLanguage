@@ -1,4 +1,5 @@
 # 1. 截取
+import pyperclip
 str = "    www.google.com    "
 str.lstrip()         # 'www.google.com    '
 str.rstrip()         # '    www.google.com'
@@ -28,3 +29,21 @@ items = ["甲", "乙", "丙", "丁"]
 splitor.join(items)  # '甲,乙,丙,丁'
 "".join(items)       # '甲乙丙丁'
 # join拼接字符串的效率要高于使用 + 拼接字符串，估计与C#中的 $"{var1}...{var2}" (StringBuilder)道理差不多，具体没查阅
+
+# 3. 另一种字符串拆分
+str = "hello, world!"
+str.partition('w')      # ('hello, ', 'w', 'orld!')
+str.partition('world')  # ('hello, ', 'world', '!')
+str.partition('o')      # ('hell', 'o', ', world!')
+str.partition('xyz')    # ('hello, world!', '', '')
+
+# 4. 字符编码相关(Unicode)
+ord('A')    # 65
+ord('我')   # 25105
+chr(65)     # 'A'
+chr(25105)  # '我'
+
+# 5. 使用剪切板
+# import pyperclip
+pyperclip.copy("hello world.")  # 复制文本到剪切板
+pyperclip.paste()               # 使用剪切板中的文本

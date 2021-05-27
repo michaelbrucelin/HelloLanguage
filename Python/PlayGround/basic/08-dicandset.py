@@ -2,6 +2,7 @@
 # 从python 3.7开始，遍历字典，默认就是按照字典中元素插入的顺序进行遍历，也就是字典是有顺序的，而集合是没有顺序的
 
 # 1. 声明
+import pprint
 dic1 = {
     "jen": "python",
     "sarah": "c",
@@ -22,14 +23,16 @@ set2 = set([1, 1, 2, 2, 3, 3])  # 集合中没有重复值，可以使用集合�
 
 # 2. 操作
 info = {"id": "1", "name": "micha", "age": 18}
-info["name"]               # 根据键查询值
-info["gender"]             # 访问不存在的键，会报错
-info.get("gender")         # get不存在的键返回none，或者返回指定的默认值
-info.get("gender", "boy")  # 指定默认值
-info["gender"] = "boy"     # 增加键值对
-info["gender"] = 1         # 更改键值对
-del info["age"]            # 删除键值对
-info.clear()               # 清空字典
+info["name"]                    # 根据键查询值
+info["gender"]                  # 访问不存在的键，会报错
+info.get("gender")              # get不存在的键返回none，或者返回指定的默认值
+info.get("gender", "boy")       # 指定默认值
+info["gender"] = "boy"          # 增加键值对
+info["gender"] = 1              # 更改键值对
+info.setdefault("height", 168)  # 由于info中没有键"height"，所以新增键值对
+info.setdefault("height", 188)  # 同样的操作，由于info中含有键"height"，这次是获取键对应的值
+del info["age"]                 # 删除键值对
+info.clear()                    # 清空字典
 
 # 3. 重复的键值
 # {'id': 1, 'name': 'mlin', 'age': 33}
@@ -50,3 +53,9 @@ for value in dic.values():
 
 for key, value in dic.items():
     print("key=%s,value=%s" % (key, value))
+
+# 5. 键排序
+# import pprint
+info = {"id": "1", "name": "micha", "age": 18}
+pprint.pprint(info)          # {'age': 18, 'id': '1', 'name': 'micha'}
+print(pprint.pformat(info))  # {'age': 18, 'id': '1', 'name': 'micha'}
