@@ -11,8 +11,13 @@ pip install requests
 
 - bs4
 
-解析html，即网页编写的格式
+解析html，即网页编写的格式，它是一个第三方模块  
+pip install beautifulsoup4
 
 - selenium
 
-启动并控制一个web浏览器。selenium能够填写表单，并模拟鼠标在这个浏览器中单击
+启动并控制一个web浏览器。selenium能够填写表单，并模拟鼠标在这个浏览器中单击  
+pip install selenium  
+除此之外，还需要安装对应浏览器的驱动：  
+[Chrome](https://chromedriver.chromium.org/downloads)  
+[Firefox](https://github.com/mozilla/geckodriver/releases)
