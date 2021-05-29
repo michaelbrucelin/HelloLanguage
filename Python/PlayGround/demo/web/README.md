@@ -17,6 +17,7 @@ pip install beautifulsoup4
 - selenium
 
 启动并控制一个web浏览器。selenium能够填写表单，并模拟鼠标在这个浏览器中单击  
+selenium是一个用于测试网站的自动化测试工具，支持各种浏览器包括Chrome、Firefox、Safari等主流界面浏览器，同时也支持phantomJS无界面浏览器  
 pip install selenium  
 除此之外，还需要安装对应浏览器的驱动：  
 [Chrome](https://chromedriver.chromium.org/downloads)  
