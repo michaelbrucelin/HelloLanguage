@@ -1,6 +1,21 @@
-# 列表推导式（列表解析，列表表达式）
+# 列表、集合、字典推导式，列表推导式用的最多（列表解析，列表表达式）
 # 列表推导式不仅仅是语法糖，效率也比循环快很多
 # 主要是因为循环使用的是python虚拟机pvm中以步进的方式执行的，而列表推导式在python的解释器中使用C执行
+
+# 列表推导式的一般形式：
+"""
+result = [expr for val in collection if condition]
+
+result = []
+for val in collection:
+    if condition:
+        result.append(val)
+"""
+# 集合、字典推导式的一般形式：
+"""
+set_comp = {expr for value in collection if condition}
+dict_comp = {key-expr:value-expr for value in collection if condition}
+"""
 
 # 1. 将列表中每一项元素*2
 x = [1, 2, 3, 4, 5]
