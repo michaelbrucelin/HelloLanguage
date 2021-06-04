@@ -29,4 +29,4 @@ x_axis_config = {'title': '结果', 'dtick': 1}
 y_axis_config = {'title': '结果的频率'}
 my_layout = Layout(title='掷一个D6和一个D10 50,000次的结果',
                    xaxis=x_axis_config, yaxis=y_axis_config)
-offline.plot({'data': data, 'layout': my_layout}, filename='d6_d10.html')
+offline.plot({'data': data, 'layout': my_layout}, filename='data/d6_d10.html')

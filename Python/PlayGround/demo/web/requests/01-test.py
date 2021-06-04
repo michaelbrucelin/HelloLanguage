@@ -14,7 +14,7 @@ res.raise_for_status()                # 如果文件下载错误，将抛异常�
 # 使用'wb'参数，即使用“写二进制”的模式打开文件，目的是保存该文本中的Unicode编码
 res = requests.get('https://www.baidu.com/')
 res.raise_for_status()
-playFile = open('unicodepage.html', 'wb')
+playFile = open('data/unicodepage.html', 'wb')
 for trunk in res.iter_content(100000):  # 100000算是一个最贱实践的数值
     playFile.write(trunk)
 playFile.close()
