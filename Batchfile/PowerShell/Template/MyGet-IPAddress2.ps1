@@ -1,6 +1,6 @@
 # 链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/batch-getting-ip-addresses
 
-function Get-IpAddress {
+function Get-IPAddress2 {
     param (
         [Parameter( 
             Position = 0,  
