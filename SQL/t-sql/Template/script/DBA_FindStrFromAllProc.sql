@@ -20,3 +20,9 @@ from INFORMATION_SCHEMA.ROUTINES
 where ROUTINE_TYPE = 'PROCEDURE'
 )
 select * from c0 where ROUTINE_DEFINITION like '%关键字%'
+
+-- 同时在存储过程和函数定义中查找关键字，未验证
+select a.[name], a.[xtype], b.[text]
+from sysobjects as a
+inner join syscomments as b on b.id=a.id
+where b.[text] like '%关键字%'
