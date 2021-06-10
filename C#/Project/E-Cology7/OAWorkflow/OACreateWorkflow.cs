@@ -69,6 +69,7 @@ namespace OAWorkflow
             requestInfo.mainTableInfo = GetMainTableInfo(mainDic);
 
             OA.RequestService requestService = new OA.RequestService();
+
             return requestService.createRequest(requestInfo);
         }
         #endregion
@@ -103,6 +104,7 @@ namespace OAWorkflow
             requestInfo.detailTableInfo = GetDetailTableInfo(detailDics);
 
             OA.RequestService requestService = new OA.RequestService();
+
             return requestService.createRequest(requestInfo);
         }
         #endregion
@@ -154,6 +156,7 @@ namespace OAWorkflow
                         break;
                 }
             }
+
             return result;
         }
         #endregion
@@ -177,7 +180,6 @@ namespace OAWorkflow
                 };
                 mainList.Add(p);
             }
-
             OA.Property[] mainFields = mainList.ToArray();
             OA.MainTableInfo mainTableInfo = new OA.MainTableInfo() { property = mainFields };
 
@@ -218,9 +220,7 @@ namespace OAWorkflow
             detailTableInfo.detailTable = detailTables;
 
             return detailTableInfo;
-
         }
         #endregion
-
     }
 }
