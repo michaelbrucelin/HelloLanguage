@@ -85,10 +85,10 @@
     <None Include="Web References\OA\RequestService.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.1.102:81//services/RequestService%3fwsdl">
+    <WebReferenceUrl Include="http://192.168.1.102//services/RequestService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\OA\</RelPath>
-      <UpdateFromURL>http://192.168.1.102:81//services/RequestService%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://192.168.1.102//services/RequestService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
