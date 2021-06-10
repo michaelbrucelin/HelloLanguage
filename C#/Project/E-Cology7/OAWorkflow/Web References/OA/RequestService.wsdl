@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:ns2="http://request.workflow.weaver" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:tns="http://localhost/services/RequestService" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns4="http://hrm.weaver" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns3="http://conn.weaver" xmlns:ns1="http://request.workflow.soa.weaver" targetNamespace="http://localhost/services/RequestService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://localhost/services/RequestService">
+      <xsd:element name="nextNodeByReject">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nextNodeByRejectResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequestLogs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequestLogsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfLog" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProcessedRequestBySearch">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getProcessedRequestBySearchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfRequestBase" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="forwardFlow">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="forwardFlowResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPropValue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPropValueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="anyType2anyType2anyTypeMapMap">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="key" type="xsd:anyType" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="value" type="tns:anyType2anyTypeMap" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="anyType2anyTypeMap">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="entry">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="1" name="key" type="xsd:anyType" />
+                <xsd:element minOccurs="0" maxOccurs="1" name="value" type="xsd:anyType" />
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfInt">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="int" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="nextNodeBySubmit1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:RequestInfo" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nextNodeBySubmit1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHendledRequestBySearch">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHendledRequestBySearchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfRequestBase" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoadTemplateProp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="LoadTemplatePropResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="tns:anyType2anyTypeMap" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMyRequestBySearch">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMyRequestBySearchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfRequestBase" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="writeLog1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:anyType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="writeLog1Response">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="writeLog">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:anyType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="writeLogResponse">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="whetherMustInputRemark">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="whetherMustInputRemarkResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRightMenu">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in5" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRightMenuResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:RequestInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPendingRequestBySearch">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPendingRequestBySearchResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:ArrayOfRequestBase" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RequestInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RequestInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:RequestManager" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RequestInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nextNodeBySubmit">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:RequestInfo" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nextNodeBySubmitResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest3">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:RequestManager" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRequest3Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RequestInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://request.workflow.soa.weaver">
+      <xsd:complexType name="ArrayOfLog">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="ns1:Log" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Log">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="agentorbyagentid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="agenttype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="annexdocids" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="comment" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="node" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nodeid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="opdate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operator" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operatordept" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operatorid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operatortype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="optime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="optype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="receiver" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestLogId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="signdocids" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="signworkflowids" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRequestBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RequestBase" nillable="true" type="ns1:RequestBase" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RequestBase">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="createTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creater" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creatertype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currentNodeId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currentNodeType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastOperateTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastOperator" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastOperatortype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="workflowId" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RequestInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="creatorid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="detailTableInfo" nillable="true" type="ns1:DetailTableInfo" />
+          <xsd:element minOccurs="0" name="hostid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isNextFlow" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastoperator" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mainTableInfo" nillable="true" type="ns1:MainTableInfo" />
+          <xsd:element minOccurs="0" name="remindtype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestLog" nillable="true" type="ns1:RequestLog" />
+          <xsd:element minOccurs="0" name="requestManager" nillable="true" type="ns2:RequestManager" />
+          <xsd:element minOccurs="0" name="requestid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestlevel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rsTrans" nillable="true" type="ns3:RecordSetTrans" />
+          <xsd:element minOccurs="0" name="workflowid" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MainTableInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="property" nillable="true" type="ns1:ArrayOfProperty" />
+          <xsd:element minOccurs="0" name="propertyCount" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfProperty">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Property" nillable="true" type="ns1:Property" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Property">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="name" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="type" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetailTableInfo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="detailTable" nillable="true" type="ns1:ArrayOfDetailTable" />
+          <xsd:element minOccurs="0" name="detailTableCount" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDetailTable">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DetailTable" nillable="true" type="ns1:DetailTable" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DetailTable">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="row" nillable="true" type="ns1:ArrayOfRow" />
+          <xsd:element minOccurs="0" name="rowCount" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRow">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="ns1:Row" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Row">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cell" nillable="true" type="ns1:ArrayOfCell" />
+          <xsd:element minOccurs="0" name="cellCount" type="xsd:int" />
+          <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCell">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Cell" nillable="true" type="ns1:Cell" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Cell">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="name" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="type" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RequestLog">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="log" nillable="true" type="ns1:ArrayOfLog" />
+          <xsd:element minOccurs="0" name="logCount" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://request.workflow.weaver">
+      <xsd:complexType name="RequestManager">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="beAgenter" type="xsd:int" />
+          <xsd:element minOccurs="0" name="billTableName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="billid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="canModify" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="coadsigntype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="createdate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creater" type="xsd:int" />
+          <xsd:element minOccurs="0" name="creatertype" type="xsd:int" />
+          <xsd:element minOccurs="0" name="createtime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currentDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currentOperator" nillable="true" type="tns:anyType2anyType2anyTypeMapMap" />
+          <xsd:element minOccurs="0" name="currentTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docrowindex" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="formid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="hasTriggeredSubwf" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="intervenorid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isFromEditDocument" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isPending" type="xsd:int" />
+          <xsd:element minOccurs="0" name="isagentCreater" type="xsd:int" />
+          <xsd:element minOccurs="0" name="isbill" type="xsd:int" />
+          <xsd:element minOccurs="0" name="iscreate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isremark" type="xsd:int" />
+          <xsd:element minOccurs="0" name="lastNodeid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="lastnodetype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastoperatedate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastoperatetime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastoperator" type="xsd:int" />
+          <xsd:element minOccurs="0" name="lastoperatortype" type="xsd:int" />
+          <xsd:element minOccurs="0" name="message" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messageType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messagecontent" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="messageid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="needwfback" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nextNodeid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="nextNodetype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nodeid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="nodelefttime" type="xsd:float" />
+          <xsd:element minOccurs="0" name="nodepasstime" type="xsd:float" />
+          <xsd:element minOccurs="0" name="nodetype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="passedGroups" type="xsd:int" />
+          <xsd:element minOccurs="0" name="remark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestKey" type="xsd:int" />
+          <xsd:element minOccurs="0" name="requestid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="requestlevel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="requestname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rsTrans" nillable="true" type="ns3:RecordSetTrans" />
+          <xsd:element minOccurs="0" name="signdocids" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="signworkflowids" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="src" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="submitNodeId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="totalGroups" type="xsd:int" />
+          <xsd:element minOccurs="0" name="user" nillable="true" type="ns4:User" />
+          <xsd:element minOccurs="0" name="userId" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userType" type="xsd:int" />
+          <xsd:element minOccurs="0" name="workflowid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="workflowtype" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://hrm.weaver">
+      <xsd:complexType name="User">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="UID" type="xsd:int" />
+          <xsd:element minOccurs="0" name="account" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="agent" type="xsd:int" />
+          <xsd:element minOccurs="0" name="aliasname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="assistantid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="city" type="xsd:int" />
+          <xsd:element minOccurs="0" name="contractdate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="costcenterid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="countryid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currencyid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="email" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="enddate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="firstname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="jobactivity" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="jobgroup" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="joblevel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="jobtitle" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="language" type="xsd:int" />
+          <xsd:element minOccurs="0" name="lastlogindate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lastname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="locationid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="loginid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="loginip" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="logintype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="managerid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mobile" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mobilecall" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="needusb" type="xsd:int" />
+          <xsd:element minOccurs="0" name="parentid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="postcode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="province" type="xsd:int" />
+          <xsd:element minOccurs="0" name="purchaselimit" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pwd" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="receiveaddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resourcetype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="seclevel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="serial" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sex" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="startdate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" type="xsd:int" />
+          <xsd:element minOccurs="0" name="telephone" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="title" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="titlelocation" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="type" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userDepartment" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userSubCompany1" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userSubCompany2" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userSubCompany3" type="xsd:int" />
+          <xsd:element minOccurs="0" name="userSubCompany4" type="xsd:int" />
+          <xsd:element minOccurs="0" name="username" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://conn.weaver">
+      <xsd:complexType name="RecordSetTrans">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DBType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checksql" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="colCounts" type="xsd:int" />
+          <xsd:element minOccurs="0" name="columnName" nillable="true" type="tns:ArrayOfString" />
+          <xsd:element minOccurs="0" name="columnType" nillable="true" type="tns:ArrayOfInt" />
+          <xsd:element minOccurs="0" name="counts" type="xsd:int" />
+          <xsd:element minOccurs="0" name="flag" type="xsd:int" />
+          <xsd:element minOccurs="0" name="msg" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getMyRequestBySearchResponse">
+    <wsdl:part name="parameters" element="tns:getMyRequestBySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProcessedRequestBySearchRequest">
+    <wsdl:part name="parameters" element="tns:getProcessedRequestBySearch" />
+  </wsdl:message>
+  <wsdl:message name="getRightMenuResponse">
+    <wsdl:part name="parameters" element="tns:getRightMenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRequest1Response">
+    <wsdl:part name="parameters" element="tns:getRequest1Response" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeBySubmit1Response">
+    <wsdl:part name="parameters" element="tns:nextNodeBySubmit1Response" />
+  </wsdl:message>
+  <wsdl:message name="getHendledRequestBySearchRequest">
+    <wsdl:part name="parameters" element="tns:getHendledRequestBySearch" />
+  </wsdl:message>
+  <wsdl:message name="forwardFlowResponse">
+    <wsdl:part name="parameters" element="tns:forwardFlowResponse" />
+  </wsdl:message>
+  <wsdl:message name="forwardFlowRequest">
+    <wsdl:part name="parameters" element="tns:forwardFlow" />
+  </wsdl:message>
+  <wsdl:message name="createRequestResponse">
+    <wsdl:part name="parameters" element="tns:createRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeByRejectResponse">
+    <wsdl:part name="parameters" element="tns:nextNodeByRejectResponse" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeByRejectRequest">
+    <wsdl:part name="parameters" element="tns:nextNodeByReject" />
+  </wsdl:message>
+  <wsdl:message name="getRequestResponse">
+    <wsdl:part name="parameters" element="tns:getRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPropValueResponse">
+    <wsdl:part name="parameters" element="tns:getPropValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeBySubmitRequest">
+    <wsdl:part name="parameters" element="tns:nextNodeBySubmit" />
+  </wsdl:message>
+  <wsdl:message name="whetherMustInputRemarkRequest">
+    <wsdl:part name="parameters" element="tns:whetherMustInputRemark" />
+  </wsdl:message>
+  <wsdl:message name="getRequest1Request">
+    <wsdl:part name="parameters" element="tns:getRequest1" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeBySubmit1Request">
+    <wsdl:part name="parameters" element="tns:nextNodeBySubmit1" />
+  </wsdl:message>
+  <wsdl:message name="getPendingRequestBySearchRequest">
+    <wsdl:part name="parameters" element="tns:getPendingRequestBySearch" />
+  </wsdl:message>
+  <wsdl:message name="writeLog1Request">
+    <wsdl:part name="parameters" element="tns:writeLog1" />
+  </wsdl:message>
+  <wsdl:message name="nextNodeBySubmitResponse">
+    <wsdl:part name="parameters" element="tns:nextNodeBySubmitResponse" />
+  </wsdl:message>
+  <wsdl:message name="writeLogResponse">
+    <wsdl:part name="parameters" element="tns:writeLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRequest2Request">
+    <wsdl:part name="parameters" element="tns:getRequest2" />
+  </wsdl:message>
+  <wsdl:message name="getRequest3Response">
+    <wsdl:part name="parameters" element="tns:getRequest3Response" />
+  </wsdl:message>
+  <wsdl:message name="getPropValueRequest">
+    <wsdl:part name="parameters" element="tns:getPropValue" />
+  </wsdl:message>
+  <wsdl:message name="getRequest3Request">
+    <wsdl:part name="parameters" element="tns:getRequest3" />
+  </wsdl:message>
+  <wsdl:message name="getRequest2Response">
+    <wsdl:part name="parameters" element="tns:getRequest2Response" />
+  </wsdl:message>
+  <wsdl:message name="writeLogRequest">
+    <wsdl:part name="parameters" element="tns:writeLog" />
+  </wsdl:message>
+  <wsdl:message name="whetherMustInputRemarkResponse">
+    <wsdl:part name="parameters" element="tns:whetherMustInputRemarkResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRequestLogsResponse">
+    <wsdl:part name="parameters" element="tns:getRequestLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHendledRequestBySearchResponse">
+    <wsdl:part name="parameters" element="tns:getHendledRequestBySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProcessedRequestBySearchResponse">
+    <wsdl:part name="parameters" element="tns:getProcessedRequestBySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRequestLogsRequest">
+    <wsdl:part name="parameters" element="tns:getRequestLogs" />
+  </wsdl:message>
+  <wsdl:message name="getRequestRequest">
+    <wsdl:part name="parameters" element="tns:getRequest" />
+  </wsdl:message>
+  <wsdl:message name="getRightMenuRequest">
+    <wsdl:part name="parameters" element="tns:getRightMenu" />
+  </wsdl:message>
+  <wsdl:message name="getPendingRequestBySearchResponse">
+    <wsdl:part name="parameters" element="tns:getPendingRequestBySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadTemplatePropResponse">
+    <wsdl:part name="parameters" element="tns:LoadTemplatePropResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMyRequestBySearchRequest">
+    <wsdl:part name="parameters" element="tns:getMyRequestBySearch" />
+  </wsdl:message>
+  <wsdl:message name="LoadTemplatePropRequest">
+    <wsdl:part name="parameters" element="tns:LoadTemplateProp" />
+  </wsdl:message>
+  <wsdl:message name="deleteRequestResponse">
+    <wsdl:part name="parameters" element="tns:deleteRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRequestRequest">
+    <wsdl:part name="parameters" element="tns:deleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="createRequestRequest">
+    <wsdl:part name="parameters" element="tns:createRequest" />
+  </wsdl:message>
+  <wsdl:message name="writeLog1Response">
+    <wsdl:part name="parameters" element="tns:writeLog1Response" />
+  </wsdl:message>
+  <wsdl:portType name="RequestServicePortType">
+    <wsdl:operation name="nextNodeByReject">
+      <wsdl:input name="nextNodeByRejectRequest" message="tns:nextNodeByRejectRequest" />
+      <wsdl:output name="nextNodeByRejectResponse" message="tns:nextNodeByRejectResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRequestLogs">
+      <wsdl:input name="getRequestLogsRequest" message="tns:getRequestLogsRequest" />
+      <wsdl:output name="getRequestLogsResponse" message="tns:getRequestLogsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRequest">
+      <wsdl:input name="deleteRequestRequest" message="tns:deleteRequestRequest" />
+      <wsdl:output name="deleteRequestResponse" message="tns:deleteRequestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getProcessedRequestBySearch">
+      <wsdl:input name="getProcessedRequestBySearchRequest" message="tns:getProcessedRequestBySearchRequest" />
+      <wsdl:output name="getProcessedRequestBySearchResponse" message="tns:getProcessedRequestBySearchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="forwardFlow">
+      <wsdl:input name="forwardFlowRequest" message="tns:forwardFlowRequest" />
+      <wsdl:output name="forwardFlowResponse" message="tns:forwardFlowResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPropValue">
+      <wsdl:input name="getPropValueRequest" message="tns:getPropValueRequest" />
+      <wsdl:output name="getPropValueResponse" message="tns:getPropValueResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="nextNodeBySubmit1">
+      <wsdl:input name="nextNodeBySubmit1Request" message="tns:nextNodeBySubmit1Request" />
+      <wsdl:output name="nextNodeBySubmit1Response" message="tns:nextNodeBySubmit1Response" />
+    </wsdl:operation>
+    <wsdl:operation name="getHendledRequestBySearch">
+      <wsdl:input name="getHendledRequestBySearchRequest" message="tns:getHendledRequestBySearchRequest" />
+      <wsdl:output name="getHendledRequestBySearchResponse" message="tns:getHendledRequestBySearchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadTemplateProp">
+      <wsdl:input name="LoadTemplatePropRequest" message="tns:LoadTemplatePropRequest" />
+      <wsdl:output name="LoadTemplatePropResponse" message="tns:LoadTemplatePropResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMyRequestBySearch">
+      <wsdl:input name="getMyRequestBySearchRequest" message="tns:getMyRequestBySearchRequest" />
+      <wsdl:output name="getMyRequestBySearchResponse" message="tns:getMyRequestBySearchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="writeLog1">
+      <wsdl:input name="writeLog1Request" message="tns:writeLog1Request" />
+      <wsdl:output name="writeLog1Response" message="tns:writeLog1Response" />
+    </wsdl:operation>
+    <wsdl:operation name="writeLog">
+      <wsdl:input name="writeLogRequest" message="tns:writeLogRequest" />
+      <wsdl:output name="writeLogResponse" message="tns:writeLogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="whetherMustInputRemark">
+      <wsdl:input name="whetherMustInputRemarkRequest" message="tns:whetherMustInputRemarkRequest" />
+      <wsdl:output name="whetherMustInputRemarkResponse" message="tns:whetherMustInputRemarkResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRightMenu">
+      <wsdl:input name="getRightMenuRequest" message="tns:getRightMenuRequest" />
+      <wsdl:output name="getRightMenuResponse" message="tns:getRightMenuResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createRequest">
+      <wsdl:input name="createRequestRequest" message="tns:createRequestRequest" />
+      <wsdl:output name="createRequestResponse" message="tns:createRequestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPendingRequestBySearch">
+      <wsdl:input name="getPendingRequestBySearchRequest" message="tns:getPendingRequestBySearchRequest" />
+      <wsdl:output name="getPendingRequestBySearchResponse" message="tns:getPendingRequestBySearchResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRequest">
+      <wsdl:input name="getRequestRequest" message="tns:getRequestRequest" />
+      <wsdl:output name="getRequestResponse" message="tns:getRequestResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRequest2">
+      <wsdl:input name="getRequest2Request" message="tns:getRequest2Request" />
+      <wsdl:output name="getRequest2Response" message="tns:getRequest2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="getRequest1">
+      <wsdl:input name="getRequest1Request" message="tns:getRequest1Request" />
+      <wsdl:output name="getRequest1Response" message="tns:getRequest1Response" />
+    </wsdl:operation>
+    <wsdl:operation name="nextNodeBySubmit">
+      <wsdl:input name="nextNodeBySubmitRequest" message="tns:nextNodeBySubmitRequest" />
+      <wsdl:output name="nextNodeBySubmitResponse" message="tns:nextNodeBySubmitResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRequest3">
+      <wsdl:input name="getRequest3Request" message="tns:getRequest3Request" />
+      <wsdl:output name="getRequest3Response" message="tns:getRequest3Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RequestServiceHttpBinding" type="tns:RequestServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="nextNodeByReject">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="nextNodeByRejectRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nextNodeByRejectResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequestLogs">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequestLogsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRequestLogsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRequest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deleteRequestRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteRequestResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProcessedRequestBySearch">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getProcessedRequestBySearchRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getProcessedRequestBySearchResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="forwardFlow">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="forwardFlowRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="forwardFlowResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPropValue">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPropValueRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPropValueResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nextNodeBySubmit1">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="nextNodeBySubmit1Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nextNodeBySubmit1Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHendledRequestBySearch">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHendledRequestBySearchRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHendledRequestBySearchResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadTemplateProp">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="LoadTemplatePropRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LoadTemplatePropResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMyRequestBySearch">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getMyRequestBySearchRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMyRequestBySearchResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeLog1">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="writeLog1Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="writeLog1Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="writeLog">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="writeLogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="writeLogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="whetherMustInputRemark">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="whetherMustInputRemarkRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="whetherMustInputRemarkResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRightMenu">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRightMenuRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRightMenuResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createRequest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="createRequestRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="createRequestResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPendingRequestBySearch">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPendingRequestBySearchRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPendingRequestBySearchResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequest">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequestRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRequestResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequest2">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequest2Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRequest2Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequest1">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequest1Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRequest1Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nextNodeBySubmit">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="nextNodeBySubmitRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="nextNodeBySubmitResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRequest3">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRequest3Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRequest3Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RequestService">
+    <wsdl:port name="RequestServiceHttpPort" binding="tns:RequestServiceHttpBinding">
+      <wsdlsoap:address location="http://192.168.1.102:81//services/RequestService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
