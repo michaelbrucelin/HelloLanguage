@@ -16,6 +16,7 @@ where TABLE_TYPE = 'BASE TABLE'
       --and TABLE_NAME like '%hrm%'
       and TABLE_NAME not like '%workflow%'
       and TABLE_NAME not like 'formtable_main_%'
+      and TABLE_NAME not like 'uf_%'
       and TABLE_NAME not like 'wrktablename%'
 
 open Cursor_Table;
