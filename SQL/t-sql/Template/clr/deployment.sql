@@ -61,6 +61,15 @@ FROM 'D:\SqlServerClrUtils.dll'
 WITH PERMISSION_SET = SAFE;
 GO
 
+--如果数据库版本为：SQL Server 2017 (14.x) +，需要先执行下面脚本
+declare @hash as binary(64)
+set @hash = (select HASHBYTES('SHA2_512', (select * from OPENROWSET (BULK 'D:\SqlServerClrUtils.dll', SINGLE_BLOB) as [Data])))
+exec sp_add_trusted_assembly @hash, N'Name: CLRUtilities, By: MichaelBrucelin, CreateDate: 20210624'
+--exec sp_drop_trusted_assembly @hash
+
+select * from sys.trusted_assemblies  -- 查询数据库信任的程序集
+GO
+
 --实现clr正则表达式验证模式匹配
 IF OBJECT_ID('dbo.fn_RegExIsMatch') IS NOT NULL BEGIN
     DROP FUNCTION dbo.fn_RegExIsMatch
