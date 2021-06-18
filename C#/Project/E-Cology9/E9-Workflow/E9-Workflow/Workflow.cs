@@ -9,7 +9,7 @@ namespace E9_Workflow
 {
     public class Workflow
     {
-        public string Test()
+        public string TestWithoutDetail()
         {
             // 创建一个内部留言流程
             WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();  // 创建流程的类
@@ -39,10 +39,47 @@ namespace E9_Workflow
             WF.WorkflowMainTableInfo mainTable = new WF.WorkflowMainTableInfo();    // 主表单信息
             mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] { r1 };  // 尽管主表单只有一份信息，但是这个位置仍然被设计成数组，不确认为什么要这么设计
                                                                                     // 尝试过给2份主表单信息，仍然只有第一份信息（数组第一项）有效
-            //mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] { r1, r2 };
+                                                                                    //mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] { r1, r2 };
 
             //E9WF.WorkflowDetailTableInfo detailTable = new E9WF.WorkflowDetailTableInfo();
             //detailTable.workflowRequestTableRecords = new E9WF.WorkflowRequestTableRecord[10];
+
+            requestInfo.requestName = "hello webservices " + DateTime.Now.ToString("yyyy-MM-dd");  // 流程标题
+            requestInfo.requestLevel = "2";                                                        // 紧急程度：0正常 1重要 2紧急
+            requestInfo.workflowBaseInfo = wfInfo;
+            requestInfo.workflowMainTableInfo = mainTable;
+
+            string result = wfclient.doCreateWorkflowRequest(requestInfo, 58);                     // 创建流程
+
+            return result;
+        }
+
+        public string TestWithDetail()
+        {
+            // 创建一个费用报销流程
+            WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();  // 创建流程的类
+            WF.WorkflowRequestInfo requestInfo = new WF.WorkflowRequestInfo();                   // 流程信息
+
+            WF.WorkflowBaseInfo wfInfo = new WF.WorkflowBaseInfo();  // 流程信息—基础信息
+            wfInfo.workflowId = "4";
+
+            WF.WorkflowMainTableInfo mainTable = new WF.WorkflowMainTableInfo();    // 主表单信息
+            mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] {        // 尽管主表单只有一份信息，但是这个位置仍然被设计成数组，不确认为什么要这么设计
+                new WF.WorkflowRequestTableRecord(){                                // 主表单字段信息
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[] {
+                        new WF.WorkflowRequestTableField(){ fieldName = "chrm", fieldValue = "133", view = true, edit = true },  // 如果不设置view与edit属性，发出去字段值是空的
+                        new WF.WorkflowRequestTableField(){ fieldName = "cdept", fieldValue = "22", view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "cdate", fieldValue = DateTime.Now.ToString("yyyy-MM-dd"), view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "managerCnt", fieldValue = "2", view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "reason", fieldValue="道可道 非常道 名可名 非常名", view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxfs", fieldValue="1", view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "beizhu", fieldValue="无 名天地之始 有 名万物之母", view = true, edit = true }
+                    }
+                } 
+            };
+
+            WF.WorkflowDetailTableInfo detailTable = new WF.WorkflowDetailTableInfo();  // 明细表信息
+            detailTable.workflowRequestTableRecords = new WF.WorkflowRequestTableRecord[3];
 
             requestInfo.requestName = "hello webservices " + DateTime.Now.ToString("yyyy-MM-dd");  // 流程标题
             requestInfo.requestLevel = "2";                                                        // 紧急程度：0正常 1重要 2紧急
