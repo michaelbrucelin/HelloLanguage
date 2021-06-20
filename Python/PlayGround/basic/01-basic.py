@@ -77,6 +77,7 @@ print("decimal %s + %s=" % (a, b), a + b)
 
 # 9. 复数
 x = 1 + 2j
+y = complex(1, 2)
 print(x.real)
 print(x.imag)
 
