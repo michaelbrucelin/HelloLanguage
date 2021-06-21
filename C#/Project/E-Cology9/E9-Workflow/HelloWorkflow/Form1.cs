@@ -26,7 +26,7 @@ namespace HelloWorkflow
         private void btnStart_Click(object sender, EventArgs e)
         {
             Workflow wf = new Workflow();
-            string result = wf.TestWithoutDetail();
+            string result = wf.TestWithDetail();
 
             MessageBox.Show(result);
         }

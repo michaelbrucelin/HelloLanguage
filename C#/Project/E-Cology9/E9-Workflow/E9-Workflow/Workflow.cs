@@ -9,6 +9,8 @@ namespace E9_Workflow
 {
     public class Workflow
     {
+        private readonly Random random = new Random();
+
         public string TestWithoutDetail()
         {
             // 创建一个内部留言流程
@@ -72,21 +74,48 @@ namespace E9_Workflow
                         new WF.WorkflowRequestTableField(){ fieldName = "cdate", fieldValue = DateTime.Now.ToString("yyyy-MM-dd"), view = true, edit = true },
                         new WF.WorkflowRequestTableField(){ fieldName = "managerCnt", fieldValue = "2", view = true, edit = true },
                         new WF.WorkflowRequestTableField(){ fieldName = "reason", fieldValue="道可道 非常道 名可名 非常名", view = true, edit = true },
-                        new WF.WorkflowRequestTableField(){ fieldName = "bxfs", fieldValue="1", view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "costType", fieldValue=random.Next(0, 2).ToString(), view = true, edit = true },
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxfs", fieldValue=random.Next(0,12).ToString(), view = true, edit = true },
                         new WF.WorkflowRequestTableField(){ fieldName = "beizhu", fieldValue="无 名天地之始 有 名万物之母", view = true, edit = true }
                     }
-                } 
+                }
             };
 
-            WF.WorkflowDetailTableInfo detailTable = new WF.WorkflowDetailTableInfo();  // 明细表信息
-            detailTable.workflowRequestTableRecords = new WF.WorkflowRequestTableRecord[3];
+            WF.WorkflowDetailTableInfo detailTable = new WF.WorkflowDetailTableInfo();       // 明细表信息
+            detailTable.workflowRequestTableRecords = new WF.WorkflowRequestTableRecord[] {  // 明细行数据
+                new WF.WorkflowRequestTableRecord(){  // 第一行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                },
+                new WF.WorkflowRequestTableRecord(){  // 第二行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                },
+                new WF.WorkflowRequestTableRecord(){  // 第三行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                }
+            };
 
-            requestInfo.requestName = "hello webservices " + DateTime.Now.ToString("yyyy-MM-dd");  // 流程标题
-            requestInfo.requestLevel = "2";                                                        // 紧急程度：0正常 1重要 2紧急
+            requestInfo.requestName = "hello webservices " + DateTime.Now.ToString("yyyy-MM-dd");     // 流程标题
+            requestInfo.requestLevel = "2";                                                           // 紧急程度：0正常 1重要 2紧急
             requestInfo.workflowBaseInfo = wfInfo;
             requestInfo.workflowMainTableInfo = mainTable;
+            requestInfo.workflowDetailTableInfos = new WF.WorkflowDetailTableInfo[] { detailTable };  // 这里只有一个明细表
 
-            string result = wfclient.doCreateWorkflowRequest(requestInfo, 58);                     // 创建流程
+            string result = wfclient.doCreateWorkflowRequest(requestInfo, 58);                        // 创建流程
 
             return result;
         }
