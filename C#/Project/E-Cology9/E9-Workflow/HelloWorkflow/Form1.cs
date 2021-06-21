@@ -23,12 +23,20 @@ namespace HelloWorkflow
 
         }
 
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            Test wf = new Test();
+
+            //string result = wf.TestWithDetail();
+            //MessageBox.Show(result);
+
+            string result = wf.Test0();
+            MessageBox.Show(result);
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Workflow wf = new Workflow();
-            string result = wf.TestWithDetail();
 
-            MessageBox.Show(result);
         }
     }
 }

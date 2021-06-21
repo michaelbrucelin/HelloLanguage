@@ -1,0 +1,99 @@
+{
+  "creater": 58,
+  "requestName": "流程标题：费用报销申请—张三—19000101",
+  "requestLevel": "紧急程度：0正常 1重要 2紧急",
+
+  "baseInfo": {
+    "workflowId": "4"
+  },
+
+  "mainTableInfo": {
+    "requestRecords": [
+      {
+        "workflowRequestTableFields": [
+          {
+            "fieldName": "chrm",
+            "fieldValue": "133",
+            "view": true,
+            "edit": true
+          },
+          {
+            "fieldName": "cdept",
+            "fieldValue": "22",
+            "view": true,
+            "edit": true
+          },
+          {
+            "fieldName": "cdate",
+            "fieldValue": "1900-01-01",
+            "view": true,
+            "edit": true
+          }
+        ]
+      }
+    ]
+  },
+
+  "detailTableInfos": [
+    {
+      "workflowRequestTableRecords": [
+        {
+          "workflowRequestTableFields": [
+            {
+              "fieldName": "bxlx",
+              "fieldValue": "0",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "fjs",
+              "fieldValue": "0",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "shbbz",
+              "fieldValue": "￥",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "shbje",
+              "fieldValue": "100",
+              "view": true,
+              "edit": true
+            }
+          ]
+        },
+        {
+          "workflowRequestTableFields": [
+            {
+              "fieldName": "bxlx",
+              "fieldValue": "1",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "fjs",
+              "fieldValue": "0",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "shbbz",
+              "fieldValue": "￥",
+              "view": true,
+              "edit": true
+            },
+            {
+              "fieldName": "shbje",
+              "fieldValue": "200",
+              "view": true,
+              "edit": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
