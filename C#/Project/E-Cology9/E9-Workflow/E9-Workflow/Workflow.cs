@@ -197,19 +197,67 @@ namespace E9_Workflow
         /// <returns></returns>
         private WF.WorkflowMainTableInfo GetMainTableInfo(Dictionary<string, string> data)
         {
+            List<WF.WorkflowRequestTableField> fieldsList = new List<WF.WorkflowRequestTableField>();
+            foreach (var item in data)
+            {
+                fieldsList.Add(new WF.WorkflowRequestTableField()
+                {
+                    fieldName = item.Key,
+                    fieldValue = item.Value,
+                    view = true,
+                    edit = true
+                });
+            }
+
             WF.WorkflowRequestTableRecord records = new WF.WorkflowRequestTableRecord();
-            records.workflowRequestTableFields = new WF.WorkflowRequestTableField[] {
-                new WF.WorkflowRequestTableField(){ fieldName = "chrm", fieldValue = "133", view = true, edit = true },  // 如果不设置view与edit属性，发出去字段值是空的
-                new WF.WorkflowRequestTableField(){ fieldName = "cdept", fieldValue = "22", view = true, edit = true },
-                new WF.WorkflowRequestTableField(){ fieldName = "cdate", fieldValue = DateTime.Now.ToString("yyyy-MM-dd"), view = true, edit = true },
-                new WF.WorkflowRequestTableField(){ fieldName = "toTell", fieldValue = "58,26,133,148", view = true, edit = true },
-                new WF.WorkflowRequestTableField(){ fieldName = "content", fieldValue="道可道 非常道 名可名 非常名<br>无 名天地之始 有 名万物之母", view = true, edit = true }
-            };
+            records.workflowRequestTableFields = fieldsList.ToArray();
 
             WF.WorkflowMainTableInfo mainTable = new WF.WorkflowMainTableInfo();
             mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] { records };
 
             return mainTable;
+        }
+
+        private WF.WorkflowDetailTableInfo GetDetailTableInfo(List<Dictionary<string, string>>[] data)
+        {
+            WF.WorkflowDetailTableInfo[] tables = new WF.WorkflowDetailTableInfo[data.Length];
+            for (int i = 0; i < data.Length; i++)
+            {
+                List<WF.WorkflowRequestTableRecord> records = new List<WF.WorkflowRequestTableRecord>();
+
+
+                WF.WorkflowDetailTableInfo table = new WF.WorkflowDetailTableInfo();
+                table.workflowRequestTableRecords = records.ToArray();
+                tables[i] = table;
+            }
+
+
+            detailTable.workflowRequestTableRecords = new WF.WorkflowRequestTableRecord[] {  // 明细行数据
+                new WF.WorkflowRequestTableRecord(){  // 第一行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                },
+                new WF.WorkflowRequestTableRecord(){  // 第二行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                },
+                new WF.WorkflowRequestTableRecord(){  // 第三行数据
+                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
+                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
+                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
+                    }
+                }
+            };
         }
 
         /// <summary>
