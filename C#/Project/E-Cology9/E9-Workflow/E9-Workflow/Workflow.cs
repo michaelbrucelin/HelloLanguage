@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,74 @@ namespace E9_Workflow
     public class Workflow
     {
         /// <summary>
-        /// 返回主表信息，包含每个字段的数据库column name和对应的值
+        /// 使用json创建流程
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="json"></param>
         /// <returns></returns>
-        public WF.WorkflowMainTableInfo GetMainTableInfo(Dictionary<string, string> data)
+        public (bool result, string desc) CreateWF(string json)
         {
-            WF.WorkflowMainTableInfo main = new WF.WorkflowMainTableInfo();
+            QRequestInfo QRInfo = JsonConvert.DeserializeObject<QRequestInfo>(json);
 
-            return main;
+            WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
+            WF.WorkflowRequestInfo requestInfo = new WF.WorkflowRequestInfo();
+
+            requestInfo.requestName = QRInfo.requestName;
+            requestInfo.requestLevel = QRInfo.requestLevel;
+            requestInfo.workflowBaseInfo = QRInfo.baseInfo;
+            requestInfo.workflowMainTableInfo = QRInfo.mainTableInfo;
+
+            if (QRInfo.detailTableInfos != null && QRInfo.detailTableInfos.Length > 0)
+                requestInfo.workflowDetailTableInfos = QRInfo.detailTableInfos;
+
+            string result = wfclient.doCreateWorkflowRequest(requestInfo, QRInfo.creater);
+
+            return GetWFCreateState(result);
+        }
+
+        /// <summary>
+        /// 使用对象创建流程
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="creater"></param>
+        /// <param name="wfid"></param>
+        /// <param name="mainTable"></param>
+        /// <param name="detailTable"></param>
+        /// <returns></returns>
+        public (bool result, string desc) CreateWF(string title, int creater, string wfid,
+            Dictionary<string, string> mainTable, List<Dictionary<string, string>> detailTable = null)
+        {
+            return CreateWF(title, "0", creater, wfid, mainTable, detailTable);
+        }
+
+        /// <summary>
+        /// 使用对象创建流程
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="level"></param>
+        /// <param name="creater"></param>
+        /// <param name="wfid"></param>
+        /// <param name="mainTable"></param>
+        /// <param name="detailTable"></param>
+        /// <returns></returns>
+        public (bool result, string desc) CreateWF(string title, string level, int creater, string wfid,
+            Dictionary<string, string> mainTable, List<Dictionary<string, string>> detailTable = null)
+        {
+            QRequestInfo QRInfo = JsonConvert.DeserializeObject<QRequestInfo>(title);
+
+            WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
+            WF.WorkflowRequestInfo requestInfo = new WF.WorkflowRequestInfo();
+
+            requestInfo.requestName = QRInfo.requestName;
+            requestInfo.requestLevel = QRInfo.requestLevel;
+            requestInfo.workflowBaseInfo = QRInfo.baseInfo;
+            requestInfo.workflowMainTableInfo = QRInfo.mainTableInfo;
+
+            if (QRInfo.detailTableInfos != null && QRInfo.detailTableInfos.Length > 0)
+                requestInfo.workflowDetailTableInfos = QRInfo.detailTableInfos;
+
+            string result = wfclient.doCreateWorkflowRequest(requestInfo, QRInfo.creater);
+
+            return GetWFCreateState(result);
         }
 
         /// <summary>
@@ -128,6 +188,28 @@ namespace E9_Workflow
 }
 ";
             return result;
+        }
+
+        /// <summary>
+        /// 返回流程主表单信息
+        /// </summary>
+        /// <param name=""></param>
+        /// <returns></returns>
+        private WF.WorkflowMainTableInfo GetMainTableInfo(Dictionary<string, string> data)
+        {
+            WF.WorkflowRequestTableRecord records = new WF.WorkflowRequestTableRecord();
+            records.workflowRequestTableFields = new WF.WorkflowRequestTableField[] {
+                new WF.WorkflowRequestTableField(){ fieldName = "chrm", fieldValue = "133", view = true, edit = true },  // 如果不设置view与edit属性，发出去字段值是空的
+                new WF.WorkflowRequestTableField(){ fieldName = "cdept", fieldValue = "22", view = true, edit = true },
+                new WF.WorkflowRequestTableField(){ fieldName = "cdate", fieldValue = DateTime.Now.ToString("yyyy-MM-dd"), view = true, edit = true },
+                new WF.WorkflowRequestTableField(){ fieldName = "toTell", fieldValue = "58,26,133,148", view = true, edit = true },
+                new WF.WorkflowRequestTableField(){ fieldName = "content", fieldValue="道可道 非常道 名可名 非常名<br>无 名天地之始 有 名万物之母", view = true, edit = true }
+            };
+
+            WF.WorkflowMainTableInfo mainTable = new WF.WorkflowMainTableInfo();
+            mainTable.requestRecords = new WF.WorkflowRequestTableRecord[] { records };
+
+            return mainTable;
         }
 
         /// <summary>

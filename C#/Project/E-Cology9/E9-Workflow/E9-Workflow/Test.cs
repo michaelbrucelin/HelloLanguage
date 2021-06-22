@@ -27,26 +27,12 @@ namespace E9_Workflow
     'requestRecords': [
       {
         'workflowRequestTableFields': [
-          {
-            'fieldName': 'chrm',
-            'fieldValue': '133',
-            'view': true,
-            'edit': true
-          },
-          {
-            'fieldName': 'cdept',
-            'fieldValue': '22',
-            'view': true,
-            'edit': true
-          },
-          {
-            'fieldName': 'cdate',
-            'fieldValue': '2021-01-01',
-            'view': true,
-            'edit': true
-          },
-{ 'fieldName': 'reason', 'fieldValue': 'hello world', 'view': true, 'edit': true },
-{ 'fieldName': 'bxfs', 'fieldValue': '1', 'view': true, 'edit': true }
+          { 'fieldName': 'chrm', 'fieldValue': '133', 'view': true, 'edit': true },
+          { 'fieldName': 'cdept', 'fieldValue': '22', 'view': true, 'edit': true },
+          { 'fieldName': 'cdate', 'fieldValue': '2021-01-01', 'view': true, 'edit': true },
+          { 'fieldName': 'managerCnt', 'fieldValue': '2', 'view': true, 'edit': true },
+          { 'fieldName': 'reason', 'fieldValue': 'hello world', 'view': true, 'edit': true },
+          { 'fieldName': 'bxfs', 'fieldValue': '1', 'view': true, 'edit': true }
         ]
       }
     ]
@@ -57,58 +43,18 @@ namespace E9_Workflow
       'workflowRequestTableRecords': [
         {
           'workflowRequestTableFields': [
-            {
-              'fieldName': 'bxlx',
-              'fieldValue': '0',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'fjs',
-              'fieldValue': '0',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'shenbaobz',
-              'fieldValue': '0',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'shenbaoje',
-              'fieldValue': '100',
-              'view': true,
-              'edit': true
-            }
+            { 'fieldName': 'bxlx', 'fieldValue': '0', 'view': true, 'edit': true },
+            { 'fieldName': 'fjs', 'fieldValue': '0', 'view': true, 'edit': true },
+            { 'fieldName': 'shenbaobz', 'fieldValue': '0', 'view': true, 'edit': true },
+            { 'fieldName': 'shenbaoje', 'fieldValue': '100', 'view': true, 'edit': true }
           ]
         },
         {
           'workflowRequestTableFields': [
-            {
-              'fieldName': 'bxlx',
-              'fieldValue': '1',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'fjs',
-              'fieldValue': '0',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'shenbaobz',
-              'fieldValue': '1',
-              'view': true,
-              'edit': true
-            },
-            {
-              'fieldName': 'shenbaoje',
-              'fieldValue': '200',
-              'view': true,
-              'edit': true
-            }
+            { 'fieldName': 'bxlx', 'fieldValue': '1', 'view': true, 'edit': true },
+            { 'fieldName': 'fjs', 'fieldValue': '0', 'view': true, 'edit': true },
+            { 'fieldName': 'shenbaobz', 'fieldValue': '1', 'view': true, 'edit': true },
+            { 'fieldName': 'shenbaoje', 'fieldValue': '200', 'view': true, 'edit': true }
           ]
         }
       ]
