@@ -82,7 +82,7 @@ namespace E9_Workflow
         public bool DeleteWF(int requestid, int userid)
         {
             WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
-            
+
             return wfclient.deleteRequest(requestid, userid);
         }
 
@@ -323,5 +323,58 @@ namespace E9_Workflow
         public WF.WorkflowBaseInfo baseInfo;
         public WF.WorkflowMainTableInfo mainTableInfo;
         public WF.WorkflowDetailTableInfo[] detailTableInfos;
+    }
+
+    public class QRequestInfoBuilder
+    {
+        public int creater { get; set; }
+        public string requestName { get; set; }
+        public string requestLevel { get; set; }
+        public string workflowid { get; set; }
+        public Dictionary<string, string> mainTable { get; set; }
+        public List<Dictionary<string, string>>[] detailTables { get; set; }
+
+        public string Generator()
+        {
+            StringBuilder sb = new StringBuilder("{");
+            sb.Append($"'creater':{creater},");
+            sb.Append($"'requestName':'{requestName}',");
+            sb.Append($"'requestLevel':'{requestLevel}',");
+            sb.Append($"'baseInfo':{{'workflowId':'{workflowid}'}},");
+            sb.Append("'mainTableInfo':{'requestRecords':[{'workflowRequestTableFields':[");  // 主字段
+            foreach (var item in mainTable)
+            {
+                sb.Append($"{{'fieldName':'{item.Key}','fieldValue':'{item.Value}','view':true,'edit':true}},");
+            }
+            sb.Remove(sb.Length - 1, 1);
+            sb.Append("]}]}");
+
+            if (detailTables != null && detailTables.Length > 0)  // 明细字段
+            {
+                sb.Append(",'detailTableInfos':[");
+                foreach (var table in detailTables)
+                {
+                    sb.Append("{'workflowRequestTableRecords':[");
+                    foreach (var record in table)
+                    {
+                        sb.Append("{'workflowRequestTableFields':[");
+                        foreach (var item in record)
+                        {
+                            sb.Append($"{{'fieldName':'{item.Key}','fieldValue':'{item.Value}','view':true,'edit':true}},");
+                        }
+                        sb.Remove(sb.Length - 1, 1);
+                        sb.Append("]},");
+                    }
+                    sb.Remove(sb.Length - 1, 1);
+                    sb.Append("]},");
+                }
+                sb.Remove(sb.Length - 1, 1);
+                sb.Append("]");
+            }
+
+            sb.Append("}");
+
+            return sb.ToString();
+        }
     }
 }

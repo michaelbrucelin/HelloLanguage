@@ -8,6 +8,7 @@ using WF = E9_Workflow.E9WorkflowService;
 
 namespace E9_Workflow
 {
+#if false
     public class Test
     {
         private readonly Random random = new Random();
@@ -195,4 +196,5 @@ namespace E9_Workflow
             return result;
         }
     }
+#endif
 }

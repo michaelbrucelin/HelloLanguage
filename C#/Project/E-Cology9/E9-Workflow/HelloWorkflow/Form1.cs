@@ -39,7 +39,7 @@ namespace HelloWorkflow
             Workflow wf = new Workflow();
 
             #region 使用json创建流程
-            //            string data1 = @"{
+            //string data1 = @"{
             //  'creater': 58,
             //  'requestName': '费用报销申请—张三—1900-01-01',
             //  'requestLevel': '1',
@@ -86,7 +86,7 @@ namespace HelloWorkflow
             //    }
             //  ]
             //}";
-            //            string data2 = @"{
+            //string data2 = @"{
             //  'creater': 58,
             //  'requestName': '内部留言—张三—1900-01-01',
             //  'requestLevel': '1',
@@ -110,8 +110,8 @@ namespace HelloWorkflow
             //  }
             //}";
 
-            //            var result = wf.CreateWF(data2);
-            //            MessageBox.Show(result.desc);
+            //var result = wf.CreateWF(data2);
+            //MessageBox.Show(result.desc);
             #endregion
 
             #region 使用对象创建流程
@@ -122,36 +122,87 @@ namespace HelloWorkflow
             //mainTable.Add("toTell", "58,26");
             //mainTable.Add("content", "hello world");
 
-            Dictionary<string, string> mainTable = new Dictionary<string, string>();
-            mainTable.Add("chrm", "133");
-            mainTable.Add("cdept", "22");
-            mainTable.Add("cdate", "2020-01-01");
-            mainTable.Add("managerCnt", "2");
-            mainTable.Add("reason", "hello world");
-            mainTable.Add("costType", "1");
-            mainTable.Add("bxfs", "1");
-            mainTable.Add("beizhu", "hello world");
+            //Dictionary<string, string> mainTable = new Dictionary<string, string>();
+            //mainTable.Add("chrm", "133");
+            //mainTable.Add("cdept", "22");
+            //mainTable.Add("cdate", "2020-01-01");
+            //mainTable.Add("managerCnt", "2");
+            //mainTable.Add("reason", "hello world");
+            //mainTable.Add("costType", "1");
+            //mainTable.Add("bxfs", "1");
+            //mainTable.Add("beizhu", "hello world");
 
-            List<Dictionary<string, string>>[] detailTables = new List<Dictionary<string, string>>[1];
-            Dictionary<string, string> r1 = new Dictionary<string, string>();
-            r1.Add("bxlx", "0");
-            r1.Add("fjs", "1");
-            r1.Add("shenbaobz", "0");
-            r1.Add("shenbaoje", "123");
-            Dictionary<string, string> r2 = new Dictionary<string, string>();
-            r2.Add("bxlx", "1");
-            r2.Add("fjs", "2");
-            r2.Add("shenbaobz", "1");
-            r2.Add("shenbaoje", "100");
-            Dictionary<string, string> r3 = new Dictionary<string, string>();
-            r3.Add("bxlx", "0");
-            r3.Add("fjs", "3");
-            r3.Add("shenbaobz", "0");
-            r3.Add("shenbaoje", "64");
-            detailTables[0] = new List<Dictionary<string, string>>() { r1, r2, r3 };
+            //List<Dictionary<string, string>>[] detailTables = new List<Dictionary<string, string>>[1];
+            //Dictionary<string, string> r1 = new Dictionary<string, string>();
+            //r1.Add("bxlx", "0");
+            //r1.Add("fjs", "1");
+            //r1.Add("shenbaobz", "0");
+            //r1.Add("shenbaoje", "123");
+            //Dictionary<string, string> r2 = new Dictionary<string, string>();
+            //r2.Add("bxlx", "1");
+            //r2.Add("fjs", "2");
+            //r2.Add("shenbaobz", "1");
+            //r2.Add("shenbaoje", "100");
+            //Dictionary<string, string> r3 = new Dictionary<string, string>();
+            //r3.Add("bxlx", "0");
+            //r3.Add("fjs", "3");
+            //r3.Add("shenbaobz", "0");
+            //r3.Add("shenbaoje", "64");
+            //detailTables[0] = new List<Dictionary<string, string>>() { r1, r2, r3 };
 
-            var result = wf.CreateWF("4", "create by object", "2", 58, mainTable, detailTables);
-            MessageBox.Show(result.desc);
+            //var result = wf.CreateWF("4", "create by object", "2", 58, mainTable, detailTables);
+            //MessageBox.Show(result.desc);
+            #endregion
+
+            #region 使用json生成器创建流程
+            //Dictionary<string, string> mainTable = new Dictionary<string, string>();
+            //mainTable.Add("chrm", "133");
+            //mainTable.Add("cdept", "22");
+            //mainTable.Add("cdate", "2020-01-01");
+            //mainTable.Add("toTell", "58,26");
+            //mainTable.Add("content", "hello world");
+
+            //Dictionary<string, string> mainTable = new Dictionary<string, string>();
+            //mainTable.Add("chrm", "133");
+            //mainTable.Add("cdept", "22");
+            //mainTable.Add("cdate", "2020-01-01");
+            //mainTable.Add("managerCnt", "2");
+            //mainTable.Add("reason", "hello world");
+            //mainTable.Add("costType", "1");
+            //mainTable.Add("bxfs", "1");
+            //mainTable.Add("beizhu", "hello world");
+
+            //List<Dictionary<string, string>>[] detailTables = new List<Dictionary<string, string>>[1];
+            //Dictionary<string, string> r1 = new Dictionary<string, string>();
+            //r1.Add("bxlx", "0");
+            //r1.Add("fjs", "1");
+            //r1.Add("shenbaobz", "0");
+            //r1.Add("shenbaoje", "123");
+            //Dictionary<string, string> r2 = new Dictionary<string, string>();
+            //r2.Add("bxlx", "1");
+            //r2.Add("fjs", "2");
+            //r2.Add("shenbaobz", "1");
+            //r2.Add("shenbaoje", "100");
+            //Dictionary<string, string> r3 = new Dictionary<string, string>();
+            //r3.Add("bxlx", "0");
+            //r3.Add("fjs", "3");
+            //r3.Add("shenbaobz", "0");
+            //r3.Add("shenbaoje", "64");
+            //detailTables[0] = new List<Dictionary<string, string>>() { r1, r2, r3 };
+
+            //QRequestInfoBuilder rb = new QRequestInfoBuilder();
+            //rb.creater = 58;
+            //rb.requestName = "create by json generator";
+            //rb.requestLevel = "2";
+            //rb.workflowid = "2";
+            //rb.mainTable = mainTable;
+            //rb.detailTables = detailTables;
+
+
+            //MessageBox.Show(rb.Generator());
+
+            //var result = wf.CreateWF(rb.Generator());
+            //MessageBox.Show(result.desc);
             #endregion
         }
 
