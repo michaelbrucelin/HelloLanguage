@@ -44,10 +44,10 @@ namespace E9_Workflow
         /// <param name="mainTable"></param>
         /// <param name="detailTable"></param>
         /// <returns></returns>
-        public (bool result, string desc) CreateWF(string title, int creater, string wfid,
+        public (bool result, string desc) CreateWF(string wfid, string title, int creater,
             Dictionary<string, string> mainTable, List<Dictionary<string, string>>[] detailTables = null)
         {
-            return CreateWF(title, "0", creater, wfid, mainTable, detailTables);
+            return CreateWF(wfid, title, "0", creater, mainTable, detailTables);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace E9_Workflow
         /// <param name="mainTable"></param>
         /// <param name="detailTable"></param>
         /// <returns></returns>
-        public (bool result, string desc) CreateWF(string title, string level, int creater, string wfid,
+        public (bool result, string desc) CreateWF(string wfid, string title, string level, int creater,
             Dictionary<string, string> mainTable, List<Dictionary<string, string>>[] detailTables = null)
         {
             WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
@@ -77,6 +77,13 @@ namespace E9_Workflow
             string result = wfclient.doCreateWorkflowRequest(requestInfo, creater);
 
             return GetWFCreateState(result);
+        }
+
+        public bool DeleteWF(int requestid, int userid)
+        {
+            WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
+            
+            return wfclient.deleteRequest(requestid, userid);
         }
 
         /// <summary>

@@ -150,9 +150,26 @@ namespace HelloWorkflow
             r3.Add("shenbaoje", "64");
             detailTables[0] = new List<Dictionary<string, string>>() { r1, r2, r3 };
 
-            var result = wf.CreateWF("create by object", "2", 58, "4", mainTable, detailTables);
+            var result = wf.CreateWF("4", "create by object", "2", 58, mainTable, detailTables);
             MessageBox.Show(result.desc);
             #endregion
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Workflow wf = new Workflow();
+
+            bool result = wf.DeleteWF(Convert.ToInt32(txtReqId.Text), 58);
+
+            MessageBox.Show(result.ToString());
+        }
+
+        private void txtReqId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

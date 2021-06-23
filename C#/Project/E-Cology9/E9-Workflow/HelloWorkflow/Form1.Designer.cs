@@ -31,6 +31,8 @@ namespace HelloWorkflow
         {
             this.btnStart = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtReqId = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnStart
@@ -53,11 +55,31 @@ namespace HelloWorkflow
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(497, 70);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "Detele";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtReqId
+            // 
+            this.txtReqId.Location = new System.Drawing.Point(363, 72);
+            this.txtReqId.Name = "txtReqId";
+            this.txtReqId.Size = new System.Drawing.Size(128, 21);
+            this.txtReqId.TabIndex = 3;
+            this.txtReqId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReqId_KeyPress);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 362);
+            this.Controls.Add(this.txtReqId);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
@@ -65,6 +87,7 @@ namespace HelloWorkflow
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -72,6 +95,8 @@ namespace HelloWorkflow
 
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtReqId;
     }
 }
 
