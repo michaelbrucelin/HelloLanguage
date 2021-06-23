@@ -45,9 +45,9 @@ namespace E9_Workflow
         /// <param name="detailTable"></param>
         /// <returns></returns>
         public (bool result, string desc) CreateWF(string title, int creater, string wfid,
-            Dictionary<string, string> mainTable, List<Dictionary<string, string>> detailTable = null)
+            Dictionary<string, string> mainTable, List<Dictionary<string, string>>[] detailTables = null)
         {
-            return CreateWF(title, "0", creater, wfid, mainTable, detailTable);
+            return CreateWF(title, "0", creater, wfid, mainTable, detailTables);
         }
 
         /// <summary>
@@ -61,22 +61,20 @@ namespace E9_Workflow
         /// <param name="detailTable"></param>
         /// <returns></returns>
         public (bool result, string desc) CreateWF(string title, string level, int creater, string wfid,
-            Dictionary<string, string> mainTable, List<Dictionary<string, string>> detailTable = null)
+            Dictionary<string, string> mainTable, List<Dictionary<string, string>>[] detailTables = null)
         {
-            QRequestInfo QRInfo = JsonConvert.DeserializeObject<QRequestInfo>(title);
-
             WF.WorkflowServicePortTypeClient wfclient = new WF.WorkflowServicePortTypeClient();
             WF.WorkflowRequestInfo requestInfo = new WF.WorkflowRequestInfo();
 
-            requestInfo.requestName = QRInfo.requestName;
-            requestInfo.requestLevel = QRInfo.requestLevel;
-            requestInfo.workflowBaseInfo = QRInfo.baseInfo;
-            requestInfo.workflowMainTableInfo = QRInfo.mainTableInfo;
+            requestInfo.requestName = title;
+            requestInfo.requestLevel = level;
+            requestInfo.workflowBaseInfo = new WF.WorkflowBaseInfo() { workflowId = wfid };
+            requestInfo.workflowMainTableInfo = GetMainTableInfo(mainTable);
 
-            if (QRInfo.detailTableInfos != null && QRInfo.detailTableInfos.Length > 0)
-                requestInfo.workflowDetailTableInfos = QRInfo.detailTableInfos;
+            if (detailTables != null && detailTables.Length > 0)
+                requestInfo.workflowDetailTableInfos = GetDetailTableInfos(detailTables);
 
-            string result = wfclient.doCreateWorkflowRequest(requestInfo, QRInfo.creater);
+            string result = wfclient.doCreateWorkflowRequest(requestInfo, creater);
 
             return GetWFCreateState(result);
         }
@@ -218,12 +216,30 @@ namespace E9_Workflow
             return mainTable;
         }
 
-        private WF.WorkflowDetailTableInfo GetDetailTableInfo(List<Dictionary<string, string>>[] data)
+        private WF.WorkflowDetailTableInfo[] GetDetailTableInfos(List<Dictionary<string, string>>[] data)
         {
             WF.WorkflowDetailTableInfo[] tables = new WF.WorkflowDetailTableInfo[data.Length];
             for (int i = 0; i < data.Length; i++)
             {
                 List<WF.WorkflowRequestTableRecord> records = new List<WF.WorkflowRequestTableRecord>();
+
+                List<Dictionary<string, string>> datai = data[i];
+                for (int j = 0; j < datai.Count; j++)
+                {
+                    List<WF.WorkflowRequestTableField> record = new List<WF.WorkflowRequestTableField>();
+                    foreach (var item in datai[j])
+                    {
+                        record.Add(new WF.WorkflowRequestTableField()
+                        {
+                            fieldName = item.Key,
+                            fieldValue = item.Value,
+                            view = true,
+                            edit = true
+                        });
+                    }
+
+                    records.Add(new WF.WorkflowRequestTableRecord() { workflowRequestTableFields = record.ToArray() });
+                }
 
 
                 WF.WorkflowDetailTableInfo table = new WF.WorkflowDetailTableInfo();
@@ -231,33 +247,7 @@ namespace E9_Workflow
                 tables[i] = table;
             }
 
-
-            detailTable.workflowRequestTableRecords = new WF.WorkflowRequestTableRecord[] {  // 明细行数据
-                new WF.WorkflowRequestTableRecord(){  // 第一行数据
-                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
-                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
-                    }
-                },
-                new WF.WorkflowRequestTableRecord(){  // 第二行数据
-                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
-                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
-                    }
-                },
-                new WF.WorkflowRequestTableRecord(){  // 第三行数据
-                    workflowRequestTableFields = new WF.WorkflowRequestTableField[]{
-                        new WF.WorkflowRequestTableField(){ fieldName = "bxlx", fieldValue = random.Next(0, 3).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "fjs", fieldValue = random.Next(0, 10).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaobz", fieldValue = random.Next(0, 5).ToString(), view = true, edit = true},
-                        new WF.WorkflowRequestTableField(){ fieldName = "shenbaoje", fieldValue = random.Next(100, 1000).ToString(), view = true, edit = true}
-                    }
-                }
-            };
+            return tables;
         }
 
         /// <summary>
