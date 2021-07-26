@@ -3,5 +3,5 @@ C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowServic
 Python/PlayGround/demo/visualization/plotly/data/*.html linguist-vendored
 Python/PlayGround/demo/web/requests/data/*.html linguist-vendored
 Python/PlayGround/demo/data-source/json/data/*.html linguist-vendored
-Python/PlayGround/jupyter/04-Pandas加载存储数据/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
+
 Python/PlayGround/jupyter/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
