@@ -10,9 +10,10 @@ Read-Host "Enter Password" -AsSecureString | ConvertFrom-SecureString | Out-File
 ConvertFrom-SecureString (ConvertTo-SecureString "123456" -AsPlainText -Force) | Out-File "D:\pwd.txt"
 
 # 2. 使用密码文件创建Credential信息
+$userName = "UserName"
 $fpwd = "D:\pwd.txt"
 $cred = New-Object -TypeName System.Management.Automation.PSCredential `
-                   -ArgumentList UserName, (Get-Content $fpwd | ConvertTo-SecureString)
+                   -ArgumentList $userName, (Get-Content $fpwd | ConvertTo-SecureString)
 
 # 方法二
 # ConvertTo-SecureString和ConvertFrom-SecureString命令都支持选项-Key。在处理密码时通过使用-Key选项可以提供额外的安全性，并且允许在不同的环境中使用密码文件。
@@ -28,9 +29,9 @@ $key | out-file $keyFile
 Read-Host "Enter Password" -AsSecureString | ConvertFrom-SecureString -key $key | Out-File "D:\pwd.txt"
 
 # 3. 使用密码文件和key文件创建Credential信息
-$userName = "YourUserName"
-$passwdFile = "D:\pwd.txt"
+$userName = "UserName"
+$pwdFile = "D:\pwd.txt"
 $keyFile = "D:\aes.key"
 $key = Get-Content $keyFile
-$Cred = New-Object -TypeName System.Management.Automation.PSCredential `
-                   -ArgumentList $userName, (Get-Content $passwdFile | ConvertTo-SecureString -Key $key)
+$cred = New-Object -TypeName System.Management.Automation.PSCredential `
+                   -ArgumentList $userName, (Get-Content $pwdFile | ConvertTo-SecureString -Key $key)
