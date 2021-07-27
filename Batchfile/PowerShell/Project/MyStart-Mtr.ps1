@@ -57,7 +57,7 @@ function MyStart-Mtr(){
         [Parameter(ValueFromPipeline)]
         [Alias("s")]
         [IPAddress]$DNSServer = $Null,
-	
+
         [Parameter(ValueFromPipeline)]
         [Alias("f")]
         [String]$Filename = "Traceroute_$Target"
@@ -132,24 +132,24 @@ function MyStart-Mtr(){
           Write-Verbose "ASN $HopASN not previously resolved; performing lookup" #Check the previous lookups before running this unnecessarily
           $HopASNOwner = Resolve-DnsName -Server $DNSServer -Type TXT -Name $HopASN$ASNWHOIS -ErrorAction SilentlyContinue | Select Strings
 
-	      If ($HopASNOwner.Strings -AND $HopASNOwner.Strings.GetType().IsArray){ #Check for array;
+        If ($HopASNOwner.Strings -AND $HopASNOwner.Strings.GetType().IsArray){ #Check for array;
             $HopASNOwner = $HopASNOwner.Strings[0].Split('|').Trim()[4].Split('-')[0]
             Write-Verbose "Object found $HopASNOwner"
           }
-	      ElseIf ($HopASNRecord.Strings -AND $HopASNRecord.Strings.GetType().FullName -like "System.String"){ #Check for string; normal case.
+        ElseIf ($HopASNRecord.Strings -AND $HopASNRecord.Strings.GetType().FullName -like "System.String"){ #Check for string; normal case.
             $HopASNOwner = $HopASNOwner.Strings[0].Split('|').Trim()[4].Split('-')[0]
             Write-Verbose "String found $HopASNOwner"
-	      }
-	      Else {
+        }
+        Else {
             $HopASNOwner = "-"
-	      }
-	      $ASNOwnerObj | Add-Member NoteProperty "ASN"($HopASN) -Force
-	      $ASNOwnerObj | Add-Member NoteProperty "ASN Owner"($HopASNOwner) -Force
-	      $ASNOwnerArr += $ASNOwnerObj #Add our new value to the cache
+        }
+        $ASNOwnerObj | Add-Member NoteProperty "ASN"($HopASN) -Force
+        $ASNOwnerObj | Add-Member NoteProperty "ASN Owner"($HopASNOwner) -Force
+        $ASNOwnerArr += $ASNOwnerObj #Add our new value to the cache
         }
         Else { #We get to use a cached entry and save Team Cymru some lookups
           Write-Verbose "ASN Owner found in cache"
-	      $HopASNOwner = $ASNOwnerArr[$IndexNo]."ASN Owner"
+        $HopASNOwner = $ASNOwnerArr[$IndexNo]."ASN Owner"
         }
       }
       Else {
@@ -199,9 +199,9 @@ function MyStart-Mtr(){
       $ByteArr = [Text.Encoding]::UTF8.GetBytes($BufferData)
       If ($Hop -notlike "TimedOut" -and $Hop -notlike "0.0.0.0") { #Normal case, attempt to ping hop
         For ($y = 1; $y -le $PingCycles; $y++){
-         $HopResults = $SendICMP.Send($Hop,1000,$ByteArr) #Send the packet with a 1 second timeout
-         $HopRTT = $HopResults.RoundtripTime
-         $PerHopRTTArr += $HopRTT #Add RTT to HopRTT array
+          $HopResults = $SendICMP.Send($Hop,1000,$ByteArr) #Send the packet with a 1 second timeout
+          $HopRTT = $HopResults.RoundtripTime
+          $PerHopRTTArr += $HopRTT #Add RTT to HopRTT array
           If ($HopRTT -eq 0) {
             $x = $x + 1
           }

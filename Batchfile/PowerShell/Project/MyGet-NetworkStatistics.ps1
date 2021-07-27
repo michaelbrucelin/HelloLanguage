@@ -1,46 +1,46 @@
 ﻿function MyGet-NetworkStatistics {
     <#
     .SYNOPSIS
-	    Display current TCP/IP connections for local or remote system
+        Display current TCP/IP connections for local or remote system
 
     .FUNCTIONALITY
         Computers
 
     .DESCRIPTION
-	    Display current TCP/IP connections for local or remote system.  Includes the process ID (PID) and process name for each connection.
-	    If the port is not yet established, the port number is shown as an asterisk (*).	
-	
+        Display current TCP/IP connections for local or remote system.  Includes the process ID (PID) and process name for each connection.
+        If the port is not yet established, the port number is shown as an asterisk (*).    
+
     .PARAMETER ProcessName
-	    Gets connections by the name of the process. The default value is '*'.
-	
+        Gets connections by the name of the process. The default value is '*'.
+
     .PARAMETER Port
-	    The port number of the local computer or remote computer. The default value is '*'.
+        The port number of the local computer or remote computer. The default value is '*'.
 
     .PARAMETER Address
-	    Gets connections by the IP address of the connection, local or remote. Wildcard is supported. The default value is '*'.
+        Gets connections by the IP address of the connection, local or remote. Wildcard is supported. The default value is '*'.
 
     .PARAMETER Protocol
-	    The name of the protocol (TCP or UDP). The default value is '*' (all)
-	
+        The name of the protocol (TCP or UDP). The default value is '*' (all)
+
     .PARAMETER State
-	    Indicates the state of a TCP connection. The possible states are as follows:
-		
-	    Closed       - The TCP connection is closed. 
-	    Close_Wait   - The local endpoint of the TCP connection is waiting for a connection termination request from the local user. 
-	    Closing      - The local endpoint of the TCP connection is waiting for an acknowledgement of the connection termination request sent previously. 
-	    Delete_Tcb   - The transmission control buffer (TCB) for the TCP connection is being deleted. 
-	    Established  - The TCP handshake is complete. The connection has been established and data can be sent. 
-	    Fin_Wait_1   - The local endpoint of the TCP connection is waiting for a connection termination request from the remote endpoint or for an acknowledgement of the connection termination request sent previously. 
-	    Fin_Wait_2   - The local endpoint of the TCP connection is waiting for a connection termination request from the remote endpoint. 
-	    Last_Ack     - The local endpoint of the TCP connection is waiting for the final acknowledgement of the connection termination request sent previously. 
-	    Listen       - The local endpoint of the TCP connection is listening for a connection request from any remote endpoint. 
-	    Syn_Received - The local endpoint of the TCP connection has sent and received a connection request and is waiting for an acknowledgment. 
-	    Syn_Sent     - The local endpoint of the TCP connection has sent the remote endpoint a segment header with the synchronize (SYN) control bit set and is waiting for a matching connection request. 
-	    Time_Wait    - The local endpoint of the TCP connection is waiting for enough time to pass to ensure that the remote endpoint received the acknowledgement of its connection termination request. 
-	    Unknown      - The TCP connection state is unknown.
-	
-	    Values are based on the TcpState Enumeration:
-	    http://msdn.microsoft.com/en-us/library/system.net.networkinformation.tcpstate%28VS.85%29.aspx
+        Indicates the state of a TCP connection. The possible states are as follows:
+
+        Closed       - The TCP connection is closed. 
+        Close_Wait   - The local endpoint of the TCP connection is waiting for a connection termination request from the local user. 
+        Closing      - The local endpoint of the TCP connection is waiting for an acknowledgement of the connection termination request sent previously. 
+        Delete_Tcb   - The transmission control buffer (TCB) for the TCP connection is being deleted. 
+        Established  - The TCP handshake is complete. The connection has been established and data can be sent. 
+        Fin_Wait_1   - The local endpoint of the TCP connection is waiting for a connection termination request from the remote endpoint or for an acknowledgement of the connection termination request sent previously. 
+        Fin_Wait_2   - The local endpoint of the TCP connection is waiting for a connection termination request from the remote endpoint. 
+        Last_Ack     - The local endpoint of the TCP connection is waiting for the final acknowledgement of the connection termination request sent previously. 
+        Listen       - The local endpoint of the TCP connection is listening for a connection request from any remote endpoint. 
+        Syn_Received - The local endpoint of the TCP connection has sent and received a connection request and is waiting for an acknowledgment. 
+        Syn_Sent     - The local endpoint of the TCP connection has sent the remote endpoint a segment header with the synchronize (SYN) control bit set and is waiting for a matching connection request. 
+        Time_Wait    - The local endpoint of the TCP connection is waiting for enough time to pass to ensure that the remote endpoint received the acknowledgement of its connection termination request. 
+        Unknown      - The TCP connection state is unknown.
+
+        Values are based on the TcpState Enumeration:
+        http://msdn.microsoft.com/en-us/library/system.net.networkinformation.tcpstate%28VS.85%29.aspx
         
         Cookie Monster - modified these to match netstat output per here:
         http://support.microsoft.com/kb/137984
@@ -60,19 +60,19 @@
         If specified, we display any result where both the localaddress and the remoteaddress is in the address family.
 
     .EXAMPLE
-	    Get-NetworkStatistics | Format-Table
+        Get-NetworkStatistics | Format-Table
 
     .EXAMPLE
-	    Get-NetworkStatistics iexplore -computername k-it-thin-02 -ShowHostNames | Format-Table
+        Get-NetworkStatistics iexplore -computername k-it-thin-02 -ShowHostNames | Format-Table
 
     .EXAMPLE
-	    Get-NetworkStatistics -ProcessName md* -Protocol tcp
+        Get-NetworkStatistics -ProcessName md* -Protocol tcp
 
     .EXAMPLE
-	    Get-NetworkStatistics -Address 192* -State LISTENING
+        Get-NetworkStatistics -Address 192* -State LISTENING
 
     .EXAMPLE
-	    Get-NetworkStatistics -State LISTENING -Protocol tcp
+        Get-NetworkStatistics -State LISTENING -Protocol tcp
 
     .EXAMPLE
         Get-NetworkStatistics -Computername Computer1, Computer2
@@ -81,63 +81,60 @@
         'Computer1', 'Computer2' | Get-NetworkStatistics
 
     .OUTPUTS
-	    System.Management.Automation.PSObject
+        System.Management.Automation.PSObject
 
     .NOTES
-	    Author: Shay Levy, code butchered by Cookie Monster
-	    Shay's Blog: http://PowerShay.com
+        Author: Shay Levy, code butchered by Cookie Monster
+        Shay's Blog: http://PowerShay.com
         Cookie Monster's Blog: http://ramblingcookiemonster.github.io/
 
     .LINK
         http://gallery.technet.microsoft.com/scriptcenter/Get-NetworkStatistics-66057d71
-    #>	
-	[OutputType('System.Management.Automation.PSObject')]
-	[CmdletBinding()]
-	param(
-		
-		[Parameter(Position=0)]
-		[System.String]$ProcessName='*',
-		
-		[Parameter(Position=1)]
-		[System.String]$Address='*',		
-		
-		[Parameter(Position=2)]
-		$Port='*',
+    #>
+    [OutputType('System.Management.Automation.PSObject')]
+    [CmdletBinding()]
+    param(
+        
+        [Parameter(Position=0)]
+        [System.String]$ProcessName='*',
+        
+        [Parameter(Position=1)]
+        [System.String]$Address='*',        
+        
+        [Parameter(Position=2)]
+        $Port='*',
 
-		[Parameter(Position=3,
+        [Parameter(Position=3,
                    ValueFromPipeline = $True,
                    ValueFromPipelineByPropertyName = $True)]
         [System.String[]]$ComputerName=$env:COMPUTERNAME,
 
-		[ValidateSet('*','tcp','udp')]
-		[System.String]$Protocol='*',
+        [ValidateSet('*','tcp','udp')]
+        [System.String]$Protocol='*',
 
-		[ValidateSet('*','Closed','Close_Wait','Closing','Delete_Tcb','DeleteTcb','Established','Fin_Wait_1','Fin_Wait_2','Last_Ack','Listening','Syn_Received','Syn_Sent','Time_Wait','Unknown')]
-		[System.String]$State='*',
+        [ValidateSet('*','Closed','Close_Wait','Closing','Delete_Tcb','DeleteTcb','Established','Fin_Wait_1','Fin_Wait_2','Last_Ack','Listening','Syn_Received','Syn_Sent','Time_Wait','Unknown')]
+        [System.String]$State='*',
 
         [switch]$ShowHostnames,
         
-        [switch]$ShowProcessNames = $true,	
+        [switch]$ShowProcessNames = $true,    
 
         [System.String]$TempFile = "C:\netstat.txt",
 
         [validateset('*','IPv4','IPv6')]
         [string]$AddressFamily = '*'
-	)
-    
-	begin{
+    )
+
+    begin{
         #Define properties
             $properties = 'ComputerName','Protocol','LocalAddress','LocalPort','RemoteAddress','RemotePort','State','ProcessName','PID'
 
         #store hostnames in array for quick lookup
             $dnsCache = @{}
-            
-	}
-	
-	process{
+    }
 
+    process{
         foreach($Computer in $ComputerName) {
-
             #Collect processes
             if($ShowProcessNames){
                 Try {
@@ -148,10 +145,9 @@
                     $ShowProcessNames = $false
                 }
             }
-	    
+        
             #Handle remote systems
                 if($Computer -ne $env:COMPUTERNAME){
-
                     #define command
                         [string]$cmd = "cmd /c c:\windows\system32\netstat.exe -ano >> $tempFile"
             
@@ -193,7 +189,6 @@
             
                     #gather results
                         if(test-path $remoteTempFile){
-                    
                             Try {
                                 $results = Get-Content $remoteTempFile | Select-String -Pattern '\s+(TCP|UDP)'
                             }
@@ -203,7 +198,6 @@
                             }
 
                             Remove-Item $remoteTempFile -force
-
                         }
                         else{
                             Throw "'$tempFile' on $Computer converted to '$remoteTempFile'.  This path is not accessible from your system."
@@ -220,31 +214,31 @@
                 $count = 0
     
             #Loop through each line of results    
-	            foreach($result in $results) {
+                foreach($result in $results) {
             
-    	            $item = $result.line.split(' ',[System.StringSplitOptions]::RemoveEmptyEntries)
+                    $item = $result.line.split(' ',[System.StringSplitOptions]::RemoveEmptyEntries)
     
-    	            if($item[1] -notmatch '^\[::'){
+                    if($item[1] -notmatch '^\[::'){
                     
                         #parse the netstat line for local address and port
-    	                    if (($la = $item[1] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6'){
-    	                        $localAddress = $la.IPAddressToString
-    	                        $localPort = $item[1].split('\]:')[-1]
-    	                    }
-    	                    else {
-    	                        $localAddress = $item[1].split(':')[0]
-    	                        $localPort = $item[1].split(':')[-1]
-    	                    }
+                            if (($la = $item[1] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6'){
+                                $localAddress = $la.IPAddressToString
+                                $localPort = $item[1].split('\]:')[-1]
+                            }
+                            else {
+                                $localAddress = $item[1].split(':')[0]
+                                $localPort = $item[1].split(':')[-1]
+                            }
                     
                         #parse the netstat line for remote address and port
-    	                    if (($ra = $item[2] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6'){
-    	                        $remoteAddress = $ra.IPAddressToString
-    	                        $remotePort = $item[2].split('\]:')[-1]
-    	                    }
-    	                    else {
-    	                        $remoteAddress = $item[2].split(':')[0]
-    	                        $remotePort = $item[2].split(':')[-1]
-    	                    }
+                            if (($ra = $item[2] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6'){
+                                $remoteAddress = $ra.IPAddressToString
+                                $remotePort = $item[2].split('\]:')[-1]
+                            }
+                            else {
+                                $remoteAddress = $item[2].split(':')[0]
+                                $remotePort = $item[2].split(':')[-1]
+                            }
 
                         #Filter IPv4/IPv6 if specified
                             if($AddressFamily -ne "*")
@@ -262,39 +256,39 @@
                                     continue
                                 }
                             }
-    	    		
+                    
                         #parse the netstat line for other properties
-    	    		        $procId = $item[-1]
-    	    		        $proto = $item[0]
-    	    		        $status = if($item[0] -eq 'tcp') {$item[3]} else {$null}	
+                            $procId = $item[-1]
+                            $proto = $item[0]
+                            $status = if($item[0] -eq 'tcp') {$item[3]} else {$null}    
 
                         #Filter the object
-		    		        if($remotePort -notlike $Port -and $localPort -notlike $Port){
+                            if($remotePort -notlike $Port -and $localPort -notlike $Port){
                                 write-verbose "remote $Remoteport local $localport port $port"
                                 Write-Verbose "Filtered by Port:`n$result"
                                 continue
-		    		        }
+                            }
 
-		    		        if($remoteAddress -notlike $Address -and $localAddress -notlike $Address){
+                            if($remoteAddress -notlike $Address -and $localAddress -notlike $Address){
                                 Write-Verbose "Filtered by Address:`n$result"
                                 continue
-		    		        }
-    	    			     
-    	    			    if($status -notlike $State){
+                            }
+
+                            if($status -notlike $State){
                                 Write-Verbose "Filtered by State:`n$result"
                                 continue
-		    		        }
+                            }
 
-    	    			    if($proto -notlike $Protocol){
+                            if($proto -notlike $Protocol){
                                 Write-Verbose "Filtered by Protocol:`n$result"
                                 continue
-		    		        }
-                   
+                            }
+
                         #Display progress bar prior to getting process name or host name
                             Write-Progress  -Activity "Resolving host and process names"`
                                 -Status "Resolving process ID $procId with remote address $remoteAddress and local address $localAddress"`
                                 -PercentComplete (( $count / $totalCount ) * 100)
-    	    		
+                    
                         #If we are running showprocessnames, get the matching name
                             if($ShowProcessNames -or $PSBoundParameters.ContainsKey -eq 'ProcessName'){
                         
@@ -305,11 +299,11 @@
                             }
                             else{$procName = "NA"}
 
-		    		        if($procName -notlike $ProcessName){
+                            if($procName -notlike $ProcessName){
                                 Write-Verbose "Filtered by ProcessName:`n$result"
                                 continue
-		    		        }
-    	    						
+                            }
+                                    
                         #if the showhostnames switch is specified, try to map IP to hostname
                             if($showHostnames){
                                 $tmpAddress = $null
@@ -336,7 +330,6 @@
                                 catch{ }
 
                                 try{
-
                                     if($localAddress -eq "127.0.0.1" -or $localAddress -eq "0.0.0.0"){
                                         $localAddress = $Computer
                                     }
@@ -357,19 +350,19 @@
                                 }
                                 catch{ }
                             }
-    
-    	    		    #Write the object	
-    	    		        New-Object -TypeName PSObject -Property @{
-		    		            ComputerName = $Computer
+
+                        #Write the object    
+                            New-Object -TypeName PSObject -Property @{
+                                ComputerName = $Computer
                                 PID = $procId
-		    		            ProcessName = $procName
-		    		            Protocol = $proto
-		    		            LocalAddress = $localAddress
-		    		            LocalPort = $localPort
-		    		            RemoteAddress =$remoteAddress
-		    		            RemotePort = $remotePort
-		    		            State = $status
-		    	            } | Select-Object -Property $properties								
+                                ProcessName = $procName
+                                Protocol = $proto
+                                LocalAddress = $localAddress
+                                LocalPort = $localPort
+                                RemoteAddress =$remoteAddress
+                                RemotePort = $remotePort
+                                State = $status
+                            } | Select-Object -Property $properties                                
 
                         #Increment the progress counter
                             $count++
