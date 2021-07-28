@@ -1,32 +1,36 @@
-function Encrypt-String {
+function MyEncrypt-String {
     Param(
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeLine = $true)]
         [Alias("String")]
         [String]$PlainTextString,
-        
+
         [Parameter(Mandatory = $True, Position = 1)]
         [Alias("Key")]
-        [byte[]]$EncryptionKey
+        [String]$EncryptionKey
     )
 
     Try {
-        $secureString = Convertto-SecureString $PlainTextString -AsPlainText -Force
-        $EncryptedString = ConvertFrom-SecureString -SecureString $secureString -Key $EncryptionKey
+        $enc = @()
+        for($i=0; $i -lt $PlainTextString.length; $i++){
+            $key_c = $EncryptionKey[$i % $EncryptionKey.length]
+            $enc_c = [char](([int][char]($PlainTextString[$i]) + [int][char]($key_c)) % 256)
+            $enc += $enc_c
+        }
 
         return $EncryptedString
     }
     Catch { Throw $_ }
 }
 
-function Decrypt-String {
+function MyDecrypt-String {
     Param(
         [Parameter(Mandatory = $True, Position = 0, ValueFromPipeLine = $true)]
         [Alias("String")]
         [String]$EncryptedString,
-        
+
         [Parameter(Mandatory = $True, Position = 1)]
         [Alias("Key")]
-        [byte[]]$EncryptionKey
+        [String]$EncryptionKey
     )
 
     Try {
