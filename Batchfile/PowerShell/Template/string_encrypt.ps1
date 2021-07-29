@@ -17,7 +17,7 @@ function MyEncrypt-String {
             $enc += $enc_c
         }
 
-        return $EncryptedString
+        return [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes(-join $enc))
     }
     Catch { Throw $_ }
 }
@@ -34,12 +34,15 @@ function MyDecrypt-String {
     )
 
     Try {
-        $SecureString = ConvertTo-SecureString $EncryptedString -Key $EncryptionKey
-        $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
-        [string]$String = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
-        [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+        $dec = @()
+        $enc = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($EncryptedString))
+        for($i=0; $i -lt $enc.length; $i++){
+            $key_c = $EncryptionKey[$i % $EncryptionKey.length]
+            $dec_c = [char]((256 + [int][char]($enc[$i]) - [int][char]($key_c)) % 256)
+            $dec += $dec_c
+        }
 
-        Return $String
+        Return (-join $dec)
     }
     Catch { Throw $_ }
 }
