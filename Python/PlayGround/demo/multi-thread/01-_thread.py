@@ -1,10 +1,9 @@
 import _thread
 import time
 
-# 为线程定义一个函数
-
 
 def print_time(threadName, delay):
+    """为线程定义一个函数"""
     count = 0
     while count < 5:
         time.sleep(delay)
@@ -12,7 +11,7 @@ def print_time(threadName, delay):
         print("%s: %s" % (threadName, time.ctime(time.time())))
 
 
-# 调用 _thread 模块中的start_new_thread()函数来产生新线程
+# 调用_thread模块中的start_new_thread()函数来产生新线程
 # 创建两个线程
 try:
     _thread.start_new_thread(print_time, ("Thread-1", 1,))
