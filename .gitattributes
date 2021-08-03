@@ -4,4 +4,4 @@ Python/PlayGround/demo/visualization/plotly/data/*.html linguist-vendored
 Python/PlayGround/demo/web/requests/data/*.html linguist-vendored
 Python/PlayGround/demo/data-source/json/data/*.html linguist-vendored
 
-Python/PlayGround/jupyter/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
+Python/PlayGround/jupyter/book_利用Python进行数据分析/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
