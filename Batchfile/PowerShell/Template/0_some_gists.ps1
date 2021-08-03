@@ -5,6 +5,7 @@ $pwdsecure = Read-Host "Enter a Password" -AsSecureString
 # 清空powershell的history
 function MyClear-History() {
     Clear-History
-    [Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
     Clear-Content $(Get-PSReadlineOption).HistorySavePath
+    [Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
+    Clear-Host
 }
