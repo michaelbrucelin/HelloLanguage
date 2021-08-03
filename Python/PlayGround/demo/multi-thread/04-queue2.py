@@ -1,9 +1,10 @@
 import time
-import threading
 # 使用 threading 模块创建线程
-import queue
+import threading
 # 优先级队列模块
 # 线程优先级队列(Queue)
+import queue
+
 exitFlag = 0
 
 
@@ -29,8 +30,8 @@ def process_data(id, threadName, q):
         time.sleep(1)
 
 
-threadList = ["Thread-1", "Thread-2", "Thread-3"]
-nameList = ["One", "Two", "Three", "Four", "Five"]
+threadList = ["Thread-1", "Thread-2", "Thread-3"]     # 工作线程
+nameList = ["One", "Two", "Three", "Four", "Five"]    # 工作任务
 workQueue = queue.Queue(10)
 threads = []
 threadID = 1

@@ -48,8 +48,8 @@ def process_data(threadName, q):
         time.sleep(1)
 
 
-threadList = ["Thread-1", "Thread-2", "Thread-3"]
-nameList = ["One", "Two", "Three", "Four", "Five"]
+threadList = ["Thread-1", "Thread-2", "Thread-3"]     # 工作线程
+nameList = ["One", "Two", "Three", "Four", "Five"]    # 工作任务
 queueLock = threading.Lock()
 workQueue = queue.Queue(10)
 threads = []
