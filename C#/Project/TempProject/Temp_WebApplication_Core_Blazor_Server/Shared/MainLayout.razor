@@ -1,0 +1,17 @@
+﻿@inherits Microsoft.AspNetCore.Components.LayoutComponentBase
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <img asp-append-version="true" alt="Logos" src="~/images/logo.jpg" style="max-width:100%" />
+        </div>
+        <div class="col-md-10">
+            <span class="h3">Temp_WebApplication_Core_Blazor_Server</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @Body  <!--这个页面的模板页面，这里的@Body就是每个页面的内容-->
+        </div>
+    </div>
+</div>

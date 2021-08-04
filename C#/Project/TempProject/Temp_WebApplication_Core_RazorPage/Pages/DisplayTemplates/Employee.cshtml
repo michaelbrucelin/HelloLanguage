@@ -1,0 +1,22 @@
+﻿@model Temp_WebApplication_Core_RazorPage.Models.Employee
+
+<tr>
+    <td>@Model.FirstName</td>
+    <td>@Model.LastName</td>
+    <td>@Model.Gender</td>
+    <td>@(Model.Fired ? "是" : "")</td>
+    <td>
+        @if (!Model.Fired)
+        {
+            @* Mvc写法
+                <a asp-action="Fire" asp-route-employeeId="@Model.Id">Fire</a>
+            *@
+            <a asp-page="EmployeeList"
+               asp-page-handler="Fire"
+               asp-route-employeeId="@Model.Id"
+               asp-route-departmentId="@Model.DepartmentId">
+                Fire
+            </a>
+        }
+    </td>
+</tr>

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelAddIn0", "ExcelAddIn0\ExcelAddIn0.csproj", "{B56FCFB4-A544-44CD-8455-6854051F23CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTemplate0", "ExcelTemplate0\ExcelTemplate0.csproj", "{30B46D2E-C026-4636-A151-232BB7030E4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWorkbook0", "ExcelWorkbook0\ExcelWorkbook0.csproj", "{1AAFEC24-2EF2-489C-B7FA-9DAD9FE031EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookAddIn0", "OutlookAddIn0\OutlookAddIn0.csproj", "{25B1A7A1-B0D4-4F70-91F6-334D89A20F05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B56FCFB4-A544-44CD-8455-6854051F23CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56FCFB4-A544-44CD-8455-6854051F23CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56FCFB4-A544-44CD-8455-6854051F23CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56FCFB4-A544-44CD-8455-6854051F23CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B46D2E-C026-4636-A151-232BB7030E4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B46D2E-C026-4636-A151-232BB7030E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B46D2E-C026-4636-A151-232BB7030E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B46D2E-C026-4636-A151-232BB7030E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAFEC24-2EF2-489C-B7FA-9DAD9FE031EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAFEC24-2EF2-489C-B7FA-9DAD9FE031EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAFEC24-2EF2-489C-B7FA-9DAD9FE031EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAFEC24-2EF2-489C-B7FA-9DAD9FE031EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25B1A7A1-B0D4-4F70-91F6-334D89A20F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B1A7A1-B0D4-4F70-91F6-334D89A20F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B1A7A1-B0D4-4F70-91F6-334D89A20F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B1A7A1-B0D4-4F70-91F6-334D89A20F05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC228B8F-B220-43EB-9D61-1091995CBB6B}
+	EndGlobalSection
+EndGlobal

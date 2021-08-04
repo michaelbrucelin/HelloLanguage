@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--div自增，由于只有input、select、textarea这些标签可以通过那么属性，将value传递给Web服务器
+        而div的innerText无法提交给web服务器，所以需要一个隐藏的字段去帮div实现自增-->
+    <form action="MyHandler3.ashx">
+        <input type="hidden" name="ispostback" value="true" />
+        <input type="hidden" name="hidZiZeng" value="@divZiZeng" />
+        <div>@divZiZeng</div>
+        <input type="submit" value="自增" />
+    </form>
+</body>
+</html>

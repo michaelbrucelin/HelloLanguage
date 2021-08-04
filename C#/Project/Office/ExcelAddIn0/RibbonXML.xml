@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="MyGroup" label="My Group">
+        </group>
+      </tab>
+      <tab id="tab1" label="MyTab1">
+        <group id="MyGroup1" label="My Group1">
+          <button id="btn01" label="button01" onAction="btn01_click" size="large"/>
+        </group>
+        <group id="MyGroup2" label="My Group2">
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>
+

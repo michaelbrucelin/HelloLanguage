@@ -1,0 +1,13 @@
+﻿@model Temp_WebApplication_Core_MVC.Models.CompanySummary
+
+<div class="small">
+    <div class="row h6">@ViewBag.Title</div>
+    <div class="row">
+        <div class="col-md-8">员工总数：</div>
+        <div class="col-md-4">@Model.EmployeeCount</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">部门平均人数：</div>
+        <div class="col-md-4">@Model.AverageDepartmentEmployeeCount</div>
+    </div>
+</div>

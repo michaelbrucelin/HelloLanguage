@@ -1,0 +1,10 @@
+﻿@model Temp_WebApplication_Core_RazorPage.Models.Department
+
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.Location</td>
+    <td>@Model.EmployeeCount</td>
+    <td>
+        <a asp-page="Employee/EmployeeList" asp-route-departmentId="@Model.Id">Employees</a>
+    </td>
+</tr>

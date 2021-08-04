@@ -1,0 +1,21 @@
+﻿@page "/"
+@namespace Temp_WebApplication_Core_Blazor_Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temp_WebApplication_Core_Blazor_Server</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+    <script src="_framework/blazor.server.js"></script>  <!--框架提供的js-->
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--hello world-->
+    <!--当一个页面提交给“处理程序”时，“处理程序”中的ProcessRequest()方法就会被触发-->
+    <form action="MyHandler1.ashx">
+        <!--提交到服务器的表单元素，一定要有name属性，这也是name与id的一个重要区别-->
+        <input type="hidden" name="ispostback" value="true" />  <!--用于提示处理程序，告诉其是被其他页面请求打开的-->
+        <label for="userName">用户名：</label>
+        <input id="userName" type="text" name="userName" value="@userName" /><br />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

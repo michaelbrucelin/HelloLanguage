@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--做一个验证码-->
+    <!--这里的onclick是为了实现每次点击图片，自动刷新验证码的功能
+        后面接的参数没有实际用处，服务器并不会使用它，但是客户端（浏览器）并不知道服务器是怎么实现的
+        这个参数就是在欺骗浏览器，让浏览器重新向服务器发起请求-->
+    <img alt="验证码" src="MyHandlerVerifyCodeGenerator.ashx" onclick="this.src = 'MyHandlerVerifyCodeGenerator.ashx?arg=' + new Date()" />
+    <form action="MyHandlerVerifyCodeVerify.ashx">
+        <input type="text" id="txtVerifyCode" name="txtVerifyCode"><br />
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

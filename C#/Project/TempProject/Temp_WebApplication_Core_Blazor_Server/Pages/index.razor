@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Temp_WebApplication_Core_Blazor_Server.Services
+@inject IDepartmentService departmentService
+
+<div class="row">
+    <div class="col-md-10 offset-md-2">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Employee Count</th>
+                <th>操作</th>
+            </tr>
+            @*@Html.DisplayFor(x=>x.Departments)*@
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 offset-md-2">
+        @*<a asp-page="Department/AddDepartment">Add</a>*@
+    </div>
+</div>
+
+@code{
+    IEnumerable<Department> departments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        departments = await departmentService.GetAll();
+    }
+}

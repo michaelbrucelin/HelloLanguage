@@ -1,0 +1,12 @@
+﻿.label {
+    display: inline-block;
+    width: 188px;
+}
+
+.textbox {
+    width: 256px;
+}
+
+.button {
+    width: 64px;
+}
