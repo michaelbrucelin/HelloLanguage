@@ -4,6 +4,7 @@ Python/PlayGround/demo/visualization/plotly/data/*.html linguist-vendored
 Python/PlayGround/demo/web/requests/data/*.html linguist-vendored
 Python/PlayGround/demo/data-source/json/data/*.html linguist-vendored
 
+*.ipynb linguist-vendored
 Python/PlayGround/jupyter/book_利用Python进行数据分析/**/* linguist-vendored
 Python/PlayGround/jupyter/book_Python数学编程/**/* linguist-vendored
 
