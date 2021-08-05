@@ -53,6 +53,7 @@ FROM 'D:\SqlServerClrUtils.dll'
 WITH PERMISSION_SET = SAFE;
 GO
 
+/*
 --如果数据库版本为：SQL Server 2017 (14.x) +，需要先执行下面脚本
 declare @hash as binary(64)
 set @hash = (select HASHBYTES('SHA2_512', (select * from OPENROWSET (BULK 'D:\SqlServerClrUtils.dll', SINGLE_BLOB) as [Data])))
@@ -60,6 +61,7 @@ exec sp_add_trusted_assembly @hash, N'Name: CLRUtilities, By: MichaelBrucelin, C
 --exec sp_drop_trusted_assembly @hash
 
 select * from sys.trusted_assemblies  -- 查询数据库信任的程序集
+*/
 
 --实现clr正则表达式验证模式匹配
 IF OBJECT_ID('dbo.fn_RegExIsMatch') IS NOT NULL BEGIN DROP FUNCTION dbo.fn_RegExIsMatch END;
@@ -243,6 +245,24 @@ GO
 CREATE FUNCTION dbo.fn_DecimalFrom(@input AS NVARCHAR(MAX), @basefrom AS INT)
 RETURNS INT
 EXTERNAL NAME CLRUtilities.UserDefinedFunctions.fn_DecimalFrom;
+GO
+
+--计算两个字符串的Levenshtein相似度
+IF OBJECT_ID('dbo.fn_CalLevenshteinSimilarity') IS NOT NULL BEGIN DROP FUNCTION dbo.fn_CalLevenshteinSimilarity END;
+GO
+CREATE FUNCTION dbo.fn_CalLevenshteinSimilarity(@str1 AS NVARCHAR(MAX), @str2 AS NVARCHAR(MAX))
+RETURNS FLOAT
+WITH RETURNS NULL ON NULL INPUT
+EXTERNAL NAME CLRUtilities.UserDefinedFunctions.CalLevenshteinSimilarity;
+GO
+
+--计算两个字符串的Levenshtein距离
+IF OBJECT_ID('dbo.fn_CalLevenshteinDistance') IS NOT NULL BEGIN DROP FUNCTION dbo.fn_CalLevenshteinDistance END;
+GO
+CREATE FUNCTION dbo.fn_CalLevenshteinDistance(@str1 AS NVARCHAR(MAX), @str2 AS NVARCHAR(MAX))
+RETURNS INT
+WITH RETURNS NULL ON NULL INPUT
+EXTERNAL NAME CLRUtilities.UserDefinedFunctions.CalLevenshteinDistance;
 GO
 
 */
