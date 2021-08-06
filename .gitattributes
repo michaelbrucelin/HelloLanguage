@@ -1,5 +1,6 @@
 C#/Project/E-Cology7/OAWorkflow/Web?References/OA/Reference.cs linguist-vendored
 C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowService/Reference.cs linguist-vendored
+C#/Project/TempProject/**/*.html linguist-vendored
 Python/PlayGround/demo/visualization/plotly/data/*.html linguist-vendored
 Python/PlayGround/demo/web/requests/data/*.html linguist-vendored
 Python/PlayGround/demo/data-source/json/data/*.html linguist-vendored
