@@ -19,6 +19,7 @@ for i, (a, b) in enumerate(zip(seq1, seq2)):
 
 # 9. 解压，使用zip(*)拆包，一种魔幻用法
 EC = [('A', 1), ('B', 2), ('C', 3)]
+print(*EC)  # ('A', 1) ('B', 2) ('C', 3)
 letters, digits = zip(*EC)
 letters  # ('A', 'B', 'C')
 digits   # (1, 2, 3)
