@@ -10,4 +10,4 @@ C#/Project/TempProject/**/*.html linguist-vendored
 Python/PlayGround/demo/**/*.html linguist-vendored
 Python/Project/**/*.html linguist-vendored
 
-Jupyter/Python/Book/book_利用Python进行数据分析/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
+Jupyter/Python/Book/利用Python进行数据分析/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
