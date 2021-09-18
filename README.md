@@ -1,6 +1,6 @@
 # HelloLanguage
 
-A collection of items for learning each language.  
+Some collection items of play with language.  
 本人小白码农一枚，这个项目包括：
 
 1. 学习过程中的一些练习测试代码
