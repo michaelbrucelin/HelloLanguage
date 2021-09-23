@@ -14,7 +14,7 @@ from matplotlib import pyplot
 import plistlib
 import numpy as np
 
-
+# 查找多个播放列表中共同的音轨 
 def findCommonTracks(fileNames):
     """
     Find common tracks in given playlist files, and save them to common.txt.
@@ -55,6 +55,7 @@ def findCommonTracks(fileNames):
     else:
         print("No common tracks!")
 
+# 收集统计信息 绘制数据
 def plotStats(fileName):
     """
     Plot some statistics by readin track information from playlist.
@@ -103,6 +104,7 @@ def plotStats(fileName):
     # show plot
     pyplot.show()
 
+# 查找重复 提取重复
 def findDuplicates(fileName):
     """
     Find duplicate tracks in given playlist.
@@ -150,6 +152,7 @@ def findDuplicates(fileName):
         f.write("[%d] %s\n" % (val[0], val[1]))
     f.close()
 
+# 命令行选项
 # Gather our code in a main() function
 def main():
     # create parser
