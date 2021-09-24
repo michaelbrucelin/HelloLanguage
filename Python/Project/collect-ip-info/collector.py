@@ -78,7 +78,7 @@ def get_ipv4_info(ip_start, ip_end):
     ip_search, ip_end_int = ip_start, ip2int(ip_end)
     regex_ip = re.compile(r'((?:\d{1,3}\.){3}\d{1,3})')
     while True:
-        cmd = f'whois {ip_search} 2> /dev/null | iconv -t utf-8 2> /dev/null'
+        cmd = f'whois {ip_search} 2> /dev/null | iconv -ct utf-8 2> /dev/null'
         rows = os.popen(cmd).readlines()
         row_ser = pd.Series(rows)
         netrange = row_ser[row_ser.str.match(
