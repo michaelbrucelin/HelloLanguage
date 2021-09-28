@@ -19,6 +19,8 @@ def randomGrid(N):
     """returns a grid of NxN random values"""
     return np.random.choice(vals, N*N, p=[0.2, 0.8]).reshape(N, N)
 
+# 初始条件
+# 将二维网格初始化为零，然后用此方法在网格的特定行和列增加一个图案
 def addGlider(i, j, grid):
     """adds a glider with top left cell at (i, j)"""
     glider = np.array([[0,    0, 255], 
@@ -134,3 +136,7 @@ def main():
 # call main
 if __name__ == '__main__':
     main()
+
+
+# python3 conway.py
+# python conway.py --grid-size 32 --interval 500 --glider
