@@ -26,5 +26,5 @@ Available kernels:
   python3            /usr/local/share/jupyter/kernels/python3
 ```
 
-[说明: https://github.com/microsoft/iqsharp](https://github.com/microsoft/iqsharp)
+[说明: https://github.com/microsoft/iqsharp](https://github.com/microsoft/iqsharp)  
 [说明: https://docs.microsoft.com/en-us/azure/quantum/install-jupyter-qdk?tabs=tabid-dotnetcli](https://docs.microsoft.com/en-us/azure/quantum/install-jupyter-qdk?tabs=tabid-dotnetcli)
