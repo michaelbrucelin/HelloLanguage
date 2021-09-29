@@ -19,7 +19,7 @@ for ip in ips:
 
         cmd = f'whois {ip} | grep descr'
         rows = os.popen(cmd).readlines()
-        rows = [rere.search(s).group(1) for s in rows]
+        rows = list(set([rere.search(s).group(1) for s in rows]))
         result[ip] = rows
     except ValueError:
         result[ip] = f'ip address is invalid: {ip}.'
