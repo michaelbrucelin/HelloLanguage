@@ -14,7 +14,7 @@ ips = set([ip.strip() for ip in ip_str.split(',')])
 
 rds = redis.StrictRedis(host='localhost', port=6379, db=0, charset='utf-8', decode_responses=True)
 rere = re.compile(r'descr:\s*(.*)\n', re.I)
-rere2 = re.compile(r'(?:netname|organization|organisation|orgname|org-name):\s*(.*)\n', re.I)
+rere2 = re.compile(r'(?:netname|organization|organisation|orgname|org-name|organization name|organisation name)\s*:\s*(.*)\n', re.I)
 result = {}
 for ip in ips:
     try:
