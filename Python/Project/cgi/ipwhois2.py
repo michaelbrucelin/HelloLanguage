@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# 停止维护，脚本已经迁移到工作空间中。
+
 import os, cgi, cgitb
 import re, ipaddress, json
 import redis
@@ -13,7 +15,7 @@ ip_str = form.getvalue('ip')
 ips = set([ip.strip() for ip in ip_str.split(',')])
 
 rds = redis.StrictRedis(host='localhost', port=6379, db=0, charset='utf-8', decode_responses=True)
-rere = re.compile(r'descr:\s*(.*)\n', re.I)
+rere = re.compile(r'descr\s*:\s*(.*)\n', re.I)
 rere2 = re.compile(r'(?:netname|organization|organisation|orgname|org-name|organization name|organisation name)\s*:\s*(.*)\n', re.I)
 result = {}
 for ip in ips:
@@ -23,7 +25,7 @@ for ip in ips:
         if rds.llen(ip) > 0:
             result[ip] = rds.lrange(ip, 0, -1)
         else:
-            cmd = f'whois {ip}'
+            cmd = f'whois {ip} 2> /dev/null | iconv -ct utf-8 2> /dev/null'
             rows = os.popen(cmd).readlines()
             infos = list(set([rere.match(s).group(1) for s in rows if rere.match(s)]))
             if len(infos) == 0:
@@ -32,10 +34,14 @@ for ip in ips:
                 rds.rpush(ip, *infos)     # 放入缓存
                 rds.expire(ip, 60*60*72)  # 72小时过期时间，或者永不过期，有另外一个脚本，每天夜里更新缓存的数据，这里先采用72小时过期时间试试
             result[ip] = infos
-    except ValueError:
-        result[ip] = 'ip address is invalid.'
-    except:
-        result[ip] = 'Usage: http://ipwhois.org?ip=8.8.8.8,8.8.4.4'
+    except Exception as ex:
+        exinfo = str(ex).splitlines()
+        exinfo.insert(0, '异常，请联系管理员。')
+        result[ip] = exinfo
+    # except ValueError:
+    #     result[ip] = ['ip address is invalid.']
+    # except:
+    #     result[ip] = ['Usage: http://ipwhois.org?ip=8.8.8.8,8.8.4.4']
 
 print(json.dumps(result))  # 供程序调用
 # print(json.dumps(result, sort_keys=True, indent=4, separators=(', ', ': ')))
