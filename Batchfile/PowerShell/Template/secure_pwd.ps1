@@ -2,7 +2,13 @@
 # 仅适用于远程Windows系产品？
 
 # 方法一
-# 这种方法安全性高，但是只能在生成pwd.txt文件的机器上使用这个文件
+# 这种方法安全性高，但是只能在生成pwd.txt文件的机器上使用这个文件，在其他机器上时候会报错：
+# ConvertTo-SecureString : 该项不适于在指定状态下使用。
+# 所在位置 行:1 字符: 33
+# + $myss=(Get-Content D:\pwd.txt | ConvertTo-SecureString)
+# +                                 ~~~~~~~~~~~~~~~~~~~~~~
+#     + CategoryInfo          : InvalidArgument: (:) [ConvertTo-SecureString]，CryptographicException
+#     + FullyQualifiedErrorId : ImportSecureString_InvalidArgument_CryptographicError,Microsoft.PowerShell.Commands.ConvertToSecureStringCommand
 
 # 1. 生成并保存密码文件
 # 从键盘读取密码并将密码加密后存入文件，推荐用法
@@ -15,6 +21,12 @@ $userName = "UserName"
 $fpwd = "D:\pwd.txt"
 $cred = New-Object -TypeName System.Management.Automation.PSCredential `
                    -ArgumentList $userName, (Get-Content $fpwd | ConvertTo-SecureString)
+
+# 3. 也可以将密码文件中的加密字符串解析为明文字符串
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecurePassword)
+$UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
+# 或
+$UnsecurePassword = (New-Object PSCredential "user", $SecurePassword).GetNetworkCredential().Password
 
 # 方法二
 # ConvertTo-SecureString和ConvertFrom-SecureString命令都支持选项-Key。在处理密码时通过使用-Key选项可以提供额外的安全性，并且允许在不同的环境中使用密码文件。
