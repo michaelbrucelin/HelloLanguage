@@ -1,0 +1,27 @@
+# 在新构建的镜像中包含一条ONBUILD指令，该指令会使用ADD指令将构建环境所在的目录下的内容全部添加到镜像中的/var/www/目录下。
+# 我们可以轻而易举地将这个Dockerfile作为一个通用的Web应用程序的模板，可以基于这个模板来构建Web应用程序。
+FROM ubuntu:18.04
+LABEL maintainer="mlin@mlin.com"
+ENV REFRESHED_AT 2013-07-28
+RUN apt-get update
+RUN apt-get install -y apache2
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+ENV APACHE_RUN_DIR /var/run/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+ONBUILD ADD . /var/www/
+EXPOSE 80
+ENTRYPOINT ["/usr/sbin/apachectl"]
+CMD ["-D", "FOREGROUND"]
+
+# docker build -t="mlin/apache2" .
+
+# Another Dockerfile
+# FROM mlin/apache2
+# LABEL maintainer="mlin@mlin.com"
+# ENV APPLICATION_NAME webapp
+# ENV ENVIRONMENT development
+
+# docker build -t="mlin/webapp" .
