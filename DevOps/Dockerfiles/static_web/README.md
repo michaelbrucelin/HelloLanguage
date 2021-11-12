@@ -62,6 +62,10 @@ docker history mlin/nginx
 我们已经在提供给Docker的配置里加入了指令`daemon off`，这个指令让Nginx启动后以交互的方式在前台运行。
 
 ```bash
-docker run -d -p 80 --name website -v $PWD/website:/var/www/html/website mlin/nginx nginx
+docker run -d -p 8080:80 --name website -v $PWD/website:/var/www/html/website mlin/nginx nginx
 # cb181ae28d69a78a4ebf02770372ccbb9202d02fc4016cb3f3b8bc31f7cfe67b
+
+# 控制卷的写状态
+# 这将使目的目录/var/www/html/website变成只读状态
+docker run -d -p 8080:80 --name website -v $PWD/website:/var/www/html/website:ro mlin/nginx nginx
 ```
