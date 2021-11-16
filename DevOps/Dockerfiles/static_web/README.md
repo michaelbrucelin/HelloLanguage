@@ -61,11 +61,53 @@ docker history mlin/nginx
 在执行`docker run`时传入了`nginx`作为容器的启动命令。一般情况下，这个命令无法让Nginx以交互的方式运行。  
 我们已经在提供给Docker的配置里加入了指令`daemon off`，这个指令让Nginx启动后以交互的方式在前台运行。
 
+在`Nginx`网站容器里，我们通过卷将$PWD/website挂载到容器的/var/www/ html/website目录，顺利挂载了正在开发的本地网站。  
+在Nginx配置里（在配置文件/etc/ngingx/conf.d/global.conf中），已经指定了这个目录为Nginx服务器的工作目录。
+
 ```bash
 docker run -d -p 8080:80 --name website -v $PWD/website:/var/www/html/website mlin/nginx nginx
-# cb181ae28d69a78a4ebf02770372ccbb9202d02fc4016cb3f3b8bc31f7cfe67b
+# 0bc0a1b5d9814dac44fe5ad27a633d448c4378be9cc9ce37a3972a79b6c41a41
 
 # 控制卷的写状态
 # 这将使目的目录/var/www/html/website变成只读状态
 docker run -d -p 8080:80 --name website -v $PWD/website:/var/www/html/website:ro mlin/nginx nginx
+```
+
+## 查看Sample网站容器
+
+```bash
+# docker ps -l
+CONTAINER ID   IMAGE        COMMAND   CREATED              STATUS              PORTS                  NAMES
+0bc0a1b5d981   mlin/nginx   "nginx"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp   website
+
+curl http://127.0.0.1:8080  # 可以使用浏览器打开测试，这里直接命令行
+# <head>
+#     <title>Test website</title>
+# </head>
+
+# <body>
+#     <h1>This is a test website</h1>
+# </body>
+```
+
+## 修改网站
+
+```bash
+vim website/index.html
+# <head>
+#     <title>Test website</title>
+# </head>
+
+# <body>
+#     <h1>This is a test website for Docker</h1>
+# </body>
+
+curl http://127.0.0.1:8080  # 在浏览器中刷新网站即可看到变化，这里依然使用命令行
+# <head>
+#     <title>Test website</title>
+# </head>
+
+# <body>
+#     <h1>This is a test website for Docker</h1>
+# </body>
 ```
