@@ -1,0 +1,9 @@
+#!/usr/bin/ruby
+
+# 保证这个文件可以执行，chmod +x webapp/bin/webapp
+
+$:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
+
+require 'app'
+
+App.run!
