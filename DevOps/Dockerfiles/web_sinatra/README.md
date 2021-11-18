@@ -11,75 +11,83 @@
 
 ```bash
 docker build -t mlin/sinatra .
-# Sending build context to Docker daemon  2.048kB
+# Sending build context to Docker daemon   16.9kB
 # Step 1/8 : FROM ubuntu:18.04
+# 18.04: Pulling from library/ubuntu
+# 284055322776: Pull complete 
+# Digest: sha256:0fedbd5bd9fb72089c7bbca476949e10593cebed9b1fb9edf5b79dbbacddd7d6
+# Status: Downloaded newer image for ubuntu:18.04
 #  ---> 5a214d77f5d7
 # Step 2/8 : LABEL maintainer="mlin@mlin.com"
-#  ---> Using cache
-#  ---> 5c9b0a03ca63
+#  ---> Running in 16204c751252
+# Removing intermediate container 16204c751252
+#  ---> e45487a19fa1
 # Step 3/8 : ENV REFRESHED_AT 2014-06-01
-#  ---> Using cache
-#  ---> 0712271ad588
+#  ---> Running in 102244dbf290
+# Removing intermediate container 102244dbf290
+#  ---> c9bd1b2c4708
 # Step 4/8 : RUN apt-get -yqq update && apt-get -yqq install ruby ruby-dev build-essential redis-tools
-#  ---> Running in 857bc82ce947
+#  ---> Running in 219ef8404f24
 # ... ...
-# Removing intermediate container 857bc82ce947
-#  ---> 58d9a523aa5a
+# Removing intermediate container 219ef8404f24
+#  ---> c1a3ce649ef3
 # Step 5/8 : RUN gem install --no-rdoc --no-ri sinatra json redis
-#  ---> Running in 2e595f9d5711
+#  ---> Running in 155d491886aa
 # Successfully installed rack-2.2.3
 # ... ...
 # Successfully installed redis-4.5.1
 # 8 gems installed
-# Removing intermediate container 2e595f9d5711
-#  ---> 63d309d2429e
+# Removing intermediate container 155d491886aa
+#  ---> 0eb8caaa076e
 # Step 6/8 : RUN mkdir -p /opt/webapp
-#  ---> Running in b03f2798ded2
-# Removing intermediate container b03f2798ded2
-#  ---> ef8bcc1e4f32
+#  ---> Running in c390e6e00350
+# Removing intermediate container c390e6e00350
+#  ---> ce4d5063cede
 # Step 7/8 : EXPOSE 4567
-#  ---> Running in 41df55c2d1f4
-# Removing intermediate container 41df55c2d1f4
-#  ---> a535db034172
+#  ---> Running in bdbc6200eec2
+# Removing intermediate container bdbc6200eec2
+#  ---> f029fc26d2c3
 # Step 8/8 : CMD [ "/opt/webapp/bin/webapp" ]
-#  ---> Running in 0246bb630afd
-# Removing intermediate container 0246bb630afd
-#  ---> f520b5a3e0fa
-# Successfully built f520b5a3e0fa
+#  ---> Running in 4f444cebadf5
+# Removing intermediate container 4f444cebadf5
+#  ---> e392bad1e5aa
+# Successfully built e392bad1e5aa
 # Successfully tagged mlin/sinatra:latest
 ```
 
 ## 启动第一个Sinatra容器
 
+现在开始测试第一个容器，使用webapp目录
+
 ```bash
 chmod +x webapp/bin/webapp  # 保证webapp/bin/webapp 这个文件可以执行
 docker run -d -p 4567 --name webapp -v $PWD/webapp:/opt/webapp mlin/sinatra
-# 69508e55743c7ded248040b384cf33f6326ddc007e4e1272d76c45a5d0e16ef9
+# 729fa1b3d04b058c8f4e1775e11f373bd1aeea28605cdb9e7e4b595e0cf4d610
 ```
 
 ## 检查Sinatra容器
 
 ```bash
 docker logs webapp       # 检查Sinatra容器的日志
-# [2021-11-17 00:34:31] INFO  WEBrick 1.4.2
-# [2021-11-17 00:34:31] INFO  ruby 2.5.1 (2018-03-29) [x86_64-linux-gnu]
+# [2021-11-18 00:00:17] INFO  WEBrick 1.4.2
+# [2021-11-18 00:00:17] INFO  ruby 2.5.1 (2018-03-29) [x86_64-linux-gnu]
 # == Sinatra (v2.1.0) has taken the stage on 4567 for development with backup from WEBrick
-# [2021-11-17 00:34:31] INFO  WEBrick::HTTPServer#start: pid=1 port=4567
+# [2021-11-18 00:00:17] INFO  WEBrick::HTTPServer#start: pid=1 port=4567
 
 docker logs -f webapp    # 持续跟踪Sinatra容器的日志
 
 docker top webapp        # 列出Sinatra进程
-UID     PID      PPID     C    STIME    TTY    TIME        CMD
-root    18520    18501    0    00:34    ?      00:00:00    /usr/bin/ruby /opt/webapp/bin/webapp
+# UID     PID     PPID    C    STIME    TTY    TIME        CMD
+# root    5082    5062    0    00:32    ?      00:00:00    /usr/bin/ruby /opt/webapp/bin/webapp
 
 docker port webapp 4567  # 检查Sinatra的端口映射
-# 0.0.0.0:49154
+# 0.0.0.0:49155
 ```
 
 ## 测试Sinatra应用程序
 
 ```bash
-curl -i -H 'Accept: application/json' -d 'name=Foo&status=Bar' http://localhost:49154/json
+curl -i -H 'Accept: application/json' -d 'name=Foo&status=Bar' http://localhost:49155/json
 # HTTP/1.1 200 OK 
 # Content-Type: text/html;charset=utf-8
 # Content-Length: 29
@@ -87,8 +95,81 @@ curl -i -H 'Accept: application/json' -d 'name=Foo&status=Bar' http://localhost:
 # X-Content-Type-Options: nosniff
 # X-Frame-Options: SAMEORIGIN
 # Server: WEBrick/1.4.2 (Ruby/2.5.1/2018-03-29)
-# Date: Wed, 17 Nov 2021 00:48:08 GMT
+# Date: Thu, 18 Nov 2021 00:05:12 GMT
 # Connection: Keep-Alive
 # 
 # {"name":"Foo","status":"Bar"}
+```
+
+## 扩展Sinatra应用程序来使用Redis
+
+现在我们将要扩展`Sinatra`应用程序，加入`Redis`后端数据库，并在`Redis`数据库中存储输入的`URL`参数。  
+为了达到这个目的，我们要下载一个新版本的`Sinatra`应用程序。我们还将创建一个运行`Redis`数据库的镜像和容器。  
+之后，要利用`Docker`的特性来关联两个容器。
+
+升级Sinatra应用程序，使用webapp_redis目录（与webapp目录相比，只有./lib/app.rb文件增加了对redis的支持）
+
+```bash
+chmod +x webapp_redis/bin/webapp  # 保证webapp_redis/bin/webapp 这个文件可以执行
+```
+
+## 构建Redis数据库镜像
+
+```bash
+cd redis
+docker build -t mlin/redis .
+# Sending build context to Docker daemon  2.048kB
+# Step 1/7 : FROM ubuntu:18.04
+#  ---> 5a214d77f5d7
+# Step 2/7 : LABEL maintainer="mlin@mlin.com"
+#  ---> Using cache
+#  ---> e45487a19fa1
+# Step 3/7 : ENV REFRESHED_AT 2014-06-01
+#  ---> Using cache
+#  ---> c9bd1b2c4708
+# Step 4/7 : RUN apt-get -yqq update && apt-get -yqq install redis-server redis-tools
+#  ---> Running in 1a79c0b36a5a
+# ... ...
+# Removing intermediate container 1a79c0b36a5a
+#  ---> 1ae5711e4de2
+# Step 5/7 : EXPOSE 6379
+#  ---> Running in d33142141d9d
+# Removing intermediate container d33142141d9d
+#  ---> 79d56c7c0bca
+# Step 6/7 : ENTRYPOINT ["/usr/bin/redis-server" ]
+#  ---> Running in 8ecdf3bf8659
+# Removing intermediate container 8ecdf3bf8659
+#  ---> aeca5e9b44f6
+# Step 7/7 : CMD []
+#  ---> Running in a788b26fae16
+# Removing intermediate container a788b26fae16
+#  ---> 8fa24281eb1c
+# Successfully built 8fa24281eb1c
+# Successfully tagged mlin/redis:latest
+```
+
+## 启动Redis容器
+
+```bash
+docker run -d -p 6379 --name redis mlin/redis
+# eb89e0472ad9823f961c5b788d68c87a8863154e84a3b7ee46ee76bf70a61763
+```
+
+## 检查Redis容器
+
+```bash
+docker ps -a
+# CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                     NAMES
+# eb89e0472ad9   mlin/redis     "/usr/bin/redis-serv…"   20 seconds ago   Up 19 seconds   0.0.0.0:49156->6379/tcp   redis
+
+docker port redis 6379
+# 0.0.0.0:49156
+```
+
+## 测试Redis容器
+
+```bash
+yum install -y -q redis          # 安装redis客户端，Debian: apt-get install -y redis-tools
+redis-cli -h 127.0.0.1 -p 49156  # 测试Redis连接
+# 127.0.0.1:49156> 
 ```
