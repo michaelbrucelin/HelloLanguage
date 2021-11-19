@@ -173,3 +173,100 @@ yum install -y -q redis          # 安装redis客户端，Debian: apt-get instal
 redis-cli -h 127.0.0.1 -p 49156  # 测试Redis连接
 # 127.0.0.1:49156> 
 ```
+
+## 将Sinatra应用程序连接到Redis容器
+
+## 创建Docker网络
+
+```bash
+docker network create app   # 创建一个命名为app的桥接网络
+# eef4822765313a1933f386eb07bda2d0f4f0b234f1a23dfcbdd0fd44879d0b13
+
+docker network inspect app  # 查看app网络
+# [
+#     {
+#         "Name": "app",
+#         "Id": "eef4822765313a1933f386eb07bda2d0f4f0b234f1a23dfcbdd0fd44879d0b13",
+#         "Created": "2021-11-19T01:23:03.667334591+01:00",
+#         "Scope": "local",
+#         "Driver": "bridge",
+#         "EnableIPv6": false,
+#         "IPAM": {
+#             "Driver": "default",
+#             "Options": {},
+#             "Config": [
+#                 {
+#                     "Subnet": "172.18.0.0/16",
+#                     "Gateway": "172.18.0.1"
+#                 }
+#             ]
+#         },
+#         "Internal": false,
+#         "Attachable": false,
+#         "Ingress": false,
+#         "ConfigFrom": {
+#             "Network": ""
+#         },
+#         "ConfigOnly": false,
+#         "Containers": {},
+#         "Options": {},
+#         "Labels": {}
+#     }
+# ]
+
+docker network ls  # 查看当前系统中的所有网络
+# NETWORK ID     NAME      DRIVER    SCOPE
+# eef482276531   app       bridge    local
+# 512cca64d8b4   bridge    bridge    local
+# 1ba3ba62a8c6   host      host      local
+# 20479bbf075c   none      null      local
+```
+
+## 在Docker网络中创建Redis容器
+
+```bash
+docker run -d --net=app --name db mlin/redis
+# 14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227
+
+docker network inspect app  # 更新后的app网络，查看Containers下的信息
+# [
+#     {
+#         "Name": "app",
+#         "Id": "eef4822765313a1933f386eb07bda2d0f4f0b234f1a23dfcbdd0fd44879d0b13",
+#         "Created": "2021-11-19T01:23:03.667334591+01:00",
+#         "Scope": "local",
+#         "Driver": "bridge",
+#         "EnableIPv6": false,
+#         "IPAM": {
+#             "Driver": "default",
+#             "Options": {},
+#             "Config": [
+#                 {
+#                     "Subnet": "172.18.0.0/16",
+#                     "Gateway": "172.18.0.1"
+#                 }
+#             ]
+#         },
+#         "Internal": false,
+#         "Attachable": false,
+#         "Ingress": false,
+#         "ConfigFrom": {
+#             "Network": ""
+#         },
+#         "ConfigOnly": false,
+#         "Containers": {
+#             "14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227": {
+#                 "Name": "db",
+#                 "EndpointID": "fdf4c487b2e5c4482ea55a0f588c5190ada228613d1e3fd513fcb554b69f6ef2",
+#                 "MacAddress": "02:42:ac:12:00:02",
+#                 "IPv4Address": "172.18.0.2/16",
+#                 "IPv6Address": ""
+#             }
+#         },
+#         "Options": {},
+#         "Labels": {}
+#     }
+# ]
+```
+
+## 链接Redis容器
