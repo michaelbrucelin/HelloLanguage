@@ -146,6 +146,8 @@ docker build -t mlin/redis .
 #  ---> 8fa24281eb1c
 # Successfully built 8fa24281eb1c
 # Successfully tagged mlin/redis:latest
+
+cd ..
 ```
 
 ## 启动Redis容器
@@ -269,4 +271,52 @@ docker network inspect app  # 更新后的app网络，查看Containers下的信�
 # ]
 ```
 
-## 链接Redis容器
+## 链接Redis容器，创建另一个webapp容器
+
+```bash
+docker run -p 4567 --net=app --name webapp_redis -it -v $PWD/webapp_redis:/opt/webapp mlin/sinatra /bin/bash
+# root@f03d79343457:/#
+
+docker network inspect -f '{{ .Containers }}' app  # 需要另启动一个shell来执行
+# map[14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227:{db fdf4c487b2e5c4482ea55a0f588c5190ada228613d1e3fd513fcb554b69f6ef2 02:42:ac:12:00:02 172.18.0.2/16 }
+#     f03d7934345712f68469ec5390f35b3d26806c13c5764e7b399ebfca88934860:{webapp_redis 5a9cee146bc37446d2ffccabe4b7fba9bace99d015df4a77b5ac9b69a16ab285 02:42:ac:12:00:03 172.18.0.3/16 }]
+```
+
+## 检查容器的网络
+
+我们在`app`网络下启动了一个名为`webapp_redis`的容器。我们以交互的方式启动了这个容器，以便我们可以进入里面看看它内部发生了什么。
+由于这个容器是在`app`网络内部启动的，因此`Docker`将会感知到所有在这个网络下运行的容器，并且通过`/etc/hosts`文件将这些容器的地址保存到本地`DNS`中。
+
+```bash
+# 下面命令在容器webapp_redis中执行
+apt-get update -yqq && apt-get install -y iputils-ping dnsutils
+cat /etc/hosts          # 没有查询到db与db.app的A记录，与书中不同，应该是Docker版本的原因
+# 127.0.0.1       localhost
+# ::1     localhost ip6-localhost ip6-loopback
+# fe00::0 ip6-localnet
+# ff00::0 ip6-mcastprefix
+# ff02::1 ip6-allnodes
+# ff02::2 ip6-allrouters
+# 172.18.0.3      f03d79343457
+
+dig -t a db +short      # 但是能够解析出来，怀疑是Docker的network抽象出来了一个dns server
+# 172.18.0.2
+dig -t a db.app +short
+# 172.18.0.2
+cat /etc/resolv.conf
+# nameserver 127.0.0.11
+# options ndots:0
+
+ping db.app             # 除了db之外还有db.app的A记录，这里app是网络名，即dockername.dockernetwork
+# PING db.app (172.18.0.2) 56(84) bytes of data.
+# 64 bytes from db.app (172.18.0.2): icmp_seq=1 ttl=64 time=0.365 ms
+# 64 bytes from db.app (172.18.0.2): icmp_seq=2 ttl=64 time=0.069 ms
+
+# webapp_redis/lib/app.rb 中引用的也是 db：redis = Redis.new(:host => 'db', :port => '6379')
+```
+
+## 在容器内启动Sinatra应用程序
+
+```bash
+nohup /opt/webapp/bin/webapp &
+```
