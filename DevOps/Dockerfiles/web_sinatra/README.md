@@ -275,11 +275,11 @@ docker network inspect app  # 更新后的app网络，查看Containers下的信�
 
 ```bash
 docker run -p 4567 --net=app --name webapp_redis -it -v $PWD/webapp_redis:/opt/webapp mlin/sinatra /bin/bash
-# root@f03d79343457:/#
+# root@6f6bab86098d:/#
 
 docker network inspect -f '{{ .Containers }}' app  # 需要另启动一个shell来执行
 # map[14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227:{db fdf4c487b2e5c4482ea55a0f588c5190ada228613d1e3fd513fcb554b69f6ef2 02:42:ac:12:00:02 172.18.0.2/16 }
-#     f03d7934345712f68469ec5390f35b3d26806c13c5764e7b399ebfca88934860:{webapp_redis 5a9cee146bc37446d2ffccabe4b7fba9bace99d015df4a77b5ac9b69a16ab285 02:42:ac:12:00:03 172.18.0.3/16 }]
+#     6f6bab86098de262ec1a4ed7e3e662fdb44c398cd79e909c5b20469b711bde39:{webapp_redis a334a55b614bfc6ed77236333de0afd7965f508c05fd9a1493fe23a3c5b16c37 02:42:ac:12:00:03 172.18.0.3/16 }]
 ```
 
 ## 检查容器的网络
@@ -297,7 +297,7 @@ cat /etc/hosts          # 没有查询到db与db.app的A记录，与书中不同
 # ff00::0 ip6-mcastprefix
 # ff02::1 ip6-allnodes
 # ff02::2 ip6-allrouters
-# 172.18.0.3      f03d79343457
+# 172.18.0.3      6f6bab86098d
 
 dig -t a db +short      # 但是能够解析出来，怀疑是Docker的network抽象出来了一个dns server
 # 172.18.0.2
@@ -319,4 +319,54 @@ ping db.app             # 除了db之外还有db.app的A记录，这里app是网
 
 ```bash
 nohup /opt/webapp/bin/webapp &
+# [1] 520
+# nohup: ignoring input and appending output to 'nohup.out'
+```
+
+## 检查并测试启用了Redis的Sinatra应用程序
+
+```bash
+docker port webapp_redis 4567
+# 0.0.0.0:49159
+curl -i -H 'Accept: application/json' -d 'name=Foo&status=Bar' http://localhost:49159/json  # 报错了，看着是Redis不允许127.0.0.1之外的ip免密码访问导致的，不是Docker报的错，这个以后再处理，这里先跳过
+# HTTP/1.1 500 Internal Server Error 
+# Content-Type: text/plain
+# Content-Length: 5140
+# Server: WEBrick/1.4.2 (Ruby/2.5.1/2018-03-29)
+# Date: Tue, 23 Nov 2021 00:06:04 GMT
+# Connection: Keep-Alive
+# 
+# Redis::CommandError: DENIED Redis is running in protected mode because protected mode is enabled, no bind address was specified, no authentication password is requested to clients.
+# ... ...
+
+curl -i http://localhost:49159/json
+# 与上面一样的报错，先跳过
+```
+
+## 将已有的容器连接到Docker网络
+
+一个容器可以同时隶属于多个Dcoker网络，所以可以创建非常复杂的网络模型。
+
+```bash
+docker ps -a
+# CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                  PORTS                     NAMES
+# 6f6bab86098d   mlin/sinatra   "/bin/bash"              48 minutes ago   Up 48 minutes           0.0.0.0:49159->4567/tcp   webapp_redis
+# 14245fdd7b6a   mlin/redis     "/usr/bin/redis-serv…"   4 days ago       Up 15 minutes           6379/tcp                  db
+# eb89e0472ad9   mlin/redis     "/usr/bin/redis-serv…"   5 days ago       Up 4 days               0.0.0.0:49157->6379/tcp   redis
+# 729fa1b3d04b   mlin/sinatra   "/opt/webapp/bin/web…"   5 days ago       Up 5 days               0.0.0.0:49155->4567/tcp   webapp
+
+docker network inspect -f '{{ .Containers }}' app
+# map[14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227:{db fdf4c487b2e5c4482ea55a0f588c5190ada228613d1e3fd513fcb554b69f6ef2 02:42:ac:12:00:02 172.18.0.2/16 }
+#     6f6bab86098de262ec1a4ed7e3e662fdb44c398cd79e909c5b20469b711bde39:{webapp_redis a334a55b614bfc6ed77236333de0afd7965f508c05fd9a1493fe23a3c5b16c37 02:42:ac:12:00:03 172.18.0.3/16 }]
+
+docker network connect app redis     # 添加已有容器到redis网络
+docker network inspect -f '{{ .Containers }}' app
+# map[14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227:{db e8595ff4bcc1b72ce794ad51d7ab98300b38ce42749de1d61428cda7f583713d 02:42:ac:12:00:02 172.18.0.2/16 }
+#     6f6bab86098de262ec1a4ed7e3e662fdb44c398cd79e909c5b20469b711bde39:{webapp_redis a334a55b614bfc6ed77236333de0afd7965f508c05fd9a1493fe23a3c5b16c37 02:42:ac:12:00:03 172.18.0.3/16 }
+#     eb89e0472ad9823f961c5b788d68c87a8863154e84a3b7ee46ee76bf70a61763:{redis 3ed1523519ba8ffa2ccdafecc723d1775bd9453465c01c2480fdd26904b891b6 02:42:ac:12:00:04 172.18.0.4/16 }]
+
+docker network disconnect app redis  # 从网络中断开redis容器
+docker network inspect -f '{{ .Containers }}' app
+# map[14245fdd7b6a2d48fb111fa963ceb73184c2307452fb6709ddfac0685cb56227:{db e8595ff4bcc1b72ce794ad51d7ab98300b38ce42749de1d61428cda7f583713d 02:42:ac:12:00:02 172.18.0.2/16 }
+#     6f6bab86098de262ec1a4ed7e3e662fdb44c398cd79e909c5b20469b711bde39:{webapp_redis a334a55b614bfc6ed77236333de0afd7965f508c05fd9a1493fe23a3c5b16c37 02:42:ac:12:00:03 172.18.0.3/16 }]
 ```
