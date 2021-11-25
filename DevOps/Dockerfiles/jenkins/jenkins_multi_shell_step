@@ -1,21 +1,27 @@
 # Build the image to be used for this run.
+# 构建此次运行需要的镜像
 cd $OS && IMAGE=$(sudo docker build . | tail -1 | awk '{ print $NF }')
 
 # Build the directory to be mounted into Docker.
-
+# 构建挂载到Docker的目录
 MNT="$WORKSPACE/.."
 
 # Execute the build inside Docker.
+# 在Docker内执行构建过程
 CONTAINER=$(sudo docker run -d -v "$MNT:/opt/project" $IMAGE /bin/bash -c "cd /opt/project/$OS && rake spec")
 
 # Attach to the container's streams so that we can see the output.
+# 进入容器，以便可以看到输出的内容
 sudo docker attach $CONTAINER
 
 # As soon as the process exits, get its return value.
+# 进程退出后，得到返回值
 RC=$(sudo docker wait $CONTAINER)
 
 # Delete the container we've just used to free disk space.
+# 删除刚刚使用的容器
 sudo docker rm $CONTAINER
 
 # Exit with the same value that the process exited with.
+# 使用刚才的返回值退出脚本
 exit $RC

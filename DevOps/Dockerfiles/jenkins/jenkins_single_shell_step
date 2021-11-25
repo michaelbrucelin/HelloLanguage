@@ -1,20 +1,27 @@
 # Build the image to be used for this job.
+# 构建用于此作业的镜像
 IMAGE=$(sudo docker build . | tail -1 | awk '{ print $NF }')
 
 # Build the directory to be mounted into Docker.
+# 构建挂载到Docker的目录
 MNT="$WORKSPACE/.."
 
 # Execute the build inside Docker.
+# 在Docker里执行编译测试
 CONTAINER=$(sudo docker run -d -v $MNT:/opt/project/ $IMAGE /bin/bash -c 'cd /opt/project/workspace && rake spec')
 
 # Attach to the container so that we can see the output.
+# 进入容器，这样可以看到输出的内容
 sudo docker attach $CONTAINER
 
 # Get its exit code as soon as the container stops.
+# 等待程序退出，得到返回码
 RC=$(sudo docker wait $CONTAINER)
 
 # Delete the container we've just used.
+# 删除刚刚用到的容器
 sudo docker rm $CONTAINER
 
 # Exit with the same value as that with which the process exited.
+# 使用刚才的返回码退出整个脚本
 exit $RC

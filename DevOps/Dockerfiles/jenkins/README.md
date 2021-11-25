@@ -41,4 +41,4 @@ docker logs -f jenkins
 # ... ...
 ```
 
-## 创建新的Jenkins作业
+## 创建新的Jenkins作业并测试
