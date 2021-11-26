@@ -11,7 +11,8 @@ markdown: kramdown
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : James' Docker-Driven Blog
+# title : James' Docker-Driven Blog
+title : James' Dynamic Docker-driven Blog
 tagline: A blog isn't just about words or Docker
 author :
   name : James Turnbull

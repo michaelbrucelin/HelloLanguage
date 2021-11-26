@@ -98,3 +98,46 @@ docker run -d -P --volumes-from mlin_blog --name mlin_apache mlin/apache
 docker port mlin_apache
 # 80/tcp -> 0.0.0.0:49163
 ```
+
+## 更新Jekyll网站
+
+```bash
+vim mlin_blog/_config.yml                    # 编辑Jekyll博客
+# title : James' Dynamic Docker-driven Blog  # 更改title，测试一下
+
+docker start mlin_blog                       # 再次启动mlin_blog容器
+# mlin_blog
+
+docker logs mlin_blog                        # 可以看到Jekyll编译第二次被运行，更新了网站，刷新网页可以看到变化
+# Configuration file: /data/_config.yml
+#             Source: /data
+#        Destination: /var/www/html
+#       Generating... 
+#                     done.
+#  Auto-regeneration: disabled. Use --watch to enable.
+# Configuration file: /data/_config.yml
+#             Source: /data
+#        Destination: /var/www/html
+#       Generating... 
+#                     done.
+#  Auto-regeneration: disabled. Use --watch to enable.
+```
+
+## 备份Jekyll卷
+
+```bash
+docker run --rm --volumes-from mlin_blog -v $(pwd):/backup ubuntu \
+    tar cvf /backup/mlin_blog_backup.tar /var/www/html               # --rm标志会在容器的进程运行完毕后，自动删除容器
+# tar: Removing leading `/' from member names
+# /var/www/html/
+# /var/www/html/index.html
+# ... ...
+# /var/www/html/rss.xml
+
+ll
+# total 632
+# drwxr-xr-x 2 root root   4096 Nov 25 01:19 apache
+# drwxr-xr-x 2 root root   4096 Nov 25 01:05 jekyll
+# drwxr-xr-x 8 root root   4096 Nov 26 00:53 mlin_blog
+# -rw-r--r-- 1 root root 634880 Nov 26 01:06 mlin_blog_backup.tar
+```
