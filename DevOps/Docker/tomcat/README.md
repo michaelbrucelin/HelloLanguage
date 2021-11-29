@@ -79,3 +79,20 @@ docker run --name mlin_tomcat8 --volumes-from mlin_gwar -d -P mlin/tomcat8
 docker port mlin_tomcat8
 # 8080/tcp -> 0.0.0.0:49164
 ```
+
+## 基于Tomcat应用服务器的构建服务
+
+现在有了自服务Web服务的基础模块，下面基于这些基础模块做扩展。  
+为了做到这一点，已经构建好了一个简单的基于`Sinatra`的`Web`应用（`TProv`），这个应用可以通过网页自动展示`Tomcat`应用。
+
+在浏览器中打开[http://ip:4567](http://ip:4567)可以打开`TProv`应用，然后可以下载`war`包，放入卷中，供`Tomcat`服务使用。
+
+```bash
+# 可以把TProv应用安装在Docker容器里，这里直接安装在宿主机上
+# yum install -y make ruby             # CentOS7
+apt-get -y install make ruby ruby-dev  # Debian10
+
+gem install --no-rdoc --no-ri tprov    # 安装TProv应用
+
+tprov                                  # 启动TProv应用
+```

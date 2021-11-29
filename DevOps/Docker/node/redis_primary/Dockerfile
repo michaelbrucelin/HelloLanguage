@@ -1,4 +1,4 @@
-FROM jamtur01/redis
+FROM mlin/redis_base
 LABEL maintainer="mlin@mlin.com"
 ENV REFRESHED_AT 2016-06-01
 
