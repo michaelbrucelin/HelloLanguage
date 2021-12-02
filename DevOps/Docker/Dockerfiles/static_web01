@@ -2,9 +2,11 @@
 FROM ubuntu:18.04
 # MAINTAINER MichaelBrucelin "mlin@mlin.com"
 LABEL maintainer="mlin@mlin.com"
+
 RUN apt-get update
 RUN apt-get install -y nginx
 # RUN ['apt-get', 'install', '-y', 'nginx']  # 这样可以避免shell篡改字符串
 RUN echo 'Hi, I am in your container' \
     >/usr/share/nginx/html/index.html
+
 EXPOSE 80
