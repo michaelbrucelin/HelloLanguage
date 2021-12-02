@@ -1,6 +1,8 @@
 #include "fcgi_stdio.h"
 #include <stdlib.h>
 
+// 网上看到的，while (FCGI_Accept() >= 0) {}的功能是？
+
 int main(void)
 {
     int count = 0;
@@ -19,8 +21,11 @@ int main(void)
 }
 
 /*
-apt-get install libfcgi-dev  # Debian10
-yum install fcgi-devel       # CentOS7
+3 apt-get install libfcgi-dev  # Debian10
+# yum install fcgi-devel       # CentOS7
 
-gcc fcgi.c -o fcgi -lfcgi
+# gcc 01-fastcgi2.c -o fastcgi2.cgi -lfcgi
+
+# curl http://127.0.0.1:80/cgi-bin/fastcgi2.cgi
+<title>FastCGI Hello!</title><h1>FastCGI Hello!</h1>Request number 1 running on host <i>_</i>
 */
