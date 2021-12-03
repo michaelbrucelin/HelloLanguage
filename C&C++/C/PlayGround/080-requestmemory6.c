@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//如果不适用relloc()函数，手动重新申请内存空间并将值复制过去
+//如果不使用relloc()函数，手动重新申请内存空间并将值复制过去
 
 #define N1 8
 #define N2 16
