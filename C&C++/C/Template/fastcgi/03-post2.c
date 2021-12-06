@@ -4,15 +4,17 @@
 // 自己写的获取POST方法的传参的模板
 // 假定post传入的参数形式为：key=value_str&expire=value_int
 
+#define KEY_LEN 255 // key的长度不允许超过255
+
 int main()
 {
     int len;
     char *len_, *data;
-    char *key;
+    char key[KEY_LEN];
     int expire;
 
     printf("Content-Type: text/html\n\n");
-    printf("<title>Hello, PostData.</title>");
+    printf("<title>Hello, PostData.</title>\n");
 
     len_ = getenv("CONTENT_LENGTH"); // printf("\n%s\n", len_);
     if (NULL != len_)
@@ -23,14 +25,10 @@ int main()
         {
             // fgets(data, (len + 1), stdin);
             fread(data, (len + 1), sizeof(char), stdin); // printf("\n%p\n%s\n", data, data);
-            if (sscanf(data, "key=%s&expire=%d", key, &expire) == 2)
+            if (sscanf(data, "key=%[^&]&expire=%d", key, &expire) == 2)
             {
-                printf("yes");
-                // printf("key: %s, expire: %d.", *key, expire);
-            }
-            else
-            {
-                printf("no");
+                // printf("yes");
+                printf("key: %s, expire: %d.\n", key, expire);
             }
 
             free(data);
