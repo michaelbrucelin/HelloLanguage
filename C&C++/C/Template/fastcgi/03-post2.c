@@ -22,11 +22,15 @@ int main()
         if (NULL != data)
         {
             // fgets(data, (len + 1), stdin);
-            fread(data, (len + 1), sizeof(char), stdin); // printf("\n%p\n", data); printf("\n%s\n", data);
+            fread(data, (len + 1), sizeof(char), stdin); // printf("\n%p\n%s\n", data, data);
             if (sscanf(data, "key=%s&expire=%d", key, &expire) == 2)
             {
                 printf("yes");
                 // printf("key: %s, expire: %d.", *key, expire);
+            }
+            else
+            {
+                printf("no");
             }
 
             free(data);

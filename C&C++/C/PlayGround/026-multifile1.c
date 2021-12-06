@@ -12,4 +12,4 @@ void main()
 }
 
 //需要将两个文件一起编译，而不需要在文件中添加引用
-//gcc 28-multifile{1,2}.c -o mfile
+//gcc 026-multifile{1,2}.c -o mfile

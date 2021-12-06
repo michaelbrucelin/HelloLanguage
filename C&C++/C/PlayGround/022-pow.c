@@ -6,10 +6,10 @@ void main()
 
     int a, p;
     printf("input base\n");
-    //a = getchar();
+    // a = getchar();
     scanf("%d", &a);
     printf("input power\n");
-    //p = getchar();
+    // p = getchar();
     scanf("%d", &p);
 
     printf("%d power %d = %d\n", a, p, mypow(a, p));
