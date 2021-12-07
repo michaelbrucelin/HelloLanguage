@@ -24,3 +24,28 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+/*
+# ./test
+没有输入参数
+
+#./test a 1 b 2
+输入了4个参数
+./test
+a
+1
+b
+2
+
+# ls
+args.c  str  str.c  test  test-c.ly  test.txt
+#./test *
+输入了6个参数
+./test
+args.c
+str
+str.c
+test
+test-c.ly
+test.txt
+*/
