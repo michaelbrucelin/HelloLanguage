@@ -56,8 +56,8 @@ elif [ "$#" -eq "1" -a "$1" == "-y" ]; then
     echo -e "\n\033[32mapt-get autoremove -y\033[0m"
     apt-get autoremove -y
 
-    echo -e "\n\033[32mapt-get clean && apt-get autoclean\033[0m"
-    apt-get clean && apt-get autoclean
+    echo -e "\n\033[32mapt-get autoclean && apt-get clean\033[0m"
+    apt-get autoclean && apt-get clean
 
     echo -e "\n"
     echo -e "\033[32mA: ${cur_uname}\033[0m"

@@ -3,10 +3,12 @@
 编译Cling，编译不过去，fatal error: ld terminated with signal 9 [Killed]，网上有说是内存不够用（>=8GB）导致的，后来没继续尝试。
 
 ## 1. 安装依赖
+
 - Python 3.6 or later
 - Jupyter Notebook
 
 ## 2. 查看jupyterlab支持的kernel
+
 ```bash
 jupyter kernelspec list
 Available kernels:
@@ -14,6 +16,7 @@ Available kernels:
 ```
 
 ## 3. 安装C++ Kernel
+
 ```bash
 # 安装Cling
 wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
@@ -37,6 +40,7 @@ jupyter-kernelspec install [--user] cling-cpp11
 ```
 
 ## 4. 再次确认
+
 ```bash
 jupyter kernelspec list
 Available kernels:
