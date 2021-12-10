@@ -19,15 +19,27 @@ RUN python2 -m pip install --upgrade pip
 RUN python2 -m pip install ipykernel
 RUN python2 -m pip cache purge
 
+# set default python
+RUN ln -sf /usr/bin/python3 /usr/bin/python
+RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
+
 # .net core 6
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN rm -f packages-microsoft-prod.deb
-RUN apt-get install -y apt-transport-https && apt-get update -y && apt-get install -y dotnet-sdk-6.0
+RUN apt-get install -y apt-transport-https && apt-get update -y && apt-get install -y dotnet-sdk-3.1 dotnet-sdk-6.0
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
-# C#/F#/PowerShell，没有安装成功
+# C#/F#/PowerShell(Prerequisite: .NET Core SDK 6.0)
 RUN dotnet tool install -g Microsoft.dotnet-interactive
-# dotnet interactive jupyter install  # 官方命令，但是官方使用的Anaconda，我这里没有使用Anaconda，命令不可用，2021-12-10
+RUN dotnet interactive jupyter install
+
+# Q#(Prerequisite: .NET Core SDK 3.1)
+RUN dotnet tool install -g Microsoft.Quantum.IQSharp
+RUN dotnet iqsharp install
+
+# NodeJS
+RUN apt-get install -y nodejs npm
 
 # clean cache
 RUN apt-get autoremove -y && apt-get autoclean -y && apt-get clean -y
