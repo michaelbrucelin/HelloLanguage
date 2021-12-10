@@ -23,7 +23,7 @@ RUN python2 -m pip cache purge
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
 
-# .net core 6
+# .Net core
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
 RUN rm -f packages-microsoft-prod.deb
