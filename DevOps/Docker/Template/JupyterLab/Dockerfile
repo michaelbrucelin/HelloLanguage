@@ -3,7 +3,7 @@ FROM debian:10
 LABEL maintainer="michaelbrucelin@gmail.com"
 
 RUN apt-get update -y
-RUN apt-get install -y wget curl gcc
+RUN apt-get install -y wget curl gcc git
 
 # python3
 RUN apt-get install -y python3 python3-dev python3-pip
@@ -38,8 +38,51 @@ RUN dotnet interactive jupyter install
 RUN dotnet tool install -g Microsoft.Quantum.IQSharp
 RUN dotnet iqsharp install
 
+# C
+RUN python3 -m pip install jupyter-c-kernel
+RUN install_c_kernel
+
+# Go
+RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz
+RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
+RUN export PATH=$PATH:/usr/local/go/bin
+RUN rm -f go1.17.5.linux-amd64.tar.gz
+# Go Jupyter
+# go env -w GOPROXY=https://goproxy.cn,direct  # Depends on the specific situation
+RUN env GO111MODULE=on go get github.com/gopherdata/gophernotes
+RUN mkdir -p ~/.local/share/jupyter/kernels/gophernotes
+RUN cd ~/.local/share/jupyter/kernels/gophernotes
+RUN cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.3/kernel/*  "."
+RUN chmod +w ./kernel.json  # in case copied kernel.json has no write permission
+RUN sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
+RUN cd ~
+
+# Java
+RUN apt-get install -y default-jdk
+# Java Jupyter
+RUN git clone https://github.com/SpencerPark/IJava.git
+RUN cd IJava/
+RUN ./gradlew installKernel
+RUN cd ~
+
+# Assembly
+RUN python3 -m pip install emu86
+RUN python3 -m kernels.intel.install
+
+# Bash
+RUN python3 -m pip install bash_kernel
+RUN python3 -m bash_kernel.install
+
 # NodeJS
 RUN apt-get install -y nodejs npm
+RUN npm cache clean -f
+RUN npm install -g n
+RUN n stable
+RUN PATH="$PATH"
+RUN npm install -g npm
+# NodeJs Jupyter
+RUN npm install -g --unsafe-perm ijavascript
+RUN ijsinstall --install=global
 
 # clean cache
 RUN apt-get autoremove -y && apt-get autoclean -y && apt-get clean -y
