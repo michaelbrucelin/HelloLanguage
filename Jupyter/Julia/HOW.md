@@ -9,7 +9,7 @@ wget https://julialang-s3.julialang.org/bin/linux/x64/1.6/julia-1.6.2-linux-x86_
 rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.6.2-linux-x86_64.tar.gz
 mv /usr/local/julia-1.6.2/ /usr/local/julia/
 export PATH=$PATH:/usr/local/julia/bin
-julia version
+julia --version
 ```
 
 - jupyter notebook

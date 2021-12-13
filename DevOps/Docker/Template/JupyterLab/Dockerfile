@@ -42,6 +42,8 @@ RUN dotnet iqsharp install
 RUN python3 -m pip install jupyter-c-kernel
 RUN install_c_kernel
 
+# C++
+
 # Go
 RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz
 RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
@@ -73,6 +75,21 @@ RUN python3 -m kernels.intel.install
 RUN python3 -m pip install bash_kernel
 RUN python3 -m bash_kernel.install
 
+# R
+RUN apt-get install -y r-base r-base-dev
+RUN Rscript -e 'install.packages("IRkernel")'
+RUN Rscript -e 'IRkernel::installspec()'
+RUN jupyter labextension install @techrah/text-shortcuts
+
+# Julia
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz
+RUN rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.7.0-linux-x86_64.tar.gz
+RUN mv /usr/local/julia-1.7.0/ /usr/local/julia/
+RUN rm -f julia-1.7.0-linux-x86_64.tar.gz
+ENV PATH="$PATH:/usr/local/julia/bin"
+# Julia Jupyter
+RUN julia -e 'using Pkg; Pkg.add("IJulia")'
+
 # NodeJS
 RUN apt-get install -y nodejs npm
 RUN npm cache clean -f
@@ -83,6 +100,13 @@ RUN npm install -g npm
 # NodeJs Jupyter
 RUN npm install -g --unsafe-perm ijavascript
 RUN ijsinstall --install=global
+
+# Ruby
+RUN apt-get install -y libtool libffi-dev ruby ruby-dev make
+RUN gem update --system
+RUN gem install rake
+RUN gem install iruby
+RUN iruby register --force
 
 # clean cache
 RUN apt-get autoremove -y && apt-get autoclean -y && apt-get clean -y

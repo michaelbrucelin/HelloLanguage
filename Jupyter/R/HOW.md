@@ -27,7 +27,11 @@ R  # 进入R cli
 ```r
 install.packages('IRkernel')
 IRkernel::installspec()  # to register the kernel in the current R installation
-jupyter labextension install @techrah/text-shortcuts  # for RStudio’s shortcuts(in Windows?)
+q()
+```
+
+```bash
+jupyter labextension install @techrah/text-shortcuts
 ```
 
 ## 4. 再次确认
