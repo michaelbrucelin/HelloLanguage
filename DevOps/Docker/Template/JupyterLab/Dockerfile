@@ -23,6 +23,9 @@ RUN python2 -m pip cache purge
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
 
+# set Jupyter plugins
+RUN jupyter labextension install @jupyterlab/debugger @jupyterlab/latex @jupyterlab/katex-extension
+
 # .Net core
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
@@ -79,6 +82,7 @@ RUN python3 -m bash_kernel.install
 RUN apt-get install -y r-base r-base-dev
 RUN Rscript -e 'install.packages("IRkernel")'
 RUN Rscript -e 'IRkernel::installspec()'
+# Jupyter plugin(for RStudio’s shortcuts: https://github.com/IRkernel/IRkernel)
 RUN jupyter labextension install @techrah/text-shortcuts
 
 # Julia

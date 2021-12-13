@@ -31,7 +31,7 @@ q()
 ```
 
 ```bash
-jupyter labextension install @techrah/text-shortcuts
+jupyter labextension install @techrah/text-shortcuts  # jupyter 插件
 ```
 
 ## 4. 再次确认
