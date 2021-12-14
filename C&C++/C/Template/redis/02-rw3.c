@@ -3,17 +3,17 @@
 
 // 对02-rw2.c进行代码重构
 
-const char *doredis(char *key, char *value, int expire)
+void doredis(char *key, char *value, int expire, char *pr, int r_len)
 {
     redisContext *c = redisConnect("localhost", 6379);
 
     if (c == NULL)
     {
-        return "Error: Connect Redis failed.";
+        strncpy(pr, "Error: Connect Redis failed.", r_len - 1);
     }
     else if (c->err)
     {
-        return c->errstr;
+        strncpy(pr, c->errstr, r_len - 1);
     }
     else
     {
@@ -32,11 +32,8 @@ const char *doredis(char *key, char *value, int expire)
 
         if (1 == exists)
         {
-            char kvalue[255];
-
             reply = redisCommand(c, "GET %s", key);
-            strcat(kvalue, reply->str);
-            strcat(kvalue, ".");
+            strncpy(pr, reply->str, r_len - 1);
             if (reply)
                 freeReplyObject(reply);
 
@@ -48,27 +45,30 @@ const char *doredis(char *key, char *value, int expire)
             */
 
             // printf("kvalue in function: %s\n", kvalue); // 加了这一行，main中就能输出结果，注释掉这一行，main中就输出空，不确认是为什么
-            result = kvalue;
         }
         else
         {
             reply = redisCommand(c, "SETEX %s %d %s", key, expire, value);
             if (reply)
                 freeReplyObject(reply);
-            result = "true";
+            strncpy(pr, "true", r_len - 1);
         }
 
         redisFree(c);
-
-        return result;
     }
+    pr[r_len - 1] = '\0';
 }
 
 int main(int argc, char *argv[])
 {
-    // const char *r = doredis("foo", "bar", 100);
-    const char *r = doredis(argv[1], argv[2], atoi(argv[3]));
-    printf("result: %s", r);
+    char result[255];
+    doredis(argv[1], argv[2], atoi(argv[3]), result, sizeof(result));
+    printf("result: %s", result);
 
     return (0);
 }
+
+/*
+TODO
+1. 调用时如果没有传参，需要特殊处理，目前结果为：Segmentation fault
+*/
