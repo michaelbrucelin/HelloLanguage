@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// 可以这样使用，但是更推荐下一种写法
 const char *calculateMonth(int month)
 {
     static char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};

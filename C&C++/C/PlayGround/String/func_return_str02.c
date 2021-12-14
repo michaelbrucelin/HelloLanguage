@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// 推荐的方式
 void calculateMonth(int month, char *pszMonth, int buffersize)
 {
     const char *months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}; // Allocated dynamically during the function call. (Can be inefficient with a bad compiler)
