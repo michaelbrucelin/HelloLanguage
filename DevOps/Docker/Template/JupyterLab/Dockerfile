@@ -9,8 +9,6 @@ RUN apt-get install -y sudo vim wget curl gcc cmake git
 RUN apt-get install -y python3 python3-dev python3-pip
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install ipython jupyterlab
-RUN python3 -m pip install numpy scipy sympy scikit-learn pandas matplotlib seaborn
-RUN python3 -m pip install pillow
 RUN python3 -m pip cache purge
 
 # python2
@@ -22,9 +20,6 @@ RUN python2 -m pip cache purge
 # set default python
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
-
-# set Jupyter plugins
-RUN jupyter labextension install @jupyterlab/debugger @jupyterlab/latex @jupyterlab/katex-extension
 
 # .Net core
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
