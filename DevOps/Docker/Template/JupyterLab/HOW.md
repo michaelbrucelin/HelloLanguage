@@ -5,6 +5,7 @@
 ## TODO
 
 - 为每一种语言配置`hello world`示例文件
+- 使用`jupyter lab --app-dir`，WORKDIR仍然在`/root/`下
 
 ## 制作Docker镜像
 
