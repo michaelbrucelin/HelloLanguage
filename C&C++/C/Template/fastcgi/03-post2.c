@@ -41,6 +41,10 @@ int main()
 /*
 # gcc 03-post2.c -o post2.cgi
 
+# curl -d 'key=mkey&expire=100' http://127.0.0.1:80/cgi-bin/post2.cgi
+<title>Hello, PostData.</title>
+key: mkey, expire: 100.
+
 网上的一些说明
 https://stackoverflow.com/questions/5451913/how-to-retrieve-form-post-data-via-cgi-bin-program-written-in-c
 
