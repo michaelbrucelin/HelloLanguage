@@ -8,19 +8,17 @@
 
 int main()
 {
-    int len;
-    char *len_, *data;
     char key[KEY_LEN];
     int expire;
 
     printf("Content-Type: text/html\n\n");
     printf("<title>Hello, PostData.</title>\n");
 
-    len_ = getenv("CONTENT_LENGTH"); // printf("\n%s\n", len_);
+    char *len_ = getenv("CONTENT_LENGTH"); // printf("\n%s\n", len_);
     if (NULL != len_)
     {
-        len = atoi(len_); // len = strtol(len_, NULL, 10);
-        data = (char *)malloc(sizeof(char) * (len + 1));
+        int len = atoi(len_); // len = strtol(len_, NULL, 10);
+        char *data = (char *)malloc(sizeof(char) * (len + 1));
         if (NULL != data)
         {
             // fgets(data, (len + 1), stdin);
