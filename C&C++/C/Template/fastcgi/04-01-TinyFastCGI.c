@@ -32,8 +32,8 @@ void main(void)
 # apt-get install libfcgi-dev  # Debian10
 # yum install fcgi-devel       # CentOS7
 
-# gcc 04-01-TinyFastCGI.c -o tinyfcgi -lfcgi
+# gcc 04-01-TinyFastCGI.c -o tinyf.cgi -lfcgi
 
-# curl http://127.0.0.1:80/cgi-bin/tinyfcgi
+# curl http://127.0.0.1:80/cgi-bin/tinyf.cgi
 <title>FastCGI Hello! (C, fcgi_stdio library)</title><h1>FastCGI Hello! (C, fcgi_stdio library)</h1>Request number 1 running on host <i>(null)</i>
 */
