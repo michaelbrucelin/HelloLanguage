@@ -43,8 +43,6 @@ void doredis(char *key, char *value, int expire, char *pr, int r_len)
             if (reply)
                 freeReplyObject(reply);
             */
-
-            // printf("kvalue in function: %s\n", kvalue); // 加了这一行，main中就能输出结果，注释掉这一行，main中就输出空，不确认是为什么
         }
         else
         {
@@ -61,6 +59,12 @@ void doredis(char *key, char *value, int expire, char *pr, int r_len)
 
 int main(int argc, char *argv[])
 {
+    if (argc != 4)
+    {
+        printf("Usage: %s key value expire.\n", argv[0]);
+        return (1);
+    }
+
     char result[255];
     doredis(argv[1], argv[2], atoi(argv[3]), result, sizeof(result));
     printf("result: %s", result);
@@ -70,5 +74,7 @@ int main(int argc, char *argv[])
 
 /*
 TODO
-1. 调用时如果没有传参，需要特殊处理，目前结果为：Segmentation fault
+判断argv[3]是否为整数
+TODO
+结果补充ttl结果，即需要连接两个字符串
 */
