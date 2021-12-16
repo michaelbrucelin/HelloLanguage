@@ -41,6 +41,9 @@ RUN python3 -m pip install jupyter-c-kernel
 RUN install_c_kernel
 
 # C++
+# 1. 没弄清楚怎样在使用Dockerfile构建镜像时交互操作（需要手动输入yes）
+# 2. 编译LLVM时间太久
+# 由于上述两点原因，C++手动编译，然后使用docker commit提交
 
 # Go
 RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz
@@ -73,22 +76,6 @@ RUN python3 -m kernels.intel.install
 RUN python3 -m pip install bash_kernel
 RUN python3 -m bash_kernel.install
 
-# R
-RUN apt-get install -y r-base r-base-dev
-RUN Rscript -e 'install.packages("IRkernel")'
-RUN Rscript -e 'IRkernel::installspec()'
-# Jupyter plugin(for RStudio’s shortcuts: https://github.com/IRkernel/IRkernel)
-RUN jupyter labextension install @techrah/text-shortcuts
-
-# Julia
-RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz
-RUN rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.7.0-linux-x86_64.tar.gz
-RUN mv /usr/local/julia-1.7.0/ /usr/local/julia/
-RUN rm -f julia-1.7.0-linux-x86_64.tar.gz
-ENV PATH="$PATH:/usr/local/julia/bin"
-# Julia Jupyter
-RUN julia -e 'using Pkg; Pkg.add("IJulia")'
-
 # NodeJS
 RUN apt-get install -y nodejs npm
 RUN npm cache clean -f
@@ -99,6 +86,23 @@ RUN npm install -g npm
 # NodeJs Jupyter
 RUN npm install -g --unsafe-perm ijavascript
 RUN ijsinstall --install=global
+
+# R
+RUN apt-get install -y r-base r-base-dev
+RUN Rscript -e 'install.packages("IRkernel")'
+RUN Rscript -e 'IRkernel::installspec()'
+# Jupyter plugin(for RStudio’s shortcuts: https://github.com/IRkernel/IRkernel)
+# need node.js and npm
+RUN jupyter labextension install @techrah/text-shortcuts
+
+# Julia
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz
+RUN rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.7.0-linux-x86_64.tar.gz
+RUN mv /usr/local/julia-1.7.0/ /usr/local/julia/
+RUN rm -f julia-1.7.0-linux-x86_64.tar.gz
+ENV PATH="$PATH:/usr/local/julia/bin"
+# Julia Jupyter
+RUN julia -e 'using Pkg; Pkg.add("IJulia")'
 
 # Ruby
 RUN apt-get install -y libtool libffi-dev ruby ruby-dev make
