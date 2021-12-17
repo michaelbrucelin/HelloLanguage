@@ -14,8 +14,19 @@ API说明：[https://neteasecloudmusicapi.vercel.app/#/?id=neteasecloudmusicapi]
 ## 镜像与容器
 
 ```bash
-docker build -t mlin/wymusic -f Dockerfile .
-docker run -d -p 3000:3000 --name mymusic mlin/wymusic
+docker build -t michaelbrucelin/wymusic -f Dockerfile .
+
+# 备份到dockerhub
+docker login
+docker push michaelbrucelin/wymusic
+docker logout
+
+# 备份到网盘
+# 使用http服务（可以使用python内建的http server）供网盘离线下载
+docker save -o /root/wymusic.docker.tar michaelbrucelin/wymusic
+docker load < /root/wymusic.docker.tar
+
+docker run -d -p 3000:3000 --name mymusic michaelbrucelin/wymusic
 ```
 
 ## 客户机环境
