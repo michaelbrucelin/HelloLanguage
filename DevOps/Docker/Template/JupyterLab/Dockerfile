@@ -41,9 +41,23 @@ RUN python3 -m pip install jupyter-c-kernel
 RUN install_c_kernel
 
 # C++
-# 1. 没弄清楚怎样在使用Dockerfile构建镜像时交互操作（需要手动输入yes）
-# 2. 编译LLVM时间太久
-# 由于上述两点原因，C++手动编译，然后使用docker commit提交
+# 编译LLVM时间太久，实在不行，可以考虑C++手动编译，然后使用docker commit提交
+RUN wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
+RUN chmod +x cpt.py
+# 自动应答yes
+RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'
+
+# 安装Cling Kernel
+ENV PATH="/cling-install-prefix/bin:$PATH"
+WORKDIR /cling-install-prefix/share/cling/Jupyter/kernel
+RUN python3 -m pip install -e .
+# register the kernelspec for C++17/C++1z/C++14/C++11:
+# the user can install whichever kernel(s) they wish:
+RUN jupyter-kernelspec install [--user] cling-cpp17
+RUN jupyter-kernelspec install [--user] cling-cpp1z
+RUN jupyter-kernelspec install [--user] cling-cpp14
+RUN jupyter-kernelspec install [--user] cling-cpp11
+WORKDIR /root/
 
 # Go
 RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz

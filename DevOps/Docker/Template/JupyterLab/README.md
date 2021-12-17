@@ -35,8 +35,8 @@ tail -f memroyrecord.txt
 ```bash
 docker build -t michaelbrucelin/jupyterlab .
 
-# docker image save -o xxx
-# docker image load
+# docker save -o name.docker.tar xxx/yyy
+# docker load < /PATH/TO/FILE
 
 docker run -d -p 8888:8888 --name mylab michaelbrucelin/jupyterlab
 
@@ -48,6 +48,8 @@ docker logs mylab  # 查看登录的token
 ### 配置系统
 
 ```bash
+docker exec -ti mylab /bin/bash
+
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
 ```
@@ -55,6 +57,8 @@ alias ll='ls -l --color=auto'
 ### 安装常用的Python包
 
 ```bash
+docker exec -ti mylab /bin/bash
+
 python3 -m pip install numpy scipy sympy scikit-learn pandas matplotlib seaborn
 python3 -m pip install pillow
 ```
@@ -68,6 +72,8 @@ python3 -m pip install pillow
 ### 安装Jupyter插件
 
 ```bash
+docker exec -ti mylab /bin/bash
+
 # set Jupyter plugins(Depend on some environment, such as nodejs)
 jupyter labextension enable
 python3 -m pip install ipympl
