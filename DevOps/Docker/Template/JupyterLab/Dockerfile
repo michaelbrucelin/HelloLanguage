@@ -8,18 +8,19 @@ RUN apt-get install -y sudo vim wget curl gcc cmake git
 # python3
 RUN apt-get install -y python3 python3-dev python3-pip
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install ipython jupyterlab
+RUN python3 -m pip install ipython jupyterlab ipywidgets qtconsole
 RUN python3 -m pip cache purge
 
-# python2
-RUN apt-get install -y python python-pip
-RUN python2 -m pip install --upgrade pip
-RUN python2 -m pip install ipykernel
-RUN python2 -m pip cache purge
+# python2，Python2安装后有各种小问题，这里就不安装python2了
+# RUN apt-get install -y python python-pip
+# RUN python2 -m pip install --upgrade pip
+# RUN python2 -m pip install ipykernel
+# RUN python2 -m pip cache purge
 
 # set default python
-RUN ln -sf /usr/bin/python3 /usr/bin/python
-RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
+# RUN ln -sf /usr/bin/python3 /usr/bin/python
+# RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
+# RUN ln -sf /usr/local/bin/ipython3 /usr/local/bin/ipython
 
 # .Net core
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
@@ -42,22 +43,20 @@ RUN install_c_kernel
 
 # C++
 # 编译LLVM时间太久，实在不行，可以考虑C++手动编译，然后使用docker commit提交
+WORKDIR /usr/local
 RUN wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
 RUN chmod +x cpt.py
 # 自动应答yes
 RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'
-
 # 安装Cling Kernel
-ENV PATH="/cling-install-prefix/bin:$PATH"
-WORKDIR /cling-install-prefix/share/cling/Jupyter/kernel
+ENV PATH="/usr/local/cling-build/builddir/bin:$PATH"
+WORKDIR /usr/local/cling-build/cling-src/tools/cling/tools/Jupyter/kernel
 RUN python3 -m pip install -e .
-# register the kernelspec for C++17/C++1z/C++14/C++11:
-# the user can install whichever kernel(s) they wish:
-RUN jupyter-kernelspec install [--user] cling-cpp17
-RUN jupyter-kernelspec install [--user] cling-cpp1z
-RUN jupyter-kernelspec install [--user] cling-cpp14
-RUN jupyter-kernelspec install [--user] cling-cpp11
-WORKDIR /root/
+RUN jupyter-kernelspec install cling-cpp17
+RUN jupyter-kernelspec install cling-cpp1z
+RUN jupyter-kernelspec install cling-cpp14
+RUN jupyter-kernelspec install cling-cpp11
+WORKDIR /root
 
 # Go
 RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz
@@ -109,6 +108,16 @@ RUN Rscript -e 'IRkernel::installspec()'
 # need node.js and npm
 RUN jupyter labextension install @techrah/text-shortcuts
 
+# php
+# 安装一直出现错误，没有解决：ERROR: Error while trying to download Jupyter-PHP dependencies with Composer.
+# https://github.com/Litipk/Jupyter-PHP
+# https://litipk.github.io/Jupyter-PHP-Installer/
+# apt-get install -y php php-dev php-common php-zmq
+# curl -sS https://getcomposer.org/installer | php
+# mv composer.phar /usr/local/bin/composer
+# wget https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar
+# php jupyter-php-installer.phar install
+
 # Julia
 RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz
 RUN rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.7.0-linux-x86_64.tar.gz
@@ -117,6 +126,11 @@ RUN rm -f julia-1.7.0-linux-x86_64.tar.gz
 ENV PATH="$PATH:/usr/local/julia/bin"
 # Julia Jupyter
 RUN julia -e 'using Pkg; Pkg.add("IJulia")'
+
+# lua
+# https://github.com/guysv/ilua
+RUN apt-get install -y lua5.3
+RUN python3 -m pip install ilua
 
 # Ruby
 RUN apt-get install -y libtool libffi-dev ruby ruby-dev make

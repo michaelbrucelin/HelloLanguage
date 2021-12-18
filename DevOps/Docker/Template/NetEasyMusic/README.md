@@ -89,10 +89,12 @@ curl -b ./cookiefile 'http://127.0.0.1:3000/scrobble?id=3920358&sourceid=2438161
 TODO
 
 1. 检验登录状态，如果没有登录，重新登录。
-2. 通过`/user/level`接口自动计算，当刷到300时，跳出循环。
+2. 播放指定歌单的歌曲。
+3. 通过`/user/level`接口自动计算，当刷到300时，跳出循环。
 
 ```bash
 curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone=13812345678&md5_password=675053bf6403c0a4531a65ac09717226' | jq
+curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
 
 lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id')
 IFS=' ' read -r -a listarr <<< ${lists}

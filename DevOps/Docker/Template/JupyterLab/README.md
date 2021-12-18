@@ -86,4 +86,17 @@ python3 -m pip install jupyterlab-snippets
 jupyter labextension install jupyterlab-snippets
 jupyter labextension install @jupyterlab/debugger @jupyterlab/debugger-extension @jupyterlab/latex @jupyterlab/katex-extension @jupyterlab/toc-extension @jupyterlab/geojson-extension
 jupyter labextension install @lckr/jupyterlab_variableinspector jupyterlab-drawio jupyterlab-execute-time jupyterlab-spreadsheet
+
+jupyter --version
+# jupyter core     : 4.6.3
+# jupyter-notebook : not installed
+# qtconsole        : not installed
+# ipython          : not installed
+# ipykernel        : not installed
+# jupyter client   : 5.3.5
+# jupyter lab      : not installed
+# nbconvert        : not installed
+# ipywidgets       : not installed
+# nbformat         : not installed
+# traitlets        : 4.3.3
 ```
