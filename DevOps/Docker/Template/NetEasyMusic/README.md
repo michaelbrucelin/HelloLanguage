@@ -101,7 +101,7 @@ IFS=' ' read -r -a listarr <<< ${lists}
 declare -i i=0
 for list in "${listarr[@]}"; do
     # 据说每天上限300首，这里每个歌单只获取310首
-    songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id=24381616&limit=310' | jq '.songs[].id')
+    songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id='"${list}"'&limit=310' | jq '.songs[].id')
     IFS=' ' read -r -a songarr <<< ${songs}
     for song in "${songarr[@]}"; do
         echo $((++i))
