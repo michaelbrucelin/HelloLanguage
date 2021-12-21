@@ -41,7 +41,7 @@ wget [--no-check-certificate] https://vault.centos.org/6.10/os/x86_64/Packages/c
 rpm -Uvh ca-certificates-2018.2.22-65.1.el6.noarch.rpm
 
 # 上述操作完成后，执行yum仍然提示证书错误，操作下面的命令
-# 还需要更新包：openssl与nss，测试使用CentOS6.8的nss包即可，有大量依赖，下面是简单整理，具体情况按实操为准
+# 还需要更新包：openssl与nss，测试使用CentOS6.8的openssl与nss包即可，其中nss有部分依赖，下面是简单整理，具体情况按实操为准
 # 只更新openssl不好用，更新了nss后问题解决，但是并没有尝试只更新nss
 wget [--no-check-certificate] https://vault.centos.org/6.8/os/x86_64/Packages/openssl-1.0.1e-48.el6.x86_64.rpm
 rpm -Uvh openssl-1.0.1e-48.el6.x86_64.rpm
