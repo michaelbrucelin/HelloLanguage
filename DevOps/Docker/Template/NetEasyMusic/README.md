@@ -6,10 +6,8 @@ API说明：[https://neteasecloudmusicapi.vercel.app/#/?id=neteasecloudmusicapi]
 
 ## TODO
 
-1. 获取歌单
-2. 获取歌单所有歌曲
-3. 播放
-4. 达到刷歌的目的
+1. Linux任务自动打卡。
+2. docker pull操作过程写入笔记。
 
 ## 镜像与容器
 
