@@ -11,12 +11,12 @@
 ```bash
 cd /etc/yum.repos.d
 mv CentOS-Base.repo CentOS-Base.repo.bak
-wget [--no-check-certificate] https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/Z_Others/CentOSVault/CentOS6/CentOS-Base.repo
+wget [--no-check-certificate] https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/CentOSVault/CentOS6/CentOS-Base.repo
 # curl -[k]o CentOS-Base.repo ... ...   # 没有wget的话可以使用curl命令，或者vi自己创建
 sed -i 's/6.10/6.8/g' CentOS-Base.repo  # 更改yum源中的版本信息
 
 # CentOS5
-# wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/Z_Others/CentOSVault/CentOS5/CentOS-Base.repo
+# wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/CentOSVault/CentOS5/CentOS-Base.repo
 # sed -i 's/5.11/5.8/g' CentOS-Base.repo
 
 # 上述操作完成后，执行yum时提示证书错误，操作下面的命令
@@ -32,7 +32,7 @@ rpm -Uvh ca-certificates-2018.2.22-65.1.el6.noarch.rpm
 ```bash
 cd /etc/yum.repos.d
 mv CentOS-Base.repo CentOS-Base.repo.bak
-wget [--no-check-certificate] https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/Z_Others/CentOSVault/CentOS6/CentOS-Base.repo
+wget [--no-check-certificate] https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/CentOSVault/CentOS6/CentOS-Base.repo
 sed -i 's/6.10/6.5/g' CentOS-Base.repo  # 更改yum源中的版本信息
 
 # 上述操作完成后，执行yum时提示证书错误，操作下面的命令
