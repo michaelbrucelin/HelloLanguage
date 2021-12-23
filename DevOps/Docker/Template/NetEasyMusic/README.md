@@ -36,8 +36,8 @@ docker run -d -p 3000:3000 --name mymusic michaelbrucelin/wymusic
 ## 客户机环境
 
 ```bash
-apt-get install curl jq
-yum install curl jq
+apt-get install curl jq moreutils
+yum install curl jq moreutils
 ```
 
 ## 常用接口
@@ -88,18 +88,7 @@ curl -b ./cookiefile 'http://127.0.0.1:3000/scrobble?id=3920358&sourceid=2438161
 
 ## 每天自动签到、听歌打卡
 
-```bash
-mkdir -p /root/PlayGround && cd /root/Playground
-cat > wymusic.sh << eof
-... ...
-eof
-
-echo '18 18 * * * bash /root/PlayGround/mymusic.sh' >> /var/spool/cron/root
-```
-
-## 手动签到、听歌打卡
-
-逻辑：获取每日推荐的歌单，通过歌单id获取歌单内的歌曲id，遍历播放。  
+需要修改脚本中的账号与密码。
 
 TODO
 
@@ -107,8 +96,21 @@ TODO
 2. 通过`/user/level`接口自动计算，当刷到300时，跳出循环。
 
 ```bash
-# 脚本在CentOS7 bash v4.2.46(2)测试可用
+# 脚本在Debian11 bash v5.1.4(1)测试可用
+mkdir -p /root/PlayGround/wymusic && cd /root/PlayGround/wymusic/
+wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/NetEasyMusic/wymusic.sh
 
+echo '18 08 * * * bash /root/PlayGround/wymusic/mymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 18 * * * bash /root/PlayGround/wymusic/mymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+```
+
+## 手动签到、听歌打卡
+
+逻辑：获取每日推荐的歌单，通过歌单id获取歌单内的歌曲id，遍历播放。  
+需要修改脚本中的账号与密码。
+
+```bash
+# 脚本在CentOS7 bash v4.2.46(2)测试可用
 curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone=13812345678&md5_password=675053bf6403c0a4531a65ac09717226' | jq
 curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
 
