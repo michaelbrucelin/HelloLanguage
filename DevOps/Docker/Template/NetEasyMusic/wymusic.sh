@@ -23,11 +23,13 @@ case "$1" in
     docker start mymusic
     # curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone=13812345678&md5_password=675053bf6403c0a4531a65ac09717226' | jq
     curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone='"${PHONE}"'&md5_password='"${PASSWORD}" | jq
+    curl -b ./cookiefile 'http://127.0.0.1:3000/user/level' | jq
     curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
     ;;
 --daka)
     docker start mymusic
     curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone='"${PHONE}"'&md5_password='"${PASSWORD}" | jq
+    curl -b ./cookiefile 'http://127.0.0.1:3000/user/level' | jq
     curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
     lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id')
     IFS=' ' read -r -a listarr <<<${lists}

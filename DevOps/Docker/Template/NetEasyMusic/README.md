@@ -100,8 +100,13 @@ TODO
 mkdir -p /root/PlayGround/wymusic && cd /root/PlayGround/wymusic/
 wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/NetEasyMusic/wymusic.sh
 
-echo '18 08 * * * bash /root/PlayGround/wymusic/mymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
-echo '18 18 * * * bash /root/PlayGround/wymusic/mymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+# /var/spool/cron/root是CentOS7中的文件，Debian11为：/var/spool/cron/crontabs/root
+echo 'CRON_TZ=GMT+0' >> /var/spool/cron/root
+echo '18 08 * * * bash /root/PlayGround/wymusic/wymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 18 * * * bash /root/PlayGround/wymusic/wymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+
+systemctl restart cron.service   # CentOS7
+systemctl restart crond.service  # Debian11
 ```
 
 ## 手动签到、听歌打卡
