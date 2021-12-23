@@ -18,7 +18,7 @@ RUN python3 -m pip cache purge
 # RUN python2 -m pip cache purge
 
 # set default python
-# RUN ln -sf /usr/bin/python3 /usr/bin/python
+RUN ln -sf /usr/bin/python3 /usr/bin/python
 # RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
 # RUN ln -sf /usr/local/bin/ipython3 /usr/local/bin/ipython
 
