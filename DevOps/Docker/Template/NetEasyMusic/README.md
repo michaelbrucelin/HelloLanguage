@@ -7,7 +7,6 @@ API说明：[https://neteasecloudmusicapi.vercel.app/#/?id=neteasecloudmusicapi]
 ## TODO
 
 1. Linux任务自动打卡。
-2. docker pull操作过程写入笔记。
 
 ## 镜像与容器
 
@@ -24,6 +23,13 @@ docker logout
 docker save -o /root/wymusic.docker.tar michaelbrucelin/wymusic
 docker load < /root/wymusic.docker.tar
 
+docker run -d -p 3000:3000 --name mymusic michaelbrucelin/wymusic
+```
+
+## 运行服务
+
+```bash
+docker pull michaelbrucelin/wymusic
 docker run -d -p 3000:3000 --name mymusic michaelbrucelin/wymusic
 ```
 
@@ -80,7 +86,18 @@ curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id=24381616&limit
 curl -b ./cookiefile 'http://127.0.0.1:3000/scrobble?id=3920358&sourceid=24381616&time=256'
 ```
 
-## 听歌打卡
+## 每天自动签到、听歌打卡
+
+```bash
+mkdir -p /root/PlayGround && cd /root/Playground
+cat > wymusic.sh << eof
+... ...
+eof
+
+echo '18 18 * * * bash /root/PlayGround/mymusic.sh' >> /var/spool/cron/root
+```
+
+## 手动签到、听歌打卡
 
 逻辑：获取每日推荐的歌单，通过歌单id获取歌单内的歌曲id，遍历播放。  
 
