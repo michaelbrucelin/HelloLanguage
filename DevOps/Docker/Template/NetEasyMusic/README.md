@@ -102,14 +102,14 @@ wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps
 
 # 在CentOS7中设置例行任务
 echo 'CRON_TZ=Asia/Shanghai' >> /var/spool/cron/root
-echo '18 08 * * * bash /root/PlayGround/wymusic/wymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
-echo '18 18 * * * bash /root/PlayGround/wymusic/wymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 08 * * * cd /root/PlayGround/wymusic/; bash /root/PlayGround/wymusic/wymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 18 * * * cd /root/PlayGround/wymusic/; bash /root/PlayGround/wymusic/wymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
 # systemctl start crond.service
 
 # 在Debian11中设置例行任务
 # echo '???=Asia/Shanghai' >> /var/spool/cron/crontabs/root  # Debian 11中测试没通过，手动计算时间吧
-echo '18 08 * * * bash /root/PlayGround/wymusic/wymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
-echo '18 18 * * * bash /root/PlayGround/wymusic/wymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 08 * * * cd /root/PlayGround/wymusic/; bash /root/PlayGround/wymusic/wymusic.sh --qiandao | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 18 * * * cd /root/PlayGround/wymusic/; bash /root/PlayGround/wymusic/wymusic.sh --daka | ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
 # systemctl start cron.service
 ```
 
