@@ -2,6 +2,8 @@
 FROM debian:10
 LABEL maintainer="michaelbrucelin@gmail.com"
 
+WORKDIR /root
+
 RUN apt-get update -y
 RUN apt-get install -y sudo vim wget curl gcc cmake git
 
@@ -49,7 +51,7 @@ RUN chmod +x cpt.py
 # 自动应答yes，执行的返回值不为0，但是可以忽略，故使用exit 0来屏蔽
 RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'; exit 0
 # 安装Cling Kernel
-ENV PATH="/usr/local/cling-build/builddir/bin:$PATH"
+ENV PATH="${PATH}:/usr/local/cling-build/builddir/bin"
 WORKDIR /usr/local/cling-build/cling-src/tools/cling/tools/Jupyter/kernel
 RUN python3 -m pip install -e .
 RUN jupyter-kernelspec install cling-cpp17
@@ -94,7 +96,7 @@ RUN apt-get install -y nodejs npm
 RUN npm cache clean -f
 RUN npm install -g n
 RUN n stable
-ENV PATH="$PATH"
+ENV PATH="${PATH}"
 RUN npm install -g npm
 # NodeJs Jupyter
 RUN npm install -g --unsafe-perm ijavascript
@@ -118,12 +120,21 @@ RUN jupyter labextension install @techrah/text-shortcuts
 # wget https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar
 # php jupyter-php-installer.phar install
 
+# https://github.com/Rabrennie/jupyter-php-kernel
+RUN apt-get install -y php php-dev php-common php-zmq
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+ENV PATH="${PATH}:/root/.config/composer/vendor/bin"
+RUN composer global require rabrennie/jupyter-php-kernel
+RUN jupyter-php-kernel --install
+RUN composer clearcache
+
 # Julia
 RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.0-linux-x86_64.tar.gz
 RUN rm -rf /usr/local/julia && tar -C /usr/local -xzf julia-1.7.0-linux-x86_64.tar.gz
 RUN mv /usr/local/julia-1.7.0/ /usr/local/julia/
 RUN rm -f julia-1.7.0-linux-x86_64.tar.gz
-ENV PATH="$PATH:/usr/local/julia/bin"
+ENV PATH="${PATH}:/usr/local/julia/bin"
 # Julia Jupyter
 RUN julia -e 'using Pkg; Pkg.add("IJulia")'
 
