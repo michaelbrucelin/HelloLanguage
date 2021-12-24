@@ -8,7 +8,7 @@ RUN apt-get install -y sudo vim wget curl gcc cmake git
 # python3
 RUN apt-get install -y python3 python3-dev python3-pip
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install ipython jupyterlab ipywidgets qtconsole
+RUN python3 -m pip install ipython jupyter jupyterlab ipywidgets qtconsole
 RUN python3 -m pip cache purge
 
 # python2，Python2安装后有各种小问题，这里就不安装python2了
@@ -18,7 +18,7 @@ RUN python3 -m pip cache purge
 # RUN python2 -m pip cache purge
 
 # set default python
-RUN ln -sf /usr/bin/python3 /usr/bin/python
+# RUN ln -sf /usr/bin/python3 /usr/bin/python
 # RUN ln -sf /usr/local/bin/pip3 /usr/local/bin/pip
 # RUN ln -sf /usr/local/bin/ipython3 /usr/local/bin/ipython
 
@@ -46,8 +46,8 @@ RUN install_c_kernel
 WORKDIR /usr/local
 RUN wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
 RUN chmod +x cpt.py
-# 自动应答yes
-RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'
+# 自动应答yes，执行的返回值不为0，但是可以忽略，故使用exit 0来屏蔽
+RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'; exit 0
 # 安装Cling Kernel
 ENV PATH="/usr/local/cling-build/builddir/bin:$PATH"
 WORKDIR /usr/local/cling-build/cling-src/tools/cling/tools/Jupyter/kernel
