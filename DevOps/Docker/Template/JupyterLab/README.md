@@ -33,6 +33,7 @@ tail -f memroyrecord.txt
 ### 制作镜像并运行容器
 
 ```bash
+wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/JupyterLab/Dockerfile
 docker build -t michaelbrucelin/jupyterlab .
 
 # docker save -o name.docker.tar xxx/yyy

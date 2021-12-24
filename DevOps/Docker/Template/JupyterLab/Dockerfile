@@ -67,19 +67,19 @@ RUN rm -f go1.17.5.linux-amd64.tar.gz
 # RUN go env -w GOPROXY=https://goproxy.cn,direct  # Depends on the specific situation
 RUN env GO111MODULE=on go get github.com/gopherdata/gophernotes
 RUN mkdir -p ~/.local/share/jupyter/kernels/gophernotes
-WORKDIR /root/.local/share/jupyter/kernels/gophernotes/
+WORKDIR /root/.local/share/jupyter/kernels/gophernotes
 RUN cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.3/kernel/*  "."
 RUN chmod +w ./kernel.json  # in case copied kernel.json has no write permission
 RUN sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
-WORKDIR /root/
+WORKDIR /root
 
 # Java
 RUN apt-get install -y default-jdk
 # Java Jupyter
 RUN git clone https://github.com/SpencerPark/IJava.git
-WORKDIR /root/IJava/
+WORKDIR /root/IJava
 RUN ./gradlew installKernel
-WORKDIR /root/
+WORKDIR /root
 
 # Assembly
 RUN python3 -m pip install emu86
@@ -143,8 +143,10 @@ RUN iruby register --force
 RUN apt-get autoremove -y && apt-get autoclean -y && apt-get clean -y
 
 VOLUME /home/playground
-WORKDIR /home/playground/
+WORKDIR /home/playground
 
 EXPOSE 8888
 
 ENTRYPOINT [ "jupyter", "lab", "--allow-root", "--no-browser", "--ip", "0.0.0.0", "--port", "8888" ]
+
+WORKDIR /root
