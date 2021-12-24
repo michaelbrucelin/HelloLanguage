@@ -46,7 +46,7 @@ docker logout
 docker save -o /root/jupyterlab.docker.tar michaelbrucelin/jupyterlab
 docker load < /root/jupyterlab.docker.tar
 
-docker run -d -p 8888:8888 --name mylab michaelbrucelin/jupyterlab
+docker run -d -p 8888:8888 --name mylab -v /PATH/TO/CODE:/home/playground michaelbrucelin/jupyterlab
 docker logs mylab  # 查看登录的token
 ```
 
