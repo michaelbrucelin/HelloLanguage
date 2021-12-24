@@ -36,11 +36,17 @@ tail -f memroyrecord.txt
 wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/JupyterLab/Dockerfile
 docker build -t michaelbrucelin/jupyterlab .
 
-# docker save -o name.docker.tar xxx/yyy
-# docker load < /PATH/TO/FILE
+# 备份到dockerhub
+docker login
+docker push michaelbrucelin/jupyterlab
+docker logout
+
+# 备份到网盘
+# 使用http服务供网盘离线下载（python内建的http server失败了几次，不确认是因为文件太大不稳定还是什么其他原因，最后用的nginx解决的）
+docker save -o /root/jupyterlab.docker.tar michaelbrucelin/jupyterlab
+docker load < /root/jupyterlab.docker.tar
 
 docker run -d -p 8888:8888 --name mylab michaelbrucelin/jupyterlab
-
 docker logs mylab  # 查看登录的token
 ```
 

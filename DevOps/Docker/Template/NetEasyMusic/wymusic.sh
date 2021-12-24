@@ -31,12 +31,12 @@ case "$1" in
     curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone='"${PHONE}"'&md5_password='"${PASSWORD}" | jq
     curl -b ./cookiefile 'http://127.0.0.1:3000/user/level' | jq
     curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
-    lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id')
+    lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id' | xargs)
     IFS=' ' read -r -a listarr <<<${lists}
     count=$((400 + 1 + $RANDOM % 112)) # random 401~512，每天上限300首，这里随机播放400~512首
     declare -i i=0
     for list in "${listarr[@]}"; do
-        songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id='"${list}"'&limit='"${count}" | jq '.songs[].id')
+        songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id='"${list}"'&limit='"${count}" | jq '.songs[].id' | xargs)
         IFS=' ' read -r -a songarr <<<${songs}
         for song in "${songarr[@]}"; do
             echo $((++i))

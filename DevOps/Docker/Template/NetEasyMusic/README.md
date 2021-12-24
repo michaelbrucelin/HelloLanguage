@@ -123,13 +123,13 @@ echo '18 18 * * * cd /root/PlayGround/wymusic/; bash /root/PlayGround/wymusic/wy
 curl -c ./cookiefile 'http://127.0.0.1:3000/login/cellphone?phone=13812345678&md5_password=675053bf6403c0a4531a65ac09717226' | jq
 curl -b ./cookiefile 'http://127.0.0.1:3000/daily_signin?type=0' | jq
 
-lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id')
+lists=$(curl -b ./cookiefile 'http://127.0.0.1:3000/recommend/resource' | jq '.recommend[].id' | xargs)
 IFS=' ' read -r -a listarr <<< ${lists}   # 播放每日推荐的歌曲
 # declare -a listarr=("id1" "id2" "id3")  # 播放指定歌单的歌曲
 declare -i i=0
 for list in "${listarr[@]}"; do
     # 据说每天上限300首，这里每个歌单只获取310首
-    songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id='"${list}"'&limit=310' | jq '.songs[].id')
+    songs=$(curl -b ./cookiefile 'http://127.0.0.1:3000/playlist/track/all?id='"${list}"'&limit=310' | jq '.songs[].id' | xargs)
     IFS=' ' read -r -a songarr <<< ${songs}
     for song in "${songarr[@]}"; do
         echo $((++i))
