@@ -34,19 +34,24 @@ tail -f memroyrecord.txt
 
 ```bash
 wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/JupyterLab/Dockerfile
-docker build -t michaelbrucelin/jupyterlab .
+docker build -t michaelbrucelin/jupyterlab:cpp .
+# 将Dockerfile中C++（Cling）部分注释掉，做一个不包含C++的镜像，Cling层空间47.5GB，太大了
+docker build -t michaelbrucelin/jupyterlab:nocpp .
 
 # 备份到dockerhub
 docker login
-docker push michaelbrucelin/jupyterlab
+docker push michaelbrucelin/jupyterlab:cpp
+docker push michaelbrucelin/jupyterlab:nocpp
 docker logout
 
 # 备份到网盘
 # 使用http服务供网盘离线下载（python内建的http server失败了几次，不确认是因为文件太大不稳定还是什么其他原因，最后用的nginx解决的）
-docker save -o /root/jupyterlab.docker.tar michaelbrucelin/jupyterlab
-docker load < /root/jupyterlab.docker.tar
+docker save -o /root/jupyterlab.cpp.docker.tar michaelbrucelin/jupyterlab:cpp
+docker load < /root/jupyterlab.cpp.docker.tar
+docker save -o /root/jupyterlab.nocpp.docker.tar michaelbrucelin/jupyterlab:nocpp
+docker load < /root/jupyterlab.nocpp.docker.tar
 
-docker run -d -p 8888:8888 --name mylab -v /PATH/TO/CODE:/home/playground michaelbrucelin/jupyterlab
+docker run -d -p 8888:8888 --name mylab -v /PATH/TO/CODE:/home/playground michaelbrucelin/jupyterlab:[no]cpp
 docker logs mylab  # 查看登录的token
 ```
 
