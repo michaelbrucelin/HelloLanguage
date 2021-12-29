@@ -70,6 +70,7 @@ alias ll='ls -l --color=auto'
 
 ```bash
 docker exec -ti mylab /bin/bash
+cd
 
 python3 -m pip install numpy scipy sympy scikit-learn pandas matplotlib seaborn
 python3 -m pip install pillow
@@ -80,11 +81,13 @@ python3 -m pip install pillow
 - 第一次登录在浏览器页面中设置登录密码
 - 关闭左下角的Simple选项
 - 自动补全：`Settings`——>`Auto Close Brackets`
+- 左侧目录树，关闭`Last Modified`列
 
 ### 安装Jupyter插件
 
 ```bash
 docker exec -ti mylab /bin/bash
+cd
 
 # set Jupyter plugins(Depend on some environment, such as nodejs)
 jupyter labextension enable
@@ -100,15 +103,18 @@ jupyter labextension install @jupyterlab/debugger @jupyterlab/debugger-extension
 jupyter labextension install @lckr/jupyterlab_variableinspector jupyterlab-drawio jupyterlab-execute-time jupyterlab-spreadsheet
 
 jupyter --version
-# jupyter core     : 4.6.3
-# jupyter-notebook : not installed
-# qtconsole        : not installed
-# ipython          : not installed
-# ipykernel        : not installed
-# jupyter client   : 5.3.5
-# jupyter lab      : not installed
-# nbconvert        : not installed
-# ipywidgets       : not installed
-# nbformat         : not installed
-# traitlets        : 4.3.3
+# Selected Jupyter core packages...
+# IPython          : 7.30.1
+# ipykernel        : 6.6.0
+# ipywidgets       : 7.6.5
+# jupyter_client   : 7.1.0
+# jupyter_core     : 4.9.1
+# jupyter_server   : 1.13.1
+# jupyterlab       : 3.2.5
+# nbclient         : 0.5.9
+# nbconvert        : 6.3.0
+# nbformat         : 5.1.3
+# notebook         : 6.4.6
+# qtconsole        : 5.2.2
+# traitlets        : 5.1.1
 ```
