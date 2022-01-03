@@ -63,3 +63,46 @@ rpm -Uvh nss-softokn-freebl-3.14.3-23.el6_7.x86_64.rpm
 rpm -Uvh nss-softokn-3.14.3-23.el6_7.x86_64.rpm
 rpm -Uvh nss-3.21.0-8.el6.x86_64.rpm nss-sysinit-3.21.0-8.el6.x86_64.rpm nss-tools-3.21.0-8.el6.x86_64.rpm
 ```
+
+## 其他信息
+
+[https://thycotic.force.com/centrifysupport/Article/KB-11461-Centrify-Yum-repo-fails-with-Errno-14-problem-making-ssl-connection/](https://thycotic.force.com/centrifysupport/Article/KB-11461-Centrify-Yum-repo-fails-with-Errno-14-problem-making-ssl-connection/)
+
+KB-11461: Centrify Yum repo fails with [Errno 14] problem making ssl connection  
+Product:Authentication Service ,  Published:  
+2 October,21 at 04:34 AM
+
+Rating:  
+Problem:
+
+Centrify Yum repo is failing with the following error:
+
+[Errno 14] problem making ssl connection
+
+Cause:  
+On RHEL based systems (6.7 or older) when the above error is seen, it is caused by support for TLS 1.0 and 1.1 being deprecated for SSL
+
+Resolution:  
+To force SSL to start using TLS v1.2, the following packages plus any of dependencies must be updated to the latest:
+
+- yum
+- curl
+- openssl
+- nss
+
+From command prompt as root or root equivalent user run the following commands:
+
+1) yum-config-manager --disable centrify.repo
+2) yum clean all
+3) yum update yum
+4) yum update curl
+5) yum update openssl
+6) yum update nss
+7) yum-config-manager --enable centrify.repo
+
+Note:  
+For more information on the deprecated TLS 1.0 and 1.1 support, please see below link. (provided as a courtesy)  
+[https://jfrog.com/knowledge-base/why-am-i-failing-to-work-with-jfrog-saas-service-with-tls-1-0-1-1/](https://jfrog.com/knowledge-base/why-am-i-failing-to-work-with-jfrog-saas-service-with-tls-1-0-1-1/)
+
+For more information on using Centrify Yum Repo:  
+[https://www.centrify.com/support/customer-support-portal/repos/](https://www.centrify.com/support/customer-support-portal/repos/)
