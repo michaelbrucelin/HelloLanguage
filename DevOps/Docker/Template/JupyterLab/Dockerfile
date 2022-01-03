@@ -5,7 +5,7 @@ LABEL maintainer="michaelbrucelin@gmail.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y sudo vim wget curl gcc cmake git
+RUN apt-get install -y sudo vim wget curl cmake gcc g++ git build-essential gdb
 
 # python3
 RUN apt-get install -y python3 python3-dev python3-pip
@@ -49,7 +49,8 @@ WORKDIR /usr/local
 RUN wget https://raw.githubusercontent.com/root-project/cling/master/tools/packaging/cpt.py
 RUN chmod +x cpt.py
 # 自动应答yes，执行的返回值不为0，但是可以忽略，故使用exit 0来屏蔽
-RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'; exit 0
+# RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/'; exit 0
+RUN /bin/bash -c '/bin/echo -e "yes" | ./cpt.py --check-requirements && ./cpt.py --create-dev-env release --with-workdir=./cling-build/'; exit 0
 # 安装Cling Kernel
 ENV PATH="${PATH}:/usr/local/cling-build/builddir/bin"
 WORKDIR /usr/local/cling-build/cling-src/tools/cling/tools/Jupyter/kernel
