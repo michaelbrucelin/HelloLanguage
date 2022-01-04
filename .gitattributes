@@ -3,11 +3,11 @@
 
 Jupyter/Python/Book/**/* linguist-vendored
 
-C#/Project/E-Cology7/OAWorkflow/Web?References/OA/Reference.cs linguist-vendored
-C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowService/Reference.cs linguist-vendored
-C#/Project/TempProject/**/*.html linguist-vendored
+Language/C#/Project/E-Cology7/OAWorkflow/Web?References/OA/Reference.cs linguist-vendored
+Language/C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowService/Reference.cs linguist-vendored
+Language/C#/Project/TempProject/**/*.html linguist-vendored
 
-Python/PlayGround/demo/**/*.html linguist-vendored
-Python/Project/**/*.html linguist-vendored
+Language/Python/PlayGround/demo/**/*.html linguist-vendored
+Language/Python/Project/**/*.html linguist-vendored
 
 Jupyter/Python/Book/利用Python进行数据分析/data/datasets/fec/P00000001-ALL.csv filter=lfs diff=lfs merge=lfs -text
