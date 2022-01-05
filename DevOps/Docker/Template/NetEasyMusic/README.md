@@ -102,14 +102,40 @@ wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps
 
 # 在CentOS7中设置例行任务
 echo 'CRON_TZ=Asia/Shanghai' >> /var/spool/cron/root
-echo '18 08 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --qiandao | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
-echo '18 18 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '08 08 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --qiandao | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 08 * * 1 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 09 * * 2 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 10 * * 3 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 11 * * 4 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 12 * * 5 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 13 * * 6 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 14 * * 7 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 15 * * 1 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 16 * * 2 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 17 * * 3 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 18 * * 4 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 19 * * 5 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 20 * * 6 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
+echo '18 21 * * 7 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/root
 # systemctl start crond.service
 
 # 在Debian11中设置例行任务
 # echo '???=Asia/Shanghai' >> /var/spool/cron/crontabs/root  # Debian 11中测试没通过，手动计算时间吧
-echo '18 08 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --qiandao | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
-echo '18 18 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '08 08 * * * /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --qiandao | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 08 * * 1 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 09 * * 2 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 10 * * 3 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 11 * * 4 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 12 * * 5 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 13 * * 6 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 14 * * 7 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 15 * * 1 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 16 * * 2 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 17 * * 3 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 18 * * 4 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 19 * * 5 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 20 * * 6 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
+echo '18 21 * * 7 /usr/bin/bash /root/PlayGround/wymusic/wymusic.sh --daka | /usr/bin/ts >> /root/PlayGround/wymusic/log.txt 2>&1' >> /var/spool/cron/crontabs/root
 # systemctl start cron.service
 ```
 
