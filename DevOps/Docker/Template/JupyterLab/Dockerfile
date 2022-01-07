@@ -62,10 +62,10 @@ RUN jupyter-kernelspec install cling-cpp11
 WORKDIR /root
 
 # Go
-RUN wget https://dl.google.com/go/go1.17.5.linux-amd64.tar.gz
-RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
+RUN wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
+RUN rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
 ENV PATH="${PATH}:/usr/local/go/bin"
-RUN rm -f go1.17.5.linux-amd64.tar.gz
+RUN rm -f go1.17.6.linux-amd64.tar.gz
 # Go Jupyter
 # RUN go env -w GOPROXY=https://goproxy.cn,direct  # Depends on the specific situation
 RUN env GO111MODULE=on go get github.com/gopherdata/gophernotes
