@@ -12,7 +12,7 @@
 ### 为宿主机添加一个大的虚拟内存
 
 配置`C++`交互式语言环境时报错：  
-执行命令：`./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug --with-workdir=./cling-build/`  
+执行命令：`./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug|release --with-workdir=./cling-build/`  
 报错信息：`collect2: fatal error: ld terminated with signal 9 [killed]`  
 据说是因为`LLVM`非常耗内存导致的（宿主机8G内存），下面使用添加虚拟内存的方式解决
 
