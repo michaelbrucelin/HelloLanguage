@@ -71,7 +71,7 @@ RUN rm -f go1.17.6.linux-amd64.tar.gz
 RUN env GO111MODULE=on go get github.com/gopherdata/gophernotes
 RUN mkdir -p ~/.local/share/jupyter/kernels/gophernotes
 WORKDIR /root/.local/share/jupyter/kernels/gophernotes
-RUN cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.3/kernel/*  "."
+RUN cp "$(go env GOPATH)"/pkg/mod/github.com/gopherdata/gophernotes@v0.7.4/kernel/*  "."
 RUN chmod +w ./kernel.json  # in case copied kernel.json has no write permission
 RUN sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
 WORKDIR /root

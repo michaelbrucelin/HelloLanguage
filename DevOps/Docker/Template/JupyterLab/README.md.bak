@@ -11,35 +11,47 @@
 
 ### 为宿主机添加一个大的虚拟内存
 
-如果主机内存较小，添加一个大的虚拟内存，可以避免编译过程因为内存不足导致错误。
+配置`C++`交互式语言环境时报错：  
+执行命令：`./cpt.py --check-requirements && ./cpt.py --create-dev-env Debug|release --with-workdir=./cling-build/`  
+报错信息：`collect2: fatal error: ld terminated with signal 9 [killed]`  
+据说是因为`LLVM`非常耗内存导致的（宿主机8G内存），下面使用添加虚拟内存的方式解决
 
 ```bash
-dd if=/dev/zero of=/tmp/swaptmp bs=1M count=32678
+dd if=/dev/zero of=/tmp/swaptmp bs=1M count=32678  # 32GB，使用了一次16GB，仍然报错
 mkswap /tmp/swaptmp
 free
 swapon /tmp/swaptmp
 free
 # swapoff /tmp/swaptmp
 # rm -f /tmp/swaptmp
+
+# 执行到配置C++环境时，可以监控一下内存的使用
+while true; do free -h >> memroyrecord.txt; sleep 1s; done
+tail -f memroyrecord.txt
 ```
 
 ### 制作镜像并运行容器
 
 ```bash
 wget https://raw.githubusercontent.com/michaelbrucelin/HelloLanguage/main/DevOps/Docker/Template/JupyterLab/Dockerfile
-docker build -t michaelbrucelin/jupyterlab .
+docker build -t michaelbrucelin/jupyterlab:cpp .
+# 将Dockerfile中C++（Cling）部分注释掉，做一个不包含C++的镜像，Cling层空间47.5GB，太大了
+docker build -t michaelbrucelin/jupyterlab:nocpp .
 
 # 备份到dockerhub
 docker login
-docker push michaelbrucelin/jupyterlab
+docker push michaelbrucelin/jupyterlab:cpp
+docker push michaelbrucelin/jupyterlab:nocpp
 docker logout
 
 # 备份到网盘
 # 使用http服务供网盘离线下载（python内建的http server失败了几次，不确认是因为文件太大不稳定还是什么其他原因，最后用的nginx解决的）
-docker save -o /root/jupyterlab.docker.tar michaelbrucelin/jupyterlab
-docker load < /root/jupyterlab.docker.tar
+docker save -o /root/jupyterlab.cpp.docker.tar michaelbrucelin/jupyterlab:cpp
+docker load < /root/jupyterlab.cpp.docker.tar
+docker save -o /root/jupyterlab.nocpp.docker.tar michaelbrucelin/jupyterlab:nocpp
+docker load < /root/jupyterlab.nocpp.docker.tar
 
-docker run -d -p 8888:8888 --name mylab -v /PATH/TO/CODE:/home/playground michaelbrucelin/jupyterlab
+docker run -d -p 8888:8888 --name mylab -v /PATH/TO/CODE:/home/playground michaelbrucelin/jupyterlab:[no]cpp
 docker logs mylab  # 查看登录的token
 ```
 
