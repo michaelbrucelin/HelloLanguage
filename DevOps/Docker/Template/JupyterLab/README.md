@@ -92,17 +92,17 @@ jupyter labextension install @lckr/jupyterlab_variableinspector jupyterlab-drawi
 
 jupyter --version
 # Selected Jupyter core packages...
-# IPython          : 7.30.1
-# ipykernel        : 6.6.0
+# IPython          : 7.31.0
+# ipykernel        : 6.6.1
 # ipywidgets       : 7.6.5
 # jupyter_client   : 7.1.0
 # jupyter_core     : 4.9.1
-# jupyter_server   : 1.13.1
-# jupyterlab       : 3.2.5
+# jupyter_server   : 1.13.2
+# jupyterlab       : 3.2.7
 # nbclient         : 0.5.9
-# nbconvert        : 6.3.0
+# nbconvert        : 6.4.0
 # nbformat         : 5.1.3
-# notebook         : 6.4.6
+# notebook         : 6.4.7
 # qtconsole        : 5.2.2
 # traitlets        : 5.1.1
 ```
