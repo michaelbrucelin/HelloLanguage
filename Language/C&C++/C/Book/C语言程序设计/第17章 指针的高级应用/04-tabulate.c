@@ -14,6 +14,7 @@ int main(void)
     scanf("%lf", &final);
     printf("Enter increment: ");
     scanf("%lf", &increment);
+
     printf("\n x cos(x)"
            "\n ------- -------\n");
     tabulate(cos, initial, final, increment);
@@ -22,7 +23,6 @@ int main(void)
     tabulate(sin, initial, final, increment);
     printf("\n x tan(x)"
            "\n ------- -------\n");
-
     tabulate(tan, initial, final, increment);
 
     return 0;
