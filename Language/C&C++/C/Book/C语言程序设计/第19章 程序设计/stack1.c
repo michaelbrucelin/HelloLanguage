@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "stack.h"
 
+/*
+用数组实现栈
+*/
+
 #define STACK_SIZE 100
 
 static int contents[STACK_SIZE];
@@ -41,7 +45,3 @@ int pop(void)
         terminate("Error in pop: stack is empty.");
     return contents[--top];
 }
-
-/*
-用数组实现栈
-*/
