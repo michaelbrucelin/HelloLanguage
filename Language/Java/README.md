@@ -3,9 +3,9 @@
 ## 安装jdk
 
 ```bash
-apt install default-jdk  # default-jre
-java --version   # 运行时
-javac --version  # 编译器
+apt-get install default-jdk  # default-jre
+java --version               # 运行时
+javac --version              # 编译器
 ```
 
 ## 创建java console项目
