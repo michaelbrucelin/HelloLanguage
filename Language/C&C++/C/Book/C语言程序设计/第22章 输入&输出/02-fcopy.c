@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 
     while ((ch = getc(source_fp)) != EOF)
         putc(ch, dest_fp);
+
     fclose(source_fp);
     fclose(dest_fp);
 
