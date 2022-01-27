@@ -21,7 +21,6 @@ import com.TimeUtil;
  */
 public class UdpReceiver { // udp接受数据
     public static void main(String[] args) {
-
         DoInsert doin = new DoInsert();
         Thread a = new Thread(doin);
         a.start();
