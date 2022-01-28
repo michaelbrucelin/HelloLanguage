@@ -22,6 +22,8 @@ public class UDP_Receiver {
 		while (true) {
 			// 接收数据
 			ds.receive(dp);
+			if (dp == null)
+				continue;
 
 			// 处理接收来的数据
 			byte datas[] = dp.getData();

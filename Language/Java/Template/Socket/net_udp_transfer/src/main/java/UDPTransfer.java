@@ -6,6 +6,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /*
+	https://www.fatalerrors.org/a/java-udp-receive-data-send-data.html
 	The steps of sending data by UDP are as follows:
 		1. Create a Socket object (datagram Socket) on the sender side
 		2. Create data and package it
