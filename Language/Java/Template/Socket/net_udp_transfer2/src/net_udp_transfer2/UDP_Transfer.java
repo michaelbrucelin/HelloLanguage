@@ -15,6 +15,10 @@ public class UDP_Transfer {
 		// 创建UDP网络对象
 		DatagramSocket ds = new DatagramSocket();
 
+		InetAddress address = InetAddress.getByName("127.0.0.1");
+		int port = 12306;
+		DatagramPacket dp = new DatagramPacket(new byte[] {}, 0, address, port);
+
 		while (true) {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			// System.out.print("Enter a string to send");
@@ -22,10 +26,9 @@ public class UDP_Transfer {
 
 			// 打包待发送的数据
 			byte[] bys = s.getBytes();
-			int len = bys.length;
-			InetAddress address = InetAddress.getByName("127.0.0.1");
-			int port = 12306;
-			DatagramPacket dp = new DatagramPacket(bys, len, address, port);
+			// DatagramPacket dp = new DatagramPacket(bys, bys.length, address, port);
+			dp.setData(bys);
+			dp.setLength(bys.length);
 
 			// 发送数据
 			ds.send(dp);
