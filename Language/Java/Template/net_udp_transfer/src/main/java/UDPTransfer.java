@@ -23,7 +23,7 @@ public class UDPTransfer {
 		// Construct a packet and send the length packet to the specified port number on the specified host
 		byte[] bys = "hello, udp".getBytes();
 		int len = bys.length;
-		InetAddress address = InetAddress.getByName("192.168.119.53");
+		InetAddress address = InetAddress.getByName("127.0.0.1");
 		int port = 10086; // Port number
 		DatagramPacket dp = new DatagramPacket(bys, len, address, port);
 
