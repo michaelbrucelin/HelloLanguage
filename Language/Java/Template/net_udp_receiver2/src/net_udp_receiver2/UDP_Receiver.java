@@ -31,7 +31,7 @@ public class UDP_Receiver {
 			if (Arrays.asList("quit", "exit").contains(dataString.toLowerCase())) {
 				break;
 			} else {
-				System.out.println("The data are as follows: " + dataString);
+				System.out.println(dataString);
 			}
 		}
 

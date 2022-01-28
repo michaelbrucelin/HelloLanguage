@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class UDP_Transfer {
 	public static void main(String[] args) throws IOException {
 		System.out.println("udp transfer is start to listen.");
-		
+
 		// 创建UDP网络对象
 		DatagramSocket ds = new DatagramSocket();
 
@@ -20,18 +20,18 @@ public class UDP_Transfer {
 			// System.out.print("Enter a string to send");
 			String s = br.readLine();
 
+			// 打包待发送的数据
+			byte[] bys = s.getBytes();
+			int len = bys.length;
+			InetAddress address = InetAddress.getByName("127.0.0.1");
+			int port = 12306;
+			DatagramPacket dp = new DatagramPacket(bys, len, address, port);
+
+			// 发送数据
+			ds.send(dp);
+
 			if (Arrays.asList("quit", "exit").contains(s.toLowerCase())) {
 				break;
-			} else {
-				// 打包待发送的数据
-				byte[] bys = s.getBytes();
-				int len = bys.length;
-				InetAddress address = InetAddress.getByName("127.0.0.1");
-				int port = 12306;
-				DatagramPacket dp = new DatagramPacket(bys, len, address, port);
-
-				// 发送数据
-				ds.send(dp);
 			}
 		}
 
