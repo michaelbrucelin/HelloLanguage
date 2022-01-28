@@ -33,3 +33,7 @@ int main(void)
 
     thrd_exit(0);
 }
+
+/*
+gcc 01-mthrs.c -lpthread
+*/
