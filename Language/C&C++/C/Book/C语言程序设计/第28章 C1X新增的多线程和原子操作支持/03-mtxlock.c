@@ -12,9 +12,10 @@ int thrd_proc1(void *arg)
 
     for (size_t x = 0; x < 5000; x++)
     {
-        mtx_lock(&mtx);
-        counter += 1;
-        mtx_unlock(&mtx);
+        mtx_lock(&mtx);   // 相当于t-sql中的begin tran
+        counter += 1;     // 从C的角度看这里是一个步骤，但是在汇编层面是3个步骤，所以当与下面的 counter -= 1; 并行运行时，就可能出错了。
+                          // 前后2行代码保证这条语句的原子性，道理与关系型数据库中的事务是一样的。
+        mtx_unlock(&mtx); // 相当于t-sql中的commit tran
         thrd_sleep(&interv, 0);
     }
 

@@ -11,7 +11,7 @@ int thrd_proc1(void *arg)
 
     for (size_t x = 0; x < 5000; x++)
     {
-        counter += 1;
+        counter += 1; // 从C的角度看这里是一个步骤，但是在汇编层面是3个步骤，所以当与下面的 counter -= 1; 并行运行时，就可能出错了。
         thrd_sleep(&interv, 0);
     }
 
