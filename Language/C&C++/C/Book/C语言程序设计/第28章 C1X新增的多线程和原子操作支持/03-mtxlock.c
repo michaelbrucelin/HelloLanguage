@@ -1,4 +1,5 @@
 // mtxlock.c---2021
+// 互斥锁应用的实例
 
 #include <stdio.h>
 #include <threads.h>

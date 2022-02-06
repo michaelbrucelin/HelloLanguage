@@ -1,4 +1,5 @@
 // mthrs.c---2021
+// 多线程同时运行的实例
 
 #include <stdio.h>
 #include <threads.h>

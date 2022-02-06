@@ -1,4 +1,5 @@
 // condcoop.c---2021
+// 使用条件变量等待和激活线程的实例
 
 #include <stdio.h>
 #include <threads.h>

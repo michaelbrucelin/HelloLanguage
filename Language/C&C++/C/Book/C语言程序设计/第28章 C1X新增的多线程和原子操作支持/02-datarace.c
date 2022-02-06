@@ -1,4 +1,5 @@
 // datarace.c---2021
+// 多线程引发数据竞争的实例
 
 #include <stdio.h>
 #include <threads.h>

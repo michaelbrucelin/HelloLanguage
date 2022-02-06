@@ -1,4 +1,5 @@
 // thrdcoop.c---2021
+// 线程间协作的实例
 
 #include <stdio.h>
 #include <threads.h>
@@ -8,7 +9,7 @@ mtx_t mtx;
 
 int thrd_task1(void *arg)
 {
-    thrd_sleep(&(struct timespec){3, 0}, 0);
+    thrd_sleep(&(struct timespec){3, 0}, 0); // 线程挂起 3 second 0 nanoseconds
     data1 = 12000;
 
 again:
@@ -28,7 +29,7 @@ again:
 
 int thrd_task2(void *arg)
 {
-    thrd_sleep(&(struct timespec){2, 0}, 0);
+    thrd_sleep(&(struct timespec){2, 0}, 0); // 线程挂起 2 second 0 nanoseconds
     data2 = 306;
 
 again:
