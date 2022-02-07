@@ -1,4 +1,5 @@
 // thrdloca.c---2021
+// 线程存储期变量使用实例
 
 #include <stdio.h>
 #include <threads.h>

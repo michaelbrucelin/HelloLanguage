@@ -1,4 +1,5 @@
 // callonce.c---2021
+// 单次调用的实例
 
 #include <stdio.h>
 #include <threads.h>
@@ -6,7 +7,7 @@
 int data1 = -1, data2 = -1;
 mtx_t mtx;
 cnd_t cnd;
-once_flag flag1 = ONCE_FLAG_INIT, flag2 = ONCE_FLAG_INIT;
+once_flag flag_init = ONCE_FLAG_INIT, flag_print = ONCE_FLAG_INIT;
 
 void do_init(void)
 {
@@ -22,17 +23,19 @@ void do_print(void)
 
 int thrd_task1(void *arg)
 {
-    call_once(&flag1, do_init);
+    call_once(&flag_init, do_init);
 
     thrd_sleep(&(struct timespec){3, 0}, 0);
     data1 = 12000;
 
     mtx_lock(&mtx);
+
     if (data2 != -1)
         cnd_signal(&cnd);
     else
         cnd_wait(&cnd, &mtx);
-    call_once(&flag2, do_print);
+    call_once(&flag_print, do_print);
+
     mtx_unlock(&mtx);
 
     return 0;
@@ -40,17 +43,19 @@ int thrd_task1(void *arg)
 
 int thrd_task2(void *arg)
 {
-    call_once(&flag1, do_init);
+    call_once(&flag_init, do_init);
 
     thrd_sleep(&(struct timespec){2, 0}, 0);
     data2 = 306;
 
     mtx_lock(&mtx);
+
     if (data1 != -1)
         cnd_signal(&cnd);
     else
         cnd_wait(&cnd, &mtx);
-    call_once(&flag2, do_print);
+    call_once(&flag_print, do_print);
+
     mtx_unlock(&mtx);
 
     return 0;

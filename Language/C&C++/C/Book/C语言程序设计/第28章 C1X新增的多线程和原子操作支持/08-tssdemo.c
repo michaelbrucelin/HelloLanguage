@@ -1,4 +1,5 @@
 // tssdemo.c---2021
+// 为线程分配专属储存空间的实例
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -14,11 +14,13 @@ int thrd_task1(void *arg)
     data1 = 12000;
 
     mtx_lock(&mtx);
+
     if (data2 != -1)
-        cnd_signal(&cnd);
+        cnd_signal(&cnd); // 激活条件变量
     else
-        cnd_wait(&cnd, &mtx);
+        cnd_wait(&cnd, &mtx); // 释放锁并阻塞当前线程，直到条件变量被（其他线程的）cnd_signal()或cnd_broadcast()激活，然后再次加锁
     printf("%d\n", data1 + data2);
+
     mtx_unlock(&mtx);
 
     return 0;
@@ -30,11 +32,13 @@ int thrd_task2(void *arg)
     data2 = 306;
 
     mtx_lock(&mtx);
+
     if (data1 != -1)
-        cnd_signal(&cnd);
+        cnd_signal(&cnd); // 激活条件变量
     else
-        cnd_wait(&cnd, &mtx);
+        cnd_wait(&cnd, &mtx); // 释放锁并阻塞当前线程，直到条件变量被（其他线程的）cnd_signal()或cnd_broadcast()激活，然后再次加锁
     printf("%d\n", data1 + data2);
+
     mtx_unlock(&mtx);
 
     return 0;

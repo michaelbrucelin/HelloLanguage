@@ -1,4 +1,5 @@
 // spinlock.c---2021
+// 基于原子类型的自旋锁的实例
 
 #include <stdio.h>
 #include <threads.h>

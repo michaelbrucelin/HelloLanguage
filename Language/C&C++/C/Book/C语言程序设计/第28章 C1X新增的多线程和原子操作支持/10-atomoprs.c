@@ -1,4 +1,5 @@
 // atomoprs.c---2021
+// 用原子操作函数更新共享变量的实例
 
 #include <stdio.h>
 #include <threads.h>

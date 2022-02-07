@@ -1,9 +1,10 @@
 // atomic.c---2021
+// 用运算符+=和-=修改原子变量的实例
 
 #include <stdio.h>
 #include <threads.h>
 
-_Atomic long long counter = 0;
+_Atomic long long counter = 0; // 原子变量，与02-datarace.c相比，只是这里做个修改
 
 int thrd_proc1(void *arg)
 {
@@ -11,7 +12,7 @@ int thrd_proc1(void *arg)
 
     for (size_t x = 0; x < 5000; x++)
     {
-        counter += 1;
+        counter += 1; // 需要使用 += 操作符，如果改为 counter = counter + 1; 则会出错，并不能保证操作的原子性
         thrd_sleep(&interv, 0);
     }
 
@@ -24,7 +25,7 @@ int thrd_proc2(void *arg)
 
     for (size_t x = 0; x < 5000; x++)
     {
-        counter -= 1;
+        counter -= 1; // 需要使用 -= 操作符，如果改为 counter = counter - 1; 则会出错，并不能保证操作的原子性
         thrd_sleep(&interv, 0);
     }
 
