@@ -1,10 +1,19 @@
 import java.io.*;
 import java.net.*;
+import java.util.zip.GZIPInputStream;
 
-// https://stackoverflow.com/questions/1359689/how-to-send-http-request-in-java
+// 与Post.java一样，只是支持了gzip请求并自动处理
+public class Post2 {
+    public static void main(String[] args) throws Exception {
+        String targetURL = "http://mlintest.test.test:8080/external/server/GetCurrentCall";
+        String jsonData = "{}";
 
-public class Post0 {
-    public static String executePost(String targetURL, String urlParameters) {
+        String currentcall = executePost(targetURL, jsonData);
+        System.out.println(currentcall.length());
+        // System.out.println(currentcall);
+    }
+
+    public static String executePost(String targetURL, String jsonData) {
         HttpURLConnection connection = null;
 
         try {
@@ -12,22 +21,21 @@ public class Post0 {
             URL url = new URL(targetURL);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            connection.setRequestProperty("Content-Length", Integer.toString(urlParameters.getBytes().length));
-            connection.setRequestProperty("Content-Language", "en-US");
+            connection.setRequestProperty("Content-Type", "text/html;charset=UTF-8"); // VOS3000要求的
+            connection.setRequestProperty("Accept-Encoding", "gzip");
 
             connection.setUseCaches(false);
             connection.setDoOutput(true);
 
             // Send request
             DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-            wr.writeBytes(urlParameters);
+            wr.writeBytes(jsonData);
             wr.close();
 
             // Get Response
-            InputStream is = connection.getInputStream();
+            InputStream is = new GZIPInputStream(connection.getInputStream());
             BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
+            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5-
             String line;
             while ((line = rd.readLine()) != null) {
                 response.append(line);
