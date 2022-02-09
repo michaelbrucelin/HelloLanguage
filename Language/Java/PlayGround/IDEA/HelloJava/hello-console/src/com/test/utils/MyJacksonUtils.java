@@ -10,6 +10,7 @@ public class MyJacksonUtils {
     private static ObjectMapper mapper = new ObjectMapper();
 
     static {
+        // 在反序列化时忽略在Json中存在但JavaBean中不存在的字段
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 

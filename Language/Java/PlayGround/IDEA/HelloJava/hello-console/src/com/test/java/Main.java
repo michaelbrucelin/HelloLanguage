@@ -2,7 +2,6 @@ package com.test.java;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import com.test.utils.MyFileUtils;
 import com.test.utils.MyJacksonUtils;
