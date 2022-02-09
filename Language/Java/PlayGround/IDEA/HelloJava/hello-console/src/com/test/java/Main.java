@@ -1,0 +1,26 @@
+package com.test.java;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import com.test.utils.MyFileUtils;
+import com.test.utils.MyJacksonUtils;
+import com.test.models.CurrentCall;
+import com.test.models.CurrentCallQ;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        // System.out.println("Hello World!");
+
+        String filePath = new File("").getAbsolutePath();
+        // System.out.println(filePath);
+        String currentCallStr = MyFileUtils.readFile(filePath + "/hello-console/src/com/test/resources/currentcall567.json");
+        System.out.println("=============================== 1 yes");
+
+        CurrentCallQ currentCall = MyJacksonUtils.json2Bean(currentCallStr, CurrentCallQ.class);
+        System.out.println("=============================== 2 yes");
+        
+        System.out.println(currentCall.infoCurrentCallQs.size());
+    }
+}

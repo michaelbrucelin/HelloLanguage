@@ -1,0 +1,725 @@
+{
+  "retCode": 0,
+  "infoCurrentCalls": [
+    {
+      "callerE164": "Test_8968_19056291876",
+      "calleeE164": "(#0001831)977972986810",
+      "callerGatewayId": "xhtest_WE",
+      "calleeGatewayId": "P00-01831",
+      "connectedTime": 1644371178001,
+      "keepTime": 3753711,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 g711Alaw64K g711Ulaw64K DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:2.56.213.191",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:23.106.63.81",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57887061
+    },
+    {
+      "callerE164": "XH00001Q1765CS23053#98#19056291876",
+      "calleeE164": "977972986810",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644371177791,
+      "keepTime": 3753921,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.75  Audio:136.243.131.215",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:144.126.147.116",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57887117
+    },
+    {
+      "callerE164": "Test_8968_17154235286",
+      "calleeE164": "(#0001831)977972901511",
+      "callerGatewayId": "xhtest_WE",
+      "calleeGatewayId": "P00-01831",
+      "connectedTime": 1644371687943,
+      "keepTime": 3243769,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 g711Alaw64K g711Ulaw64K DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:2.56.213.191",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:23.106.63.81",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57961065
+    },
+    {
+      "callerE164": "XH00001Q1765CS23053#06#17154235286",
+      "calleeE164": "977972901511",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644371687734,
+      "keepTime": 3243978,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.75  Audio:136.243.131.215",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:164.68.97.239",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57961142
+    },
+    {
+      "callerE164": "Test_8998_966507856340",
+      "calleeE164": "(#0002121)96772692658",
+      "callerGatewayId": "xhtest_SY",
+      "calleeGatewayId": "P00-02121",
+      "connectedTime": 1644371842781,
+      "keepTime": 3088931,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:185.22.172.159",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:134.119.180.155",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57986033
+    },
+    {
+      "callerE164": "XH00001Q5033CS03043#30#966507856340",
+      "calleeE164": "96772692658",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644371841789,
+      "keepTime": 3089923,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.74  Audio:168.119.67.188",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:144.126.147.116",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 57986194
+    },
+    {
+      "callerE164": "Test_8968_971566936445",
+      "calleeE164": "(#0001831)977972145781",
+      "callerGatewayId": "xhtest_WE",
+      "calleeGatewayId": "P00-01831",
+      "connectedTime": 1644372056428,
+      "keepTime": 2875284,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 g711Alaw64K g711Ulaw64K DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:2.56.213.191",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:23.106.63.81",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58009877
+    },
+    {
+      "callerE164": "XH00001Q1765CS23053#27#971566936445",
+      "calleeE164": "977972145781",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644372056218,
+      "keepTime": 2875494,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.75  Audio:136.243.131.215",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:207.244.225.111",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58009905
+    },
+    {
+      "callerE164": "Test_8998_+97336005190",
+      "calleeE164": "(#0002121)96772708947",
+      "callerGatewayId": "xhtest_SY",
+      "calleeGatewayId": "P00-02121",
+      "connectedTime": 1644372451571,
+      "keepTime": 2480141,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:185.22.172.159",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:134.119.180.155",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58068205
+    },
+    {
+      "callerE164": "XH00001Q5033CS03043#95#97336005190",
+      "calleeE164": "96772708947",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644372451070,
+      "keepTime": 2480642,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.74  Audio:168.119.67.186",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:144.126.147.116",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58068573
+    },
+    {
+      "callerE164": "Test_8968_8615574754084",
+      "calleeE164": "(#0001831)977972624372",
+      "callerGatewayId": "xhtest_WE",
+      "calleeGatewayId": "P00-01831",
+      "connectedTime": 1644372715904,
+      "keepTime": 2215808,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 g711Alaw64K g711Ulaw64K DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:2.56.213.191",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:23.106.63.81",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58099584
+    },
+    {
+      "callerE164": "XH00001Q1765CS23053#30#8615574754084",
+      "calleeE164": "977972624372",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644372715694,
+      "keepTime": 2216018,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.75  Audio:136.243.131.215",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:164.68.97.239",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58099607
+    },
+    {
+      "callerE164": "Test_8998_33662040678",
+      "calleeE164": "(#0002121)96772054878",
+      "callerGatewayId": "xhtest_SY",
+      "calleeGatewayId": "P00-02121",
+      "connectedTime": 1644372863221,
+      "keepTime": 2068491,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:185.22.172.159",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:134.119.180.155",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58108496
+    },
+    {
+      "callerE164": "XH00001Q5033CS03043#96#33662040678",
+      "calleeE164": "96772054878",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644372862736,
+      "keepTime": 2068976,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.74  Audio:168.119.67.186",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:144.126.147.116",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58108576
+    },
+    {
+      "callerE164": "Test_8998_96898629281",
+      "calleeE164": "(#0002121)96772814779",
+      "callerGatewayId": "xhtest_SY",
+      "calleeGatewayId": "P00-02121",
+      "connectedTime": 1644372960212,
+      "keepTime": 1971500,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 g711Ulaw64K g711Alaw64K gsmFullRate DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.112  Audio:185.22.172.159",
+      "calleeRtpIp": "SIP 203.90.232.83  Audio:134.119.180.155",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "Asterisk PBX 13.38.3",
+      "calleeTerminal": "VOS5000 V2.1.5.23",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58117695
+    },
+    {
+      "callerE164": "XH00001Q5033CS03043#27#96898629281",
+      "calleeE164": "96772814779",
+      "callerGatewayId": "xhback_XH",
+      "calleeGatewayId": "XH00001",
+      "connectedTime": 1644372959751,
+      "keepTime": 1971961,
+      "callCodec": "Audio:g729 ",
+      "callerCodec": "Audio:g729 DTMF:RFC2833",
+      "calleeCodec": "Audio:g729 DTMF:RFC2833",
+      "callerRtpIp": "SIP 203.90.232.74  Audio:168.119.67.179",
+      "calleeRtpIp": "SIP 203.90.232.112  Audio:144.126.147.116",
+      "callerReceiveDtmf": -1,
+      "callerSendDtmf": 0,
+      "calleeReceiveDtmf": -1,
+      "calleeSendDtmf": 0,
+      "rtpRouted": false,
+      "callerInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowAudio": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "calleeInfoRtpFlowVideo": {
+        "rtpPackets": 0,
+        "rtpBytes": 0,
+        "rtpDuration": 0
+      },
+      "callerTerminal": "VOS5000 V2.1.5.23",
+      "calleeTerminal": "Asterisk PBX 13.38.3",
+      "callerCryptoType": 0,
+      "calleeCryptoType": 0,
+      "callerLocalIp": "203.90.232.126",
+      "calleeLocalIp": "203.90.232.126",
+      "callId": 58117762
+    }
+  ]
+}
