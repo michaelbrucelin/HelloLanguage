@@ -18,9 +18,9 @@ public class Main {
         String currentCallStr = MyFileUtils.readFile(filePath + "/hello-console/src/com/test/resources/currentcall567.json");
         System.out.println("=============================== 1 yes");
 
-        CurrentCallQ currentCall = MyJacksonUtils.json2Bean(currentCallStr, CurrentCallQ.class);
+        CurrentCall currentCall = MyJacksonUtils.json2Bean(currentCallStr, CurrentCall.class);
         System.out.println("=============================== 2 yes");
-        
-        System.out.println(currentCall.infoCurrentCallQs.size());
+
+        System.out.println(currentCall.infoCurrentCalls.size());
     }
 }
