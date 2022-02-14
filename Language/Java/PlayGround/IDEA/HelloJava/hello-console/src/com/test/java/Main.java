@@ -6,7 +6,6 @@ import java.io.IOException;
 import com.test.utils.MyFileUtils;
 import com.test.utils.MyJacksonUtils;
 import com.test.models.CurrentCall;
-import com.test.models.CurrentCallQ;
 
 public class Main {
     public static void main(String[] args) throws IOException {
