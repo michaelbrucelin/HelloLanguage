@@ -39,7 +39,7 @@ public class Post2 {
             String line;
             while ((line = rd.readLine()) != null) {
                 response.append(line);
-                response.append('\r');
+                response.append('\n');
             }
             rd.close();
 

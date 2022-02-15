@@ -36,7 +36,7 @@ public class Post {
             String line;
             while ((line = rd.readLine()) != null) {
                 response.append(line);
-                response.append('\r');
+                response.append('\n');
             }
             rd.close();
 
