@@ -1,4 +1,4 @@
-package com.test.java;
+package com.test.StartPoint;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import com.test.utils.MyFileUtils;
 import com.test.utils.MyJacksonUtils;
 import com.test.models.CurrentCall;
 
-public class Main {
+public class StartPoint {
     public static void main(String[] args) throws IOException {
         // System.out.println("Hello World!");
 
