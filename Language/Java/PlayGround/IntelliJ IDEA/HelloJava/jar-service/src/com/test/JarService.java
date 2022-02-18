@@ -17,13 +17,15 @@ public class JarService {
         int i = 0;
         int j = r.nextInt(49) + 16;  // 16 - 64
 
-        System.out.println("JarService will stop " + j + " seconds later.");
+        LocalDateTime instance = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        Path path = Paths.get("/tmp/test.txt");
+
+        String info = "JarService will stop " + j + " seconds later.\n";
+        Files.write(path, info.getBytes(), APPEND);
 
         while (i++ < j) {
-            LocalDateTime instance = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            Path path = Paths.get("/tmp/test.txt");
-            String info = i + ".\t" + formatter.format(instance) + "\n";
+            info = i + ".\t" + formatter.format(instance) + "\n";
             Files.write(path, info.getBytes(), APPEND);
 
             try {
