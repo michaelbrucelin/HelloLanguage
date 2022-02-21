@@ -17,7 +17,7 @@ public class JarService {
         int i = 0;
         int j = r.nextInt(49) + 16;  // 16 - 64
 
-        LocalDateTime instance = LocalDateTime.now();
+        LocalDateTime instance;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         Path path = Paths.get("/tmp/test.txt");
 
@@ -25,6 +25,7 @@ public class JarService {
         Files.write(path, info.getBytes(), APPEND);
 
         while (i++ < j) {
+            instance = LocalDateTime.now();
             info = i + ".\t" + formatter.format(instance) + "\n";
             Files.write(path, info.getBytes(), APPEND);
 
