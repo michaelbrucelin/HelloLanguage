@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 部署服务的模板，自己编写的，可以按照自己的需要修改。
+# 将jar包部署为Linux服务，并保证服务异常挂掉后会自动重启。
 
 # chkconfig: 35 99 00
 ms:2345:respawn:/bin/sh /usr/bin/service_name
@@ -10,9 +10,8 @@ export PATH
 
 LANG=C
 
-dir=""
-cmd=""
-user=""
+dir="/etc/jar-service"
+cmd="/usr/bin/java -jar $dir/service_name.jar"
 
 name=$(basename $0)
 pid_file="/var/run/$name.pid"
@@ -33,11 +32,8 @@ start() {
     else
         echo "starting service $name... ..."
         cd "$dir"
-        if [ -z "$user" ]; then
-            sudo $cmd >>"$stdout_log" 2>>"$stderr_log" &
-        else
-            sudo -u "$user" $cmd >>"$stdout_log" 2>>"$stderr_log" &
-        fi
+        $cmd >>"$stdout_log" 2>>"$stderr_log" &
+
         echo $! >"$pid_file"
         if ! is_running; then
             echo "service $name unable to start, see $stdout_log and $stderr_log"
