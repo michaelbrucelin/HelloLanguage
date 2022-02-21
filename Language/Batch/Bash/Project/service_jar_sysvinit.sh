@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # 将jar包部署为Linux服务，并保证服务异常挂掉后会自动重启。
+# service_id:2345:respawn:/bin/bash /etc/init.d/service_name start
 
 # chkconfig: 35 99 00
-ms:2345:respawn:/bin/sh /usr/bin/service_name
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 export PATH
