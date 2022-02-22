@@ -3,6 +3,9 @@
 # 部署服务的模板，自己整理编写的，可以按照自己的需要修改，适用于CentOS5以及更早的CentOS操作系统。
 # 将下面一行添加到/etc/inittab文件中，可以实现服务异常挂掉后自动重启（没有测试）。
 # service_id:2345:respawn:/bin/bash /etc/init.d/service_name start
+# 将此脚本放在/etc/init.d/目录下，并且命名为service_name
+# chmod 755 /etc/init.d/service_name
+# chkconfig --add service_name
 
 # chkconfig: 35 99 00
 ms:2345:respawn:/bin/sh /usr/bin/service_name
