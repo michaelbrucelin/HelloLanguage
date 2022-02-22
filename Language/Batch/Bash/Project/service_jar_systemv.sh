@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 将jar包部署为Linux服务，并保证服务异常挂掉后会自动重启。
+# 将jar包部署为Linux服务，并保证服务异常挂掉后会自动重启，适用于CentOS5以及更早的CentOS操作系统。
 # 将下面一行添加到/etc/inittab文件中，可以实现服务异常挂掉后自动重启（没有测试）。
 # service_id:2345:respawn:/bin/bash /etc/init.d/service_name start
 

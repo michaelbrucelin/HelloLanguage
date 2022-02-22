@@ -1,0 +1,22 @@
+# 部署服务的模板，自己整理编写的，可以按照自己的需要修改，适用于CentOS7以及更高的CentOS操作系统。
+# 没有完成，实际部署时再做整理。
+
+[Unit]
+Description=Java Jar Process Restart Upstart Script
+After=auditd.service systemd-user-sessions.service time-sync.target
+
+[Service]
+User=root
+TimeoutStartSec=0
+Type=simple
+KillMode=process
+export JAVA_HOME=/opt/java/jdk-9
+export PATH=$PATH:$JAVA_HOME/bin
+WorkingDirectory=/tmp/test
+ExecStart=/opt/java/jdk-9/bin/java -jar /tmp/test/test.jar
+Restart=always
+RestartSec=2
+LimitNOFILE=5555
+
+[Install]
+WantedBy=multi-user.target
