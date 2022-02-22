@@ -1,18 +1,18 @@
 #!/bin/sh
 
-# 部署服务的模板，自己编写的，可以按照自己的需要修改。
+# 将jar包部署为Linux服务，并保证服务异常挂掉后会自动重启。
+# 将下面一行添加到/etc/inittab文件中，可以实现服务异常挂掉后自动重启（没有测试）。
+# service_id:2345:respawn:/bin/bash /etc/init.d/service_name start
 
 # chkconfig: 35 99 00
-ms:2345:respawn:/bin/sh /usr/bin/service_name
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 export PATH
 
 LANG=C
 
-dir=""
-cmd=""
-user=""
+dir="/etc/jar-service"
+cmd="/usr/bin/java -jar $dir/service_name.jar"
 
 name=$(basename $0)
 pid_file="/var/run/$name.pid"
@@ -33,11 +33,8 @@ start() {
     else
         echo "starting service $name... ..."
         cd "$dir"
-        if [ -z "$user" ]; then
-            sudo $cmd >>"$stdout_log" 2>>"$stderr_log" &
-        else
-            sudo -u "$user" $cmd >>"$stdout_log" 2>>"$stderr_log" &
-        fi
+        $cmd >>"$stdout_log" 2>>"$stderr_log" &
+
         echo $! >"$pid_file"
         if ! is_running; then
             echo "service $name unable to start, see $stdout_log and $stderr_log"
