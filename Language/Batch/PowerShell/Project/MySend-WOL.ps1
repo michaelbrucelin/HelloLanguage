@@ -1,29 +1,24 @@
 function MySend-WOL {
-    <#
-    .SYNOPSIS
-        Send a WOL packet to a broadcast address
-    .PARAMETER mac
-        The MAC address of the device that need to wake up
-    .PARAMETER ip
-        The IP address where the WOL packet will be sent to
-    .EXAMPLE 
-        MySend-WOL -mac 00:11:32:21:2D:11 -ip 192.168.8.255
-    #>
-
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $True, Position = 1)]
-        [string]$mac,
-        [string]$ip = "255.255.255.255",
-        [int]$port = 9
+    # 发送魔术包，实现局域网远程开机
+    Param (
+        [Parameter(Mandatory = $true, HelpMessage = 'format: XX-XX-XX-XX-XX-XX|XX:XX:XX:XX:XX:XX|XX.XX.XX.XX.XX.XX|XXXXXXXXXXXX')]
+        [ValidatePattern('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')]
+        [string] $Mac,
+        [string]$HostOrIp = "255.255.255.255"
     )
-    $broadcast = [Net.IPAddress]::Parse($ip)
 
-    $mac = (($mac.replace(":", "")).replace("-", "")).replace(".", "").replace(" ", "")
-    $target = 0, 2, 4, 6, 8, 10 | % { [convert]::ToByte($mac.substring($_, 2), 16) }
-    $packet = (, [byte]255 * 6) + ($target * 16)
+    $Boardcast = [System.Net.Dns]::GetHostAddresses($HostOrIp)
+    $Address = [System.Net.IPAddress]::Parse($Boardcast)
+    $EndPoints = New-Object System.Net.IPEndPoint($Address, 50000)
 
-    $UDPclient = new-Object System.Net.Sockets.UdpClient
-    $UDPclient.Connect($broadcast, $port)
-    [void]$UDPclient.Send($packet, 102)
+    $Message = "FFFFFFFFFFFF"
+    $Mac = (($Mac.Replace(":", "")).replace("-", "")).replace(".", "").replace(" ", "")
+    for ($i = 0; $i -le 16; $i++) {
+        $Message += $Mac
+    }
+
+    $Socket = New-Object System.Net.Sockets.UDPClient
+    $EncodedText = [Text.Encoding]::ASCII.GetBytes($Message)
+    $SendMessage = $Socket.Send($EncodedText, $EncodedText.Length, $EndPoints)
+    $Socket.Close()
 }
