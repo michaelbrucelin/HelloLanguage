@@ -28,6 +28,6 @@ hs_err_pid*
 
 # IntelliJ project files
 .idea
-*.iml
+# *.iml  # IntelliJ Idea 项目配置文件
 out
 gen
