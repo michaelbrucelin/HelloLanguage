@@ -1,8 +1,10 @@
 # 启动Jupyter notebook(.net)
 
-1. 安装.net core sdk 5
-2. 安装jupyter
-3. 查看jupyter支持的kernel
+## 1. 安装.net core sdk 5
+
+## 2. 安装jupyter
+
+## 3. 查看jupyter支持的kernel
 
 ```bash
 jupyter kernelspec list
@@ -10,7 +12,7 @@ Available kernels:
   python3    /usr/local/share/jupyter/kernels/python3
 ```
 
-4. 添加.net kernel源
+## 4. 添加.net kernel源
 
 <https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json> 是最新的发行版
 
@@ -18,13 +20,13 @@ Available kernels:
 dotnet tool install -g --add-source "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json" Microsoft.dotnet-interactive
 ```
 
-5. 安装.net kernel
+## 5. 安装.net kernel
 
 ```bash
 dotnet interactive jupyter install
 ```
 
-6. 再次确认
+## 6. 再次确认
 
 ```bash
 jupyter kernelspec list
@@ -35,7 +37,7 @@ Available kernels:
   python3            /usr/local/share/jupyter/kernels/python3
 ```
 
-7. 启动
+## 7. 启动
 
 ```bash
 cd /root/GithubProjects/HelloLanguage/Python/PlayGround/jupyter
