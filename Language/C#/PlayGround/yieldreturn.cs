@@ -1,10 +1,15 @@
-
 using System.Collections.Generic;
+using System.Linq;
 
-namespace MyTestNameSpace
+namespace PlayGround
 {
-    public class MyBasic
+    public class YieldReturn
     {
+        public static void Main()
+        {
+            Enumerable.Range(1, 10).ToList().ForEach(i => System.Console.WriteLine(i));
+        }
+
         public static IEnumerable<string> GeneratedStrings()
         {
             int i = 0;
