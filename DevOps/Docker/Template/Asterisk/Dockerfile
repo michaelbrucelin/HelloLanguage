@@ -24,18 +24,12 @@ RUN cd /usr/local/ && \
     rm -rf asterisk-13.38.3 asterisk-13.38.3.tar.gz && \
     cd /usr/lib/asterisk/modules && \
     wget http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so && \
-    wget http://asterisk.hosting.lv/bin/codec_g723-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so && \
-    cd /etc/asterisk/ && \
-    mv /etc/asterisk/sip.conf /etc/asterisk/sip.conf.bak && \
-    mv /etc/asterisk/ooh323.conf /etc/asterisk/ooh323.conf.bak && \
-    mv /etc/asterisk/extensions.conf /etc/asterisk/extensions.conf.bak && \
-    mv /etc/asterisk/func_odbc.conf /etc/asterisk/func_odbc.conf.bak && \
-    mv /etc/asterisk/res_odbc.conf /etc/asterisk/res_odbc.conf.bak
+    wget http://asterisk.hosting.lv/bin/codec_g723-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so
 
-WORKDIR /root/
-
-EXPOSE 5060/tcp 5060/udp 10000-20000/udp
+EXPOSE 5060/tcp 5060/udp 10000-10999/udp
 
 VOLUME ["/etc/asterisk", "/var/log/asterisk"]
+
+WORKDIR /root/
 
 ENTRYPOINT ["/etc/init.d/asterisk", "start"]
