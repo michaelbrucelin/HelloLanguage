@@ -18,7 +18,7 @@ RUN cd /usr/local/ && \
     make && \
     make install && \
     # make samples && \
-    make config && \
+    # make config && \
     # make dist-clean && \
     cd /usr/local/ && \
     rm -rf asterisk-13.38.3 asterisk-13.38.3.tar.gz && \
@@ -32,4 +32,5 @@ VOLUME ["/etc/asterisk", "/var/log/asterisk"]
 
 WORKDIR /root/
 
-ENTRYPOINT ["/etc/init.d/asterisk", "start"]
+# ENTRYPOINT ["/etc/init.d/asterisk", "start"]
+ENTRYPOINT ["/usr/sbin/asterisk", "-fp"]
