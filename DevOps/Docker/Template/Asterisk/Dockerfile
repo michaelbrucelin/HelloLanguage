@@ -17,14 +17,18 @@ RUN cd /usr/local/ && \
     menuselect/menuselect --enable chan_ooh323 menuselect.makeopts && \
     make && \
     make install && \
-    # make samples && \
+    make samples && \
     # make config && \
     # make dist-clean && \
     cd /usr/local/ && \
     rm -rf asterisk-13.38.3 asterisk-13.38.3.tar.gz && \
     cd /usr/lib/asterisk/modules && \
     wget http://asterisk.hosting.lv/bin/codec_g729-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so && \
-    wget http://asterisk.hosting.lv/bin/codec_g723-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so
+    wget http://asterisk.hosting.lv/bin/codec_g723-ast130-gcc4-glibc2.2-x86_64-core2-sse4.so && \
+    cd /etc/asterisk/ && \
+    mv /etc/asterisk/sip.conf /etc/asterisk/sip.conf.bak && \
+    mv /etc/asterisk/rtp.conf /etc/asterisk/rtp.conf.bak && \
+    mv /etc/asterisk/extensions.conf /etc/asterisk/extensions.conf.bak
 
 EXPOSE 5060/tcp 5060/udp 10000-10999/udp
 
