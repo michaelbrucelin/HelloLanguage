@@ -4,7 +4,7 @@ LABEL maintainer="michaelbrucelin@gmail.com"
 
 RUN yum -y install epel-release && \
     yum -y install wget gcc gcc-c++ make ncurses-devel libuuid-devel libcurl-devel jansson-devel libxml2-devel sqlite-devel \
-                   unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel && \
+    unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel && \
     yum clean all && \
     rm -rf /var/cache/yum/*
 
@@ -17,7 +17,7 @@ RUN cd /usr/local/ && \
     menuselect/menuselect --enable chan_ooh323 menuselect.makeopts && \
     make && \
     make install && \
-    make samples && \
+    # make samples && \
     make config && \
     # make dist-clean && \
     cd /usr/local/ && \
@@ -34,9 +34,8 @@ RUN cd /usr/local/ && \
 
 WORKDIR /root/
 
-EXPOSE 5060
-EXPOSE 10000-20000/udp
+EXPOSE 5060/tcp 5060/udp 10000-20000/udp
 
-VOLUME /var/log/asterisk
+VOLUME ["/etc/asterisk", "/var/log/asterisk"]
 
 ENTRYPOINT ["/etc/init.d/asterisk", "start"]
