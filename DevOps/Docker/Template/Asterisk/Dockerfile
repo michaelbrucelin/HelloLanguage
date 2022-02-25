@@ -3,7 +3,7 @@ FROM centos:7
 LABEL maintainer="michaelbrucelin@gmail.com"
 
 RUN yum -y install epel-release && \
-    yum -y install wget make gcc gcc-c++ ncurses-devel libuuid-devel libcurl-devel jansson-devel libxml2-devel sqlite-devel \
+    yum -y install wget gcc gcc-c++ make ncurses-devel libuuid-devel libcurl-devel jansson-devel libxml2-devel sqlite-devel \
                    unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel && \
     yum clean all && \
     rm -rf /var/cache/yum/*
