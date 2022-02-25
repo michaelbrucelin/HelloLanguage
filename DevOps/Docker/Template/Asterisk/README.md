@@ -19,8 +19,8 @@ docker cp $tmpid:/var/log/asterisk/ /var/log/
 docker rm -v $tmpid
 
 docker run -d --name myasterisk \
-           --net mybridge --ip 172.18.0.18
-           -p 15678:5060/tcp -p 15678:5060/udp -p 10000-10999:10000-10999/udp \
+           --net mybridge --ip 172.18.0.18 \
+           -p 15678:5060/tcp -p 15678:5060/udp -p 10000-10099:10000-10099/udp \
            -v /etc/asterisk:/etc/asterisk -v /var/log/asterisk:/var/log/asterisk \
            michaelbrucelin/asterisk:13
 ```

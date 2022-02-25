@@ -30,11 +30,11 @@ RUN cd /usr/local/ && \
     mv /etc/asterisk/rtp.conf /etc/asterisk/rtp.conf.bak && \
     mv /etc/asterisk/extensions.conf /etc/asterisk/extensions.conf.bak
 
-EXPOSE 5060/tcp 5060/udp 10000-10999/udp
+EXPOSE 5060/tcp 5060/udp 10000-10099/udp
 
 VOLUME ["/etc/asterisk", "/var/log/asterisk"]
 
 WORKDIR /root/
 
 # ENTRYPOINT ["/etc/init.d/asterisk", "start"]
-ENTRYPOINT ["/usr/sbin/asterisk", "-fp"]
+ENTRYPOINT ["/usr/sbin/asterisk", "-fpvvvvvvvvvv"]
