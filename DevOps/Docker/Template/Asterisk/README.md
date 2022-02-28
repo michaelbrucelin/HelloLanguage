@@ -24,3 +24,9 @@ docker run -d --name myasterisk \
            -v /etc/asterisk:/etc/asterisk -v /var/log/asterisk:/var/log/asterisk \
            michaelbrucelin/asterisk:13
 ```
+
+## 查看日志
+
+```bash
+docker logs -f --tail 10 myasterisk
+```
