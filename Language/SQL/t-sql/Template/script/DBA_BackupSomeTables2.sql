@@ -80,7 +80,8 @@ begin
     set @movecnt = @movecnt + 1
     if(@movecnt = @shrinkcnt)
     begin
-        dbcc SHRINKFILE (N'DB_SOURCE' , 0, TRUNCATEONLY)
+        -- DBCC SHRINKFILE (N'DB_SOURCE' , 0, TRUNCATEONLY)
+        DBCC SHRINKDATABASE (N'DB_SOURCE', 10);
         set @movecnt = 0
     end
     fetch next from c into @db_src, @schema_src, @table_src
@@ -89,4 +90,5 @@ end
 close c
 deallocate c
 
-dbcc SHRINKFILE (N'DB_SOURCE' , 0, TRUNCATEONLY)
+-- DBCC SHRINKFILE (N'DB_SOURCE' , 0, TRUNCATEONLY)
+DBCC SHRINKDATABASE (N'DB_SOURCE', 10);
