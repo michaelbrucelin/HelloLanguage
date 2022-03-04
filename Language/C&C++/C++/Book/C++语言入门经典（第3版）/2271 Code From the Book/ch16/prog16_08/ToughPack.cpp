@@ -1,0 +1,14 @@
+// ToughPack.cpp
+#include "ToughPack.h"
+#include <iostream>
+
+ToughPack::ToughPack(double lVal, double wVal, double hVal) : 
+                                                  Box(lVal, wVal, hVal) {}
+
+double ToughPack::volume() const {
+  return 0.85 * length * width * height;
+}
+
+ToughPack::~ToughPack() {
+  std::cout << "ToughPack contructor" << std::endl;
+}
