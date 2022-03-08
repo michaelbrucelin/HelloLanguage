@@ -1,4 +1,4 @@
-package com.itheima.hello;
+package com.itheima.d1_hello;
 
 public class HelloJava {
     public static void main(String[] args) {

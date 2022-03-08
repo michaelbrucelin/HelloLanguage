@@ -1,4 +1,4 @@
-package com.itheima.scanner;
+package com.itheima.d2_scanner;
 
 import java.util.Scanner;
 
