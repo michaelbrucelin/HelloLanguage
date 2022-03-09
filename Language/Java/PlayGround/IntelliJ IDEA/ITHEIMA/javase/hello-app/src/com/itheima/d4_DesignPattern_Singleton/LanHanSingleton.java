@@ -1,4 +1,4 @@
-package com.itheima.d4_singleton;
+package com.itheima.d4_DesignPattern_Singleton;
 
 /**
  * 懒汉单例模式

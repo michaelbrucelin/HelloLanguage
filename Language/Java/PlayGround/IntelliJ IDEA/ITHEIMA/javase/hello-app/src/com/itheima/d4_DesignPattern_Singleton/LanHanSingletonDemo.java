@@ -1,4 +1,4 @@
-package com.itheima.d4_singleton;
+package com.itheima.d4_DesignPattern_Singleton;
 
 public class LanHanSingletonDemo {
     public static void main(String[] args) {
