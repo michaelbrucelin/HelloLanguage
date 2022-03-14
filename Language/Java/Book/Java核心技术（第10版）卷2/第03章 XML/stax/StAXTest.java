@@ -6,8 +6,7 @@ import javax.xml.stream.*;
 
 /**
  * This program demonstrates how to use a StAX parser. The program prints all
- * hyperlinks links of an
- * XHTML web page. <br>
+ * hyperlinks links of an XHTML web page. <br>
  * Usage: java stax.StAXTest URL
  */
 public class StAXTest {

@@ -19,8 +19,7 @@ public class GridBagPane extends JPanel {
      * Constructs a grid bag pane.
      * 
      * @param filename the name of the XML file that describes the pane's components
-     *                 and their
-     *                 positions
+     *                 and their positions
      */
     public GridBagPane(File file) {
         setLayout(new GridBagLayout());
@@ -52,8 +51,7 @@ public class GridBagPane extends JPanel {
      * 
      * @param name a component name
      * @return the component with the given name, or null if no component in this
-     *         grid bag pane has
-     *         the given name
+     *         grid bag pane has the given name
      */
     public Component get(String name) {
         Component[] components = getComponents();

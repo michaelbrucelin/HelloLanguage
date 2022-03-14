@@ -5,10 +5,8 @@ import java.util.regex.*;
 
 /**
  * This program tests regular expression matching. Enter a pattern and strings
- * to match,
- * or hit Cancel to exit. If the pattern contains groups, the group boundaries
- * are displayed
- * in the match.
+ * to match, or hit Cancel to exit. If the pattern contains groups, the group
+ * boundaries are displayed in the match.
  */
 public class RegexTest {
     public static void main(String[] args) throws PatternSyntaxException {

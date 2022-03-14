@@ -45,8 +45,7 @@ class SerialCloneable implements Cloneable, Serializable {
 }
 
 /**
- * The familiar Employee class, redefined to extend the
- * SerialCloneable class.
+ * The familiar Employee class, redefined to extend the SerialCloneable class.
  */
 class Employee extends SerialCloneable {
     private String name;

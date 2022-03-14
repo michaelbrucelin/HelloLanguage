@@ -8,8 +8,7 @@ import org.xml.sax.helpers.*;
 
 /**
  * This program demonstrates how to use a SAX parser. The program prints all
- * hyperlinks of an
- * XHTML web page. <br>
+ * hyperlinks of an XHTML web page. <br>
  * Usage: java sax.SAXTest URL
  */
 public class SAXTest {

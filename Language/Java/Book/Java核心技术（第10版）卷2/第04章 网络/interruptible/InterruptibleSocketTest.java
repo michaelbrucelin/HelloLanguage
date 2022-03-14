@@ -136,8 +136,7 @@ class InterruptibleSocketFrame extends JFrame {
 
     /**
      * A multithreaded server that listens to port 8189 and sends numbers to the
-     * client, simulating
-     * a hanging server after 10 numbers.
+     * client, simulating a hanging server after 10 numbers.
      */
     class TestServer implements Runnable {
         public void run() {

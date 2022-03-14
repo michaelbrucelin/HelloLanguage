@@ -11,10 +11,8 @@ import org.xml.sax.helpers.*;
 
 /**
  * This program demonstrates XSL transformations. It applies a transformation to
- * a set of employee
- * records. The records are stored in the file employee.dat and turned into XML
- * format. Specify the
- * stylesheet on the command line, e.g.
+ * a set of employee records. The records are stored in the file employee.dat
+ * and turned into XML format. Specify the stylesheet on the command line, e.g.
  * java transform.TransformTest transform/makeprop.xsl
  */
 public class TransformTest {
@@ -42,8 +40,7 @@ public class TransformTest {
 
 /**
  * This class reads the flat file employee.dat and reports SAX parser events to
- * act as if it was
- * parsing an XML file.
+ * act as if it was parsing an XML file.
  */
 class EmployeeReader implements XMLReader {
     private ContentHandler handler;

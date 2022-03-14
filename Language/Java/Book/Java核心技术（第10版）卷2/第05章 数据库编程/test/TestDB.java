@@ -21,8 +21,7 @@ public class TestDB {
 
     /**
      * Runs a test by creating a table, adding a value, showing the table contents,
-     * and removing
-     * the table.
+     * and removing the table.
      */
     public static void runTest() throws SQLException, IOException {
 
