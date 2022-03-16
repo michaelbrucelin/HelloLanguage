@@ -19,8 +19,8 @@ apt-get install sofia-sip-bin
 ```
 
 CentOS7
-> CentOS yum源中没有相应的包，repl源中也没有
-> `https://centos.pkgs.org/7/okey-x86_64/sofia-sip-1.13.6-1.el7.x86_64.rpm.html`
+> CentOS7 yum源中没有相应的包，epel源中也没有，这里没有编译安装，也没有安装其它yum源，而是直接找了rpm包  
+> `https://centos.pkgs.org/7/okey-x86_64/sofia-sip-1.13.6-1.el7.x86_64.rpm.html`  
 > `https://centos.pkgs.org/7/okey-x86_64/sofia-sip-utils-1.13.6-1.el7.x86_64.rpm.html`
 
 ```bash
@@ -33,6 +33,16 @@ yum install -y ./sofia-sip-1.13.6-1.el7.x86_64.rpm
 yum install -y ./sofia-sip-utils-1.13.6-1.el7.x86_64.rpm
 
 # or
+yum install -y http://repo.okay.com.mx/centos/7/x86_64/release/sofia-sip-1.13.6-1.el7.x86_64.rpm
+yum install -y http://repo.okay.com.mx/centos/7/x86_64/release/sofia-sip-utils-1.13.6-1.el7.x86_64.rpm
+
+rpm -ql sofia-sip-utils
+> /usr/bin/addrinfo
+> /usr/bin/localinfo
+> /usr/bin/sip-date
+> /usr/bin/sip-dig
+> /usr/bin/sip-options
+> /usr/bin/stunc
 ```
 
 ## 示例
