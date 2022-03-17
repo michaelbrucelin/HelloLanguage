@@ -11,6 +11,14 @@ LANG=C
 set -eu
 set -o pipefail
 
+function usage() {
+    echo "Usage: $0 ... ..."
+    echo "Usage: $0 ... ..."
+    exit 1;
+}
+
+[[ "$#" -eq "2" && "$1" =~ ^enum01|enum02|enum03|all$ && "$2" =~ ^preview|release$ ]] || usage
+
 : '
 
 在这里写脚本，去掉注释... ...
