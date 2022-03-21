@@ -35,7 +35,8 @@ A UDF library with functions to interact with the operating system. These functi
     > `CREATE FUNCTION sys_get RETURNS string SONAME 'lib_mysqludf_sys.so';`  
     > `CREATE FUNCTION sys_set RETURNS int SONAME 'lib_mysqludf_sys.so';`  
     > `CREATE FUNCTION sys_exec RETURNS int SONAME 'lib_mysqludf_sys.so';`  
-    > `CREATE FUNCTION sys_eval RETURNS string SONAME 'lib_mysqludf_sys.so';`
+    > `CREATE FUNCTION sys_eval RETURNS string SONAME 'lib_mysqludf_sys.so';`  
+    操作完成后，看不到创建的函数，但是可以执行，不确认具体是什么原因，难道是因为函数名以sys_开头？
 
 ## 操作
 
