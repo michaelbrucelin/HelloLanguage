@@ -9,9 +9,9 @@ import java.util.List;
 
 public class CountLongWords {
     public static void main(String[] args) throws IOException {
-        String contents = new String(Files.readAllBytes(
-                Paths.get("../gutenberg/alice30.txt")), StandardCharsets.UTF_8);
-        List<String> words = Arrays.asList(contents.split("\\PL+"));
+        String contents = new String(Files.readAllBytes(Paths.get("../gutenberg/alice30.txt")), StandardCharsets.UTF_8);
+        List<String> words = Arrays.asList(contents.split("\\PL+")); // Unicode regex
+                                                                     // "\PL+"表示一到多个非字母字符，一个到多个字母则用"\pL+"表示
 
         long count = 0;
         for (String w : words) {

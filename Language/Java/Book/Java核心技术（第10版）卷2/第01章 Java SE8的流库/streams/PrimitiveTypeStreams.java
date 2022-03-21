@@ -42,8 +42,7 @@ public class PrimitiveTypeStreams {
         String sentence = "\uD835\uDD46 is the set of octonions.";
         System.out.println(sentence);
         IntStream codes = sentence.codePoints();
-        System.out.println(codes.mapToObj(c -> String.format("%X ", c)).collect(
-                Collectors.joining()));
+        System.out.println(codes.mapToObj(c -> String.format("%X ", c)).collect(Collectors.joining()));
 
         Stream<Integer> integers = IntStream.range(0, 100).boxed();
         IntStream is5 = integers.mapToInt(Integer::intValue);

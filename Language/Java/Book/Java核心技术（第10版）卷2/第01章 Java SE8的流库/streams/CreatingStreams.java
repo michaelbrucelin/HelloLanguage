@@ -14,9 +14,7 @@ import java.util.stream.Stream;
 public class CreatingStreams {
     public static <T> void show(String title, Stream<T> stream) {
         final int SIZE = 10;
-        List<T> firstElements = stream
-                .limit(SIZE + 1)
-                .collect(Collectors.toList());
+        List<T> firstElements = stream.limit(SIZE + 1).collect(Collectors.toList());
         System.out.print(title + ": ");
         for (int i = 0; i < firstElements.size(); i++) {
             if (i > 0)
@@ -31,8 +29,7 @@ public class CreatingStreams {
 
     public static void main(String[] args) throws IOException {
         Path path = Paths.get("../gutenberg/alice30.txt");
-        String contents = new String(Files.readAllBytes(path),
-                StandardCharsets.UTF_8);
+        String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+"));
         show("words", words);
@@ -47,12 +44,10 @@ public class CreatingStreams {
         Stream<Double> randoms = Stream.generate(Math::random);
         show("randoms", randoms);
 
-        Stream<BigInteger> integers = Stream.iterate(BigInteger.ONE,
-                n -> n.add(BigInteger.ONE));
+        Stream<BigInteger> integers = Stream.iterate(BigInteger.ONE, n -> n.add(BigInteger.ONE));
         show("integers", integers);
 
-        Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(
-                contents);
+        Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents);
         show("wordsAnotherWay", wordsAnotherWay);
 
         try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {

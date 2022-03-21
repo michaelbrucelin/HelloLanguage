@@ -7,13 +7,10 @@ import java.util.*;
 
 public class OptionalTest {
     public static void main(String[] args) throws IOException {
-        String contents = new String(Files.readAllBytes(
-                Paths.get("../gutenberg/alice30.txt")), StandardCharsets.UTF_8);
+        String contents = new String(Files.readAllBytes(Paths.get("../gutenberg/alice30.txt")), StandardCharsets.UTF_8);
         List<String> wordList = Arrays.asList(contents.split("\\PL+"));
 
-        Optional<String> optionalValue = wordList.stream()
-                .filter(s -> s.contains("fred"))
-                .findFirst();
+        Optional<String> optionalValue = wordList.stream().filter(s -> s.contains("fred")).findFirst();
         System.out.println(optionalValue.orElse("No word") + " contains fred");
 
         Optional<String> optionalString = Optional.empty();
@@ -28,9 +25,7 @@ public class OptionalTest {
             t.printStackTrace();
         }
 
-        optionalValue = wordList.stream()
-                .filter(s -> s.contains("red"))
-                .findFirst();
+        optionalValue = wordList.stream().filter(s -> s.contains("red")).findFirst();
         optionalValue.ifPresent(s -> System.out.println(s + " contains red"));
 
         Set<String> results = new HashSet<>();
@@ -41,8 +36,7 @@ public class OptionalTest {
         System.out.println(inverse(4.0).flatMap(OptionalTest::squareRoot));
         System.out.println(inverse(-1.0).flatMap(OptionalTest::squareRoot));
         System.out.println(inverse(0.0).flatMap(OptionalTest::squareRoot));
-        Optional<Double> result2 = Optional.of(-4.0)
-                .flatMap(OptionalTest::inverse).flatMap(OptionalTest::squareRoot);
+        Optional<Double> result2 = Optional.of(-4.0).flatMap(OptionalTest::inverse).flatMap(OptionalTest::squareRoot);
         System.out.println(result2);
     }
 
