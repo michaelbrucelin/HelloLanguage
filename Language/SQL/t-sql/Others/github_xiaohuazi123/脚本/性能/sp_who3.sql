@@ -1,10 +1,7 @@
-
 -- =============================================
 -- Create date: <2014/4/18>
 -- Description:sp_who3存储过程，查看当前数据库性能情况 http://sqlserverplanet.com/dba/a-better-sp_who2-using-dmvs-sp_who3
 -- =============================================
-
-
 
 use master
 go

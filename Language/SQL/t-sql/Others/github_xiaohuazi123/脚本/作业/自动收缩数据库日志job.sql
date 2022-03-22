@@ -4,8 +4,6 @@
 --               也就是先执行【数据库收缩】文件夹下的<收缩数据库日志脚本.sql>脚本
 -- =============================================
 
-
-
 USE [msdb]
 GO
 
@@ -14,10 +12,12 @@ BEGIN TRANSACTION
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
 /****** Object:  JobCategory [Database Maintenance]    Script Date: 2015/10/14 15:45:57 ******/
-IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=N'Database Maintenance' AND category_class=1)
+IF NOT EXISTS (SELECT name
+FROM msdb.dbo.syscategories
+WHERE name=N'Database Maintenance' AND category_class=1)
 BEGIN
-EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'Database Maintenance'
-IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+    EXEC @ReturnCode = msdb.dbo.sp_add_category @class=N'JOB', @type=N'LOCAL', @name=N'Database Maintenance'
+    IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 
 END
 
@@ -69,7 +69,7 @@ IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 COMMIT TRANSACTION
 GOTO EndSave
 QuitWithRollback:
-    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
 EndSave:
 
 GO

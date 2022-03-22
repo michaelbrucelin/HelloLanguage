@@ -1,6 +1,3 @@
-
-
-
 -- =============================================
 -- Create date: <2014/4/18>
 -- Description: KILL掉某个数据库的所有连接
@@ -23,7 +20,7 @@ OPEN CurDBName
 FETCH NEXT FROM CurDBName INTO @SPID
 
 WHILE @@FETCH_STATUS = 0
-    BEGIN  
+    BEGIN
         --kill process
         SET @SQL = N'kill '+@SPID
         EXEC (@SQL)

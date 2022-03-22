@@ -1,12 +1,9 @@
-
-
-
--- =============================================
 -- Create date: <2014/4/18>
 -- Description: 批量生成Insert脚本>
 -- =============================================
 
-USE [dbname]  --★Do 根据fromdb来生成
+USE [dbname]
+--★Do 根据fromdb来生成
 
 DECLARE @fromdb VARCHAR(100)
 DECLARE @todb VARCHAR(100)
@@ -22,29 +19,40 @@ IF (OBJECT_ID('#MyTempTable') IS NOT NULL)
 drop table #MyTempTable
 
 
-CREATE TABLE #MyTempTable (names varchar(500))
+CREATE TABLE #MyTempTable
+(
+    names varchar(500)
+)
 insert into #MyTempTable
-SELECT name from sys.tables WHERE type='U' AND name not in (select OBJECT_NAME(parent_object_id) 'name' from sys.objects where type='F') 
+SELECT name
+from sys.tables
+WHERE type='U' AND name not in (select OBJECT_NAME(parent_object_id) 'name'
+    from sys.objects
+    where type='F')
 
 insert into #MyTempTable
-select OBJECT_NAME(parent_object_id) 'name' from sys.objects where type='F' order by object_id
+select OBJECT_NAME(parent_object_id) 'name'
+from sys.objects
+where type='F'
+order by object_id
 
 
 --游标
 DECLARE @itemCur CURSOR
 SET @itemCur = CURSOR FOR 
-    SELECT names from #MyTempTable
+    SELECT names
+from #MyTempTable
 
 OPEN @itemCur
 FETCH NEXT FROM @itemCur INTO @tablename
 WHILE @@FETCH_STATUS=0
 
 BEGIN
-	
-	SET @sql = ''
 
-	--获取表字段
-	SET @temsql = N'
+    SET @sql = ''
+
+    --获取表字段
+    SET @temsql = N'
 	BEGIN
 	SET @columnnamesOUT =''''
 	SELECT @columnnamesOUT = @columnnamesOUT + '','' + ''['' + name + '']''
@@ -53,13 +61,13 @@ BEGIN
 	SELECT @columnnamesOUT=substring(@columnnamesOUT,2,len(@columnnamesOUT))
 	END
 	'
-	EXEC sp_executesql @temsql,N'@columnnamesOUT NVARCHAR(max) OUTPUT',@columnnamesOUT=@columnnames OUTPUT
+    EXEC sp_executesql @temsql,N'@columnnamesOUT NVARCHAR(max) OUTPUT',@columnnamesOUT=@columnnames OUTPUT
 
-	PRINT ('--'+@tablename)
-	PRINT ('--表名 '''+@tablename+'''')
+    PRINT ('--'+@tablename)
+    PRINT ('--表名 '''+@tablename+'''')
 
-	--判断是否有自增字段
-	SET @temsql = N'
+    --判断是否有自增字段
+    SET @temsql = N'
 	BEGIN
 	SET @isidentityOUT =''''
 	SELECT @isidentityOUT = name 
@@ -67,31 +75,32 @@ BEGIN
 	and is_identity = 1
 	END
 	'
-	EXEC sp_executesql @temsql,N'@isidentityOUT NVARCHAR(30) OUTPUT',@isidentityOUT=@isidentity OUTPUT
+    EXEC sp_executesql @temsql,N'@isidentityOUT NVARCHAR(30) OUTPUT',@isidentityOUT=@isidentity OUTPUT
 
-	--IDENTITY_INSERT ON
-	IF @isidentity != ''
+    --IDENTITY_INSERT ON
+    IF @isidentity != ''
 	BEGIN
-		SET @sql = 'SET IDENTITY_INSERT ['+@todb+'].[dbo].['+@tablename+'] ON
+        SET @sql = 'SET IDENTITY_INSERT ['+@todb+'].[dbo].['+@tablename+'] ON
 '
-	END
+    END
 
-	--INSERT
-	SET @sql = @sql+'INSERT INTO ['+@todb+'].[dbo].['+@tablename+']('+@columnnames+')
+    --INSERT
+    SET @sql = @sql+'INSERT INTO ['+@todb+'].[dbo].['+@tablename+']('+@columnnames+')
 SELECT * FROM ['+@fromdb+'].[dbo].['+@tablename+']'
 
-	--IDENTITY_INSERT OFF
-	IF @isidentity != ''
+    --IDENTITY_INSERT OFF
+    IF @isidentity != ''
 	BEGIN
-		SET @sql = @sql+'
+        SET @sql = @sql+'
 SET IDENTITY_INSERT ['+@todb+'].[dbo].['+@tablename+'] OFF'
-	END
+    END
 
-	--返回SQL
-	PRINT(@sql)PRINT('GO')+CHAR(13)
+    --返回SQL
+    PRINT(@sql)
+    PRINT('GO')+CHAR(13)
 
     FETCH NEXT FROM @itemCur INTO @tablename
-END 
+END
 
 CLOSE @itemCur
 DEALLOCATE @itemCur
