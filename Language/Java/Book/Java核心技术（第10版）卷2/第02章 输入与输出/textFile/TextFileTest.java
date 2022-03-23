@@ -18,8 +18,7 @@ public class TextFileTest {
         }
 
         // retrieve all records into a new array
-        try (Scanner in = new Scanner(
-                new FileInputStream("employee.dat"), "UTF-8")) {
+        try (Scanner in = new Scanner(new FileInputStream("employee.dat"), "UTF-8")) {
             Employee[] newStaff = readData(in);
 
             // print the newly read employee records

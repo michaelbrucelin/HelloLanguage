@@ -3,8 +3,7 @@ package randomAccess;
 import java.io.*;
 
 public class DataIO {
-    public static String readFixedString(int size, DataInput in)
-            throws IOException {
+    public static String readFixedString(int size, DataInput in) throws IOException {
         StringBuilder b = new StringBuilder(size);
         int i = 0;
         boolean more = true;
@@ -20,8 +19,7 @@ public class DataIO {
         return b.toString();
     }
 
-    public static void writeFixedString(String s, int size, DataOutput out)
-            throws IOException {
+    public static void writeFixedString(String s, int size, DataOutput out) throws IOException {
         for (int i = 0; i < size; i++) {
             char ch = 0;
             if (i < s.length())

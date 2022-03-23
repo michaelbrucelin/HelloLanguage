@@ -17,8 +17,8 @@ public class RandomAccessTest {
         Path path = Paths.get("employee.dat");
         ByteBuffer buffer = ByteBuffer.allocate(Employee.RECORD_SIZE);
 
-        try (FileChannel channel = FileChannel.open(path,
-                StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING)) {
+        try (FileChannel channel = FileChannel.open(path, StandardOpenOption.CREATE, StandardOpenOption.WRITE,
+                StandardOpenOption.TRUNCATE_EXISTING)) {
             // save all employee records to the file employee.dat
             for (Employee e : staff) {
                 buffer.clear();
