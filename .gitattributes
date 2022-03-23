@@ -6,6 +6,7 @@ Jupyter/Python/Book/**/* linguist-vendored
 Language/C#/Project/E-Cology7/OAWorkflow/Web?References/OA/Reference.cs linguist-vendored
 Language/C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowService/Reference.cs linguist-vendored
 Language/C#/Project/TempProject/**/*.html linguist-vendored
+Language/C#/Project/TempProject/**/*.scss linguist-vendored
 
 Language/Python/PlayGround/demo/**/*.html linguist-vendored
 Language/Python/Project/**/*.html linguist-vendored
