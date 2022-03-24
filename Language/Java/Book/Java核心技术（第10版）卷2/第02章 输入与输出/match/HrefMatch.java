@@ -7,8 +7,7 @@ import java.util.regex.*;
 
 /**
  * This program displays all URLs in a web page by matching a regular expression
- * that describes the
- * <a href=...> HTML tag. Start the program as <br>
+ * that describes the <a href=...> HTML tag. Start the program as <br>
  * java match.HrefMatch URL
  */
 public class HrefMatch {
@@ -22,8 +21,7 @@ public class HrefMatch {
                 urlString = "http://java.sun.com";
 
             // open reader for URL
-            InputStreamReader in = new InputStreamReader(new URL(urlString).openStream(),
-                    StandardCharsets.UTF_8);
+            InputStreamReader in = new InputStreamReader(new URL(urlString).openStream(), StandardCharsets.UTF_8);
 
             // read contents into string builder
             StringBuilder input = new StringBuilder();
