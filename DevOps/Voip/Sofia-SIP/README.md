@@ -79,4 +79,24 @@ Server: sbc_5
 SIP/2.0 200 OK
 To: <sip:111.111.111.111>;tag=6eaf47f9abe595bf14fd1aa973910075.8002
 Server: Very Nice SIP v2020-PRODUCTION.341
+
+# Asterisk服务无响应
+# sip-options sip:127.0.0.1:5060
+SIP/2.0 408 Request Timeout
+To: sip:127.0.0.1;tag=vK1Kr3XgQ0QDj
+
+#  Asterisk服务没启动
+# sip-options sip:127.0.0.1:5066
+SIP/2.0 503 Service Unavailable
+To: sip:127.0.0.1;tag=cKZXjvpySBvDp
+
+#  Asterisk服务正常
+# sip-options sip:127.0.0.1:5060
+SIP/2.0 200 OK
+To: sip:127.0.0.1;tag=as5a298778
+Server: Asterisk PBX 13.38.3
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH, MESSAGE
+Supported: replaces, timer
+Contact: <sip:XXX.XXX.XXX.XXX:5060>
+Accept: application/sdp
 ```
