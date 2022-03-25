@@ -45,11 +45,10 @@ class FontFrame extends JFrame {
         bold = (JCheckBox) gridbag.get("bold");
         italic = (JCheckBox) gridbag.get("italic");
 
-        face.setModel(new DefaultComboBoxModel<String>(new String[] { "Serif",
-                "SansSerif", "Monospaced", "Dialog", "DialogInput" }));
-
-        size.setModel(new DefaultComboBoxModel<String>(new String[] { "8",
-                "10", "12", "15", "18", "24", "36", "48" }));
+        face.setModel(new DefaultComboBoxModel<String>(
+                new String[] { "Serif", "SansSerif", "Monospaced", "Dialog", "DialogInput" }));
+        size.setModel(new DefaultComboBoxModel<String>(
+                new String[] { "8", "10", "12", "15", "18", "24", "36", "48" }));
 
         ActionListener listener = event -> setSample();
 
@@ -69,8 +68,7 @@ class FontFrame extends JFrame {
         String fontFace = face.getItemAt(face.getSelectedIndex());
         int fontSize = Integer.parseInt(size.getItemAt(size.getSelectedIndex()));
         JTextArea sample = (JTextArea) gridbag.get("sample");
-        int fontStyle = (bold.isSelected() ? Font.BOLD : 0)
-                + (italic.isSelected() ? Font.ITALIC : 0);
+        int fontStyle = (bold.isSelected() ? Font.BOLD : 0) + (italic.isSelected() ? Font.ITALIC : 0);
 
         sample.setFont(new Font(fontFace, fontStyle, fontSize));
         sample.repaint();
