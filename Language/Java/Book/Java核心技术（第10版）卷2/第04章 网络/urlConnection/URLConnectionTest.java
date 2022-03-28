@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * This program connects to an URL and displays the response header data and the
  * first 10 lines of the requested data.
- * 
  * Supply the URL and an optional username and password (for HTTP basic
  * authentication) on the command line.
  */
@@ -25,7 +24,6 @@ public class URLConnectionTest {
             URLConnection connection = url.openConnection();
 
             // set username, password if specified on command line
-
             if (args.length > 2) {
                 String username = args[1];
                 String password = args[2];
@@ -38,7 +36,6 @@ public class URLConnectionTest {
             connection.connect();
 
             // print header fields
-
             Map<String, List<String>> headers = connection.getHeaderFields();
             for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
                 String key = entry.getKey();
@@ -47,7 +44,6 @@ public class URLConnectionTest {
             }
 
             // print convenience functions
-
             System.out.println("----------");
             System.out.println("getContentType: " + connection.getContentType());
             System.out.println("getContentLength: " + connection.getContentLength());
@@ -62,7 +58,6 @@ public class URLConnectionTest {
                 encoding = "UTF-8";
             try (Scanner in = new Scanner(connection.getInputStream(), encoding)) {
                 // print first ten lines of contents
-
                 for (int n = 1; in.hasNextLine() && n <= 10; n++)
                     System.out.println(in.nextLine());
                 if (in.hasNextLine())

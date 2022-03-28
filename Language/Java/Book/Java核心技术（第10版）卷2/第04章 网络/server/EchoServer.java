@@ -7,6 +7,7 @@ import java.util.*;
 /**
  * This program implements a simple server that listens to port 8189 and echoes
  * back all client input.
+ * telnet localhost|ip 8189
  */
 public class EchoServer {
     public static void main(String[] args) throws IOException {
@@ -18,10 +19,7 @@ public class EchoServer {
                 OutputStream outStream = incoming.getOutputStream();
 
                 try (Scanner in = new Scanner(inStream, "UTF-8")) {
-                    PrintWriter out = new PrintWriter(
-                            new OutputStreamWriter(outStream, "UTF-8"),
-                            true /* autoFlush */);
-
+                    PrintWriter out = new PrintWriter(new OutputStreamWriter(outStream, "UTF-8"), true /* autoFlush */);
                     out.println("Hello! Enter BYE to exit.");
 
                     // echo client input

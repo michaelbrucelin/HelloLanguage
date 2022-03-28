@@ -173,9 +173,7 @@ class InterruptibleSocketFrame extends JFrame {
             try {
                 try {
                     OutputStream outStream = incoming.getOutputStream();
-                    PrintWriter out = new PrintWriter(
-                            new OutputStreamWriter(outStream, "UTF-8"),
-                            true /* autoFlush */);
+                    PrintWriter out = new PrintWriter(new OutputStreamWriter(outStream, "UTF-8"), true /* autoFlush */);
                     while (counter < 100) {
                         counter++;
                         if (counter <= 10)

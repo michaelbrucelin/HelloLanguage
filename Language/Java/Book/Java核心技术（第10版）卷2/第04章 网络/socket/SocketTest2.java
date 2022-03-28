@@ -13,7 +13,7 @@ import java.util.*;
 public class SocketTest2 {
     public static void main(String[] args) throws IOException {
         try (Socket s = new Socket("horstmann.com", 80); Scanner in = new Scanner(s.getInputStream(), "UTF-8")) {
-            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+            PrintWriter out = new PrintWriter(s.getOutputStream(), true /* autoFlush */);
             out.println("GET / HTTP/1.1");
             out.println("Host: horstmann.com");
             out.println();

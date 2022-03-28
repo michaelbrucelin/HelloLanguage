@@ -43,13 +43,9 @@ class ThreadedEchoHandler implements Runnable {
     }
 
     public void run() {
-        try (InputStream inStream = incoming.getInputStream();
-                OutputStream outStream = incoming.getOutputStream()) {
+        try (InputStream inStream = incoming.getInputStream(); OutputStream outStream = incoming.getOutputStream()) {
             Scanner in = new Scanner(inStream, "UTF-8");
-            PrintWriter out = new PrintWriter(
-                    new OutputStreamWriter(outStream, "UTF-8"),
-                    true /* autoFlush */);
-
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(outStream, "UTF-8"), true /* autoFlush */);
             out.println("Hello! Enter BYE to exit.");
 
             // echo client input
