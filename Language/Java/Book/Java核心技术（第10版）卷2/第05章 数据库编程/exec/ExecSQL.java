@@ -11,10 +11,8 @@ import java.sql.*;
  */
 class ExecSQL {
     public static void main(String args[]) throws IOException {
-        try (Scanner in = args.length == 0 ? new Scanner(System.in)
-                : new Scanner(Paths.get(args[0]), "UTF-8")) {
-            try (Connection conn = getConnection();
-                    Statement stat = conn.createStatement()) {
+        try (Scanner in = args.length == 0 ? new Scanner(System.in) : new Scanner(Paths.get(args[0]), "UTF-8")) {
+            try (Connection conn = getConnection(); Statement stat = conn.createStatement()) {
                 while (true) {
                     if (args.length == 0)
                         System.out.println("Enter command or EXIT to exit:");

@@ -24,9 +24,7 @@ public class TestDB {
      * and removing the table.
      */
     public static void runTest() throws SQLException, IOException {
-
-        try (Connection conn = getConnection();
-                Statement stat = conn.createStatement()) {
+        try (Connection conn = getConnection(); Statement stat = conn.createStatement()) {
             stat.executeUpdate("CREATE TABLE Greetings (Message CHAR(20))");
             stat.executeUpdate("INSERT INTO Greetings VALUES ('Hello, World!')");
 

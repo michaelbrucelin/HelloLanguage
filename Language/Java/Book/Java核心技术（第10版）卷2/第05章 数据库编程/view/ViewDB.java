@@ -58,8 +58,7 @@ class ViewDBFrame extends JFrame {
             ex.printStackTrace();
         }
 
-        tableNames.addActionListener(
-                event -> showTable((String) tableNames.getSelectedItem(), conn));
+        tableNames.addActionListener(event -> showTable((String) tableNames.getSelectedItem(), conn));
         add(tableNames, BorderLayout.NORTH);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent event) {
