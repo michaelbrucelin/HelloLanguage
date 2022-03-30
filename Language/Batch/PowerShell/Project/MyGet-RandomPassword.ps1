@@ -1,4 +1,4 @@
-﻿function MyGet-RandomPassword() {
+function MyGet-RandomPassword() {
     param(
         [int]$count = 1,
         [int]$length = 36,

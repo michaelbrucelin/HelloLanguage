@@ -1,4 +1,4 @@
-﻿function MyGet-DiskUsage() {
+function MyGet-DiskUsage() {
     param(
         [string]$path=".",
         [switch]$Recurse=$false

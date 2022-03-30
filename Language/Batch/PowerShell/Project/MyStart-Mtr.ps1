@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 An MTR clone for PowerShell.
 Written by Tyler Applebaum.

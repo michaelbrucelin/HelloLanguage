@@ -1,4 +1,4 @@
-﻿# 声明list数据类型
+# 声明list数据类型
 function global:MyNew-GenericList([type] $type)
 {
     $base = [System.Collections.Generic.List``1]

@@ -1,4 +1,4 @@
-﻿Function MyInvoke-RegExHelper {
+Function MyInvoke-RegExHelper {
     <#
         .SYNOPSIS
             Tool to help with writing Regular Expressions

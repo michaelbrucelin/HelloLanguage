@@ -1,4 +1,4 @@
-﻿function MyCal-26JinZhi() {
+function MyCal-26JinZhi() {
     param(
         [string]$inputDigit,
         [ValidateSet('DecTo26','26ToDec')]

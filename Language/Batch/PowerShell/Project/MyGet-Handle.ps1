@@ -1,4 +1,4 @@
-﻿function global:MyGet-Handle() {
+function global:MyGet-Handle() {
     param(
         [string]$Name
     )

@@ -1,4 +1,4 @@
-﻿function MyGet-BitmapDecimal() {
+function MyGet-BitmapDecimal() {
     param(
         [int64]$inputDec
     )

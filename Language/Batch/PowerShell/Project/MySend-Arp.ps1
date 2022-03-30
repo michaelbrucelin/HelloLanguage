@@ -1,4 +1,4 @@
-﻿function MySend-Arp {
+function MySend-Arp {
     param(
         [string]$DstIpAddress,
         [string]$SrcIpAddress = 0

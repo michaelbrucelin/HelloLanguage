@@ -1,4 +1,4 @@
-﻿<#
+<#
 Chris Warwick, @cjwarwickps, August 2012.  Updates August 2013.
 chrisjwarwick.wordpress.com
 

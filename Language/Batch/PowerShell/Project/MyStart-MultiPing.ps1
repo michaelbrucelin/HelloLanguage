@@ -1,4 +1,4 @@
-﻿function MyStart-MultiPing(){
+function MyStart-MultiPing(){
     param(
     [switch]$online,
     [switch]$offline,

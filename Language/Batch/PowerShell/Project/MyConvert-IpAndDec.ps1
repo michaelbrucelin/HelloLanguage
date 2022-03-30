@@ -1,4 +1,4 @@
-﻿function MyConvert-IpAndDec() {
+function MyConvert-IpAndDec() {
     param(
         [string]$InputVal
     )

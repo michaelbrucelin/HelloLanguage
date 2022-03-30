@@ -1,4 +1,4 @@
-﻿function MyConvert-10ToBase() {
+function MyConvert-10ToBase() {
     # 将十进制的数字转成任意[2, 36]进制的数字
     # 例如将十进制的210转成12进制数字
     # PS C:\> ConvertTo-NumeralBase -Number 210 -Base 12

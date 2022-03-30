@@ -1,4 +1,4 @@
-﻿function MyGet-FangDai() {
+function MyGet-FangDai() {
     param(
         [int]$total,
         [decimal]$rate,

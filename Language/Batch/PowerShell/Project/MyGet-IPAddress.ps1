@@ -1,4 +1,4 @@
-﻿function MyGet-IPAddress
+function MyGet-IPAddress
 {
     Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration |
     Where-Object { $_.IPEnabled -eq $true } |

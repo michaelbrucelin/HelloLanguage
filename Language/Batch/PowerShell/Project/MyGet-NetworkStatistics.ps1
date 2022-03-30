@@ -1,4 +1,4 @@
-﻿function MyGet-NetworkStatistics {
+function MyGet-NetworkStatistics {
     <#
     .SYNOPSIS
         Display current TCP/IP connections for local or remote system
