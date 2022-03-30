@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="System.Data.DataSet" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="2" />
+    <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Property Name="Relations" />
+      <Property Name="Tables" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Method Name="AcceptChanges" Hidden="true" />
+      <Method Name="BeginInit" Hidden="true" />
+      <Property Name="CaseSensitive" Hidden="true" />
+      <Method Name="Clear" Hidden="true" />
+      <Method Name="Clone" Hidden="true" />
+      <Method Name="Copy" Hidden="true" />
+      <Method Name="CreateDataReader" Hidden="true" />
+      <Method Name="DataSet" Hidden="true" />
+      <Property Name="DataSetName" Hidden="true" />
+      <Property Name="DefaultViewManager" Hidden="true" />
+      <Method Name="DetermineSchemaSerializationMode" Hidden="true" />
+      <Method Name="EndInit" Hidden="true" />
+      <Property Name="EnforceConstraints" Hidden="true" />
+      <Property Name="ExtendedProperties" Hidden="true" />
+      <Method Name="GetChanges" Hidden="true" />
+      <Method Name="GetDataSetSchema" Hidden="true" />
+      <Method Name="GetObjectData" Hidden="true" />
+      <Method Name="GetSchemaSerializable" Hidden="true" />
+      <Method Name="GetSerializationData" Hidden="true" />
+      <Method Name="GetXml" Hidden="true" />
+      <Method Name="GetXmlSchema" Hidden="true" />
+      <Method Name="HasChanges" Hidden="true" />
+      <Property Name="HasErrors" Hidden="true" />
+      <Method Name="InferXmlSchema" Hidden="true" />
+      <Event Name="Initialized" Hidden="true" />
+      <Method Name="InitializeDerivedDataSet" Hidden="true" />
+      <Method Name="IsBinarySerialized" Hidden="true" />
+      <Property Name="IsInitialized" Hidden="true" />
+      <Method Name="Load" Hidden="true" />
+      <Property Name="Locale" Hidden="true" />
+      <Method Name="Merge" Hidden="true" />
+      <Event Name="MergeFailed" Hidden="true" />
+      <Property Name="Namespace" Hidden="true" />
+      <Method Name="OnPropertyChanging" Hidden="true" />
+      <Method Name="OnRemoveRelation" Hidden="true" />
+      <Method Name="OnRemoveTable" Hidden="true" />
+      <Property Name="Prefix" Hidden="true" />
+      <Method Name="RaisePropertyChanging" Hidden="true" />
+      <Method Name="ReadXml" Hidden="true" />
+      <Method Name="ReadXmlSchema" Hidden="true" />
+      <Method Name="ReadXmlSerializable" Hidden="true" />
+      <Method Name="RejectChanges" Hidden="true" />
+      <Property Name="RemotingFormat" Hidden="true" />
+      <Method Name="Reset" Hidden="true" />
+      <Property Name="SchemaSerializationMode" Hidden="true" />
+      <Method Name="ShouldSerializeRelations" Hidden="true" />
+      <Method Name="ShouldSerializeTables" Hidden="true" />
+      <Property Name="Site" Hidden="true" />
+      <Method Name="WriteXml" Hidden="true" />
+      <Method Name="WriteXmlSchema" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Relations" Type="System.Data.DataRelation">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="1.081" Y="1.35" Height="0.16" Width="0.795" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Tables" Type="System.Data.DataTable">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.506" Y="0.05" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="System.Data.DataTable">
+    <Position X="6" Y="3.25" Width="1.75" />
+    <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Property Name="Columns" />
+      <Property Name="Constraints" />
+      <Property Name="Rows" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Method Name="AcceptChanges" Hidden="true" />
+      <Method Name="BeginInit" Hidden="true" />
+      <Method Name="BeginLoadData" Hidden="true" />
+      <Property Name="CaseSensitive" Hidden="true" />
+      <Property Name="ChildRelations" Hidden="true" />
+      <Method Name="Clear" Hidden="true" />
+      <Method Name="Clone" Hidden="true" />
+      <Event Name="ColumnChanged" Hidden="true" />
+      <Event Name="ColumnChanging" Hidden="true" />
+      <Method Name="Compute" Hidden="true" />
+      <Method Name="Copy" Hidden="true" />
+      <Method Name="CreateDataReader" Hidden="true" />
+      <Method Name="CreateInstance" Hidden="true" />
+      <Property Name="DataSet" Hidden="true" />
+      <Method Name="DataTable" Hidden="true" />
+      <Property Name="DefaultView" Hidden="true" />
+      <Property Name="DisplayExpression" Hidden="true" />
+      <Method Name="EndInit" Hidden="true" />
+      <Method Name="EndLoadData" Hidden="true" />
+      <Property Name="ExtendedProperties" Hidden="true" />
+      <Field Name="fInitInProgress" Hidden="true" />
+      <Method Name="GetChanges" Hidden="true" />
+      <Method Name="GetDataTableSchema" Hidden="true" />
+      <Method Name="GetErrors" Hidden="true" />
+      <Method Name="GetObjectData" Hidden="true" />
+      <Method Name="GetRowType" Hidden="true" />
+      <Method Name="GetSchema" Hidden="true" />
+      <Property Name="HasErrors" Hidden="true" />
+      <Method Name="ImportRow" Hidden="true" />
+      <Event Name="Initialized" Hidden="true" />
+      <Property Name="IsInitialized" Hidden="true" />
+      <Method Name="Load" Hidden="true" />
+      <Method Name="LoadDataRow" Hidden="true" />
+      <Property Name="Locale" Hidden="true" />
+      <Method Name="Merge" Hidden="true" />
+      <Property Name="MinimumCapacity" Hidden="true" />
+      <Property Name="Namespace" Hidden="true" />
+      <Method Name="NewRow" Hidden="true" />
+      <Method Name="NewRowArray" Hidden="true" />
+      <Method Name="NewRowFromBuilder" Hidden="true" />
+      <Method Name="OnColumnChanged" Hidden="true" />
+      <Method Name="OnColumnChanging" Hidden="true" />
+      <Method Name="OnPropertyChanging" Hidden="true" />
+      <Method Name="OnRemoveColumn" Hidden="true" />
+      <Method Name="OnRowChanged" Hidden="true" />
+      <Method Name="OnRowChanging" Hidden="true" />
+      <Method Name="OnRowDeleted" Hidden="true" />
+      <Method Name="OnRowDeleting" Hidden="true" />
+      <Method Name="OnTableCleared" Hidden="true" />
+      <Method Name="OnTableClearing" Hidden="true" />
+      <Method Name="OnTableNewRow" Hidden="true" />
+      <Property Name="ParentRelations" Hidden="true" />
+      <Property Name="Prefix" Hidden="true" />
+      <Property Name="PrimaryKey" Hidden="true" />
+      <Method Name="ReadXml" Hidden="true" />
+      <Method Name="ReadXmlSchema" Hidden="true" />
+      <Method Name="ReadXmlSerializable" Hidden="true" />
+      <Method Name="RejectChanges" Hidden="true" />
+      <Property Name="RemotingFormat" Hidden="true" />
+      <Method Name="Reset" Hidden="true" />
+      <Event Name="RowChanged" Hidden="true" />
+      <Event Name="RowChanging" Hidden="true" />
+      <Event Name="RowDeleted" Hidden="true" />
+      <Event Name="RowDeleting" Hidden="true" />
+      <Method Name="Select" Hidden="true" />
+      <Property Name="Site" Hidden="true" />
+      <Event Name="TableCleared" Hidden="true" />
+      <Event Name="TableClearing" Hidden="true" />
+      <Event Name="TableNewRow" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+      <Method Name="WriteXml" Hidden="true" />
+      <Method Name="WriteXmlSchema" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Columns" Type="System.Data.DataColumn" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="3.25" />
+        <Point X="7.375" Y="3.062" />
+        <Point X="9" Y="3.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.464" Y="0.07" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Constraints" Type="System.Data.Constraint">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.256" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Rows" Type="System.Data.DataRow">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.579" Y="0.039" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="System.Data.DataRelation" Collapsed="true">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="ChildTable" />
+      <Property Name="ParentTable" />
+    </ShowAsAssociation>
+    <Members>
+      <Method Name="CheckStateForProperty" Hidden="true" />
+      <Property Name="ChildColumns" Hidden="true" />
+      <Property Name="ChildKeyConstraint" Hidden="true" />
+      <Method Name="DataRelation" Hidden="true" />
+      <Property Name="DataSet" Hidden="true" />
+      <Property Name="ExtendedProperties" Hidden="true" />
+      <Property Name="Nested" Hidden="true" />
+      <Method Name="OnPropertyChanging" Hidden="true" />
+      <Property Name="ParentColumns" Hidden="true" />
+      <Property Name="ParentKeyConstraint" Hidden="true" />
+      <Method Name="RaisePropertyChanging" Hidden="true" />
+      <Property Name="RelationName" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <AssociationLine Name="ChildTable" Type="System.Data.DataTable">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.027" Y="0.622" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ParentTable" Type="System.Data.DataTable">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.984" Y="0.612" />
+      </MemberNameLabel>
+    </AssociationLine>
+  </Class>
+  <Class Name="System.Data.DataColumn" Collapsed="true">
+    <Position X="9" Y="2.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Data.Constraint" Collapsed="true">
+    <Position X="9" Y="4.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Data.DataRow" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+</ClassDiagram>

@@ -1,0 +1,42 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Main.master.vb" Inherits="LinqBooks.Web.Main" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+  <title>LinqBooks</title>
+	<link id="lnkRssReviews" runat="server" rel="alternate" type="application/rss+xml" title="LinqBooks reviews" href="~/RSS.asmx/GetReviews" />
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder>
+</head>
+<body>
+  <form id="form1" runat="server">
+  
+    <asp:ScriptManager ID="ScriptManager" runat="server" />
+    
+    <%-- The information for a logged user --%>
+    <div style="border: solid 1px black">
+      <asp:LoginView ID="LoginView1" runat="server">
+        <AnonymousTemplate>
+          <asp:LoginStatus ID="LoginStatus1" runat="server" />
+        </AnonymousTemplate>
+        <LoggedInTemplate>
+          <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/" />
+          [<asp:LoginName ID="LoginName1" runat="server" />]
+        </LoggedInTemplate>
+      </asp:LoginView>
+    </div>
+
+    <%-- Menu --%>
+    <div style="background-color: #223344"></div>
+    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+    <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" StaticMenuItemStyle-ItemSpacing="1em">
+    </asp:Menu>
+
+    <%-- Content --%>      
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    
+    </asp:ContentPlaceHolder>
+  </form>
+</body>
+</html>

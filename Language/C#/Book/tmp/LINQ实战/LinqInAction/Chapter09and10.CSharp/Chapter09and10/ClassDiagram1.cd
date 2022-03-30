@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="System.Xml.Linq.XObject" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Xml.Linq.XAttribute" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XCData" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XComment" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XContainer" Collapsed="true">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XDeclaration" Collapsed="true">
+    <Position X="10.75" Y="0.75" Width="1.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XDocument" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Xml.Linq.XDocumentType" Collapsed="true">
+    <Position X="6.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XElement" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Xml.Linq.XName" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Xml.Linq.XNamespace" Collapsed="true">
+    <Position X="10.75" Y="2.5" Width="1.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XNode" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XProcessingInstruction" Collapsed="true">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Xml.Linq.XText" Collapsed="true">
+    <Position X="12" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

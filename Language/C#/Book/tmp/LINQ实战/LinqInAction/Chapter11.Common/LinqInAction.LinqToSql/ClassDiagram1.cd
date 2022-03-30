@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="LinqInAction.LinqToSql.Author" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DLinqObjects1.cs</FileName>
+      <HashCode>QAAAAEAAAAFBgAAAIIEAAAIBgAAAACAAAAAAAAEEAAg=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BookAuthors" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Property Name="ID" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LinqInAction.LinqToSql.Book" BaseTypeListCollapsed="true">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DLinqObjects1.cs</FileName>
+      <HashCode>QACgAEgAEwJBgEAAKoIQAAJBgYAAACAAAAgAUAAEACA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BookAuthors" />
+    </ShowAsCollectionAssociation>
+    <Members>
+      <Property Name="ID" Hidden="true" />
+      <Property Name="PublisherId" Hidden="true" />
+      <Property Name="SubjectId" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LinqInAction.LinqToSql.BookAuthor" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DLinqObjects1.cs</FileName>
+      <HashCode>AAAACAAAAAEAgABAoAAAAAABiAAAACAAAJwAAAIEAAA=</HashCode>
+    </TypeIdentifier>
+    <Members>
+      <Property Name="AuthorId" Hidden="true" />
+      <Property Name="BookId" Hidden="true" />
+      <Property Name="ID" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+</ClassDiagram>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="lia" EntityNamespace="SampleClasses.Ch8" ContextNamespace="SampleClasses.Ch8" Class="Ch8DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\lia.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True" SettingsObjectName="LinqInAction.Chapter06to08.Common.My.MySettings" SettingsPropertyName="liaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Author" Member="Authors">
+    <Type Name="Author">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="WebSite" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.Byte[]" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Book" Member="Books">
+    <Type Name="Book">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Isbn" Type="System.String" DbType="NChar(13)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="PageCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PubDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Publisher" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Summary" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Publisher_Book" Member="Publisher1" ThisKey="Publisher" Type="Publisher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Publisher" Member="Publishers">
+    <Type Name="Publisher">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Logo" Type="System.Byte[]" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="WebSite" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="Publisher_Book" Member="Books" OtherKey="Publisher" Type="Book" />
+    </Type>
+  </Table>
+  <Function Name="dbo.fnBookCountForPublisher" Method="fnBookCountForPublisher" IsComposable="true">
+    <Parameter Name="PublisherId" Parameter="publisherId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

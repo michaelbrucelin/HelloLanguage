@@ -1,0 +1,1 @@
+﻿SqlMetal.exe /code:LinqBooks.cs /namespace:LinqInAction.Chapter14 /context:LinqBooks <PATH TO THE MDF FILE>

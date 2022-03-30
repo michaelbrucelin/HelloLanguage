@@ -1,0 +1,304 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95C614D1-D1D8-4DB1-88F7-BE0F8DD65969}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LinqBooks.Web</RootNamespace>
+    <AssemblyName>LinqBooks.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.10618.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Chapter12.CSharp\LinqToAmazon\AmazonBook.cs">
+      <Link>Amazon\AmazonBook.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.CSharp\LinqToAmazon\AmazonBookExpressionVisitor.cs">
+      <Link>Amazon\AmazonBookExpressionVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.CSharp\LinqToAmazon\AmazonBookQueryCriteria.cs">
+      <Link>Amazon\AmazonBookQueryCriteria.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.CSharp\LinqToAmazon\AmazonBookSearch.cs">
+      <Link>Amazon\AmazonBookSearch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.CSharp\LinqToAmazon\AmazonHelper.cs">
+      <Link>Amazon\AmazonHelper.cs</Link>
+    </Compile>
+    <Compile Include="AddBooks.aspx.cs">
+      <DependentUpon>AddBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddBooks.aspx.designer.cs">
+      <DependentUpon>AddBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommon.cs" />
+    <Compile Include="Authors.aspx.cs">
+      <DependentUpon>Authors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Authors.aspx.designer.cs">
+      <DependentUpon>Authors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Book.aspx.cs">
+      <DependentUpon>Book.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Book.aspx.designer.cs">
+      <DependentUpon>Book.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Books.aspx.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Books.aspx.designer.cs">
+      <DependentUpon>Books.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BookList.ascx.cs">
+      <DependentUpon>BookList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BookList.ascx.designer.cs">
+      <DependentUpon>BookList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Author.aspx.cs">
+      <DependentUpon>Author.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Author.aspx.designer.cs">
+      <DependentUpon>Author.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AuthorList.ascx.cs">
+      <DependentUpon>AuthorList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AuthorList.ascx.designer.cs">
+      <DependentUpon>AuthorList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomQueryOperators.cs" />
+    <Compile Include="DebuggerWriter.cs" />
+    <Compile Include="Subject.aspx.cs">
+      <DependentUpon>Subject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subject.aspx.designer.cs">
+      <DependentUpon>Subject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Subjects.aspx.cs">
+      <DependentUpon>Subjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Subjects.aspx.designer.cs">
+      <DependentUpon>Subjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GetXML.ashx.cs">
+      <DependentUpon>GetXML.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LinqBooksDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publisher.aspx.cs">
+      <DependentUpon>Publisher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Publisher.aspx.designer.cs">
+      <DependentUpon>Publisher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Publishers.aspx.cs">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Publishers.aspx.designer.cs">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RSS.asmx.cs">
+      <DependentUpon>RSS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XMLImportExport.aspx.cs">
+      <DependentUpon>XMLImportExport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XMLImportExport.aspx.designer.cs">
+      <DependentUpon>XMLImportExport.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddBooks.aspx" />
+    <Content Include="Book.aspx" />
+    <Content Include="Books.aspx" />
+    <Content Include="Controls\BookList.ascx" />
+    <Content Include="Main.Master" />
+    <Content Include="Publisher.aspx" />
+    <Content Include="Publishers.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\lia.mdf">
+    </Content>
+    <Content Include="App_Data\lia_log.ldf">
+      <DependentUpon>lia.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\Theme1\EmptyStar.png" />
+    <Content Include="App_Themes\Theme1\feed-icon-48x48.gif" />
+    <Content Include="App_Themes\Theme1\FilledStar.png" />
+    <Content Include="App_Themes\Theme1\Progress.gif" />
+    <Content Include="App_Themes\Theme1\SavedStar.png" />
+    <Content Include="App_Themes\Theme1\Skin1.skin" />
+    <Content Include="App_Themes\Theme1\Stylesheet1.css" />
+    <Content Include="Authors.aspx" />
+    <Content Include="Author.aspx" />
+    <Content Include="Controls\AuthorList.ascx" />
+    <Content Include="Subject.aspx" />
+    <Content Include="Subjects.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="RSS.asmx" />
+    <Content Include="GetXML.ashx" />
+    <Content Include="SampleExport.xml" />
+    <Content Include="XMLImportExport.aspx" />
+    <None Include="LinqBooksDataSet.xsc">
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LinqBooksDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LinqBooksDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="LinqBooksDataSet.xss">
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AmazonCommon\AmazonCommon.csproj">
+      <Project>{A272B4AF-92AA-4C1F-8D4A-6788C808134B}</Project>
+      <Name>AmazonCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqBooks.DataAccess\LinqBooks.DataAccess.csproj">
+      <Project>{21C5DEA1-9632-496B-A96E-9BA49532A2B3}</Project>
+      <Name>LinqBooks.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqBooks.Entities\LinqBooks.Entities.csproj">
+      <Project>{6CDFA8BA-81F7-4CE8-AE0D-BE01AD1852D8}</Project>
+      <Name>LinqBooks.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8474</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

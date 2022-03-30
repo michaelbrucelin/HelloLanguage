@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<books>
+	<book>
+		<title>LINQ in Action</title>
+		<author>Fabrice Marguerie</author>
+		<author>Steve Eichert</author>
+		<author>Jim Wooley</author>
+		<publisher>Manning</publisher>
+		<rating>4</rating>
+	</book>
+	<book>
+		<title>Ajax in Action</title>
+		<author>Dave Crane</author>
+		<publisher>Manning</publisher>
+		<rating>3</rating>
+	</book>
+	<book>
+		<title>Enterprise Application Architecture</title>
+		<author>Martin Fowler</author>
+		<publisher>APress</publisher>
+		<rating>5</rating>
+	</book>
+</books>

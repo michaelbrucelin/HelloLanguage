@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{44EB7303-8278-498F-8D81-13031DE625B2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LinqBooks.Web</RootNamespace>
+    <AssemblyName>LinqBooks.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>LinqBooks.Web.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>LinqBooks.Web.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.10618.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\AuthorList.ascx" />
+    <Content Include="Controls\BookList.ascx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Chapter12.VB\LinqToAmazon\AmazonBook.vb">
+      <Link>Amazon\AmazonBook.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.VB\LinqToAmazon\AmazonBookExpressionVisitor.vb">
+      <Link>Amazon\AmazonBookExpressionVisitor.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.VB\LinqToAmazon\AmazonBookQueryCriteria.vb">
+      <Link>Amazon\AmazonBookQueryCriteria.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.VB\LinqToAmazon\AmazonBookSearch.vb">
+      <Link>Amazon\AmazonBookSearch.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Chapter12.VB\LinqToAmazon\AmazonHelper.vb">
+      <Link>Amazon\AmazonHelper.vb</Link>
+    </Compile>
+    <Compile Include="AddBooks.aspx.designer.vb">
+      <DependentUpon>AddBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddBooks.aspx.vb">
+      <DependentUpon>AddBooks.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AppCommon.vb" />
+    <Compile Include="Author.aspx.designer.vb">
+      <DependentUpon>Author.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Author.aspx.vb">
+      <DependentUpon>Author.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Authors.aspx.designer.vb">
+      <DependentUpon>Authors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Authors.aspx.vb">
+      <DependentUpon>Authors.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Book.aspx.designer.vb">
+      <DependentUpon>Book.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Book.aspx.vb">
+      <DependentUpon>Book.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Books.aspx.designer.vb">
+      <DependentUpon>Books.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Books.aspx.vb">
+      <DependentUpon>Books.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AuthorList.ascx.designer.vb">
+      <DependentUpon>AuthorList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AuthorList.ascx.vb">
+      <DependentUpon>AuthorList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BookList.ascx.designer.vb">
+      <DependentUpon>BookList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BookList.ascx.vb">
+      <DependentUpon>BookList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="GetXML.ashx.vb">
+      <DependentUpon>GetXML.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="LinqBooksDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.vb">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.vb">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="CustomQueryOperators.vb" />
+    <Compile Include="Publisher.aspx.designer.vb">
+      <DependentUpon>Publisher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Publisher.aspx.vb">
+      <DependentUpon>Publisher.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Publishers.aspx.designer.vb">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Publishers.aspx.vb">
+      <DependentUpon>Publishers.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RSS.asmx.vb">
+      <DependentUpon>RSS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Subjects.aspx.designer.vb">
+      <DependentUpon>Subjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Subjects.aspx.vb">
+      <DependentUpon>Subjects.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="XMLImportExport.aspx.designer.vb">
+      <DependentUpon>XMLImportExport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XMLImportExport.aspx.vb">
+      <DependentUpon>XMLImportExport.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddBooks.aspx" />
+    <Content Include="App_Data\lia.mdf">
+    </Content>
+    <Content Include="App_Data\lia_log.ldf">
+      <DependentUpon>lia.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Themes\Theme1\EmptyStar.png" />
+    <Content Include="App_Themes\Theme1\feed-icon-48x48.gif" />
+    <Content Include="App_Themes\Theme1\FilledStar.png" />
+    <Content Include="App_Themes\Theme1\Progress.gif" />
+    <Content Include="App_Themes\Theme1\SavedStar.png" />
+    <Content Include="App_Themes\Theme1\Stylesheet1.css" />
+    <Content Include="Author.aspx" />
+    <Content Include="Authors.aspx" />
+    <Content Include="Book.aspx" />
+    <Content Include="Books.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Main.Master" />
+    <Content Include="GetXML.ashx" />
+    <Content Include="App_Themes\Theme1\Skin1.skin" />
+    <None Include="LinqBooksDataSet.xsc">
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="LinqBooksDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LinqBooksDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LinqBooksDataSet.xss">
+      <DependentUpon>LinqBooksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Publisher.aspx" />
+    <Content Include="Publishers.aspx" />
+    <Content Include="RSS.asmx" />
+    <Content Include="SampleExport.xml" />
+    <Content Include="Subjects.aspx" />
+    <Content Include="Web.sitemap" />
+    <Content Include="XMLImportExport.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AmazonCommon\AmazonCommon.csproj">
+      <Project>{A272B4AF-92AA-4C1F-8D4A-6788C808134B}</Project>
+      <Name>AmazonCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqBooks.DataAccess\LinqBooks.DataAccess.vbproj">
+      <Project>{EAAF651A-BC21-49C9-AC93-5EDDA5276440}</Project>
+      <Name>LinqBooks.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqBooks.Entities\LinqBooks.Entities.vbproj">
+      <Project>{D4F03812-AFED-4433-A951-87889D6E1492}</Project>
+      <Name>LinqBooks.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17049</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

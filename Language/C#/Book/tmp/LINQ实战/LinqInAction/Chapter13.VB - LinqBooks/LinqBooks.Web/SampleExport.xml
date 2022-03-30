@@ -1,0 +1,202 @@
+<LinqBooksDataSet xmlns="http://tempuri.org/LinqBooksDataSet.xsd">
+  <Book>
+    <ID>a1c95f31-adc4-43c9-9df5-1b053cae2697</ID>
+    <Title>Professional .NET 2.0 Generics (Programmer to Programmer)</Title>
+    <Subject>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</Subject>
+    <Publisher>dd889415-2d73-40d9-8ebf-e2df88611151</Publisher>
+    <PubDate>2005-10-17T00:00:00-07:00</PubDate>
+    <Price>39.9900</Price>
+    <PageCount>0</PageCount>
+    <Isbn>0764559885   </Isbn>
+  </Book>
+  <Book>
+    <ID>0737c167-e3d9-4a46-9247-2d0101ab18d1</ID>
+    <Title>All your base are belong to us</Title>
+    <Subject>c603e018-7e60-4cf2-b147-fb13e9be3d72</Subject>
+    <Publisher>855cb02e-dc29-473d-9f40-6c3405043fa3</Publisher>
+    <PubDate>2005-05-05T00:00:00-07:00</PubDate>
+    <Price>35.5000</Price>
+    <PageCount>1205</PageCount>
+    <Isbn>0-333-77777-2</Isbn>
+  </Book>
+  <Book>
+    <ID>b1c7670c-fdf5-45e5-8f06-3b7994b6a346</ID>
+    <Title>C# on Rails</Title>
+    <Subject>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</Subject>
+    <Publisher>855cb02e-dc29-473d-9f40-6c3405043fa3</Publisher>
+    <PubDate>2007-04-01T00:00:00-07:00</PubDate>
+    <Price>35.5000</Price>
+    <PageCount>256</PageCount>
+    <Isbn>0-222-77777-2</Isbn>
+  </Book>
+  <Book>
+    <ID>c843b234-217c-436a-9a7f-5ac55474e424</ID>
+    <Title>Head Rush Ajax (Head First)</Title>
+    <Subject>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</Subject>
+    <Publisher>84911c21-ed82-4d56-b462-ad371ba10ba3</Publisher>
+    <PageCount>0</PageCount>
+  </Book>
+  <Book>
+    <ID>4f3b0ac1-3746-4067-a810-79a9ce02a7bf</ID>
+    <Title>Funny Stories</Title>
+    <Subject>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</Subject>
+    <Publisher>4ab0856e-51f3-4b67-9355-8b11510119ba</Publisher>
+    <PubDate>2004-11-10T00:00:00-08:00</PubDate>
+    <Price>25.5500</Price>
+    <PageCount>101</PageCount>
+    <Isbn>0-000-77777-2</Isbn>
+  </Book>
+  <Book>
+    <ID>8f6aaf02-8431-4e3f-b3b1-98d7407d5106</ID>
+    <Title>Stories about the sea</Title>
+    <Subject>92f10db5-7970-473d-9a25-1ff6cab8f682</Subject>
+    <Publisher>4ab0856e-51f3-4b67-9355-8b11510119ba</Publisher>
+    <PageCount>0</PageCount>
+    <Isbn xml:space="preserve">             </Isbn>
+    <Summary />
+    <Notes />
+  </Book>
+  <Book>
+    <ID>5a361453-13ee-4eca-9694-a0cea8cdbac2</ID>
+    <Title>LINQ rules</Title>
+    <Subject>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</Subject>
+    <Publisher>855cb02e-dc29-473d-9f40-6c3405043fa3</Publisher>
+    <PubDate>2007-09-02T00:00:00-07:00</PubDate>
+    <Price>12.0000</Price>
+    <PageCount>300</PageCount>
+    <Isbn>0-111-77777-2</Isbn>
+  </Book>
+  <Book>
+    <ID>09017e35-ca66-40b8-80a4-ba5253716e33</ID>
+    <Title>Bonjour mon Amour</Title>
+    <Subject>92f10ca6-7970-473d-9a25-1ff6cab8f682</Subject>
+    <Publisher>4ab0856e-51f3-4b67-9355-8b11510119ba</Publisher>
+    <PubDate>1973-02-18T00:00:00-08:00</PubDate>
+    <Price>29.0000</Price>
+    <PageCount>50</PageCount>
+    <Isbn>2-444-77777-2</Isbn>
+  </Book>
+  <BookAuthor>
+    <Author>c55e483f-05c4-4c2d-914f-27c621cd0673</Author>
+    <Book>4f3b0ac1-3746-4067-a810-79a9ce02a7bf</Book>
+    <AuthorOrder>1</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>c55e483f-05c4-4c2d-914f-27c621cd0673</Author>
+    <Book>09017e35-ca66-40b8-80a4-ba5253716e33</Book>
+    <AuthorOrder>2</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>3d8c39ad-27aa-446d-8156-802f578a4dfe</Author>
+    <Book>0737c167-e3d9-4a46-9247-2d0101ab18d1</Book>
+    <AuthorOrder>1</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>3d8c39ad-27aa-446d-8156-802f578a4dfe</Author>
+    <Book>09017e35-ca66-40b8-80a4-ba5253716e33</Book>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>6648ebcb-3580-42e9-8c3d-8ab46d74c8bb</Author>
+    <Book>b1c7670c-fdf5-45e5-8f06-3b7994b6a346</Book>
+    <AuthorOrder>1</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>6648ebcb-3580-42e9-8c3d-8ab46d74c8bb</Author>
+    <Book>5a361453-13ee-4eca-9694-a0cea8cdbac2</Book>
+    <AuthorOrder>1</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>6862c705-560c-454c-8a86-b8c5b806e4ea</Author>
+    <Book>a1c95f31-adc4-43c9-9df5-1b053cae2697</Book>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>6d1a574e-6673-4536-8c88-d4a0426dc817</Author>
+    <Book>4f3b0ac1-3746-4067-a810-79a9ce02a7bf</Book>
+    <AuthorOrder>2</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>6d1a574e-6673-4536-8c88-d4a0426dc817</Author>
+    <Book>09017e35-ca66-40b8-80a4-ba5253716e33</Book>
+    <AuthorOrder>1</AuthorOrder>
+  </BookAuthor>
+  <BookAuthor>
+    <Author>646c360a-efbe-4b4a-8c35-f0c9715beb12</Author>
+    <Book>09017e35-ca66-40b8-80a4-ba5253716e33</Book>
+  </BookAuthor>
+  <Author>
+    <ID>c55e483f-05c4-4c2d-914f-27c621cd0673</ID>
+    <LastName>Good</LastName>
+    <FirstName>Johnny</FirstName>
+  </Author>
+  <Author>
+    <ID>3d8c39ad-27aa-446d-8156-802f578a4dfe</ID>
+    <LastName>Legrand</LastName>
+    <FirstName>Jeremy</FirstName>
+  </Author>
+  <Author>
+    <ID>6648ebcb-3580-42e9-8c3d-8ab46d74c8bb</ID>
+    <LastName>Prince</LastName>
+    <FirstName>Octavio</FirstName>
+  </Author>
+  <Author>
+    <ID>6862c705-560c-454c-8a86-b8c5b806e4ea</ID>
+    <LastName>Golding</LastName>
+    <FirstName>Tod</FirstName>
+  </Author>
+  <Author>
+    <ID>6d1a574e-6673-4536-8c88-d4a0426dc817</ID>
+    <LastName>Simplegame</LastName>
+    <FirstName>Graziella</FirstName>
+  </Author>
+  <Author>
+    <ID>646c360a-efbe-4b4a-8c35-f0c9715beb12</ID>
+    <LastName>Hamilton</LastName>
+    <FirstName>Bill</FirstName>
+  </Author>
+  <Publisher>
+    <ID>cd559be2-7d16-479e-8b76-21cd399de0a3</ID>
+    <Name>Manning Publications</Name>
+  </Publisher>
+  <Publisher>
+    <ID>855cb02e-dc29-473d-9f40-6c3405043fa3</ID>
+    <Name>Joe Publishing</Name>
+  </Publisher>
+  <Publisher>
+    <ID>4ab0856e-51f3-4b67-9355-8b11510119ba</ID>
+    <Name>FunBooks</Name>
+  </Publisher>
+  <Publisher>
+    <ID>84911c21-ed82-4d56-b462-ad371ba10ba3</ID>
+    <Name>O'Reilly Media, Inc.</Name>
+  </Publisher>
+  <Publisher>
+    <ID>dd889415-2d73-40d9-8ebf-e2df88611151</ID>
+    <Name>WROX</Name>
+  </Publisher>
+  <Review>
+    <ID>345be7f3-7520-43c0-8557-b2d91c0ff189</ID>
+    <Book>0737c167-e3d9-4a46-9247-2d0101ab18d1</Book>
+    <User>87b7f5bb-0d96-48b9-ac2f-40a5e32cb673</User>
+    <Comments>zefezf</Comments>
+  </Review>
+  <Subject>
+    <ID>a0e2a5d7-88c6-4dfe-a416-10eadb978b0b</ID>
+    <Name>Software development</Name>
+  </Subject>
+  <Subject>
+    <ID>92f10ca6-7970-473d-9a25-1ff6cab8f682</ID>
+    <Name>Novel</Name>
+  </Subject>
+  <Subject>
+    <ID>92f10db5-7970-473d-9a25-1ff6cab8f682</ID>
+    <Name>Some strange subject</Name>
+  </Subject>
+  <Subject>
+    <ID>c603e018-7e60-4cf2-b147-fb13e9be3d72</ID>
+    <Name>Science fiction</Name>
+  </Subject>
+  <User>
+    <ID>87b7f5bb-0d96-48b9-ac2f-40a5e32cb673</ID>
+    <Name>User One</Name>
+  </User>
+</LinqBooksDataSet>

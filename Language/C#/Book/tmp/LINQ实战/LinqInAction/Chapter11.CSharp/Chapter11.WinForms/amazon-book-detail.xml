@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=YOUR AWS ACCESS KEY&Operation=ItemLookup&IdType=ASIN&ItemId=0735621632&MerchantId=All&ResponseGroup=Large
+-->
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2009-07-01">
+	<OperationRequest>
+		<HTTPHeaders>
+			<Header Name="UserAgent" Value="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.6) Gecko/20060728 Firefox/1.5.0.6"/>
+		</HTTPHeaders>
+		<RequestId>1VA2V4PQPE58G327XDMC</RequestId>
+		<Arguments>
+			<Argument Name="MerchantId" Value="All"/>
+			<Argument Name="Service" Value="AWSECommerceService"/>
+			<Argument Name="AWSAccessKeyId" Value="YOUR AWS ACCESS KEY"/>
+			<Argument Name="ItemId" Value="0735621632"/>
+			<Argument Name="IdType" Value="ASIN"/>
+			<Argument Name="ResponseGroup" Value="Large"/>
+			<Argument Name="Operation" Value="ItemLookup"/>
+		</Arguments>
+		<RequestProcessingTime>0.262482881546021</RequestProcessingTime>
+	</OperationRequest>
+	<Items>
+		<Request>
+			<IsValid>True</IsValid>
+			<ItemLookupRequest>
+				<IdType>ASIN</IdType>
+				<MerchantId>All</MerchantId>
+				<ItemId>0735621632</ItemId>
+				<ResponseGroup>Large</ResponseGroup>
+			</ItemLookupRequest>
+		</Request>
+		<Item>
+			<ASIN>0735621632</ASIN>
+			<DetailPageURL>http://www.amazon.com/exec/obidos/redirect?tag=ws%26link_code=xm2%26camp=2025%26creative=165953%26path=http://www.amazon.com/gp/redirect.html%253fASIN=0735621632%2526tag=ws%2526lcode=xm2%2526cID=2025%2526ccmID=165953%2526location=/o/ASIN/0735621632%25253FSubscriptionId=YOUR AWS ACCESS KEY</DetailPageURL>
+			<SalesRank>956</SalesRank>
+			<SmallImage>
+				<URL>http://images.amazon.com/images/P/0735621632.01._SCTHUMBZZZ_.jpg</URL>
+				<Height Units="pixels">75</Height>
+				<Width Units="pixels">59</Width>
+			</SmallImage>
+			<MediumImage>
+				<URL>http://images.amazon.com/images/P/0735621632.01._SCMZZZZZZZ_.jpg</URL>
+				<Height Units="pixels">160</Height>
+				<Width Units="pixels">127</Width>
+			</MediumImage>
+			<LargeImage>
+				<URL>http://images.amazon.com/images/P/0735621632.01._SCLZZZZZZZ_.jpg</URL>
+				<Height Units="pixels">500</Height>
+				<Width Units="pixels">398</Width>
+			</LargeImage>
+			<ImageSets>
+				<ImageSet Category="primary">
+					<SmallImage>
+						<URL>http://images.amazon.com/images/P/0735621632.01._SCTHUMBZZZ_.jpg</URL>
+						<Height Units="pixels">75</Height>
+						<Width Units="pixels">59</Width>
+					</SmallImage>
+					<MediumImage>
+						<URL>http://images.amazon.com/images/P/0735621632.01._SCMZZZZZZZ_.jpg</URL>
+						<Height Units="pixels">160</Height>
+						<Width Units="pixels">127</Width>
+					</MediumImage>
+					<LargeImage>
+						<URL>http://images.amazon.com/images/P/0735621632.01._SCLZZZZZZZ_.jpg</URL>
+						<Height Units="pixels">500</Height>
+						<Width Units="pixels">398</Width>
+					</LargeImage>
+				</ImageSet>
+			</ImageSets>
+			<ItemAttributes>
+				<Author>Jeffrey Richter</Author>
+				<Binding>Paperback</Binding>
+				<DeweyDecimalNumber>005.453</DeweyDecimalNumber>
+				<EAN>9780735621633</EAN>
+				<Edition>2nd</Edition>
+				<ISBN>0735621632</ISBN>
+				<Label>Microsoft Press</Label>
+				<ListPrice>
+					<Amount>5999</Amount>
+					<CurrencyCode>USD</CurrencyCode>
+					<FormattedPrice>$59.99</FormattedPrice>
+				</ListPrice>
+				<Manufacturer>Microsoft Press</Manufacturer>
+				<NumberOfItems>1</NumberOfItems>
+				<NumberOfPages>736</NumberOfPages>
+				<PackageDimensions>
+					<Height Units="hundredths-inches">175</Height>
+					<Length Units="hundredths-inches">892</Length>
+					<Weight Units="hundredths-pounds">307</Weight>
+					<Width Units="hundredths-inches">722</Width>
+				</PackageDimensions>
+				<ProductGroup>Book</ProductGroup>
+				<PublicationDate>2006-02-22</PublicationDate>
+				<Publisher>Microsoft Press</Publisher>
+				<Studio>Microsoft Press</Studio>
+				<Title>CLR via C#, Second Edition</Title>
+			</ItemAttributes>
+			<OfferSummary>
+				<LowestNewPrice>
+					<Amount>3701</Amount>
+					<CurrencyCode>USD</CurrencyCode>
+					<FormattedPrice>$37.01</FormattedPrice>
+				</LowestNewPrice>
+				<LowestUsedPrice>
+					<Amount>3717</Amount>
+					<CurrencyCode>USD</CurrencyCode>
+					<FormattedPrice>$37.17</FormattedPrice>
+				</LowestUsedPrice>
+				<LowestCollectiblePrice>
+					<Amount>5999</Amount>
+					<CurrencyCode>USD</CurrencyCode>
+					<FormattedPrice>$59.99</FormattedPrice>
+				</LowestCollectiblePrice>
+				<TotalNew>39</TotalNew>
+				<TotalUsed>15</TotalUsed>
+				<TotalCollectible>1</TotalCollectible>
+				<TotalRefurbished>0</TotalRefurbished>
+			</OfferSummary>
+			<Offers>
+				<TotalOffers>39</TotalOffers>
+				<TotalOfferPages>4</TotalOfferPages>
+				<Offer>
+					<Seller>
+						<SellerId>A2PH0OU9DK0NPM</SellerId>
+						<AverageFeedbackRating>4.5</AverageFeedbackRating>
+						<TotalFeedback>74535</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Absolutely Brand New &amp; In Stock. 100% 30-Day Money Back. Direct from our warehouse. Ships by USPS. 1+ million customers served-In business since 1986. Happy Customers is Our #1 Goal. Toll Free Support</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>1I72hm9xZTZjTpnhqdTtvA7yVjUOmunxn7o45ZK%2FIuAfDD29MJ%2Fks61Lk3Mwa9a2tociWjB4WV01fn5aOyr71EtE65bsd%2BnZGqhHputdWd3kTRnOKLdaqQ%3D%3D</OfferListingId>
+						<ExchangeId>Y06Y0466593Y9697685</ExchangeId>
+						<Price>
+							<Amount>3701</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$37.01</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A3H2I89N536IDE</SellerId>
+						<AverageFeedbackRating>4.8</AverageFeedbackRating>
+						<TotalFeedback>359</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>New Book. May have a Remainder Mark</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>bBAhczVJYt1LGmvEwEkG2vvWVGHagorv31MvcePUa0hORoH0seF3NX905P6ymwyqVc77NMIeYvBzKMolLGD44U6Dp4%2FVDZnDs2vc3xXsI14ftVwDLc1u9Q%3D%3D</OfferListingId>
+						<ExchangeId>Y02Y5730457Y2751241</ExchangeId>
+						<Price>
+							<Amount>3702</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$37.02</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A3ADN03F2ABAVW</SellerId>
+						<AverageFeedbackRating>4.5</AverageFeedbackRating>
+						<TotalFeedback>22676</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Brand New, Perfect Condition, Please allow 4-14 business days for delivery. 100% Money Back Guarantee, Over 1,000,000 customers served.</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>%2F5gv%2B23oHJgyh07VnQdBJePhA9o8c0NBv%2FS9CbI8gzMlxb76uCZv6HoLDxVzhNu7zIV70bs8oRj3WxLNVWDpZp2wNh3O2eZo3rW5WMbx0ZlWmK%2BtF7qpng%3D%3D</OfferListingId>
+						<ExchangeId>Y05Y4253738Y5141445</ExchangeId>
+						<Price>
+							<Amount>3750</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$37.50</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Merchant>
+						<MerchantId>ATVPDKIKX0DER</MerchantId>
+						<GlancePage>http://www.amazon.com/gp/help/seller/home.html?seller=ATVPDKIKX0DER</GlancePage>
+					</Merchant>
+					<OfferAttributes>
+						<Condition>New</Condition>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>v0bSNxvzpXL3wUF01gJOWykfwMjHGImYU4pOmHZC0yv8tT%2BjQHgVl4Yv8RwnlZrSxeqGhlUV42w%3D</OfferListingId>
+						<Price>
+							<Amount>3779</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$37.79</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 24 hours</Availability>
+						<IsEligibleForSuperSaverShipping>1</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A1SSUO20DOKMFO</SellerId>
+						<AverageFeedbackRating>4.8</AverageFeedbackRating>
+						<TotalFeedback>30716</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Gift Quality   We ship from the Closest of 5 Locations based on your ship to Address!  Orders Processed Immediately! Order before 10am Eastern and we ship the SAME Day! After 10am Next Business Day!</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>tMdPJZuoIm2EMAnJ9G0URa3rb2yzkZ4J2azgodr1RIVGxYozkR4q6zNJ3rM90H07LBTaxFW1li5iT0RZ4AM4%2F0yHEQUZZFV0u2Qj%2BERibs%2FdAwenoBKfxg%3D%3D</OfferListingId>
+						<ExchangeId>Y03Y2868803Y5011483</ExchangeId>
+						<Price>
+							<Amount>4017</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$40.17</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A1MSHKP33DCC6</SellerId>
+						<AverageFeedbackRating>4.6</AverageFeedbackRating>
+						<TotalFeedback>393448</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Brand new Item. CD, DVD, Book, VHS more than 400 000 titles to choose from. ALL days Low Price !</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>oVU4%2FyTPDIOvgYchC%2FvnpaX0edVZvrbv%2BVtGHuCdDyCu7FFavtFM%2BDRAj9hoAt%2BSFp12acJ4FC7JotgXQz9d59ur6575soSMJqKEwiyF5Kw0RRs4Q1DHYw%3D%3D</OfferListingId>
+						<ExchangeId>Y02Y7030443Y3637881</ExchangeId>
+						<Price>
+							<Amount>4059</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$40.59</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A27VVAA2CJ75SO</SellerId>
+						<AverageFeedbackRating>0.0</AverageFeedbackRating>
+						<TotalFeedback>0</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Please allow 4-14 Business Days for delivery. All of our titles are brand new, NOT REMAINDERS, and 100% Guaranteed! APO, FPO and PO Box addresses accepted.</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>x%2FIRK9hc6oqYVcZJgbWU0kgf7Q5DBz1kO7Tj6eQFBT0gEkUZa6DUisqpzdRzM4OH%2F3iAD2pV%2Bjmkbokk9Mzg1WFku%2BUT9hsH97mkCV745fyVbR%2BGA2SrjQ%3D%3D</OfferListingId>
+						<ExchangeId>Y05Y3021456Y5366541</ExchangeId>
+						<Price>
+							<Amount>4119</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$41.19</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A2ZGNN73WLXVFQ</SellerId>
+						<AverageFeedbackRating>4.5</AverageFeedbackRating>
+						<TotalFeedback>28462</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>Brand new book. Over 2 million customers served. Order now. Selling books online since 1995. Few left in stock - order soon. Code: I20060816140733G</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>xTAP3Rl2H3lGuvI8axhTB6ONCufKyjyCLSCtQkdQ8ij0Wc1yfuDMyEega1dg%2BfNJAlABt0MNS8JdbcVI%2BlWJXhV9iDlspQvznYB9AxQKUFx43BXkkL64Cg%3D%3D</OfferListingId>
+						<ExchangeId>Y03Y3032580Y1261768</ExchangeId>
+						<Price>
+							<Amount>4146</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$41.46</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A2NT0F3A6LH7YD</SellerId>
+						<AverageFeedbackRating>4.8</AverageFeedbackRating>
+						<TotalFeedback>63783</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>All of our items are brand new!</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>JM1MVqS0Pl3A6XYa%2FNvte645OlOqbwmDivSpABPMBmUs9JyOFPCuI9zsu3a6vhwe2O%2BebEyJklD5YjI0HZkVna3xNdLncS8C4X9LA9Xh%2FFLhTzJnirKMxQ%3D%3D</OfferListingId>
+						<ExchangeId>Y05Y1800163Y6032344</ExchangeId>
+						<Price>
+							<Amount>4199</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$41.99</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+				<Offer>
+					<Seller>
+						<SellerId>A13MCS24BSAIL1</SellerId>
+						<AverageFeedbackRating>4.7</AverageFeedbackRating>
+						<TotalFeedback>12587</TotalFeedback>
+					</Seller>
+					<OfferAttributes>
+						<Condition>New</Condition>
+						<SubCondition>new</SubCondition>
+						<ConditionNote>All of our items are brand new!</ConditionNote>
+					</OfferAttributes>
+					<OfferListing>
+						<OfferListingId>5Iz5h67joTmTlPTnGCFMZpUzeBc4IKc9fGNwZ0BuO%2BRsLXzTQCArO7R9hF6AMnhXoJps5yDkwtGNbtwF8d9ehIQT6RkPsTVdAEvVq0cOWwxtNEvIKh8ryg%3D%3D</OfferListingId>
+						<ExchangeId>Y02Y0239059Y1313321</ExchangeId>
+						<Price>
+							<Amount>4199</Amount>
+							<CurrencyCode>USD</CurrencyCode>
+							<FormattedPrice>$41.99</FormattedPrice>
+						</Price>
+						<Availability>Usually ships in 1-2 business days</Availability>
+						<IsEligibleForSuperSaverShipping>0</IsEligibleForSuperSaverShipping>
+					</OfferListing>
+				</Offer>
+			</Offers>
+			<CustomerReviews>
+				<AverageRating>5.0</AverageRating>
+				<TotalReviews>13</TotalReviews>
+				<TotalReviewPages>3</TotalReviewPages>
+				<Review>
+					<ASIN>0735621632</ASIN>
+					<Rating>4</Rating>
+					<HelpfulVotes>0</HelpfulVotes>
+					<CustomerId>AOPOVBBO6EVP6</CustomerId>
+					<TotalVotes>0</TotalVotes>
+					<Date>2006-08-16</Date>
+					<Summary>For advanced developers</Summary>
+					<Content>This book gives a deep view of the CLR and framework. You can find tips for performance, and complete description of many functionalities of the framework. The bad think of this book, is that don't come with a CD, and because this, you lost a quick find and a way to carry the book with you.</Content>
+				</Review>
+				<Review>
+					<ASIN>0735621632</ASIN>
+					<Rating>4</Rating>
+					<HelpfulVotes>0</HelpfulVotes>
+					<CustomerId>A5BWX17271FJB</CustomerId>
+					<TotalVotes>0</TotalVotes>
+					<Date>2006-07-25</Date>
+					<Summary>Ritcher always a must read</Summary>
+					<Content>As all Ritcher's books since "Advanced Windows: the developer's guide to the Win32 API", this book is a must read. Well subdivided chapters, useful examples, fluent writing. The missing star is for the lack of more advanced topics (expecially on generics, anon delagates and concurrency).</Content>
+				</Review>
+				<Review>
+					<ASIN>0735621632</ASIN>
+					<Rating>5</Rating>
+					<HelpfulVotes>0</HelpfulVotes>
+					<CustomerId>A2WKQWVCPD4OX3</CustomerId>
+					<TotalVotes>0</TotalVotes>
+					<Date>2006-07-24</Date>
+					<Summary>Jeffrey Richter does it again</Summary>
+					<Content>
+						Jeffrey Richter is my hero, he really is. This guy is simply amazing. I just cant imagine how he pulls it off - the toughest topics explained in the clearest manner.Moreover, he has achieved this feat over and over again. Any book he has written is testimony for this.
+						&lt;br /&gt;In his books, you would find information where you wouldnt find in any other place. You would also find information you can find elsewhere, but not as clear as his. He has the advantage of working closely with Microsoft and consulting with the .NET team, but I would say he would be a great author and teacher even without that advantage.
+						&lt;br /&gt;As about this book, it should not be your first C# book. I suggest you get beginner's C# book first (if you dont know any C#), I suggest Jesse Liberty's book, and then come to this book. You would get a tremendous advantage over people who havent read this book and your understanding of the building blocks of .NET platform would be in depth. His chapters on Threading alone is worth the price of the book. This book is an absolute pleasure to read, just like any other book from Richter. Grab your copy today itself ! If there really is a 5 star book, this one is it.
+						&lt;br /&gt;Nobody writes like Richter, nobody.
+					</Content>
+				</Review>
+				<Review>
+					<ASIN>0735621632</ASIN>
+					<Rating>5</Rating>
+					<HelpfulVotes>2</HelpfulVotes>
+					<CustomerId>A26PQXMJP9COME</CustomerId>
+					<TotalVotes>4</TotalVotes>
+					<Date>2006-07-13</Date>
+					<Summary>Life changing</Summary>
+					<Content>If you are a beginner or intermediate .Net/C# programmer, this book will change your life... I have bought several advanced level technical books in different areas. But nothing comes close to this one.. This book is so amazingly well written that you cant help but understand all the difficlt concepts and start liking them too. But beware, Mr Richter's enthusiasm is contagious and you will end up spending a lot more money and time on .Net books..</Content>
+				</Review>
+				<Review>
+					<ASIN>0735621632</ASIN>
+					<Rating>5</Rating>
+					<HelpfulVotes>2</HelpfulVotes>
+					<CustomerId>A22UITMATG6A2S</CustomerId>
+					<TotalVotes>4</TotalVotes>
+					<Date>2006-07-05</Date>
+					<Summary>Absolutely Excellent - Required Reading for Advanced .NET Developers</Summary>
+					<Content>
+						This book is all that I expected from Mr. Richter and more.  His writing style is excellent, his explanations are very understandable, and above all his examples are superb.  He not only illustrates a particular point -- he also shows a coding style, verbousness (is that a word?), and correctness that we should all mimic.  All too often writers choose for an example the most obvious one - which is wasted if it merely echoes whats said in the text.  The examples here extend, amplify, and make you think.
+						&lt;br /&gt;
+						&lt;br /&gt;Yes, you can write .NET applications without reading this book.  But I have to believe that your application will be much better if you take the time to learn from this book.  However -- I would not recommend it as the first book about .NET programming.   It (correctly) assumes you already know the basics.
+					</Content>
+				</Review>
+			</CustomerReviews>
+			<EditorialReviews>
+				<EditorialReview>
+					<Source>Book Description</Source>
+					<Content>Expert guidance from well-known programming author Jeff Richter about the CLR and the .NET Framework 2.0. Your hands-on guide to developing applications with the common language runtime (CLR) and Microsoft .NET Framework 2.0, with examples in Microsoft Visual C# 2005.</Content>
+				</EditorialReview>
+			</EditorialReviews>
+			<SimilarProducts>
+				<SimilarProduct>
+					<ASIN>0321246756</ASIN>
+					<Title>Framework Design Guidelines: Conventions, Idioms, and Patterns for Reusable .NET Libraries (Microsoft Net Development Series)</Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN>0735621764</ASIN>
+					<Title>Programming Microsoft  ASP.NET 2.0 Core Reference</Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN>0735621772</ASIN>
+					<Title>Programming Microsoft  ASP.NET 2.0 Applications: Advanced Topics</Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN>0735621810</ASIN>
+					<Title>Programming Microsoft  Visual C#  2005: The Language</Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN>0321267966</ASIN>
+					<Title>Windows Forms 2.0 Programming (2nd Edition) (Microsoft .Net Development Series)</Title>
+				</SimilarProduct>
+			</SimilarProducts>
+			<BrowseNodes>
+				<BrowseNode>
+					<BrowseNodeId>3967</BrowseNodeId>
+					<Name>C &amp; C++ Windows Programming</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>285848</BrowseNodeId>
+							<Name>Development</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>285844</BrowseNodeId>
+									<Name>Microsoft</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>5</BrowseNodeId>
+											<Name>Computers &amp; Internet</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>1000</BrowseNodeId>
+													<Name>Subjects</Name>
+													<Ancestors>
+														<BrowseNode>
+															<BrowseNodeId>283155</BrowseNodeId>
+															<Name>Books</Name>
+														</BrowseNode>
+													</Ancestors>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>4016</BrowseNodeId>
+					<Name>Software Development</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>4011</BrowseNodeId>
+							<Name>Software Design</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>3839</BrowseNodeId>
+									<Name>Programming</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>5</BrowseNodeId>
+											<Name>Computers &amp; Internet</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>1000</BrowseNodeId>
+													<Name>Subjects</Name>
+													<Ancestors>
+														<BrowseNode>
+															<BrowseNodeId>283155</BrowseNodeId>
+															<Name>Books</Name>
+														</BrowseNode>
+													</Ancestors>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>171114</BrowseNodeId>
+					<Name>General</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>3839</BrowseNodeId>
+							<Name>Programming</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>5</BrowseNodeId>
+									<Name>Computers &amp; Internet</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>1000</BrowseNodeId>
+											<Name>Subjects</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>283155</BrowseNodeId>
+													<Name>Books</Name>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>657762</BrowseNodeId>
+					<Name>General</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>5</BrowseNodeId>
+							<Name>Computers &amp; Internet</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>1000</BrowseNodeId>
+									<Name>Subjects</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>283155</BrowseNodeId>
+											<Name>Books</Name>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>697342</BrowseNodeId>
+					<Name>C#</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>3952</BrowseNodeId>
+							<Name>Languages &amp; Tools</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>3839</BrowseNodeId>
+									<Name>Programming</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>5</BrowseNodeId>
+											<Name>Computers &amp; Internet</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>1000</BrowseNodeId>
+													<Name>Subjects</Name>
+													<Ancestors>
+														<BrowseNode>
+															<BrowseNodeId>283155</BrowseNodeId>
+															<Name>Books</Name>
+														</BrowseNode>
+													</Ancestors>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>727876</BrowseNodeId>
+					<Name>Software Development</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>727868</BrowseNodeId>
+							<Name>Design &amp; Development</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>727676</BrowseNodeId>
+									<Name>Software Books</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>509348</BrowseNodeId>
+											<Name>Specialty Stores</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>229534</BrowseNodeId>
+													<Name>Software</Name>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>768646</BrowseNodeId>
+					<Name>Software Development</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>768626</BrowseNodeId>
+							<Name>Project Management</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>768606</BrowseNodeId>
+									<Name>Digital Business &amp; Culture</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>768564</BrowseNodeId>
+											<Name>Internet</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>768162</BrowseNodeId>
+													<Name>Computer &amp; Internet Books</Name>
+													<Ancestors>
+														<BrowseNode>
+															<BrowseNodeId>764512</BrowseNodeId>
+															<Name>Home &amp; Office</Name>
+															<Ancestors>
+																<BrowseNode>
+																	<BrowseNodeId>285080</BrowseNodeId>
+																	<Name>Amazon.com Stores</Name>
+																	<Ancestors>
+																		<BrowseNode>
+																			<BrowseNodeId>265523</BrowseNodeId>
+																			<Name>us-stores</Name>
+																		</BrowseNode>
+																	</Ancestors>
+																</BrowseNode>
+															</Ancestors>
+														</BrowseNode>
+													</Ancestors>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>132575011</BrowseNodeId>
+					<Name>General</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>4053</BrowseNodeId>
+							<Name>Software</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>5</BrowseNodeId>
+									<Name>Computers &amp; Internet</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>1000</BrowseNodeId>
+											<Name>Subjects</Name>
+											<Ancestors>
+												<BrowseNode>
+													<BrowseNodeId>283155</BrowseNodeId>
+													<Name>Books</Name>
+												</BrowseNode>
+											</Ancestors>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+				<BrowseNode>
+					<BrowseNodeId>137538011</BrowseNodeId>
+					<Name>General</Name>
+					<Ancestors>
+						<BrowseNode>
+							<BrowseNodeId>727676</BrowseNodeId>
+							<Name>Software Books</Name>
+							<Ancestors>
+								<BrowseNode>
+									<BrowseNodeId>509348</BrowseNodeId>
+									<Name>Specialty Stores</Name>
+									<Ancestors>
+										<BrowseNode>
+											<BrowseNodeId>229534</BrowseNodeId>
+											<Name>Software</Name>
+										</BrowseNode>
+									</Ancestors>
+								</BrowseNode>
+							</Ancestors>
+						</BrowseNode>
+					</Ancestors>
+				</BrowseNode>
+			</BrowseNodes>
+			<ListmaniaLists>
+				<ListmaniaList>
+					<ListId>RMDN88X1ENJDT</ListId>
+					<ListName>Essential books for a modern, professional .NET Developer...</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>R3EKC7ZMODY7U2</ListId>
+					<ListName>.NET Books</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>R2MY60BJ5HZFQK</ListId>
+					<ListName>.NET 2.0 Superstars</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>RSF6CTO005L9Q</ListId>
+					<ListName>Microsoft Certified Professional Developer (MCPD)</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>R32KRSF7SK3701</ListId>
+					<ListName>Master .NET/WinFX better than "experienced" programmers NOW!</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>R1SJFR56UWI626</ListId>
+					<ListName>.NET</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>R2H3CY0PL62G0E</ListId>
+					<ListName>A Dozen Books for Core Software Knowledge</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>RE8F1X0X0DL4D</ListId>
+					<ListName>myBooks</ListName>
+				</ListmaniaList>
+				<ListmaniaList>
+					<ListId>1365QMH1ZYP7M</ListId>
+					<ListName>Essential .NET Bookshelf</ListName>
+				</ListmaniaList>
+			</ListmaniaLists>
+		</Item>
+	</Items>
+</ItemLookupResponse>
