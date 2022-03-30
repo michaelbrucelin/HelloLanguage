@@ -20,10 +20,8 @@ public class LocalDates {
         LocalDate independenceDay = LocalDate.of(2018, Month.JULY, 4);
         LocalDate christmas = LocalDate.of(2018, Month.DECEMBER, 25);
 
-        System.out
-                .println("Until christmas: " + independenceDay.until(christmas));
-        System.out.println("Until christmas: "
-                + independenceDay.until(christmas, ChronoUnit.DAYS));
+        System.out.println("Until christmas: " + independenceDay.until(christmas));
+        System.out.println("Until christmas: " + independenceDay.until(christmas, ChronoUnit.DAYS));
 
         System.out.println(LocalDate.of(2016, 1, 31).plusMonths(1));
         System.out.println(LocalDate.of(2016, 3, 31).minusMonths(1));

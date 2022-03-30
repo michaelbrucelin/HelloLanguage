@@ -24,9 +24,8 @@ public class CollationTest {
 
 /**
  * This frame contains combo boxes to pick a locale, collation strength and
- * decomposition rules, a
- * text field and button to add new strings, and a text area to list the
- * collated strings.
+ * decomposition rules, a text field and button to add new strings, and a text
+ * area to list the collated strings.
  */
 class CollationFrame extends JFrame {
     private Collator collator = Collator.getInstance(Locale.getDefault());
@@ -37,10 +36,10 @@ class CollationFrame extends JFrame {
     private JTextField newWord = new JTextField(20);
     private JTextArea sortedWords = new JTextArea(20, 20);
     private JButton addButton = new JButton("Add");
-    private EnumCombo<Integer> strengthCombo = new EnumCombo<>(Collator.class, "Primary",
-            "Secondary", "Tertiary", "Identical");
-    private EnumCombo<Integer> decompositionCombo = new EnumCombo<>(Collator.class,
-            "Canonical Decomposition", "Full Decomposition", "No Decomposition");
+    private EnumCombo<Integer> strengthCombo = new EnumCombo<>(Collator.class, "Primary", "Secondary", "Tertiary",
+            "Identical");
+    private EnumCombo<Integer> decompositionCombo = new EnumCombo<>(Collator.class, "Canonical Decomposition",
+            "Full Decomposition", "No Decomposition");
 
     public CollationFrame() {
         setLayout(new GridBagLayout());
@@ -104,8 +103,7 @@ class CollationFrame extends JFrame {
         for (int i = 0; i < strings.size(); i++) {
             String s = strings.get(i);
             if (i > 0 && currentCollator.compare(s, strings.get(i - 1)) == 0)
-                sortedWords
-                        .append("= ");
+                sortedWords.append("= ");
             sortedWords.append(s + "\n");
         }
         pack();

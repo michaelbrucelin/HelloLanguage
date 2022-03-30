@@ -23,8 +23,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 import java.awt.*;
 
 /**
- * This class simplifies the use of the GridBagConstraints
- * class.
+ * This class simplifies the use of the GridBagConstraints class.
  */
 public class GBC extends GridBagConstraints {
     /**

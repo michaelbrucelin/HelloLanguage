@@ -4,8 +4,8 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * A combo box that lets users choose from among static field
- * values whose names are given in the constructor.
+ * A combo box that lets users choose from among static field values whose names
+ * are given in the constructor.
  */
 public class EnumCombo<T> extends JComboBox<String> {
     private Map<String, T> table = new TreeMap<>();
@@ -14,8 +14,8 @@ public class EnumCombo<T> extends JComboBox<String> {
      * Constructs an EnumCombo yielding values of type T.
      * 
      * @param cl     a class
-     * @param labels an array of strings describing static field names
-     *               of cl that have type T
+     * @param labels an array of strings describing static field names of cl that
+     *               have type T
      */
     public EnumCombo(Class<?> cl, String... labels) {
         for (String label : labels) {

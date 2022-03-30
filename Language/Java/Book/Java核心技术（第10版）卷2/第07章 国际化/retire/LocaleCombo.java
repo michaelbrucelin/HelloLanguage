@@ -74,8 +74,7 @@ public class LocaleCombo extends JComboBox<Locale> {
             if (originalRenderer == null)
                 return null;
             renderer = (list, value, index, isSelected, cellHasFocus) -> originalRenderer.getListCellRendererComponent(
-                    list, value.getDisplayName(getLocale()),
-                    index, isSelected, cellHasFocus);
+                    list, value.getDisplayName(getLocale()), index, isSelected, cellHasFocus);
         }
         return renderer;
     }

@@ -42,12 +42,11 @@ class DateTimeFormatterFrame extends JFrame {
     private JTextField dateText = new JTextField(30);
     private JTextField timeText = new JTextField(30);
     private JTextField dateTimeText = new JTextField(30);
-    private EnumCombo<FormatStyle> dateStyleCombo = new EnumCombo<>(FormatStyle.class,
-            "Short", "Medium", "Long", "Full");
-    private EnumCombo<FormatStyle> timeStyleCombo = new EnumCombo<>(FormatStyle.class,
-            "Short", "Medium");
-    private EnumCombo<FormatStyle> dateTimeStyleCombo = new EnumCombo<>(FormatStyle.class,
-            "Short", "Medium", "Long", "Full");
+    private EnumCombo<FormatStyle> dateStyleCombo = new EnumCombo<>(FormatStyle.class, "Short", "Medium", "Long",
+            "Full");
+    private EnumCombo<FormatStyle> timeStyleCombo = new EnumCombo<>(FormatStyle.class, "Short", "Medium");
+    private EnumCombo<FormatStyle> dateTimeStyleCombo = new EnumCombo<>(FormatStyle.class, "Short", "Medium", "Long",
+            "Full");
 
     public DateTimeFormatterFrame() {
         setLayout(new GridBagLayout());
