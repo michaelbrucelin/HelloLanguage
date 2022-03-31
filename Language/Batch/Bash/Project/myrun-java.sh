@@ -1,4 +1,4 @@
-function myjava-run() {
+function myrun-java() {
     touch DeleteAnchor.class  # 这个文件用来记录删除文件的时间锚点
     javac "$1"
     java "$(basename "$1" .java)"
