@@ -6,7 +6,7 @@ function MyGet-RandomPassword() {
         [string]$metaType = 'ascii',
         [char[]]$metaChar = [char[]]('')
     )
- 
+
     if ($metaType -ceq "digit") {
         $metaChar = [char[]](48..57)
     }
