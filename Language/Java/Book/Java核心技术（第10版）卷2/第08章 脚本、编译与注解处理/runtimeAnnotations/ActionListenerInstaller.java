@@ -40,8 +40,7 @@ public class ActionListenerInstaller {
             }
         };
 
-        Object listener = Proxy.newProxyInstance(null,
-                new Class[] { java.awt.event.ActionListener.class }, handler);
+        Object listener = Proxy.newProxyInstance(null, new Class[] { java.awt.event.ActionListener.class }, handler);
         Method adder = source.getClass().getMethod("addActionListener", ActionListener.class);
         adder.invoke(source, listener);
     }

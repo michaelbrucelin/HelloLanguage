@@ -13,8 +13,8 @@ public class Util {
      * @param out    the output stream
      * @param cipher the cipher that transforms the bytes
      */
-    public static void crypt(InputStream in, OutputStream out, Cipher cipher) throws IOException,
-            GeneralSecurityException {
+    public static void crypt(InputStream in, OutputStream out, Cipher cipher)
+            throws IOException, GeneralSecurityException {
         int blockSize = cipher.getBlockSize();
         int outputSize = cipher.getOutputSize(blockSize);
         byte[] inBytes = new byte[blockSize];

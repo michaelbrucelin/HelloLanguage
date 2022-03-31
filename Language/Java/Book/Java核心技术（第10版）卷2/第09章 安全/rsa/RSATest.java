@@ -13,8 +13,7 @@ import javax.crypto.*;
 public class RSATest {
     private static final int KEYSIZE = 512;
 
-    public static void main(String[] args)
-            throws IOException, GeneralSecurityException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, GeneralSecurityException, ClassNotFoundException {
         if (args[0].equals("-genkey")) {
             KeyPairGenerator pairgen = KeyPairGenerator.getInstance("RSA");
             SecureRandom random = new SecureRandom();

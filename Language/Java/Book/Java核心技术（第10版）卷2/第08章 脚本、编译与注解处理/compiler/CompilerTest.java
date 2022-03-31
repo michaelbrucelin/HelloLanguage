@@ -18,8 +18,8 @@ public class CompilerTest {
 
         JavaFileManager fileManager = compiler.getStandardFileManager(diagnostics, null, null);
         fileManager = new ForwardingJavaFileManager<JavaFileManager>(fileManager) {
-            public JavaFileObject getJavaFileForOutput(Location location, final String className,
-                    Kind kind, FileObject sibling) throws IOException {
+            public JavaFileObject getJavaFileForOutput(Location location, final String className, Kind kind,
+                    FileObject sibling) throws IOException {
                 if (className.startsWith("x.")) {
                     ByteArrayJavaClass fileObject = new ByteArrayJavaClass(className);
                     classFileObjects.add(fileObject);
@@ -31,8 +31,8 @@ public class CompilerTest {
 
         String frameClassName = args.length == 0 ? "buttons2.ButtonFrame" : args[0];
         JavaFileObject source = buildSource(frameClassName);
-        JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, null,
-                null, Arrays.asList(source));
+        JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnostics, null, null,
+                Arrays.asList(source));
         Boolean result = task.call();
 
         for (Diagnostic<? extends JavaFileObject> d : diagnostics.getDiagnostics())
@@ -65,8 +65,7 @@ public class CompilerTest {
      * 
      * @return a file object containing the source in a string builder
      */
-    static JavaFileObject buildSource(String superclassName)
-            throws IOException, ClassNotFoundException {
+    static JavaFileObject buildSource(String superclassName) throws IOException, ClassNotFoundException {
         StringBuilderJavaSource source = new StringBuilderJavaSource("x.Frame");
         source.append("package x;\n");
         source.append("public class Frame extends " + superclassName + " {");

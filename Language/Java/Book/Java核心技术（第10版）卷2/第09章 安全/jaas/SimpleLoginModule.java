@@ -18,8 +18,8 @@ public class SimpleLoginModule implements LoginModule {
     private CallbackHandler callbackHandler;
     private Map<String, ?> options;
 
-    public void initialize(Subject subject, CallbackHandler callbackHandler,
-            Map<String, ?> sharedState, Map<String, ?> options) {
+    public void initialize(Subject subject, CallbackHandler callbackHandler, Map<String, ?> sharedState,
+            Map<String, ?> options) {
         this.subject = subject;
         this.callbackHandler = callbackHandler;
         this.options = options;
@@ -54,8 +54,7 @@ public class SimpleLoginModule implements LoginModule {
 
     /**
      * Checks whether the authentication information is valid. If it is, the subject
-     * acquires
-     * principals for the user name and role.
+     * acquires principals for the user name and role.
      * 
      * @param username the user name
      * @param password a character array containing the password

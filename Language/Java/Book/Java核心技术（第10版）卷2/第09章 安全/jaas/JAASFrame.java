@@ -43,14 +43,14 @@ public class JAASFrame extends JFrame {
 
     public void getValue() {
         try {
-            LoginContext context = new LoginContext("Login1", new SimpleCallbackHandler(
-                    username.getText(), password.getPassword()));
-            System.out.println("Trying to log in with " + username.getText()
-                    + " and " + new String(password.getPassword()));
+            LoginContext context = new LoginContext("Login1",
+                    new SimpleCallbackHandler(username.getText(), password.getPassword()));
+            System.out.println(
+                    "Trying to log in with " + username.getText() + " and " + new String(password.getPassword()));
             context.login();
             Subject subject = context.getSubject();
-            propertyValue.setText(""
-                    + Subject.doAsPrivileged(subject, new SysPropAction(propertyName.getText()), null));
+            propertyValue
+                    .setText("" + Subject.doAsPrivileged(subject, new SysPropAction(propertyName.getText()), null));
             context.logout();
         } catch (LoginException ex) {
             ex.printStackTrace();

@@ -15,8 +15,7 @@ public class StringBuilderJavaSource extends SimpleJavaFileObject {
      * @param name the name of the source file represented by this file object
      */
     public StringBuilderJavaSource(String name) {
-        super(URI.create("string:///" + name.replace('.', '/') + Kind.SOURCE.extension),
-                Kind.SOURCE);
+        super(URI.create("string:///" + name.replace('.', '/') + Kind.SOURCE.extension), Kind.SOURCE);
         code = new StringBuilder();
     }
 

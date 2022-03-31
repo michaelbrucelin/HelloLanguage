@@ -50,8 +50,7 @@ public class ScriptTest {
                 frame.setTitle("ScriptTest");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
-            } catch (ReflectiveOperationException | IOException
-                    | ScriptException | IntrospectionException ex) {
+            } catch (ReflectiveOperationException | IOException | ScriptException | IntrospectionException ex) {
                 ex.printStackTrace();
             }
         });
@@ -92,9 +91,9 @@ public class ScriptTest {
         EventSetDescriptor descriptor = getEventSetDescriptor(bean, eventName);
         if (descriptor == null)
             return;
-        descriptor.getAddListenerMethod().invoke(bean,
-                Proxy.newProxyInstance(null, new Class[] { descriptor.getListenerType() },
-                        (proxy, method, args) -> {
+        descriptor.getAddListenerMethod()
+                .invoke(bean, Proxy.newProxyInstance(null, new Class[] {
+                        descriptor.getListenerType() }, (proxy, method, args) -> {
                             engine.eval(scriptCode);
                             return null;
                         }));
@@ -102,8 +101,7 @@ public class ScriptTest {
 
     private static EventSetDescriptor getEventSetDescriptor(Object bean, String eventName)
             throws IntrospectionException {
-        for (EventSetDescriptor descriptor : Introspector.getBeanInfo(bean.getClass())
-                .getEventSetDescriptors())
+        for (EventSetDescriptor descriptor : Introspector.getBeanInfo(bean.getClass()).getEventSetDescriptors())
             if (descriptor.getName().equals(eventName))
                 return descriptor;
         return null;

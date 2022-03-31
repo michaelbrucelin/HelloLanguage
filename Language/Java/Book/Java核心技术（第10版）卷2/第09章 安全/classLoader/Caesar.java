@@ -12,8 +12,7 @@ public class Caesar {
             return;
         }
 
-        try (FileInputStream in = new FileInputStream(args[0]);
-                FileOutputStream out = new FileOutputStream(args[1])) {
+        try (FileInputStream in = new FileInputStream(args[0]); FileOutputStream out = new FileOutputStream(args[1])) {
             int key = Integer.parseInt(args[2]);
             int ch;
             while ((ch = in.read()) != -1) {

@@ -11,8 +11,7 @@ import javax.crypto.*;
  * java aes.AESTest -decrypt encrypted decrypted keyfile<br>
  */
 public class AESTest {
-    public static void main(String[] args)
-            throws IOException, GeneralSecurityException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, GeneralSecurityException, ClassNotFoundException {
         if (args[0].equals("-genkey")) {
             KeyGenerator keygen = KeyGenerator.getInstance("AES");
             SecureRandom random = new SecureRandom();

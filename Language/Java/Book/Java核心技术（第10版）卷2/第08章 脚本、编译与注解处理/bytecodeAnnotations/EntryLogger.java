@@ -25,8 +25,8 @@ public class EntryLogger extends ClassVisitor {
     }
 
     @Override
-    public MethodVisitor visitMethod(int access, String methodName, String desc,
-            String signature, String[] exceptions) {
+    public MethodVisitor visitMethod(int access, String methodName, String desc, String signature,
+            String[] exceptions) {
         MethodVisitor mv = cv.visitMethod(access, methodName, desc, signature, exceptions);
         return new AdviceAdapter(Opcodes.ASM5, mv, access, methodName, desc) {
             private String loggerName;
@@ -67,8 +67,7 @@ public class EntryLogger extends ClassVisitor {
         }
         Path path = Paths.get(args[0]);
         ClassReader reader = new ClassReader(Files.newInputStream(path));
-        ClassWriter writer = new ClassWriter(
-                ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
+        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_MAXS | ClassWriter.COMPUTE_FRAMES);
         EntryLogger entryLogger = new EntryLogger(writer,
                 path.toString().replace(".class", "").replaceAll("[/\\\\]", "."));
         reader.accept(entryLogger, ClassReader.EXPAND_FRAMES);
