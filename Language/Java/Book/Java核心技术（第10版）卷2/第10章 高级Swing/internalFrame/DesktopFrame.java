@@ -11,8 +11,8 @@ import javax.swing.*;
 public class DesktopFrame extends JFrame {
     private static final int DEFAULT_WIDTH = 600;
     private static final int DEFAULT_HEIGHT = 400;
-    private static final String[] planets = { "Mercury", "Venus", "Earth", "Mars", "Jupiter",
-            "Saturn", "Uranus", "Neptune", "Pluto", };
+    private static final String[] planets = { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus",
+            "Neptune", "Pluto", };
 
     private JDesktopPane desktop;
     private int nextFrameX;
@@ -34,8 +34,7 @@ public class DesktopFrame extends JFrame {
         JMenuItem openItem = new JMenuItem("New");
         openItem.addActionListener(event -> {
             createInternalFrame(new JLabel(
-                    new ImageIcon(getClass().getResource(planets[counter] + ".gif"))),
-                    planets[counter]);
+                    new ImageIcon(getClass().getResource(planets[counter] + ".gif"))), planets[counter]);
             counter = (counter + 1) % planets.length;
         });
         fileMenu.add(openItem);
