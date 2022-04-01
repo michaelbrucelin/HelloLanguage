@@ -17,3 +17,9 @@ static class HelloWorld
             Console.WriteLine(word);
     }
 }
+
+/*
+hello
+linq
+world
+*/
