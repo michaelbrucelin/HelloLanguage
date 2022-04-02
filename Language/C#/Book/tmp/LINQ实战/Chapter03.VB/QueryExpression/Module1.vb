@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
     Sub Main()
     ' Method syntax (dot-notation)

@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
   Function Square(ByVal n As Double) As Double
     Console.WriteLine("Computing Square(" & n & ")...")

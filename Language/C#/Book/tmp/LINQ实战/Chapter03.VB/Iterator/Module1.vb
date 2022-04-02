@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
   ' There is no instruction equivalent to yield return in VB.NET.
   ' Without this shortcut, VB.NET developers have to implement the IEnumerable(Of T) interface by hand to create enumerators
