@@ -14,6 +14,14 @@ static class HelloWorld
                      orderby lengthGroups.Key descending
                      select new { Length = lengthGroups.Key, Words = lengthGroups };
 
+        /*
+        var group = words
+                    .OrderBy(s => s)
+                    .GroupBy(s => s.Length)
+                    .OrderByDescending(g => g.Key)
+                    .Select(g => new { Length = g.Key, Words = g });
+        */
+
         // Print each group out
         foreach (var group in groups)
         {
@@ -23,3 +31,12 @@ static class HelloWorld
         }
     }
 }
+
+/*
+Words of length 9
+  beautiful, wonderful
+Words of length 5
+  hello, world
+Words of length 4
+  linq
+*/

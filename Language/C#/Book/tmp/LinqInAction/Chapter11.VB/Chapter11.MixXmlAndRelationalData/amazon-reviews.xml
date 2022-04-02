@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2005-10-05">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent"></Header>
+    </HTTPHeaders>
+    <RequestId>0FPSAFPMEX8R90KJA1WD</RequestId>
+    <Arguments>
+      <Argument Name="Service" Value="AWSECommerceService"></Argument>
+      <Argument Name="ItemId" Value="0735621632"></Argument>
+      <Argument Name="AWSAccessKeyId" Value="YOUR AWS ACCESS KEY"></Argument>
+      <Argument Name="ResponseGroup" Value="Reviews"></Argument>
+      <Argument Name="Operation" Value="ItemLookup"></Argument>
+    </Arguments>
+    <RequestProcessingTime>0.464954853057861</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>True</IsValid>
+      <ItemLookupRequest>
+        <ItemId>0735621632</ItemId>
+        <ResponseGroup>Reviews</ResponseGroup>
+      </ItemLookupRequest>
+    </Request>
+    <Item>
+      <ASIN>0735621632</ASIN>
+      <CustomerReviews>
+        <AverageRating>5.0</AverageRating>
+        <TotalReviews>13</TotalReviews>
+        <TotalReviewPages>3</TotalReviewPages>
+        <Review>
+          <ASIN>0735621632</ASIN>
+          <Rating>4</Rating>
+          <HelpfulVotes>1</HelpfulVotes>
+          <CustomerId>AOPOVBBO6EVP6</CustomerId>
+          <TotalVotes>2</TotalVotes>
+          <Date>2006-08-16</Date>
+          <Summary>For advanced developers</Summary>
+          <Content>This book gives a deep view of the CLR and framework. You can find tips for performance, and complete description of many functionalities of the framework. The bad think of this book, is that don't come with a CD, and because this, you lost a quick find and a way to carry the book with you.</Content>
+        </Review>
+        <Review>
+          <ASIN>0735621632</ASIN>
+          <Rating>4</Rating>
+          <HelpfulVotes>1</HelpfulVotes>
+          <CustomerId>A5BWX17271FJB</CustomerId>
+          <TotalVotes>2</TotalVotes>
+          <Date>2006-07-25</Date>
+          <Summary>Ritcher always a must read</Summary>
+          <Content>As all Ritcher's books since "Advanced Windows: the developer's guide to the Win32 API", this book is a must read. Well subdivided chapters, useful examples, fluent writing. The missing star is for the lack of more advanced topics (expecially on generics, anon delagates and concurrency).</Content>
+        </Review>
+        <Review>
+          <ASIN>0735621632</ASIN>
+          <Rating>5</Rating>
+          <HelpfulVotes>3</HelpfulVotes>
+          <CustomerId>A2WKQWVCPD4OX3</CustomerId>
+          <TotalVotes>3</TotalVotes>
+          <Date>2006-07-24</Date>
+          <Summary>Jeffrey Richter does it again</Summary>
+          <Content>Jeffrey Richter is my hero, he really is. This guy is simply amazing. I just cant imagine how he pulls it off - the toughest topics explained in the clearest manner.Moreover, he has achieved this feat over and over again. Any book he has written is testimony for this.
+&lt;br /&gt;In his books, you would find information where you wouldnt find in any other place. You would also find information you can find elsewhere, but not as clear as his. He has the advantage of working closely with Microsoft and consulting with the .NET team, but I would say he would be a great author and teacher even without that advantage. 
+&lt;br /&gt;As about this book, it should not be your first C# book. I suggest you get beginner's C# book first (if you dont know any C#), I suggest Jesse Liberty's book, and then come to this book. You would get a tremendous advantage over people who havent read this book and your understanding of the building blocks of .NET platform would be in depth. His chapters on Threading alone is worth the price of the book. This book is an absolute pleasure to read, just like any other book from Richter. Grab your copy today itself ! If there really is a 5 star book, this one is it.
+&lt;br /&gt;Nobody writes like Richter, nobody. </Content>
+        </Review>
+        <Review>
+          <ASIN>0735621632</ASIN>
+          <Rating>5</Rating>
+          <HelpfulVotes>2</HelpfulVotes>
+          <CustomerId>A26PQXMJP9COME</CustomerId>
+          <TotalVotes>4</TotalVotes>
+          <Date>2006-07-13</Date>
+          <Summary>Life changing</Summary>
+          <Content>If you are a beginner or intermediate .Net/C# programmer, this book will change your life... I have bought several advanced level technical books in different areas. But nothing comes close to this one.. This book is so amazingly well written that you cant help but understand all the difficlt concepts and start liking them too. But beware, Mr Richter's enthusiasm is contagious and you will end up spending a lot more money and time on .Net books..</Content>
+        </Review>
+        <Review>
+          <ASIN>0735621632</ASIN>
+          <Rating>5</Rating>
+          <HelpfulVotes>2</HelpfulVotes>
+          <CustomerId>A22UITMATG6A2S</CustomerId>
+          <TotalVotes>4</TotalVotes>
+          <Date>2006-07-05</Date>
+          <Summary>Absolutely Excellent - Required Reading for Advanced .NET Developers</Summary>
+          <Content>This book is all that I expected from Mr. Richter and more.  His writing style is excellent, his explanations are very understandable, and above all his examples are superb.  He not only illustrates a particular point -- he also shows a coding style, verbousness (is that a word?), and correctness that we should all mimic.  All too often writers choose for an example the most obvious one - which is wasted if it merely echoes whats said in the text.  The examples here extend, amplify, and make you think.   
+&lt;br /&gt;
+&lt;br /&gt;Yes, you can write .NET applications without reading this book.  But I have to believe that your application will be much better if you take the time to learn from this book.  However -- I would not recommend it as the first book about .NET programming.   It (correctly) assumes you already know the basics. </Content>
+        </Review>
+      </CustomerReviews>
+    </Item>
+  </Items>
+</ItemLookupResponse>

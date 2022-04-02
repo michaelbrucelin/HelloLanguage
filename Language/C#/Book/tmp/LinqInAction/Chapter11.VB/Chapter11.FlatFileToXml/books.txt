@@ -1,0 +1,5 @@
+0735621632,CLR via C#,Jeffrey Richter,Microsoft Press,02-22-2006,59.99
+0321127420,Patterns Of Enterprise Application Architecture,Martin Fowler,Addison-Wesley Professional,11-05-2002,54.99
+0321200683,Enterprise Integration Patterns,Gregor Hohpe,Addison-Wesley Professional,10-10-2003,54.99
+0321125215,Domain-Driven Design,Eric Evans,Addison-Wesley Professional,08-22-2003,54.99
+1932394613,Ajax In Action,Dave Crane;Eric Pascarello;Darren James,Manning Publications,10-01-2005,44.95
