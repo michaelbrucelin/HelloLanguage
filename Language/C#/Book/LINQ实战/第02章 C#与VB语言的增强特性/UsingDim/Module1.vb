@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
   Class ProcessData
     Public Id As Int32

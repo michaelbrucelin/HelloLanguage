@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
   Sub DisplayProcesses(ByVal match As Func(Of Process, Boolean))
     Dim processes = New List(Of Object)()
