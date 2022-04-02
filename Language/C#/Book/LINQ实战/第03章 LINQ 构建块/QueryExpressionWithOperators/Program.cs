@@ -22,10 +22,10 @@ class Program
 
         // Same query without query expression
         var authors2 = SampleData.Books
-            .Where(book => book.Title.Contains("LINQ"))
-            .SelectMany(book => book.Authors.Take(1))
-            .Distinct()
-            .Select(author => new { author.FirstName, author.LastName });
+                        .Where(book => book.Title.Contains("LINQ"))
+                        .SelectMany(book => book.Authors.Take(1))
+                        .Distinct()
+                        .Select(author => new { author.FirstName, author.LastName });
 
         Console.WriteLine("Without query expression:");
         foreach (var author in authors2)

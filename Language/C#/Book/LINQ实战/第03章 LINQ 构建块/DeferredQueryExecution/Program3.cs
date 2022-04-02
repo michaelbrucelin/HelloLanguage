@@ -16,18 +16,18 @@ static class DeferredQueryExecution
         var query = from n in numbers
                     select Square(n);
 
-        foreach (var n in query)
+        foreach (var n in query.ToList())
             Console.WriteLine(n);
     }
 }
 
 /*
-延迟查询执行
+使用 ToList() 取消延迟查询执行，立即执行查询
 
 Computing Square(1)...
-1
 Computing Square(2)...
-4
 Computing Square(3)...
+1
+4
 9
 */
