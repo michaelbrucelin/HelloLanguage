@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
   Sub DisplayProcesses()
     ' Build up a list of the running processes

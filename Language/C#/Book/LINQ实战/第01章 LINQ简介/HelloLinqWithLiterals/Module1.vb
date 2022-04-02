@@ -1,4 +1,4 @@
-Module XmlLiterals
+Module Module1
 
   Public Class Book
     Public Publisher As String

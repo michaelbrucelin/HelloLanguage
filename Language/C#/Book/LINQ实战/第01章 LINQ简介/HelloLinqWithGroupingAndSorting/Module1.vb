@@ -1,4 +1,4 @@
-Module HelloLinqWithGroupingAndSorting
+Module Module1
   Sub Main()
     Dim words As String() = {"hello", "wonderful", "linq", "beautiful", "world"}
 

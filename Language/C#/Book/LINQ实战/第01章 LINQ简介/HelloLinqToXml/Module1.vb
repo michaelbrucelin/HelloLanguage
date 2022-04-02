@@ -1,4 +1,4 @@
-Module HelloLinqToXml
+Module Module1
   ' A custom class like the one below is not required if we use an anonymous type.
   ' See the collection initializer used in Main.
   'Public Class Book

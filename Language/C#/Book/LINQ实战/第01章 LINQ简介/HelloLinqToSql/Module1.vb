@@ -2,7 +2,7 @@ Imports System.Linq
 Imports System.Data.Linq
 Imports System.Data.Linq.Mapping
 
-Module HelloLinqToSql
+Module Module1
 
 #Region "Contact class"
 

@@ -1,4 +1,4 @@
-Module HelloWorld
+Module Module1
 
   Sub Main()
     Dim words As String() = {"hello", "wonderful", "linq", _

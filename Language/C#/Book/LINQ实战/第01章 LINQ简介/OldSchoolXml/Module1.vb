@@ -1,6 +1,6 @@
 Imports System.Xml
 
-Module OldSchoolXml
+Module Module1
 
   Class Book
     Public Title As String
