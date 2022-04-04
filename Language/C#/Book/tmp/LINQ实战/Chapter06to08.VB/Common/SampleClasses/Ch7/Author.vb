@@ -1,4 +1,4 @@
-﻿Imports System.Data.Linq.Mapping
+Imports System.Data.Linq.Mapping
 Imports System.Data.Linq
 
 Namespace SampleClasses.Ch7

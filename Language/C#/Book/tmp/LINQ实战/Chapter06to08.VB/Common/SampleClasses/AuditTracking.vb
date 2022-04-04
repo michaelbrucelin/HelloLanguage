@@ -1,4 +1,4 @@
-﻿Public Class AuditTracking
+Public Class AuditTracking
     Public ID As Integer
     Public TableName As String
     Public UserName As String

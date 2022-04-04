@@ -1,4 +1,4 @@
-﻿namespace LinqInAction.Chapter05
+namespace LinqInAction.Chapter05
 {
   partial class FormConditionalQuery
   {

@@ -1,4 +1,4 @@
-﻿Imports System.Data.Linq.Mapping
+Imports System.Data.Linq.Mapping
 Imports System.Data.SqlClient
 
 Namespace SampleClasses.Ch6.Unmapped

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,20 +10,20 @@ using LinqInAction.Chapter06to08.Common.SampleClasses.Ch8;
 
 namespace LinqInAction.Chapter06to08.Common.CodeSamples
 {
-  public partial class EditingForm : Form
-  {
-    public EditingForm()
+    public partial class EditingForm : Form
     {
-      InitializeComponent();
-    }
+        public EditingForm()
+        {
+            InitializeComponent();
+        }
 
-    private void EditingForm_Load(object sender, EventArgs e)
-    {
-      Ch8DataContext context = new Ch8DataContext();
-      var query = from p in context.Publishers
-                  select p;
-      this.publisherBindingSource.DataSource = query.ToList();
+        private void EditingForm_Load(object sender, EventArgs e)
+        {
+            Ch8DataContext context = new Ch8DataContext();
+            var query = from p in context.Publishers
+                        select p;
+            this.publisherBindingSource.DataSource = query.ToList();
 
+        }
     }
-  }
 }

@@ -1,4 +1,4 @@
-﻿Imports System.Data.Linq
+Imports System.Data.Linq
 Imports System.Data.Linq.Mapping
 Imports System.Threading
 Imports System.Reflection

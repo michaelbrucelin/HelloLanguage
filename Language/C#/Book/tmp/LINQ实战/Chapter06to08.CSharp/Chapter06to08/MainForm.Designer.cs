@@ -1,4 +1,4 @@
-﻿namespace Samples.CSharp
+namespace Samples.CSharp
 {
     partial class MainForm
     {

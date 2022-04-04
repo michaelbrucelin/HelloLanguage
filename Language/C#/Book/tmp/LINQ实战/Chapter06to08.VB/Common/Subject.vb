@@ -1,4 +1,4 @@
-﻿Partial Public Class Subject
+Partial Public Class Subject
     Public ObjectId As Guid = Guid.NewGuid()
 
     Public Shared Sub UpdateSubject(ByVal changingSubject As Subject)

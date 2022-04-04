@@ -1,4 +1,4 @@
-﻿namespace LinqInAction.Chapter06to08.Common.CodeSamples
+namespace LinqInAction.Chapter06to08.Common.CodeSamples
 {
   partial class EditingForm
   {

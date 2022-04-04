@@ -1,31 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Ch8">
-  <DataContextMoniker Name="/Ch8DataContext" />
-  <nestedChildShapes>
-    <classShape Id="f4bb36a5-ea90-49cd-ac86-38bcc4d93552" absoluteBounds="0.75, 4.75, 2, 1.5891951497395827">
-      <DataClassMoniker Name="/Ch8DataContext/Author" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6d8e9ead-3ea9-4f84-8964-c47c500f2ec0" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="90aef128-a528-427d-ab55-504f9c9edbb3" absoluteBounds="3.5, 1, 2, 2.4109318033854166">
-      <DataClassMoniker Name="/Ch8DataContext/Book" />
-      <nestedChildShapes>
-        <elementListCompartment Id="1beee234-099d-4d64-a0a2-cf90d742f4c7" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.8509318033854165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d6281384-41d6-4328-8a45-2d662cc621a9" absoluteBounds="0.75, 1.5, 2, 1.4248478190104166">
-      <DataClassMoniker Name="/Ch8DataContext/Publisher" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2a963fc5-0340-4255-bd05-6ba7f0a1b890" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.21242390950521); (3.5 : 2.21242390950521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/Ch8DataContext/Publisher/Publisher_Book" />
-      <nodes>
-        <classShapeMoniker Id="d6281384-41d6-4328-8a45-2d662cc621a9" />
-        <classShapeMoniker Id="90aef128-a528-427d-ab55-504f9c9edbb3" />
-      </nodes>
-    </associationConnector>
-  </nestedChildShapes>
+    <DataContextMoniker Name="/Ch8DataContext" />
+    <nestedChildShapes>
+        <classShape Id="f4bb36a5-ea90-49cd-ac86-38bcc4d93552" absoluteBounds="0.75, 4.75, 2, 1.5891951497395827">
+            <DataClassMoniker Name="/Ch8DataContext/Author" />
+            <nestedChildShapes>
+                <elementListCompartment Id="6d8e9ead-3ea9-4f84-8964-c47c500f2ec0" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0291951497395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+            </nestedChildShapes>
+        </classShape>
+        <classShape Id="90aef128-a528-427d-ab55-504f9c9edbb3" absoluteBounds="3.5, 1, 2, 2.4109318033854166">
+            <DataClassMoniker Name="/Ch8DataContext/Book" />
+            <nestedChildShapes>
+                <elementListCompartment Id="1beee234-099d-4d64-a0a2-cf90d742f4c7" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.8509318033854165" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+            </nestedChildShapes>
+        </classShape>
+        <classShape Id="d6281384-41d6-4328-8a45-2d662cc621a9" absoluteBounds="0.75, 1.5, 2, 1.4248478190104166">
+            <DataClassMoniker Name="/Ch8DataContext/Publisher" />
+            <nestedChildShapes>
+                <elementListCompartment Id="2a963fc5-0340-4255-bd05-6ba7f0a1b890" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.86484781901041674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+            </nestedChildShapes>
+        </classShape>
+        <associationConnector edgePoints="[(2.75 : 2.21242390950521); (3.5 : 2.21242390950521)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+            <AssociationMoniker Name="/Ch8DataContext/Publisher/Publisher_Book" />
+            <nodes>
+                <classShapeMoniker Id="d6281384-41d6-4328-8a45-2d662cc621a9" />
+                <classShapeMoniker Id="90aef128-a528-427d-ab55-504f9c9edbb3" />
+            </nodes>
+        </associationConnector>
+    </nestedChildShapes>
 </ordesignerObjectsDiagram>

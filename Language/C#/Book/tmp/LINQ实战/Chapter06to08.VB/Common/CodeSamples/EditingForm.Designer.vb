@@ -1,4 +1,4 @@
-﻿Namespace CodeSamples
+Namespace CodeSamples
 
     <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
     Partial Class EditingForm

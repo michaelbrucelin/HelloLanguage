@@ -1,4 +1,4 @@
-﻿Namespace SampleClasses.Ch8
+Namespace SampleClasses.Ch8
 
     Partial Public Class Author
         Public ReadOnly Property FormattedName() As String

@@ -1,4 +1,4 @@
-﻿Imports LinqInAction.Chapter06to08.Common.SampleClasses.Ch8
+Imports LinqInAction.Chapter06to08.Common.SampleClasses.Ch8
 Namespace CodeSamples
     Public Class EditingForm
 

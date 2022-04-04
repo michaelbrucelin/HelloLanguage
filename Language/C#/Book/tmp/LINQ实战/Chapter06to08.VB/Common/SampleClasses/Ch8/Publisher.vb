@@ -1,4 +1,4 @@
-﻿Imports System.ComponentModel
+Imports System.ComponentModel
 Namespace SampleClasses.Ch8
     Public Class Publisher
         Implements IDataErrorInfo

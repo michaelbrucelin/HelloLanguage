@@ -1,4 +1,4 @@
-﻿<AttributeUsage((AttributeTargets.Method Or AttributeTargets.Class), AllowMultiple:=False)> _
+<AttributeUsage((AttributeTargets.Method Or AttributeTargets.Class), AllowMultiple:=False)> _
 Public NotInheritable Class SampleAttribute
     Inherits Attribute
     ' Fields

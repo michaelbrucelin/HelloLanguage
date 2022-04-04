@@ -1,4 +1,4 @@
-﻿Namespace SampleClasses.Ch7
+Namespace SampleClasses.Ch7
     ''' <summary>
     ''' Book definition used in listing 7.6
     ''' </summary>

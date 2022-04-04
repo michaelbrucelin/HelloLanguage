@@ -1,4 +1,4 @@
-﻿';'pImports System.Collections.Generic
+';'pImports System.Collections.Generic
 Imports System.Linq
 Imports System.Data.Linq
 Imports System.Data.Linq.Mapping

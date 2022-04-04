@@ -1,4 +1,4 @@
-﻿Option Strict On
+Option Strict On
 
 Imports LinqInAction.Chapter06to08.Common
 Imports System.IO

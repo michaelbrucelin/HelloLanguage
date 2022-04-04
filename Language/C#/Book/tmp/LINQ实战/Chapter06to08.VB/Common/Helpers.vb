@@ -1,4 +1,4 @@
-﻿Imports System.Reflection
+Imports System.Reflection
 Imports System.Data.Linq
 Imports System.Runtime.CompilerServices
 
