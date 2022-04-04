@@ -1,16 +1,3 @@
-/**
- * Java中引用类型的参数，也是值引用，即复制了对象的一个新的引用，也就是说，方法无法更改变量的引用。
- * 下面示例可以看出，在方法内部，确实交换了变量的引用，但是在方法外部，并没有真的交换了变量的引用。
- * 运行结果：
- * Before: a=Alice
- * Before: b=Bob
- * Begin of method: x=Alice
- * Begin of method: y=Bob
- * End of method: x=Bob
- * End of method: y=Alice
- * After: a=Alice
- * After: b=Bob
- */
 public class ValueReference {
     public static void main(String[] args) {
         Employee a = new Employee("Alice", 70000);
@@ -19,6 +6,7 @@ public class ValueReference {
         System.out.println("Before: b=" + b.getName());
 
         swap(a, b);
+
         System.out.println("After: a=" + a.getName());
         System.out.println("After: b=" + b.getName());
     }
@@ -51,3 +39,17 @@ class Employee {
         return salary;
     }
 }
+
+/**
+ * Java中引用类型的参数，也是值引用，即复制了对象的一个新的引用，也就是说，方法无法更改变量的引用。
+ * 下面示例可以看出，在方法内部，确实交换了变量的引用，但是在方法外部，并没有真的交换了变量的引用。
+ * 运行结果：
+ * Before: a=Alice
+ * Before: b=Bob
+ * Begin of method: x=Alice
+ * Begin of method: y=Bob
+ * End of method: x=Bob
+ * End of method: y=Alice
+ * After: a=Alice
+ * After: b=Bob
+ */
