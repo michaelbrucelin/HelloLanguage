@@ -1,4 +1,4 @@
-﻿Public Enum BookCondition
+Public Enum BookCondition
   All
   [New]
   Used

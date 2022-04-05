@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <books>
-	<book>CLR via C#</book>
-	<book>Essentail .NET</book>
-	<book>Refactoring</book>
-	<book>Domain Driven Design</book>
-	<book>Patterns of Enterprise Application Architecture</book>
-	<book>Extreme Programming Explained</book>
-	<book>Pragmatic Unit Testing with C#</book>
-	<book>Head First Design Patterns</book>		
+    <book>CLR via C#</book>
+    <book>Essentail .NET</book>
+    <book>Refactoring</book>
+    <book>Domain Driven Design</book>
+    <book>Patterns of Enterprise Application Architecture</book>
+    <book>Extreme Programming Explained</book>
+    <book>Pragmatic Unit Testing with C#</book>
+    <book>Head First Design Patterns</book>
 </books>

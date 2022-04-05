@@ -1,22 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <category name="Technical">
-	<category name=".NET">
-		<books>
-			<book>CLR via C#</book>
-			<book>Essential .NET</book>
-		</books>
-	</category>
-	<category name="Design">
-		<books>
-			<book>Refactoring</book>
-			<book>Domain Driven Design</book>
-			<book>Patterns of Enterprise Application Architecture</book>
-		</books>
-	</category>
-	<books>
-		<book>Extreme Programming Explained</book>
-		<book>Pragmatic Unit Testing with C#</book>
-		<book>Head First Design Patterns</book>		
-	</books>
+    <category name=".NET">
+        <books>
+            <book>CLR via C#</book>
+            <book>Essential .NET</book>
+        </books>
+    </category>
+    <category name="Design">
+        <books>
+            <book>Refactoring</book>
+            <book>Domain Driven Design</book>
+            <book>Patterns of Enterprise Application Architecture</book>
+        </books>
+    </category>
+    <books>
+        <book>Extreme Programming Explained</book>
+        <book>Pragmatic Unit Testing with C#</book>
+        <book>Head First Design Patterns</book>
+    </books>
 </category>
-

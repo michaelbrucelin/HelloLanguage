@@ -1,4 +1,4 @@
-﻿Class AmazonBookQueryCriteria
+Class AmazonBookQueryCriteria
 
   Private _condition As BookCondition?
 

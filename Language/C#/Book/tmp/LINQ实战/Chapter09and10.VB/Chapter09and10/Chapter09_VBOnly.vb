@@ -1,4 +1,4 @@
-﻿Imports LinqInAction.LinqBooks.Common
+Imports LinqInAction.LinqBooks.Common
 Imports NUnit.Framework
 Imports System.Collections
 Imports System

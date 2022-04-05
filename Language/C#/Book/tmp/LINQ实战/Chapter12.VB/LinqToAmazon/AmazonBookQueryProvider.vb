@@ -1,4 +1,4 @@
-﻿Imports System.Linq.Expressions
+Imports System.Linq.Expressions
 
 Public Class AmazonBookQueryProvider
   Inherits QueryProvider

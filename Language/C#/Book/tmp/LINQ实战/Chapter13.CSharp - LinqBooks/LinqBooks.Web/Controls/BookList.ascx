@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BookList.ascx.cs" Inherits="LinqBooks.Web.Controls.BookList" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BookList.ascx.cs" Inherits="LinqBooks.Web.Controls.BookList" %>
 
 <asp:GridView ID="GridViewBooks" runat="server"
   AutoGenerateColumns="False" 

@@ -1,9 +1,278 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TagLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2007-07-16">
-<OperationRequest><HTTPHeaders><Header Name="UserAgent" Value="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"/></HTTPHeaders>
-<RequestId>01K4HA080043YHG017MR</RequestId><Arguments><Argument Name="ItemId" Value="0545010225"/><Argument Name="Service" Value="AWSECommerceService"/>
-<Argument Name="ResponseGroup" Value="Tags,Small"/><Argument Name="Marketplace" Value="us"/><Argument Name="Operation" Value="TagLookup"/>
-<Argument Name="TagName" Value="dotnet"/><Argument Name="AWSAccessKeyId" Value="YOUR AWS ACCESS KEY"/><Argument Name="Version" Value="2007-07-16"/>
-<Argument Name="Count" Value="20"/></Arguments><RequestProcessingTime>0.23189902305603</RequestProcessingTime></OperationRequest>
-<Tags><Request><IsValid>True</IsValid><TagLookupRequest><TagName>dotnet</TagName><Count>20</Count><ResponseGroup>Small</ResponseGroup><ResponseGroup>Tags</ResponseGroup>
-</TagLookupRequest></Request><Tag><Name>dotnet</Name><TagType>Items</TagType><DistinctItems>113</DistinctItems><DistinctUsers>133</DistinctUsers><TotalUsages>193</TotalUsages><FirstTagging><EntityId>0596101139</EntityId><UserId>A3G16WD9AXJNRV</UserId><Time>2005-11-15 11:40:18</Time></FirstTagging><LastTagging><EntityId>0321246756</EntityId><UserId>A3ON006ZDMZJ6I</UserId><Time>2007-08-10 21:06:50</Time></LastTagging><TaggedItems><Item><ASIN>0672328917</ASIN><ItemAttributes><Author>Adam Nathan</Author><Manufacturer>Sams</Manufacturer><ProductGroup>Book</ProductGroup><Title>Windows Presentation Foundation Unleashed (WPF) (Unleashed)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0321246756</ASIN><ItemAttributes><Author>Krzysztof Cwalina</Author><Author>Brad Abrams</Author><Manufacturer>Addison-Wesley Professional</Manufacturer><ProductGroup>Book</ProductGroup><Title>Framework Design Guidelines: Conventions, Idioms, and Patterns for Reusable .NET Libraries (Microsoft .NET Development Series)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0735621632</ASIN><ItemAttributes><Author>Jeffrey Richter</Author><Manufacturer>Microsoft Press</Manufacturer><ProductGroup>Book</ProductGroup><Title>CLR via C#, Second Edition (Pro Developer)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0764571354</ASIN><ItemAttributes><Author>Joe Duffy</Author><Manufacturer>Wrox</Manufacturer><ProductGroup>Book</ProductGroup><Title>Professional .NET Framework 2.0 (Programmer to Programmer)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>1590594193</ASIN><ItemAttributes><Author>Andrew Troelsen</Author><Manufacturer>Apress</Manufacturer><ProductGroup>Book</ProductGroup><Title>Pro C# 2005 and the .NET 2.0 Platform, Third Edition</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>1590597575</ASIN><ItemAttributes><Author>Robert Pickering</Author><Manufacturer>Apress</Manufacturer><ProductGroup>Book</ProductGroup><Title>Foundations of F#</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0321350170</ASIN><ItemAttributes><Author>Joe Kaplan</Author><Author>Ryan Dunn</Author><Manufacturer>Addison-Wesley Professional</Manufacturer><ProductGroup>Book</ProductGroup><Title>The .NET Developer's Guide to Directory Services Programming (Microsoft .NET Development Series)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0596100639</ASIN><ItemAttributes><Author>Jay Hilyard</Author><Author>Stephen Teilhet</Author><Manufacturer>O'Reilly Media, Inc.</Manufacturer><ProductGroup>Book</ProductGroup><Title>C# Cookbook, 2nd Edition (Cookbooks (O'Reilly))</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0596102070</ASIN><ItemAttributes><Author>Juval Lowy</Author><Manufacturer>O'Reilly Media, Inc.</Manufacturer><ProductGroup>Book</ProductGroup><Title>Programming .NET Components, 2nd Edition</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0521670152</ASIN><ItemAttributes><Author>Michael McMillan</Author><Manufacturer>Cambridge University Press</Manufacturer><ProductGroup>Book</ProductGroup><Title>Data Structures and Algorithms Using C#</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0596101139</ASIN><ItemAttributes><Author>Chris Sells</Author><Author>Ian Griffiths</Author><Manufacturer>O'Reilly Media, Inc.</Manufacturer><ProductGroup>Book</ProductGroup><Title>Programming Windows Presentation Foundation (Programming)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0596526997</ASIN><ItemAttributes><Author>Juval Lowy</Author><Manufacturer>O'Reilly Media, Inc.</Manufacturer><ProductGroup>Book</ProductGroup><Title>Programming WCF Services (Programming)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0735619573</ASIN><ItemAttributes><Author>Charles Petzold</Author><Manufacturer>Microsoft Press</Manufacturer><ProductGroup>Book</ProductGroup><Title>Applications = Code + Markup: A Guide to the Microsoft  Windows  Presentation Foundation (Pro - Developer)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0735623066</ASIN><ItemAttributes><Author>Justin Smith</Author><Manufacturer>Microsoft Press</Manufacturer><ProductGroup>Book</ProductGroup><Title>Inside Windows  Communication Foundation (Pro Developer)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0764575341</ASIN><ItemAttributes><Author>Christian  Nagel</Author><Author>Bill  Evjen</Author><Author>Jay  Glynn</Author><Author>Morgan  Skinner</Author><Author>Karli  Watson</Author><Author>Allen Jones</Author><Manufacturer>Wrox</Manufacturer><ProductGroup>Book</ProductGroup><Title>Professional C# 2005 (Wrox Professional Guides)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>1590594398</ASIN><ItemAttributes><Author>Matthew MacDonald</Author><Manufacturer>Apress</Manufacturer><ProductGroup>Book</ProductGroup><Title>Pro .NET 2.0 Windows Forms and Custom Controls in C#</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>1590597788</ASIN><ItemAttributes><Author>Bruce Bukovics</Author><Manufacturer>Apress</Manufacturer><ProductGroup>Book</ProductGroup><Title>Pro WF: Windows Workflow in .NET 3.0 (Expert's Voice in .Net)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>1590598237</ASIN><ItemAttributes><Author>Andrew Troelsen</Author><Manufacturer>Apress</Manufacturer><ProductGroup>Book</ProductGroup><Title>Pro C# with .NET 3.0, Special Edition (Pro)</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0201734117</ASIN><ItemAttributes><Author>Don Box</Author><Manufacturer>Addison-Wesley Professional</Manufacturer><ProductGroup>Book</ProductGroup><Title>Essential .NET, Volume I: The Common Language Runtime</Title></ItemAttributes></Item></TaggedItems><TaggedItems><Item><ASIN>0321228359</ASIN><ItemAttributes><Author>Keith Brown</Author><Manufacturer>Addison-Wesley Professional</Manufacturer><ProductGroup>Book</ProductGroup><Title>The .NET Developer's Guide to Windows Security (Microsoft .NET Development Series)</Title></ItemAttributes></Item></TaggedItems></Tag></Tags></TagLookupResponse>
+    <OperationRequest>
+        <HTTPHeaders>
+            <Header Name="UserAgent" Value="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"/>
+        </HTTPHeaders>
+        <RequestId>01K4HA080043YHG017MR</RequestId>
+        <Arguments>
+            <Argument Name="ItemId" Value="0545010225"/>
+            <Argument Name="Service" Value="AWSECommerceService"/>
+            <Argument Name="ResponseGroup" Value="Tags,Small"/>
+            <Argument Name="Marketplace" Value="us"/>
+            <Argument Name="Operation" Value="TagLookup"/>
+            <Argument Name="TagName" Value="dotnet"/>
+            <Argument Name="AWSAccessKeyId" Value="YOUR AWS ACCESS KEY"/>
+            <Argument Name="Version" Value="2007-07-16"/>
+            <Argument Name="Count" Value="20"/>
+        </Arguments>
+        <RequestProcessingTime>0.23189902305603</RequestProcessingTime>
+    </OperationRequest>
+    <Tags>
+        <Request>
+            <IsValid>True</IsValid>
+            <TagLookupRequest>
+                <TagName>dotnet</TagName>
+                <Count>20</Count>
+                <ResponseGroup>Small</ResponseGroup>
+                <ResponseGroup>Tags</ResponseGroup>
+            </TagLookupRequest>
+        </Request>
+        <Tag>
+            <Name>dotnet</Name>
+            <TagType>Items</TagType>
+            <DistinctItems>113</DistinctItems>
+            <DistinctUsers>133</DistinctUsers>
+            <TotalUsages>193</TotalUsages>
+            <FirstTagging>
+                <EntityId>0596101139</EntityId>
+                <UserId>A3G16WD9AXJNRV</UserId>
+                <Time>2005-11-15 11:40:18</Time>
+            </FirstTagging>
+            <LastTagging>
+                <EntityId>0321246756</EntityId>
+                <UserId>A3ON006ZDMZJ6I</UserId>
+                <Time>2007-08-10 21:06:50</Time>
+            </LastTagging>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0672328917</ASIN>
+                    <ItemAttributes>
+                        <Author>Adam Nathan</Author>
+                        <Manufacturer>Sams</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Windows Presentation Foundation Unleashed (WPF) (Unleashed)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0321246756</ASIN>
+                    <ItemAttributes>
+                        <Author>Krzysztof Cwalina</Author>
+                        <Author>Brad Abrams</Author>
+                        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Framework Design Guidelines: Conventions, Idioms, and Patterns for Reusable .NET Libraries (Microsoft .NET Development Series)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0735621632</ASIN>
+                    <ItemAttributes>
+                        <Author>Jeffrey Richter</Author>
+                        <Manufacturer>Microsoft Press</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>CLR via C#, Second Edition (Pro Developer)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0764571354</ASIN>
+                    <ItemAttributes>
+                        <Author>Joe Duffy</Author>
+                        <Manufacturer>Wrox</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Professional .NET Framework 2.0 (Programmer to Programmer)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>1590594193</ASIN>
+                    <ItemAttributes>
+                        <Author>Andrew Troelsen</Author>
+                        <Manufacturer>Apress</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Pro C# 2005 and the .NET 2.0 Platform, Third Edition</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>1590597575</ASIN>
+                    <ItemAttributes>
+                        <Author>Robert Pickering</Author>
+                        <Manufacturer>Apress</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Foundations of F#</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0321350170</ASIN>
+                    <ItemAttributes>
+                        <Author>Joe Kaplan</Author>
+                        <Author>Ryan Dunn</Author>
+                        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>The .NET Developer's Guide to Directory Services Programming (Microsoft .NET Development Series)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0596100639</ASIN>
+                    <ItemAttributes>
+                        <Author>Jay Hilyard</Author>
+                        <Author>Stephen Teilhet</Author>
+                        <Manufacturer>O'Reilly Media, Inc.</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>C# Cookbook, 2nd Edition (Cookbooks (O'Reilly))</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0596102070</ASIN>
+                    <ItemAttributes>
+                        <Author>Juval Lowy</Author>
+                        <Manufacturer>O'Reilly Media, Inc.</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Programming .NET Components, 2nd Edition</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0521670152</ASIN>
+                    <ItemAttributes>
+                        <Author>Michael McMillan</Author>
+                        <Manufacturer>Cambridge University Press</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Data Structures and Algorithms Using C#</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0596101139</ASIN>
+                    <ItemAttributes>
+                        <Author>Chris Sells</Author>
+                        <Author>Ian Griffiths</Author>
+                        <Manufacturer>O'Reilly Media, Inc.</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Programming Windows Presentation Foundation (Programming)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0596526997</ASIN>
+                    <ItemAttributes>
+                        <Author>Juval Lowy</Author>
+                        <Manufacturer>O'Reilly Media, Inc.</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Programming WCF Services (Programming)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0735619573</ASIN>
+                    <ItemAttributes>
+                        <Author>Charles Petzold</Author>
+                        <Manufacturer>Microsoft Press</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Applications = Code + Markup: A Guide to the Microsoft  Windows  Presentation Foundation (Pro - Developer)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0735623066</ASIN>
+                    <ItemAttributes>
+                        <Author>Justin Smith</Author>
+                        <Manufacturer>Microsoft Press</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Inside Windows  Communication Foundation (Pro Developer)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0764575341</ASIN>
+                    <ItemAttributes>
+                        <Author>Christian  Nagel</Author>
+                        <Author>Bill  Evjen</Author>
+                        <Author>Jay  Glynn</Author>
+                        <Author>Morgan  Skinner</Author>
+                        <Author>Karli  Watson</Author>
+                        <Author>Allen Jones</Author>
+                        <Manufacturer>Wrox</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Professional C# 2005 (Wrox Professional Guides)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>1590594398</ASIN>
+                    <ItemAttributes>
+                        <Author>Matthew MacDonald</Author>
+                        <Manufacturer>Apress</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Pro .NET 2.0 Windows Forms and Custom Controls in C#</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>1590597788</ASIN>
+                    <ItemAttributes>
+                        <Author>Bruce Bukovics</Author>
+                        <Manufacturer>Apress</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Pro WF: Windows Workflow in .NET 3.0 (Expert's Voice in .Net)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>1590598237</ASIN>
+                    <ItemAttributes>
+                        <Author>Andrew Troelsen</Author>
+                        <Manufacturer>Apress</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Pro C# with .NET 3.0, Special Edition (Pro)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0201734117</ASIN>
+                    <ItemAttributes>
+                        <Author>Don Box</Author>
+                        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>Essential .NET, Volume I: The Common Language Runtime</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+            <TaggedItems>
+                <Item>
+                    <ASIN>0321228359</ASIN>
+                    <ItemAttributes>
+                        <Author>Keith Brown</Author>
+                        <Manufacturer>Addison-Wesley Professional</Manufacturer>
+                        <ProductGroup>Book</ProductGroup>
+                        <Title>The .NET Developer's Guide to Windows Security (Microsoft .NET Development Series)</Title>
+                    </ItemAttributes>
+                </Item>
+            </TaggedItems>
+        </Tag>
+    </Tags>
+</TagLookupResponse>

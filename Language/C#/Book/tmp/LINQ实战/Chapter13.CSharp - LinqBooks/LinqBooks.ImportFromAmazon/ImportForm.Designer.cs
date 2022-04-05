@@ -1,4 +1,4 @@
-﻿namespace LinqBooks.ImportFromAmazon
+namespace LinqBooks.ImportFromAmazon
 {
   partial class ImportForm
   {

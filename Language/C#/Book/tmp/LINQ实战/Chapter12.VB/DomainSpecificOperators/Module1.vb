@@ -1,4 +1,4 @@
-﻿Imports LinqInAction.LinqBooks.Common
+Imports LinqInAction.LinqBooks.Common
 Imports LinqInAction.Chapter12.DomainSpecificOperators.QueryOperators
 
 Module Module1

@@ -10,9 +10,8 @@
 
 #pragma warning disable 1591
 
-namespace LinqInAction.Chapter05 {
-    
-    
+namespace LinqInAction.Chapter05
+{
     /// <summary>
     ///Represents a strongly typed in-memory cache of data.
     ///</summary>
@@ -23,18 +22,20 @@ namespace LinqInAction.Chapter05 {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("LinqBooksDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class LinqBooksDataSet : global::System.Data.DataSet {
-        
+    public partial class LinqBooksDataSet : global::System.Data.DataSet
+    {
+
         private BookDataTable tableBook;
-        
+
         private PublisherDataTable tablePublisher;
-        
+
         private global::System.Data.DataRelation relationFK_Book_Publisher;
-        
+
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public LinqBooksDataSet() {
+        public LinqBooksDataSet()
+        {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -42,11 +43,13 @@ namespace LinqInAction.Chapter05 {
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected LinqBooksDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                base(info, context, false) {
-            if ((this.IsBinarySerialized(info, context) == true)) {
+        protected LinqBooksDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
+                base(info, context, false)
+        {
+            if ((this.IsBinarySerialized(info, context) == true))
+            {
                 this.InitVars(false);
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
@@ -54,13 +57,16 @@ namespace LinqInAction.Chapter05 {
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema))
+            {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Book"] != null)) {
+                if ((ds.Tables["Book"] != null))
+                {
                     base.Tables.Add(new BookDataTable(ds.Tables["Book"]));
                 }
-                if ((ds.Tables["Publisher"] != null)) {
+                if ((ds.Tables["Publisher"] != null))
+                {
                     base.Tables.Add(new PublisherDataTable(ds.Tables["Publisher"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -72,7 +78,8 @@ namespace LinqInAction.Chapter05 {
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else {
+            else
+            {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
             this.GetSerializationData(info, context);
@@ -80,88 +87,107 @@ namespace LinqInAction.Chapter05 {
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public BookDataTable Book {
-            get {
+        public BookDataTable Book
+        {
+            get
+            {
                 return this.tableBook;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PublisherDataTable Publisher {
-            get {
+        public PublisherDataTable Publisher
+        {
+            get
+            {
                 return this.tablePublisher;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
-        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
-            get {
+        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode
+        {
+            get
+            {
                 return this._schemaSerializationMode;
             }
-            set {
+            set
+            {
                 this._schemaSerializationMode = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataTableCollection Tables {
-            get {
+        public new global::System.Data.DataTableCollection Tables
+        {
+            get
+            {
                 return base.Tables;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataRelationCollection Relations {
-            get {
+        public new global::System.Data.DataRelationCollection Relations
+        {
+            get
+            {
                 return base.Relations;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected override void InitializeDerivedDataSet() {
+        protected override void InitializeDerivedDataSet()
+        {
             this.BeginInit();
             this.InitClass();
             this.EndInit();
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public override global::System.Data.DataSet Clone() {
+        public override global::System.Data.DataSet Clone()
+        {
             LinqBooksDataSet cln = ((LinqBooksDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected override bool ShouldSerializeTables() {
+        protected override bool ShouldSerializeTables()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected override bool ShouldSerializeRelations() {
+        protected override bool ShouldSerializeRelations()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
-            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader)
+        {
+            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema))
+            {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Book"] != null)) {
+                if ((ds.Tables["Book"] != null))
+                {
                     base.Tables.Add(new BookDataTable(ds.Tables["Book"]));
                 }
-                if ((ds.Tables["Publisher"] != null)) {
+                if ((ds.Tables["Publisher"] != null))
+                {
                     base.Tables.Add(new PublisherDataTable(ds.Tables["Publisher"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -173,44 +199,53 @@ namespace LinqInAction.Chapter05 {
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else {
+            else
+            {
                 this.ReadXml(reader);
                 this.InitVars();
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
+        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable()
+        {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
             return global::System.Xml.Schema.XmlSchema.Read(new global::System.Xml.XmlTextReader(stream), null);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal void InitVars() {
+        internal void InitVars()
+        {
             this.InitVars(true);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal void InitVars(bool initTable) {
+        internal void InitVars(bool initTable)
+        {
             this.tableBook = ((BookDataTable)(base.Tables["Book"]));
-            if ((initTable == true)) {
-                if ((this.tableBook != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableBook != null))
+                {
                     this.tableBook.InitVars();
                 }
             }
             this.tablePublisher = ((PublisherDataTable)(base.Tables["Publisher"]));
-            if ((initTable == true)) {
-                if ((this.tablePublisher != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tablePublisher != null))
+                {
                     this.tablePublisher.InitVars();
                 }
             }
             this.relationFK_Book_Publisher = this.Relations["FK_Book_Publisher"];
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitClass() {
+        private void InitClass()
+        {
             this.DataSetName = "LinqBooksDataSet";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/LinqBooksDataSet.xsd";
@@ -234,26 +269,31 @@ namespace LinqInAction.Chapter05 {
                         this.tableBook.PublisherColumn}, false);
             this.Relations.Add(this.relationFK_Book_Publisher);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializeBook() {
+        private bool ShouldSerializeBook()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializePublisher() {
+        private bool ShouldSerializePublisher()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
-            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
+        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e)
+        {
+            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove))
+            {
                 this.InitVars();
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+        {
             LinqBooksDataSet ds = new LinqBooksDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -264,169 +304,202 @@ namespace LinqInAction.Chapter05 {
             type.Particle = sequence;
             return type;
         }
-        
+
         public delegate void BookRowChangeEventHandler(object sender, BookRowChangeEvent e);
-        
+
         public delegate void PublisherRowChangeEventHandler(object sender, PublisherRowChangeEvent e);
-        
+
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class BookDataTable : global::System.Data.TypedTableBase<BookRow> {
-            
+        public partial class BookDataTable : global::System.Data.TypedTableBase<BookRow>
+        {
+
             private global::System.Data.DataColumn columnID;
-            
+
             private global::System.Data.DataColumn columnTitle;
-            
+
             private global::System.Data.DataColumn columnSubject;
-            
+
             private global::System.Data.DataColumn columnPublisher;
-            
+
             private global::System.Data.DataColumn columnPubDate;
-            
+
             private global::System.Data.DataColumn columnPrice;
-            
+
             private global::System.Data.DataColumn columnPageCount;
-            
+
             private global::System.Data.DataColumn columnIsbn;
-            
+
             private global::System.Data.DataColumn columnSummary;
-            
+
             private global::System.Data.DataColumn columnNotes;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookDataTable() {
+            public BookDataTable()
+            {
                 this.TableName = "Book";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal BookDataTable(global::System.Data.DataTable table) {
+            internal BookDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected BookDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
+            protected BookDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
+                    base(info, context)
+            {
                 this.InitVars();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn IDColumn {
-                get {
+            public global::System.Data.DataColumn IDColumn
+            {
+                get
+                {
                     return this.columnID;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn TitleColumn {
-                get {
+            public global::System.Data.DataColumn TitleColumn
+            {
+                get
+                {
                     return this.columnTitle;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn SubjectColumn {
-                get {
+            public global::System.Data.DataColumn SubjectColumn
+            {
+                get
+                {
                     return this.columnSubject;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PublisherColumn {
-                get {
+            public global::System.Data.DataColumn PublisherColumn
+            {
+                get
+                {
                     return this.columnPublisher;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PubDateColumn {
-                get {
+            public global::System.Data.DataColumn PubDateColumn
+            {
+                get
+                {
                     return this.columnPubDate;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PriceColumn {
-                get {
+            public global::System.Data.DataColumn PriceColumn
+            {
+                get
+                {
                     return this.columnPrice;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PageCountColumn {
-                get {
+            public global::System.Data.DataColumn PageCountColumn
+            {
+                get
+                {
                     return this.columnPageCount;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn IsbnColumn {
-                get {
+            public global::System.Data.DataColumn IsbnColumn
+            {
+                get
+                {
                     return this.columnIsbn;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn SummaryColumn {
-                get {
+            public global::System.Data.DataColumn SummaryColumn
+            {
+                get
+                {
                     return this.columnSummary;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn NotesColumn {
-                get {
+            public global::System.Data.DataColumn NotesColumn
+            {
+                get
+                {
                     return this.columnNotes;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow this[int index] {
-                get {
+            public BookRow this[int index]
+            {
+                get
+                {
                     return ((BookRow)(this.Rows[index]));
                 }
             }
-            
+
             public event BookRowChangeEventHandler BookRowChanging;
-            
+
             public event BookRowChangeEventHandler BookRowChanged;
-            
+
             public event BookRowChangeEventHandler BookRowDeleting;
-            
+
             public event BookRowChangeEventHandler BookRowDeleted;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddBookRow(BookRow row) {
+            public void AddBookRow(BookRow row)
+            {
                 this.Rows.Add(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow AddBookRow(System.Guid ID, string Title, System.Guid Subject, PublisherRow parentPublisherRowByFK_Book_Publisher, System.DateTime PubDate, decimal Price, int PageCount, string Isbn, string Summary, string Notes) {
+            public BookRow AddBookRow(System.Guid ID, string Title, System.Guid Subject, PublisherRow parentPublisherRowByFK_Book_Publisher, System.DateTime PubDate, decimal Price, int PageCount, string Isbn, string Summary, string Notes)
+            {
                 BookRow rowBookRow = ((BookRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -439,34 +512,39 @@ namespace LinqInAction.Chapter05 {
                         Isbn,
                         Summary,
                         Notes};
-                if ((parentPublisherRowByFK_Book_Publisher != null)) {
+                if ((parentPublisherRowByFK_Book_Publisher != null))
+                {
                     columnValuesArray[3] = parentPublisherRowByFK_Book_Publisher[0];
                 }
                 rowBookRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBookRow);
                 return rowBookRow;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow FindByID(System.Guid ID) {
+            public BookRow FindByID(System.Guid ID)
+            {
                 return ((BookRow)(this.Rows.Find(new object[] {
                             ID})));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 BookDataTable cln = ((BookDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new BookDataTable();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnID = base.Columns["ID"];
                 this.columnTitle = base.Columns["Title"];
                 this.columnSubject = base.Columns["Subject"];
@@ -478,9 +556,10 @@ namespace LinqInAction.Chapter05 {
                 this.columnSummary = base.Columns["Summary"];
                 this.columnNotes = base.Columns["Notes"];
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
@@ -514,61 +593,74 @@ namespace LinqInAction.Chapter05 {
                 this.columnSummary.MaxLength = 2000;
                 this.columnNotes.MaxLength = 2000;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow NewBookRow() {
+            public BookRow NewBookRow()
+            {
                 return ((BookRow)(this.NewRow()));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new BookRow(builder);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(BookRow);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.BookRowChanged != null)) {
+                if ((this.BookRowChanged != null))
+                {
                     this.BookRowChanged(this, new BookRowChangeEvent(((BookRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.BookRowChanging != null)) {
+                if ((this.BookRowChanging != null))
+                {
                     this.BookRowChanging(this, new BookRowChangeEvent(((BookRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.BookRowDeleted != null)) {
+                if ((this.BookRowDeleted != null))
+                {
                     this.BookRowDeleted(this, new BookRowChangeEvent(((BookRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.BookRowDeleting != null)) {
+                if ((this.BookRowDeleting != null))
+                {
                     this.BookRowDeleting(this, new BookRowChangeEvent(((BookRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemoveBookRow(BookRow row) {
+            public void RemoveBookRow(BookRow row)
+            {
                 this.Rows.Remove(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 LinqBooksDataSet ds = new LinqBooksDataSet();
@@ -596,111 +688,132 @@ namespace LinqInAction.Chapter05 {
                 return type;
             }
         }
-        
+
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PublisherDataTable : global::System.Data.TypedTableBase<PublisherRow> {
-            
+        public partial class PublisherDataTable : global::System.Data.TypedTableBase<PublisherRow>
+        {
+
             private global::System.Data.DataColumn columnID;
-            
+
             private global::System.Data.DataColumn columnName;
-            
+
             private global::System.Data.DataColumn columnLogo;
-            
+
             private global::System.Data.DataColumn columnWebSite;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherDataTable() {
+            public PublisherDataTable()
+            {
                 this.TableName = "Publisher";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal PublisherDataTable(global::System.Data.DataTable table) {
+            internal PublisherDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected PublisherDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
+            protected PublisherDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
+                    base(info, context)
+            {
                 this.InitVars();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn IDColumn {
-                get {
+            public global::System.Data.DataColumn IDColumn
+            {
+                get
+                {
                     return this.columnID;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn NameColumn {
-                get {
+            public global::System.Data.DataColumn NameColumn
+            {
+                get
+                {
                     return this.columnName;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn LogoColumn {
-                get {
+            public global::System.Data.DataColumn LogoColumn
+            {
+                get
+                {
                     return this.columnLogo;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn WebSiteColumn {
-                get {
+            public global::System.Data.DataColumn WebSiteColumn
+            {
+                get
+                {
                     return this.columnWebSite;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow this[int index] {
-                get {
+            public PublisherRow this[int index]
+            {
+                get
+                {
                     return ((PublisherRow)(this.Rows[index]));
                 }
             }
-            
+
             public event PublisherRowChangeEventHandler PublisherRowChanging;
-            
+
             public event PublisherRowChangeEventHandler PublisherRowChanged;
-            
+
             public event PublisherRowChangeEventHandler PublisherRowDeleting;
-            
+
             public event PublisherRowChangeEventHandler PublisherRowDeleted;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddPublisherRow(PublisherRow row) {
+            public void AddPublisherRow(PublisherRow row)
+            {
                 this.Rows.Add(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow AddPublisherRow(System.Guid ID, string Name, byte[] Logo, string WebSite) {
+            public PublisherRow AddPublisherRow(System.Guid ID, string Name, byte[] Logo, string WebSite)
+            {
                 PublisherRow rowPublisherRow = ((PublisherRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -711,35 +824,40 @@ namespace LinqInAction.Chapter05 {
                 this.Rows.Add(rowPublisherRow);
                 return rowPublisherRow;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow FindByID(System.Guid ID) {
+            public PublisherRow FindByID(System.Guid ID)
+            {
                 return ((PublisherRow)(this.Rows.Find(new object[] {
                             ID})));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 PublisherDataTable cln = ((PublisherDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new PublisherDataTable();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnID = base.Columns["ID"];
                 this.columnName = base.Columns["Name"];
                 this.columnLogo = base.Columns["Logo"];
                 this.columnWebSite = base.Columns["WebSite"];
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
@@ -756,61 +874,74 @@ namespace LinqInAction.Chapter05 {
                 this.columnName.MaxLength = 50;
                 this.columnWebSite.MaxLength = 200;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow NewPublisherRow() {
+            public PublisherRow NewPublisherRow()
+            {
                 return ((PublisherRow)(this.NewRow()));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new PublisherRow(builder);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(PublisherRow);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.PublisherRowChanged != null)) {
+                if ((this.PublisherRowChanged != null))
+                {
                     this.PublisherRowChanged(this, new PublisherRowChangeEvent(((PublisherRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.PublisherRowChanging != null)) {
+                if ((this.PublisherRowChanging != null))
+                {
                     this.PublisherRowChanging(this, new PublisherRowChangeEvent(((PublisherRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.PublisherRowDeleted != null)) {
+                if ((this.PublisherRowDeleted != null))
+                {
                     this.PublisherRowDeleted(this, new PublisherRowChangeEvent(((PublisherRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.PublisherRowDeleting != null)) {
+                if ((this.PublisherRowDeleting != null))
+                {
                     this.PublisherRowDeleting(this, new PublisherRowChangeEvent(((PublisherRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemovePublisherRow(PublisherRow row) {
+            public void RemovePublisherRow(PublisherRow row)
+            {
                 this.Rows.Remove(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 LinqBooksDataSet ds = new LinqBooksDataSet();
@@ -838,368 +969,461 @@ namespace LinqInAction.Chapter05 {
                 return type;
             }
         }
-        
+
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class BookRow : global::System.Data.DataRow {
-            
+        public partial class BookRow : global::System.Data.DataRow
+        {
+
             private BookDataTable tableBook;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal BookRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
+            internal BookRow(global::System.Data.DataRowBuilder rb) :
+                    base(rb)
+            {
                 this.tableBook = ((BookDataTable)(this.Table));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Guid ID {
-                get {
+            public System.Guid ID
+            {
+                get
+                {
                     return ((global::System.Guid)(this[this.tableBook.IDColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableBook.IDColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Title {
-                get {
+            public string Title
+            {
+                get
+                {
                     return ((string)(this[this.tableBook.TitleColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableBook.TitleColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Guid Subject {
-                get {
+            public System.Guid Subject
+            {
+                get
+                {
                     return ((global::System.Guid)(this[this.tableBook.SubjectColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableBook.SubjectColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Guid Publisher {
-                get {
+            public System.Guid Publisher
+            {
+                get
+                {
                     return ((global::System.Guid)(this[this.tableBook.PublisherColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableBook.PublisherColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.DateTime PubDate {
-                get {
-                    try {
+            public System.DateTime PubDate
+            {
+                get
+                {
+                    try
+                    {
                         return ((global::System.DateTime)(this[this.tableBook.PubDateColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'PubDate\' in table \'Book\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableBook.PubDateColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public decimal Price {
-                get {
-                    try {
+            public decimal Price
+            {
+                get
+                {
+                    try
+                    {
                         return ((decimal)(this[this.tableBook.PriceColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'Book\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableBook.PriceColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int PageCount {
-                get {
+            public int PageCount
+            {
+                get
+                {
                     return ((int)(this[this.tableBook.PageCountColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableBook.PageCountColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Isbn {
-                get {
-                    try {
+            public string Isbn
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableBook.IsbnColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'Isbn\' in table \'Book\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableBook.IsbnColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Summary {
-                get {
-                    try {
+            public string Summary
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableBook.SummaryColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'Summary\' in table \'Book\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableBook.SummaryColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Notes {
-                get {
-                    try {
+            public string Notes
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableBook.NotesColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'Notes\' in table \'Book\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableBook.NotesColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow PublisherRow {
-                get {
+            public PublisherRow PublisherRow
+            {
+                get
+                {
                     return ((PublisherRow)(this.GetParentRow(this.Table.ParentRelations["FK_Book_Publisher"])));
                 }
-                set {
+                set
+                {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Book_Publisher"]);
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsPubDateNull() {
+            public bool IsPubDateNull()
+            {
                 return this.IsNull(this.tableBook.PubDateColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetPubDateNull() {
+            public void SetPubDateNull()
+            {
                 this[this.tableBook.PubDateColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsPriceNull() {
+            public bool IsPriceNull()
+            {
                 return this.IsNull(this.tableBook.PriceColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetPriceNull() {
+            public void SetPriceNull()
+            {
                 this[this.tableBook.PriceColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsIsbnNull() {
+            public bool IsIsbnNull()
+            {
                 return this.IsNull(this.tableBook.IsbnColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetIsbnNull() {
+            public void SetIsbnNull()
+            {
                 this[this.tableBook.IsbnColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsSummaryNull() {
+            public bool IsSummaryNull()
+            {
                 return this.IsNull(this.tableBook.SummaryColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetSummaryNull() {
+            public void SetSummaryNull()
+            {
                 this[this.tableBook.SummaryColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsNotesNull() {
+            public bool IsNotesNull()
+            {
                 return this.IsNull(this.tableBook.NotesColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetNotesNull() {
+            public void SetNotesNull()
+            {
                 this[this.tableBook.NotesColumn] = global::System.Convert.DBNull;
             }
         }
-        
+
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class PublisherRow : global::System.Data.DataRow {
-            
+        public partial class PublisherRow : global::System.Data.DataRow
+        {
+
             private PublisherDataTable tablePublisher;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal PublisherRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
+            internal PublisherRow(global::System.Data.DataRowBuilder rb) :
+                    base(rb)
+            {
                 this.tablePublisher = ((PublisherDataTable)(this.Table));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public System.Guid ID {
-                get {
+            public System.Guid ID
+            {
+                get
+                {
                     return ((global::System.Guid)(this[this.tablePublisher.IDColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tablePublisher.IDColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Name {
-                get {
+            public string Name
+            {
+                get
+                {
                     return ((string)(this[this.tablePublisher.NameColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tablePublisher.NameColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public byte[] Logo {
-                get {
-                    try {
+            public byte[] Logo
+            {
+                get
+                {
+                    try
+                    {
                         return ((byte[])(this[this.tablePublisher.LogoColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'Logo\' in table \'Publisher\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tablePublisher.LogoColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string WebSite {
-                get {
-                    try {
+            public string WebSite
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tablePublisher.WebSiteColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("The value for column \'WebSite\' in table \'Publisher\' is DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tablePublisher.WebSiteColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsLogoNull() {
+            public bool IsLogoNull()
+            {
                 return this.IsNull(this.tablePublisher.LogoColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetLogoNull() {
+            public void SetLogoNull()
+            {
                 this[this.tablePublisher.LogoColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsWebSiteNull() {
+            public bool IsWebSiteNull()
+            {
                 return this.IsNull(this.tablePublisher.WebSiteColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetWebSiteNull() {
+            public void SetWebSiteNull()
+            {
                 this[this.tablePublisher.WebSiteColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow[] GetBookRows() {
-                if ((this.Table.ChildRelations["FK_Book_Publisher"] == null)) {
+            public BookRow[] GetBookRows()
+            {
+                if ((this.Table.ChildRelations["FK_Book_Publisher"] == null))
+                {
                     return new BookRow[0];
                 }
-                else {
+                else
+                {
                     return ((BookRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Book_Publisher"])));
                 }
             }
         }
-        
+
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class BookRowChangeEvent : global::System.EventArgs {
-            
+        public class BookRowChangeEvent : global::System.EventArgs
+        {
+
             private BookRow eventRow;
-            
+
             private global::System.Data.DataRowAction eventAction;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRowChangeEvent(BookRow row, global::System.Data.DataRowAction action) {
+            public BookRowChangeEvent(BookRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public BookRow Row {
-                get {
+            public BookRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
         }
-        
+
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class PublisherRowChangeEvent : global::System.EventArgs {
-            
+        public class PublisherRowChangeEvent : global::System.EventArgs
+        {
+
             private PublisherRow eventRow;
-            
+
             private global::System.Data.DataRowAction eventAction;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRowChangeEvent(PublisherRow row, global::System.Data.DataRowAction action) {
+            public PublisherRowChangeEvent(PublisherRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public PublisherRow Row {
-                get {
+            public PublisherRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
         }
     }
 }
-namespace LinqInAction.Chapter05.LinqBooksDataSetTableAdapters {
-    
-    
+namespace LinqInAction.Chapter05.LinqBooksDataSetTableAdapters
+{
+
+
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
     ///</summary>
@@ -1210,107 +1434,135 @@ namespace LinqInAction.Chapter05.LinqBooksDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class BookTableAdapter : global::System.ComponentModel.Component {
-        
+    public partial class BookTableAdapter : global::System.ComponentModel.Component
+    {
+
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
+
         private global::System.Data.SqlClient.SqlConnection _connection;
-        
+
         private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
+
         private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
+
         private bool _clearBeforeFill;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public BookTableAdapter() {
+        public BookTableAdapter()
+        {
             this.ClearBeforeFill = true;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter
+        {
+            get
+            {
+                if ((this._adapter == null))
+                {
                     this.InitAdapter();
                 }
                 return this._adapter;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
+        internal global::System.Data.SqlClient.SqlConnection Connection
+        {
+            get
+            {
+                if ((this._connection == null))
+                {
                     this.InitConnection();
                 }
                 return this._connection;
             }
-            set {
+            set
+            {
                 this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
+                if ((this.Adapter.InsertCommand != null))
+                {
                     this.Adapter.InsertCommand.Connection = value;
                 }
-                if ((this.Adapter.DeleteCommand != null)) {
+                if ((this.Adapter.DeleteCommand != null))
+                {
                     this.Adapter.DeleteCommand.Connection = value;
                 }
-                if ((this.Adapter.UpdateCommand != null)) {
+                if ((this.Adapter.UpdateCommand != null))
+                {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
+                    if ((this.CommandCollection[i] != null))
+                    {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
+        internal global::System.Data.SqlClient.SqlTransaction Transaction
+        {
+            get
+            {
                 return this._transaction;
             }
-            set {
+            set
+            {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.DeleteCommand != null)))
+                {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.InsertCommand != null)))
+                {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.UpdateCommand != null)))
+                {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection
+        {
+            get
+            {
+                if ((this._commandCollection == null))
+                {
                     this.InitCommandCollection();
                 }
                 return this._commandCollection;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool ClearBeforeFill {
-            get {
+        public bool ClearBeforeFill
+        {
+            get
+            {
                 return this._clearBeforeFill;
             }
-            set {
+            set
+            {
                 this._clearBeforeFill = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitAdapter() {
+        private void InitAdapter()
+        {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
@@ -1391,15 +1643,17 @@ SELECT ID, Title, Subject, Publisher, PubDate, Price, PageCount, Isbn, Summary, 
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Notes", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Notes", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Notes", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitConnection() {
+        private void InitConnection()
+        {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::LinqInAction.Chapter05.Properties.Settings.Default.LinqBooksConnectionString;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitCommandCollection() {
+        private void InitCommandCollection()
+        {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
@@ -1407,315 +1661,385 @@ SELECT ID, Title, Subject, Publisher, PubDate, Price, PageCount, Isbn, Summary, 
                 "otes FROM dbo.Book";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(LinqBooksDataSet.BookDataTable dataTable) {
+        public virtual int Fill(LinqBooksDataSet.BookDataTable dataTable)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
+            if ((this.ClearBeforeFill == true))
+            {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LinqBooksDataSet.BookDataTable GetData() {
+        public virtual LinqBooksDataSet.BookDataTable GetData()
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             LinqBooksDataSet.BookDataTable dataTable = new LinqBooksDataSet.BookDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(LinqBooksDataSet.BookDataTable dataTable) {
+        public virtual int Update(LinqBooksDataSet.BookDataTable dataTable)
+        {
             return this.Adapter.Update(dataTable);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(LinqBooksDataSet dataSet) {
+        public virtual int Update(LinqBooksDataSet dataSet)
+        {
             return this.Adapter.Update(dataSet, "Book");
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
+        public virtual int Update(global::System.Data.DataRow dataRow)
+        {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+        public virtual int Update(global::System.Data.DataRow[] dataRows)
+        {
             return this.Adapter.Update(dataRows);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_ID, string Original_Title, System.Guid Original_Subject, System.Guid Original_Publisher, global::System.Nullable<global::System.DateTime> Original_PubDate, global::System.Nullable<decimal> Original_Price, int Original_PageCount, string Original_Isbn, string Original_Summary, string Original_Notes) {
+        public virtual int Delete(System.Guid Original_ID, string Original_Title, System.Guid Original_Subject, System.Guid Original_Publisher, global::System.Nullable<global::System.DateTime> Original_PubDate, global::System.Nullable<decimal> Original_Price, int Original_PageCount, string Original_Isbn, string Original_Summary, string Original_Notes)
+        {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_ID));
-            if ((Original_Title == null)) {
+            if ((Original_Title == null))
+            {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Title));
             }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.Guid)(Original_Subject));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((System.Guid)(Original_Publisher));
-            if ((Original_PubDate.HasValue == true)) {
+            if ((Original_PubDate.HasValue == true))
+            {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_PubDate.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price.HasValue == true)) {
+            if ((Original_Price.HasValue == true))
+            {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((decimal)(Original_Price.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_PageCount));
-            if ((Original_Isbn == null)) {
+            if ((Original_Isbn == null))
+            {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Isbn));
             }
-            if ((Original_Summary == null)) {
+            if ((Original_Summary == null))
+            {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Summary));
             }
-            if ((Original_Notes == null)) {
+            if ((Original_Notes == null))
+            {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_Notes));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.DeleteCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.DeleteCommand.Connection.Close();
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid ID, string Title, System.Guid Subject, System.Guid Publisher, global::System.Nullable<global::System.DateTime> PubDate, global::System.Nullable<decimal> Price, int PageCount, string Isbn, string Summary, string Notes) {
+        public virtual int Insert(System.Guid ID, string Title, System.Guid Subject, System.Guid Publisher, global::System.Nullable<global::System.DateTime> PubDate, global::System.Nullable<decimal> Price, int PageCount, string Isbn, string Summary, string Notes)
+        {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(ID));
-            if ((Title == null)) {
+            if ((Title == null))
+            {
                 throw new global::System.ArgumentNullException("Title");
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Title));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.Guid)(Subject));
             this.Adapter.InsertCommand.Parameters[3].Value = ((System.Guid)(Publisher));
-            if ((PubDate.HasValue == true)) {
+            if ((PubDate.HasValue == true))
+            {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(PubDate.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Price.HasValue == true)) {
+            if ((Price.HasValue == true))
+            {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(Price.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             this.Adapter.InsertCommand.Parameters[6].Value = ((int)(PageCount));
-            if ((Isbn == null)) {
+            if ((Isbn == null))
+            {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Isbn));
             }
-            if ((Summary == null)) {
+            if ((Summary == null))
+            {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[8].Value = ((string)(Summary));
             }
-            if ((Notes == null)) {
+            if ((Notes == null))
+            {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[9].Value = ((string)(Notes));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.InsertCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    System.Guid ID, 
-                    string Title, 
-                    System.Guid Subject, 
-                    System.Guid Publisher, 
-                    global::System.Nullable<global::System.DateTime> PubDate, 
-                    global::System.Nullable<decimal> Price, 
-                    int PageCount, 
-                    string Isbn, 
-                    string Summary, 
-                    string Notes, 
-                    System.Guid Original_ID, 
-                    string Original_Title, 
-                    System.Guid Original_Subject, 
-                    System.Guid Original_Publisher, 
-                    global::System.Nullable<global::System.DateTime> Original_PubDate, 
-                    global::System.Nullable<decimal> Original_Price, 
-                    int Original_PageCount, 
-                    string Original_Isbn, 
-                    string Original_Summary, 
-                    string Original_Notes) {
+                    System.Guid ID,
+                    string Title,
+                    System.Guid Subject,
+                    System.Guid Publisher,
+                    global::System.Nullable<global::System.DateTime> PubDate,
+                    global::System.Nullable<decimal> Price,
+                    int PageCount,
+                    string Isbn,
+                    string Summary,
+                    string Notes,
+                    System.Guid Original_ID,
+                    string Original_Title,
+                    System.Guid Original_Subject,
+                    System.Guid Original_Publisher,
+                    global::System.Nullable<global::System.DateTime> Original_PubDate,
+                    global::System.Nullable<decimal> Original_Price,
+                    int Original_PageCount,
+                    string Original_Isbn,
+                    string Original_Summary,
+                    string Original_Notes)
+        {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(ID));
-            if ((Title == null)) {
+            if ((Title == null))
+            {
                 throw new global::System.ArgumentNullException("Title");
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Title));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.Guid)(Subject));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((System.Guid)(Publisher));
-            if ((PubDate.HasValue == true)) {
+            if ((PubDate.HasValue == true))
+            {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(PubDate.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Price.HasValue == true)) {
+            if ((Price.HasValue == true))
+            {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(Price.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(PageCount));
-            if ((Isbn == null)) {
+            if ((Isbn == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Isbn));
             }
-            if ((Summary == null)) {
+            if ((Summary == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Summary));
             }
-            if ((Notes == null)) {
+            if ((Notes == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Notes));
             }
             this.Adapter.UpdateCommand.Parameters[10].Value = ((System.Guid)(Original_ID));
-            if ((Original_Title == null)) {
+            if ((Original_Title == null))
+            {
                 throw new global::System.ArgumentNullException("Original_Title");
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Title));
             }
             this.Adapter.UpdateCommand.Parameters[12].Value = ((System.Guid)(Original_Subject));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((System.Guid)(Original_Publisher));
-            if ((Original_PubDate.HasValue == true)) {
+            if ((Original_PubDate.HasValue == true))
+            {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_PubDate.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            if ((Original_Price.HasValue == true)) {
+            if ((Original_Price.HasValue == true))
+            {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(Original_Price.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_PageCount));
-            if ((Original_Isbn == null)) {
+            if ((Original_Isbn == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Isbn));
             }
-            if ((Original_Summary == null)) {
+            if ((Original_Summary == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Summary));
             }
-            if ((Original_Notes == null)) {
+            if ((Original_Notes == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Notes));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.UpdateCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
         }
     }
-    
+
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
     ///</summary>
@@ -1726,107 +2050,135 @@ SELECT ID, Title, Subject, Publisher, PubDate, Price, PageCount, Isbn, Summary, 
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PublisherTableAdapter : global::System.ComponentModel.Component {
-        
+    public partial class PublisherTableAdapter : global::System.ComponentModel.Component
+    {
+
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
+
         private global::System.Data.SqlClient.SqlConnection _connection;
-        
+
         private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
+
         private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
+
         private bool _clearBeforeFill;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public PublisherTableAdapter() {
+        public PublisherTableAdapter()
+        {
             this.ClearBeforeFill = true;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter
+        {
+            get
+            {
+                if ((this._adapter == null))
+                {
                     this.InitAdapter();
                 }
                 return this._adapter;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
+        internal global::System.Data.SqlClient.SqlConnection Connection
+        {
+            get
+            {
+                if ((this._connection == null))
+                {
                     this.InitConnection();
                 }
                 return this._connection;
             }
-            set {
+            set
+            {
                 this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
+                if ((this.Adapter.InsertCommand != null))
+                {
                     this.Adapter.InsertCommand.Connection = value;
                 }
-                if ((this.Adapter.DeleteCommand != null)) {
+                if ((this.Adapter.DeleteCommand != null))
+                {
                     this.Adapter.DeleteCommand.Connection = value;
                 }
-                if ((this.Adapter.UpdateCommand != null)) {
+                if ((this.Adapter.UpdateCommand != null))
+                {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
+                    if ((this.CommandCollection[i] != null))
+                    {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
+        internal global::System.Data.SqlClient.SqlTransaction Transaction
+        {
+            get
+            {
                 return this._transaction;
             }
-            set {
+            set
+            {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.DeleteCommand != null)))
+                {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.InsertCommand != null)))
+                {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.UpdateCommand != null)))
+                {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection
+        {
+            get
+            {
+                if ((this._commandCollection == null))
+                {
                     this.InitCommandCollection();
                 }
                 return this._commandCollection;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool ClearBeforeFill {
-            get {
+        public bool ClearBeforeFill
+        {
+            get
+            {
                 return this._clearBeforeFill;
             }
-            set {
+            set
+            {
                 this._clearBeforeFill = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitAdapter() {
+        private void InitAdapter()
+        {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
@@ -1870,198 +2222,242 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_WebSite", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WebSite", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_WebSite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WebSite", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitConnection() {
+        private void InitConnection()
+        {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::LinqInAction.Chapter05.Properties.Settings.Default.LinqBooksConnectionString;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private void InitCommandCollection() {
+        private void InitCommandCollection()
+        {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Name, Logo, WebSite FROM dbo.Publisher";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(LinqBooksDataSet.PublisherDataTable dataTable) {
+        public virtual int Fill(LinqBooksDataSet.PublisherDataTable dataTable)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
+            if ((this.ClearBeforeFill == true))
+            {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual LinqBooksDataSet.PublisherDataTable GetData() {
+        public virtual LinqBooksDataSet.PublisherDataTable GetData()
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             LinqBooksDataSet.PublisherDataTable dataTable = new LinqBooksDataSet.PublisherDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(LinqBooksDataSet.PublisherDataTable dataTable) {
+        public virtual int Update(LinqBooksDataSet.PublisherDataTable dataTable)
+        {
             return this.Adapter.Update(dataTable);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(LinqBooksDataSet dataSet) {
+        public virtual int Update(LinqBooksDataSet dataSet)
+        {
             return this.Adapter.Update(dataSet, "Publisher");
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
+        public virtual int Update(global::System.Data.DataRow dataRow)
+        {
             return this.Adapter.Update(new global::System.Data.DataRow[] {
                         dataRow});
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+        public virtual int Update(global::System.Data.DataRow[] dataRows)
+        {
             return this.Adapter.Update(dataRows);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_ID, string Original_Name, string Original_WebSite) {
+        public virtual int Delete(System.Guid Original_ID, string Original_Name, string Original_WebSite)
+        {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_ID));
-            if ((Original_Name == null)) {
+            if ((Original_Name == null))
+            {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
             }
-            if ((Original_WebSite == null)) {
+            if ((Original_WebSite == null))
+            {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_WebSite));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.DeleteCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.DeleteCommand.Connection.Close();
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid ID, string Name, byte[] Logo, string WebSite) {
+        public virtual int Insert(System.Guid ID, string Name, byte[] Logo, string WebSite)
+        {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(ID));
-            if ((Name == null)) {
+            if ((Name == null))
+            {
                 throw new global::System.ArgumentNullException("Name");
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
             }
-            if ((Logo == null)) {
+            if ((Logo == null))
+            {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((byte[])(Logo));
             }
-            if ((WebSite == null)) {
+            if ((WebSite == null))
+            {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(WebSite));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.InsertCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid ID, string Name, byte[] Logo, string WebSite, System.Guid Original_ID, string Original_Name, string Original_WebSite) {
+        public virtual int Update(System.Guid ID, string Name, byte[] Logo, string WebSite, System.Guid Original_ID, string Original_Name, string Original_WebSite)
+        {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(ID));
-            if ((Name == null)) {
+            if ((Name == null))
+            {
                 throw new global::System.ArgumentNullException("Name");
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
-            if ((Logo == null)) {
+            if ((Logo == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((byte[])(Logo));
             }
-            if ((WebSite == null)) {
+            if ((WebSite == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(WebSite));
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((System.Guid)(Original_ID));
-            if ((Original_Name == null)) {
+            if ((Original_Name == null))
+            {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Name));
             }
-            if ((Original_WebSite == null)) {
+            if ((Original_WebSite == null))
+            {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            else {
+            else
+            {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_WebSite));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open)
+                        != global::System.Data.ConnectionState.Open))
+            {
                 this.Adapter.UpdateCommand.Connection.Open();
             }
-            try {
+            try
+            {
                 int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
                 return returnValue;
             }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+            finally
+            {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed))
+                {
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
         }
     }
-    
+
     /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
@@ -2071,245 +2467,298 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" +
         "esigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")]
-    public partial class TableAdapterManager : global::System.ComponentModel.Component {
-        
+    public partial class TableAdapterManager : global::System.ComponentModel.Component
+    {
+
         private UpdateOrderOption _updateOrder;
-        
+
         private BookTableAdapter _bookTableAdapter;
-        
+
         private PublisherTableAdapter _publisherTableAdapter;
-        
+
         private bool _backupDataSetBeforeUpdate;
-        
+
         private global::System.Data.IDbConnection _connection;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public UpdateOrderOption UpdateOrder {
-            get {
+        public UpdateOrderOption UpdateOrder
+        {
+            get
+            {
                 return this._updateOrder;
             }
-            set {
+            set
+            {
                 this._updateOrder = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
             "", "System.Drawing.Design.UITypeEditor")]
-        public BookTableAdapter BookTableAdapter {
-            get {
+        public BookTableAdapter BookTableAdapter
+        {
+            get
+            {
                 return this._bookTableAdapter;
             }
-            set {
-                if (((this._bookTableAdapter != null) 
-                            && (this.TableAdapterInstanceCount == 1))) {
+            set
+            {
+                if (((this._bookTableAdapter != null)
+                            && (this.TableAdapterInstanceCount == 1)))
+                {
                     this._bookTableAdapter = value;
                     return;
                 }
-                if (((value != null) 
-                            && (this.MatchTableAdapterConnection(value.Connection) == false))) {
+                if (((value != null)
+                            && (this.MatchTableAdapterConnection(value.Connection) == false)))
+                {
                     throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                             "tring.");
                 }
                 this._bookTableAdapter = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
             "", "System.Drawing.Design.UITypeEditor")]
-        public PublisherTableAdapter PublisherTableAdapter {
-            get {
+        public PublisherTableAdapter PublisherTableAdapter
+        {
+            get
+            {
                 return this._publisherTableAdapter;
             }
-            set {
-                if (((this._publisherTableAdapter != null) 
-                            && (this.TableAdapterInstanceCount == 1))) {
+            set
+            {
+                if (((this._publisherTableAdapter != null)
+                            && (this.TableAdapterInstanceCount == 1)))
+                {
                     this._publisherTableAdapter = value;
                     return;
                 }
-                if (((value != null) 
-                            && (this.MatchTableAdapterConnection(value.Connection) == false))) {
+                if (((value != null)
+                            && (this.MatchTableAdapterConnection(value.Connection) == false)))
+                {
                     throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                             "tring.");
                 }
                 this._publisherTableAdapter = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool BackupDataSetBeforeUpdate {
-            get {
+        public bool BackupDataSetBeforeUpdate
+        {
+            get
+            {
                 return this._backupDataSetBeforeUpdate;
             }
-            set {
+            set
+            {
                 this._backupDataSetBeforeUpdate = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
-        public global::System.Data.IDbConnection Connection {
-            get {
-                if ((this._connection != null)) {
+        public global::System.Data.IDbConnection Connection
+        {
+            get
+            {
+                if ((this._connection != null))
+                {
                     return this._connection;
                 }
-                if (((this._bookTableAdapter != null) 
-                            && (this._bookTableAdapter.Connection != null))) {
+                if (((this._bookTableAdapter != null)
+                            && (this._bookTableAdapter.Connection != null)))
+                {
                     return this._bookTableAdapter.Connection;
                 }
-                if (((this._publisherTableAdapter != null) 
-                            && (this._publisherTableAdapter.Connection != null))) {
+                if (((this._publisherTableAdapter != null)
+                            && (this._publisherTableAdapter.Connection != null)))
+                {
                     return this._publisherTableAdapter.Connection;
                 }
                 return null;
             }
-            set {
+            set
+            {
                 this._connection = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
-        public int TableAdapterInstanceCount {
-            get {
+        public int TableAdapterInstanceCount
+        {
+            get
+            {
                 int count = 0;
-                if ((this._bookTableAdapter != null)) {
+                if ((this._bookTableAdapter != null))
+                {
                     count = (count + 1);
                 }
-                if ((this._publisherTableAdapter != null)) {
+                if ((this._publisherTableAdapter != null))
+                {
                     count = (count + 1);
                 }
                 return count;
             }
         }
-        
+
         /// <summary>
         ///Update rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateUpdatedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows)
+        {
             int result = 0;
-            if ((this._publisherTableAdapter != null)) {
+            if ((this._publisherTableAdapter != null))
+            {
                 global::System.Data.DataRow[] updatedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
+                if (((updatedRows != null)
+                            && (0 < updatedRows.Length)))
+                {
                     result = (result + this._publisherTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._bookTableAdapter != null)) {
+            if ((this._bookTableAdapter != null))
+            {
                 global::System.Data.DataRow[] updatedRows = dataSet.Book.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
+                if (((updatedRows != null)
+                            && (0 < updatedRows.Length)))
+                {
                     result = (result + this._bookTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
             return result;
         }
-        
+
         /// <summary>
         ///Insert rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateInsertedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows)
+        {
             int result = 0;
-            if ((this._publisherTableAdapter != null)) {
+            if ((this._publisherTableAdapter != null))
+            {
                 global::System.Data.DataRow[] addedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
+                if (((addedRows != null)
+                            && (0 < addedRows.Length)))
+                {
                     result = (result + this._publisherTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._bookTableAdapter != null)) {
+            if ((this._bookTableAdapter != null))
+            {
                 global::System.Data.DataRow[] addedRows = dataSet.Book.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
+                if (((addedRows != null)
+                            && (0 < addedRows.Length)))
+                {
                     result = (result + this._bookTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
             return result;
         }
-        
+
         /// <summary>
         ///Delete rows in bottom-up order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private int UpdateDeletedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(LinqBooksDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows)
+        {
             int result = 0;
-            if ((this._bookTableAdapter != null)) {
+            if ((this._bookTableAdapter != null))
+            {
                 global::System.Data.DataRow[] deletedRows = dataSet.Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
+                if (((deletedRows != null)
+                            && (0 < deletedRows.Length)))
+                {
                     result = (result + this._bookTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._publisherTableAdapter != null)) {
+            if ((this._publisherTableAdapter != null))
+            {
                 global::System.Data.DataRow[] deletedRows = dataSet.Publisher.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
+                if (((deletedRows != null)
+                            && (0 < deletedRows.Length)))
+                {
                     result = (result + this._publisherTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
             return result;
         }
-        
+
         /// <summary>
         ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
-            if (((updatedRows == null) 
-                        || (updatedRows.Length < 1))) {
+        private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows)
+        {
+            if (((updatedRows == null)
+                        || (updatedRows.Length < 1)))
+            {
                 return updatedRows;
             }
-            if (((allAddedRows == null) 
-                        || (allAddedRows.Count < 1))) {
+            if (((allAddedRows == null)
+                        || (allAddedRows.Count < 1)))
+            {
                 return updatedRows;
             }
             global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            for (int i = 0; (i < updatedRows.Length); i = (i + 1)) {
+            for (int i = 0; (i < updatedRows.Length); i = (i + 1))
+            {
                 global::System.Data.DataRow row = updatedRows[i];
-                if ((allAddedRows.Contains(row) == false)) {
+                if ((allAddedRows.Contains(row) == false))
+                {
                     realUpdatedRows.Add(row);
                 }
             }
             return realUpdatedRows.ToArray();
         }
-        
+
         /// <summary>
         ///Update all changes to the dataset.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public virtual int UpdateAll(LinqBooksDataSet dataSet) {
-            if ((dataSet == null)) {
+        public virtual int UpdateAll(LinqBooksDataSet dataSet)
+        {
+            if ((dataSet == null))
+            {
                 throw new global::System.ArgumentNullException("dataSet");
             }
-            if ((dataSet.HasChanges() == false)) {
+            if ((dataSet.HasChanges() == false))
+            {
                 return 0;
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
-            if ((workConnection == null)) {
+            if ((workConnection == null))
+            {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
                         "ger TableAdapter property to a valid TableAdapter instance.");
             }
             bool workConnOpened = false;
-            if (((workConnection.State & global::System.Data.ConnectionState.Closed) 
-                        == global::System.Data.ConnectionState.Closed)) {
+            if (((workConnection.State & global::System.Data.ConnectionState.Closed)
+                        == global::System.Data.ConnectionState.Closed))
+            {
                 workConnection.Open();
                 workConnOpened = true;
             }
             global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
-            if ((workTransaction == null)) {
+            if ((workTransaction == null))
+            {
                 throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
                         "ctions or the current state is not allowing the transaction to begin.");
             }
@@ -2319,27 +2768,33 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
             global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection> revertConnections = new global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection>();
             int result = 0;
             global::System.Data.DataSet backupDataSet = null;
-            if (this.BackupDataSetBeforeUpdate) {
+            if (this.BackupDataSetBeforeUpdate)
+            {
                 backupDataSet = new global::System.Data.DataSet();
                 backupDataSet.Merge(dataSet);
             }
-            try {
+            try
+            {
                 // ---- Prepare for update -----------
                 //
-                if ((this._bookTableAdapter != null)) {
+                if ((this._bookTableAdapter != null))
+                {
                     revertConnections.Add(this._bookTableAdapter, this._bookTableAdapter.Connection);
                     this._bookTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
                     this._bookTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._bookTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                    if (this._bookTableAdapter.Adapter.AcceptChangesDuringUpdate)
+                    {
                         this._bookTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._bookTableAdapter.Adapter);
                     }
                 }
-                if ((this._publisherTableAdapter != null)) {
+                if ((this._publisherTableAdapter != null))
+                {
                     revertConnections.Add(this._publisherTableAdapter, this._publisherTableAdapter.Connection);
                     this._publisherTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
                     this._publisherTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._publisherTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                    if (this._publisherTableAdapter.Adapter.AcceptChangesDuringUpdate)
+                    {
                         this._publisherTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._publisherTableAdapter.Adapter);
                     }
@@ -2347,11 +2802,13 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
                 // 
                 //---- Perform updates -----------
                 //
-                if ((this.UpdateOrder == UpdateOrderOption.UpdateInsertDelete)) {
+                if ((this.UpdateOrder == UpdateOrderOption.UpdateInsertDelete))
+                {
                     result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
                     result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
                 }
-                else {
+                else
+                {
                     result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
                     result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
                 }
@@ -2360,36 +2817,45 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
                 //---- Commit updates -----------
                 //
                 workTransaction.Commit();
-                if ((0 < allAddedRows.Count)) {
+                if ((0 < allAddedRows.Count))
+                {
                     global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
                     allAddedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                    for (int i = 0; (i < rows.Length); i = (i + 1))
+                    {
                         global::System.Data.DataRow row = rows[i];
                         row.AcceptChanges();
                     }
                 }
-                if ((0 < allChangedRows.Count)) {
+                if ((0 < allChangedRows.Count))
+                {
                     global::System.Data.DataRow[] rows = new System.Data.DataRow[allChangedRows.Count];
                     allChangedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                    for (int i = 0; (i < rows.Length); i = (i + 1))
+                    {
                         global::System.Data.DataRow row = rows[i];
                         row.AcceptChanges();
                     }
                 }
             }
-            catch (global::System.Exception ex) {
+            catch (global::System.Exception ex)
+            {
                 workTransaction.Rollback();
                 // ---- Restore the dataset -----------
-                if (this.BackupDataSetBeforeUpdate) {
+                if (this.BackupDataSetBeforeUpdate)
+                {
                     global::System.Diagnostics.Debug.Assert((backupDataSet != null));
                     dataSet.Clear();
                     dataSet.Merge(backupDataSet);
                 }
-                else {
-                    if ((0 < allAddedRows.Count)) {
+                else
+                {
+                    if ((0 < allAddedRows.Count))
+                    {
                         global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
                         allAddedRows.CopyTo(rows);
-                        for (int i = 0; (i < rows.Length); i = (i + 1)) {
+                        for (int i = 0; (i < rows.Length); i = (i + 1))
+                        {
                             global::System.Data.DataRow row = rows[i];
                             row.AcceptChanges();
                             row.SetAdded();
@@ -2398,22 +2864,28 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
                 }
                 throw ex;
             }
-            finally {
-                if (workConnOpened) {
+            finally
+            {
+                if (workConnOpened)
+                {
                     workConnection.Close();
                 }
-                if ((this._bookTableAdapter != null)) {
+                if ((this._bookTableAdapter != null))
+                {
                     this._bookTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bookTableAdapter]));
                     this._bookTableAdapter.Transaction = null;
                 }
-                if ((this._publisherTableAdapter != null)) {
+                if ((this._publisherTableAdapter != null))
+                {
                     this._publisherTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._publisherTableAdapter]));
                     this._publisherTableAdapter.Transaction = null;
                 }
-                if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
+                if ((0 < adaptersWithAcceptChangesDuringUpdate.Count))
+                {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
                     adaptersWithAcceptChangesDuringUpdate.CopyTo(adapters);
-                    for (int i = 0; (i < adapters.Length); i = (i + 1)) {
+                    for (int i = 0; (i < adapters.Length); i = (i + 1))
+                    {
                         global::System.Data.Common.DataAdapter adapter = adapters[i];
                         adapter.AcceptChangesDuringUpdate = true;
                     }
@@ -2421,104 +2893,125 @@ SELECT ID, Name, Logo, WebSite FROM Publisher WHERE (ID = @ID)";
             }
             return result;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
+        protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst)
+        {
             global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
-            if ((this._connection != null)) {
+        protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection)
+        {
+            if ((this._connection != null))
+            {
                 return true;
             }
-            if (((this.Connection == null) 
-                        || (inputConnection == null))) {
+            if (((this.Connection == null)
+                        || (inputConnection == null)))
+            {
                 return true;
             }
-            if (string.Equals(this.Connection.ConnectionString, inputConnection.ConnectionString, global::System.StringComparison.Ordinal)) {
+            if (string.Equals(this.Connection.ConnectionString, inputConnection.ConnectionString, global::System.StringComparison.Ordinal))
+            {
                 return true;
             }
             return false;
         }
-        
+
         /// <summary>
         ///Update Order Option
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public enum UpdateOrderOption {
-            
+        public enum UpdateOrderOption
+        {
+
             InsertUpdateDelete = 0,
-            
+
             UpdateInsertDelete = 1,
         }
-        
+
         /// <summary>
         ///Used to sort self-referenced table's rows
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
-            
+        private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow>
+        {
+
             private global::System.Data.DataRelation _relation;
-            
+
             private int _childFirst;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
+            internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst)
+            {
                 this._relation = relation;
-                if (childFirst) {
+                if (childFirst)
+                {
                     this._childFirst = -1;
                 }
-                else {
+                else
+                {
                     this._childFirst = 1;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            private bool IsChildAndParent(global::System.Data.DataRow child, global::System.Data.DataRow parent) {
+            private bool IsChildAndParent(global::System.Data.DataRow child, global::System.Data.DataRow parent)
+            {
                 global::System.Diagnostics.Debug.Assert((child != null));
                 global::System.Diagnostics.Debug.Assert((parent != null));
                 global::System.Data.DataRow newParent = child.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 for (
-                ; ((newParent != null) 
-                            && ((object.ReferenceEquals(newParent, child) == false) 
-                            && (object.ReferenceEquals(newParent, parent) == false))); 
-                ) {
+                ; ((newParent != null)
+                            && ((object.ReferenceEquals(newParent, child) == false)
+                            && (object.ReferenceEquals(newParent, parent) == false)));
+                )
+                {
                     newParent = newParent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
                 }
-                if ((newParent == null)) {
-                    for (newParent = child.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original); ((newParent != null) 
-                                && ((object.ReferenceEquals(newParent, child) == false) 
-                                && (object.ReferenceEquals(newParent, parent) == false))); 
-                    ) {
+                if ((newParent == null))
+                {
+                    for (newParent = child.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original); ((newParent != null)
+                                && ((object.ReferenceEquals(newParent, child) == false)
+                                && (object.ReferenceEquals(newParent, parent) == false)));
+                    )
+                    {
                         newParent = newParent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
                     }
                 }
-                if (object.ReferenceEquals(newParent, parent)) {
+                if (object.ReferenceEquals(newParent, parent))
+                {
                     return true;
                 }
                 return false;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
-                if (object.ReferenceEquals(row1, row2)) {
+            public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2)
+            {
+                if (object.ReferenceEquals(row1, row2))
+                {
                     return 0;
                 }
-                if ((row1 == null)) {
+                if ((row1 == null))
+                {
                     return -1;
                 }
-                if ((row2 == null)) {
+                if ((row2 == null))
+                {
                     return 1;
                 }
 
                 // Is row1 the child or grandchild of row2
-                if (this.IsChildAndParent(row1, row2)) {
+                if (this.IsChildAndParent(row1, row2))
+                {
                     return this._childFirst;
                 }
 
                 // Is row2 the child or grandchild of row1
-                if (this.IsChildAndParent(row2, row1)) {
+                if (this.IsChildAndParent(row2, row1))
+                {
                     return (-1 * this._childFirst);
                 }
                 return 0;

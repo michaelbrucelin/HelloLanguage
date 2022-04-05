@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <folder name="C:\">
-	<folder name="Development">
-		<folder name=".NET">
-			<folder name="C#"/>
-			<folder name="WCF"/>
-			<folder name="WPF"/>
-		</folder>
-		<folder name="Ruby">
-			<folder name="Rails"/>	
-		</folder>
-	</folder>
-	<folder name="Downloads"/>
-	<folder name="Installs"/>
+    <folder name="Development">
+        <folder name=".NET">
+            <folder name="C#"/>
+            <folder name="WCF"/>
+            <folder name="WPF"/>
+        </folder>
+        <folder name="Ruby">
+            <folder name="Rails"/>
+        </folder>
+    </folder>
+    <folder name="Downloads"/>
+    <folder name="Installs"/>
 </folder>

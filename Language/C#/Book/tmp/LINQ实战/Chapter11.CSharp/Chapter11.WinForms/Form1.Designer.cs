@@ -1,4 +1,4 @@
-﻿namespace Chapter11.WinForms {
+namespace Chapter11.WinForms {
 	partial class ImportForm {
 		/// <summary>
 		/// Required designer variable.

@@ -1,4 +1,4 @@
-﻿' Original author: Troy Magennis
+' Original author: Troy Magennis
 ' http://aspiring-technology.com/blogs/troym/archive/2006/10/06/24.aspx
 ' Ported to VB
 

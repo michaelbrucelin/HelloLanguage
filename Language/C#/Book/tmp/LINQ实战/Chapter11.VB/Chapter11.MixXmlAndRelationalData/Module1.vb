@@ -1,4 +1,4 @@
-﻿Imports System.Xml.Linq
+Imports System.Xml.Linq
 Imports System.Data.Linq
 Imports LinqInAction.LinqToSql
 Imports AmazonCommon

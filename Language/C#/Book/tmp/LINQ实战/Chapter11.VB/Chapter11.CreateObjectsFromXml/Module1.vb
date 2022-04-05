@@ -1,4 +1,4 @@
-﻿Option Infer On
+Option Infer On
 
 Imports System.Xml.Linq
 Imports LinqInAction.LinqBooks.Common

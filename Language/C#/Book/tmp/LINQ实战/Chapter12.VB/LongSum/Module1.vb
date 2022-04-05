@@ -1,4 +1,4 @@
-﻿Module Module1
+Module Module1
 
     Sub Main()
     ' Standard Sum operator (throws an OverflowException)

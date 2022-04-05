@@ -1,4 +1,4 @@
-﻿Imports System.Linq.Expressions
+Imports System.Linq.Expressions
 Imports System.Reflection
 
 Class AmazonBookExpressionVisitor

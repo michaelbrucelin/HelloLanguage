@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <rss>
-	<channel>
-		<title>LINQ</title>
-		<description>This is the LINQ channel!</description>
-		<item>
-			<title>Learning LINQ</title>
-			<description>Learning LINQ is best done by reading the fantastic LINQ in Action book that’s currently in your hands.  It’s simply amazing, and has such wonderful code samples, don’t you agree?</description>
-		</item>
-		<item>
-			<title>XML Query Axis methods make XML LINQable</title>
-			<description>Without the XML Query Axis methods LINQ to XML would simply one of the many XML API’s available in .Net land.  With query axis methods, we get an extremely powerful XML API, as well as a killer query story that puts XPath, XSLT, and friends to shame.</description>
-		</item>
-	</channel>
+    <channel>
+        <title>LINQ</title>
+        <description>This is the LINQ channel!</description>
+        <item>
+            <title>Learning LINQ</title>
+            <description>Learning LINQ is best done by reading the fantastic LINQ in Action book that’s currently in your hands.  It’s simply amazing, and has such wonderful code samples, don’t you agree?</description>
+        </item>
+        <item>
+            <title>XML Query Axis methods make XML LINQable</title>
+            <description>Without the XML Query Axis methods LINQ to XML would simply one of the many XML API’s available in .Net land.  With query axis methods, we get an extremely powerful XML API, as well as a killer query story that puts XPath, XSLT, and friends to shame.</description>
+        </item>
+    </channel>
 </rss>

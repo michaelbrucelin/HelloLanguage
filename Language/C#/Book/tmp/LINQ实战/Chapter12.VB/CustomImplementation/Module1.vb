@@ -1,4 +1,4 @@
-﻿' Import System.Linq instead of LinqInAction.Chapter12.CustomImplementation.QueryOperators if you want to use the default implementation
+' Import System.Linq instead of LinqInAction.Chapter12.CustomImplementation.QueryOperators if you want to use the default implementation
 ' Note that System.Linq has been removed from the namespaces imported in the project properties
 
 'Imports System.Linq
