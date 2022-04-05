@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" MasterPageFile="~/Main.Master" CodeBehind="XMLImportExport.aspx.vb" Inherits="LinqBooks.Web.XMLImportExport" Title="XML Import/Export" %>
+<%@ Page Language="vb" AutoEventWireup="false" MasterPageFile="~/Main.Master" CodeBehind="XMLImportExport.aspx.vb" Inherits="LinqBooks.Web.XMLImportExport" Title="XML Import/Export" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
   <h1>XML Import/Export</h1>

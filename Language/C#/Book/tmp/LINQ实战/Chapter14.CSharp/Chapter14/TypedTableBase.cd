@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="System.Data.TypedTableBase&lt;T&gt;" Collapsed="true">
     <Position X="2.25" Y="2" Width="1.75" />

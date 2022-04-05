@@ -1,4 +1,4 @@
-﻿<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="AuthorList.ascx.vb" Inherits="LinqBooks.Web.AuthorList" %>
+<%@ Control Language="vb" AutoEventWireup="false" CodeBehind="AuthorList.ascx.vb" Inherits="LinqBooks.Web.AuthorList" %>
 
 <asp:GridView ID="GridViewAuthors" runat="server" AutoGenerateColumns="False" 
   BorderStyle="None" ShowHeader="False" Width="100%" DataKeyNames="ID" 

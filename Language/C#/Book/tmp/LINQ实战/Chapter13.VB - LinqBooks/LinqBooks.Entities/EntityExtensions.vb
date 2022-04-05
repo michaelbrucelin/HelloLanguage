@@ -1,4 +1,4 @@
-﻿Partial Public Class Author
+Partial Public Class Author
 
   Public ReadOnly Property FullName() As String
     Get

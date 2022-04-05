@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.Entities
+Imports LinqBooks.Entities
 
 Partial Public Class AuthorList
   Inherits System.Web.UI.UserControl

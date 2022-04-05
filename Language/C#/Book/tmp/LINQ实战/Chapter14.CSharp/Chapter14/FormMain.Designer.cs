@@ -1,4 +1,4 @@
-﻿namespace LinqInAction.Chapter14
+namespace LinqInAction.Chapter14
 {
   partial class FormMain
   {

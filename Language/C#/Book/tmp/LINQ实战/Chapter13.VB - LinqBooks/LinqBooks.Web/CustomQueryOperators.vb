@@ -1,4 +1,4 @@
-﻿Imports System.Runtime.CompilerServices
+Imports System.Runtime.CompilerServices
 Imports LinqBooks.Entities
 
 Public Module CustomQueryOperators

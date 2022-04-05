@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.Entities
+Imports LinqBooks.Entities
 Imports System.Transactions
 
 Partial Public Class AuthorPage

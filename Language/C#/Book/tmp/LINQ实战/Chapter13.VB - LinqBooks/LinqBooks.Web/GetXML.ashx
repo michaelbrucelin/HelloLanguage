@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="VB" CodeBehind="GetXML.ashx.vb" Class="LinqBooks.Web.GetXML" %>
+<%@ WebHandler Language="VB" CodeBehind="GetXML.ashx.vb" Class="LinqBooks.Web.GetXML" %>

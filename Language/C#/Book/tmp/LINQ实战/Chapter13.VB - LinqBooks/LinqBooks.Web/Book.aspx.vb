@@ -1,4 +1,4 @@
-﻿Imports System.Transactions
+Imports System.Transactions
 Imports LinqBooks.Entities
 
 Partial Public Class BookPage

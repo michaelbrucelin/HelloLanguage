@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" MasterPageFile="~/Main.Master" CodeBehind="AddBooks.aspx.vb" Inherits="LinqBooks.Web.AddBooks" Title="Add books" %>
+<%@ Page Language="vb" AutoEventWireup="false" MasterPageFile="~/Main.Master" CodeBehind="AddBooks.aspx.vb" Inherits="LinqBooks.Web.AddBooks" Title="Add books" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
   <h1>Add books</h1>

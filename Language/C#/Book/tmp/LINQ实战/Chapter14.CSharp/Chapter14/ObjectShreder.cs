@@ -1,4 +1,4 @@
-﻿// This code has been provided by Andrew Conrad from Microsoft
+// This code has been provided by Andrew Conrad from Microsoft
 // See http://blogs.msdn.com/aconrad/archive/2007/09/07/science-project.aspx
 
 using System;

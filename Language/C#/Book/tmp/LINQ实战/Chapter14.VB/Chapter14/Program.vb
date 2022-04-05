@@ -1,4 +1,4 @@
-﻿Module Program
+Module Program
 
   Sub Main()
     AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.GetFullPath("..\..\..\..\Data\"))

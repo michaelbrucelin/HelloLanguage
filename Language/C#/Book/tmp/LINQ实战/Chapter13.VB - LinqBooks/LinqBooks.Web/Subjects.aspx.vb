@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.DataAccess
+Imports LinqBooks.DataAccess
 Imports LinqBooks.Entities
 
 Partial Public Class Subjects

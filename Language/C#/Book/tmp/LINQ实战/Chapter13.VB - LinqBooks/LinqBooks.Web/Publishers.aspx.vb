@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.Entities
+Imports LinqBooks.Entities
 
 Partial Public Class Publishers
   Inherits System.Web.UI.Page

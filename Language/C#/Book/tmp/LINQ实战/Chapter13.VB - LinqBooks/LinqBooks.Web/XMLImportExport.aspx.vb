@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.Entities
+Imports LinqBooks.Entities
 
 Partial Public Class XMLImportExport
   Inherits System.Web.UI.Page
