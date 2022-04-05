@@ -1,4 +1,4 @@
-﻿Imports System.Data.Linq
+Imports System.Data.Linq
 Imports LinqBooks.Entities
 
 Public Class SubjectDataAccessObject

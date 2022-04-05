@@ -1,4 +1,4 @@
-﻿Imports LinqBooks.Entities
+Imports LinqBooks.Entities
 
 Public Class BookDataAccessObject
   Inherits DataAccessObject
