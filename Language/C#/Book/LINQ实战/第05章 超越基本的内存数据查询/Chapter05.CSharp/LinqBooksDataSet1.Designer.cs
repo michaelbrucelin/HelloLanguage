@@ -24,7 +24,6 @@ namespace LinqInAction.Chapter05
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class LinqBooksDataSet : global::System.Data.DataSet
     {
-
         private BookDataTable tableBook;
 
         private PublisherDataTable tablePublisher;
