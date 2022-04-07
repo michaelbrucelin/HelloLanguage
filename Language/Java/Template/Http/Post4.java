@@ -35,16 +35,17 @@ public class Post4 {
 
             // Get Response, 通过检查返回数据开头的“幻数”来识别是否是gzip压缩的
             InputStream is = DecompressStream(connection.getInputStream());
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5-
-            String line;
-            while ((line = rd.readLine()) != null) {
-                response.append(line);
-                response.append('\n');
-            }
-            rd.close();
+            try (BufferedReader rd = new BufferedReader(new InputStreamReader(is))) {
+                StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5-
+                String line;
+                while ((line = rd.readLine()) != null) {
+                    response.append(line);
+                    response.append('\n');
+                }
+                // rd.close();
 
-            return response.toString();
+                return response.toString();
+            }
         } catch (Exception e) {
             e.printStackTrace();
 
