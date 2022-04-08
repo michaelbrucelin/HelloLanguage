@@ -8,6 +8,8 @@ Language/C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9Workf
 Language/C#/Project/TempProject/**/*.html linguist-vendored
 Language/C#/Project/TempProject/**/*.scss linguist-vendored
 
+# 查找应该忽略的C#文件
+# find . -name *.cs | sed 's/.*\///' | sed 's/[a-zA-Z0-9_]*//' | sort | uniq -c
 Language/C#/**/*.AssemblyAttributes.cs linguist-vendored
 Language/C#/**/*.AssemblyInfo.cs linguist-vendored
 Language/C#/**/*.cshtml.cs linguist-vendored
@@ -19,6 +21,7 @@ Language/C#/**/*.ashx.cs linguist-vendored
 Language/C#/**/*.asmx.cs linguist-vendored
 Language/C#/**/*.aspx.cs linguist-vendored
 Language/C#/**/*.GlobalUsings.g.cs linguist-vendored
+Language/C#/**/*.Master.cs linguist-vendored
 
 Language/Python/PlayGround/demo/**/*.html linguist-vendored
 Language/Python/Project/**/*.html linguist-vendored
