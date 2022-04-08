@@ -4,6 +4,7 @@ import java.util.zip.GZIPInputStream;
 
 // 与Post2.java一样，只是支持了gzip请求并自动处理
 // 增加了自动识别返回的数据是否是gzip压缩的，通过检查返回数据开头的“幻数”来识别
+// 推荐使用http header来识别返回的数据是否是gzip压缩的，而不是通过“幻数”来识别
 public class Post4 {
     public static void main(String[] args) throws Exception {
         String targetURL = "http://mlintest.test.test:8080/external/server/GetCurrentCall";
@@ -57,7 +58,7 @@ public class Post4 {
         }
     }
 
-    // 通过检查返回数据开头的“幻数”来识别是否是gzip压缩的
+    // 通过检查返回数据开头的“幻数”来识别是否是gzip压缩的，这个方法验证过，可用
     public static InputStream DecompressStream(InputStream input) throws Exception {
         PushbackInputStream pb = new PushbackInputStream(input, 2); // we need a pushbackstream to look ahead
         byte[] signature = new byte[2];
@@ -67,5 +68,28 @@ public class Post4 {
             return new GZIPInputStream(pb);
         else
             return pb;
+    }
+
+    // 通过检查返回数据开头的“幻数”来识别是否是gzip压缩的，这个方法没有验证过，使用前需要验证，这里只是记录一下
+    /*
+     * Determines if a byte array is compressed. The java.util.zip GZip
+     * implementation does not expose the GZip header so it is difficult to
+     * determine if a string is compressed.
+     * 
+     * @param bytes an array of bytes
+     * 
+     * @return true if the array is compressed or false otherwise
+     * 
+     * @throws java.io.IOException if the byte array couldn't be read
+     */
+    public static boolean isGzipStream(byte[] bytes) {
+        if ((bytes == null) || (bytes.length < 2)) {
+            return false;
+        } else {
+            int head = ((int) bytes[0] & 0xff) | ((bytes[1] << 8) & 0xff00);
+            return (GZIPInputStream.GZIP_MAGIC == head);
+            // return ((bytes[0] == (byte) (GZIPInputStream.GZIP_MAGIC))
+            // && (bytes[1] == (byte) (GZIPInputStream.GZIP_MAGIC >> 8)));
+        }
     }
 }
