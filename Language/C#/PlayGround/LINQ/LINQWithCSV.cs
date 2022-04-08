@@ -9,7 +9,7 @@ namespace TestCSharp
     {
         static void Main(string[] args)
         {
-            using (StreamReader reader = new StreamReader(@".\books.csv"))
+            using (StreamReader reader = new StreamReader(@"..\SampleData\books.csv"))
             {
                 var books = from line in reader.Lines()
                             where !line.StartsWith("#")
