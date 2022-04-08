@@ -9,7 +9,7 @@ Language/C#/Project/TempProject/**/*.html linguist-vendored
 Language/C#/Project/TempProject/**/*.scss linguist-vendored
 
 # 查找应该忽略的C#文件
-# find . -name *.cs | sed 's/.*\///' | sed 's/[a-zA-Z0-9_]*//' | sort | uniq -c
+# find . -name *.cs | sed 's/.*\///' | sed 's/[a-zA-Z0-9_-]*//' | sort | uniq -c
 Language/C#/**/*.AssemblyAttributes.cs linguist-vendored
 Language/C#/**/*.AssemblyInfo.cs linguist-vendored
 Language/C#/**/*.cshtml.cs linguist-vendored
