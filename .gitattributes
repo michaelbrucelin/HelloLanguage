@@ -8,6 +8,18 @@ Language/C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9Workf
 Language/C#/Project/TempProject/**/*.html linguist-vendored
 Language/C#/Project/TempProject/**/*.scss linguist-vendored
 
+Language/C#/**/*.AssemblyAttributes.cs linguist-vendored
+Language/C#/**/*.AssemblyInfo.cs linguist-vendored
+Language/C#/**/*.cshtml.cs linguist-vendored
+Language/C#/**/*.designer.cs linguist-vendored
+Language/C#/**/*.Designer.cs linguist-vendored
+Language/C#/**/*.asax.cs linguist-vendored
+Language/C#/**/*.ascx.cs linguist-vendored
+Language/C#/**/*.ashx.cs linguist-vendored
+Language/C#/**/*.asmx.cs linguist-vendored
+Language/C#/**/*.aspx.cs linguist-vendored
+Language/C#/**/*.GlobalUsings.g.cs linguist-vendored
+
 Language/Python/PlayGround/demo/**/*.html linguist-vendored
 Language/Python/Project/**/*.html linguist-vendored
 
