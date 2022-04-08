@@ -11,11 +11,15 @@ namespace TestCSharp
         {
             var query = SampleData.Publishers
                             .OrderBy(i => i.Name)
-                            .GroupJoin(SampleData.Books, o => o, i => i.Publisher, (o, i) => new
+                            .Select(i => new
                             {
-                                Publisher = o.Name,
-                                Books = i.Select(j => j.Title),
-                                Count = i.Count()
+                                Publisher = i.Name,
+                                Books = SampleData.Books
+                                            .Where(j => j.Publisher.Name == i.Name)
+                                            .Select(j => j.Title),
+                                Count = SampleData.Books
+                                            .Where(j => j.Publisher.Name == i.Name)
+                                            .Count()
                             });
 
             ObjectDumper.Write(query, 1);
@@ -24,7 +28,8 @@ namespace TestCSharp
 }
 
 /*
-组连接
+嵌套查询
+实现类似分组（group）的效果
 
 Publisher=FunBooks          Books=...    Count=2
     Books: Funny Stories

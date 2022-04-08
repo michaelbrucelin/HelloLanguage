@@ -10,14 +10,18 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             var query = from publisher in SampleData.Publishers
-                        join book in SampleData.Books
-                            on publisher equals book.Publisher into publisherBooks
                         orderby publisher.Name
                         select new
                         {
                             Publisher = publisher.Name,
-                            Books = from book_in in publisherBooks select book_in.Title,
-                            Count = publisherBooks.Count()
+                            Books = from book in SampleData.Books
+                                    where book.Publisher.Name == publisher.Name
+                                    // select book
+                                    select book.Title,
+                            Count = (from book in SampleData.Books
+                                     where book.Publisher.Name == publisher.Name
+                                     select book)
+                                    .Count()
                         };
 
             ObjectDumper.Write(query, 1);
@@ -26,10 +30,8 @@ namespace TestCSharp
 }
 
 /*
-组连接
-与内连接的唯一区别在于额外使用了into子句
-使用了into之后的join就是组连接，与group by类似，按左表的元素进行分组，然后把右表的元素放到分组的元素的集合中
-相当于group RightTableElement by LeftTableElement
+嵌套查询
+实现类似分组（group）的效果
 
 Publisher=FunBooks          Books=...    Count=2
     Books: Funny Stories
