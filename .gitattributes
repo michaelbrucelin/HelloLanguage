@@ -23,6 +23,19 @@ Language/C#/**/*.aspx.cs linguist-vendored
 Language/C#/**/*.GlobalUsings.g.cs linguist-vendored
 Language/C#/**/*.Master.cs linguist-vendored
 
+Language/C#/**/*.AssemblyAttributes.vb linguist-vendored
+Language/C#/**/*.AssemblyInfo.vb linguist-vendored
+Language/C#/**/*.cshtml.vb linguist-vendored
+Language/C#/**/*.designer.vb linguist-vendored
+Language/C#/**/*.Designer.vb linguist-vendored
+Language/C#/**/*.asax.vb linguist-vendored
+Language/C#/**/*.ascx.vb linguist-vendored
+Language/C#/**/*.ashx.vb linguist-vendored
+Language/C#/**/*.asmx.vb linguist-vendored
+Language/C#/**/*.aspx.vb linguist-vendored
+Language/C#/**/*.GlobalUsings.g.vb linguist-vendored
+Language/C#/**/*.Master.vb linguist-vendored
+
 Language/Python/PlayGround/demo/**/*.html linguist-vendored
 Language/Python/Project/**/*.html linguist-vendored
 
