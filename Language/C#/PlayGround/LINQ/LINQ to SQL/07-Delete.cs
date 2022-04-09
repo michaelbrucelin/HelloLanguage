@@ -41,6 +41,7 @@ namespace TempTestCSharp
 /*
 删除一个通过程序新增的记录。
 看翻译后的DELETE SQL语句，如果数据库的表没有主键，即存在完全相同的两条记录，是不是会导致将两条记录都删除，这里没做验证？
+进行关系映射的时候已经强制必须含有主键了。
 
 INSERT INTO [Book]([ID], [Isbn], [Notes], [PageCount], [Price], [PubDate], [Summary], [Title], [Subject], [Publisher])
 VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)
