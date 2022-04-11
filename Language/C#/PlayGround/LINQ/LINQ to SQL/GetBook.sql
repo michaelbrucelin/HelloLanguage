@@ -4,7 +4,6 @@ GO
 /****** Object:  StoredProcedure [dbo].[GetBook]    Script Date: 2022/4/9 17:40:37 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
 

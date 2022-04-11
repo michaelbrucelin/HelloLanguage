@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TempTestCSharp
+namespace TestCSharp
 {
     [Table]
     public class Subject
@@ -18,8 +18,10 @@ namespace TempTestCSharp
 
         [Column(IsPrimaryKey = true, Name = "ID")]
         public Guid SubjectId { get; set; }
+
         [Column]
         public String Description { get; set; }
+
         [Column]
         public String Name { get; set; }
 

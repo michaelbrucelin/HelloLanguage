@@ -120,7 +120,6 @@ namespace LinqInAction.Chapter06to08.Common.SampleClasses.Ch8
     [Table(Name = "dbo.Author")]
     public partial class Author : INotifyPropertyChanging, INotifyPropertyChanged
     {
-
         private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 
         private System.Guid _ID;

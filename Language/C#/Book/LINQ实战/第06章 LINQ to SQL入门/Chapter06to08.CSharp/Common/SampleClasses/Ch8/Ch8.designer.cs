@@ -20,11 +20,9 @@ namespace LinqInAction.LinqBooks.Common.CSharp.SampleClasses.Ch8
     using System.Linq.Expressions;
     using System.Reflection;
 
-
     [System.Data.Linq.Mapping.DatabaseAttribute(Name = "C:\\PROJECTS\\LINQ\\LINQINACTION\\ORCAS\\LINQBOOKS.COMMON\\CLASSLIBRARY1\\LIA.MDF")]
     public partial class Ch8DataContext : System.Data.Linq.DataContext
     {
-
         private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 
         #region Extensibility Method Definitions
