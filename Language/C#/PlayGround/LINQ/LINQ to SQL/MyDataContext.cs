@@ -70,5 +70,12 @@ namespace TestCSharp
         {
             return (int?)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), publisherId).ReturnValue);
         }
+
+        // 表函数
+        [Function(Name = "dbo.fnGetPublishersBooks", IsComposable = true)]
+        public IQueryable<Book> fnGetPublishersBooks([Parameter(Name = "Publisher", DbType = "UniqueIdentifier")] Nullable<System.Guid> publisher)
+        {
+            return this.CreateMethodCallQuery<Book>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), publisher);
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace TestCSharp
 /*
 执行标量值函数。
 需要先创建标量值函数与对象之间的关系（见MyDataContext.cs），才可以使用。
+查看下面翻译后的SQL语句，可以看出标量值函数一起被翻译到了SQL语句中，在服务器端一次性执行得到了全部结果。
 
 SELECT [t0].[Name], CONVERT(Int,[dbo].[fnBookCountForPublisher]([t0].[ID])) AS [BookCount]
 FROM [dbo].[Publisher] AS [t0]
