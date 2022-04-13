@@ -1,0 +1,1 @@
+// 试用一下LINQ to Entities + EF(ADO.NET Entity Framework)
