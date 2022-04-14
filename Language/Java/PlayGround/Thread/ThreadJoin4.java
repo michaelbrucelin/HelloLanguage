@@ -1,3 +1,5 @@
+package Thread;
+
 import java.util.concurrent.CompletableFuture;
 
 public class ThreadJoin4 {

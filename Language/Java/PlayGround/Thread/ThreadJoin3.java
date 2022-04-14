@@ -1,3 +1,5 @@
+package Thread;
+
 public class ThreadJoin3 {
     public static void main(String[] args) throws Exception {
         Thread t1 = new Thread(() -> {
