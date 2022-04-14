@@ -1,0 +1,24 @@
+<?xml-stylesheet href="http://iqueryable.com/friendly-rss.xsl" type="text/xsl" media="screen"?>
+<rss version="2.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/">
+    <channel>
+        <title>Steve Eichert</title>
+        <link>http://iqueryable.com/</link>
+        <generator>ActiveType CMS v0.1</generator>
+        <dc:language>en-US</dc:language>
+        <description />
+        <item>
+            <dc:creator>Steve Eichert</dc:creator>
+            <title>Parsing WordML using LINQ to XML</title>
+            <link>http://iqueryable.com/LINQ/ParsingWordMLusingLINQ to XML</link>
+            <pubDate>Wed, 02 Aug 2006 15:52:44 GMT</pubDate>
+            <guid>http://iqueryable.com/LINQ/ParsingWordMLusingLINQ to XML</guid>
+            <comments>http://iqueryable.com/LINQ/ParsingWordMLusingLINQ to XML#comments</comments>
+            <wfw:commentRss>http://iqueryable.com/LINQ/ParsingWordMLusingLINQ to XML/commentRss.aspx</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+            <description>Foo…</description>
+        </item>
+    </channel>
+</rss>
