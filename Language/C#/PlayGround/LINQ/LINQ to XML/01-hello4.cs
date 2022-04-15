@@ -38,6 +38,8 @@ namespace TestCSharp
 }
 
 /*
+在LINQ to XML中操作带有命名空间的XML文档
+在操作元素以及属性时总是给出其完整的名称。
 
 conment: 1
 title: Steve Eichert
