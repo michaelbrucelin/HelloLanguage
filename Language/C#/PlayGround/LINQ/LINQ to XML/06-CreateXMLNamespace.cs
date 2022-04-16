@@ -12,18 +12,18 @@ namespace TestCSharp
     {
         static void Main(string[] args)
         {
-            // 通过完全展开的XName创建XElement
+            // 1. 通过完全展开的XName创建XElement
             XElement book1 = new XElement("{http://linqinaction.net}book");
             Console.WriteLine("books1:");
             Console.WriteLine(book1);
 
-            // 通过XNamespace和局部名称创建XElement
+            // 2. 通过XNamespace和局部名称创建XElement
             XNamespace ns2 = "http://linqinaction.net";
             XElement book2 = new XElement(ns2 + "book");
             Console.WriteLine("books2:");
             Console.WriteLine(book2);
 
-            // 使用同一个XNamespace对象创建多个XElement
+            // 3. 使用同一个XNamespace对象创建多个XElement
             XNamespace ns3 = "http://linqinaction.net";
             XElement book3 = new XElement(ns3 + "book",
                 new XElement(ns3 + "title", "LINQ in Action"),
@@ -36,7 +36,7 @@ namespace TestCSharp
             Console.WriteLine("books3:");
             Console.WriteLine(book3);
 
-            // 将前缀与命名空间关联起来
+            // 4. 将前缀与命名空间关联起来
             XNamespace ns4 = "http://linqinaction.net";
             XElement book4 = new XElement(ns4 + "book",
                 new XAttribute(XNamespace.Xmlns + "l", ns4)
