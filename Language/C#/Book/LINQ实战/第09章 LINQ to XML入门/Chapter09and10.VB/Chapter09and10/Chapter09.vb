@@ -38,14 +38,14 @@ Imports System.Xml
 
   <Test()> Sub CreatingXmlWithLinqToXml()
     Console.WriteLine(New XElement("books", _
-     New XElement("book", _
-     New XElement("author", "Fabrice Marguerie"), _
-     New XElement("author", "Steve Eichert"), _
-     New XElement("author", "Jim Wooley"), _
-     New XElement("title", "LINQ in Action"), _
-     New XElement("publisher", "Manning") _
-     ) _
-     ) _
+      New XElement("book", _
+        New XElement("author", "Fabrice Marguerie"), _
+        New XElement("author", "Steve Eichert"), _
+        New XElement("author", "Jim Wooley"), _
+        New XElement("title", "LINQ in Action"), _
+        New XElement("publisher", "Manning") _
+      ) _
+    ) _
     )
   End Sub
 
@@ -124,15 +124,15 @@ Imports System.Xml
 
   <Test()> Sub Parse()
     Dim x As XElement = XElement.Parse("<books>" & _
-     "<book>" & _
-      "<author>Don Box</author>" & _
-      "<title>Essential .NET</title>" & _
-     "</book>" & _
-     "<book>" & _
-      "<author>Martin Fowler</author>" & _
-      "<title>Patterns of Enterprise Applicatoin Architecture</title>" & _
-     "</book>" & _
-     "</books>")
+      "<book>" & _
+        "<author>Don Box</author>" & _
+        "<title>Essential .NET</title>" & _
+      "</book>" & _
+      "<book>" & _
+        "<author>Martin Fowler</author>" & _
+        "<title>Patterns of Enterprise Applicatoin Architecture</title>" & _
+      "</book>" & _
+    "</books>")
 
     Console.WriteLine(x)
   End Sub
@@ -151,11 +151,11 @@ Imports System.Xml
 
   <Test()> Sub CreateWithFunctionalConstruction()
     Dim books As XElement = New XElement("books", _
-     New XElement("book", _
-     New XElement("author", "Don Box"), _
-     New XElement("title", "Essential .NET") _
-     ) _
-     )
+      New XElement("book", _
+        New XElement("author", "Don Box"), _
+        New XElement("title", "Essential .NET") _
+      ) _
+    )
 
     Console.WriteLine(books)
   End Sub
@@ -196,34 +196,34 @@ Imports System.Xml
 
   <Test()> Sub CreateWithChildNodes()
     Dim books As XElement = New XElement("books", _
-     New XElement("book", "LINQ in Action"), _
-     New XElement("book", "Ajax in Action") _
-     )
+      New XElement("book", "LINQ in Action"), _
+      New XElement("book", "Ajax in Action") _
+    )
 
     Console.WriteLine(books)
   End Sub
 
   <Test()> Sub CreateXmlTree()
     Dim books As XElement = New XElement("books", _
-     New XElement("book", _
-     New XElement("title", "LINQ in Action"), _
-     New XElement("authors", _
-     New XElement("author", "Fabrice Marguerie"), _
-     New XElement("author", "Steve Eichert"), _
-     New XElement("author", "Jim Wooley") _
-     ), _
-     New XElement("publicationDate", "June 2007") _
-     ), _
-     New XElement("book", _
-     New XElement("title", "Ajax in Action"), _
-     New XElement("authors", _
-     New XElement("author", "Dave Crane"), _
-     New XElement("author", "Eric Pascarello"), _
-     New XElement("author", "Darren James") _
-     ), _
-     New XElement("publicationDate", "October 2005") _
-     ) _
-     )
+      New XElement("book", _
+        New XElement("title", "LINQ in Action"), _
+        New XElement("authors", _
+          New XElement("author", "Fabrice Marguerie"), _
+          New XElement("author", "Steve Eichert"), _
+          New XElement("author", "Jim Wooley") _
+      ), _
+      New XElement("publicationDate", "June 2007") _
+      ), _
+      New XElement("book", _
+        New XElement("title", "Ajax in Action"), _
+        New XElement("authors", _
+          New XElement("author", "Dave Crane"), _
+          New XElement("author", "Eric Pascarello"), _
+          New XElement("author", "Darren James") _
+      ), _
+      New XElement("publicationDate", "October 2005") _
+      ) _
+    )
 
     Console.WriteLine(books)
   End Sub
@@ -246,9 +246,9 @@ Imports System.Xml
   <Test()> Sub UsingXNamespace()
     Dim ns As XNamespace = "http://linqinaction.net"
     Dim book As XElement = New XElement(ns + "book", _
-     New XElement(ns + "title", "LINQ in Action"), _
-     New XElement(ns + "author", "Fabrice Marguerie"), _
-     New XElement(ns + "publisher", "Manning") _
+      New XElement(ns + "title", "LINQ in Action"), _
+      New XElement(ns + "author", "Fabrice Marguerie"), _
+      New XElement(ns + "publisher", "Manning") _
     )
 
     Console.WriteLine(book)
@@ -257,7 +257,7 @@ Imports System.Xml
   <Test()> Sub NamespacePrefix()
     Dim ns As XNamespace = "http://linqinaction.net"
     Dim book As XElement = New XElement(ns + "book", _
-     New XAttribute(XNamespace.Xmlns + "l", ns) _
+      New XAttribute(XNamespace.Xmlns + "l", ns) _
     )
 
     Console.WriteLine(book)
@@ -265,8 +265,8 @@ Imports System.Xml
 
   <Test()> Sub CreateWithAttribute()
     Dim book As XElement = New XElement("book", _
-     New XAttribute("publicationDate", "October 2005"), _
-     New XElement("title", "Ajax in Action") _
+      New XAttribute("publicationDate", "October 2005"), _
+      New XElement("title", "Ajax in Action") _
     )
 
     Console.WriteLine(book)
@@ -276,12 +276,12 @@ Imports System.Xml
 
   <Test()> Sub CreateDocument()
     Dim doc As XDocument = New XDocument( _
-     New XDeclaration("1.0", "utf-8", "yes"), _
-     New XProcessingInstruction("XML-stylesheet", "friendly-rss.xsl"), _
-     New XElement("rss", _
-     New XElement("channel", "my channel") _
-     ) _
-     )
+      New XDeclaration("1.0", "utf-8", "yes"), _
+      New XProcessingInstruction("XML-stylesheet", "friendly-rss.xsl"), _
+      New XElement("rss", _
+        New XElement("channel", "my channel") _
+      ) _
+    )
 
     Console.WriteLine(doc)
 
@@ -289,25 +289,25 @@ Imports System.Xml
 
   <Test()> Sub DocumentWithXProcessingInstruction()
     Dim d As XDocument = New XDocument( _
-     New XProcessingInstruction("XML-stylesheet", "href='http://iqueryable.com/friendly-rss.xsl' type='text/xsl' media='screen'"), _
-     New XElement("rss", New XAttribute("version", "2.0"), _
-     New XElement("channel", _
-     New XElement("item", "my item") _
-     ) _
-     ) _
-     )
+      New XProcessingInstruction("XML-stylesheet", "href='http://iqueryable.com/friendly-rss.xsl' type='text/xsl' media='screen'"), _
+      New XElement("rss", New XAttribute("version", "2.0"), _
+      New XElement("channel", _
+        New XElement("item", "my item") _
+      ) _
+      ) _
+    )
 
     Console.WriteLine(d)
   End Sub
 
   <Test()> Sub DocumentWithXDocumentType()
     Dim html As XDocument = New XDocument( _
-     New XDocumentType("HTML", "-//W3C//DTD HTML 4.01//EN", _
-      "http://www.w3.org/TR/html4/strict.dtd", Nothing), _
-     New XElement("html", _
-     New XElement("body", "This is the body!") _
-     ) _
-     )
+      New XDocumentType("HTML", "-//W3C//DTD HTML 4.01//EN", _
+        "http://www.w3.org/TR/html4/strict.dtd", Nothing), _
+      New XElement("html", _
+        New XElement("body", "This is the body!") _
+      ) _
+    )
 
     Console.WriteLine(html)
   End Sub
@@ -328,10 +328,10 @@ Imports System.Xml
   <Test()> Sub AddVariableNumberOfContentItems()
     Dim books As XElement = New XElement("books")
     books.Add(New XElement("book", _
-     New XAttribute("publicationDate", "May 2006"), _
-     New XElement("author", "Chris Sells"), _
-     New XElement("title", "Windows Forms Programming") _
-     ) _
+      New XAttribute("publicationDate", "May 2006"), _
+      New XElement("author", "Chris Sells"), _
+      New XElement("title", "Windows Forms Programming") _
+    ) _
     )
 
     Console.WriteLine(books)
@@ -432,8 +432,8 @@ Imports System.Xml
                             </books>
 
     books.Element("book").ReplaceNodes( _
-     New XElement("title", "Ajax in Action"), _
-     New XElement("author", "Dave Crane") _
+      New XElement("title", "Ajax in Action"), _
+      New XElement("author", "Dave Crane") _
     )
 
     Console.WriteLine(books)
@@ -455,7 +455,6 @@ Imports System.Xml
 
     Console.WriteLine(books)
   End Sub
-
 
 
   <Test()> Sub CreateElementWithAttribute()
@@ -486,10 +485,10 @@ Imports System.Xml
 
   <Test()> Sub Save()
     Dim books As XElement = New XElement("books", _
-     New XElement("book", _
-     New XElement("title", "LINQ in Action"), _
-     New XElement("author", "Steve Eichert") _
-     ) _
+      New XElement("book", _
+        New XElement("title", "LINQ in Action"), _
+        New XElement("author", "Steve Eichert") _
+      ) _
     )
     books.Save("saved-books.XML", SaveOptions.DisableFormatting)
   End Sub

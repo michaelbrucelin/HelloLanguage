@@ -8,11 +8,11 @@ Imports System.Xml.Linq
 <TestFixture()> Public Class Chapter09_VBOnly
   <Test()> Sub CreateWithFunctionalConstruction()
     Dim book As New XElement("book", _
-     New XElement("title", "Naked Conversations"), _
-     New XElement("author", "Robert Scoble"), _
-     New XElement("author", "Shel Israel"), _
-     New XElement("publisher", "Wiley") _
-     )
+      New XElement("title", "Naked Conversations"), _
+      New XElement("author", "Robert Scoble"), _
+      New XElement("author", "Shel Israel"), _
+      New XElement("publisher", "Wiley") _
+    )
 
     Console.WriteLine(book)
 
@@ -20,11 +20,11 @@ Imports System.Xml.Linq
 
   <Test()> Sub CreateWithXmlLiterals()
     Dim book As XElement = <book>
-                             <title>Naked Conversations</title>
-                             <author>Robert Scoble</author>
-                             <author>Shel Israel</author>
-                             <publisher>Wiley</publisher>
-                           </book>
+                              <title>Naked Conversations</title>
+                              <author>Robert Scoble</author>
+                              <author>Shel Israel</author>
+                              <publisher>Wiley</publisher>
+                            </book>
 
     Console.WriteLine(book)
   End Sub
@@ -35,10 +35,10 @@ Imports System.Xml.Linq
     Dim publisher As String = "Manning"
 
     Dim book As XElement = <book>
-                             <title><%= title %></title>
-                             <author><%= author %></author>
-                             <publisher><%= publisher %></publisher>
-                           </book>
+                              <title><%= title %></title>
+                              <author><%= author %></author>
+                              <publisher><%= publisher %></publisher>
+                            </book>
 
     Console.WriteLine(book)
   End Sub
@@ -50,10 +50,10 @@ Imports System.Xml.Linq
     Dim publisher As String = "Manning"
 
     Dim book As XElement = <<%= elementName %>>
-                             <title><%= title %></title>
-                             <author><%= author %></author>
-                             <publisher><%= publisher %></publisher>
-                           </>
+                              <title><%= title %></title>
+                              <author><%= author %></author>
+                              <publisher><%= publisher %></publisher>
+                            </>
 
     Console.WriteLine(book)
   End Sub

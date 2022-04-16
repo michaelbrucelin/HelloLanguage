@@ -8,29 +8,29 @@ Imports System.Xml.Linq
 <TestFixture()> Public Class Chapter10_VBOnly
   <Test()> Sub TestCreatingXMLWithLiterals()
     Dim rss = _
-     <?xml version="1.0" encoding="utf-8"?>
-     <rss version="2.0">
-       <channel>
-         <title>Book Reviews</title>
-         <description>LinqBook Book Reviews</description>
-         <%= From book In SampleData.Books _
-           Where Not IsNothing(book.Reviews) AndAlso book.Reviews.Count > 0 _
-           Select _
-           From review In book.Reviews _
-           Select _
-           <item>
-             <title>Review of <%= book.Title %> by <%= review.User.Name %></title>
-             <pubDate>Sun, 23, 2006, 02:19:00 GMT</pubDate>
-             <description><%= review.Comments %></description>
-           </item> %>
-       </channel>
-     </rss>
+      <?xml version="1.0" encoding="utf-8"?>
+      <rss version="2.0">
+        <channel>
+          <title>Book Reviews</title>
+          <description>LinqBook Book Reviews</description>
+          <%= From book In SampleData.Books _
+            Where Not IsNothing(book.Reviews) AndAlso book.Reviews.Count > 0 _
+            Select _
+            From review In book.Reviews _
+            Select _
+            <item>
+              <title>Review of <%= book.Title %> by <%= review.User.Name %></title>
+              <pubDate>Sun, 23, 2006, 02:19:00 GMT</pubDate>
+              <description><%= review.Comments %></description>
+            </item> %>
+        </channel>
+      </rss>
 
     Dim xml As New XElement("book", _
-     New XElement("title", "Naked Conversations"), _
-     New XElement("author", "Robert Scoble"), _
-     New XElement("author", "Shel Israel"), _
-     New XElement("publisher", "Wiley") _
+      New XElement("title", "Naked Conversations"), _
+      New XElement("author", "Robert Scoble"), _
+      New XElement("author", "Shel Israel"), _
+      New XElement("publisher", "Wiley") _
     )
 
   End Sub
