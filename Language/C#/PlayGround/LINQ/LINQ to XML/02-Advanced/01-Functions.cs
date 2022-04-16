@@ -12,7 +12,7 @@ namespace TestCSharp
     {
         static void Main(string[] args)
         {
-            XElement root = XElement.Load(@"E:\vs2019\Templates\TestCSharpClassic\TempTestCSharp\files\categorizedBooks.xml");
+            XElement root = XElement.Load("./categorizedBooks.xml");
 
             // 1. Element()轴方法返回第一个名称匹配的XML子元素，注意是子元素，不包含孙子元素
             Console.WriteLine("1. Element()");
