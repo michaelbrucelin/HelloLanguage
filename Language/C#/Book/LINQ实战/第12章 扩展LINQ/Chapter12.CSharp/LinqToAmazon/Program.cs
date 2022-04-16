@@ -16,11 +16,10 @@ namespace LinqInAction.Chapter12.LinqToAmazon
             Console.WriteLine();
 
             var search = from book in new AmazonBookSearch()
-                         where
-                           book.Title.Contains("ajax") &&
-                           (book.Publisher == "Manning") &&
-                           (book.Price <= 25) &&
-                           (book.Condition == BookCondition.New)
+                         where book.Title.Contains("ajax") &&
+                               (book.Publisher == "Manning") &&
+                               (book.Price <= 25) &&
+                               (book.Condition == BookCondition.New)
                          select book;
 
             // Execute the LINQ to Amazon query

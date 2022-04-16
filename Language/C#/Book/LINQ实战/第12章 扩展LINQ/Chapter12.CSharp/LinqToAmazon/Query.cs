@@ -11,70 +11,70 @@ using System.Text;
 
 namespace LinqInAction.Chapter12.LinqToAmazon
 {
-  public class Query<T> :
-    IQueryable<T>, IQueryable,
-    IEnumerable<T>, IEnumerable,
-    IOrderedQueryable<T>, IOrderedQueryable
-  {
-    QueryProvider provider;
-    Expression expression;
-
-    public Query(QueryProvider provider)
+    public class Query<T> :
+      IQueryable<T>, IQueryable,
+      IEnumerable<T>, IEnumerable,
+      IOrderedQueryable<T>, IOrderedQueryable
     {
-      if (provider == null)
-      {
-        throw new ArgumentNullException("provider");
-      }
-      this.provider = provider;
-      this.expression = Expression.Constant(this);
-    }
+        QueryProvider provider;
+        Expression expression;
 
-    public Query(QueryProvider provider, Expression expression)
-    {
-      if (provider == null)
-      {
-        throw new ArgumentNullException("provider");
-      }
-      if (expression == null)
-      {
-        throw new ArgumentNullException("expression");
-      }
-      if (!typeof(IQueryable<T>).IsAssignableFrom(expression.Type))
-      {
-        throw new ArgumentOutOfRangeException("expression");
-      }
-      this.provider = provider;
-      this.expression = expression;
-    }
+        public Query(QueryProvider provider)
+        {
+            if (provider == null)
+            {
+                throw new ArgumentNullException("provider");
+            }
+            this.provider = provider;
+            this.expression = Expression.Constant(this);
+        }
 
-    Expression IQueryable.Expression
-    {
-      get { return this.expression; }
-    }
+        public Query(QueryProvider provider, Expression expression)
+        {
+            if (provider == null)
+            {
+                throw new ArgumentNullException("provider");
+            }
+            if (expression == null)
+            {
+                throw new ArgumentNullException("expression");
+            }
+            if (!typeof(IQueryable<T>).IsAssignableFrom(expression.Type))
+            {
+                throw new ArgumentOutOfRangeException("expression");
+            }
+            this.provider = provider;
+            this.expression = expression;
+        }
 
-    Type IQueryable.ElementType
-    {
-      get { return typeof(T); }
-    }
+        Expression IQueryable.Expression
+        {
+            get { return this.expression; }
+        }
 
-    IQueryProvider IQueryable.Provider
-    {
-      get { return this.provider; }
-    }
+        Type IQueryable.ElementType
+        {
+            get { return typeof(T); }
+        }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-      return ((IEnumerable<T>)this.provider.Execute(this.expression)).GetEnumerator();
-    }
+        IQueryProvider IQueryable.Provider
+        {
+            get { return this.provider; }
+        }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-      return ((IEnumerable)this.provider.Execute(this.expression)).GetEnumerator();
-    }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)this.provider.Execute(this.expression)).GetEnumerator();
+        }
 
-    public override string ToString()
-    {
-      return this.provider.GetQueryText(this.expression);
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)this.provider.Execute(this.expression)).GetEnumerator();
+        }
+
+        public override string ToString()
+        {
+            return this.provider.GetQueryText(this.expression);
+        }
     }
-  }
 }
