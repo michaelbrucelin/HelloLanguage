@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <books>
-	<book>
-		 <title>LINQ in Action</title>
-    <authors>
-      <author>
-        <firstName>Fabrice</firstName>
-        <lastName>Marguerie</lastName>
-        <website>http://linqinaction.net/</website>
-      </author>
-      <author>
-        <firstName>Steve</firstName>
-        <lastName>Eichert</lastName>
-        <webSite>http://iqueryable.com</webSite>
-      </author>
-      <author>
-        <firstName>Jim</firstName>
-        <lastName>Wooley</lastName>
-        <webSite> http://devauthority.com/blogs/jwooley/</webSite>
-      </author>
-    </authors>
-    <subject>
-      <name>LINQ</name>
-      <description>LINQ shall rule the world</description>
-    </subject>
-    <publisher>Manning</publisher>
-    <publicationDate>November 15, 2007</publicationDate>
-    <price>44.99</price>
-    <isbn>1933988169</isbn>
-    <notes>Great book!</notes>
-    <summary>LINQ in Action is great!</summary>
-		<reviews>
-			<review>
-				<user>Steve Eichert</user>
-				<rating>5</rating>
-				<comments>What can I say, I’m biased!</comments>
-			</review>
-		</reviews>
-	</book>
+    <book>
+        <title>LINQ in Action</title>
+        <authors>
+            <author>
+                <firstName>Fabrice</firstName>
+                <lastName>Marguerie</lastName>
+                <website>http://linqinaction.net/</website>
+            </author>
+            <author>
+                <firstName>Steve</firstName>
+                <lastName>Eichert</lastName>
+                <webSite>http://iqueryable.com</webSite>
+            </author>
+            <author>
+                <firstName>Jim</firstName>
+                <lastName>Wooley</lastName>
+                <webSite> http://devauthority.com/blogs/jwooley/</webSite>
+            </author>
+        </authors>
+        <subject>
+            <name>LINQ</name>
+            <description>LINQ shall rule the world</description>
+        </subject>
+        <publisher>Manning</publisher>
+        <publicationDate>November 15, 2007</publicationDate>
+        <price>44.99</price>
+        <isbn>1933988169</isbn>
+        <notes>Great book!</notes>
+        <summary>LINQ in Action is great!</summary>
+        <reviews>
+            <review>
+                <user>Steve Eichert</user>
+                <rating>5</rating>
+                <comments>What can I say, I’m biased!</comments>
+            </review>
+        </reviews>
+    </book>
 </books>
