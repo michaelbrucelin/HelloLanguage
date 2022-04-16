@@ -1,0 +1,1 @@
+// LINQ to XSD是指以让开发者在LINQ to XML的基础上，以强类型的方式操作XML。
