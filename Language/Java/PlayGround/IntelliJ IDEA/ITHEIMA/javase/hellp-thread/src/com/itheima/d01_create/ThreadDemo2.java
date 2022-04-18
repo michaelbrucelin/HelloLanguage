@@ -22,7 +22,7 @@ public class ThreadDemo2 {
 /**
    1、定义一个线程任务类 实现Runnable接口
  */
-class MyRunnable  implements Runnable {
+class MyRunnable implements Runnable {
     /**
        2、重写run方法，定义线程的执行任务的
      */
