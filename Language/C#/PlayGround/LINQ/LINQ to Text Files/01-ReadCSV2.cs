@@ -9,7 +9,7 @@ namespace TestCSharp
     {
         static void Main(string[] args)
         {
-            using (StreamReader reader = new StreamReader(@"..\SampleData\books.csv"))
+            using (StreamReader reader = new StreamReader(@".\books.csv"))
             {
                 var books = from line in reader.Lines()
                             where !line.StartsWith("#")
@@ -31,7 +31,7 @@ namespace TestCSharp
                 ObjectDumper.Write(books, 1);
             }
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 
@@ -49,3 +49,20 @@ namespace TestCSharp
         }
     }
 }
+
+/*
+这里使用了自己编写的扩展方法，对大文件有较好的支持，并且支持了LINQ的延迟查询的特性。
+
+ISBN=0735621632         Title=CLR via C#        Publisher=Microsoft Press       Authors=...
+    Authors: FirstName=Jeffrey      LastName=Richter
+ISBN=0321127420         Title=Patterns Of Enterprise Application Architecture   Publisher=Addison-Wesley        Authors=...
+    Authors: FirstName=Martin       LastName=Fowler
+ISBN=0321200683         Title=Enterprise Integration Patterns   Publisher=Addison-Wesley        Authors=...
+    Authors: FirstName=Gregor       LastName=Hohpe
+ISBN=0321125215         Title=Domain-Driven Design      Publisher=Addison-Wesley Professional   Authors=...
+    Authors: FirstName=Eric         LastName=Evans
+ISBN=1932394613         Title=Ajax In Action    Publisher=Manning Publications  Authors=...
+    Authors: FirstName=Dave         LastName=Crane
+    Authors: FirstName=Eric         LastName=Pascarello
+    Authors: FirstName=Darren       LastName=James
+*/
