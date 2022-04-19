@@ -33,7 +33,7 @@ public class Account {
 
 //    // 100个线程人
 //    public static void run(){
-//        synchronized (Account.class){
+//        synchronized (Account.class){  // 静态方法推荐用 类名.class 加锁
 //
 //        }
 //    }
@@ -47,7 +47,7 @@ public class Account {
         // 同步代码块
         // 小明 小红
         // this == acc 共享账户
-        synchronized (this) {
+        synchronized (this) {  // 实例方法推荐用 this 加锁
             // 2、判断余额是否足够
             if(this.money >= money){
                 // 钱够了
