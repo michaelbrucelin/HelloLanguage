@@ -32,8 +32,11 @@ public class Account {
     }
 
     /**
-      小明 小红
+       小明 小红
        this == acc
+       使用 synchronized 关键字修饰的方法是同步方法
+       如果同步方法是实例方法，默认使用当前对象（this）加锁
+       如果同步方法是静态方法，默认使用当前类（类名.class）加锁
      */
     public synchronized void drawMoney(double money) {
         // 1、拿到是谁来取钱

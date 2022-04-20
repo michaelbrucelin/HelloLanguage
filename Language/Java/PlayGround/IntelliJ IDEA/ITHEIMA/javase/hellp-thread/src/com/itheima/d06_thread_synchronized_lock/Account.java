@@ -8,11 +8,11 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Account {
     private String cardId;
     private double money; // 余额 关键信息
+
     // final修饰后：锁对象是唯一和不可替换的，非常专业
     private final Lock lock = new ReentrantLock();
 
-    public Account() {
-    }
+    public Account() { }
 
     public Account(String cardId, double money) {
         this.cardId = cardId;
