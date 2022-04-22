@@ -63,3 +63,8 @@ func lissajous(out io.Writer) {
 	}
 	gif.EncodeAll(out, &anim) // 注意：忽略编码错误
 }
+
+/*
+运行
+go run lissajous.go > lissajous.gif
+*/
