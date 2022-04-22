@@ -11,5 +11,7 @@
     <orderEntry type="library" name="fasterxml.jackson.core.annotations" level="project" />
     <orderEntry type="library" name="fasterxml.jackson.core.databind" level="project" />
     <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="apache.poi" level="project" />
+    <orderEntry type="library" name="apache.poi.ooxml" level="project" />
   </component>
 </module>
