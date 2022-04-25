@@ -1,3 +1,4 @@
+// ftoc输出两个华氏温度——摄氏温度的转换
 package main
 
 import "fmt"
