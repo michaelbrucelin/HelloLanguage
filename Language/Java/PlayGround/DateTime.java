@@ -16,8 +16,8 @@ public class DateTime {
 
         System.out.println("Before formatting: " + myDatetime);
         DateTimeFormatter myFormater = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = myDatetime.format(myFormater);
-        System.out.println("After formatting: " + formattedDate);
+        String fmtDatetime = myDatetime.format(myFormater);
+        System.out.println("After formatting: " + fmtDatetime);
     }
 }
 
