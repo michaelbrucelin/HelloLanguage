@@ -23,6 +23,8 @@ public class Post {
 
             connection.setUseCaches(false);
             connection.setDoOutput(true);
+            // connection.setConnectTimeout(60*1000);
+            // connection.setReadTimeout(60*1000);
 
             // Send request
             DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
