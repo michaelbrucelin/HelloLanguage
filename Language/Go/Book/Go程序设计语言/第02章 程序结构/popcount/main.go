@@ -1,6 +1,6 @@
 package popcount
 
-// pc[i] is the population count of i.
+// pc[i]是i的种群统计
 var pc [256]byte
 
 func init() {
@@ -9,7 +9,7 @@ func init() {
 	}
 }
 
-// PopCount returns the population count (number of set bits) of x.
+// PopCount返回x的种群统计（置位的个数）
 func PopCount(x uint64) int {
 	return int(pc[byte(x>>(0*8))] +
 		pc[byte(x>>(1*8))] +
