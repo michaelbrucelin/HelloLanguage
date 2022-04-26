@@ -1,6 +1,4 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class DateTime {
@@ -15,18 +13,31 @@ public class DateTime {
         System.out.println(myDatetime);
 
         System.out.println("Before formatting: " + myDatetime);
-        DateTimeFormatter myFormater = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter myFormater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String fmtDatetime = myDatetime.format(myFormater);
         System.out.println("After formatting: " + fmtDatetime);
+
+        ZonedDateTime myZonedDatetime = ZonedDateTime.now();
+        System.out.println(myZonedDatetime);
+        System.out.println(myZonedDatetime.getZone());
+        System.out.println(myZonedDatetime.getOffset());
+
+        System.out.println(myZonedDatetime.withZoneSameInstant(ZoneId.of("GMT+00:00")));
+        System.out.println(myZonedDatetime.withZoneSameInstant(ZoneId.of("GMT+00:00")).format(myFormater));
     }
 }
 
 /*
 javac DateTime.java
 java DateTime
-> 2022-04-25
-> 09:53:43.105760
-> 2022-04-25T09:53:43.106070
-> Before formatting: 2022-04-25T09:53:43.106070
-> After formatting: 25-04-2022 09:53:43
+> 2022-04-26
+> 16:10:18.335375700
+> 2022-04-26T16:10:18.335375700
+> Before formatting: 2022-04-26T16:10:18.335375700
+> After formatting: 2022-04-26 16:10:18
+> 2022-04-26T16:10:18.343375700+08:00[Asia/Shanghai]
+> Asia/Shanghai
+> +08:00
+> 2022-04-26T08:10:18.343375700Z[GMT]
+> 2022-04-26 08:10:18
 */
