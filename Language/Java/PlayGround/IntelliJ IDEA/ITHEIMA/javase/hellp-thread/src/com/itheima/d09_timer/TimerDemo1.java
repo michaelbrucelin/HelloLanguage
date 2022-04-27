@@ -27,7 +27,7 @@ public class TimerDemo1 {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                System.out.println(Thread.currentThread().getName() + "执行BB~~~"+ new Date());
+                System.out.println(Thread.currentThread().getName() + "执行BBB~~~"+ new Date());
                 System.out.println(10/0);
             }
         }, 0, 2000);
