@@ -10,18 +10,19 @@ public class ThreadPoolDemo2 {
         // 1、创建线程池对象
         /**
          public ThreadPoolExecutor(int corePoolSize,
-                                 int maximumPoolSize,
-                                 long keepAliveTime,
-                                 TimeUnit unit,
-                                 BlockingQueue<Runnable> workQueue,
-                                 ThreadFactory threadFactory,
-                                 RejectedExecutionHandler handler)
+                                   int maximumPoolSize,
+                                   long keepAliveTime,
+                                   TimeUnit unit,
+                                   BlockingQueue<Runnable> workQueue,
+                                   ThreadFactory threadFactory,
+                                   RejectedExecutionHandler handler)
          */
-        ExecutorService pool = new ThreadPoolExecutor(3, 5 ,
-                6, TimeUnit.SECONDS, new ArrayBlockingQueue<>(5) , Executors.defaultThreadFactory(),
-               new ThreadPoolExecutor.AbortPolicy() );
+        ExecutorService pool = new ThreadPoolExecutor(3, 5 , 6,
+                TimeUnit.SECONDS, new ArrayBlockingQueue<>(5),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy() );
 
-        // 2、给任务线程池处理。
+        // 2、给任务线程池处理
         Future<String> f1 = pool.submit(new MyCallable(100));
         Future<String> f2 = pool.submit(new MyCallable(200));
         Future<String> f3 = pool.submit(new MyCallable(300));
