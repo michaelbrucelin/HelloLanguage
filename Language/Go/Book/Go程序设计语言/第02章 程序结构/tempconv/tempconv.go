@@ -1,3 +1,4 @@
+// 包tempconv负责摄氏温度和华氏温度的转换计算
 package tempconv
 
 import "fmt"

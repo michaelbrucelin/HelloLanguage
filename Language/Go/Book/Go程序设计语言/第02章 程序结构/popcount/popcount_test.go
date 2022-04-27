@@ -3,7 +3,7 @@ package popcount_test
 import (
 	"testing"
 
-	"gopl.io/ch2/popcount"
+	"popcount"
 )
 
 // -- Alternative implementations --

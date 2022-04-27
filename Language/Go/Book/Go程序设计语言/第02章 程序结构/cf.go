@@ -1,3 +1,4 @@
+// cf把它的数值参数转换为摄氏温度和华氏温度
 package main
 
 import (
