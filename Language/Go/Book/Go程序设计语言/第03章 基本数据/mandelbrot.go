@@ -1,3 +1,4 @@
+// mandelbrot函数生成一个PNG格式的Mandelbrot分形图
 package main
 
 import (
@@ -20,11 +21,11 @@ func main() {
 		for px := 0; px < width; px++ {
 			x := float64(px)/width*(xmax-xmin) + xmin
 			z := complex(x, y)
-			// Image point (px, py) represents complex value z.
+			// 点(px, py)表示负数值z
 			img.Set(px, py, mandelbrot(z))
 		}
 	}
-	png.Encode(os.Stdout, img) // NOTE: ignoring errors
+	png.Encode(os.Stdout, img) // 注意: 忽略错误
 }
 
 func mandelbrot(z complex128) color.Color {
@@ -73,3 +74,7 @@ func newton(z complex128) color.Color {
 	}
 	return color.Black
 }
+
+/*
+go run mandelbrot.go > mandelbrot.png
+*/
