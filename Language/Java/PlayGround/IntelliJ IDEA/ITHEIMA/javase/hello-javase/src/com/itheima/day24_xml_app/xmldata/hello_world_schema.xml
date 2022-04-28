@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<书架 xmlns="http://www.itcast.cn"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.itcast.cn data.xsd">
+    <!-- xmlns="http://www.itcast.cn"  基本位置
+         xsi:schemaLocation="http://www.itcast.cn books02.xsd" 具体的位置 -->
+    <书>
+        <书名>神雕侠侣</书名>
+        <作者>金庸</作者>
+        <售价>399.9</售价>
+    </书>
+    <书>
+        <书名>神雕侠侣</书名>
+        <作者>金庸</作者>
+        <售价>19.5</售价>
+    </书>
+
+</书架>
