@@ -1,3 +1,4 @@
+// intsToString 与 fmt.Sprint(values)类似，但插入了逗号
 package main
 
 import (
@@ -22,3 +23,8 @@ func intsToString(values []int) string {
 func main() {
 	fmt.Println(intsToString([]int{1, 2, 3})) // "[1, 2, 3]"
 }
+
+/*
+go run printints.go
+> [1, 2, 3]
+*/

@@ -1,3 +1,4 @@
+// 模仿Unix shell中的同名应用程序
 package main
 
 import (
@@ -14,17 +15,17 @@ func main() {
 	// NOTE: ignoring potential errors from input.Err()
 }
 
-// basename removes directory components and a .suffix.
-// e.g., a => a, a.go => a, a/b/c.go => c, a/b.c.go => b.c
+// basename移除路径部分和 . 后缀
+// 例如, a => a, a.go => a, a/b/c.go => c, a/b.c.go => b.c
 func basename(s string) string {
-	// Discard last '/' and everything before.
+	// 将最后一个 '/' 和之前的部分全部舍弃
 	for i := len(s) - 1; i >= 0; i-- {
 		if s[i] == '/' {
 			s = s[i+1:]
 			break
 		}
 	}
-	// Preserve everything before last '.'.
+	// 保留最后一个 '.' 之前的全部内容
 	for i := len(s) - 1; i >= 0; i-- {
 		if s[i] == '.' {
 			s = s[:i]

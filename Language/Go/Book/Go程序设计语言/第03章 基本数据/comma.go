@@ -1,4 +1,4 @@
-// Comma prints its argument numbers with a comma at each power of 1000.
+// 函数向表示十进制非负整数的字符串插入逗号
 package main
 
 import (
@@ -22,7 +22,7 @@ func comma(s string) string {
 }
 
 // Example:
-// 	$ go build gopl.io/ch3/comma
+// 	$ go build comma.go
 //	$ ./comma 1 12 123 1234 1234567890
 // 	1
 // 	12
