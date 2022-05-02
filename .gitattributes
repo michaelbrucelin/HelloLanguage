@@ -36,6 +36,8 @@ Language/C#/**/*.aspx.vb linguist-vendored
 Language/C#/**/*.GlobalUsings.g.vb linguist-vendored
 Language/C#/**/*.Master.vb linguist-vendored
 
+Language/Java/PlayGround/IntelliJ IDEA/ITHEIMA/javase/hello-javase/**/*.java linguist-vendored
+
 Language/Python/PlayGround/demo/**/*.html linguist-vendored
 Language/Python/Project/**/*.html linguist-vendored
 
