@@ -1,14 +1,8 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 99.
-
-// Graph shows how to use a map of maps to represent a directed graph.
+// graph建立了一个从字符串到字符串集合的映射
 package main
 
 import "fmt"
 
-//!+
 var graph = make(map[string]map[string]bool)
 
 func addEdge(from, to string) {
@@ -23,8 +17,6 @@ func addEdge(from, to string) {
 func hasEdge(from, to string) bool {
 	return graph[from][to]
 }
-
-//!-
 
 func main() {
 	addEdge("a", "b")

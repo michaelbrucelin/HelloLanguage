@@ -1,9 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 96.
-
-// Dedup prints only one instance of each line; duplicates are removed.
+// 程序dedup使用map的键来存储这些已经出现过的行，来确保接下来出现的相同行不会输出
 package main
 
 import (
@@ -12,9 +7,8 @@ import (
 	"os"
 )
 
-//!+
 func main() {
-	seen := make(map[string]bool) // a set of strings
+	seen := make(map[string]bool) // 字符串集合
 	input := bufio.NewScanner(os.Stdin)
 	for input.Scan() {
 		line := input.Text()
@@ -29,5 +23,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-
-//!-

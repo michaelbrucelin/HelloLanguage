@@ -1,10 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 97.
-//!+
-
-// Charcount computes counts of Unicode characters.
+// charcount计算Unicode字符的个数
 package main
 
 import (
@@ -17,13 +11,13 @@ import (
 )
 
 func main() {
-	counts := make(map[rune]int)    // counts of Unicode characters
-	var utflen [utf8.UTFMax + 1]int // count of lengths of UTF-8 encodings
-	invalid := 0                    // count of invalid UTF-8 characters
+	counts := make(map[rune]int)    // Unicode字符数量
+	var utflen [utf8.UTFMax + 1]int // UTF-8编码的长度
+	invalid := 0                    // 非法UTF-8字符数量
 
 	in := bufio.NewReader(os.Stdin)
 	for {
-		r, n, err := in.ReadRune() // returns rune, nbytes, error
+		r, n, err := in.ReadRune() // 返回rune, nbytes, error
 		if err == io.EOF {
 			break
 		}
@@ -52,5 +46,3 @@ func main() {
 		fmt.Printf("\n%d invalid UTF-8 characters\n", invalid)
 	}
 }
-
-//!-
