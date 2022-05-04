@@ -1,9 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 101.
-
-// Package treesort provides insertion sort using an unbalanced binary tree.
+// 利用二叉树实现插入排序
 package treesort
 
 type tree struct {
@@ -11,7 +6,7 @@ type tree struct {
 	left, right *tree
 }
 
-// Sort sorts values in place.
+// 就地排序
 func Sort(values []int) {
 	var root *tree
 	for _, v := range values {
@@ -20,8 +15,7 @@ func Sort(values []int) {
 	appendValues(values[:0], root)
 }
 
-// appendValues appends the elements of t to values in order
-// and returns the resulting slice.
+// appendValues将元素按照顺序追加到values里面，然后返回结果slice
 func appendValues(values []int, t *tree) []int {
 	if t != nil {
 		values = appendValues(values, t.left)
@@ -33,7 +27,7 @@ func appendValues(values []int, t *tree) []int {
 
 func add(t *tree, value int) *tree {
 	if t == nil {
-		// Equivalent to return &tree{value: value}.
+		// 等价于返回 &tree{value: value}.
 		t = new(tree)
 		t.value = value
 		return t

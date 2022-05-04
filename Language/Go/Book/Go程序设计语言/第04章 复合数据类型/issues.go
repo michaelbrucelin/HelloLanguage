@@ -1,10 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 112.
-//!+
-
-// Issues prints a table of GitHub issues matching the search terms.
+// 将符合搜索条件的issue输出为一个表格
 package main
 
 import (
@@ -12,10 +6,9 @@ import (
 	"log"
 	"os"
 
-	"gopl.io/ch4/github"
+	"./github"
 )
 
-//!+
 func main() {
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
@@ -28,10 +21,7 @@ func main() {
 	}
 }
 
-//!-
-
 /*
-//!+textoutput
 $ go build gopl.io/ch4/issues
 $ ./issues repo:golang/go is:open json decoder
 13 issues:
@@ -48,5 +38,4 @@ $ ./issues repo:golang/go is:open json decoder
 #6384    joeshaw encoding/json: encode precise floating point integers u
 #6647    btracey x/tools/cmd/godoc: display type kind of each named type
 #4237  gjemiller encoding/base64: URLEncoding padding is optional
-//!-textoutput
 */

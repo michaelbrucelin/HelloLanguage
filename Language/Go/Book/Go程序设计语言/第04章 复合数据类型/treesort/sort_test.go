@@ -1,6 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
+// 利用二叉树实现插入排序
 package treesort_test
 
 import (
@@ -8,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"gopl.io/ch4/treesort"
+	"./treesort"
 )
 
 func TestSort(t *testing.T) {
