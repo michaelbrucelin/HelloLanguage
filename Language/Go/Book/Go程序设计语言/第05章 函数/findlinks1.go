@@ -1,10 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 122.
-//!+main
-
-// Findlinks1 prints the links in an HTML document read from standard input.
+// findlinks1输出从标准输入中读入的HTML文档中所有链接
 package main
 
 import (
@@ -25,10 +19,7 @@ func main() {
 	}
 }
 
-//!-main
-
-//!+visit
-// visit appends to links each link found in n and returns the result.
+// visit函数会将n节点中的每个链接添加到结果中
 func visit(links []string, n *html.Node) []string {
 	if n.Type == html.ElementNode && n.Data == "a" {
 		for _, a := range n.Attr {
@@ -38,15 +29,17 @@ func visit(links []string, n *html.Node) []string {
 		}
 	}
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		links = visit(links, c)
+		links = visit(links, c) // 递归
 	}
 	return links
 }
 
-//!-visit
+/*
+go env -w GO111MODULE=auto
+go get golang.org/x/net/html
+*/
 
 /*
-//!+html
 package html
 
 type Node struct {
@@ -72,5 +65,4 @@ type Attribute struct {
 }
 
 func Parse(r io.Reader) (*Node, error)
-//!-html
 */

@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 117.
-
 // Autoescape demonstrates automatic HTML escaping in html/template.
 package main
 
@@ -12,13 +7,12 @@ import (
 	"os"
 )
 
-//!+
 func main() {
 	const templ = `<p>A: {{.A}}</p><p>B: {{.B}}</p>`
 	t := template.Must(template.New("escape").Parse(templ))
 	var data struct {
-		A string        // untrusted plain text
-		B template.HTML // trusted HTML
+		A string        // 不受信任的纯文本
+		B template.HTML // 受信任的HTML
 	}
 	data.A = "<b>Hello!</b>"
 	data.B = "<b>Hello!</b>"
@@ -27,4 +21,9 @@ func main() {
 	}
 }
 
-//!-
+/*
+go run autoescape.go
+> <p>A: &lt;b&gt;Hello!&lt;/b&gt;</p><p>B: <b>Hello!</b></p>
+
+go run autoescape.go > autoescape.html
+*/

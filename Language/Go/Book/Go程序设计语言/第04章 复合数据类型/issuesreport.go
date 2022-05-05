@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 113.
-
 // Issuesreport prints a report of issues matching the search terms.
 package main
 
@@ -15,7 +10,7 @@ import (
 	"./github"
 )
 
-//!+template
+// 有jsp与asp.net的味道了，也可以理解为有简单逻辑的动态拼接字符串的技术
 const templ = `{{.TotalCount}} issues:
 {{range .Items}}----------------------------------------
 Number: {{.Number}}
@@ -24,16 +19,10 @@ Title:  {{.Title | printf "%.64s"}}
 Age:    {{.CreatedAt | daysAgo}} days
 {{end}}`
 
-//!-template
-
-//!+daysAgo
 func daysAgo(t time.Time) int {
 	return int(time.Since(t).Hours() / 24)
 }
 
-//!-daysAgo
-
-//!+exec
 var report = template.Must(template.New("issuelist").
 	Funcs(template.FuncMap{"daysAgo": daysAgo}).
 	Parse(templ))
@@ -48,17 +37,13 @@ func main() {
 	}
 }
 
-//!-exec
-
 func noMust() {
-	//!+parse
 	report, err := template.New("report").
 		Funcs(template.FuncMap{"daysAgo": daysAgo}).
 		Parse(templ)
 	if err != nil {
 		log.Fatal(err)
 	}
-	//!-parse
 	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
@@ -69,21 +54,22 @@ func noMust() {
 }
 
 /*
-//!+output
-$ go build gopl.io/ch4/issuesreport
-$ ./issuesreport repo:golang/go is:open json decoder
-13 issues:
-----------------------------------------
-Number: 5680
-User:   eaigner
-Title:  encoding/json: set key converter on en/decoder
-Age:    750 days
-----------------------------------------
-Number: 6050
-User:   gopherbot
-Title:  encoding/json: provide tokenizer
-Age:    695 days
-----------------------------------------
-...
-//!-output
+go run issuesreport.go repo:golang/go is:open json decoder
+> 63 issues:
+> ----------------------------------------
+> Number: 48298
+> User:   dsnet
+> Title:  encoding/json: add Decoder.DisallowDuplicateFields
+> Age:    237 days
+> ----------------------------------------
+> Number: 42571
+> User:   dsnet
+> Title:  encoding/json: clarify Decoder.InputOffset semantics
+> Age:    538 days
+> ... ...
+> ----------------------------------------
+> Number: 33835
+> User:   Qhesz
+> Title:  encoding/json: unmarshalling null into non-nullable golang types
+> Age:    982 days
 */
