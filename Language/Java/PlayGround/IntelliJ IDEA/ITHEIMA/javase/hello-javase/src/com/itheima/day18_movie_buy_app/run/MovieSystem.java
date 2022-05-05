@@ -1,9 +1,9 @@
 package com.itheima.day18_movie_buy_app.run;
 
-import com.itheima.bean.Business;
-import com.itheima.bean.Customer;
-import com.itheima.bean.Movie;
-import com.itheima.bean.User;
+import com.itheima.day18_movie_buy_app.bean.Business;
+import com.itheima.day18_movie_buy_app.bean.Customer;
+import com.itheima.day18_movie_buy_app.bean.Movie;
+import com.itheima.day18_movie_buy_app.bean.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,10 +19,10 @@ public class MovieSystem {
      */
     public static final List<User> ALL_USERS = new ArrayList<>();
     /**
-       2、存储系统全部商家和其排片信息 。
-           商家1 = [p1,p2,p3,...]
-           商家2 = [p2,p3,...]
-           ...
+        2、存储系统全部商家和其排片信息 。
+            商家1 = [p1,p2,p3,...]
+            商家2 = [p2,p3,...]
+            ...
      */
     public static final Map<Business, List<Movie>> ALL_MOVIES = new HashMap<>();
 
@@ -35,7 +35,7 @@ public class MovieSystem {
     public static final Logger LOGGER = LoggerFactory.getLogger("MovieSystem.class");
 
     /**
-       3、准备一些测试数据
+        3、准备一些测试数据
      */
     static {
         Customer c = new Customer();
@@ -91,7 +91,7 @@ public class MovieSystem {
     }
 
     /**
-       首页展示
+        首页展示
      */
     private static void showMain() {
         while (true) {
@@ -118,7 +118,7 @@ public class MovieSystem {
     }
 
     /**
-       登录功能
+        登录功能
      */
     private static void login() {
         while (true) {
@@ -155,7 +155,7 @@ public class MovieSystem {
     }
 
     /**
-      商家的后台操作界面
+        商家的后台操作界面
      */
     private static void showBusinessMain() {
         while (true) {
@@ -197,7 +197,7 @@ public class MovieSystem {
     }
 
     /**
-     影片修改功能
+        影片修改功能
      */
     private static void updateMovie() {
         System.out.println("================修改电影====================");
@@ -264,7 +264,7 @@ public class MovieSystem {
     }
 
     /**
-      影片下架功能
+        影片下架功能
      */
     private static void deleteMovie() {
         System.out.println("================下架电影====================");
@@ -304,7 +304,7 @@ public class MovieSystem {
     }
 
     /**
-       去查询当前商家下的排片
+        去查询当前商家下的排片
      */
     public static Movie getMovieByName(String movieName){
         Business business = (Business) loginUser;
@@ -318,10 +318,10 @@ public class MovieSystem {
     }
 
     /**
-      商家进行电影上架
-     Map<Business , List<Movie>> ALL_MOVIES
-     u1 = [p1,p2,p3]
-     u2 = [p1,p2,p3]
+        商家进行电影上架
+        Map<Business , List<Movie>> ALL_MOVIES
+        u1 = [p1,p2,p3]
+        u2 = [p1,p2,p3]
      */
     private static void addMovie() {
         System.out.println("================上架电影====================");
@@ -386,7 +386,7 @@ public class MovieSystem {
     }
 
     /**
-      客户操作界面
+        客户操作界面
      */
     private static void showCustomerMain() {
         while (true) {
@@ -460,7 +460,7 @@ public class MovieSystem {
     }
 
     /**
-      用户购票功能  ALL_MOVIES = {b1=[p1,p2,p3,..] , b2=[p2,p3,...]}
+        用户购票功能  ALL_MOVIES = {b1=[p1,p2,p3,..] , b2=[p2,p3,...]}
      */
     private static void buyMovie() {
         showAllMovies();
@@ -570,7 +570,7 @@ public class MovieSystem {
     }
 
     /**
-       根据商家店铺名称查询商家对象
+         根据商家店铺名称查询商家对象
      * @return
      */
     public static Business getBusinessByShopName(String shopName){
@@ -584,7 +584,7 @@ public class MovieSystem {
     }
 
     /**
-      用户功能：展示全部商家和其排片信息
+        用户功能：展示全部商家和其排片信息
      */
     private static void showAllMovies() {
         System.out.println("=============展示全部商家排片信息=================");

@@ -1,5 +1,5 @@
 package com.itheima.day22_net_app.d8_socket4;
-import com.itheima.d7_socket3.ServerReaderThread;
+import com.itheima.day22_net_app.d7_socket3.ServerReaderThread;
 
 import java.net.ServerSocket;
 import java.net.Socket;

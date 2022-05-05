@@ -1,6 +1,6 @@
 package com.itheima.day16_collection_map_app2.d9_map_impl;
 
-import com.itheima.d1_collection_set.Student;
+import com.itheima.day16_collection_map_app2.d1_collection_set.Student;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,8 +1,8 @@
 package com.itheima.day12_oop_app2.d1_package;
 
 
-import com.itheima.d1_package.demo1.Animal;
-import com.itheima.d1_package.demo1.Cat;
+import com.itheima.day12_oop_app2.d1_package.demo1.Animal;
+import com.itheima.day12_oop_app2.d1_package.demo1.Cat;
 
 public class Test {
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class Test {
         c1.run();
 
         // 指定使用demo2下的Cat类
-        com.itheima.d1_package.demo2.Cat c2 = new  com.itheima.d1_package.demo2.Cat();
+        com.itheima.day12_oop_app2.d1_package.demo2.Cat c2 = new  com.itheima.day12_oop_app2.d1_package.demo2.Cat();
         c2.run();
     }
 }

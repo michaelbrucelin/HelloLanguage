@@ -1,7 +1,7 @@
 package com.itheima.day12_oop_app2.d2_modifier.itheima;
 
 
-import com.itheima.d2_modifier.itcast.Fu;
+import com.itheima.day12_oop_app2.d2_modifier.itcast.Fu;
 
 public class Demo {
 

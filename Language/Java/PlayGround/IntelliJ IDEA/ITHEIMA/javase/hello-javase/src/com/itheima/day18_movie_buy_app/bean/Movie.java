@@ -1,6 +1,6 @@
 package com.itheima.day18_movie_buy_app.bean;
 
-import com.itheima.run.MovieSystem;
+import com.itheima.day18_movie_buy_app.run.MovieSystem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
