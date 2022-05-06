@@ -1,5 +1,4 @@
-// Findlinks2 does an HTTP GET on each URL, parses the
-// result as HTML, and prints the links within it.
+// Findlinks2 does an HTTP GET on each URL, parses the result as HTML, and prints the links within it.
 //
 // Usage:
 //	findlinks url ...
@@ -13,7 +12,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-// visit appends to links each link found in n, and returns the result.
+// visit函数会将n节点中的每个链接添加到结果中
 func visit(links []string, n *html.Node) []string {
 	if n.Type == html.ElementNode && n.Data == "a" {
 		for _, a := range n.Attr {
@@ -41,8 +40,7 @@ func main() {
 	}
 }
 
-// findLinks performs an HTTP GET request for url, parses the
-// response as HTML, and extracts and returns the links.
+// findLinks发起一个HTTP的GET请求，解析返回的HTML页面，并返回所有链接
 func findLinks(url string) ([]string, error) {
 	resp, err := http.Get(url)
 	if err != nil {

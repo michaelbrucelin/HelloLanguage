@@ -1,9 +1,5 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 123.
-
-// Outline prints the outline of an HTML document tree.
+// outline使用递归遍历所有HTML文本中的节点树，并输出树的结构。
+// 当递归遇到每个元素时，它都会将元素标签压入栈，然后输出栈。
 package main
 
 import (
@@ -13,7 +9,6 @@ import (
 	"golang.org/x/net/html"
 )
 
-//!+
 func main() {
 	doc, err := html.Parse(os.Stdin)
 	if err != nil {
@@ -25,7 +20,7 @@ func main() {
 
 func outline(stack []string, n *html.Node) {
 	if n.Type == html.ElementNode {
-		stack = append(stack, n.Data) // push tag
+		stack = append(stack, n.Data) // 把标签压入栈
 		fmt.Println(stack)
 	}
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
@@ -33,4 +28,14 @@ func outline(stack []string, n *html.Node) {
 	}
 }
 
-//!-
+/*
+curl https://go.dev | go run outline.go
+> [html]
+> [html head]
+> [html head link]
+> [html head script]
+> [html head meta]
+> [html head meta]
+> ... ...
+> [html body footer script]
+*/
