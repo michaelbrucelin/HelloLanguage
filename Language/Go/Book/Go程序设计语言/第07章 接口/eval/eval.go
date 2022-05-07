@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 198.
-
 // Package eval provides an expression evaluator.
 package eval
 
@@ -11,13 +6,7 @@ import (
 	"math"
 )
 
-//!+env
-
 type Env map[Var]float64
-
-//!-env
-
-//!+Eval1
 
 func (v Var) Eval(env Env) float64 {
 	return env[v]
@@ -26,10 +15,6 @@ func (v Var) Eval(env Env) float64 {
 func (l literal) Eval(_ Env) float64 {
 	return float64(l)
 }
-
-//!-Eval1
-
-//!+Eval2
 
 func (u unary) Eval(env Env) float64 {
 	switch u.op {
@@ -66,5 +51,3 @@ func (c call) Eval(env Env) float64 {
 	}
 	panic(fmt.Sprintf("unsupported function call: %s", c.fn))
 }
-
-//!-Eval2

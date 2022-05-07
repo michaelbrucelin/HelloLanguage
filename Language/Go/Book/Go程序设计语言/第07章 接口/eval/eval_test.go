@@ -1,6 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 package eval
 
 import (
@@ -9,7 +6,6 @@ import (
 	"testing"
 )
 
-//!+Eval
 func TestEval(t *testing.T) {
 	tests := []struct {
 		expr string
@@ -22,11 +18,9 @@ func TestEval(t *testing.T) {
 		{"5 / 9 * (F - 32)", Env{"F": -40}, "-40"},
 		{"5 / 9 * (F - 32)", Env{"F": 32}, "0"},
 		{"5 / 9 * (F - 32)", Env{"F": 212}, "100"},
-		//!-Eval
 		// additional tests that don't appear in the book
 		{"-1 + -x", Env{"x": 1}, "-2"},
 		{"-1 - x", Env{"x": 1}, "-2"},
-		//!+Eval
 	}
 	var prevExpr string
 	for _, test := range tests {
@@ -49,10 +43,7 @@ func TestEval(t *testing.T) {
 	}
 }
 
-//!-Eval
-
 /*
-//!+output
 sqrt(A / pi)
 	map[A:87616 pi:3.141592653589793] => 167
 
@@ -64,7 +55,6 @@ pow(x, 3) + pow(y, 3)
 	map[F:-40] => -40
 	map[F:32] => 0
 	map[F:212] => 100
-//!-output
 
 // Additional outputs that don't appear in the book.
 
@@ -101,7 +91,6 @@ func TestErrors(t *testing.T) {
 }
 
 /*
-//!+errors
 x % 2               unexpected '%'
 math.Pi             unexpected '.'
 !true               unexpected '!'
@@ -109,5 +98,4 @@ math.Pi             unexpected '.'
 
 log(10)             unknown function "log"
 sqrt(1, 2)          call to sqrt has 2 args, want 1
-//!-errors
 */

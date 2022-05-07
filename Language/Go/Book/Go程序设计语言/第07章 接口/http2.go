@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 192.
-
 // Http2 is an e-commerce server with /list and /price endpoints.
 package main
 
@@ -23,7 +18,6 @@ func (d dollars) String() string { return fmt.Sprintf("$%.2f", d) }
 
 type database map[string]dollars
 
-//!+handler
 func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	switch req.URL.Path {
 	case "/list":
@@ -44,5 +38,3 @@ func (db database) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "no such page: %s\n", req.URL)
 	}
 }
-
-//!-handler

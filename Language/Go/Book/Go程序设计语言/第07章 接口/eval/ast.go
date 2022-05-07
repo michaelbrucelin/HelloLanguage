@@ -1,6 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 package eval
 
 // An Expr is an arithmetic expression.
@@ -10,8 +7,6 @@ type Expr interface {
 	// Check reports errors in this Expr and adds its Vars to the set.
 	Check(vars map[Var]bool) error
 }
-
-//!+ast
 
 // A Var identifies a variable, e.g., x.
 type Var string
@@ -36,5 +31,3 @@ type call struct {
 	fn   string // one of "pow", "sin", "sqrt"
 	args []Expr
 }
-
-//!-ast

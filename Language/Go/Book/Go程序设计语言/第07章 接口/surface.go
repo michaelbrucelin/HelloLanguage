@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 203.
-
 // The surface program plots the 3-D surface of a user-provided function.
 package main
 
@@ -12,12 +7,9 @@ import (
 	"log"
 	"math"
 	"net/http"
+
+	"./eval"
 )
-
-//!+parseAndCheck
-import "gopl.io/ch7/eval"
-
-//!-parseAndCheck
 
 // -- copied from gopl.io/ch3/surface --
 
@@ -63,7 +55,6 @@ func surface(w io.Writer, f func(x, y float64) float64) {
 
 // -- main code for gopl.io/ch7/surface --
 
-//!+parseAndCheck
 func parseAndCheck(s string) (eval.Expr, error) {
 	if s == "" {
 		return nil, fmt.Errorf("empty expression")
@@ -84,9 +75,6 @@ func parseAndCheck(s string) (eval.Expr, error) {
 	return expr, nil
 }
 
-//!-parseAndCheck
-
-//!+plot
 func plot(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	expr, err := parseAndCheck(r.Form.Get("expr"))
@@ -101,12 +89,7 @@ func plot(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//!-plot
-
-//!+main
 func main() {
 	http.HandleFunc("/plot", plot)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 }
-
-//!-main

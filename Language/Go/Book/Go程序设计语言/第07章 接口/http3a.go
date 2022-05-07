@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 195.
-
 // Http3a is an e-commerce server that registers the /list and /price
 // endpoints by calling (*http.ServeMux).HandleFunc.
 package main
@@ -16,10 +11,8 @@ import (
 func main() {
 	db := database{"shoes": 50, "socks": 5}
 	mux := http.NewServeMux()
-	//!+main
 	mux.HandleFunc("/list", db.list)
 	mux.HandleFunc("/price", db.price)
-	//!-main
 	log.Fatal(http.ListenAndServe("localhost:8000", mux))
 }
 
@@ -42,7 +35,6 @@ func (db database) price(w http.ResponseWriter, req *http.Request) {
 }
 
 /*
-//!+handlerfunc
 package http
 
 type HandlerFunc func(w ResponseWriter, r *Request)
@@ -50,5 +42,4 @@ type HandlerFunc func(w ResponseWriter, r *Request)
 func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request) {
 	f(w, r)
 }
-//!-handlerfunc
 */

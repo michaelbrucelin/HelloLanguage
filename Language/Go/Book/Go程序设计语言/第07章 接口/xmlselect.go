@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 214.
-//!+
-
 // Xmlselect prints the text of selected elements of an XML document.
 package main
 
@@ -52,5 +46,3 @@ func containsAll(x, y []string) bool {
 	}
 	return false
 }
-
-//!-
