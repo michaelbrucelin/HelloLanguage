@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 234.
-
 // The thumbnail package produces thumbnail-size images from
 // larger images.  Only JPEG images are currently supported.
 package thumbnail

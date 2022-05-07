@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 250.
-
 // The du3 command computes the disk usage of the files in a directory.
 package main
 
@@ -22,11 +17,9 @@ import (
 
 var vFlag = flag.Bool("v", false, "show verbose progress messages")
 
-//!+
 func main() {
 	// ...determine roots...
 
-	//!-
 	flag.Parse()
 
 	// Determine the initial directories.
@@ -35,7 +28,6 @@ func main() {
 		roots = []string{"."}
 	}
 
-	//!+
 	// Traverse each root of the file tree in parallel.
 	fileSizes := make(chan int64)
 	var n sync.WaitGroup
@@ -47,7 +39,6 @@ func main() {
 		n.Wait()
 		close(fileSizes)
 	}()
-	//!-
 
 	// Print the results periodically.
 	var tick <-chan time.Time
@@ -70,11 +61,8 @@ loop:
 	}
 
 	printDiskUsage(nfiles, nbytes) // final totals
-	//!+
 	// ...select loop...
 }
-
-//!-
 
 func printDiskUsage(nfiles, nbytes int64) {
 	fmt.Printf("%d files  %.1f GB\n", nfiles, float64(nbytes)/1e9)
@@ -82,7 +70,6 @@ func printDiskUsage(nfiles, nbytes int64) {
 
 // walkDir recursively walks the file tree rooted at dir
 // and sends the size of each found file on fileSizes.
-//!+walkDir
 func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
 	defer n.Done()
 	for _, entry := range dirents(dir) {
@@ -96,9 +83,6 @@ func walkDir(dir string, n *sync.WaitGroup, fileSizes chan<- int64) {
 	}
 }
 
-//!-walkDir
-
-//!+sema
 // sema is a counting semaphore for limiting concurrency in dirents.
 var sema = make(chan struct{}, 20)
 
@@ -107,7 +91,6 @@ func dirents(dir string) []os.FileInfo {
 	sema <- struct{}{}        // acquire token
 	defer func() { <-sema }() // release token
 	// ...
-	//!-sema
 
 	entries, err := ioutil.ReadDir(dir)
 	if err != nil {

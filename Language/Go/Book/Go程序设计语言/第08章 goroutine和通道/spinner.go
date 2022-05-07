@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 218.
-
 // Spinner displays an animation while computing the 45th Fibonacci number.
 package main
 
@@ -11,7 +6,6 @@ import (
 	"time"
 )
 
-//!+
 func main() {
 	go spinner(100 * time.Millisecond)
 	const n = 45
@@ -34,5 +28,3 @@ func fib(x int) int {
 	}
 	return fib(x-1) + fib(x-2)
 }
-
-//!-

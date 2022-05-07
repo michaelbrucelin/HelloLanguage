@@ -1,14 +1,8 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 228.
-
 // Pipeline1 demonstrates an infinite 3-stage pipeline.
 package main
 
 import "fmt"
 
-//!+
 func main() {
 	naturals := make(chan int)
 	squares := make(chan int)
@@ -33,5 +27,3 @@ func main() {
 		fmt.Println(<-squares)
 	}
 }
-
-//!-

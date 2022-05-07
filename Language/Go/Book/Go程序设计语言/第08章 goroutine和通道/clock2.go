@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 222.
-
 // Clock is a TCP server that periodically writes the time.
 package main
 
@@ -29,7 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//!+
+
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
@@ -38,5 +33,4 @@ func main() {
 		}
 		go handleConn(conn) // handle connections concurrently
 	}
-	//!-
 }

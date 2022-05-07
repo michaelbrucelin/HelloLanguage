@@ -1,10 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 219.
-//!+
-
-// Clock1 is a TCP server that periodically writes the time.
+// clock1是一个定期报告时间的TCP服务器
 package main
 
 import (
@@ -39,5 +33,3 @@ func handleConn(c net.Conn) {
 		time.Sleep(1 * time.Second)
 	}
 }
-
-//!-
