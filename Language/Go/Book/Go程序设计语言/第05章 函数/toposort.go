@@ -1,9 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 136.
-
-// The toposort program prints the nodes of a DAG in topological order.
+// toposort反映了所有课程和先决课程的关系
 package main
 
 import (
@@ -11,18 +6,11 @@ import (
 	"sort"
 )
 
-//!+table
 // prereqs maps computer science courses to their prerequisites.
 var prereqs = map[string][]string{
-	"algorithms": {"data structures"},
-	"calculus":   {"linear algebra"},
-
-	"compilers": {
-		"data structures",
-		"formal languages",
-		"computer organization",
-	},
-
+	"algorithms":            {"data structures"},
+	"calculus":              {"linear algebra"},
+	"compilers":             {"data structures", "formal languages", "computer organization"},
 	"data structures":       {"discrete math"},
 	"databases":             {"data structures"},
 	"discrete math":         {"intro to programming"},
@@ -32,9 +20,6 @@ var prereqs = map[string][]string{
 	"programming languages": {"data structures", "computer organization"},
 }
 
-//!-table
-
-//!+main
 func main() {
 	for i, course := range topoSort(prereqs) {
 		fmt.Printf("%d:\t%s\n", i+1, course)
@@ -66,4 +51,19 @@ func topoSort(m map[string][]string) []string {
 	return order
 }
 
-//!-main
+/*
+go run toposort.go
+> 1:      intro to programming
+> 2:      discrete math
+> 3:      data structures
+> 4:      algorithms
+> 5:      linear algebra
+> 6:      calculus
+> 7:      formal languages
+> 8:      computer organization
+> 9:      compilers
+> 10:     databases
+> 11:     operating systems
+> 12:     networks
+> 13:     programming languages
+*/

@@ -6,11 +6,11 @@ import (
 	"log"
 	"os"
 
-	"gopl.io/ch5/links"
+	"links"
 )
 
-// breadthFirst calls f for each item in the worklist.
-// Any items returned by f are added to the worklist.
+// breadthFirst对每个worklist元素调用f
+// 并将返回的内容添加到worklist中，对每一个元素，最多调用一次f
 // f is called at most once for each item.
 func breadthFirst(f func(item string) []string, worklist []string) {
 	seen := make(map[string]bool)
@@ -36,7 +36,7 @@ func crawl(url string) []string {
 }
 
 func main() {
-	// Crawl the web breadth-first,
-	// starting from the command-line arguments.
+	// 开始广度遍历
+	// 从命令行参数开始
 	breadthFirst(crawl, os.Args[1:])
 }

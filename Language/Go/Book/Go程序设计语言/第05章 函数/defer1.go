@@ -1,14 +1,8 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 150.
-
 // Defer1 demonstrates a deferred call being invoked during a panic.
 package main
 
 import "fmt"
 
-//!+f
 func main() {
 	f(3)
 }
@@ -19,30 +13,26 @@ func f(x int) {
 	f(x - 1)
 }
 
-//!-f
-
 /*
-//!+stdout
-f(3)
-f(2)
-f(1)
-defer 1
-defer 2
-defer 3
-//!-stdout
-
-//!+stderr
-panic: runtime error: integer divide by zero
-main.f(0)
-        src/gopl.io/ch5/defer1/defer.go:14
-main.f(1)
-        src/gopl.io/ch5/defer1/defer.go:16
-main.f(2)
-        src/gopl.io/ch5/defer1/defer.go:16
-
-main.f(3)
-        src/gopl.io/ch5/defer1/defer.go:16
-main.main()
-        src/gopl.io/ch5/defer1/defer.go:10
-//!-stderr
+go run defer1.go
+> f(3)
+> f(2)
+> f(1)
+> defer 1
+> defer 2
+> defer 3
+> panic: runtime error: integer divide by zero
+>
+> goroutine 1 [running]:
+> main.f(0x4b4268?)
+>         /root/GithubProjects/HelloLanguage/Language/Go/Book/Go程序设计语言/第05章 函数/defer1.go:11 +0x114
+> main.f(0x1)
+>         /root/GithubProjects/HelloLanguage/Language/Go/Book/Go程序设计语言/第05章 函数/defer1.go:13 +0xf6
+> main.f(0x2)
+>         /root/GithubProjects/HelloLanguage/Language/Go/Book/Go程序设计语言/第05章 函数/defer1.go:13 +0xf6
+> main.f(0x3)
+>         /root/GithubProjects/HelloLanguage/Language/Go/Book/Go程序设计语言/第05章 函数/defer1.go:13 +0xf6
+> main.main()
+>         /root/GithubProjects/HelloLanguage/Language/Go/Book/Go程序设计语言/第05章 函数/defer1.go:7 +0x1e
+> exit status 2
 */

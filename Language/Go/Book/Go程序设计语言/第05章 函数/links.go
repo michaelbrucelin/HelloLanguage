@@ -1,10 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 138.
-//!+Extract
-
-// Package links provides a link-extraction function.
+// links包提供了解析链接的函数
 package links
 
 import (
@@ -14,8 +8,8 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Extract makes an HTTP GET request to the specified URL, parses
-// the response as HTML, and returns the links in the HTML document.
+// Extract函数向给定URL发起HTTP GET请求
+// 解析HTML并返回HTML文档中存在的链接
 func Extract(url string) ([]string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -41,7 +35,7 @@ func Extract(url string) ([]string, error) {
 				}
 				link, err := resp.Request.URL.Parse(a.Val)
 				if err != nil {
-					continue // ignore bad URLs
+					continue // 忽略不合法的URL
 				}
 				links = append(links, link.String())
 			}
@@ -51,9 +45,7 @@ func Extract(url string) ([]string, error) {
 	return links, nil
 }
 
-//!-Extract
-
-// Copied from gopl.io/ch5/outline2.
+// Copied from outline2.
 func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
 		pre(n)

@@ -1,13 +1,7 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 144.
-
 // Title1 prints the title of an HTML document specified by a URL.
 package main
 
 /*
-//!+output
 $ go build gopl.io/ch5/title1
 $ ./title1 http://gopl.io
 The Go Programming Language
@@ -16,7 +10,6 @@ Effective Go - The Go Programming Language
 $ ./title1 https://golang.org/doc/gopher/frontpage.png
 title: https://golang.org/doc/gopher/frontpage.png
     has type image/png, not text/html
-//!-output
 */
 
 import (
@@ -28,7 +21,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Copied from gopl.io/ch5/outline2.
+// Copied from outline2.
 func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
 		pre(n)
@@ -41,14 +34,13 @@ func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	}
 }
 
-//!+
 func title(url string) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
 	}
 
-	// Check Content-Type is HTML (e.g., "text/html; charset=utf-8").
+	// 检查Content-Type是HTML(e.g., "text/html; charset=utf-8").
 	ct := resp.Header.Get("Content-Type")
 	if ct != "text/html" && !strings.HasPrefix(ct, "text/html;") {
 		resp.Body.Close()
@@ -70,8 +62,6 @@ func title(url string) error {
 	forEachNode(doc, visitNode, nil)
 	return nil
 }
-
-//!-
 
 func main() {
 	for _, arg := range os.Args[1:] {

@@ -1,13 +1,7 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 160.
-
 // The urlvalues command demonstrates a map type with methods.
 package main
 
 /*
-//!+values
 package url
 
 // Values maps a string key to a list of values.
@@ -27,7 +21,6 @@ func (v Values) Get(key string) string {
 func (v Values) Add(key, value string) {
 	v[key] = append(v[key], value)
 }
-//!-values
 */
 
 import (
@@ -36,18 +29,16 @@ import (
 )
 
 func main() {
-	//!+main
-	m := url.Values{"lang": {"en"}} // direct construction
+	m := url.Values{"lang": {"en"}} // 直接构造
 	m.Add("item", "1")
 	m.Add("item", "2")
 
 	fmt.Println(m.Get("lang")) // "en"
 	fmt.Println(m.Get("q"))    // ""
-	fmt.Println(m.Get("item")) // "1"      (first value)
-	fmt.Println(m["item"])     // "[1 2]"  (direct map access)
+	fmt.Println(m.Get("item")) // "1"      (第一个值)
+	fmt.Println(m["item"])     // "[1 2]"  (直接访问map)
 
 	m = nil
 	fmt.Println(m.Get("item")) // ""
-	m.Add("item", "3")         // panic: assignment to entry in nil map
-	//!-main
+	m.Add("item", "3")         // panic（宕机）: 赋值给空的map类型
 }

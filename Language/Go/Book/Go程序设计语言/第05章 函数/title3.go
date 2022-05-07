@@ -1,8 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 153.
-
 // Title3 prints the title of an HTML document specified by a URL.
 package main
 
@@ -15,7 +10,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Copied from gopl.io/ch5/outline2.
+// Copied from outline2.
 func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	if pre != nil {
 		pre(n)
@@ -28,30 +23,29 @@ func forEachNode(n *html.Node, pre, post func(n *html.Node)) {
 	}
 }
 
-//!+
-// soleTitle returns the text of the first non-empty title element
-// in doc, and an error if there was not exactly one.
+// soleTitle返回文档中的第一个非空标题元素
+// 如果没有title标题则返回错误
 func soleTitle(doc *html.Node) (title string, err error) {
 	type bailout struct{}
 
 	defer func() {
 		switch p := recover(); p {
 		case nil:
-			// no panic
+			// 没有宕机
 		case bailout{}:
-			// "expected" panic
+			// "expected预期的"宕机
 			err = fmt.Errorf("multiple title elements")
 		default:
-			panic(p) // unexpected panic; carry on panicking
+			panic(p) // 未预期的宕机；继续宕机过程
 		}
 	}()
 
-	// Bail out of recursion if we find more than one non-empty title.
+	// 如果发现多余一个非空标题，退出递归
 	forEachNode(doc, func(n *html.Node) {
 		if n.Type == html.ElementNode && n.Data == "title" &&
 			n.FirstChild != nil {
 			if title != "" {
-				panic(bailout{}) // multiple title elements
+				panic(bailout{}) // 多个标题元素
 			}
 			title = n.FirstChild.Data
 		}
@@ -61,8 +55,6 @@ func soleTitle(doc *html.Node) (title string, err error) {
 	}
 	return title, nil
 }
-
-//!-
 
 func title(url string) error {
 	resp, err := http.Get(url)

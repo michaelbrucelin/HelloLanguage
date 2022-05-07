@@ -38,3 +38,19 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+/*
+go run wait.go
+> usage: wait url
+> exit status 1
+
+go run wait.go www.baidu.com
+> 2022/05/07 02:09:16 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> 2022/05/07 02:09:17 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> 2022/05/07 02:09:19 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> 2022/05/07 02:09:23 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> 2022/05/07 02:09:31 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> 2022/05/07 02:09:47 server not responding (Head "www.baidu.com": unsupported protocol scheme ""); retrying...
+> Site is down: server www.baidu.com failed to respond after 1m0s
+> exit status 1
+*/

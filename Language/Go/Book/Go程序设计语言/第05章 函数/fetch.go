@@ -1,9 +1,4 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 148.
-
-// Fetch saves the contents of a URL into a local file.
+// fetch下载URL并返回本地文件的名字和长度
 package main
 
 import (
@@ -14,9 +9,7 @@ import (
 	"path"
 )
 
-//!+
-// Fetch downloads the URL and returns the
-// name and length of the local file.
+// Fetch downloads the URL and returns the name and length of the local file.
 func fetch(url string) (filename string, n int64, err error) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -33,14 +26,12 @@ func fetch(url string) (filename string, n int64, err error) {
 		return "", 0, err
 	}
 	n, err = io.Copy(f, resp.Body)
-	// Close file, but prefer error from Copy, if any.
+	// 关闭文件，并保留错误信息
 	if closeErr := f.Close(); err == nil {
 		err = closeErr
 	}
 	return local, n, err
 }
-
-//!-
 
 func main() {
 	for _, url := range os.Args[1:] {
