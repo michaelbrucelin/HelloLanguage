@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"links"
+	"./links"
 )
 
 // breadthFirst对每个worklist元素调用f
