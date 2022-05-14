@@ -11,7 +11,7 @@ function foo (x) return 2*x end    -- 这种写法只是一种语法糖，是下
 foo = function (x) return 2*x end  -- 这种写法是本质，所以说函数在lua中是值
 --]]
 
-a = { p = print }        --
+a = { p = print }
 a.p("Hello World!")      --> Hello World!
 print = math.sin         -- 'print'现在引用了正弦函数
 a.p(print(math.pi / 2))  --> 1.0
