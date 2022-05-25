@@ -13,7 +13,7 @@
 typedef int Status;   /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 typedef int ElemType; /* ElemType类型根据实际情况而定，这里假设为int */
 
-typedef char String[MAXSIZE + 1]; /*  0号单元存放串的长度 */
+typedef char String[MAXSIZE + 1]; /* 0号单元存放串的长度 */
 
 /* 生成一个其值等于chars的串T */
 Status StrAssign(String T, char *chars)
@@ -32,11 +32,11 @@ Status StrAssign(String T, char *chars)
 
 Status ClearString(String S)
 {
-    S[0] = 0; /*  令串长为零 */
+    S[0] = 0; /* 令串长为零 */
     return OK;
 }
 
-/*  输出字符串T。 */
+/* 输出字符串T。 */
 void StrPrint(String T)
 {
     int i;
@@ -45,7 +45,7 @@ void StrPrint(String T)
     printf("\n");
 }
 
-/*  输出Next数组值。 */
+/* 输出Next数组值。 */
 void NextPrint(int next[], int length)
 {
     int i;
@@ -108,7 +108,7 @@ void get_next(String T, int *next)
 }
 
 /* 返回子串T在主串S中第pos个字符之后的位置。若不存在，则函数返回值为0。 */
-/*  T非空，1≤pos≤StrLength(S)。 */
+/* T非空，1≤pos≤StrLength(S)。 */
 int Index_KMP(String S, String T, int pos)
 {
     int n = 0;

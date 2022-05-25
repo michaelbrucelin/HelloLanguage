@@ -22,19 +22,19 @@ Status GetElem(LinkList L, int i, ElemType *e)
     int j;
     LinkList p;        /* 声明一结点p */
     p = L->next;       /* 让p指向链表L的第一个结点 */
-    j = 1;             /*  j为计数器 */
+    j = 1;             /* j为计数器 */
     while (p && j < i) /* p不为空或者计数器j还没有等于i时，循环继续 */
     {
         p = p->next; /* 让p指向下一个结点 */
         ++j;
     }
     if (!p || j > i)
-        return ERROR; /*  第i个元素不存在 */
-    *e = p->data;     /*  取第i个元素的数据 */
+        return ERROR; /* 第i个元素不存在 */
+    *e = p->data;     /* 取第i个元素的数据 */
     return OK;
 }
 
-// s->next = p->next; /* 将p的后继结点赋值给s的后继  */
+// s->next = p->next; /* 将p的后继结点赋值给s的后继 */
 // p->next = s;       /* 将s赋值给p的后继 */
 
 /* 初始条件：链式线性表L已存在,1≤i≤ListLength(L)， */
@@ -85,7 +85,7 @@ Status ListDelete(LinkList *L, int i, ElemType *e)
     return OK;
 }
 
-/*  随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */
+/* 随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */
 void CreateListHead(LinkList *L, int n)
 {
     LinkList p;
@@ -102,7 +102,7 @@ void CreateListHead(LinkList *L, int n)
     }
 }
 
-/*  随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
+/* 随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
 void CreateListTail(LinkList *L, int n)
 {
     LinkList p, r;
@@ -124,8 +124,8 @@ void CreateListTail(LinkList *L, int n)
 Status ClearList(LinkList *L)
 {
     LinkList p, q;
-    p = (*L)->next; /*  p指向第一个结点 */
-    while (p)       /*  没到表尾 */
+    p = (*L)->next; /* p指向第一个结点 */
+    while (p)       /* 没到表尾 */
     {
         q = p->next;
         free(p);

@@ -27,7 +27,7 @@ Status visit(SElemType c)
     return OK;
 }
 
-/*  构造一个空栈S */
+/* 构造一个空栈S */
 Status InitStack(SqDoubleStack *S)
 {
     S->top1 = -1;

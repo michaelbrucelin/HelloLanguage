@@ -52,8 +52,8 @@ Status ListEmpty(LinkList L)
 Status ClearList(LinkList *L)
 {
     LinkList p, q;
-    p = (*L)->next; /*  p指向第一个结点 */
-    while (p)       /*  没到表尾 */
+    p = (*L)->next; /* p指向第一个结点 */
+    while (p)       /* 没到表尾 */
     {
         q = p->next;
         free(p);
@@ -83,15 +83,15 @@ Status GetElem(LinkList L, int i, ElemType *e)
     int j;
     LinkList p;        /* 声明一结点p */
     p = L->next;       /* 让p指向链表L的第一个结点 */
-    j = 1;             /*  j为计数器 */
+    j = 1;             /* j为计数器 */
     while (p && j < i) /* p不为空或者计数器j还没有等于i时，循环继续 */
     {
         p = p->next; /* 让p指向下一个结点 */
         ++j;
     }
     if (!p || j > i)
-        return ERROR; /*  第i个元素不存在 */
-    *e = p->data;     /*  取第i个元素的数据 */
+        return ERROR; /* 第i个元素不存在 */
+    *e = p->data;     /* 取第i个元素的数据 */
     return OK;
 }
 
@@ -128,7 +128,7 @@ Status ListInsert(LinkList *L, int i, ElemType e)
     }
     if (!p || j > i)
         return ERROR;                   /* 第i个元素不存在 */
-    s = (LinkList)malloc(sizeof(Node)); /*  生成新结点(C语言标准函数) */
+    s = (LinkList)malloc(sizeof(Node)); /* 生成新结点(C语言标准函数) */
     s->data = e;
     s->next = p->next; /* 将p的后继结点赋值给s的后继  */
     p->next = s;       /* 将s赋值给p的后继 */
@@ -171,24 +171,24 @@ Status ListTraverse(LinkList L)
     return OK;
 }
 
-/*  随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */
+/* 随机产生n个元素的值，建立带表头结点的单链线性表L（头插法） */
 void CreateListHead(LinkList *L, int n)
 {
     LinkList p;
     int i;
     srand(time(0)); /* 初始化随机数种子 */
     *L = (LinkList)malloc(sizeof(Node));
-    (*L)->next = NULL; /*  先建立一个带头结点的单链表 */
+    (*L)->next = NULL; /* 先建立一个带头结点的单链表 */
     for (i = 0; i < n; i++)
     {
-        p = (LinkList)malloc(sizeof(Node)); /*  生成新结点 */
-        p->data = rand() % 100 + 1;         /*  随机生成100以内的数字 */
+        p = (LinkList)malloc(sizeof(Node)); /* 生成新结点 */
+        p->data = rand() % 100 + 1;         /* 随机生成100以内的数字 */
         p->next = (*L)->next;
-        (*L)->next = p; /*  插入到表头 */
+        (*L)->next = p; /* 插入到表头 */
     }
 }
 
-/*  随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
+/* 随机产生n个元素的值，建立带表头结点的单链线性表L（尾插法） */
 void CreateListTail(LinkList *L, int n)
 {
     LinkList p, r;
@@ -198,8 +198,8 @@ void CreateListTail(LinkList *L, int n)
     r = *L;                              /* r为指向尾部的结点 */
     for (i = 0; i < n; i++)
     {
-        p = (Node *)malloc(sizeof(Node)); /*  生成新结点 */
-        p->data = rand() % 100 + 1;       /*  随机生成100以内的数字 */
+        p = (Node *)malloc(sizeof(Node)); /* 生成新结点 */
+        p->data = rand() % 100 + 1;       /* 随机生成100以内的数字 */
         r->next = p;                      /* 将表尾终端结点的指针指向新结点 */
         r = p;                            /* 将当前的新结点定义为表尾终端结点 */
     }

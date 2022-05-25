@@ -50,7 +50,7 @@ int Malloc_SSL(StaticLinkList space)
     return i;
 }
 
-/*  将下标为k的空闲结点回收到备用链表 */
+/* 将下标为k的空闲结点回收到备用链表 */
 void Free_SSL(StaticLinkList space, int k)
 {
     space[k].cur = space[0].cur; /* 把第一个元素的cur值赋给要删除的分量cur */
@@ -70,7 +70,7 @@ int ListLength(StaticLinkList L)
     return j;
 }
 
-/*  在L中第i个元素之前插入新的数据元素e   */
+/* 在L中第i个元素之前插入新的数据元素e */
 Status ListInsert(StaticLinkList L, int i, ElemType e)
 {
     int j, k, l;
@@ -90,7 +90,7 @@ Status ListInsert(StaticLinkList L, int i, ElemType e)
     return ERROR;
 }
 
-/*  删除在L中第i个数据元素   */
+/* 删除在L中第i个数据元素   */
 Status ListDelete(StaticLinkList L, int i)
 {
     int j, k;

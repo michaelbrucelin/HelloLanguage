@@ -13,14 +13,14 @@
 
 typedef int Status;                        /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 typedef int TElemType;                     /* 树结点的数据类型，目前暂定为整型 */
-typedef TElemType SqBiTree[MAX_TREE_SIZE]; /* 0号单元存储根结点  */
+typedef TElemType SqBiTree[MAX_TREE_SIZE]; /* 0号单元存储根结点 */
 
 typedef struct
 {
     int level, order; /* 结点的层,本层序号(按满二叉树计算) */
 } Position;
 
-TElemType Nil = 0; /*  设整型以0为空 */
+TElemType Nil = 0; /* 设整型以0为空 */
 
 Status visit(TElemType c)
 {
@@ -89,7 +89,7 @@ int BiTreeDepth(SqBiTree T)
 }
 
 /* 初始条件: 二叉树T存在 */
-/* 操作结果:  当T不空,用e返回T的根,返回OK;否则返回ERROR,e无定义 */
+/* 操作结果: 当T不空,用e返回T的根,返回OK;否则返回ERROR,e无定义 */
 Status Root(SqBiTree T, TElemType *e)
 {
     if (BiTreeEmpty(T)) /* T空 */
@@ -115,7 +115,7 @@ Status Assign(SqBiTree T, Position e, TElemType value)
     int i = (int)powl(2, e.level - 1) + e.order - 2; /* 将层、本层序号转为矩阵的序号 */
     if (value != Nil && T[(i + 1) / 2 - 1] == Nil)   /* 给叶子赋非空值但双亲为空 */
         return ERROR;
-    else if (value == Nil && (T[i * 2 + 1] != Nil || T[i * 2 + 2] != Nil)) /*  给双亲赋空值但有叶子（不空） */
+    else if (value == Nil && (T[i * 2 + 1] != Nil || T[i * 2 + 2] != Nil)) /* 给双亲赋空值但有叶子（不空） */
         return ERROR;
     T[i] = value;
     return OK;
