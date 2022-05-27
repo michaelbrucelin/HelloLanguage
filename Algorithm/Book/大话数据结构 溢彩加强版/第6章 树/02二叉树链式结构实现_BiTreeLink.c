@@ -8,6 +8,7 @@
 #define ERROR 0
 #define TRUE 1
 #define FALSE 0
+#define OVERFLOW -2 /* 堆溢出，add by michaelbrucelin */
 
 #define MAXSIZE 100 /* 存储空间初始分配量 */
 

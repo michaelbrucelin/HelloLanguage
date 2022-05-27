@@ -1,3 +1,9 @@
+#include <string.h>
+
+#define MAXSIZE 40 /* 存储空间初始分配量 */
+
+typedef char String[MAXSIZE + 1]; /* 0号单元存放串的长度 */
+
 /*  T为非空串。若主串S中第pos个字符之后存在与T相等的子串， */
 /*  则返回第一个这样的子串在S中的位置，否则返回0 */
 int Index(String S, String T, int pos)
