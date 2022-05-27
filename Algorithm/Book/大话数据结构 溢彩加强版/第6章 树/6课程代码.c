@@ -1,8 +1,16 @@
+#include <stdlib.h>
 
 /* 树的双亲表示法结点结构定义 */
 #define MAX_TREE_SIZE 100
 
+#define OK 1
+#define ERROR 0
+#define TRUE 1
+#define FALSE 0
+#define OVERFLOW -2 /* 堆溢出，add by michaelbrucelin */
+
 typedef int TElemType; /* 树结点的数据类型，目前暂定为整型 */
+typedef int Status;    /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 
 typedef struct PTNode /* 结点结构 */
 {
@@ -159,24 +167,24 @@ Status InOrderTraverse_Thr(BiThrTree T)
     {
         while (p->LTag == Link) /*当LTag==0时循环到中序序列第一个结点 */
             p = p->lchild;
-        printf（ "%c", p->data）; /* 显示结点数据，可以更改为其他对结点操作 */
+        printf("%c", p->data); /* 显示结点数据，可以更改为其他对结点操作 */
         while (p->RTag == Thread && p->rchild != T)
         {
             p = p->rchild;
-            printf（ "%c", p->data）; /* 访问后继结点 */
+            printf("%c", p->data); /* 访问后继结点 */
         }
         p = p->rchild; /*  p进至其右子树根 */
     }
     return OK;
 }
 
-if
-    （a < 60） b =＂不及格＂;
-else if
-    （a < 70） b =＂及格＂;
-else if
-    （a < 80） b =＂中等＂;
-else if
-    （a < 90） b =＂良好＂;
+if (a < 60)
+    b = "不及格";
+else if (a < 70)
+    b = "及格";
+else if (a < 80)
+    b = "中等";
+else if (a < 90)
+    b = "良好";
 else
-    b =＂优秀＂;
+    b = "优秀";
