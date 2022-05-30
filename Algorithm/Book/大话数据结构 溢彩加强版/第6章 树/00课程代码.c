@@ -104,7 +104,7 @@ void CreateBiTree(BiTree *T)
     TElemType ch;
 
     scanf("%c", &ch);
-    ch = str[index++];
+    // ch = str[index++];  // 这行代码没看出来有什么用，暂时先给注释掉
 
     if (ch == '#')
         *T = NULL;
@@ -178,6 +178,7 @@ Status InOrderTraverse_Thr(BiThrTree T)
     return OK;
 }
 
+/*
 if (a < 60)
     b = "不及格";
 else if (a < 70)
@@ -188,3 +189,4 @@ else if (a < 90)
     b = "良好";
 else
     b = "优秀";
+*/

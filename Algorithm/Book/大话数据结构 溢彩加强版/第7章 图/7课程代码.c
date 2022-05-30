@@ -1,4 +1,11 @@
+#include <stdlib.h>
 
+#define OK 1
+#define ERROR 0
+#define TRUE 1
+#define FALSE 0
+
+typedef int Status; /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 
 typedef char VertexType; /* 顶点类型应由用户定义  */
 typedef int EdgeType;    /* 边上的权值类型应由用户定义 */
@@ -267,8 +274,7 @@ void MiniSpanTree_Kruskal(MGraph G)
         if (n != m) /* 假如n与m不等，说明此边没有与现有的生成树形成环路 */
         {           /* 将此边的结尾顶点放入下标为起点的parent中。表示此顶点已经在生成树集合中 */
             parent[n] = m;
-            printf("(%d, %d) %d\n", edges[i].begin,
-                   edges[i].end, edges[i].weight);
+            printf("(%d, %d) %d\n", edges[i].begin, edges[i].end, edges[i].weight);
         }
     }
 }
@@ -548,8 +554,7 @@ void CriticalPath(GraphAdjList GL)
             ete = etv[j];             /* 活动最早发生时间 */
             lte = ltv[k] - e->weight; /* 活动最迟发生时间 */
             if (ete == lte)           /* 两者相等即在关键路径上 */
-                printf("<v%d - v%d> length: %d \n",
-                       GL->adjList[j].data, GL->adjList[k].data, e->weight);
+                printf("<v%d - v%d> length: %d \n", GL->adjList[j].data, GL->adjList[k].data, e->weight);
         }
     }
 }
