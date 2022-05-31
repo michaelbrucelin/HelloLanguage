@@ -7,7 +7,7 @@
 
 typedef int Status; /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 
-typedef char VertexType; /* 顶点类型应由用户定义  */
+typedef char VertexType; /* 顶点类型应由用户定义 */
 typedef int EdgeType;    /* 边上的权值类型应由用户定义 */
 #define MAXVEX 100       /* 最大顶点数，应由用户定义 */
 #define INFINITY 65535   /* 用65535来代表∞ */
@@ -15,7 +15,7 @@ typedef struct
 {
     VertexType vexs[MAXVEX];      /* 顶点表 */
     EdgeType arc[MAXVEX][MAXVEX]; /* 邻接矩阵，可看作边表 */
-    int numNodes, numEdges;       /* 图中当前的顶点数和边数  */
+    int numNodes, numEdges;       /* 图中当前的顶点数和边数 */
 } MGraph;
 
 /* 建立无向网图的邻接矩阵表示 */
@@ -41,7 +41,7 @@ void CreateMGraph(MGraph *G)
 typedef char VertexType; /* 顶点类型应由用户定义 */
 typedef int EdgeType;    /* 边上的权值类型应由用户定义 */
 
-typedef struct EdgeNode /* 边表结点  */
+typedef struct EdgeNode /* 边表结点 */
 {
     int adjvex;            /* 邻接点域,存储该顶点对应的下标 */
     EdgeType info;         /* 用于存储权值,对于非网图可以不需要 */
@@ -208,7 +208,7 @@ void BFSTraverse(GraphAdjList GL)
     }
 }
 
-/* Prim算法生成最小生成树  */
+/* Prim算法生成最小生成树 */
 void MiniSpanTree_Prim(MGraph G)
 {
     int min, i, j, k;
@@ -321,7 +321,7 @@ void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
         {
             /* 如果经过v顶点的路径比现在这条路径的长度短的话 */
             if (!final[w] && (min + G.arc[k][w] < (*D)[w]))
-            {                                /*  说明找到了更短的路径，修改D[w]和P[w] */
+            {                                /* 说明找到了更短的路径，修改D[w]和P[w] */
                 (*D)[w] = min + G.arc[k][w]; /* 修改当前路径长度 */
                 (*P)[w] = k;
             }
@@ -343,8 +343,8 @@ typedef struct
 typedef int Patharc[MAXVEX];        /* 用于存储最短路径下标的数组 */
 typedef int ShortPathTable[MAXVEX]; /* 用于存储到各点最短路径的权值和 */
 
-/*  Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */
-/*  P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */
+/* Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */
+/* P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */
 void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
 {
     int v, w, k, min;
@@ -374,7 +374,7 @@ void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
         {
             /* 如果经过v顶点的路径比现在这条路径的长度短的话 */
             if (!final[w] && (min + G.arc[k][w] < (*D)[w]))
-            {                                /*  说明找到了更短的路径，修改D[w]和P[w] */
+            {                                /* 说明找到了更短的路径，修改D[w]和P[w] */
                 (*D)[w] = min + G.arc[k][w]; /* 修改当前路径长度 */
                 (*P)[w] = k;
             }
@@ -431,7 +431,7 @@ for (v = 0; v < G.numVertexes; ++v)
     printf("\n");
 }
 
-typedef struct EdgeNode /* 边表结点  */
+typedef struct EdgeNode /* 边表结点 */
 {
     int adjvex;            /* 邻接点域，存储该顶点对应的下标 */
     int weight;            /* 用于存储权值，对于非网图可以不需要 */
@@ -456,9 +456,9 @@ Status TopologicalSort(GraphAdjList GL)
 {
     EdgeNode *e;
     int i, k, gettop;
-    int top = 0;   /* 用于栈指针下标  */
-    int count = 0; /* 用于统计输出顶点的个数  */
-    int *stack;    /* 建栈将入度为0的顶点入栈  */
+    int top = 0;   /* 用于栈指针下标 */
+    int count = 0; /* 用于统计输出顶点的个数 */
+    int *stack;    /* 建栈将入度为0的顶点入栈 */
     stack = (int *)malloc(GL->numVertexes * sizeof(int));
     for (i = 0; i < GL->numVertexes; i++)
         if (0 == GL->adjList[i].in) /* 将入度为0的顶点入栈 */
@@ -471,7 +471,7 @@ Status TopologicalSort(GraphAdjList GL)
         for (e = GL->adjList[gettop].firstedge; e; e = e->next) /* 对此顶点弧表遍历 */
         {
             k = e->adjvex;
-            if (!(--GL->adjList[k].in)) /* 将k号顶点邻接点的入度减1*/
+            if (!(--GL->adjList[k].in)) /* 将k号顶点邻接点的入度减1 */
                 stack[++top] = k;       /* 若为0则入栈，以便下次循环输出 */
         }
     }
@@ -542,7 +542,7 @@ void CriticalPath(GraphAdjList GL)
         for (e = GL->adjList[gettop].firstedge; e; e = e->next)
         {
             k = e->adjvex;
-            if (ltv[k] - e->weight < ltv[gettop]) /*求各顶点事件最晚发生时间ltv*/
+            if (ltv[k] - e->weight < ltv[gettop]) /* 求各顶点事件最晚发生时间ltv */
                 ltv[gettop] = ltv[k] - e->weight;
         }
     }
