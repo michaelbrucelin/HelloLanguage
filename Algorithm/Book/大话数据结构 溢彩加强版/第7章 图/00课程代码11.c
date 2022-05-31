@@ -1,3 +1,18 @@
+typedef char VertexType; /* 顶点类型应由用户定义 */
+typedef int EdgeType;    /* 边上的权值类型应由用户定义 */
+
+#define MAXSIZE 9 /* 存储空间初始分配量 */
+#define MAXEDGE 15
+#define MAXVEX 9
+#define INFINITY 65535 /* 用65535来代表∞ */
+
+typedef struct
+{
+    int vexs[MAXVEX];
+    int arc[MAXVEX][MAXVEX];
+    int numVertexes, numEdges;
+} MGraph;
+
 typedef int Patharc[MAXVEX][MAXVEX];
 typedef int ShortPathTable[MAXVEX][MAXVEX];
 
@@ -29,20 +44,29 @@ void ShortestPath_Floyd(MGraph G, Patharc *P, ShortPathTable *D)
     }
 }
 
-printf("各顶点间最短路径如下:\n");
-for (v = 0; v < G.numVertexes; ++v)
+int main()
 {
-    for (w = v + 1; w < G.numVertexes; w++)
+    int v, w, k;
+    MGraph G;
+
+    Patharc P;
+    ShortPathTable D; /* 求某点到其余各点的最短路径 */
+
+    printf("各顶点间最短路径如下:\n");
+    for (v = 0; v < G.numVertexes; ++v)
     {
-        printf("v%d-v%d weight: %d ", v, w, D[v][w]);
-        k = P[v][w];            /* 获得第一个路径顶点下标 */
-        printf(" path: %d", v); /* 打印源点 */
-        while (k != w)          /* 如果路径顶点下标不是终点 */
+        for (w = v + 1; w < G.numVertexes; w++)
         {
-            printf(" -> %d", k); /* 打印路径顶点 */
-            k = P[k][w];         /* 获得下一个路径顶点下标 */
+            printf("v%d-v%d weight: %d ", v, w, D[v][w]);
+            k = P[v][w];            /* 获得第一个路径顶点下标 */
+            printf(" path: %d", v); /* 打印源点 */
+            while (k != w)          /* 如果路径顶点下标不是终点 */
+            {
+                printf(" -> %d", k); /* 打印路径顶点 */
+                k = P[k][w];         /* 获得下一个路径顶点下标 */
+            }
+            printf(" -> %d\n", w); /* 打印终点 */
         }
-        printf(" -> %d\n", w); /* 打印终点 */
+        printf("\n");
     }
-    printf("\n");
 }

@@ -1,3 +1,11 @@
+typedef char VertexType; /* 顶点类型应由用户定义 */
+typedef int EdgeType;    /* 边上的权值类型应由用户定义 */
+
+#define MAXSIZE 9 /* 存储空间初始分配量 */
+#define MAXEDGE 15
+#define MAXVEX 9
+#define INFINITY 65535 /* 用65535来代表∞ */
+
 typedef struct
 {
     int vexs[MAXVEX];
