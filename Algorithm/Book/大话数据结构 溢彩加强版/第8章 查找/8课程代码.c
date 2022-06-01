@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 Status InsertAVL(BiTree *T, int e, Status *taller)
 {
     if (!*T) /* 插入新结点，树“长高”，置taller为TRUE */
