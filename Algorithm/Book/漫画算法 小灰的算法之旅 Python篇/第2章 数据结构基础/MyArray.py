@@ -1,4 +1,3 @@
-
 class MyArray:
     def __init__(self, capacity):
         self.array = [None] * capacity
@@ -61,6 +60,3 @@ array.insert_v2(2, 16)
 array.insert_v2(2, 17)
 array.remove(0)
 array.output()
-
-
-

@@ -1,5 +1,3 @@
-
-
 def operate_list():
     # 初始化列表
     my_list = [3, 1, 2, 5, 4, 9, 7, 2]
