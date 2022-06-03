@@ -1,6 +1,9 @@
-
+#define TRUE 1
+#define FALSE 0
 
 #define MAXSIZE 10000 /* 用于要排序数组个数最大值，可根据需要修改 */
+
+typedef int Status; /* Status是函数的类型,其值是函数结果状态代码，如OK等 */
 typedef struct
 {
     int r[MAXSIZE + 1]; /* 用于存储要排序数组，r[0]用作哨兵或临时变量 */
