@@ -1,4 +1,3 @@
-
 def count_sort(array=[]):
     # 1.得到数列的最大值
     max_value = array[0]
@@ -47,4 +46,3 @@ my_array = list([4, 4, 6, 5, 3, 2, 8, 1, 7, 5, 6, 0, 10])
 print(count_sort(my_array))
 my_array = list([95, 94, 91, 120, 90, 99, 93, 91, 92])
 print(count_sort_v2(my_array))
-

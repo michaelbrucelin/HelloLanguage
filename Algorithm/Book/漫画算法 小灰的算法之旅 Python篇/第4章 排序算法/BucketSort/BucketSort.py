@@ -1,4 +1,3 @@
-
 def bucket_sort(array=[]):
     # 1.得到数列的最大值最小值，并算出差值d
     max_value = array[0]
@@ -33,4 +32,3 @@ def bucket_sort(array=[]):
 
 my_array = list([4.12, 6.421, 0.0023, 3.0, 2.123, 8.122, 4.12, 10.09])
 print(bucket_sort(my_array))
-

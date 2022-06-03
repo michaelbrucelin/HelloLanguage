@@ -1,4 +1,3 @@
-
 def quick_sort(start_index, end_index, array=[]):
     # 递归结束条件：startIndex大等于endIndex的时候
     if start_index >= end_index:
@@ -51,4 +50,3 @@ def partition_v2(start_index, end_index, array=[]):
 my_array = list([3, 4, 14, 1, 5, 6, 7, 8, 1, -1, 0, 9, 11])
 quick_sort(0, len(my_array)-1, my_array)
 print(my_array)
-

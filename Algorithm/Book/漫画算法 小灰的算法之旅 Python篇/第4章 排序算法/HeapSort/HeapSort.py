@@ -1,4 +1,3 @@
-
 def heap_sort(array=[]):
     # 1.把无序数组构建成最大堆
     for i in range((len(array)-2)//2, -1, -1):
@@ -34,4 +33,3 @@ def down_adjust(parent_index, length, array=[]):
 my_array = list([3, 4, 14, 1, 5, 6, 7, 8, 1, -1, 0, 9, 11])
 heap_sort(my_array)
 print(my_array)
-

@@ -1,4 +1,3 @@
-
 def bubble_sort_v1(array=[]):
     for i in range(len(array)-1):
         for j in range(len(array)-i-1):
@@ -48,4 +47,3 @@ def bubble_sort_v3(array=[]):
 my_array = list([3, 4, 14, 1, 5, 6, 7, 8, 1, -1, 0, 9, 11])
 bubble_sort_v3(my_array)
 print(my_array)
-

@@ -1,17 +1,12 @@
-package chapter4.part4;
-
-/**
- * Created by weimengshu on 2018/7/13.
- */
 import java.util.Arrays;
 
 public class HeapSort {
-
     /**
      * 下沉调整
-     * @param array     待调整的堆
-     * @param parentIndex    要下沉的父节点
-     * @param length    堆的有效大小
+     * 
+     * @param array       待调整的堆
+     * @param parentIndex 要下沉的父节点
+     * @param length      堆的有效大小
      */
     public static void downAdjust(int[] array, int parentIndex, int length) {
         // temp保存父节点值，用于最后的赋值
@@ -25,7 +20,7 @@ public class HeapSort {
             // 如果父节点大于等于任何一个孩子的值，直接跳出
             if (temp >= array[childIndex])
                 break;
-            //无需真正交换，单向赋值即可
+            // 无需真正交换，单向赋值即可
             array[parentIndex] = array[childIndex];
             parentIndex = childIndex;
             childIndex = 2 * childIndex + 1;
@@ -35,11 +30,12 @@ public class HeapSort {
 
     /**
      * 堆排序(升序)
-     * @param array     待调整的堆
+     * 
+     * @param array 待调整的堆
      */
     public static void heapSort(int[] array) {
         // 1.把无序数组构建成最大堆。
-        for (int i = (array.length-2)/2; i >= 0; i--) {
+        for (int i = (array.length - 2) / 2; i >= 0; i--) {
             downAdjust(array, i, array.length);
         }
         System.out.println(Arrays.toString(array));
@@ -55,7 +51,7 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[] {1,3,2,6,5,7,8,9,10,0};
+        int[] arr = new int[] { 1, 3, 2, 6, 5, 7, 8, 9, 10, 0 };
         heapSort(arr);
         System.out.println(Arrays.toString(arr));
     }

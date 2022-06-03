@@ -1,4 +1,3 @@
-
 def cock_tail__sort(array=[]):
     for i in range(len(array) // 2):
         # 有序标记，每一轮的初始是true
@@ -30,4 +29,3 @@ def cock_tail__sort(array=[]):
 my_array = list([3, 4, 14, 1, 5, 6, 7, 8, 1, -1, 0, 9, 11])
 cock_tail__sort(my_array)
 print(my_array)
-
