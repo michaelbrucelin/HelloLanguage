@@ -61,6 +61,7 @@ int Interpolation_Search(int *a, int n, int key)
     return 0;
 }
 
+/* 斐波那契查找 */
 int F[100];                                  /* 斐波那契数列 */
 int Fibonacci_Search(int *a, int n, int key) /* 斐波那契查找 */
 {
