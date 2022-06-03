@@ -33,7 +33,3 @@ my_input_list = list([3, 2, 9, None, None, 10, None, None, 8, None, 4])
 root = create_binary_tree(my_input_list)
 print("前序遍历：")
 pre_order_traversal_with_stack(root)
-
-
-
-

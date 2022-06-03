@@ -1,5 +1,4 @@
 class PriorityQueue:
-
     def __init__(self):
         self.array = []
         self.size = 0
@@ -57,4 +56,3 @@ queue.enqueue(2)
 queue.enqueue(7)
 print(queue.dequeue())
 print(queue.dequeue())
-

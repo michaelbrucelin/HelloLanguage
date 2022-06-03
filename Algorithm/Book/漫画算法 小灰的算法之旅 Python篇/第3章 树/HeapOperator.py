@@ -1,4 +1,3 @@
-
 def up_adjust(array=[]):
     """
     二叉堆的尾节点上浮操作

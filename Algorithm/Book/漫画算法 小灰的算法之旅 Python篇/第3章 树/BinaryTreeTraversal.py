@@ -1,5 +1,3 @@
-
-
 class TreeNode:
     def __init__(self, data):
         self.data = data
@@ -70,4 +68,3 @@ print("中序遍历：")
 in_order_traversal(root)
 print("后序遍历：")
 post_order_traversal(root)
-

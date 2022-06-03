@@ -36,7 +36,3 @@ my_input_list = list([3, 2, 9, None, None, 10, None, None, 8, None, 4])
 root = create_binary_tree(my_input_list)
 print("层序遍历：")
 level_order_traversal(root)
-
-
-
-
