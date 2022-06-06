@@ -13,7 +13,6 @@ namespace TestCSharp
             Console.WriteLine(GetGCD(1680, 640));
         }
 
-
         /// <summary>
         /// 使用递归来实现计算两个整型的最大公约数
         /// 思路：
