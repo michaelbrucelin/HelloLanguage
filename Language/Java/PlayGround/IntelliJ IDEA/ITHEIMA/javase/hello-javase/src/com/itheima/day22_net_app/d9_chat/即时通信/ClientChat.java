@@ -51,8 +51,6 @@ public class ClientChat implements ActionListener {
 
 		/** 展示聊天界面 */
 		//displayChatView();
-
-
 	}
 
 	private void displayChatView() {

@@ -6,7 +6,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 
 /**
-  发送端  一发 一收
+ * 发送端  一发 一收
  */
 public class ClientDemo1 {
     public static void main(String[] args) throws Exception {
@@ -25,8 +25,7 @@ public class ClientDemo1 {
          参数四：服务端的端口
          */
         byte[] buffer = "我是一颗快乐的韭菜，你愿意吃吗？".getBytes();
-        DatagramPacket packet = new DatagramPacket( buffer, buffer.length,
-                InetAddress.getLocalHost() , 8888);
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length, InetAddress.getLocalHost(), 8888);
 
         // 3、发送数据出去
         socket.send(packet);

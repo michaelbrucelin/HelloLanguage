@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
-   目标：实现服务端可以同时处理多个客户端的消息。
+ * 目标：实现服务端可以同时处理多个客户端的消息。
  */
 public class ServerDemo2 {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class ServerDemo2 {
             while (true) {
                 // 2、每接收到一个客户端的Socket管道，交给一个独立的子线程负责读取消息
                 Socket socket = serverSocket.accept();
-                System.out.println(socket.getRemoteSocketAddress()+ "它来了，上线了！");
+                System.out.println(socket.getRemoteSocketAddress() + "它来了，上线了！");
                 // 3、开始创建独立线程处理socket
                 new ServerReaderThread(socket).start();
             }

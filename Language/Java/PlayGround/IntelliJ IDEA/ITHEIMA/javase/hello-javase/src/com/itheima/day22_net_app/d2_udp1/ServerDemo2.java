@@ -5,7 +5,7 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 
 /**
-  接收端
+ * 接收端
  */
 public class ServerDemo2 {
     public static void main(String[] args) throws Exception {
@@ -23,14 +23,14 @@ public class ServerDemo2 {
         // 4、取出数据即可
         // 读取多少倒出多少
         int len = packet.getLength();
-        String rs = new String(buffer,0, len);
+        String rs = new String(buffer, 0, len);
         System.out.println("收到了：" + rs);
 
         // 获取发送端的ip和端口
-        String ip  =packet.getSocketAddress().toString();
+        String ip = packet.getSocketAddress().toString();
         System.out.println("对方地址：" + ip);
 
-        int port  = packet.getPort();
+        int port = packet.getPort();
         System.out.println("对方端口：" + port);
 
         socket.close();

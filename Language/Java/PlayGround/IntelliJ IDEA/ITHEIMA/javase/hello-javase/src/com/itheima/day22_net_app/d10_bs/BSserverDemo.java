@@ -15,8 +15,6 @@ import java.util.concurrent.*;
     客户端：浏览器。（无需开发）
     服务端：自己开发。
     需求：在浏览器中请求本程序，响应一个网页文字给浏览器显示
-
-
  */
 public class BSserverDemo {
     // 使用静态变量记住一个线程池对象

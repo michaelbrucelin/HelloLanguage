@@ -1,4 +1,5 @@
 package com.itheima.day22_net_app.d8_socket4;
+
 import com.itheima.day22_net_app.d7_socket3.ServerReaderThread;
 
 import java.net.ServerSocket;
@@ -6,7 +7,7 @@ import java.net.Socket;
 import java.util.concurrent.*;
 
 /**
-   目标：实现服务端可以同时处理多个客户端的消息。
+ * 目标：实现服务端可以同时处理多个客户端的消息。
  */
 public class ServerDemo2 {
 
@@ -14,7 +15,7 @@ public class ServerDemo2 {
     private static ExecutorService pool = new ThreadPoolExecutor(300,
             1500, 6, TimeUnit.SECONDS,
             new ArrayBlockingQueue<>(2)
-    , Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+            , Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
     public static void main(String[] args) {
         try {
@@ -25,7 +26,7 @@ public class ServerDemo2 {
             while (true) {
                 // 2、每接收到一个客户端的Socket管道，
                 Socket socket = serverSocket.accept();
-                System.out.println(socket.getRemoteSocketAddress()+ "它来了，上线了！");
+                System.out.println(socket.getRemoteSocketAddress() + "它来了，上线了！");
 
                 // 任务对象负责读取消息。
                 Runnable target = new ServerReaderRunnable(socket);

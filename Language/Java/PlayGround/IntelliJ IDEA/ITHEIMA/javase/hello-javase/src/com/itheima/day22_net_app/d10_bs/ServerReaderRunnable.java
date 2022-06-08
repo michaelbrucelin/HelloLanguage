@@ -6,11 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 
-public class ServerReaderRunnable implements Runnable{
+public class ServerReaderRunnable implements Runnable {
     private Socket socket;
-    public ServerReaderRunnable(Socket socket){
+
+    public ServerReaderRunnable(Socket socket) {
         this.socket = socket;
     }
+
     @Override
     public void run() {
         try {

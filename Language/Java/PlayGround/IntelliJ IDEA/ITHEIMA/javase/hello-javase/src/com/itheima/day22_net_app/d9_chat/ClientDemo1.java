@@ -40,7 +40,6 @@ public class ClientDemo1 {
             }
             // 关闭资源。
             // socket.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

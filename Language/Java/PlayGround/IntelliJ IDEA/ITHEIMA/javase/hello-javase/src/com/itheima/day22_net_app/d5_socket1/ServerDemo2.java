@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
-   目标：开发Socket网络编程入门代码的服务端，实现接收消息
+ * 目标：开发Socket网络编程入门代码的服务端，实现接收消息
  */
 public class ServerDemo2 {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class ServerDemo2 {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             // 5、按照行读取消息
             String msg;
-            if ((msg = br.readLine()) != null){
+            if ((msg = br.readLine()) != null) {
                 System.out.println(socket.getRemoteSocketAddress() + "说了：: " + msg);
             }
         } catch (Exception e) {

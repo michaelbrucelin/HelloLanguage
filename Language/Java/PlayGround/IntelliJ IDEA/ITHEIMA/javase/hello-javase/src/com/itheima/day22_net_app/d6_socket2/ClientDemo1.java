@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
-   目标：实现多发和多收
+ * 目标：实现多发和多收
  */
 public class ClientDemo1 {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class ClientDemo1 {
             // 3、把低级的字节流包装成打印流
             PrintStream ps = new PrintStream(os);
 
-            Scanner sc =  new Scanner(System.in);
+            Scanner sc = new Scanner(System.in);
             while (true) {
                 System.out.println("请说：");
                 String msg = sc.nextLine();
@@ -35,7 +35,6 @@ public class ClientDemo1 {
 
             // 关闭资源。
             // socket.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

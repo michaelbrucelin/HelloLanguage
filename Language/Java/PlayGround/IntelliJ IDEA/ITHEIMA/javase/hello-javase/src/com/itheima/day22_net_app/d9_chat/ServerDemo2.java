@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-   目标: 即时通信
+ * 目标: 即时通信
  */
 public class ServerDemo2 {
 
@@ -21,7 +21,7 @@ public class ServerDemo2 {
             while (true) {
                 // 2、每接收到一个客户端的Socket管道，交给一个独立的子线程负责读取消息
                 Socket socket = serverSocket.accept();
-                System.out.println(socket.getRemoteSocketAddress()+ "它来了，上线了！");
+                System.out.println(socket.getRemoteSocketAddress() + "它来了，上线了！");
                 // 把当前客户端管道Socket加入到在线集合中去
                 onLineSockets.add(socket);
 

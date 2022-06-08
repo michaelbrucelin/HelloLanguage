@@ -5,11 +5,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class ServerReaderThread extends Thread{
+public class ServerReaderThread extends Thread {
     private Socket socket;
-    public ServerReaderThread(Socket socket){
+
+    public ServerReaderThread(Socket socket) {
         this.socket = socket;
     }
+
     @Override
     public void run() {
         try {
@@ -19,7 +21,7 @@ public class ServerReaderThread extends Thread{
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             // 5、按照行读取消息
             String msg;
-            while ((msg = br.readLine()) != null){
+            while ((msg = br.readLine()) != null) {
                 System.out.println(socket.getRemoteSocketAddress() + "说了：: " + msg);
             }
         } catch (Exception e) {

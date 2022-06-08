@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 /**
-   目标：完成Socket网络编程入门案例的客户端开发，实现1发1收。
+ * 目标：完成Socket网络编程入门案例的客户端开发，实现1发1收。
  */
 public class ClientDemo1 {
     public static void main(String[] args) {
@@ -30,7 +30,6 @@ public class ClientDemo1 {
 
             // 关闭资源。
             // socket.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
