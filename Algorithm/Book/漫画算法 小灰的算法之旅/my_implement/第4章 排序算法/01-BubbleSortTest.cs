@@ -28,7 +28,6 @@ namespace TestCSharp
             for (int i = 0; i < list.Count; i++)
                 Console.Write($"{list[i]}, ");
 
-
             Console.WriteLine($"\n1. compare times: {r1.compcnt}, swap times: {r1.swapcnt};");
             for (int i = 0; i < list1.Count; i++) Console.Write($"{list1[i]}, ");
 
