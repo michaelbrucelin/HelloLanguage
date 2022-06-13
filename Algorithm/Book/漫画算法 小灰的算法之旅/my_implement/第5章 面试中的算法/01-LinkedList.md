@@ -14,9 +14,9 @@
 
 如上图，假设起点到入环点的长度为$D$，入环点到runner与walker第一次相遇点的长度为$S$，环的长度为$R$。
 那么在runner与walker第一次相遇时：
-> runner共行进了$D + nR + S$，其中$n$为自然数；
-> walker共行进了$D + S$;
-> 由于runner的速度是walker的2倍，所以$D + nR + S = 2(D + S)$
+> runner共行进了$D + nR + S$，其中$n$为自然数；  
+> walker共行进了$D + S$;  
+> 由于runner的速度是walker的2倍，所以$D + nR + S = 2(D + S)$  
 > 即$D = nR -S$
 
 所以，在runner与walker第$1$次相遇时，创建另一个步长为1的指针walker2，并让walker2在链表的头部，这时让walker与walker2一起前进，当walker2走到入环点（假定知道在哪）时，显然walker行进了$D$，那么walker也行进了$D$，也就是行进了$nR - S$，即walker行进了$nR - S$相当于走了$n$圈（$n$圈相当于没动）再后退$S$，也就是说，这时walker也在入环点，那也就是说，walker与walker2第$1$次相遇的位置就是入环点。
