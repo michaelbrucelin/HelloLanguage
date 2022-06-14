@@ -68,7 +68,7 @@ namespace TestCSharp
                 return x;
 
             if ((x & 1) == 0 && (y & 1) == 0)
-                return 2 * GetGCD3(x >> 1, y >> 1);
+                return GetGCD3(x >> 1, y >> 1) << 1;
             else if ((x & 1) == 0 && (y & 1) == 1)
                 return GetGCD3(x >> 1, y);
             else if ((x & 1) == 1 && (y & 1) == 0)
