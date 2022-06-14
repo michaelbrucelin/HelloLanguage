@@ -1,22 +1,25 @@
-# 链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/getting-computer-memory-usage
-
 function MyGet-ComputerMemory {
     param (
-        [Parameter( 
-            Position = 0,  
-            ValueFromPipeline = $true, 
-            ValueFromPipelineByPropertyName = $true 
+        [Parameter(
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
         )] [String[]]$ComputerName = @($env:COMPUTERNAME.ToLower()),
         [int]$digits = 3
     );
+
+    <#
+        链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/getting-computer-memory-usage
+    #>
+
     process {
         foreach ($computer in $ComputerName ) {
             $object = 1 | Select-Object ComputerName, TotalPhysicalMemoryGB, FreePhysicalMemoryGB, UsedPhysicalMemory, TotalVirtualMemoryGB, FreeVirtualMemoryGB, UsedVirtualMemory;
             
             Write-Progress "Get-WmiObject Win32_ComputerSystem" "-ComputerName $computer"
             $wmiCompSys = Get-WmiObject Win32_ComputerSystem -ComputerName $computer;
-            if (!$wmiCompSys) { 
-                Write-Warning "Unable to get Win32_ComputerSystem data from $computer"; 
+            if (!$wmiCompSys) {
+                Write-Warning "Unable to get Win32_ComputerSystem data from $computer";
             }
 
             Write-Progress "Get-WmiObject Win32_OperatingSystem" "-ComputerName $computer"

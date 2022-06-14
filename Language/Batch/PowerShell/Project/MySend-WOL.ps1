@@ -1,11 +1,14 @@
 function MySend-WOL {
-    # 发送魔术包，实现局域网远程开机
     Param (
         [Parameter(Mandatory = $true, HelpMessage = 'format: XX-XX-XX-XX-XX-XX|XX:XX:XX:XX:XX:XX|XX.XX.XX.XX.XX.XX|XXXXXXXXXXXX')]
         [ValidatePattern('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')]
         [string] $Mac,
         [string]$HostOrIp = "255.255.255.255"
     )
+
+    <#
+        发送魔术包，实现局域网远程开机
+    #>
 
     $Boardcast = [System.Net.Dns]::GetHostAddresses($HostOrIp)
     $Address = [System.Net.IPAddress]::Parse($Boardcast)

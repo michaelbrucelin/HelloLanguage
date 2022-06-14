@@ -1,5 +1,3 @@
-# 链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/batch-getting-ip-addresses
-
 function Get-IPAddress2 {
     param (
         [Parameter( 
@@ -8,6 +6,10 @@ function Get-IPAddress2 {
             ValueFromPipelineByPropertyName = $true 
         )][string[]]$ComputerName = @()
     );
+
+    <#
+        链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/batch-getting-ip-addresses
+    #>
 
     process {
         foreach ($computer in $ComputerName) {

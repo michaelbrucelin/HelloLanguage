@@ -1,4 +1,12 @@
 function MySend-WOL2 {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $True, Position = 1)]
+        [string]$mac,
+        [string]$ip = "255.255.255.255",
+        [int]$port = 9
+    )
+
     <#
     发送魔术包，实现局域网远程开机。
     .SYNOPSIS
@@ -11,13 +19,6 @@ function MySend-WOL2 {
         MySend-WOL -mac 00:11:32:21:2D:11 -ip 192.168.8.255
     #>
 
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $True, Position = 1)]
-        [string]$mac,
-        [string]$ip = "255.255.255.255",
-        [int]$port = 9
-    )
     $broadcast = [Net.IPAddress]::Parse($ip)
 
     $mac = (($mac.replace(":", "")).replace("-", "")).replace(".", "").replace(" ", "")

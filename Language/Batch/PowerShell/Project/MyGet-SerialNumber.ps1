@@ -1,5 +1,3 @@
-# 链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/batch-getting-bios-serial-numbers
-
 function Get-SerialNumber {
     param (
         [Parameter( 
@@ -8,6 +6,10 @@ function Get-SerialNumber {
             ValueFromPipelineByPropertyName = $true 
         )][string[]]$ComputerName = @()
     );
+
+    <#
+        链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/batch-getting-bios-serial-numbers
+    #>
 
     process {
         foreach ($computer in $ComputerName) {

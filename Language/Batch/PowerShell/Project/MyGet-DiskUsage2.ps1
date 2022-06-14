@@ -1,5 +1,3 @@
-# 链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/getting-disk-usage
-
 function Get-DiskUsage2 {
     param (
         [Parameter(ValueFromPipeline = $true)][string[]]$Path = (Get-Location).Path,
@@ -7,6 +5,10 @@ function Get-DiskUsage2 {
         [long]$MinimumFileSize = 1MB,
         [int]$DisplayFolderCount = 4
     );
+
+    <#
+        链接：https://docs.microsoft.com/zh-cn/archive/blogs/timid/getting-disk-usage
+    #>
 
     begin {
         # create parent folder if not found
@@ -50,26 +52,26 @@ function Get-DiskUsage2 {
                                 $object.AddMember("Folder$i", $Folders[$i]);
 
                             } # # for ($i = 0; $i -lt $Folders.Count; $i++)
-                        } # 
+                        }
 
                         $object;
-                    } # 
-                } # 
+                    }
+                }
                 else {
                     Write-Warning "$($MyInvocation.MyCommand.Name) -Path '$myPath' not found.";
-                } # 
-            } # 
+                }
+            }
         } | Export-Csv -NoTypeInformation -Path $CsvPath -ErrorAction SilentlyContinue;
     } # process
     end {
         if (Test-Path -Path $CsvPath) {
             Write-Host -ForegroundColor Green -NoNewline "Output file: ";
             (Resolve-Path -Path $csvPath).ProviderPath;
-        } # 
+        }
         else {
             Write-Warning "$($MyInvocation.MyCommand.Name) -CsvPath '$csvPath' Unable to create.";
             return;
             break __outOfScript; # really, REALLY stop processing
-        } # 
-    } # 
-} # 
+        }
+    }
+}

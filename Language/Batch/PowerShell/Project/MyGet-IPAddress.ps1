@@ -1,5 +1,4 @@
-function MyGet-IPAddress
-{
+function MyGet-IPAddress {
     Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration |
     Where-Object { $_.IPEnabled -eq $true } |
     # add two new properties for IPv4 and IPv6 at the end

@@ -4,11 +4,11 @@ function global:MyGet-Handle() {
     )
 
     $handleOut = handle64.exe
-    foreach($line in $handleOut) {
-        if($line -match '\S+\spid:') {
+    foreach ($line in $handleOut) {
+        if ($line -match '\S+\spid:') {
             $exe = $line
         } 
-        elseif($line -match $Name) { 
+        elseif ($line -match $Name) { 
             "$exe - $line"
         }
     }

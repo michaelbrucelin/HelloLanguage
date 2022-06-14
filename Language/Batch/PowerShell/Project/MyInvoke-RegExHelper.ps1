@@ -21,34 +21,34 @@ Function MyInvoke-RegExHelper {
     $Script:runspaceHash = [hashtable]::Synchronized(@{})
     $Runspacehash.runspace = [RunspaceFactory]::CreateRunspace()
     $Runspacehash.runspace.ApartmentState = "STA"
-    $Runspacehash.runspace.Open() 
-    $Runspacehash.runspace.SessionStateProxy.SetVariable("Runspacehash",$Runspacehash)
-    $Runspacehash.runspace.SessionStateProxy.SetVariable("uiHash",$uiHash)
-    $Runspacehash.PowerShell = {Add-Type -AssemblyName PresentationCore,PresentationFramework,WindowsBase}.GetPowerShell() 
-    $Runspacehash.PowerShell.Runspace = $Runspacehash.runspace 
-    $Runspacehash.Handle = $Runspacehash.PowerShell.AddScript({ 
-        #Build the GUI
-        [xml]$xaml = @"
+    $Runspacehash.runspace.Open()
+    $Runspacehash.runspace.SessionStateProxy.SetVariable("Runspacehash", $Runspacehash)
+    $Runspacehash.runspace.SessionStateProxy.SetVariable("uiHash", $uiHash)
+    $Runspacehash.PowerShell = { Add-Type -AssemblyName PresentationCore, PresentationFramework, WindowsBase }.GetPowerShell()
+    $Runspacehash.PowerShell.Runspace = $Runspacehash.runspace
+    $Runspacehash.Handle = $Runspacehash.PowerShell.AddScript({
+            #Build the GUI
+            [xml]$xaml = @"
     <Window 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Name="Window" Title="Powershell Regular Expression Helper" WindowStartupLocation = "CenterScreen" ResizeMode="NoResize"
-    Width = "820" Height = "625" ShowInTaskbar = "True" Background = "lightgray"> 
-    <StackPanel >    
-        <GroupBox Header = 'Input String'>      
-            <TextBox x:Name="String_inpbx" Height = "30" /> 
-        </GroupBox>     
-        <GroupBox Header = 'Regular Expression String'>        
-            <TextBox x:Name="Regex_inpbx" Height = "30" />  
-        </GroupBox> 
-        <GroupBox Header = 'Regular Expression Matches'>      
-            <DataGrid x:Name='datagrid' Height='400' AutoGenerateColumns='False' CanUserAddRows='False' 
+    Width = "820" Height = "625" ShowInTaskbar = "True" Background = "lightgray">
+    <StackPanel >
+        <GroupBox Header = 'Input String'>
+            <TextBox x:Name="String_inpbx" Height = "30" />
+        </GroupBox>
+        <GroupBox Header = 'Regular Expression String'>
+            <TextBox x:Name="Regex_inpbx" Height = "30" />
+        </GroupBox>
+        <GroupBox Header = 'Regular Expression Matches'>
+            <DataGrid x:Name='datagrid' Height='400' AutoGenerateColumns='False' CanUserAddRows='False'
                 SelectionUnit='CellOrRowHeader' AlternatingRowBackground = 'LightBlue' AlternationCount='2'>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header='Group' Binding='{Binding Key}' IsReadOnly='True' Width='390'/>
                     <DataGridTextColumn Header='MatchedValue' Binding='{Binding Value}' IsReadOnly='True' Width='390'/>
                 </DataGrid.Columns>
-            </DataGrid>  
+            </DataGrid>
         </GroupBox>
         <GroupBox x:Name = 'RegExOptions' Header = 'Regular Expression Options'>
             <WrapPanel x:Name='wrap_panel' Orientation = 'Horizontal' ItemWidth = '155'>
@@ -67,134 +67,138 @@ Function MyInvoke-RegExHelper {
     </StackPanel>
     </Window>
 "@
- 
-        $reader=(New-Object System.Xml.XmlNodeReader $xaml)
-        $Window=[Windows.Markup.XamlReader]::Load( $reader )
 
-        #Connect to Controls
-        $xaml.SelectNodes("//*[@*[contains(translate(name(.),'n','N'),'Name')]]") | ForEach {
-            $uiHash[$_.Name] = $Window.FindName($_.Name)
-        }
+            $reader = (New-Object System.Xml.XmlNodeReader $xaml)
+            $Window = [Windows.Markup.XamlReader]::Load( $reader )
 
-        #Starting Configuration
-        [System.Text.RegularExpressions.RegexOptions]$Script:Options = 'None' 
-        $uiHash.None_chkbox.IsChecked = $True
-        $Script:i=0
+            #Connect to Controls
+            $xaml.SelectNodes("//*[@*[contains(translate(name(.),'n','N'),'Name')]]") | ForEach {
+                $uiHash[$_.Name] = $Window.FindName($_.Name)
+            }
 
-        #Events
-        [System.Windows.RoutedEventHandler]$Script:CheckBoxCheck = {
-            $script:i++
+            #Starting Configuration
+            [System.Text.RegularExpressions.RegexOptions]$Script:Options = 'None' 
+            $uiHash.None_chkbox.IsChecked = $True
+            $Script:i = 0
+
+            #Events
+            [System.Windows.RoutedEventHandler]$Script:CheckBoxCheck = {
+                $script:i++
                 If ($script:i -eq 1) {
-                $RoutedEvent = $_
-                Write-Verbose "$($RoutedEvent.routedevent.Name) <$($RoutedEvent.originalsource.content)>"
-                If ($RoutedEvent.RoutedEvent.Name -eq 'Checked' -AND $RoutedEvent.originalsource.content -ne 'None') {
-                    $uiHash.None_chkbox.IsChecked = $False
-                }
-                $CheckBoxes = $This.Children
-                $Checked = $CheckBoxes | Where {$_.IsChecked} | Select-Object -ExpandProperty Content
-                $UnChecked = $CheckBoxes | Where {-NOT $_.IsChecked} | Select-Object -ExpandProperty Content
-                Try {
-                    If ($Checked -contains 'None') {
+                    $RoutedEvent = $_
+                    Write-Verbose "$($RoutedEvent.routedevent.Name) <$($RoutedEvent.originalsource.content)>"
+                    If ($RoutedEvent.RoutedEvent.Name -eq 'Checked' -AND $RoutedEvent.originalsource.content -ne 'None') {
+                        $uiHash.None_chkbox.IsChecked = $False
+                    }
+                    $CheckBoxes = $This.Children
+                    $Checked = $CheckBoxes | Where { $_.IsChecked } | Select-Object -ExpandProperty Content
+                    $UnChecked = $CheckBoxes | Where { -NOT $_.IsChecked } | Select-Object -ExpandProperty Content
+                    Try {
+                        If ($Checked -contains 'None') {
+                            [System.Text.RegularExpressions.RegexOptions]$Script:Options = 'None'
+                            $This.Children | ForEach {
+                                If ($_.IsChecked -AND $_.Content -ne 'None') {
+                                    $_.IsChecked = $False
+                                }
+                            }
+                        }
+                        Else {
+                            [System.Text.RegularExpressions.RegexOptions]$Script:Options = $Checked -join ', '
+                        }
+                    }
+                    Catch {
+                        $uiHash.None_chkbox.IsChecked = $True
                         [System.Text.RegularExpressions.RegexOptions]$Script:Options = 'None'
-                        $This.Children | ForEach {
-                            If ($_.IsChecked -AND $_.Content -ne 'None') {
-                                $_.IsChecked = $False
-                            }
-                        }
-                    } Else {
-                        [System.Text.RegularExpressions.RegexOptions]$Script:Options = $Checked -join ', '
                     }  
-                }
-                Catch {            
-                    $uiHash.None_chkbox.IsChecked = $True
-                    [System.Text.RegularExpressions.RegexOptions]$Script:Options = 'None'
-                }  
-                Write-Verbose "Options: $Options"
-                Try {
-                    Write-Verbose 'Attempting regex check'
-                    If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
-                        $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
+                    Write-Verbose "Options: $Options"
+                    Try {
+                        Write-Verbose 'Attempting regex check'
+                        If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
+                            $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
 
-                        If ($uiHash.String_inpbx.Text -match $Regex){
-                            $Script:observableCollection.Clear()
-                            ForEach ($Item in ($Matches.GetEnumerator())) {
-                                $Script:observableCollection.Add($Item)
+                            If ($uiHash.String_inpbx.Text -match $Regex) {
+                                $Script:observableCollection.Clear()
+                                ForEach ($Item in ($Matches.GetEnumerator())) {
+                                    $Script:observableCollection.Add($Item)
+                                }
                             }
-                        } Else {
+                            Else {
+                                $Script:observableCollection.Clear()
+                            }
+                        } 
+                        Else {
                             $Script:observableCollection.Clear()
                         }
-                    } 
-                    Else {
+                    }
+                    Catch {
+                        $uiHash.None_chkbox.IsChecked = $True
                         $Script:observableCollection.Clear()
                     }
                 }
-                Catch {
-                    $uiHash.None_chkbox.IsChecked = $True
-                    $Script:observableCollection.Clear()
-                } 
-            }  
-            $script:i--         
-        } 
-        $uiHash.wrap_panel.AddHandler([System.Windows.Controls.CheckBox]::CheckedEvent, $CheckBoxCheck)
-        $uiHash.wrap_panel.AddHandler([System.Windows.Controls.CheckBox]::UncheckedEvent, $CheckBoxCheck)
+                $script:i--
+            } 
+            $uiHash.wrap_panel.AddHandler([System.Windows.Controls.CheckBox]::CheckedEvent, $CheckBoxCheck)
+            $uiHash.wrap_panel.AddHandler([System.Windows.Controls.CheckBox]::UncheckedEvent, $CheckBoxCheck)
 
-        $uiHash.Regex_inpbx.Add_TextChanged({
-            Try {
-                If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
-                    $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
+            $uiHash.Regex_inpbx.Add_TextChanged({
+                    Try {
+                        If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
+                            $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
 
-                    If ($uiHash.String_inpbx.Text -match $Regex){
-                        $Script:observableCollection.Clear()
-                        ForEach ($Item in ($Matches.GetEnumerator())) {
-                            $Script:observableCollection.Add($Item)
+                            If ($uiHash.String_inpbx.Text -match $Regex) {
+                                $Script:observableCollection.Clear()
+                                ForEach ($Item in ($Matches.GetEnumerator())) {
+                                    $Script:observableCollection.Add($Item)
+                                }
+                            }
+                            Else {
+                                $Script:observableCollection.Clear()
+                            }
+                        } 
+                        Else {
+                            $Script:observableCollection.Clear()
                         }
-                    } Else {
+                    }
+                    Catch {
                         $Script:observableCollection.Clear()
                     }
-                } 
-                Else {
-                    $Script:observableCollection.Clear()
-                }
-            }
-            Catch {
-                $Script:observableCollection.Clear()
-            }      
-        })
+                })
 
-        $uiHash.String_inpbx.Add_TextChanged({
-            Try {
-                If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
-                    $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
+            $uiHash.String_inpbx.Add_TextChanged({
+                    Try {
+                        If (($uiHash.Regex_inpbx.text.length -gt 0) -AND ($uiHash.String_inpbx.Text.length -gt 0)) {
+                            $Regex = New-Object System.Text.RegularExpressions.Regex -ArgumentList $uiHash.Regex_inpbx.text, $Script:Options
 
-                    If ($uiHash.String_inpbx.Text -match $Regex){
-                        $Script:observableCollection.Clear()
-                        ForEach ($Item in ($Matches.GetEnumerator())) {
-                            $Script:observableCollection.Add($Item)
+                            If ($uiHash.String_inpbx.Text -match $Regex) {
+                                $Script:observableCollection.Clear()
+                                ForEach ($Item in ($Matches.GetEnumerator())) {
+                                    $Script:observableCollection.Add($Item)
+                                }
+                            }
+                            Else {
+                                $Script:observableCollection.Clear()
+                            }
                         }
-                    } Else {
+                        Else {
+                            $Script:observableCollection.Clear()
+                        }
+                    }
+                    Catch {
                         $Script:observableCollection.Clear()
                     }
-                } 
-                Else {
-                    $Script:observableCollection.Clear()
-                }
-            }
-            Catch {
-                $Script:observableCollection.Clear()
-            }      
-        })
+                })
 
-        $uiHash.Window.Add_SourceInitialized({
-            $Script:observableCollection = New-Object System.Collections.ObjectModel.ObservableCollection[object]
-            $uiHash.datagrid.ItemsSource = $observableCollection   
-        })
+            $uiHash.Window.Add_SourceInitialized({
+                    $Script:observableCollection = New-Object System.Collections.ObjectModel.ObservableCollection[object]
+                    $uiHash.datagrid.ItemsSource = $observableCollection   
+                })
 
 
-        $uiHash.Window.Add_Activated({        
-            $uiHash.String_inpbx.Focus()
-        })
-        [void]$uiHash.Window.ShowDialog()
-    }).BeginInvoke()
+            $uiHash.Window.Add_Activated({
+                    $uiHash.String_inpbx.Focus()
+                })
+            [void]$uiHash.Window.ShowDialog()
+        }).BeginInvoke()
 }
 
 New-Alias -Name MyRegEx -Value MyInvoke-RegExHelper

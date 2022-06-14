@@ -4,7 +4,7 @@ Simple PowerShell, place into a folder, create a daily task in Windows Task Sche
 
 [xml]$doc = (New-Object System.Net.WebClient).DownloadString("https://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=ru-RU")
 $url = $doc.images.image.url
-$url = "https://www.bing.com/" + $url -replace "_1366x768","_1920x1200"
+$url = "https://www.bing.com/" + $url -replace "_1366x768", "_1920x1200"
 
 Write-Output $url
 
