@@ -71,6 +71,8 @@ namespace TestCSharp
         /// <returns></returns>
         public static IList<int> CountSort2(IList<int> list)
         {
+            if (list.Count == 1) return list;
+
             int min = list[0], max = list[0];
             foreach (int i in list)
             {
@@ -79,6 +81,7 @@ namespace TestCSharp
                 else if (i > max)
                     max = i;
             }
+            if (min == max) return list;
 
             int distance = max - min;
             int[] count_arr = new int[distance + 1];    // C#中整型数组默认全为0，不需要初始化

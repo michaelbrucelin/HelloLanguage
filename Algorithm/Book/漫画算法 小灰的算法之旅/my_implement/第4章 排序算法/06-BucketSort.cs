@@ -34,6 +34,8 @@ namespace TestCSharp
         /// <returns></returns>
         public static IList<decimal> BucketSort(IList<decimal> list)
         {
+            if (list.Count == 1) return list;
+
             decimal min = list[0], max = list[0];
             foreach (decimal i in list)
             {
@@ -42,6 +44,7 @@ namespace TestCSharp
                 else if (i > max)
                     max = i;
             }
+            if (min == max) return list;
 
             // 初始化桶并将每一个元素分配到对应的桶中
             decimal span = (max - min) / (list.Count - 1);
