@@ -32,7 +32,9 @@ namespace TestCSharp
         /// 数字从右向左，找到最小（最短）的非逆序区域，假定长度为n，则n-1的区域是逆序区，那么调整这个区域即可。
         /// 1. 从后向前，找出最大的逆序区域
         /// 2. 让最大逆序区域的前一位与逆序区域中大于它的最小值交换位置
+        ///    注意，逆序区由于是有序的，所以可以直接二分查找
         /// 3. 然后将原逆序区域的数字调整为顺序区域即可
+        ///    注意，元素交换后，逆序区仍然逆序，所以直接反转即为顺序
         /// 
         /// 将整型转为字符串实现
         /// </summary>
@@ -49,16 +51,9 @@ namespace TestCSharp
             for (; border >= 0 && xchars[border] >= xchars[border + 1]; border--) ;  // 如果i >= 0，则i为第1位非逆序区，如果i == -1，整个数字为逆序
             if (border == -1) return -1;
 
-            char big = (char)((int)'9' + 1);  // 任意一个比'9'大的char即可，遍历后就是用来与border交换的数字
-            int bigid = -1;                   // big的索引
-            for (int i = border + 1; i < xchars.Length; i++)
-            {
-                if (xchars[i] > xchars[border] && xchars[i] < big)
-                {
-                    big = xchars[i];
-                    bigid = i;
-                }
-            }
+            // 寻找逆序区大于border的最小值，由于逆序区是有序的，所以挨个找就可以，也可以使用二分法等算法进行优化，这里就不考虑优化了
+            int bigid = xchars.Length - 1;
+            for (; xchars[bigid] <= xchars[border]; bigid--) ;
 
             // 交换border与big
             char temp = xchars[border];
@@ -66,12 +61,19 @@ namespace TestCSharp
             xchars[bigid] = temp;
 
             // 对原逆序区域做顺序处理，这里从简处理
-            var tails = xchars
-                            .Where((c, i) => i > border)
-                            .OrderBy(c => c);
-            int index = border;
-            foreach (char c in tails)
-                xchars[++index] = c;
+            //var tails = xchars
+            //                .Where((c, i) => i > border)
+            //                .OrderBy(c => c);
+            //int index = border;
+            //foreach (char c in tails)
+            //    xchars[++index] = c;
+            // 直接翻转即可，不需要像上面处理的那么复杂
+            for (int i = border + 1, j = xchars.Length - 1; i < j; i++, j--)
+            {
+                char temp_c = xchars[i];
+                xchars[i] = xchars[j];
+                xchars[j] = temp_c;
+            }
 
             return Convert.ToInt32(new string(xchars));
         }
@@ -103,23 +105,18 @@ namespace TestCSharp
 
             if (x0 == 0) return -1;                // x0 == 0，则整个数字逆序
 
+            // 寻找逆序区大于border的最小值，由于逆序区是有序的，所以挨个找就可以，也可以使用二分法等算法进行优化，这里就不考虑优化了
             int border = x0 % 10;                  // 第1个非逆序的数字
-            int big = 10;                          // 任意一个比9大的int即可，遍历后就是用来与border交换的数字
-            int bigid = -1;                        // big的索引
-            for (int i = 0; i < x0tail.Count; i++)
-            {
-                if (x0tail[i] > border && x0tail[i] < big)
-                {
-                    big = x0tail[i];
-                    bigid = i;
-                }
-            }
+            int bigid = 0;
+            for (; x0tail[bigid] <= border; bigid++) ;
+            border = x0tail[bigid];
 
-            x0tail[bigid] = border;                // 将第1个非逆序数字放到逆序区域
+            x0tail[bigid] = x0 % 10;               // 将第1个非逆序数字放到逆序区域
 
-            x0tail.Sort();
+            // x0tail.Sort();                      // 本来就是顺序排序的，所以不需要排序
+
             return x / (int)Math.Pow(10, x0tail.Count + 1) * (int)Math.Pow(10, x0tail.Count + 1)
-                   + big * (int)Math.Pow(10, x0tail.Count)
+                   + border * (int)Math.Pow(10, x0tail.Count)
                    + Convert.ToInt32(string.Concat(x0tail));
         }
     }
