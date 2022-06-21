@@ -145,9 +145,9 @@ namespace TestCSharp
 
         private static Stack<int> GapSequences4(int length)
         {
-            Stack<int> spans = new Stack<int>();
+            Stack<int> gaps = new Stack<int>();
 
-            spans.Push(1);
+            gaps.Push(1);
 
             int i = 0;
             while (true)
@@ -155,14 +155,14 @@ namespace TestCSharp
                 int temp = (int)Math.Pow(4, i + 1) + (int)Math.Pow(2, i) * 3 + 1;
                 if (temp < length)
                 {
-                    spans.Push(temp);
+                    gaps.Push(temp);
                     i++;
                 }
                 else
                     break;
             }
 
-            return spans;
+            return gaps;
         }
 
         /// <summary>
