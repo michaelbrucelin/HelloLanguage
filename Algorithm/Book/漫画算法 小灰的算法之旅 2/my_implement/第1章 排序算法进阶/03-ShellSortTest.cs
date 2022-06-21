@@ -10,7 +10,40 @@ namespace TestCSharp
     {
         public static void Main(string[] args)
         {
+            // 检验一下几种增量序列的结果，以及每种增量序列比较与交换的次数
+            Random random = new Random();
+            List<int> list = new List<int>(32);
+            Parallel.For(0, 32, i => list.Add(random.Next(0, 100)));
 
+            List<int> list1 = list.ToList();
+            List<int> list2 = list.ToList();
+            List<int> list3 = list.ToList();
+            List<int> list4 = list.ToList();
+            List<int> list5 = list.ToList();
+
+            var r1 = ShellSort1(list1);
+            var r2 = ShellSort2(list2);
+            var r3 = ShellSort3(list3);
+            var r4 = ShellSort4(list4);
+            var r5 = ShellSort5(list5);
+
+            for (int i = 0; i < list.Count; i++)
+                Console.Write($"{list[i]}, ");
+
+            Console.WriteLine($"\n1. compare times: {r1.compcnt}, swap times: {r1.swapcnt};");
+            for (int i = 0; i < list1.Count; i++) Console.Write($"{list1[i]}, ");
+
+            Console.WriteLine($"\n1. compare times: {r2.compcnt}, swap times: {r2.swapcnt};");
+            for (int i = 0; i < list2.Count; i++) Console.Write($"{list2[i]}, ");
+
+            Console.WriteLine($"\n3. compare times: {r3.compcnt}, swap times: {r3.swapcnt};");
+            for (int i = 0; i < list3.Count; i++) Console.Write($"{list3[i]}, ");
+
+            Console.WriteLine($"\n4. compare times: {r4.compcnt}, swap times: {r4.swapcnt};");
+            for (int i = 0; i < list4.Count; i++) Console.Write($"{list4[i]}, ");
+
+            Console.WriteLine($"\n5. compare times: {r5.compcnt}, swap times: {r5.swapcnt};");
+            for (int i = 0; i < list5.Count; i++) Console.Write($"{list5[i]}, ");
         }
 
         /// <summary>
@@ -18,8 +51,10 @@ namespace TestCSharp
         /// </summary>
         /// <param name="list"></param>
         /// <param name="gaps"></param>
-        public static void ShellSort0(IList<int> list, Stack<int> gaps)
+        public static (int compcnt, int swapcnt) ShellSort0(IList<int> list, Stack<int> gaps)
         {
+            int compcnt = 0, swapcnt = 0;
+
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
@@ -33,6 +68,8 @@ namespace TestCSharp
                         list[j + gap] = insertValue;
                 }
             }
+
+            return (compcnt, swapcnt);
         }
 
         /// <summary>
@@ -48,11 +85,11 @@ namespace TestCSharp
         /// 这里使用希尔增量来实现，假定数组长度为N，那么希尔增量为[N/2, N/4, N/8,... 2, 1]
         /// </summary>
         /// <param name="list"></param>
-        public static void ShellSort1(IList<int> list)
+        public static (int compcnt, int swapcnt) ShellSort1(IList<int> list)
         {
             Stack<int> gaps = GapSequences1(list.Count);
 
-            ShellSort0(list, gaps);
+            return ShellSort0(list, gaps);
         }
 
         private static Stack<int> GapSequences1(int length)
@@ -78,11 +115,11 @@ namespace TestCSharp
         /// 此种增量排序时间复杂度是O(N^3/2)
         /// </summary>
         /// <param name="list"></param>
-        public static void ShellSort2(IList<int> list)
+        public static (int compcnt, int swapcnt) ShellSort2(IList<int> list)
         {
             Stack<int> gaps = GapSequences2(list.Count);
 
-            ShellSort0(list, gaps);
+            return ShellSort0(list, gaps);
         }
 
         private static Stack<int> GapSequences2(int length)
@@ -104,11 +141,11 @@ namespace TestCSharp
         /// 此种增量排序最坏时间复杂度为O(N^3/2)，平均时间复杂度约为O(N^5/4)
         /// </summary>
         /// <param name="list"></param>
-        public static void ShellSort3(IList<int> list)
+        public static (int compcnt, int swapcnt) ShellSort3(IList<int> list)
         {
             Stack<int> gaps = GapSequences3(list.Count);
 
-            ShellSort0(list, gaps);
+            return ShellSort0(list, gaps);
         }
 
         private static Stack<int> GapSequences3(int length)
@@ -129,11 +166,11 @@ namespace TestCSharp
         /// 此种增量排序最坏时间复杂度为O(N^4/3)，平均时间复杂度约为O(N^7/6)
         /// </summary>
         /// <param name="list"></param>
-        public static void ShellSort4(IList<int> list)
+        public static (int compcnt, int swapcnt) ShellSort4(IList<int> list)
         {
             Stack<int> gaps = GapSequences4(list.Count);
 
-            ShellSort0(list, gaps);
+            return ShellSort0(list, gaps);
         }
 
         private static Stack<int> GapSequences4(int length)
@@ -168,11 +205,11 @@ namespace TestCSharp
         /// 据说当数据量较大时，这个是最好的增量序列
         /// </summary>
         /// <param name="list"></param>
-        public static void ShellSort5(IList<int> list)
+        public static (int compcnt, int swapcnt) ShellSort5(IList<int> list)
         {
             Stack<int> gaps = GapSequences5(list.Count);
 
-            ShellSort0(list, gaps);
+            return ShellSort0(list, gaps);
         }
 
         private static Stack<int> GapSequences5(int length)
