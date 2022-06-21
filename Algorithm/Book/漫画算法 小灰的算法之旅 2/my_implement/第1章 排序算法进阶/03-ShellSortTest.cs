@@ -63,9 +63,17 @@ namespace TestCSharp
                     int insertValue = list[i];
                     int j = i - gap;
                     for (; j >= 0 && list[j] > insertValue; j -= gap)
+                    {
+                        compcnt++;
+                        swapcnt++;
                         list[j + gap] = list[j];
+                    }
                     if (j + gap != i)
+                    {
+                        compcnt++;
+                        swapcnt++;
                         list[j + gap] = insertValue;
+                    }
                 }
             }
 
