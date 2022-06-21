@@ -32,12 +32,12 @@ namespace TestCSharp
         {
             for (int i = 1; i < list.Count; i++)
             {
-                int temp = list[i], j = i - 1;
-                for (; j >= 0 && list[j] > temp; j--)
+                int insertValue = list[i], j = i - 1;
+                for (; j >= 0 && list[j] > insertValue; j--)
                     list[j + 1] = list[j];
 
                 if (j + 1 != i)
-                    list[j + 1] = temp;
+                    list[j + 1] = insertValue;
             }
         }
 
@@ -64,11 +64,11 @@ namespace TestCSharp
 
                 if (index < i)
                 {
-                    int temp = list[i];
+                    int insertValue = list[i];
                     for (int j = i; j > index; j--)
                         list[j] = list[j - 1];
 
-                    list[index] = temp;
+                    list[index] = insertValue;
                 }
             }
         }
