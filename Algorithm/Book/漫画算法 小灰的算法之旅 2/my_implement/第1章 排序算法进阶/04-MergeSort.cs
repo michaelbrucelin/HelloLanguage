@@ -27,7 +27,7 @@ namespace TestCSharp
         /// <summary>
         /// 归并排序
         /// 
-        /// 递归版
+        /// 递归版，从中间开始逐步折半
         /// </summary>
         /// <param name="list"></param>
         /// <param name="start"></param>
@@ -60,18 +60,18 @@ namespace TestCSharp
         /// <summary>
         /// 归并排序
         /// 
-        /// 非递归版
+        /// 非递归版，从前向后两两分组进行归并
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
         public static IList<int> MergeSort2(IList<int> list)
         {
-            Stack<(int start, int stop)> stack = new Stack<(int start, int stop)>();
-            stack.Push((0, list.Count - 1));
+            int span = 2;
+            while (span < list.Count - 1)
+            {
+                for(int i = 0;i+span<list.Count;)
 
-            while (stack.Count > 0)
-            { 
-            
+                span <<= 1;
             }
 
             return null;
