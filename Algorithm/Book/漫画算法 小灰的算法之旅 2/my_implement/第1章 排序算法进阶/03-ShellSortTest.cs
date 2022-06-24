@@ -53,9 +53,8 @@ namespace TestCSharp
 
             // list = new List<int>(65536);
             // Parallel.For(0, 65536, i => list.Add(random.Next(0, 1000000)));  // Add()不是原子安全的，最终很可能得不到65536个元素
-            int[] arr = new int[65536];
-            Parallel.For(0, 65536, i => arr[i] = random.Next(0, 1000000));
-            list = arr.ToList();
+            list = new List<int>(new int[65536]);
+            Parallel.For(0, 65536, i => list[i] = random.Next(0, 1000000));
 
             list1 = list.ToList();
             list2 = list.ToList();
@@ -83,7 +82,7 @@ namespace TestCSharp
             Console.WriteLine($"\n4. Sedgewick增量1，compare times: {r4.compcnt}, swap times: {r4.swapcnt};");
             for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list4[(int)Math.Pow(2, i) - 1]}, ");
 
-            Console.WriteLine($"\n5. Sedgewick增量1，compare times: {r5.compcnt}, swap times: {r5.swapcnt};");
+            Console.WriteLine($"\n5. Sedgewick增量2，compare times: {r5.compcnt}, swap times: {r5.swapcnt};");
             for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list5[(int)Math.Pow(2, i) - 1]}, ");
             #endregion
         }
@@ -322,7 +321,7 @@ namespace TestCSharp
 0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
 4. Sedgewick增量1，compare times: 1810454, swap times: 1810454;
 0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
-5. Sedgewick增量1，compare times: 1302984, swap times: 1302984;
+5. Sedgewick增量2，compare times: 1302984, swap times: 1302984;
 0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
 
 
@@ -348,7 +347,7 @@ namespace TestCSharp
 0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
 4. Sedgewick增量1，compare times: 1822051, swap times: 1822051;
 0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
-5. Sedgewick增量1，compare times: 1307807, swap times: 1307807;
+5. Sedgewick增量2，compare times: 1307807, swap times: 1307807;
 0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
 
 
@@ -374,6 +373,6 @@ namespace TestCSharp
 0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
 4. Sedgewick增量1，compare times: 1728403, swap times: 1728403;
 0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
-5. Sedgewick增量1，compare times: 1221834, swap times: 1221834;
+5. Sedgewick增量2，compare times: 1221834, swap times: 1221834;
 0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
 */
