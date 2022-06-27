@@ -11,17 +11,17 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            List<decimal> list = new List<decimal>(32);
-            Parallel.For(0, 32, i => list.Add(random.Next(0, 100) * 1.0m / random.Next(1, 100)));
+            decimal[] arr = new decimal[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100) * 1.0m / random.Next(1, 100));
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i].ToString("0.00")}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i].ToString("0.00")}, ");
 
-            var list2 = BucketSort(list);
+            BucketSort(arr);
 
             Console.WriteLine();
-            for (int i = 0; i < list2.Count; i++)
-                Console.Write($"{list2[i].ToString("0.00")}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i].ToString("0.00")}, ");
         }
 
         /// <summary>
@@ -30,46 +30,44 @@ namespace TestCSharp
         /// 桶的跨度 = (最大值-最小值)/(桶数-1)，其中最后一个桶只存最大值，为[ ]，其余所有桶均为[ )
         /// 之所以这么设计桶，因为代码更统一，更容易找到每个元素属于那个桶
         /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static IList<decimal> BucketSort(IList<decimal> list)
+        /// <param name="arr"></param>
+        public static void BucketSort(decimal[] arr)
         {
-            if (list.Count == 1) return list;
+            if (arr.Length == 1) return;
 
-            decimal min = list[0], max = list[0];
-            foreach (decimal i in list)
+            decimal min = arr[0], max = arr[0];
+            foreach (decimal i in arr)
             {
                 if (i < min)
                     min = i;
                 else if (i > max)
                     max = i;
             }
-            if (min == max) return list;
+            if (min == max) return;
 
             // 初始化桶并将每一个元素分配到对应的桶中
-            decimal span = (max - min) / (list.Count - 1);
-            List<decimal>[] buckets = new List<decimal>[list.Count];
-            for (int i = 0; i < buckets.Length; i++) buckets[i] = new List<decimal>();
-            for (int i = 0; i < list.Count; i++)
-            {
-                buckets[(int)Math.Floor(list[i] / span)].Add(list[i]);
-            }
+            decimal span = (max - min) / (arr.Length - 1);
+            List<decimal>[] buckets = new List<decimal>[arr.Length];
+            for (int i = 0; i < buckets.Length; i++)
+                buckets[i] = new List<decimal>();
+
+            // 将每一个元素放到对应的桶中
+            for (int i = 0; i < arr.Length; i++)
+                buckets[(int)Math.Floor(arr[i] / span)].Add(arr[i]);
 
             for (int i = 0; i < buckets.Length; i++)
-            {
                 buckets[i].Sort();  // 每一个桶内部排序，这里直接使用API来实现
-            }
+                                    // 从这里可以看出，如果数组的元素分布不均，导致元素全部分到一个桶中，那么桶排序就退化为每个桶内部的排序
 
-            IList<decimal> result = new List<decimal>(list.Count);
+            // 输出全部元素
+            int index = 0;
             for (int i = 0; i < buckets.Length; i++)
             {
                 for (int j = 0; j < buckets[i].Count; j++)
                 {
-                    result.Add(buckets[i][j]);
+                    arr[index++] = buckets[i][j];
                 }
             }
-
-            return result;
         }
     }
 }
