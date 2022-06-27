@@ -11,17 +11,17 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            List<int> list = new List<int>(new int[random.Next(29, 43)]);
-            Parallel.For(0, list.Count, i => list[i] = random.Next(0, 100));
+            int[] arr = new int[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
 
-            MergeSort2(list);
+            MergeSort2(arr);
 
             Console.WriteLine();
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
         }
 
         /// <summary>
@@ -29,38 +29,29 @@ namespace TestCSharp
         /// 
         /// 递归版，从中间开始逐步折半
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="start"></param>
-        /// <param name="stop"></param>
-        public static void MergeSort(IList<int> list)
+        /// <param name="arr"></param>
+        public static void MergeSort(int[] arr)
         {
-            MergeSort_(list, 0, list.Count - 1);
+            MergeSort_(arr, 0, arr.Length - 1);
         }
 
-        private static void MergeSort_(IList<int> list, int start, int stop)
+        /// <summary>
+        /// 归并排序
+        /// 
+        /// 递归版，从中间开始逐步折半
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        private static void MergeSort_(int[] arr, int start, int end)
         {
-            if (start >= stop) return;
+            if (start >= end) return;
 
-            int mid = (start + stop) / 2;
-            MergeSort_(list, start, mid);
-            MergeSort_(list, mid + 1, stop);
+            int mid = (start + end) / 2;
+            MergeSort_(arr, start, mid);
+            MergeSort_(arr, mid + 1, end);
 
-            IList<int> buffer = new List<int>(stop - start + 1);
-            int i = start, j = mid + 1;
-            while (i <= mid && j <= stop)
-            {
-                if (list[i] <= list[j])
-                    buffer.Add(list[i++]);
-                else
-                    buffer.Add(list[j++]);
-            }
-            while (i <= mid)
-                buffer.Add(list[i++]);
-            while (j <= stop)
-                buffer.Add(list[j++]);
-
-            for (i = start, j = 0; i <= stop; i++, j++)
-                list[i] = buffer[j];
+            Merge(arr, start, mid, end);
         }
 
         /// <summary>
@@ -73,71 +64,60 @@ namespace TestCSharp
         ///   8  ----------------------------------------------------  ----------
         ///  16  ----------------------------------------------------------------
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="arr"></param>
         /// <returns></returns>
-        public static void MergeSort2(IList<int> list)
+        public static void MergeSort2(int[] arr)
         {
             int span = 1;
-            while ((span <<= 1) <= list.Count)
+            while ((span <<= 1) <= arr.Length)
             {
-                for (int step = 0; step < list.Count; step += span)
+                for (int step = 0; step < arr.Length; step += span)
                 {
                     int mid = step + (span >> 1);      // span中第2个有序序列的第1个元素的索引
                     int border;                        // span中第2个有序序列的最后1个元素的索引
-                    if (step + span - 1 < list.Count)  // 最后1个span是完整的
+                    if (step + span - 1 < arr.Length)  // 最后1个span是完整的
                         border = step + span - 1;
-                    else if (mid < list.Count)         // 最后1个span虽然不是完整的，但仍然需要合并
-                        border = list.Count - 1;
+                    else if (mid < arr.Length)         // 最后1个span虽然不是完整的，但仍然需要合并
+                        border = arr.Length - 1;
                     else
-                        break;
+                        break;                         // 最后1个span只有第一个有序序列，没有第2个有序序列，所以不需要合并
 
-                    List<int> buffer = new List<int>(span);
-                    int i = step, j = mid;
-                    while (i < mid && j <= border)
-                    {
-                        if (list[i] <= list[j])
-                            buffer.Add(list[i++]);
-                        else
-                            buffer.Add(list[j++]);
-                    }
-                    while (i < mid)
-                        buffer.Add(list[i++]);
-
-                    while (j <= border)
-                        buffer.Add(list[j++]);
-
-                    for (i = step, j = 0; i <= border; i++, j++)
-                        list[i] = buffer[j];
+                    Merge(arr, step, mid - 1, border);
                 }
             }
 
-            List<int> buffer_ = new List<int>(list.Count);
-            int mid_ = span >> 1, i_ = 0, j_ = mid_;
-            while (i_ < mid_ && j_ < list.Count)
-            {
-                if (list[i_] <= list[j_])
-                    buffer_.Add(list[i_++]);
-                else
-                    buffer_.Add(list[j_++]);
-            }
-            while (i_ < mid_)
-                buffer_.Add(list[i_++]);
-
-            while (j_ < list.Count)
-                buffer_.Add(list[j_++]);
-
-            for (i_ = 0; i_ < list.Count; i_++)
-                list[i_] = buffer_[i_];
+            Merge(arr, 0, (span >> 1) - 1, arr.Length - 1);
         }
 
-        private static void swap(IList<int> list, int i, int j)
+        /// <summary>
+        /// 合并两个有序数组，用于归并排序
+        /// </summary>
+        /// <param name="arr">归并排序的数组</param>
+        /// <param name="start">第1个有序区间的起始位置</param>
+        /// <param name="mid">第1个有序区间的结束位置</param>
+        /// <param name="end">第2个有序区间的结束位置</param>
+        private static void Merge(int[] arr, int start, int mid, int end)
         {
-            if (i != j)
+            int[] buffer = new int[end - start + 1];
+
+            int p = 0, p1 = start, p2 = mid + 1;
+            while (p1 <= mid && p2 <= end)
             {
-                int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
+                if (arr[p1] <= arr[p2])
+                    buffer[p++] = arr[p1++];
+                else
+                    buffer[p++] = arr[p2++];
             }
+
+            while (p1 <= mid)
+                buffer[p++] = arr[p1++];
+
+
+            while (p2 <= end)
+                buffer[p++] = arr[p2++];
+
+            for (p = 0; p < buffer.Length; p++)
+                arr[start + p] = buffer[p];
         }
     }
 }
