@@ -81,7 +81,49 @@ namespace TestCSharp
         /// <param name="arr"></param>
         public static void RadixSort2(string[] arr)
         {
+            List<string> list = new List<string>(arr);
+            RadixSort2_(ref list, 0);
 
+            for (int i = 0; i < arr.Length; i++)
+                arr[i] = list[i];
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bucket"></param>
+        /// <param name="level"></param>
+        private static void RadixSort2_(ref List<string> list, int level)
+        {
+            if (list.Count <= 1) return;
+
+            int maxlen = list[0].Length;
+            for (int i = 1; i < list.Count; i++)
+            {
+                if (list[i].Length > maxlen)
+                    maxlen = list[i].Length;
+            }
+            if (maxlen - 1 <= level) return;
+
+            // 创建桶，由于这里是简化实现，str只有小写字母，所以只需要27个桶，其中"空位"放0号桶，'a'放1号桶，'b'放2号桶...，'z'放26号桶
+            List<string>[] buckets = new List<string>[27];
+            for (int i = 0; i < buckets.Length; i++) buckets[i] = new List<string>();  // 初始化每一个桶
+            for (int i = 0; i < list.Count; i++)                                       // 将每一个元素放到对应的桶中
+                buckets[GetCharIndex(list[i], level)].Add(list[i]);
+
+            // 递归
+            for (int i = 0; i < buckets.Length; i++)
+                RadixSort2_(ref buckets[i], level + 1);
+
+            // 将桶中的每一个元素写回原数组中
+            int index = 0;
+            for (int i = 0; i < buckets.Length; i++)
+            {
+                for (int j = 0; j < buckets[i].Count; j++)
+                {
+                    list[index++] = buckets[i][j];
+                }
+            }
         }
 
         /// <summary>
