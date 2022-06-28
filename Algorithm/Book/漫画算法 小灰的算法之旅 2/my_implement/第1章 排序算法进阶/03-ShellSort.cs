@@ -25,6 +25,33 @@ namespace TestCSharp
         }
 
         /// <summary>
+        /// 通用的希尔排序，适用于不同的增量序列
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="gaps"></param>
+        public static void ShellSort0(int[] arr, Stack<int> gaps)
+        {
+            while (gaps.Count > 0)
+            {
+                int gap = gaps.Pop();
+                for (int i = gap; i < arr.Length; i++)
+                {
+                    int insertValue = arr[i];
+                    int j = i - gap;
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
+                    {
+                        arr[j + gap] = arr[j];
+                    }
+
+                    if (j + gap != i)
+                    {
+                        arr[j + gap] = insertValue;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 希尔排序，Donald Shell
         /// 希尔排序是插入排序的升级版，也是时间复杂度最早突破O(n^2)的通用算法之一
         /// 
