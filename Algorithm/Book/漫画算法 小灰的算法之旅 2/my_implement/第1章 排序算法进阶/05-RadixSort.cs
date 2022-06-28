@@ -32,6 +32,7 @@ namespace TestCSharp
         /// 个人理解就是字符串排序法
         /// 
         /// 下面简单描述一下LSD：
+        /// 注意下面每一轮的排序都必须是稳定排序
         /// bda, cfd, qwe, yui, abc, rrr, uue  // 原始数组
         /// bda, abc, cfd, qwe, uue, yui, rrr  // 第1轮，按最后1位排序
         /// abc, bda, cfd, rrr, uue, yui, qwe  // 第2轮，按倒数第2位排序
@@ -76,6 +77,7 @@ namespace TestCSharp
         /// MSD就是先比较字符串的第1位，第1位相同的字符串比较字符串的第2位...，一次类推
         /// 
         /// 下面实现一下MSD，为了简化，只考虑由小写字母构成的字符串数组
+        /// 注意下面每一轮的排序都必须是稳定排序
         /// 这里用递归实现
         /// </summary>
         /// <param name="arr"></param>
