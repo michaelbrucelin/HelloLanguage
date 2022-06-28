@@ -11,17 +11,17 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            List<int> list = new List<int>(32);
-            Parallel.For(0, 32, i => list.Add(random.Next(0, 100)));
+            int[] arr = new int[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
 
-            HeapSort(list);
+            HeapSort(arr);
 
             Console.WriteLine();
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
         }
 
         /// <summary>
@@ -34,15 +34,15 @@ namespace TestCSharp
         ///        ... ...
         /// 3. 最后，就是从小到大排序
         /// </summary>
-        /// <param name="list"></param>
-        public static void HeapSort(IList<int> list)
+        /// <param name="arr"></param>
+        public static void HeapSort(int[] arr)
         {
-            HeapBuilder(list);                    // 将list构建成最大堆
+            HeapBuilder(arr);                    // 将list构建成最大堆
 
-            for (int i = 1; i < list.Count; i++)  // 这里i表示第几次移动堆顶
+            for (int i = 1; i < arr.Length; i++)  // 这里i表示第几次移动堆顶
             {
-                swap(list, 0, list.Count - i);
-                DownAdjust(list, 0, list.Count - 1 - i);
+                swap(arr, 0, arr.Length - i);
+                DownAdjust(arr, 0, arr.Length - 1 - i);
             }
         }
 
@@ -63,69 +63,69 @@ namespace TestCSharp
         /// 上浮调整
         /// 将最后一个元素上浮到合适的位置
         /// </summary>
-        /// <param name="list"></param>
-        public static void UpAdjust(IList<int> list)
+        /// <param name="arr"></param>
+        public static void UpAdjust(int[] arr)
         {
-            int index = list.Count - 1;
-            int value = list[index];
+            int index = arr.Length - 1;
+            int value = arr[index];
 
-            while (index > 0 && value > list[(index - 1) / 2])
+            while (index > 0 && value > arr[(index - 1) / 2])
             {
-                list[index] = list[(index - 1) / 2];
+                arr[index] = arr[(index - 1) / 2];
                 index = (index - 1) / 2;
             }
-            list[index] = value;
+            arr[index] = value;
         }
 
         /// <summary>
         /// 下沉调整
         /// 将指定位置的元素下沉
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="arr"></param>
         /// <param name="index"></param>
         /// <param name="len">有效长度，由于每次把堆顶拿到最后，新的堆顶需要下沉，这时需要保证拿到最后的堆顶永远在这不动，所以使用有效长度限制新堆顶的下沉范围</param>
-        public static void DownAdjust(IList<int> list, int index, int len)
+        public static void DownAdjust(int[] arr, int index, int len)
         {
             if (index > len) return;
 
-            int value = list[index];
+            int value = arr[index];
 
             int childIndex = index * 2 + 1;  // 需要上浮的孩子，先假定是左孩子
             while (childIndex <= len)
             {
-                if (childIndex + 1 <= len && list[childIndex + 1] > list[childIndex])
+                if (childIndex + 1 <= len && arr[childIndex + 1] > arr[childIndex])
                     childIndex++;            // 选出左右孩子中较大的那一个
 
-                if (value < list[childIndex])
+                if (value < arr[childIndex])
                 {
-                    list[index] = list[childIndex];
+                    arr[index] = arr[childIndex];
                     index = childIndex;
                     childIndex = childIndex * 2 + 1;
                 }
                 else
                     break;
             }
-            list[index] = value;
+            arr[index] = value;
         }
 
         /// <summary>
         /// 构建最大堆
         /// 从最后一个非叶子节点开始，依次做“下沉”调整
         /// </summary>
-        /// <param name="list"></param>
-        public static void HeapBuilder(IList<int> list)
+        /// <param name="arr"></param>
+        public static void HeapBuilder(int[] arr)
         {
-            for (int i = list.Count / 2 - 1; i >= 0; i--)
-                DownAdjust(list, i, list.Count - 1);
+            for (int i = arr.Length / 2 - 1; i >= 0; i--)
+                DownAdjust(arr, i, arr.Length - 1);
         }
 
-        public static void swap(IList<int> list, int i, int j)
+        public static void swap(int[] arr, int i, int j)
         {
             if (i != j)
             {
-                int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
     }

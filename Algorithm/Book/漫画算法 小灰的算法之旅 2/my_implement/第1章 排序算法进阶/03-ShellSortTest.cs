@@ -14,38 +14,38 @@ namespace TestCSharp
             Random random = new Random();
 
             #region 比较1
-            List<int> list = new List<int>(32);
-            Parallel.For(0, 32, i => list.Add(random.Next(0, 100)));
+            int[] arr = new int[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
-            List<int> list1 = list.ToList();
-            List<int> list2 = list.ToList();
-            List<int> list3 = list.ToList();
-            List<int> list4 = list.ToList();
-            List<int> list5 = list.ToList();
+            int[] arr1 = arr.ToArray();
+            int[] arr2 = arr.ToArray();
+            int[] arr3 = arr.ToArray();
+            int[] arr4 = arr.ToArray();
+            int[] arr5 = arr.ToArray();
 
-            var r1 = ShellSort1(list1);
-            var r2 = ShellSort2(list2);
-            var r3 = ShellSort3(list3);
-            var r4 = ShellSort4(list4);
-            var r5 = ShellSort5(list5);
+            var r1 = ShellSort1(arr1);
+            var r2 = ShellSort2(arr2);
+            var r3 = ShellSort3(arr3);
+            var r4 = ShellSort4(arr4);
+            var r5 = ShellSort5(arr5);
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
 
             Console.WriteLine($"\n1. compare times: {r1.compcnt}, swap times: {r1.swapcnt};");
-            for (int i = 0; i < list1.Count; i++) Console.Write($"{list1[i]}, ");
+            for (int i = 0; i < arr1.Length; i++) Console.Write($"{arr1[i]}, ");
 
             Console.WriteLine($"\n1. compare times: {r2.compcnt}, swap times: {r2.swapcnt};");
-            for (int i = 0; i < list2.Count; i++) Console.Write($"{list2[i]}, ");
+            for (int i = 0; i < arr2.Length; i++) Console.Write($"{arr2[i]}, ");
 
             Console.WriteLine($"\n3. compare times: {r3.compcnt}, swap times: {r3.swapcnt};");
-            for (int i = 0; i < list3.Count; i++) Console.Write($"{list3[i]}, ");
+            for (int i = 0; i < arr3.Length; i++) Console.Write($"{arr3[i]}, ");
 
             Console.WriteLine($"\n4. compare times: {r4.compcnt}, swap times: {r4.swapcnt};");
-            for (int i = 0; i < list4.Count; i++) Console.Write($"{list4[i]}, ");
+            for (int i = 0; i < arr4.Length; i++) Console.Write($"{arr4[i]}, ");
 
             Console.WriteLine($"\n5. compare times: {r5.compcnt}, swap times: {r5.swapcnt};");
-            for (int i = 0; i < list5.Count; i++) Console.Write($"{list5[i]}, ");
+            for (int i = 0; i < arr5.Length; i++) Console.Write($"{arr5[i]}, ");
             #endregion
 
             #region 比较2
@@ -53,67 +53,67 @@ namespace TestCSharp
 
             // list = new List<int>(65536);
             // Parallel.For(0, 65536, i => list.Add(random.Next(0, 1000000)));  // Add()不是原子安全的，最终很可能得不到65536个元素
-            list = new List<int>(new int[65536]);
-            Parallel.For(0, 65536, i => list[i] = random.Next(0, 1000000));
+            arr = new int[65536];
+            Parallel.For(0, 65536, i => arr[i] = random.Next(0, 1000000));
 
-            list1 = list.ToList();
-            list2 = list.ToList();
-            list3 = list.ToList();
-            list4 = list.ToList();
-            list5 = list.ToList();
+            arr1 = arr.ToArray();
+            arr2 = arr.ToArray();
+            arr3 = arr.ToArray();
+            arr4 = arr.ToArray();
+            arr5 = arr.ToArray();
 
-            r1 = ShellSort1(list1);
-            r2 = ShellSort2(list2);
-            r3 = ShellSort3(list3);
-            r4 = ShellSort4(list4);
-            r5 = ShellSort5(list5);
+            r1 = ShellSort1(arr1);
+            r2 = ShellSort2(arr2);
+            r3 = ShellSort3(arr3);
+            r4 = ShellSort4(arr4);
+            r5 = ShellSort5(arr5);
 
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr[(int)Math.Pow(2, i) - 1]}, ");
 
             Console.WriteLine($"\n1. 希尔增量，      compare times: {r1.compcnt}, swap times: {r1.swapcnt};");
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list1[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr1[(int)Math.Pow(2, i) - 1]}, ");
 
             Console.WriteLine($"\n2. Knuth增量，     compare times: {r2.compcnt}, swap times: {r2.swapcnt};");
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list2[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr2[(int)Math.Pow(2, i) - 1]}, ");
 
             Console.WriteLine($"\n3. Hibbard增量，   compare times: {r3.compcnt}, swap times: {r3.swapcnt};");
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list3[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr3[(int)Math.Pow(2, i) - 1]}, ");
 
             Console.WriteLine($"\n4. Sedgewick增量1，compare times: {r4.compcnt}, swap times: {r4.swapcnt};");
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list4[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr4[(int)Math.Pow(2, i) - 1]}, ");
 
             Console.WriteLine($"\n5. Sedgewick增量2，compare times: {r5.compcnt}, swap times: {r5.swapcnt};");
-            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{list5[(int)Math.Pow(2, i) - 1]}, ");
+            for (int i = 0; i <= 16; i++) Console.Write($"{(int)Math.Pow(2, i) - 1}-{arr5[(int)Math.Pow(2, i) - 1]}, ");
             #endregion
         }
 
         /// <summary>
         /// 通用的希尔排序，用于比较不同增量序列的性能
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="arr"></param>
         /// <param name="gaps"></param>
-        public static (int compcnt, int swapcnt) ShellSort0(IList<int> list, Stack<int> gaps)
+        public static (int compcnt, int swapcnt) ShellSort0(int[] arr, Stack<int> gaps)
         {
             int compcnt = 0, swapcnt = 0;
 
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
                     {
                         compcnt++;
                         swapcnt++;
-                        list[j + gap] = list[j];
+                        arr[j + gap] = arr[j];
                     }
                     if (j + gap != i)
                     {
                         compcnt++;
                         swapcnt++;
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                     }
                 }
             }
@@ -133,12 +133,12 @@ namespace TestCSharp
         /// 
         /// 这里使用希尔增量来实现，假定数组长度为N，那么希尔增量为[N/2, N/4, N/8,... 2, 1]
         /// </summary>
-        /// <param name="list"></param>
-        public static (int compcnt, int swapcnt) ShellSort1(IList<int> list)
+        /// <param name="arr"></param>
+        public static (int compcnt, int swapcnt) ShellSort1(int[] arr)
         {
-            Stack<int> gaps = GapSequences1(list.Count);
+            Stack<int> gaps = GapSequences1(arr.Length);
 
-            return ShellSort0(list, gaps);
+            return ShellSort0(arr, gaps);
         }
 
         private static Stack<int> GapSequences1(int length)
@@ -163,12 +163,12 @@ namespace TestCSharp
         ///     递推公式为：h1 = 1, hi = 3*hi−1 + 1
         /// 此种增量排序时间复杂度是O(N^3/2)
         /// </summary>
-        /// <param name="list"></param>
-        public static (int compcnt, int swapcnt) ShellSort2(IList<int> list)
+        /// <param name="arr"></param>
+        public static (int compcnt, int swapcnt) ShellSort2(int[] arr)
         {
-            Stack<int> gaps = GapSequences2(list.Count);
+            Stack<int> gaps = GapSequences2(arr.Length);
 
-            return ShellSort0(list, gaps);
+            return ShellSort0(arr, gaps);
         }
 
         private static Stack<int> GapSequences2(int length)
@@ -189,12 +189,12 @@ namespace TestCSharp
         ///     递推公式为：h1 = 1, hi = 2*hi−1 + 1
         /// 此种增量排序最坏时间复杂度为O(N^3/2)，平均时间复杂度约为O(N^5/4)
         /// </summary>
-        /// <param name="list"></param>
-        public static (int compcnt, int swapcnt) ShellSort3(IList<int> list)
+        /// <param name="arr"></param>
+        public static (int compcnt, int swapcnt) ShellSort3(int[] arr)
         {
-            Stack<int> gaps = GapSequences3(list.Count);
+            Stack<int> gaps = GapSequences3(arr.Length);
 
-            return ShellSort0(list, gaps);
+            return ShellSort0(arr, gaps);
         }
 
         private static Stack<int> GapSequences3(int length)
@@ -214,12 +214,12 @@ namespace TestCSharp
         ///     通项公式为：hi = = 4^(i+1) + 3*2^i + 1, prefixed with 1
         /// 此种增量排序最坏时间复杂度为O(N^4/3)，平均时间复杂度约为O(N^7/6)
         /// </summary>
-        /// <param name="list"></param>
-        public static (int compcnt, int swapcnt) ShellSort4(IList<int> list)
+        /// <param name="arr"></param>
+        public static (int compcnt, int swapcnt) ShellSort4(int[] arr)
         {
-            Stack<int> gaps = GapSequences4(list.Count);
+            Stack<int> gaps = GapSequences4(arr.Length);
 
-            return ShellSort0(list, gaps);
+            return ShellSort0(arr, gaps);
         }
 
         private static Stack<int> GapSequences4(int length)
@@ -253,12 +253,12 @@ namespace TestCSharp
         /// 
         /// 据说当数据量较大时，这个是最好的增量序列
         /// </summary>
-        /// <param name="list"></param>
-        public static (int compcnt, int swapcnt) ShellSort5(IList<int> list)
+        /// <param name="arr"></param>
+        public static (int compcnt, int swapcnt) ShellSort5(int[] arr)
         {
-            Stack<int> gaps = GapSequences5(list.Count);
+            Stack<int> gaps = GapSequences5(arr.Length);
 
-            return ShellSort0(list, gaps);
+            return ShellSort0(arr, gaps);
         }
 
         private static Stack<int> GapSequences5(int length)
@@ -285,94 +285,88 @@ namespace TestCSharp
 
             return gaps;
         }
-
-        private static void swap(IList<int> list, int i, int j)
-        {
-            if (i != j)
-            {
-                int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
-        }
     }
 }
 
 /*
 第1次测试
-11, 92, 37, 60, 32, 43, 37, 76, 96, 29, 14, 0, 69, 30, 59, 69, 80, 69, 73, 28, 75, 22, 26, 31, 10, 13, 51, 82, 45, 80, 30, 46,
-1. compare times: 103, swap times: 103;
-0, 10, 11, 13, 14, 22, 26, 28, 29, 30, 30, 31, 32, 37, 37, 43, 45, 46, 51, 59, 60, 69, 69, 69, 73, 75, 76, 80, 80, 82, 92, 96,
-1. compare times: 142, swap times: 142;
-0, 10, 11, 13, 14, 22, 26, 28, 29, 30, 30, 31, 32, 37, 37, 43, 45, 46, 51, 59, 60, 69, 69, 69, 73, 75, 76, 80, 80, 82, 92, 96,
-3. compare times: 127, swap times: 127;
-0, 10, 11, 13, 14, 22, 26, 28, 29, 30, 30, 31, 32, 37, 37, 43, 45, 46, 51, 59, 60, 69, 69, 69, 73, 75, 76, 80, 80, 82, 92, 96,
-4. compare times: 117, swap times: 117;
-0, 10, 11, 13, 14, 22, 26, 28, 29, 30, 30, 31, 32, 37, 37, 43, 45, 46, 51, 59, 60, 69, 69, 69, 73, 75, 76, 80, 80, 82, 92, 96,
-5. compare times: 146, swap times: 146;
-0, 10, 11, 13, 14, 22, 26, 28, 29, 30, 30, 31, 32, 37, 37, 43, 45, 46, 51, 59, 60, 69, 69, 69, 73, 75, 76, 80, 80, 82, 92, 96,
+48, 3, 12, 35, 3, 97, 16, 35, 30, 70, 99, 36, 45, 63, 58, 20, 91, 79, 81, 36, 15, 2, 77, 30, 82, 39, 60, 37, 80, 5, 36, 3, 42, 97, 51, 65, 30, 6,
+1. compare times: 130, swap times: 130;
+2, 3, 3, 3, 5, 6, 12, 15, 16, 20, 30, 30, 30, 35, 35, 36, 36, 36, 37, 39, 42, 45, 48, 51, 58, 60, 63, 65, 70, 77, 79, 80, 81, 82, 91, 97, 97, 99,
+1. compare times: 158, swap times: 158;
+2, 3, 3, 3, 5, 6, 12, 15, 16, 20, 30, 30, 30, 35, 35, 36, 36, 36, 37, 39, 42, 45, 48, 51, 58, 60, 63, 65, 70, 77, 79, 80, 81, 82, 91, 97, 97, 99,
+3. compare times: 176, swap times: 176;
+2, 3, 3, 3, 5, 6, 12, 15, 16, 20, 30, 30, 30, 35, 35, 36, 36, 36, 37, 39, 42, 45, 48, 51, 58, 60, 63, 65, 70, 77, 79, 80, 81, 82, 91, 97, 97, 99,
+4. compare times: 206, swap times: 206;
+2, 3, 3, 3, 5, 6, 12, 15, 16, 20, 30, 30, 30, 35, 35, 36, 36, 36, 37, 39, 42, 45, 48, 51, 58, 60, 63, 65, 70, 77, 79, 80, 81, 82, 91, 97, 97, 99,
+5. compare times: 168, swap times: 168;
+2, 3, 3, 3, 5, 6, 12, 15, 16, 20, 30, 30, 30, 35, 35, 36, 36, 36, 37, 39, 42, 45, 48, 51, 58, 60, 63, 65, 70, 77, 79, 80, 81, 82, 91, 97, 97, 99,
 
-0-439245, 1-830960, 3-129330, 7-556282, 15-337668, 31-164236, 63-966056, 127-569101, 255-386862, 511-362108, 1023-5832, 2047-991347, 4095-674930, 8191-160416, 16383-573204, 32767-484757, 65535-238285,
-1. 希尔增量，      compare times: 8549777, swap times: 8549777;
-0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
-2. Knuth增量，     compare times: 2094941, swap times: 2094941;
-0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
-3. Hibbard增量，   compare times: 9638740, swap times: 9638740;
-0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
-4. Sedgewick增量1，compare times: 1810454, swap times: 1810454;
-0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
-5. Sedgewick增量2，compare times: 1302984, swap times: 1302984;
-0-21, 1-54, 3-58, 7-86, 15-150, 31-493, 63-838, 127-2072, 255-4029, 511-7618, 1023-15018, 2047-30691, 4095-61534, 8191-125275, 16383-250860, 32767-501350, 65535-999936,
+
+0-357661, 1-148316, 3-303033, 7-207274, 15-197298, 31-936063, 63-967974, 127-11708, 255-690924, 511-
+592522, 1023-825659, 2047-817907, 4095-312897, 8191-726981, 16383-274378, 32767-0, 65535-0,
+1. 希尔增量，      compare times: 3839349, swap times: 3839349;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-177330, 65535-999946,
+2. Knuth增量，     compare times: 1255678, swap times: 1255678;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-177330, 65535-999946,
+3. Hibbard增量，   compare times: 4952831, swap times: 4952831;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-177330, 65535-999946,
+4. Sedgewick增量1，compare times: 1166358, swap times: 1166358;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-177330, 65535-999946,
+5. Sedgewick增量2，compare times: 838142, swap times: 838142;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-177330, 65535-999946,
 
 
 第2次测试
-62, 60, 56, 25, 69, 71, 94, 52, 30, 16, 59, 83, 90, 14, 94, 5, 97, 45, 4, 55, 53, 48, 94, 56, 95, 54, 97, 14, 54, 61, 24, 74,
-1. compare times: 153, swap times: 153;
-4, 5, 14, 14, 16, 24, 25, 30, 45, 48, 52, 53, 54, 54, 55, 56, 56, 59, 60, 61, 62, 69, 71, 74, 83, 90, 94, 94, 94, 95, 97, 97,
-1. compare times: 118, swap times: 118;
-4, 5, 14, 14, 16, 24, 25, 30, 45, 48, 52, 53, 54, 54, 55, 56, 56, 59, 60, 61, 62, 69, 71, 74, 83, 90, 94, 94, 94, 95, 97, 97,
-3. compare times: 157, swap times: 157;
-4, 5, 14, 14, 16, 24, 25, 30, 45, 48, 52, 53, 54, 54, 55, 56, 56, 59, 60, 61, 62, 69, 71, 74, 83, 90, 94, 94, 94, 95, 97, 97,
-4. compare times: 154, swap times: 154;
-4, 5, 14, 14, 16, 24, 25, 30, 45, 48, 52, 53, 54, 54, 55, 56, 56, 59, 60, 61, 62, 69, 71, 74, 83, 90, 94, 94, 94, 95, 97, 97,
-5. compare times: 161, swap times: 161;
-4, 5, 14, 14, 16, 24, 25, 30, 45, 48, 52, 53, 54, 54, 55, 56, 56, 59, 60, 61, 62, 69, 71, 74, 83, 90, 94, 94, 94, 95, 97, 97,
+72, 97, 49, 8, 81, 31, 81, 67, 77, 63, 61, 80, 92, 73, 76, 37, 13, 94, 94, 71, 45, 41, 55, 76, 90, 41, 5, 21, 73, 1, 31, 35, 14, 90, 76, 99,
+1. compare times: 141, swap times: 141;
+1, 5, 8, 13, 14, 21, 31, 31, 35, 37, 41, 41, 45, 49, 55, 61, 63, 67, 71, 72, 73, 73, 76, 76, 76, 77, 80, 81, 81, 90, 90, 92, 94, 94, 97, 99,
+1. compare times: 132, swap times: 132;
+1, 5, 8, 13, 14, 21, 31, 31, 35, 37, 41, 41, 45, 49, 55, 61, 63, 67, 71, 72, 73, 73, 76, 76, 76, 77, 80, 81, 81, 90, 90, 92, 94, 94, 97, 99,
+3. compare times: 148, swap times: 148;
+1, 5, 8, 13, 14, 21, 31, 31, 35, 37, 41, 41, 45, 49, 55, 61, 63, 67, 71, 72, 73, 73, 76, 76, 76, 77, 80, 81, 81, 90, 90, 92, 94, 94, 97, 99,
+4. compare times: 139, swap times: 139;
+1, 5, 8, 13, 14, 21, 31, 31, 35, 37, 41, 41, 45, 49, 55, 61, 63, 67, 71, 72, 73, 73, 76, 76, 76, 77, 80, 81, 81, 90, 90, 92, 94, 94, 97, 99,
+5. compare times: 167, swap times: 167;
+1, 5, 8, 13, 14, 21, 31, 31, 35, 37, 41, 41, 45, 49, 55, 61, 63, 67, 71, 72, 73, 73, 76, 76, 76, 77, 80, 81, 81, 90, 90, 92, 94, 94, 97, 99,
 
-0-596730, 1-220780, 3-44884, 7-520211, 15-179173, 31-693479, 63-539208, 127-910994, 255-476137, 511-57246, 1023-465398, 2047-558019, 4095-879575, 8191-708063, 16383-729570, 32767-596648, 65535-956224,
-1. 希尔增量，      compare times: 8581575, swap times: 8581575;
-0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
-2. Knuth增量，     compare times: 2074711, swap times: 2074711;
-0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
-3. Hibbard增量，   compare times: 11376060, swap times: 11376060;
-0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
-4. Sedgewick增量1，compare times: 1822051, swap times: 1822051;
-0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
-5. Sedgewick增量2，compare times: 1307807, swap times: 1307807;
-0-6, 1-8, 3-27, 7-47, 15-185, 31-330, 63-775, 127-1962, 255-3781, 511-7438, 1023-15257, 2047-30701, 4095-62375, 8191-123799, 16383-248817, 32767-496579, 65535-999971,
+
+0-995025, 1-248630, 3-656468, 7-201191, 15-646930, 31-17473, 63-614364, 127-872684, 255-554569, 511-440151, 1023-686563, 2047-636255, 4095-953894, 8191-679250, 16383-934987, 32767-563817, 65535-327444,
+1. 希尔增量，      compare times: 8426992, swap times: 8426992;
+0-7, 1-11, 3-34, 7-96, 15-207, 31-469, 63-870, 127-1713, 255-3504, 511-7786, 1023-15242, 2047-31037, 4095-62696, 8191-127674, 16383-253264, 32767-502582, 65535-999998,
+2. Knuth增量，     compare times: 2312910, swap times: 2312910;
+0-7, 1-11, 3-34, 7-96, 15-207, 31-469, 63-870, 127-1713, 255-3504, 511-7786, 1023-15242, 2047-31037, 4095-62696, 8191-127674, 16383-253264, 32767-502582, 65535-999998,
+3. Hibbard增量，   compare times: 11370424, swap times: 11370424;
+0-7, 1-11, 3-34, 7-96, 15-207, 31-469, 63-870, 127-1713, 255-3504, 511-7786, 1023-15242, 2047-31037, 4095-62696, 8191-127674, 16383-253264, 32767-502582, 65535-999998,
+4. Sedgewick增量1，compare times: 1820963, swap times: 1820963;
+0-7, 1-11, 3-34, 7-96, 15-207, 31-469, 63-870, 127-1713, 255-3504, 511-7786, 1023-15242, 2047-31037, 4095-62696, 8191-127674, 16383-253264, 32767-502582, 65535-999998,
+5. Sedgewick增量2，compare times: 1299050, swap times: 1299050;
+0-7, 1-11, 3-34, 7-96, 15-207, 31-469, 63-870, 127-1713, 255-3504, 511-7786, 1023-15242, 2047-31037, 4095-62696, 8191-127674, 16383-253264, 32767-502582, 65535-999998,
 
 
 第3次测试
-56, 97, 9, 91, 38, 98, 41, 25, 56, 35, 50, 72, 15, 40, 49, 66, 82, 54, 28, 74, 24, 49, 8, 89, 71, 18, 26, 35, 35,
-1. compare times: 124, swap times: 124;
-8, 9, 15, 18, 24, 25, 26, 28, 35, 35, 35, 38, 40, 41, 49, 49, 50, 54, 56, 56, 66, 71, 72, 74, 82, 89, 91, 97, 98,
-1. compare times: 131, swap times: 131;
-8, 9, 15, 18, 24, 25, 26, 28, 35, 35, 35, 38, 40, 41, 49, 49, 50, 54, 56, 56, 66, 71, 72, 74, 82, 89, 91, 97, 98,
-3. compare times: 146, swap times: 146;
-8, 9, 15, 18, 24, 25, 26, 28, 35, 35, 35, 38, 40, 41, 49, 49, 50, 54, 56, 56, 66, 71, 72, 74, 82, 89, 91, 97, 98,
-4. compare times: 130, swap times: 130;
-8, 9, 15, 18, 24, 25, 26, 28, 35, 35, 35, 38, 40, 41, 49, 49, 50, 54, 56, 56, 66, 71, 72, 74, 82, 89, 91, 97, 98,
-5. compare times: 142, swap times: 142;
-8, 9, 15, 18, 24, 25, 26, 28, 35, 35, 35, 38, 40, 41, 49, 49, 50, 54, 56, 56, 66, 71, 72, 74, 82, 89, 91, 97, 98,
+42, 8, 65, 43, 80, 25, 40, 5, 79, 58, 33, 33, 12, 15, 86, 62, 69, 0, 92, 95, 31, 93, 1, 13, 86, 3, 88, 70, 40,
+1. compare times: 95, swap times: 95;
+0, 1, 3, 5, 8, 12, 13, 15, 25, 31, 33, 33, 40, 40, 42, 43, 58, 62, 65, 69, 70, 79, 80, 86, 86, 88, 92, 93, 95,
+1. compare times: 112, swap times: 112;
+0, 1, 3, 5, 8, 12, 13, 15, 25, 31, 33, 33, 40, 40, 42, 43, 58, 62, 65, 69, 70, 79, 80, 86, 86, 88, 92, 93, 95,
+3. compare times: 119, swap times: 119;
+0, 1, 3, 5, 8, 12, 13, 15, 25, 31, 33, 33, 40, 40, 42, 43, 58, 62, 65, 69, 70, 79, 80, 86, 86, 88, 92, 93, 95,
+4. compare times: 122, swap times: 122;
+0, 1, 3, 5, 8, 12, 13, 15, 25, 31, 33, 33, 40, 40, 42, 43, 58, 62, 65, 69, 70, 79, 80, 86, 86, 88, 92, 93, 95,
+5. compare times: 128, swap times: 128;
+0, 1, 3, 5, 8, 12, 13, 15, 25, 31, 33, 33, 40, 40, 42, 43, 58, 62, 65, 69, 70, 79, 80, 86, 86, 88, 92, 93, 95,
 
-0-871629, 1-685675, 3-797991, 7-106393, 15-230900, 31-123521, 63-460791, 127-106406, 255-801782, 511-722905, 1023-96468, 2047-899931, 4095-46907, 8191-89087, 16383-0, 32767-457829, 65535-239611,
-1. 希尔增量，      compare times: 9657605, swap times: 9657605;
-0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
-2. Knuth增量，     compare times: 2110981, swap times: 2110981;
-0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
-3. Hibbard增量，   compare times: 11012985, swap times: 11012985;
-0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
-4. Sedgewick增量1，compare times: 1728403, swap times: 1728403;
-0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
-5. Sedgewick增量2，compare times: 1221834, swap times: 1221834;
-0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-64076, 16383-195795, 32767-468253, 65535-999982,
+
+0-451357, 1-998261, 3-827295, 7-544253, 15-134867, 31-371027, 63-390956, 127-585115, 255-665422, 511-192709, 1023-405874, 2047-780003, 4095-0, 8191-0, 16383-0, 32767-0, 65535-0,
+1. 希尔增量，      compare times: 1586715, swap times: 1586715;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-0, 65535-999965,
+2. Knuth增量，     compare times: 593350, swap times: 593350;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-0, 65535-999965,
+3. Hibbard增量，   compare times: 1917682, swap times: 1917682;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-0, 65535-999965,
+4. Sedgewick增量1，compare times: 600812, swap times: 600812;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-0, 65535-999965,
+5. Sedgewick增量2，compare times: 403153, swap times: 403153;
+0-0, 1-0, 3-0, 7-0, 15-0, 31-0, 63-0, 127-0, 255-0, 511-0, 1023-0, 2047-0, 4095-0, 8191-0, 16383-0, 32767-0, 65535-999965,
 */

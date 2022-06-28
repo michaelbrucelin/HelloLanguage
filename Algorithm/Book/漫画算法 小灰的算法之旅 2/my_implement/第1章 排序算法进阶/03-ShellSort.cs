@@ -11,17 +11,17 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            List<int> list = new List<int>(32);
-            Parallel.For(0, 32, i => list.Add(random.Next(0, 100)));
+            int[] arr = new int[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
 
-            ShellSort5(list);
+            ShellSort5(arr);
 
             Console.WriteLine();
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
         }
 
         /// <summary>
@@ -36,22 +36,22 @@ namespace TestCSharp
         /// 
         /// 这里使用希尔增量来实现，假定数组长度为N，那么希尔增量为[N/2, N/4, N/8,... 2, 1]
         /// </summary>
-        /// <param name="list"></param>
-        public static void ShellSort(IList<int> list)
+        /// <param name="arr"></param>
+        public static void ShellSort(int[] arr)
         {
-            int gap = list.Count / 2;
+            int gap = arr.Length / 2;
             while (gap >= 1)
             {
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
                     {
-                        list[j + gap] = list[j];
+                        arr[j + gap] = arr[j];
                     }
                     if (j + gap != i)
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                 }
 
                 gap /= 2;
@@ -66,23 +66,23 @@ namespace TestCSharp
         ///     递推公式为：h1 = 1, hi = 3*hi−1 + 1
         /// 此种增量排序时间复杂度是O(N^3/2)
         /// </summary>
-        /// <param name="list"></param>
-        public static void ShellSort2(IList<int> list)
+        /// <param name="arr"></param>
+        public static void ShellSort2(int[] arr)
         {
             Stack<int> gaps = new Stack<int>();
-            for (int i = 1; i < list.Count; i = i * 3 + 1) gaps.Push(i);
+            for (int i = 1; i < arr.Length; i = i * 3 + 1) gaps.Push(i);
 
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
-                        list[j + gap] = list[j];
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
+                        arr[j + gap] = arr[j];
                     if (j + gap != i)
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                 }
             }
         }
@@ -95,23 +95,23 @@ namespace TestCSharp
         ///     递推公式为：h1 = 1, hi = 2*hi−1 + 1
         /// 此种增量排序最坏时间复杂度为O(N^3/2)，平均时间复杂度约为O(N^5/4)
         /// </summary>
-        /// <param name="list"></param>
-        public static void ShellSort3(IList<int> list)
+        /// <param name="arr"></param>
+        public static void ShellSort3(int[] arr)
         {
             Stack<int> gaps = new Stack<int>();
-            for (int i = 1; i < list.Count; i = i << 1 + 1) gaps.Push(i);
+            for (int i = 1; i < arr.Length; i = i << 1 + 1) gaps.Push(i);
 
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
-                        list[j + gap] = list[j];
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
+                        arr[j + gap] = arr[j];
                     if (j + gap != i)
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                 }
             }
         }
@@ -123,22 +123,22 @@ namespace TestCSharp
         ///     通项公式为：hi = = 4^(i+1) + 3*2^i + 1, prefixed with 1
         /// 此种增量排序最坏时间复杂度为O(N^4/3)，平均时间复杂度约为O(N^7/6)
         /// </summary>
-        /// <param name="list"></param>
-        public static void ShellSort4(IList<int> list)
+        /// <param name="arr"></param>
+        public static void ShellSort4(int[] arr)
         {
-            Stack<int> gaps = GapSequences4(list.Count);
+            Stack<int> gaps = GapSequences4(arr.Length);
 
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
-                        list[j + gap] = list[j];
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
+                        arr[j + gap] = arr[j];
                     if (j + gap != i)
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                 }
             }
         }
@@ -174,22 +174,22 @@ namespace TestCSharp
         /// 
         /// 据说当数据量较大时，这个是最好的增量序列
         /// </summary>
-        /// <param name="list"></param>
-        public static void ShellSort5(IList<int> list)
+        /// <param name="arr"></param>
+        public static void ShellSort5(int[] arr)
         {
-            Stack<int> gaps = GapSequences5(list.Count);
+            Stack<int> gaps = GapSequences5(arr.Length);
 
             while (gaps.Count > 0)
             {
                 int gap = gaps.Pop();
-                for (int i = gap; i < list.Count; i++)
+                for (int i = gap; i < arr.Length; i++)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     int j = i - gap;
-                    for (; j >= 0 && list[j] > insertValue; j -= gap)
-                        list[j + gap] = list[j];
+                    for (; j >= 0 && arr[j] > insertValue; j -= gap)
+                        arr[j + gap] = arr[j];
                     if (j + gap != i)
-                        list[j + gap] = insertValue;
+                        arr[j + gap] = insertValue;
                 }
             }
         }
@@ -217,16 +217,6 @@ namespace TestCSharp
             }
 
             return gaps;
-        }
-
-        private static void swap(IList<int> list, int i, int j)
-        {
-            if (i != j)
-            {
-                int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
         }
     }
 }

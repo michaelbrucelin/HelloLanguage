@@ -11,17 +11,17 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            List<int> list = new List<int>(32);
-            Parallel.For(0, 32, i => list.Add(random.Next(0, 100)));
+            int[] arr = new int[random.Next(29, 43)];
+            Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
 
-            InsertSort2(list);
+            InsertSort2(arr);
 
             Console.WriteLine();
-            for (int i = 0; i < list.Count; i++)
-                Console.Write($"{list[i]}, ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]}, ");
         }
 
         /// <summary>
@@ -49,26 +49,26 @@ namespace TestCSharp
         ///     使用二分查找，需要比较log2n次，需要赋值n次，而且多了一次循环（上面比较和赋值是一次循环，而这里比较和赋值是两次循环）
         /// 不确认这个优化到底有没有意义
         /// </summary>
-        /// <param name="list"></param>
-        public static void InsertSort2(IList<int> list)
+        /// <param name="arr"></param>
+        public static void InsertSort2(int[] arr)
         {
-            for (int i = 1; i < list.Count; i++)
+            for (int i = 1; i < arr.Length; i++)
             {
-                int index = BinarySearch4InsertSort(list, 0, i - 1, list[i]);
-                if (list[index] == list[i])
-                    for (; index <= i && list[index] == list[i]; index++) ;
-                else if (list[index] < list[i])  // list[index+1]一定大于list[i]，插入的位置是index+1
+                int index = BinarySearch4InsertSort(arr, 0, i - 1, arr[i]);
+                if (arr[index] == arr[i])
+                    for (; index <= i && arr[index] == arr[i]; index++) ;
+                else if (arr[index] < arr[i])  // list[index+1]一定大于list[i]，插入的位置是index+1
                     index += 1;
                 //else                           // list[index-1]一定小于list[i]，插入的位置是index
                 //    index = index;
 
                 if (index < i)
                 {
-                    int insertValue = list[i];
+                    int insertValue = arr[i];
                     for (int j = i; j > index; j--)
-                        list[j] = list[j - 1];
+                        arr[j] = arr[j - 1];
 
-                    list[index] = insertValue;
+                    arr[index] = insertValue;
                 }
             }
         }
@@ -80,23 +80,24 @@ namespace TestCSharp
         /// 如果位置i的值比要查找的值小，那么i+1位置的值，一定比要查找的值大（想想为什么？可以用反证法）
         /// 如果位置i的值比要查找的值大，那么i-1位置的值，一定比要查找的值小（想想为什么？可以用反证法）
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="arr"></param>
         /// <param name="low"></param>
         /// <param name="high"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        private static int BinarySearch4InsertSort(IList<int> list, int low, int high, int value)
+        private static int BinarySearch4InsertSort(int[] arr, int low, int high, int value)
         {
             if (low == high) return low;
 
-            int mid = (low + high) / 2;
+            // int mid = (low + high) / 2;  // (low + high)可能导致溢出
+            int mid = low + (high - low) / 2;
             while (low <= high)
             {
-                mid = (low + high) / 2;
+                mid = low + (high - low) / 2;
 
-                if (list[mid] == value)
+                if (arr[mid] == value)
                     return mid;
-                else if (list[mid] > value)
+                else if (arr[mid] > value)
                     high = mid - 1;
                 else  // (list[mid] < value)
                     low = mid + 1;
@@ -106,16 +107,6 @@ namespace TestCSharp
                 return high;
             else
                 return low;
-        }
-
-        private static void swap(IList<int> list, int i, int j)
-        {
-            if (i != j)
-            {
-                int temp = list[i];
-                list[i] = list[j];
-                list[j] = temp;
-            }
         }
     }
 }
