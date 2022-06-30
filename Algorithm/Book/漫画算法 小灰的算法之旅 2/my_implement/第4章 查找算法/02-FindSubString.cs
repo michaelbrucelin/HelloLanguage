@@ -10,15 +10,24 @@ namespace TestCSharp
     {
         public static void Main(string[] args)
         {
-            Random random = new Random();
-            string text = GetRandomString(random.Next(97, 127));
-            string pattern = GetRandomString(random.Next(3, 7));
+            //Random random = new Random();
+            //string text = GetRandomString(random.Next(97, 127));
+            //string pattern = GetRandomString(random.Next(3, 7));
 
-            Console.WriteLine($"text:    {text}");
-            Console.WriteLine($"pattern: {pattern}");
-            Console.WriteLine($"BF:  {FindStr_BF(text, pattern)}");
-            Console.WriteLine($"RK:  {FindStr_RK(text, pattern)}");
-            Console.WriteLine($"KMP: {FindStr_KMP(text, pattern)}");
+            //Console.WriteLine($"text:    {text}");
+            //Console.WriteLine($"pattern: {pattern}");
+            //Console.WriteLine($"BF:  {FindStr_BF(text, pattern)}");
+            //Console.WriteLine($"RK:  {FindStr_RK(text, pattern)}");
+            //Console.WriteLine($"KMP: {FindStr_KMP(text, pattern)}");
+
+            string pattern = "abababca";
+            int[] arr = GetNexts(pattern);
+            arr.ToList().ForEach(i => Console.Write($"{i}, "));
+
+            Console.WriteLine();
+            pattern = "ababcdababaz";
+            arr = GetNexts(pattern);
+            arr.ToList().ForEach(i => Console.Write($"{i}, "));
         }
 
         /// <summary>
@@ -105,10 +114,10 @@ namespace TestCSharp
         /// 子字符串查找，KMP算法
         /// D.E.Knuth，J.H.Morris和V.R.Pratt
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="target"></param>
+        /// <param name="text"></param>
+        /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_KMP(string str, string target)
+        public static int FindStr_KMP(string text, string pattern)
         {
             return -1;
         }
@@ -116,19 +125,19 @@ namespace TestCSharp
         /// <summary>
         /// KMP算法，获取next数组
         /// 
-        /// char:  | a | b | a | b | a | b | c | a |
         /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+        /// char:  | a | b | a | b | a | b | c | a |
         /// pmt:   | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |
         /// next:  |-1 | 0 | 0 | 1 | 2 | 3 | 4 | 0 |
         /// 
-        /// char:  | a | b | a | b | c | d | a | b | a | b | a | z |
         /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11|
+        /// char:  | a | b | a | b | c | d | a | b | a | b | a | z |
         /// pmt:   | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 | 0 |
         /// next:  |-1 | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 |
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="pattern"></param>
         /// <returns></returns>
-        private static int[] GetNexts(string str)
+        private static int[] GetNexts(string pattern)
         {
             return null;
         }
