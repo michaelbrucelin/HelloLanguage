@@ -11,32 +11,32 @@ namespace TestCSharp
         public static void Main(string[] args)
         {
             Random random = new Random();
-            string str = GetRandomString(random.Next(97, 127));
-            string target = GetRandomString(random.Next(3, 7));
+            string text = GetRandomString(random.Next(97, 127));
+            string pattern = GetRandomString(random.Next(3, 7));
 
-            Console.WriteLine($"str:\t{str}");
-            Console.WriteLine($"target:\t{target}");
-            Console.WriteLine($"BF:  {FindStr_BF(str, target)}");
-            Console.WriteLine($"RK:  {FindStr_RK(str, target)}");
-            Console.WriteLine($"KMP: {FindStr_KMP(str, target)}");
+            Console.WriteLine($"text:    {text}");
+            Console.WriteLine($"pattern: {pattern}");
+            Console.WriteLine($"BF:  {FindStr_BF(text, pattern)}");
+            Console.WriteLine($"RK:  {FindStr_RK(text, pattern)}");
+            Console.WriteLine($"KMP: {FindStr_KMP(text, pattern)}");
         }
 
         /// <summary>
         /// 子字符串查找，Brute Force算法
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="target"></param>
+        /// <param name="text"></param>
+        /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_BF(string str, string target)
+        public static int FindStr_BF(string text, string pattern)
         {
-            int m = str.Length;
-            int n = target.Length;
+            int m = text.Length;
+            int n = pattern.Length;
             if (m < n) return -1;
 
             for (int i = 0; i <= m - n; i++)
             {
                 int j;
-                for (j = 0; j < n && str[i + j] == target[j]; j++) ;
+                for (j = 0; j < n && text[i + j] == pattern[j]; j++) ;
 
                 if (j == n)
                     return i;
@@ -56,30 +56,30 @@ namespace TestCSharp
         ///     3. 要尽可能少的hash冲突，否则会退化为Brute Force算法（其实更糟，因为还多计算了hash值）
         /// 这里为了方便演示，hash算法直接采用逐位相加字符串每一个字符的ASCII码
         /// </summary>
-        /// <param name="str"></param>
-        /// <param name="target"></param>
+        /// <param name="text"></param>
+        /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_RK(string str, string target)
+        public static int FindStr_RK(string text, string pattern)
         {
-            int m = str.Length;
-            int n = target.Length;
+            int m = text.Length;
+            int n = pattern.Length;
             if (m < n) return -1;
 
-            int hash_str = FindStr_RK_Hash(str, 0, n - 1);
-            int hash_tar = FindStr_RK_Hash(target, 0, n - 1);
+            int hash_str = FindStr_RK_Hash(text, 0, n - 1);
+            int hash_tar = FindStr_RK_Hash(pattern, 0, n - 1);
 
             for (int i = 0; i <= m - n; i++)
             {
                 if (hash_str == hash_tar)
                 {
                     int j;
-                    for (j = 0; j < n && str[i + j] == target[j]; j++) ;
+                    for (j = 0; j < n && text[i + j] == pattern[j]; j++) ;
 
                     if (j == n)
                         return i;
                 }
                 else if (i + n <= m - 1)  // 或i < m - n，判断是不是最后一轮
-                    hash_str = hash_str - str[i] + str[i + n];
+                    hash_str = hash_str - text[i] + text[i + n];
             }
 
             return -1;
@@ -111,6 +111,26 @@ namespace TestCSharp
         public static int FindStr_KMP(string str, string target)
         {
             return -1;
+        }
+
+        /// <summary>
+        /// KMP算法，获取next数组
+        /// 
+        /// char:  | a | b | a | b | a | b | c | a |
+        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+        /// pmt:   | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |
+        /// next:  |-1 | 0 | 0 | 1 | 2 | 3 | 4 | 0 |
+        /// 
+        /// char:  | a | b | a | b | c | d | a | b | a | b | a | z |
+        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11|
+        /// pmt:   | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 | 0 |
+        /// next:  |-1 | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 |
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private static int[] GetNexts(string str)
+        {
+            return null;
         }
 
         /// <summary>
