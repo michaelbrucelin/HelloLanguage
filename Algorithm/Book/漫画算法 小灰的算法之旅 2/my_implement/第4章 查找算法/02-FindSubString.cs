@@ -139,7 +139,38 @@ namespace TestCSharp
         /// <returns></returns>
         private static int[] GetNexts(string pattern)
         {
-            return null;
+            int[] nexts = new int[pattern.Length];
+
+            int j = 0;
+            for (int i = 1; i < pattern.Length; i++)
+            {
+                if (pattern[i] == pattern[j])
+                {
+                    nexts[i] = nexts[i - 1] + 1;
+                    j++;
+                }
+                else
+                {
+                    // nexts[i] = 0;
+                    // j = 0;
+
+                    if (nexts[nexts[i - 1]] == 0)
+                    {
+                        nexts[i] = 0;
+                        j = 0;
+                    }
+                    else
+                    {
+                        if (pattern[i] == pattern[nexts[nexts[i - 1] - 1]])
+                        {
+                            nexts[i] = nexts[nexts[i - 1] - 1] + 1;
+                            j = nexts[nexts[i - 1] - 1];
+                        }
+                    }
+                }
+            }
+
+            return nexts;
         }
 
         /// <summary>
