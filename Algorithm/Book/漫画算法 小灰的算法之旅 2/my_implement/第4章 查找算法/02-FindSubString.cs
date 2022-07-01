@@ -20,14 +20,30 @@ namespace TestCSharp
             //Console.WriteLine($"RK:  {FindStr_RK(text, pattern)}");
             //Console.WriteLine($"KMP: {FindStr_KMP(text, pattern)}");
 
-            string pattern = "abababca";
-            int[] arr = GetNexts(pattern);
-            arr.ToList().ForEach(i => Console.Write($"{i}, "));
+            #region 验证KMP NEXT数组算法是否正确
+            string pattern = "ABABABCA";
+            int[] pmt = GetPMT(pattern);
+            int[] next = GetNext(pattern);
+            pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
+            pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+            next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
 
-            Console.WriteLine();
-            pattern = "ababcdababaz";
-            arr = GetNexts(pattern);
-            arr.ToList().ForEach(i => Console.Write($"{i}, "));
+            Console.WriteLine(Environment.NewLine);
+            pattern = "ABABCDABABAZ";
+            pmt = GetPMT(pattern);
+            next = GetNext(pattern);
+            pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
+            pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+            next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+
+            Console.WriteLine(Environment.NewLine);
+            pattern = "ABACABADABACABABA";
+            pmt = GetPMT(pattern);
+            next = GetNext(pattern);
+            pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
+            pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+            next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+            #endregion
         }
 
         /// <summary>
@@ -123,54 +139,117 @@ namespace TestCSharp
         }
 
         /// <summary>
-        /// KMP算法，获取next数组
+        /// KMP算法，获取pmt数组
+        /// 
+        /// pmt更容易理解，next在KMP算法使用时更方便
         /// 
         /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-        /// char:  | a | b | a | b | a | b | c | a |
-        /// pmt:   | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |
-        /// next:  |-1 | 0 | 0 | 1 | 2 | 3 | 4 | 0 |
+        /// char:  | A | B | A | B | A | B | C | A |
+        /// pmt:   | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |  注意这里并不是char[4]!=char[6]就得出pmt[6]是0，而是经过计算得出pmt[6]是0
+        /// next:  | 0 | 0 | 0 | 1 | 2 | 3 | 4 | 0 |  next就是pmt向后偏移一位的结果
         /// 
-        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11|
-        /// char:  | a | b | a | b | c | d | a | b | a | b | a | z |
-        /// pmt:   | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 | 0 |
-        /// next:  |-1 | 0 | 0 | 1 | 2 | 0 | 0 | 1 | 2 | 3 | 4 | 3 |
+        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | n | n | n | n | n | n | n | m | n |
+        /// char:  | A | B | A | C | A | B | A | D | . | A | B | A | C | A | B | A | B | A |
+        /// pmt:   | 0 | 0 | 1 | 0 | 1 | 2 | 3 | 0 | . | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 2 | 3 |  注意char[m]
+        /// next:  | 0 | 0 | 0 | 1 | 0 | 1 | 2 | 3 | 0 | . | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 2 |
         /// </summary>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        private static int[] GetNexts(string pattern)
+        private static int[] GetPMT(string pattern)
         {
-            int[] nexts = new int[pattern.Length];
+            int[] pmt = new int[pattern.Length];
 
             int j = 0;
             for (int i = 1; i < pattern.Length; i++)
             {
                 if (pattern[i] == pattern[j])
                 {
-                    nexts[i] = nexts[i - 1] + 1;
+                    pmt[i] = j + 1;  // 等价于：nexts[i] = nexts[i - 1] + 1;
                     j++;
                 }
                 else
                 {
-                    // nexts[i] = 0;
-                    // j = 0;
-
-                    if (nexts[nexts[i - 1]] == 0)
+                    if (j == 0)
                     {
-                        nexts[i] = 0;
-                        j = 0;
+                        pmt[i] = 0;
                     }
                     else
                     {
-                        if (pattern[i] == pattern[nexts[nexts[i - 1] - 1]])
+                        j = pmt[j - 1];
+                        while (pattern[i] != pattern[j] && j > 0)
+                            j = pmt[j - 1];
+
+                        if (pattern[i] == pattern[j])
                         {
-                            nexts[i] = nexts[nexts[i - 1] - 1] + 1;
-                            j = nexts[nexts[i - 1] - 1];
+                            pmt[i] = j + 1;
+                            j++;
+                        }
+                        else  // j == 0 && pattern[i] != pattern[0]
+                        {
+                            pmt[i] = 0;
                         }
                     }
                 }
             }
 
-            return nexts;
+            return pmt;
+        }
+
+        /// <summary>
+        /// KMP算法，获取next数组
+        /// 
+        /// pmt更容易理解，next在KMP算法使用时更方便
+        /// 
+        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+        /// char:  | A | B | A | B | A | B | C | A |
+        /// pmt:   | 0 | 0 | 1 | 2 | 3 | 4 | 0 | 1 |  注意这里并不是char[4]!=char[6]就得出pmt[6]是0，而是经过计算得出pmt[6]是0
+        /// next:  | 0 | 0 | 0 | 1 | 2 | 3 | 4 | 0 |  next就是pmt向后偏移一位的结果
+        /// 
+        /// index: | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | n | n | n | n | n | n | n | m | n |
+        /// char:  | A | B | A | C | A | B | A | D | . | A | B | A | C | A | B | A | B | A |
+        /// pmt:   | 0 | 0 | 1 | 0 | 1 | 2 | 3 | 0 | . | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 2 | 3 |  注意char[m]
+        /// next:  | 0 | 0 | 0 | 1 | 0 | 1 | 2 | 3 | 0 | . | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 2 |
+        /// </summary>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
+        private static int[] GetNext(string pattern)
+        {
+            int[] next = new int[pattern.Length];
+
+            int j = 0;
+            for (int i = 2; i < pattern.Length; i++)
+            {
+                if (pattern[i - 1] == pattern[j])
+                {
+                    next[i] = j + 1;
+                    j++;
+                }
+                else
+                {
+                    if (j == 0)
+                    {
+                        next[i] = 0;
+                    }
+                    else
+                    {
+                        j = next[j];
+                        while (pattern[i - 1] != pattern[j] && j > 0)
+                            j = next[j];
+
+                        if (pattern[i - 1] == pattern[j])
+                        {
+                            next[i] = j + 1;
+                            j++;
+                        }
+                        else  // j == 0 && pattern[i - 1] != pattern[0]
+                        {
+                            next[i] = 0;
+                        }
+                    }
+                }
+            }
+
+            return next;
         }
 
         /// <summary>
