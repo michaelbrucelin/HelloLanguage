@@ -10,42 +10,34 @@ namespace TestCSharp
     {
         public static void Main(string[] args)
         {
-            #region 验证子字符串查找
             Random random = new Random();
-            string text = GetRandomString(random.Next(97, 127));
-            string pattern = GetRandomString(random.Next(3, 7));
+            string text = GetRandomString(random.Next(32768, 65536));
+            string pattern = GetRandomString(random.Next(8, 16));
+            Test(text, pattern);
 
-            Console.WriteLine($"text:    {text}");
-            Console.WriteLine($"pattern: {pattern}");
-            Console.WriteLine($"BF:  {FindStr_BF(text, pattern)}");
-            Console.WriteLine($"RK:  {FindStr_RK(text, pattern)}");
-            Console.WriteLine($"KMP: {FindStr_KMP(text, pattern)}");
-            #endregion
+            Console.WriteLine();
+            text = "ATGTGAGCTGGTGTGTGCFAA";
+            pattern = "GTGTGCF";
+            Test(text, pattern);
 
-            #region 验证KMP NEXT数组算法是否正确
-            //string pattern = "ABABABCA";
-            //int[] pmt = GetPMT(pattern);
-            //int[] next = GetNext(pattern);
-            //pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
-            //pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
-            //next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+            Console.WriteLine();
+            text = new string('A', 10000) + "B";
+            pattern = new string('A', 10) + "B";
+            Test(text, pattern);
+        }
 
-            //Console.WriteLine(Environment.NewLine);
-            //pattern = "ABABCDABABAZ";
-            //pmt = GetPMT(pattern);
-            //next = GetNext(pattern);
-            //pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
-            //pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
-            //next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
+        public static void Test(string text, string pattern)
+        {
+            // Console.WriteLine($"text:    {text}");
+            Console.WriteLine($"text_len: {text.Length}, pattern_len: {pattern.Length}, pattern: {pattern}");
 
-            //Console.WriteLine(Environment.NewLine);
-            //pattern = "ABACABADABACABABA";
-            //pmt = GetPMT(pattern);
-            //next = GetNext(pattern);
-            //pattern.ToList().ForEach(c => Console.Write($"{c} ")); Console.WriteLine();
-            //pmt.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
-            //next.ToList().ForEach(i => Console.Write($"{i} ")); Console.WriteLine();
-            #endregion
+            var r_bf = FindStr_BF(text, pattern);
+            var r_rk = FindStr_RK(text, pattern);
+            var r_kmp = FindStr_KMP(text, pattern);
+
+            Console.WriteLine($"BF:  {r_bf.pos}, {r_bf.cnt}");
+            Console.WriteLine($"RK:  {r_rk.pos}, {r_rk.cnt}");
+            Console.WriteLine($"KMP: {r_kmp.pos}, {r_kmp.cnt}");
         }
 
         /// <summary>
@@ -54,22 +46,27 @@ namespace TestCSharp
         /// <param name="text"></param>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_BF(string text, string pattern)
+        public static (int pos, int cnt) FindStr_BF(string text, string pattern)
         {
+            int cnt = 0;
+
             int m = text.Length;
             int n = pattern.Length;
-            if (m < n) return -1;
+            if (m < n) return (-1, cnt);
 
             for (int i = 0; i <= m - n; i++)
             {
                 int j;
-                for (j = 0; j < n && text[i + j] == pattern[j]; j++) ;
+                for (j = 0; j < n && text[i + j] == pattern[j]; j++)
+                {
+                    cnt++;
+                }
 
                 if (j == n)
-                    return i;
+                    return (i, cnt);
             }
 
-            return -1;
+            return (-1, cnt);
         }
 
         /// <summary>
@@ -86,30 +83,36 @@ namespace TestCSharp
         /// <param name="text"></param>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_RK(string text, string pattern)
+        public static (int pos, int cnt) FindStr_RK(string text, string pattern)
         {
+            int cnt = 0;
+
             int m = text.Length;
             int n = pattern.Length;
-            if (m < n) return -1;
+            if (m < n) return (-1, cnt);
 
-            int hash_str = FindStr_RK_Hash(text, 0, n - 1);
-            int hash_tar = FindStr_RK_Hash(pattern, 0, n - 1);
+            int hash_str = FindStr_RK_Hash(text, 0, n - 1); cnt += n;
+            int hash_tar = FindStr_RK_Hash(pattern, 0, n - 1); cnt += n;
 
             for (int i = 0; i <= m - n; i++)
             {
                 if (hash_str == hash_tar)
                 {
                     int j;
-                    for (j = 0; j < n && text[i + j] == pattern[j]; j++) ;
+                    for (j = 0; j < n && text[i + j] == pattern[j]; j++)
+                        cnt++;
 
                     if (j == n)
-                        return i;
+                        return (i, cnt);
                 }
                 else if (i + n <= m - 1)  // 或i < m - n，判断是不是最后一轮
+                {
+                    cnt++;
                     hash_str = hash_str - text[i] + text[i + n];
+                }
             }
 
-            return -1;
+            return (-1, cnt);
         }
 
         /// <summary>
@@ -135,21 +138,27 @@ namespace TestCSharp
         /// <param name="text"></param>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        public static int FindStr_KMP(string text, string pattern)
+        public static (int pos, int cnt) FindStr_KMP(string text, string pattern)
         {
+            int cnt = 0;
+
             int m = text.Length;
             int n = pattern.Length;
-            if (m < n) return -1;
+            if (m < n) return (-1, cnt);
 
-            int[] next = GetNext(pattern);
+            var nexts = GetNext(pattern);
+            int[] next = nexts.next;
+            cnt += nexts.cnt;
 
             int i = 0, j = 0;
             while (i < m && j < n)
             {
                 if (text[i] == pattern[j])
                 {
+                    cnt++;
+
                     if (j == n - 1)
-                        return i - j;
+                        return (i - j, cnt);
 
                     i++;
                     j++;
@@ -163,7 +172,7 @@ namespace TestCSharp
                 }
             }
 
-            return -1;
+            return (-1, cnt);
         }
 
         /// <summary>
@@ -240,8 +249,9 @@ namespace TestCSharp
         /// </summary>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        private static int[] GetNext(string pattern)
+        private static (int[] next, int cnt) GetNext(string pattern)
         {
+            int cnt = 0;
             int[] next = new int[pattern.Length];
 
             int j = 0;
@@ -277,7 +287,7 @@ namespace TestCSharp
                 }
             }
 
-            return next;
+            return (next, cnt);
         }
 
         /// <summary>
@@ -295,3 +305,20 @@ namespace TestCSharp
         }
     }
 }
+
+/*
+text_len: 46949, pattern_len: 15, pattern: DBDDACDDABDDBBA
+BF:  -1, 15564
+RK:  -1, 15672
+KMP: -1, 14703
+
+text_len: 21, pattern_len: 7, pattern: GTGTGCF
+BF:  12, 18
+RK:  12, 33
+KMP: 12, 14
+
+text_len: 10001, pattern_len: 11, pattern: AAAAAAAAAAB
+BF:  9990, 99911
+RK:  9990, 10023
+KMP: 9990, 10001
+*/
