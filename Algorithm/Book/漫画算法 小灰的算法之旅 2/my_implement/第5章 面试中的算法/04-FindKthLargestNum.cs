@@ -112,7 +112,19 @@ namespace TestCSharp
         /// <returns></returns>
         public static int FindKthLargestNum3(int[] nums, int k)
         {
-            return int.MinValue;
+            return FindKthLargestNum3_(nums, 0, nums.Length - 1, k);
+        }
+
+        private static int FindKthLargestNum3_(int[] nums, int start, int end, int k)
+        {
+            int index = Partition(nums, start, end);
+
+            if (index == k - 1)
+                return nums[index];
+            else if (index < k - 1)
+                return FindKthLargestNum3_(nums, index + 1, end, k);
+            else
+                return FindKthLargestNum3_(nums, start, index - 1, k);
         }
 
         /// <summary>
@@ -126,7 +138,24 @@ namespace TestCSharp
         /// <returns></returns>
         public static int FindKthLargestNum4(int[] nums, int k)
         {
-            return int.MinValue;
+            Stack<(int start, int end)> stack = new Stack<(int start, int end)>();
+            stack.Push((0, nums.Length - 1));
+
+            int index = -1;
+            while (stack.Count > 0)
+            {
+                var item = stack.Pop();
+                index = Partition(nums, item.start, item.end);
+
+                if (index == k - 1)
+                    break;
+                else if (index < k - 1)
+                    stack.Push((index + 1, item.end));
+                else
+                    stack.Push((item.start, index - 1));
+            }
+
+            return nums[index];
         }
 
         /*
@@ -244,6 +273,40 @@ namespace TestCSharp
 
             for (int i = len / 2 - 1; i >= 0; i--)
                 DownAdjust(list, i, len);
+        }
+
+        /// <summary>
+        /// 快速排序分区函数，这里采用双边循环法。
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        private static int Partition(int[] arr, int start, int end)
+        {
+            if (start > end) return -1;
+
+            int pivot = arr[start];  // 这里从简，直接使用第一个元素作为基准值，生产环境可以使用更科学的基准值
+            int left = start, right = end;
+            while (left < right)
+            {
+                // 从右向左找比基准值大的元素
+                for (; arr[right] <= pivot && right > left; right--) ;
+
+                // 从左向右找比基准值小的元素
+                for (; arr[left] >= pivot && left < right; left++) ;
+
+                if (left < right)
+                {
+                    swap(arr, left, right);
+                }
+                else  // left == right
+                {
+                    if (left != start) swap(arr, start, left);
+                }
+            }
+
+            return left;
         }
 
         private static void swap(int[] arr, int i, int j)
