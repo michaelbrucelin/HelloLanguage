@@ -59,5 +59,33 @@ namespace TestCSharp
 
             return maxProfit;
         }
+
+        /// <summary>
+        /// 如果最多允许2次买卖，那么股票的最大收益是多少？同样不允许连续买入。
+        /// 
+        /// 使用动态规划实现，分析见06-StockProfit.md
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
+        public static int MaxProfitFor2Time(int[] prices)
+        {
+            int maxProfit = 0;
+
+            return maxProfit;
+        }
+
+        /// <summary>
+        /// 把股票买卖问题再做一层变化：如果最大交易次数不再是2次，而是k次（k是输入参数），那么如何求得全局最大收益？
+        /// 
+        /// 使用动态规划实现，分析见06-StockProfit.md
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
+        public static int MaxProfitForKTime(int[] prices)
+        {
+            int maxProfit = 0;
+
+            return maxProfit;
+        }
     }
 }
