@@ -26,7 +26,7 @@ namespace TestCSharp
             chart1.Titles.Clear();
             Title title = chart1.Titles.Add("通 话 性 能");
             title.Font = new Font("Arial", 16, FontStyle.Bold);
-            chart1.Legends[0].Docking = Docking.Top;             // 图例的位置
+            chart1.Legends[0].Docking = Docking.Top;                   // 图例的位置
 
             foreach (string pnum in data.Keys)
             {
@@ -140,7 +140,7 @@ namespace TestCSharp
                     int y_val = (int)point.YValues[0];                                       // Series中点的Y值
 
                     DateTime t = DateTime.Parse("00:00");
-                    tooltip.Show($"({t.AddMinutes(x_val * 5).ToString("HH:mm")}, {y_val})", chart, pos.X, pos.Y - 12);
+                    tooltip.Show($"({t.AddMinutes(x_val * 5).ToString("HH:mm")}, {y_val}, {result.Series.Name})", chart, pos.X, pos.Y - 12);
                 }
                 else
                 {
