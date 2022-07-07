@@ -13,9 +13,14 @@ namespace TestCSharp
 {
     class Program
     {
-        // 绘制图表示例
-        // data是数据源，每个KeyValuePair对应一个Series，其中Key可以作为Series的Legend使用，而Value仍然是一个字典，每个KeyValuePair对应一个Point
-        public void DrawChar(Dictionary<string, Dictionary<int, int>> data)
+        private Point? prevPosition = null;       // 用于Chart显示鼠标指向点的数据信息
+        private ToolTip tooltip = new ToolTip();  // 用于Chart显示鼠标指向点的数据信息
+
+        /// <summary>
+        /// 绘制Chart
+        /// </summary>
+        /// <param name="data">data是数据源，每个KeyValuePair对应一个Series，其中Key可以作为Series的Legend使用，而Value仍然是一个字典，每个KeyValuePair对应一个Point</param>
+        private void DrawChar(Dictionary<string, Dictionary<int, int>> data)
         {
             chart1.Series.Clear();
             chart1.Titles.Clear();
@@ -27,14 +32,16 @@ namespace TestCSharp
             {
                 Dictionary<int, int> points = data[pnum];
                 chart1.Series.Add(pnum);
-                chart1.Series[pnum].ChartType = SeriesChartType.Line;
+                chart1.Series[pnum].ChartType = SeriesChartType.Line;  // 折线图，默认是柱状图
 
                 for (int i = 0; i < 288 + 1; i++)
                 {
                     if (points.ContainsKey(i))
-                        chart1.Series[pnum].Points.Add(points[i]);
+                        // chart1.Series[pnum].Points.Add(points[i]);
+                        chart1.Series[pnum].Points.AddXY(i, points[i]);
                     else
-                        chart1.Series[pnum].Points.Add(0);
+                        // chart1.Series[pnum].Points.Add(0);
+                        chart1.Series[pnum].Points.AddXY(i, 0);
                 }
             }
 
@@ -64,7 +71,7 @@ namespace TestCSharp
                 if (max > y_max)
                     y_max = max;
             }
-            int[] intervals = new int[] { -1, 1, 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000, int.MaxValue };
+            int[] intervals = new int[] { -1, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, int.MaxValue };
             int y_interval = intervals.Where(i => i <= y_max / 24).Max();
             chart1.ChartAreas[0].AxisY.Interval = y_interval == -1 ? 1 : y_interval;
 
@@ -79,6 +86,68 @@ namespace TestCSharp
             chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.FromArgb(234, 234, 234);
             chart1.ChartAreas[0].AxisY.MinorGrid.LineColor = Color.FromArgb(234, 234, 234);
             chart1.ChartAreas[0].AxisY.MinorGrid.LineDashStyle = ChartDashStyle.Dash;
+        }
+
+        /// <summary>
+        /// 实现鼠标在某条折线上时，改折线变粗，并显示对应点的值
+        /// 参考：https://stackoverflow.com/questions/33978447/display-tooltip-when-mouse-over-the-line-chart
+        /// Point? prevPosition = null;
+        /// ToolTip tooltip = new ToolTip();
+        /// 
+        /// private void chart_MouseMove(object sender, MouseEventArgs e)
+        /// {
+        ///     var pos = e.Location;
+        ///     if (prevPosition.HasValue && pos == prevPosition.Value)
+        ///         return;
+        ///     tooltip.RemoveAll();
+        ///     prevPosition = pos;
+        ///     var results = chart.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint); // set ChartElementType.PlottingArea for full area, not only DataPoints
+        ///     foreach (var result in results)
+        ///     {
+        ///         if (result.ChartElementType == ChartElementType.DataPoint) // set ChartElementType.PlottingArea for full area, not only DataPoints
+        ///         {
+        ///             var yVal = result.ChartArea.AxisY.PixelPositionToValue(pos.Y);
+        ///             tooltip.Show(((int)yVal).ToString(), chart, pos.X, pos.Y - 15);
+        ///         }
+        ///     }
+        /// }
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            Chart chart = (Chart)sender;
+
+            Point pos = e.Location;
+            if (prevPosition.HasValue && pos == prevPosition.Value)
+                return;
+
+            tooltip.RemoveAll();
+            prevPosition = pos;
+
+            // Set ChartElementType.PlottingArea for full area, not only DataPoints
+            HitTestResult[] results = chart.HitTest(pos.X, pos.Y, false, ChartElementType.DataPoint);
+            foreach (HitTestResult result in results)
+            {
+                if (result.ChartElementType == ChartElementType.DataPoint)
+                {
+                    result.Series.BorderWidth = 2;  // 默认为1
+
+                    int x_val = (int)result.ChartArea.AxisX.PixelPositionToValue(pos.X);     // x轴的值
+                    // int y_val = (int)result.ChartArea.AxisY.PixelPositionToValue(pos.Y);  // y轴的值，并不是Series中点的Y值
+
+                    DataPoint point = result.Series.Points[x_val];                           // Series中的点
+                    int y_val = (int)point.YValues[0];                                       // Series中点的Y值
+
+                    DateTime t = DateTime.Parse("00:00");
+                    tooltip.Show($"({t.AddMinutes(x_val * 5).ToString("HH:mm")}, {y_val})", chart, pos.X, pos.Y - 12);
+                }
+                else
+                {
+                    foreach (Series s in chart.Series)
+                        s.BorderWidth = 1;
+                }
+            }
         }
     }
 }
