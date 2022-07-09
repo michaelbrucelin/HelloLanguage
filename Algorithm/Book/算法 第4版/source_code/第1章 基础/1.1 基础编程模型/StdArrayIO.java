@@ -48,24 +48,24 @@
 
 package edu.princeton.cs.algs4;
 
-
 /**
- *  <i>Standard array IO</i>. This class provides methods for reading
- *  in 1D and 2D arrays from standard input and printing out to 
- *  standard output.
- *  <p>
- *  For additional documentation, see
- *  <a href="https://introcs.cs.princeton.edu/22libary">Section 2.2</a> of
- *  <i>Computer Science: An Interdisciplinary Approach</i>
- *  by Robert Sedgewick and Kevin Wayne.
+ * <i>Standard array IO</i>. This class provides methods for reading
+ * in 1D and 2D arrays from standard input and printing out to
+ * standard output.
+ * <p>
+ * For additional documentation, see
+ * <a href="https://introcs.cs.princeton.edu/22libary">Section 2.2</a> of
+ * <i>Computer Science: An Interdisciplinary Approach</i>
+ * by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class StdArrayIO {
 
     // it doesn't make sense to instantiate this class
-    private StdArrayIO() { }
+    private StdArrayIO() {
+    }
 
     /**
      * Reads a 1D array of doubles from standard input and returns it.
@@ -95,7 +95,6 @@ public class StdArrayIO {
         StdOut.println();
     }
 
-        
     /**
      * Reads a 2D array of doubles from standard input and returns it.
      *
@@ -130,7 +129,6 @@ public class StdArrayIO {
         }
     }
 
-
     /**
      * Reads a 1D array of integers from standard input and returns it.
      *
@@ -159,7 +157,6 @@ public class StdArrayIO {
         StdOut.println();
     }
 
-        
     /**
      * Reads a 2D array of integers from standard input and returns it.
      *
@@ -194,7 +191,6 @@ public class StdArrayIO {
         }
     }
 
-
     /**
      * Reads a 1D array of booleans from standard input and returns it.
      *
@@ -218,8 +214,10 @@ public class StdArrayIO {
         int n = a.length;
         StdOut.println(n);
         for (int i = 0; i < n; i++) {
-            if (a[i]) StdOut.print("1 ");
-            else      StdOut.print("0 ");
+            if (a[i])
+                StdOut.print("1 ");
+            else
+                StdOut.print("0 ");
         }
         StdOut.println();
     }
@@ -241,7 +239,7 @@ public class StdArrayIO {
         return a;
     }
 
-   /**
+    /**
      * Prints a 2D array of booleans to standard output.
      *
      * @param a the 2D array of booleans
@@ -252,15 +250,16 @@ public class StdArrayIO {
         StdOut.println(m + " " + n);
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (a[i][j]) StdOut.print("1 ");
-                else         StdOut.print("0 ");
+                if (a[i][j])
+                    StdOut.print("1 ");
+                else
+                    StdOut.print("0 ");
             }
             StdOut.println();
         }
     }
 
-
-   /**
+    /**
      * Unit tests {@code StdArrayIO}.
      *
      * @param args the command-line arguments
@@ -282,29 +281,4 @@ public class StdArrayIO {
         StdArrayIO.print(d);
         StdOut.println();
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

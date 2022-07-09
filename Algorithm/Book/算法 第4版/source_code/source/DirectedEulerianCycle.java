@@ -14,32 +14,32 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The {@code DirectedEulerianCycle} class represents a data type
- *  for finding an Eulerian cycle or path in a digraph.
- *  An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
- *  uses every edge in the digraph exactly once.
- *  <p>
- *  This implementation uses a nonrecursive depth-first search.
- *  The constructor takes &Theta;(<em>E</em> + <em>V</em>) time in the worst
- *  case, where <em>E</em> is the number of edges and <em>V</em> is the
- *  number of vertices
- *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
- *  <p>
- *  To compute Eulerian paths in digraphs, see {@link DirectedEulerianPath}.
- *  To compute Eulerian cycles and paths in undirected graphs, see
- *  {@link EulerianCycle} and {@link EulerianPath}.
- *  <p>
- *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The {@code DirectedEulerianCycle} class represents a data type
+ * for finding an Eulerian cycle or path in a digraph.
+ * An <em>Eulerian cycle</em> is a cycle (not necessarily simple) that
+ * uses every edge in the digraph exactly once.
+ * <p>
+ * This implementation uses a nonrecursive depth-first search.
+ * The constructor takes &Theta;(<em>E</em> + <em>V</em>) time in the worst
+ * case, where <em>E</em> is the number of edges and <em>V</em> is the
+ * number of vertices
+ * Each instance method takes &Theta;(1) time.
+ * It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ * <p>
+ * To compute Eulerian paths in digraphs, see {@link DirectedEulerianPath}.
+ * To compute Eulerian cycles and paths in undirected graphs, see
+ * {@link EulerianCycle} and {@link EulerianPath}.
+ * <p>
+ * For additional documentation,
+ * see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
- *  @author Nate Liu
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
+ * @author Nate Liu
  */
 public class DirectedEulerianCycle {
-    private Stack<Integer> cycle = null;  // Eulerian cycle; null if no such cylce
+    private Stack<Integer> cycle = null; // Eulerian cycle; null if no such cylce
 
     /**
      * Computes an Eulerian cycle in the specified digraph, if one exists.
@@ -49,7 +49,8 @@ public class DirectedEulerianCycle {
     public DirectedEulerianCycle(Digraph G) {
 
         // must have at least one edge
-        if (G.E() == 0) return;
+        if (G.E() == 0)
+            return;
 
         // necessary condition: indegree(v) = outdegree(v) for each vertex v
         // (without this check, DFS might return a path instead of a cycle)
@@ -115,23 +116,23 @@ public class DirectedEulerianCycle {
         return -1;
     }
 
-
     /**************************************************************************
      *
-     *  The code below is solely for testing correctness of the data type.
+     * The code below is solely for testing correctness of the data type.
      *
      **************************************************************************/
 
     // Determines whether a digraph has an Eulerian cycle using necessary
     // and sufficient conditions (without computing the cycle itself):
-    //    - at least one edge
-    //    - indegree(v) = outdegree(v) for every vertex
-    //    - the graph is connected, when viewed as an undirected graph
-    //      (ignoring isolated vertices)
+    // - at least one edge
+    // - indegree(v) = outdegree(v) for every vertex
+    // - the graph is connected, when viewed as an undirected graph
+    // (ignoring isolated vertices)
     private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
 
         // Condition 0: at least 1 edge
-        if (G.E() == 0) return false;
+        if (G.E() == 0)
+            return false;
 
         // Condition 1: indegree(v) == outdegree(v) for every vertex
         for (int v = 0; v < G.V(); v++)
@@ -143,7 +144,7 @@ public class DirectedEulerianCycle {
         for (int v = 0; v < G.V(); v++)
             for (int w : G.adj(v))
                 H.addEdge(v, w);
-        
+
         // check that all non-isolated vertices are conneted
         int s = nonIsolatedVertex(G);
         BreadthFirstPaths bfs = new BreadthFirstPaths(H, s);
@@ -158,23 +159,26 @@ public class DirectedEulerianCycle {
     private boolean certifySolution(Digraph G) {
 
         // internal consistency check
-        if (hasEulerianCycle() == (cycle() == null)) return false;
+        if (hasEulerianCycle() == (cycle() == null))
+            return false;
 
         // hashEulerianCycle() returns correct value
-        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G)) return false;
+        if (hasEulerianCycle() != satisfiesNecessaryAndSufficientConditions(G))
+            return false;
 
         // nothing else to check if no Eulerian cycle
-        if (cycle == null) return true;
+        if (cycle == null)
+            return true;
 
         // check that cycle() uses correct number of edges
-        if (cycle.size() != G.E() + 1) return false;
+        if (cycle.size() != G.E() + 1)
+            return false;
 
         // check that cycle() is a directed cycle of G
         // TODO
 
         return true;
     }
-
 
     private static void unitTest(Digraph G, String description) {
         StdOut.println(description);
@@ -189,13 +193,11 @@ public class DirectedEulerianCycle {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-        else {
+        } else {
             StdOut.println("none");
         }
         StdOut.println();
     }
-
 
     /**
      * Unit tests the {@code DirectedEulerianCycle} data type.
@@ -225,8 +227,8 @@ public class DirectedEulerianCycle {
         unitTest(G4, "single self loop");
 
         // union of two disjoint cycles
-        Digraph H1 = DigraphGenerator.eulerianCycle(V/2, E/2);
-        Digraph H2 = DigraphGenerator.eulerianCycle(V - V/2, E - E/2);
+        Digraph H1 = DigraphGenerator.eulerianCycle(V / 2, E / 2);
+        Digraph H2 = DigraphGenerator.eulerianCycle(V - V / 2, E - E / 2);
         int[] perm = new int[V];
         for (int i = 0; i < V; i++)
             perm[i] = i;
@@ -237,7 +239,7 @@ public class DirectedEulerianCycle {
                 G5.addEdge(perm[v], perm[w]);
         for (int v = 0; v < H2.V(); v++)
             for (int w : H2.adj(v))
-                G5.addEdge(perm[V/2 + v], perm[V/2 + w]);
+                G5.addEdge(perm[V / 2 + v], perm[V / 2 + w]);
         unitTest(G5, "Union of two disjoint cycles");
 
         // random digraph
@@ -248,29 +250,4 @@ public class DirectedEulerianCycle {
         Digraph G7 = new Digraph(new In("eulerianD.txt"));
         unitTest(G7, "4-vertex Eulerian digraph");
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

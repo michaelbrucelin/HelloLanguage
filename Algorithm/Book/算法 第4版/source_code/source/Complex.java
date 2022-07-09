@@ -31,25 +31,26 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code Complex} class represents a complex number.
- *  Complex numbers are immutable: their values cannot be changed after they
- *  are created.
- *  It includes methods for addition, subtraction, multiplication, division,
- *  conjugation, and other common functions on complex numbers.
- *  <p>
- *  This computes correct results if all arithmetic performed is
- *  without floating-point rounding error or arithmetic overflow.  
- *  In practice, there will be floating-point rounding error.
- *  <p>
- *  For additional documentation, see <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The {@code Complex} class represents a complex number.
+ * Complex numbers are immutable: their values cannot be changed after they
+ * are created.
+ * It includes methods for addition, subtraction, multiplication, division,
+ * conjugation, and other common functions on complex numbers.
+ * <p>
+ * This computes correct results if all arithmetic performed is
+ * without floating-point rounding error or arithmetic overflow.
+ * In practice, there will be floating-point rounding error.
+ * <p>
+ * For additional documentation, see
+ * <a href="https://algs4.cs.princeton.edu/99scientific">Section 9.9</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class Complex {
-    private final double re;   // the real part
-    private final double im;   // the imaginary part
+    private final double re; // the real part
+    private final double im; // the imaginary part
 
     /**
      * Initializes a complex number from the specified real and imaginary parts.
@@ -69,9 +70,12 @@ public class Complex {
      *         of the form 34 - 56i.
      */
     public String toString() {
-        if (im == 0) return re + "";
-        if (re == 0) return im + "i";
-        if (im <  0) return re + " - " + (-im) + "i";
+        if (im == 0)
+            return re + "";
+        if (re == 0)
+            return im + "i";
+        if (im < 0)
+            return re + " - " + (-im) + "i";
         return re + " + " + im + "i";
     }
 
@@ -98,7 +102,7 @@ public class Complex {
     /**
      * Returns the sum of this complex number and the specified complex number.
      *
-     * @param  that the other complex number
+     * @param that the other complex number
      * @return the complex number whose value is {@code (this + that)}
      */
     public Complex plus(Complex that) {
@@ -111,7 +115,7 @@ public class Complex {
      * Returns the result of subtracting the specified complex number from
      * this complex number.
      *
-     * @param  that the other complex number
+     * @param that the other complex number
      * @return the complex number whose value is {@code (this - that)}
      */
     public Complex minus(Complex that) {
@@ -123,7 +127,7 @@ public class Complex {
     /**
      * Returns the product of this complex number and the specified complex number.
      *
-     * @param  that the other complex number
+     * @param that the other complex number
      * @return the complex number whose value is {@code (this * that)}
      */
     public Complex times(Complex that) {
@@ -135,7 +139,7 @@ public class Complex {
     /**
      * Returns the product of this complex number and the specified scalar.
      *
-     * @param  alpha the scalar
+     * @param alpha the scalar
      * @return the complex number whose value is {@code (alpha * this)}
      */
     public Complex scale(double alpha) {
@@ -145,7 +149,7 @@ public class Complex {
     /**
      * Returns the product of this complex number and the specified scalar.
      *
-     * @param  alpha the scalar
+     * @param alpha the scalar
      * @return the complex number whose value is {@code (alpha * this)}
      * @deprecated Replaced by {@link #scale(double)}.
      */
@@ -169,7 +173,7 @@ public class Complex {
      * @return the complex number whose value is {@code (1 / this)}
      */
     public Complex reciprocal() {
-        double scale = re*re + im*im;
+        double scale = re * re + im * im;
         return new Complex(re / scale, -im / scale);
     }
 
@@ -195,7 +199,7 @@ public class Complex {
      * Returns the result of dividing the specified complex number into
      * this complex number.
      *
-     * @param  that the other complex number
+     * @param that the other complex number
      * @return the complex number whose value is {@code (this / that)}
      */
     public Complex divides(Complex that) {
@@ -237,7 +241,6 @@ public class Complex {
     public Complex tan() {
         return sin().divides(cos());
     }
-    
 
     /**
      * Unit tests the {@code Complex} data type.
@@ -262,29 +265,4 @@ public class Complex {
         StdOut.println("|a|          = " + a.abs());
         StdOut.println("tan(a)       = " + a.tan());
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

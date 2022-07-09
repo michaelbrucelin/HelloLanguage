@@ -24,47 +24,48 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code BoruvkaMST} class represents a data type for computing a
- *  <em>minimum spanning tree</em> in an edge-weighted graph.
- *  The edge weights can be positive, zero, or negative and need not
- *  be distinct. If the graph is not connected, it computes a <em>minimum
- *  spanning forest</em>, which is the union of minimum spanning trees
- *  in each connected component. The {@code weight()} method returns the 
- *  weight of a minimum spanning tree and the {@code edges()} method
- *  returns its edges.
- *  <p>
- *  This implementation uses <em>Boruvka's algorithm</em> and the union-find
- *  data type.
- *  The constructor takes &Theta;(<em>E</em> log <em>V</em>) time in
- *  the worst case, where <em>V</em> is the number of vertices and
- *  <em>E</em> is the number of edges.
- *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the
- *  edge-weighted graph).
- *  <p>
- *  This {@code weight()} method correctly computes the weight of the MST
- *  if all arithmetic performed is without floating-point rounding error
- *  or arithmetic overflow.
- *  This is the case if all edge weights are non-negative integers
- *  and the weight of the MST does not exceed 2<sup>52</sup>.
- *  <p>
- *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
- *  For alternate implementations, see {@link LazyPrimMST}, {@link PrimMST},
- *  and {@link KruskalMST}.
+ * The {@code BoruvkaMST} class represents a data type for computing a
+ * <em>minimum spanning tree</em> in an edge-weighted graph.
+ * The edge weights can be positive, zero, or negative and need not
+ * be distinct. If the graph is not connected, it computes a <em>minimum
+ * spanning forest</em>, which is the union of minimum spanning trees
+ * in each connected component. The {@code weight()} method returns the
+ * weight of a minimum spanning tree and the {@code edges()} method
+ * returns its edges.
+ * <p>
+ * This implementation uses <em>Boruvka's algorithm</em> and the union-find
+ * data type.
+ * The constructor takes &Theta;(<em>E</em> log <em>V</em>) time in
+ * the worst case, where <em>V</em> is the number of vertices and
+ * <em>E</em> is the number of edges.
+ * Each instance method takes &Theta;(1) time.
+ * It uses &Theta;(<em>V</em>) extra space (not including the
+ * edge-weighted graph).
+ * <p>
+ * This {@code weight()} method correctly computes the weight of the MST
+ * if all arithmetic performed is without floating-point rounding error
+ * or arithmetic overflow.
+ * This is the case if all edge weights are non-negative integers
+ * and the weight of the MST does not exceed 2<sup>52</sup>.
+ * <p>
+ * For additional documentation,
+ * see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * For alternate implementations, see {@link LazyPrimMST}, {@link PrimMST},
+ * and {@link KruskalMST}.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class BoruvkaMST {
     private static final double FLOATING_POINT_EPSILON = 1E-12;
 
-    private Bag<Edge> mst = new Bag<Edge>();    // edges in MST
-    private double weight;                      // weight of MST
+    private Bag<Edge> mst = new Bag<Edge>(); // edges in MST
+    private double weight; // weight of MST
 
     /**
      * Compute a minimum spanning tree (or forest) of an edge-weighted graph.
+     * 
      * @param G the edge-weighted graph
      */
     public BoruvkaMST(EdgeWeightedGraph G) {
@@ -74,14 +75,18 @@ public class BoruvkaMST {
         for (int t = 1; t < G.V() && mst.size() < G.V() - 1; t = t + t) {
 
             // foreach tree in forest, find closest edge
-            // if edge weights are equal, ties are broken in favor of first edge in G.edges()
+            // if edge weights are equal, ties are broken in favor of first edge in
+            // G.edges()
             Edge[] closest = new Edge[G.V()];
             for (Edge e : G.edges()) {
                 int v = e.either(), w = e.other(v);
                 int i = uf.find(v), j = uf.find(w);
-                if (i == j) continue;   // same tree
-                if (closest[i] == null || less(e, closest[i])) closest[i] = e;
-                if (closest[j] == null || less(e, closest[j])) closest[j] = e;
+                if (i == j)
+                    continue; // same tree
+                if (closest[i] == null || less(e, closest[i]))
+                    closest[i] = e;
+                if (closest[j] == null || less(e, closest[j]))
+                    closest[j] = e;
             }
 
             // add newly discovered edges to MST
@@ -105,16 +110,17 @@ public class BoruvkaMST {
 
     /**
      * Returns the edges in a minimum spanning tree (or forest).
+     * 
      * @return the edges in a minimum spanning tree (or forest) as
-     *    an iterable of edges
+     *         an iterable of edges
      */
     public Iterable<Edge> edges() {
         return mst;
     }
 
-
     /**
      * Returns the sum of the edge weights in a minimum spanning tree (or forest).
+     * 
      * @return the sum of the edge weights in a minimum spanning tree (or forest)
      */
     public double weight() {
@@ -166,7 +172,8 @@ public class BoruvkaMST {
             uf = new UF(G.V());
             for (Edge f : mst) {
                 int x = f.either(), y = f.other(x);
-                if (f != e) uf.union(x, y);
+                if (f != e)
+                    uf.union(x, y);
             }
 
             // check that e is min weight edge in crossing cut
@@ -199,29 +206,4 @@ public class BoruvkaMST {
         }
         StdOut.printf("%.5f\n", mst.weight());
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

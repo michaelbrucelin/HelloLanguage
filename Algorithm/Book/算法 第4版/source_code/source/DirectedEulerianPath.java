@@ -14,31 +14,31 @@ package edu.princeton.cs.algs4;
 import java.util.Iterator;
 
 /**
- *  The {@code DirectedEulerianPath} class represents a data type
- *  for finding an Eulerian path in a digraph.
- *  An <em>Eulerian path</em> is a path (not necessarily simple) that
- *  uses every edge in the digraph exactly once.
- *  <p>
- *  This implementation uses a nonrecursive depth-first search.
- *  The constructor take &Theta;(<em>E</em> + <em>V</em>) time
- *  in the worst case, where <em>E</em> is the number of edges and
- *  <em>V</em> is the number of vertices.
- *  It uses &Theta;(<em>V</em>) extra space (not including the digraph). 
- *  <p>
- *  To compute Eulerian cycles in digraphs, see {@link DirectedEulerianCycle}.
- *  To compute Eulerian cycles and paths in undirected graphs, see
- *  {@link EulerianCycle} and {@link EulerianPath}.
- *  <p>
- *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The {@code DirectedEulerianPath} class represents a data type
+ * for finding an Eulerian path in a digraph.
+ * An <em>Eulerian path</em> is a path (not necessarily simple) that
+ * uses every edge in the digraph exactly once.
+ * <p>
+ * This implementation uses a nonrecursive depth-first search.
+ * The constructor take &Theta;(<em>E</em> + <em>V</em>) time
+ * in the worst case, where <em>E</em> is the number of edges and
+ * <em>V</em> is the number of vertices.
+ * It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ * <p>
+ * To compute Eulerian cycles in digraphs, see {@link DirectedEulerianCycle}.
+ * To compute Eulerian cycles and paths in undirected graphs, see
+ * {@link EulerianCycle} and {@link EulerianPath}.
+ * <p>
+ * For additional documentation,
+ * see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  * 
  * @author Robert Sedgewick
  * @author Kevin Wayne
  * @author Nate Liu
  */
 public class DirectedEulerianPath {
-    private Stack<Integer> path = null;   // Eulerian path; null if no suh path
+    private Stack<Integer> path = null; // Eulerian path; null if no suh path
 
     /**
      * Computes an Eulerian path in the specified digraph, if one exists.
@@ -61,10 +61,12 @@ public class DirectedEulerianPath {
 
         // digraph can't have an Eulerian path
         // (this condition is needed)
-        if (deficit > 1) return;
+        if (deficit > 1)
+            return;
 
         // special case for digraph with zero edges (has a degenerate Eulerian path)
-        if (s == -1) s = 0;
+        if (s == -1)
+            s = 0;
 
         // create local view of adjacency lists, to iterate one vertex at a time
         Iterator<Integer>[] adj = (Iterator<Integer>[]) new Iterator[G.V()];
@@ -84,7 +86,7 @@ public class DirectedEulerianPath {
             // push vertex with no more available edges to path
             path.push(v);
         }
-            
+
         // check if all edges have been used
         if (path.size() != G.E() + 1)
             path = null;
@@ -112,7 +114,6 @@ public class DirectedEulerianPath {
         return path != null;
     }
 
-
     // returns any non-isolated vertex; -1 if no such vertex
     private static int nonIsolatedVertex(Digraph G) {
         for (int v = 0; v < G.V(); v++)
@@ -121,22 +122,22 @@ public class DirectedEulerianPath {
         return -1;
     }
 
-
     /**************************************************************************
      *
-     *  The code below is solely for testing correctness of the data type.
+     * The code below is solely for testing correctness of the data type.
      *
      **************************************************************************/
 
     // Determines whether a digraph has an Eulerian path using necessary
     // and sufficient conditions (without computing the path itself):
-    //    - indegree(v) = outdegree(v) for every vertex,
-    //      except one vertex v may have outdegree(v) = indegree(v) + 1
-    //      (and one vertex v may have indegree(v) = outdegree(v) + 1)
-    //    - the graph is connected, when viewed as an undirected graph
-    //      (ignoring isolated vertices)
+    // - indegree(v) = outdegree(v) for every vertex,
+    // except one vertex v may have outdegree(v) = indegree(v) + 1
+    // (and one vertex v may have indegree(v) = outdegree(v) + 1)
+    // - the graph is connected, when viewed as an undirected graph
+    // (ignoring isolated vertices)
     private static boolean satisfiesNecessaryAndSufficientConditions(Digraph G) {
-        if (G.E() == 0) return true;
+        if (G.E() == 0)
+            return true;
 
         // Condition 1: indegree(v) == outdegree(v) for every vertex,
         // except one vertex may have outdegree(v) = indegree(v) + 1
@@ -144,14 +145,15 @@ public class DirectedEulerianPath {
         for (int v = 0; v < G.V(); v++)
             if (G.outdegree(v) > G.indegree(v))
                 deficit += (G.outdegree(v) - G.indegree(v));
-        if (deficit > 1) return false;
+        if (deficit > 1)
+            return false;
 
         // Condition 2: graph is connected, ignoring isolated vertices
         Graph H = new Graph(G.V());
         for (int v = 0; v < G.V(); v++)
             for (int w : G.adj(v))
                 H.addEdge(v, w);
-        
+
         // check that all non-isolated vertices are connected
         int s = nonIsolatedVertex(G);
         BreadthFirstPaths bfs = new BreadthFirstPaths(H, s);
@@ -162,27 +164,29 @@ public class DirectedEulerianPath {
         return true;
     }
 
-
     private boolean check(Digraph G) {
 
         // internal consistency check
-        if (hasEulerianPath() == (path() == null)) return false;
+        if (hasEulerianPath() == (path() == null))
+            return false;
 
         // hashEulerianPath() returns correct value
-        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(G)) return false;
+        if (hasEulerianPath() != satisfiesNecessaryAndSufficientConditions(G))
+            return false;
 
         // nothing else to check if no Eulerian path
-        if (path == null) return true;
+        if (path == null)
+            return true;
 
         // check that path() uses correct number of edges
-        if (path.size() != G.E() + 1) return false;
+        if (path.size() != G.E() + 1)
+            return false;
 
         // check that path() is a directed path in G
         // TODO
 
         return true;
     }
-
 
     private static void unitTest(Digraph G, String description) {
         StdOut.println(description);
@@ -197,8 +201,7 @@ public class DirectedEulerianPath {
                 StdOut.print(v + " ");
             }
             StdOut.println();
-        }
-        else {
+        } else {
             StdOut.println("none");
         }
         StdOut.println();
@@ -212,7 +215,6 @@ public class DirectedEulerianPath {
     public static void main(String[] args) {
         int V = Integer.parseInt(args[0]);
         int E = Integer.parseInt(args[1]);
-
 
         // Eulerian cycle
         Digraph G1 = DigraphGenerator.eulerianCycle(V, E);
@@ -250,29 +252,4 @@ public class DirectedEulerianPath {
         Digraph G8 = new Digraph(new In("eulerianD.txt"));
         unitTest(G8, "4-vertex Eulerian digraph");
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/

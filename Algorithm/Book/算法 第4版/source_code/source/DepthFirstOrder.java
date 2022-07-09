@@ -34,61 +34,66 @@
 package edu.princeton.cs.algs4;
 
 /**
- *  The {@code DepthFirstOrder} class represents a data type for 
- *  determining depth-first search ordering of the vertices in a digraph
- *  or edge-weighted digraph, including preorder, postorder, and reverse postorder.
- *  <p>
- *  This implementation uses depth-first search.
- *  Each constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
- *  where <em>V</em> is the number of vertices and <em>E</em> is the
- *  number of edges.
- *  Each instance method takes &Theta;(1) time.
- *  It uses &Theta;(<em>V</em>) extra space (not including the digraph).
- *  <p>
- *  For additional documentation,
- *  see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
- *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * The {@code DepthFirstOrder} class represents a data type for
+ * determining depth-first search ordering of the vertices in a digraph
+ * or edge-weighted digraph, including preorder, postorder, and reverse
+ * postorder.
+ * <p>
+ * This implementation uses depth-first search.
+ * Each constructor takes &Theta;(<em>V</em> + <em>E</em>) time,
+ * where <em>V</em> is the number of vertices and <em>E</em> is the
+ * number of edges.
+ * Each instance method takes &Theta;(1) time.
+ * It uses &Theta;(<em>V</em>) extra space (not including the digraph).
+ * <p>
+ * For additional documentation,
+ * see <a href="https://algs4.cs.princeton.edu/42digraph">Section 4.2</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public class DepthFirstOrder {
-    private boolean[] marked;          // marked[v] = has v been marked in dfs?
-    private int[] pre;                 // pre[v]    = preorder  number of v
-    private int[] post;                // post[v]   = postorder number of v
-    private Queue<Integer> preorder;   // vertices in preorder
-    private Queue<Integer> postorder;  // vertices in postorder
-    private int preCounter;            // counter or preorder numbering
-    private int postCounter;           // counter for postorder numbering
+    private boolean[] marked; // marked[v] = has v been marked in dfs?
+    private int[] pre; // pre[v] = preorder number of v
+    private int[] post; // post[v] = postorder number of v
+    private Queue<Integer> preorder; // vertices in preorder
+    private Queue<Integer> postorder; // vertices in postorder
+    private int preCounter; // counter or preorder numbering
+    private int postCounter; // counter for postorder numbering
 
     /**
      * Determines a depth-first order for the digraph {@code G}.
+     * 
      * @param G the digraph
      */
     public DepthFirstOrder(Digraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
-            if (!marked[v]) dfs(G, v);
+            if (!marked[v])
+                dfs(G, v);
 
         assert check();
     }
 
     /**
      * Determines a depth-first order for the edge-weighted digraph {@code G}.
+     * 
      * @param G the edge-weighted digraph
      */
     public DepthFirstOrder(EdgeWeightedDigraph G) {
-        pre    = new int[G.V()];
-        post   = new int[G.V()];
+        pre = new int[G.V()];
+        post = new int[G.V()];
         postorder = new Queue<Integer>();
-        preorder  = new Queue<Integer>();
-        marked    = new boolean[G.V()];
+        preorder = new Queue<Integer>();
+        marked = new boolean[G.V()];
         for (int v = 0; v < G.V(); v++)
-            if (!marked[v]) dfs(G, v);
+            if (!marked[v])
+                dfs(G, v);
     }
 
     // run DFS in digraph G from vertex v and compute preorder/postorder
@@ -105,7 +110,8 @@ public class DepthFirstOrder {
         post[v] = postCounter++;
     }
 
-    // run DFS in edge-weighted digraph G from vertex v and compute preorder/postorder
+    // run DFS in edge-weighted digraph G from vertex v and compute
+    // preorder/postorder
     private void dfs(EdgeWeightedDigraph G, int v) {
         marked[v] = true;
         pre[v] = preCounter++;
@@ -122,7 +128,8 @@ public class DepthFirstOrder {
 
     /**
      * Returns the preorder number of vertex {@code v}.
-     * @param  v the vertex
+     * 
+     * @param v the vertex
      * @return the preorder number of vertex {@code v}
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
@@ -133,7 +140,8 @@ public class DepthFirstOrder {
 
     /**
      * Returns the postorder number of vertex {@code v}.
-     * @param  v the vertex
+     * 
+     * @param v the vertex
      * @return the postorder number of vertex {@code v}
      * @throws IllegalArgumentException unless {@code 0 <= v < V}
      */
@@ -144,6 +152,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in postorder.
+     * 
      * @return the vertices in postorder, as an iterable of vertices
      */
     public Iterable<Integer> post() {
@@ -152,6 +161,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in preorder.
+     * 
      * @return the vertices in preorder, as an iterable of vertices
      */
     public Iterable<Integer> pre() {
@@ -160,6 +170,7 @@ public class DepthFirstOrder {
 
     /**
      * Returns the vertices in reverse postorder.
+     * 
      * @return the vertices in reverse postorder, as an iterable of vertices
      */
     public Iterable<Integer> reversePost() {
@@ -168,7 +179,6 @@ public class DepthFirstOrder {
             reverse.push(v);
         return reverse;
     }
-
 
     // check that pre() and post() are consistent with pre(v) and post(v)
     private boolean check() {
@@ -200,7 +210,7 @@ public class DepthFirstOrder {
     private void validateVertex(int v) {
         int V = marked.length;
         if (v < 0 || v >= V)
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
     }
 
     /**
@@ -236,32 +246,5 @@ public class DepthFirstOrder {
             StdOut.print(v + " ");
         }
         StdOut.println();
-
-
     }
-
 }
-
-/******************************************************************************
- *  Copyright 2002-2020, Robert Sedgewick and Kevin Wayne.
- *
- *  This file is part of algs4.jar, which accompanies the textbook
- *
- *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
- *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
- *      http://algs4.cs.princeton.edu
- *
- *
- *  algs4.jar is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  algs4.jar is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
- ******************************************************************************/
