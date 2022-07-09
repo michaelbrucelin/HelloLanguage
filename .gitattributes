@@ -3,6 +3,8 @@
 
 Jupyter/Python/Book/**/* linguist-vendored
 
+Algorithm/Book/算法?第4版/source_code/**/* linguist-vendored
+
 Language/C#/Project/E-Cology7/OAWorkflow/Web?References/OA/Reference.cs linguist-vendored
 Language/C#/Project/E-Cology9/E9-Workflow/E9-Workflow/Connected?Services/E9WorkflowService/Reference.cs linguist-vendored
 Language/C#/Project/TempProject/**/*.html linguist-vendored
