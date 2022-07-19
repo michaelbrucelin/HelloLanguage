@@ -28,19 +28,19 @@ namespace TestCSharp
         /// 再次，在剩下的元素中找到最小的元素，将它与数组的第二个元素交换位置。
         /// 如此往复，直到将整个数组排序。这种方法叫做选择排序，因为它在不断地选择剩余元素之中的最小者。
         /// </summary>
-        /// <param name="a"></param>
-        public static void Sort(IComparable[] a)
+        /// <param name="arr"></param>
+        public static void Sort(IComparable[] arr)
         {
-            for (int i = 0; i < a.Length - 1; i++)
+            for (int i = 0; i < arr.Length - 1; i++)
             {
                 int minId = i;
-                for (int j = i + 1; j < a.Length; j++)
+                for (int j = i + 1; j < arr.Length; j++)
                 {
-                    if (Less(a[j], a[minId]))
+                    if (Less(arr[j], arr[minId]))
                         minId = j;
                 }
                 if (minId != i)
-                    Exch(a, i, minId);
+                    Exch(arr, i, minId);
             }
         }
 
@@ -49,24 +49,24 @@ namespace TestCSharp
             return v.CompareTo(w) < 0;
         }
 
-        private static void Exch(IComparable[] a, int i, int j)
+        private static void Exch(IComparable[] arr, int i, int j)
         {
-            IComparable t = a[i];
-            a[i] = a[j];
-            a[j] = t;
+            IComparable t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
         }
 
-        public static void Show(IComparable[] a)
+        public static void Show(IComparable[] arr)
         {
-            for (int i = 0; i < a.Length; i++)
-                Console.Write($"{a[i]} ");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]} ");
             Console.WriteLine();
         }
 
-        public static bool IsSorted(IComparable[] a)
+        public static bool IsSorted(IComparable[] arr)
         {
-            for (int i = 1; i < a.Length; i++)
-                if (Less(a[i], a[i - 1])) return false;
+            for (int i = 1; i < arr.Length; i++)
+                if (Less(arr[i], arr[i - 1])) return false;
             return true;
         }
     }
