@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestCSharp
 {
-    public class Example
+    public class SortTemplate
     {
         public static void Main(string[] args)
         {
@@ -27,7 +27,17 @@ namespace TestCSharp
             // 排序算法
         }
 
+        public static void Sort<T>(T[] arr) where T : IComparable
+        {
+            // 排序算法
+        }
+
         private static bool Less(IComparable v, IComparable w)
+        {
+            return v.CompareTo(w) < 0;
+        }
+
+        private static bool Less<T>(T v, T w) where T : IComparable
         {
             return v.CompareTo(w) < 0;
         }
@@ -39,6 +49,13 @@ namespace TestCSharp
             arr[j] = t;
         }
 
+        private static void Exch<T>(T[] arr, int i, int j) where T : IComparable
+        {
+            T t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+
         public static void Show(IComparable[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
@@ -46,7 +63,21 @@ namespace TestCSharp
             Console.WriteLine();
         }
 
+        public static void Show<T>(T[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write($"{arr[i]} ");
+            Console.WriteLine();
+        }
+
         public static bool IsSorted(IComparable[] arr)
+        {
+            for (int i = 1; i < arr.Length; i++)
+                if (Less(arr[i], arr[i - 1])) return false;
+            return true;
+        }
+
+        public static bool IsSorted<T>(T[] arr) where T : IComparable
         {
             for (int i = 1; i < arr.Length; i++)
                 if (Less(arr[i], arr[i - 1])) return false;
