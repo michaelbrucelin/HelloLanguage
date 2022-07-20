@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestCSharp
 {
-    public class SortTemplate
+    public class Shell
     {
         public static void Main(string[] args)
         {
@@ -22,14 +22,48 @@ namespace TestCSharp
             Show(arr);
         }
 
+        /// <summary>
+        /// 希尔排序
+        /// 这里增量排序使用3k+1，即1, 4, 13, 40, 121, 364, 1093, ...
+        /// </summary>
+        /// <param name="arr"></param>
         public static void Sort(IComparable[] arr)
         {
-            // 排序算法
+            int N = arr.Length;
+            int h = 1;
+            while (h < N / 3) h = 3 * h + 1;  // 1, 4, 13, 40, 121, 364, 1093, ...
+
+            while (h >= 1)
+            {
+                for (int i = 1; i < arr.Length; i++)
+                {
+                    for (int j = i; j >= h && Less(arr[j], arr[j - h]); j -= h)
+                        Exch(arr, j, j - h);
+                }
+                h /= 3;
+            }
         }
 
+        /// <summary>
+        /// 希尔排序  泛型版本
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
         public static void Sort<T>(T[] arr) where T : IComparable
         {
-            // 排序算法
+            int N = arr.Length;
+            int h = 1;
+            while (h < N / 3) h = 3 * h + 1;  // 1, 4, 13, 40, 121, 364, 1093, ...
+
+            while (h >= 1)
+            {
+                for (int i = 1; i < arr.Length; i++)
+                {
+                    for (int j = i; j >= h && Less<T>(arr[j], arr[j - h]); j -= h)
+                        Exch<T>(arr, j, j - h);
+                }
+                h /= 3;
+            }
         }
 
         private static bool Less(IComparable v, IComparable w)
