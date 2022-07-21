@@ -32,7 +32,7 @@ namespace TestCSharp
             algs.ToList().ForEach(s =>
             {
                 double t = TimeRandomInput(s, N, T);
-                Console.WriteLine($"{s}:\t{t}");
+                Console.WriteLine($"{s + ":",-12}{t}");
             });
         }
 
@@ -47,7 +47,7 @@ namespace TestCSharp
             double[] result = TimeRandomInput(algs, N, T);
 
             for (int i = 0; i < algs.Length; i++)
-                Console.WriteLine($"{algs[i]}:\t{result[i]}");
+                Console.WriteLine($"{algs[i] + ":",-12}{result[i]}");
         }
 
         public static double Time(string alg, IComparable[] arr)

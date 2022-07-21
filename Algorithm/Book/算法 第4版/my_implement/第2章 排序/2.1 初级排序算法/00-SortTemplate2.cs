@@ -20,6 +20,8 @@ namespace TestCSharp
 
             Debug.Assert(IsSorted(arr));  // Trace.Assert(IsSorted(arr));
             Show(arr);
+
+            // Verify();
         }
 
         public static void Sort(IComparable[] arr)
@@ -82,6 +84,39 @@ namespace TestCSharp
             for (int i = 1; i < arr.Length; i++)
                 if (Less<T>(arr[i], arr[i - 1])) return false;
             return true;
+        }
+
+        public static void Verify()
+        {
+            int total = 0, yes = 0;
+
+            Random random = new Random();
+            int T = random.Next(256, 512);
+
+            List<double[]> errs = new List<double[]>();
+            for (int t = 0; t < T; t++)
+            {
+                int N = random.Next(1024, 2048);
+                double[] arr = new double[N];
+                Parallel.For(0, N, i => arr[i] = random.NextDouble());
+
+                double[] arrtest = arr.ToArray();
+                Sort(arrtest);
+                if (IsSorted<double>(arrtest))
+                    yes++;
+                else
+                    errs.Add(arr);
+
+                total++;
+            }
+
+            if (yes == total)
+                Console.WriteLine($"共测试{total}次，每次数组长度为1024~2048之间随机，排序全部成功。");
+            else
+            {
+                Console.WriteLine($"共测试{total}次，每次数组长度为1024~2048之间随机，排序成功{yes}次，发生错误的数组如下：");
+                errs.ForEach(arr => Show(arr));
+            }
         }
     }
 }
