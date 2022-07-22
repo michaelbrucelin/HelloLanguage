@@ -7,9 +7,17 @@ using System.Threading.Tasks;
 
 namespace TestCSharp
 {
-    public class SortTemplate
+    public abstract class SortTemplate
     {
-        public static void Main(string[] args)
+        //public static void Main(string[] args)
+        //{
+        //    Shell shell = new Shell();
+
+        //    shell.Test();
+        //    // shell.Verify();
+        //}
+
+        public void Test()
         {
             Random random = new Random();
             IComparable[] arr = new IComparable[random.Next(29, 43)];
@@ -24,38 +32,61 @@ namespace TestCSharp
             // Verify();
         }
 
-        public static void Sort(IComparable[] arr)
-        {
-            // 排序算法
-        }
+        public abstract void Sort<T>(T[] arr) where T : IComparable;
 
-        private static bool Less(IComparable v, IComparable w)
+        public bool Less<T>(T v, T w) where T : IComparable
         {
             return v.CompareTo(w) < 0;
         }
 
-        private static void Exch(IComparable[] arr, int i, int j)
+        public void Exch<T>(T[] arr, int i, int j) where T : IComparable
         {
-            IComparable t = arr[i];
+            T t = arr[i];
             arr[i] = arr[j];
             arr[j] = t;
         }
 
-        public static void Show(IComparable[] arr)
+        public void Show<T>(T[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
                 Console.Write($"{arr[i]} ");
             Console.WriteLine();
         }
 
-        public static bool IsSorted(IComparable[] arr)
+        /// <summary>
+        /// 检验数组是否有序，但是没有检验数组的元素是否与原数组一致
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public bool IsSorted<T>(T[] arr) where T : IComparable
         {
             for (int i = 1; i < arr.Length; i++)
-                if (Less(arr[i], arr[i - 1])) return false;
+                if (Less<T>(arr[i], arr[i - 1])) return false;
             return true;
         }
 
-        public static void Verify()
+        /// <summary>
+        /// 检验数组是否有序，并检验数组的元素是否与原数组一致
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public bool IsSorted2<T>(T[] arr) where T : IComparable
+        {
+            T[] arrcopy = arr.ToArray();
+            Array.Sort<T>(arrcopy);       // 这里相信API的排序是正确的
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].CompareTo(arrcopy[i]) != 0)
+                    return false;
+            }
+
+            return true;
+        }
+
+        public void Verify()
         {
             int total = 0, yes = 0;
 
@@ -71,7 +102,7 @@ namespace TestCSharp
 
                 double[] arrtest = arr.ToArray();
                 Sort(arrtest);
-                if (IsSorted<double>(arrtest))
+                if (IsSorted2<double>(arrtest))
                     yes++;
                 else
                     errs.Add(arr);
