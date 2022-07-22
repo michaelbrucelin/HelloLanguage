@@ -9,7 +9,26 @@ namespace TestCSharp
 {
     public class SortCompare
     {
-        public static void Main(string[] args)
+        //public static void Main(string[] args)
+        //{
+        //    SortCompare compare = new SortCompare();
+        //    // compare.Test();
+        //    compare.Test2();
+        //}
+
+        public void Test()
+        {
+            Random random = new Random();
+
+            string[] algs = new string[] { "Selection", "Insertion", "Shell", "Merge", "Quick", "Heap" };
+
+            int N = random.Next(1024, 2048);
+            int T = random.Next(256, 512);
+
+            Compare(algs, N, T);
+        }
+
+        public void Test2()
         {
             Random random = new Random();
 
@@ -27,7 +46,7 @@ namespace TestCSharp
         /// <param name="algs"></param>
         /// <param name="N">随机生成数组的长度</param>
         /// <param name="T">随机生成数组的数量</param>
-        public static void Compare(string[] algs, int N, int T)
+        public void Compare(string[] algs, int N, int T)
         {
             algs.ToList().ForEach(s =>
             {
@@ -42,7 +61,7 @@ namespace TestCSharp
         /// <param name="algs"></param>
         /// <param name="N">随机生成数组的长度</param>
         /// <param name="T">随机生成数组的数量</param>
-        public static void Compare2(string[] algs, int N, int T)
+        public void Compare2(string[] algs, int N, int T)
         {
             double[] result = TimeRandomInput(algs, N, T);
 
@@ -50,33 +69,21 @@ namespace TestCSharp
                 Console.WriteLine($"{algs[i] + ":",-12}{result[i]}");
         }
 
-        public static double Time(string alg, IComparable[] arr)
+        public double Time<T>(string alg, T[] arr) where T : IComparable
         {
             Stopwatch watch = new Stopwatch();
 
+            SortTemplate sortobj = null;
+            if (alg == "Insertion") sortobj = new Insertion();
+            else if (alg == "Selection") sortobj = new Selection();
+            else if (alg == "Shell") sortobj = new Shell();
+            else if (alg == "Merge") sortobj = new Merge();
+            else if (alg == "Quick") sortobj = new Quick();
+            else if (alg == "Heap") sortobj = new Heap();
+
+            Debug.Assert(sortobj != null);
             watch.Start();
-            if (alg == "Insertion") Insertion.Sort(arr);
-            else if (alg == "Selection") Selection.Sort(arr);
-            else if (alg == "Shell") Shell.Sort(arr);
-            else if (alg == "Merge") Merge.Sort(arr);
-            else if (alg == "Quick") Quick.Sort(arr);
-            else if (alg == "Heap") Heap.Sort(arr);
-            watch.Stop();
-
-            return watch.ElapsedMilliseconds * 1.0D / 1000;
-        }
-
-        public static double Time<T>(string alg, T[] arr) where T : IComparable
-        {
-            Stopwatch watch = new Stopwatch();
-
-            watch.Start();
-            if (alg == "Insertion") Insertion.Sort<T>(arr);
-            else if (alg == "Selection") Selection.Sort<T>(arr);
-            else if (alg == "Shell") Shell.Sort<T>(arr);
-            else if (alg == "Merge") Merge.Sort<T>(arr);
-            else if (alg == "Quick") Quick.Sort<T>(arr);
-            else if (alg == "Heap") Heap.Sort<T>(arr);
+            sortobj.Sort(arr);
             watch.Stop();
 
             return watch.ElapsedMilliseconds * 1.0D / 1000;
@@ -89,7 +96,7 @@ namespace TestCSharp
         /// <param name="N">随机生成数组的长度</param>
         /// <param name="T">随机生成数组的数量</param>
         /// <returns></returns>
-        public static double TimeRandomInput(string alg, int N, int T)
+        public double TimeRandomInput(string alg, int N, int T)
         {
             double total = 0.0;
 
@@ -111,7 +118,7 @@ namespace TestCSharp
         /// <param name="N">随机生成数组的长度</param>
         /// <param name="T">随机生成数组的数量</param>
         /// <returns></returns>
-        public static double[] TimeRandomInput(string[] algs, int N, int T)
+        public double[] TimeRandomInput(string[] algs, int N, int T)
         {
             double[] total = new double[algs.Length];
 
