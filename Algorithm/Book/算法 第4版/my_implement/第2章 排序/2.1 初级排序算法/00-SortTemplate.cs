@@ -34,19 +34,19 @@ namespace TestCSharp
 
         public abstract void Sort<T>(T[] arr) where T : IComparable;
 
-        public bool Less<T>(T v, T w) where T : IComparable
+        private bool Less<T>(T v, T w) where T : IComparable
         {
             return v.CompareTo(w) < 0;
         }
 
-        public void Exch<T>(T[] arr, int i, int j) where T : IComparable
+        private void Exch<T>(T[] arr, int i, int j) where T : IComparable
         {
             T t = arr[i];
             arr[i] = arr[j];
             arr[j] = t;
         }
 
-        public void Show<T>(T[] arr)
+        private void Show<T>(T[] arr)
         {
             for (int i = 0; i < arr.Length; i++)
                 Console.Write($"{arr[i]} ");
@@ -59,7 +59,7 @@ namespace TestCSharp
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public bool IsSorted<T>(T[] arr) where T : IComparable
+        private bool IsSorted<T>(T[] arr) where T : IComparable
         {
             for (int i = 1; i < arr.Length; i++)
                 if (Less<T>(arr[i], arr[i - 1])) return false;
@@ -72,7 +72,7 @@ namespace TestCSharp
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public bool IsSorted2<T>(T[] arr) where T : IComparable
+        private bool IsSorted2<T>(T[] arr) where T : IComparable
         {
             T[] arrcopy = arr.ToArray();
             Array.Sort<T>(arrcopy);       // 这里相信API的排序是正确的
