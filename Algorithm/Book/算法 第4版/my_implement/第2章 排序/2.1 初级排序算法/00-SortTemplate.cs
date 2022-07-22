@@ -34,12 +34,12 @@ namespace TestCSharp
 
         public abstract void Sort<T>(T[] arr) where T : IComparable;
 
-        private bool Less<T>(T v, T w) where T : IComparable
+        public bool Less<T>(T v, T w) where T : IComparable
         {
             return v.CompareTo(w) < 0;
         }
 
-        private void Exch<T>(T[] arr, int i, int j) where T : IComparable
+        public void Exch<T>(T[] arr, int i, int j) where T : IComparable
         {
             T t = arr[i];
             arr[i] = arr[j];
