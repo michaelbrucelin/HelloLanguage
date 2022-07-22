@@ -11,10 +11,10 @@ namespace TestCSharp
     {
         //public static void Main(string[] args)
         //{
-        //    Shell shell = new Shell();
+        //    Shell sortobj = new Shell();
 
-        //    shell.Test();
-        //    // shell.Verify();
+        //    sortobj.Test();
+        //    // sortobj.Verify();
         //}
 
         public void Test()
@@ -26,7 +26,7 @@ namespace TestCSharp
             Show(arr);
             Sort(arr);
 
-            Debug.Assert(IsSorted(arr));  // Trace.Assert(IsSorted(arr));
+            Debug.Assert(IsSorted2(arr));  // Trace.Assert(IsSorted2(arr));
             Show(arr);
 
             // Verify();
