@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace TestCSharp
 {
-    public class Merge : SortTemplate
+    public class MergeBU : SortTemplate
     {
         //public static void Main(string[] args)
         //{
-        //    Merge sortobj = new Merge();
+        //    MergeBU sortobj = new MergeBU();
 
         //    sortobj.Test();
         //    // sortobj.Verify();
@@ -19,25 +19,17 @@ namespace TestCSharp
 
         /// <summary>
         /// 归并排序
-        /// 自顶向下的归并排序
+        /// 自底向上的归并排序，不需要递归
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         public override void Sort<T>(T[] arr)
         {
             T[] buffer = new T[arr.Length];
-            Sort<T>(arr, 0, arr.Length - 1, ref buffer);
-        }
 
-        public void Sort<T>(T[] arr, int low, int high, ref T[] buffer) where T : IComparable
-        {
-            if (low >= high) return;
-
-            int mid = low + (high - low) / 2;
-            Sort<T>(arr, low, mid, ref buffer);
-            Sort<T>(arr, mid + 1, high, ref buffer);
-            if (arr[mid].CompareTo(arr[mid + 1]) > 0)  // 如果arr[mid]小于等于arr[mid+1]，我们就认为数组有序并可以跳过merge()方法了
-                Merge_(arr, low, mid, high, ref buffer);
+            for (int size = 1; size < arr.Length; size <<= 1)  // size为每轮归并的子数组的大小
+                for (int p = 0; p + size < arr.Length; p += size + size)
+                    Merge_<T>(arr, p, p + size - 1, Math.Min(p + size + size - 1, arr.Length - 1), ref buffer);
         }
 
         /// <summary>

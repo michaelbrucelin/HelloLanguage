@@ -20,7 +20,7 @@ namespace TestCSharp
         {
             Random random = new Random();
 
-            string[] algs = new string[] { "Selection", "Insertion", "Shell", "Merge", "Quick", "Heap" };
+            string[] algs = new string[] { "Selection", "Insertion", "Shell", "Merge", "MergeBU", "Quick", "Heap" };
 
             int N = random.Next(1024, 2048);
             int T = random.Next(256, 512);
@@ -32,7 +32,7 @@ namespace TestCSharp
         {
             Random random = new Random();
 
-            string[] algs = new string[] { "Selection", "Insertion", "Shell", "Merge", "Quick", "Heap" };
+            string[] algs = new string[] { "Selection", "Insertion", "Shell", "Merge", "MergeBU", "Quick", "Heap" };
 
             int N = random.Next(1024, 2048);
             int T = random.Next(256, 512);
@@ -78,6 +78,7 @@ namespace TestCSharp
             else if (alg == "Selection") sortobj = new Selection();
             else if (alg == "Shell") sortobj = new Shell();
             else if (alg == "Merge") sortobj = new Merge();
+            else if (alg == "MergeBU") sortobj = new MergeBU();
             else if (alg == "Quick") sortobj = new Quick();
             else if (alg == "Heap") sortobj = new Heap();
 
