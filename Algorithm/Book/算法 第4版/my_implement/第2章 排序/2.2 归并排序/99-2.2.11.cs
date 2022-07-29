@@ -9,6 +9,16 @@ namespace TestCSharp
 {
     public class Program_2_2_11 : SortTemplate
     {
+        //public static void Main(string[] args)
+        //{
+        //    Program_2_2_11 merge = new Program_2_2_11();
+
+        //    // merge.View(8);
+        //    merge.Test();
+        //    // merge.Verify();
+        //    // merge.Test2();
+        //}
+
         public override void Sort<T>(T[] arr)
         {
             Sort_Improve<T>(arr);
@@ -83,25 +93,38 @@ namespace TestCSharp
                 return;
             }
 
-            T[] buffer = new T[arr.Length];
-            Sort_Improve<T>(arr, 0, arr.Length - 1, ref buffer);
+            T[] buffer = arr.ToArray();  // 由于不是每次都递归回来，需要buffer与arr有相同的初始值
+            Sort_Improve<T>(arr, 0, arr.Length - 1, true, ref buffer);
         }
 
-        public void Sort_Improve<T>(T[] arr, int low, int high, ref T[] buffer) where T : IComparable
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <param name="tobuffer">true: 从原数组归并到buffer数组；false：从buffer数组归并到原数组；</param>
+        /// <param name="buffer"></param>
+        public void Sort_Improve<T>(T[] arr, int low, int high, bool tobuffer, ref T[] buffer) where T : IComparable
         {
             if (low >= high) return;
 
             if (high - low + 1 < 15)
             {
-                Sort_Insertion<T>(arr, 0, arr.Length - 1);
+                if (tobuffer)
+                    Sort_Insertion<T>(arr, low, high, buffer);
+                else
+                    Sort_Insertion<T>(buffer, low, high, arr);
+
                 return;
             }
 
             int mid = low + (high - low) / 2;
-            Sort_Improve<T>(arr, low, mid, ref buffer);
-            Sort_Improve<T>(arr, mid + 1, high, ref buffer);
-            if (arr[mid].CompareTo(arr[mid + 1]) > 0)
-                Merge_Improve<T>(arr, low, mid, high, ref buffer);
+            Sort_Improve<T>(arr, low, mid, !tobuffer, ref buffer);             // 只考虑第一次进入的状态即可，第一次进入是最后一次调用，所以一定要写回到原数组
+            Sort_Improve<T>(arr, mid + 1, high, !tobuffer, ref buffer);        // 只考虑第一次进入的状态即可，第一次进入是最后一次调用，所以一定要写回到原数组
+            // if ((tobuffer && arr[mid].CompareTo(arr[mid + 1]) > 0) || (!tobuffer && buffer[mid].CompareTo(buffer[mid + 1]) > 0))  // 在Merge()方法中判断
+            Merge_Improve<T>(arr, low, mid, high, !tobuffer, ref buffer);      // 只考虑第一次进入的状态即可，第一次进入是最后一次调用，所以一定要写回到原数组
         }
 
         /// <summary>
@@ -114,23 +137,52 @@ namespace TestCSharp
         /// <param name="low"></param>
         /// <param name="mid"></param>
         /// <param name="high"></param>
+        /// <param name="tobuffer">true: 从原数组归并到buffer数组；false：从buffer数组归并到原数组；</param>
         /// <param name="buffer"></param>
-        public void Merge_Improve<T>(T[] arr, int low, int mid, int high, ref T[] buffer) where T : IComparable
+        public void Merge_Improve<T>(T[] arr, int low, int mid, int high, bool tobuffer, ref T[] buffer) where T : IComparable
         {
             if (high <= low) return;
 
-            for (int i = low; i <= mid; i++)
-                buffer[i] = arr[i];
-            for (int i = mid + 1; i <= high; i++)
-                buffer[i] = arr[high + mid + 1 - i];
-
-            int lo = low, hi = high;
-            for (int i = low; i <= high; i++)
+            int id = low, i = low, j = mid + 1;
+            if (tobuffer)
             {
-                if (buffer[lo].CompareTo(buffer[hi]) <= 0)
-                    arr[i] = buffer[lo++];
+                if (arr[mid].CompareTo(arr[mid + 1]) <= 0)
+                {
+                    for (; id <= high; id++) buffer[id] = arr[id];
+                }
                 else
-                    arr[i] = buffer[hi--];
+                {
+                    while (i <= mid && j <= high)
+                    {
+                        if (arr[i].CompareTo(arr[j]) <= 0)
+                            buffer[id++] = arr[i++];
+                        else
+                            buffer[id++] = arr[j++];
+                    }
+
+                    while (i <= mid) buffer[id++] = arr[i++];
+                    while (j <= high) buffer[id++] = arr[j++];
+                }
+            }
+            else  // 与上面一样，重复写了一遍
+            {
+                if (buffer[mid].CompareTo(buffer[mid + 1]) <= 0)
+                {
+                    for (; id <= high; id++) arr[id] = buffer[id];
+                }
+                else
+                {
+                    while (i <= mid && j <= high)
+                    {
+                        if (buffer[i].CompareTo(buffer[j]) <= 0)
+                            arr[id++] = buffer[i++];
+                        else
+                            arr[id++] = buffer[j++];
+                    }
+
+                    while (i <= mid) arr[id++] = buffer[i++];
+                    while (j <= high) arr[id++] = buffer[j++];
+                }
             }
         }
 
@@ -139,6 +191,8 @@ namespace TestCSharp
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
         public void Sort_Insertion<T>(T[] arr, int low, int high) where T : IComparable
         {
             for (int i = low + 1; i <= high; i++)
@@ -152,14 +206,38 @@ namespace TestCSharp
             }
         }
 
+        /// <summary>
+        /// 供归并排序调用的插入排序
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <param name="low"></param>
+        /// <param name="high"></param>
+        /// <param name="dst"></param>
+        public void Sort_Insertion<T>(T[] arr, int low, int high, T[] dst) where T : IComparable
+        {
+            for (int i = low + 1; i <= high; i++)
+            {
+                T t = arr[i];
+                int j = i;
+                for (; j > low && t.CompareTo(arr[j - 1]) < 0; j--)
+                    arr[j] = arr[j - 1];
+                if (j != i)
+                    arr[j] = t;
+            }
+
+            for (int i = low; i <= high; i++)
+                dst[i] = arr[i];
+        }
+
         public void Test2()
         {
             Random random = new Random();
 
             string[] algs = new string[] { "Sort_Normal", "Sort_Improve" };
 
-            int N = random.Next(1024, 2048);
-            int T = random.Next(256, 512);
+            int N = random.Next(4096, 16384);
+            int T = random.Next(256, 1024);
 
             Compare2(algs, N, T);
         }

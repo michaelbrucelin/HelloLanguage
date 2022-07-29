@@ -17,10 +17,10 @@ namespace TestCSharp
         //    // sortobj.Verify();
         //}
 
-        public void Test()
+        public void Test(int cnt)
         {
             Random random = new Random();
-            IComparable[] arr = new IComparable[random.Next(29, 43)];
+            IComparable[] arr = new IComparable[cnt];
             Parallel.For(0, arr.Length, i => arr[i] = random.Next(0, 100));
 
             Show(arr);
@@ -30,6 +30,12 @@ namespace TestCSharp
             Show(arr);
 
             // Verify();
+        }
+
+        public void Test()
+        {
+            Random random = new Random();
+            Test(random.Next(29, 43));
         }
 
         public abstract void Sort<T>(T[] arr) where T : IComparable;
