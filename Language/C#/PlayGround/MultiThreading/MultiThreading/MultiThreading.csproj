@@ -50,10 +50,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions\Functions.cs" />
-    <Compile Include="Sections\Section01\Section01.cs">
+    <Compile Include="Sections\Section03.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sections\Section01\Section01.Designer.cs">
+    <Compile Include="Sections\Section03.Designer.cs">
+      <DependentUpon>Section03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section04.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section04.Designer.cs">
+      <DependentUpon>Section04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section02.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section02.Designer.cs">
+      <DependentUpon>Section02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section01.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section01.Designer.cs">
       <DependentUpon>Section01.cs</DependentUpon>
     </Compile>
     <Compile Include="StartPoint.cs">
@@ -73,8 +91,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Sections\Section01\Section01.resx">
+    <EmbeddedResource Include="Sections\Section01.resx">
       <DependentUpon>Section01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section02.resx">
+      <DependentUpon>Section02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section03.resx">
+      <DependentUpon>Section03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section04.resx">
+      <DependentUpon>Section04.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartPoint.resx">
       <DependentUpon>StartPoint.cs</DependentUpon>

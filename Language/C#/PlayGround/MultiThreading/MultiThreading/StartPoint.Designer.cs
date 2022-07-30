@@ -50,6 +50,7 @@ namespace MultiThreading
             // 
             // txt01
             // 
+            this.txt01.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt01.Location = new System.Drawing.Point(3, 3);
             this.txt01.Name = "txt01";
             this.txt01.ReadOnly = true;
@@ -84,129 +85,157 @@ namespace MultiThreading
             // 
             // txt02
             // 
+            this.txt02.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt02.Location = new System.Drawing.Point(3, 27);
             this.txt02.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt02.Name = "txt02";
             this.txt02.ReadOnly = true;
             this.txt02.Size = new System.Drawing.Size(578, 21);
             this.txt02.TabIndex = 2;
+            this.txt02.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt02_MouseDoubleClick);
             // 
             // txt03
             // 
+            this.txt03.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt03.Location = new System.Drawing.Point(3, 51);
             this.txt03.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt03.Name = "txt03";
             this.txt03.ReadOnly = true;
             this.txt03.Size = new System.Drawing.Size(578, 21);
             this.txt03.TabIndex = 3;
+            this.txt03.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt03_MouseDoubleClick);
             // 
             // txt04
             // 
+            this.txt04.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt04.Location = new System.Drawing.Point(3, 75);
             this.txt04.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt04.Name = "txt04";
             this.txt04.ReadOnly = true;
             this.txt04.Size = new System.Drawing.Size(578, 21);
             this.txt04.TabIndex = 4;
+            this.txt04.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt04_MouseDoubleClick);
             // 
             // txt05
             // 
+            this.txt05.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt05.Location = new System.Drawing.Point(3, 99);
             this.txt05.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt05.Name = "txt05";
             this.txt05.ReadOnly = true;
             this.txt05.Size = new System.Drawing.Size(578, 21);
             this.txt05.TabIndex = 5;
+            this.txt05.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt05_MouseDoubleClick);
             // 
             // txt06
             // 
+            this.txt06.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt06.Location = new System.Drawing.Point(3, 123);
             this.txt06.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt06.Name = "txt06";
             this.txt06.ReadOnly = true;
             this.txt06.Size = new System.Drawing.Size(578, 21);
             this.txt06.TabIndex = 6;
+            this.txt06.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt06_MouseDoubleClick);
             // 
             // txt07
             // 
+            this.txt07.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt07.Location = new System.Drawing.Point(3, 147);
             this.txt07.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt07.Name = "txt07";
             this.txt07.ReadOnly = true;
             this.txt07.Size = new System.Drawing.Size(578, 21);
             this.txt07.TabIndex = 7;
+            this.txt07.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt07_MouseDoubleClick);
             // 
             // txt08
             // 
+            this.txt08.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt08.Location = new System.Drawing.Point(3, 171);
             this.txt08.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt08.Name = "txt08";
             this.txt08.ReadOnly = true;
             this.txt08.Size = new System.Drawing.Size(578, 21);
             this.txt08.TabIndex = 8;
+            this.txt08.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt08_MouseDoubleClick);
             // 
             // txt09
             // 
+            this.txt09.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt09.Location = new System.Drawing.Point(3, 195);
             this.txt09.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt09.Name = "txt09";
             this.txt09.ReadOnly = true;
             this.txt09.Size = new System.Drawing.Size(578, 21);
             this.txt09.TabIndex = 9;
+            this.txt09.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt09_MouseDoubleClick);
             // 
             // txt10
             // 
+            this.txt10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt10.Location = new System.Drawing.Point(3, 219);
             this.txt10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt10.Name = "txt10";
             this.txt10.ReadOnly = true;
             this.txt10.Size = new System.Drawing.Size(578, 21);
             this.txt10.TabIndex = 10;
+            this.txt10.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt10_MouseDoubleClick);
             // 
             // txt11
             // 
+            this.txt11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt11.Location = new System.Drawing.Point(3, 243);
             this.txt11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt11.Name = "txt11";
             this.txt11.ReadOnly = true;
             this.txt11.Size = new System.Drawing.Size(578, 21);
             this.txt11.TabIndex = 11;
+            this.txt11.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt11_MouseDoubleClick);
             // 
             // txt12
             // 
+            this.txt12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt12.Location = new System.Drawing.Point(3, 267);
             this.txt12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt12.Name = "txt12";
             this.txt12.ReadOnly = true;
             this.txt12.Size = new System.Drawing.Size(578, 21);
             this.txt12.TabIndex = 12;
+            this.txt12.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt12_MouseDoubleClick);
             // 
             // txt13
             // 
+            this.txt13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt13.Location = new System.Drawing.Point(3, 291);
             this.txt13.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt13.Name = "txt13";
             this.txt13.ReadOnly = true;
             this.txt13.Size = new System.Drawing.Size(578, 21);
             this.txt13.TabIndex = 13;
+            this.txt13.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt13_MouseDoubleClick);
             // 
             // txt14
             // 
+            this.txt14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt14.Location = new System.Drawing.Point(3, 315);
             this.txt14.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt14.Name = "txt14";
             this.txt14.ReadOnly = true;
             this.txt14.Size = new System.Drawing.Size(578, 21);
             this.txt14.TabIndex = 14;
+            this.txt14.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt14_MouseDoubleClick);
             // 
             // txt15
             // 
+            this.txt15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txt15.Location = new System.Drawing.Point(3, 339);
             this.txt15.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.txt15.Name = "txt15";
             this.txt15.ReadOnly = true;
             this.txt15.Size = new System.Drawing.Size(578, 21);
             this.txt15.TabIndex = 15;
+            this.txt15.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt15_MouseDoubleClick);
             // 
             // StartPoint
             // 
