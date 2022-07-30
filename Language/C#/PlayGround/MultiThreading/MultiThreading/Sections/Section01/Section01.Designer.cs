@@ -31,6 +31,7 @@ namespace MultiThreading
         {
             this.btnSync = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblIntroduce = new System.Windows.Forms.Label();
             this.btnAsync = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
@@ -38,7 +39,7 @@ namespace MultiThreading
             // 
             // btnSync
             // 
-            this.btnSync.Location = new System.Drawing.Point(3, 3);
+            this.btnSync.Location = new System.Drawing.Point(3, 15);
             this.btnSync.Name = "btnSync";
             this.btnSync.Size = new System.Drawing.Size(100, 23);
             this.btnSync.TabIndex = 0;
@@ -48,6 +49,7 @@ namespace MultiThreading
             // 
             // flp1
             // 
+            this.flp1.Controls.Add(this.lblIntroduce);
             this.flp1.Controls.Add(this.btnSync);
             this.flp1.Controls.Add(this.btnAsync);
             this.flp1.Controls.Add(this.btnClear);
@@ -58,9 +60,18 @@ namespace MultiThreading
             this.flp1.Size = new System.Drawing.Size(284, 262);
             this.flp1.TabIndex = 1;
             // 
+            // lblIntroduce
+            // 
+            this.lblIntroduce.AutoSize = true;
+            this.lblIntroduce.Location = new System.Drawing.Point(3, 0);
+            this.lblIntroduce.Name = "lblIntroduce";
+            this.lblIntroduce.Size = new System.Drawing.Size(77, 12);
+            this.lblIntroduce.TabIndex = 3;
+            this.lblIntroduce.Text = "一个简单示例";
+            // 
             // btnAsync
             // 
-            this.btnAsync.Location = new System.Drawing.Point(3, 32);
+            this.btnAsync.Location = new System.Drawing.Point(3, 44);
             this.btnAsync.Name = "btnAsync";
             this.btnAsync.Size = new System.Drawing.Size(100, 23);
             this.btnAsync.TabIndex = 1;
@@ -70,7 +81,7 @@ namespace MultiThreading
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 61);
+            this.btnClear.Location = new System.Drawing.Point(3, 73);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
             this.btnClear.TabIndex = 2;
@@ -84,10 +95,14 @@ namespace MultiThreading
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.flp1);
+            this.MaximumSize = new System.Drawing.Size(300, 300);
+            this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "Section01";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Section01";
             this.Load += new System.EventHandler(this.Section01_Load);
             this.flp1.ResumeLayout(false);
+            this.flp1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -98,5 +113,6 @@ namespace MultiThreading
         private System.Windows.Forms.FlowLayoutPanel flp1;
         private System.Windows.Forms.Button btnAsync;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Label lblIntroduce;
     }
 }

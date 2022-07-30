@@ -21,9 +21,9 @@ namespace MultiThreading
             // {
             //     lResult += i;
             // }
-            int rint = random.Next(1, 8);
-            Console.WriteLine($"Start sleep {rint} seconds;");
-            Thread.Sleep(rint * 1000);
+            int rint = random.Next(1000, 5000);
+            Console.WriteLine($"Start sleep {rint} milliseconds;");
+            Thread.Sleep(rint);
 
             // Console.WriteLine($"DoSomethingLong   end {name} {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}} {DateTime.Now.ToString("HHmmss:fff")} {lResult}");
             Console.WriteLine($"DoSomethingLong   end {name} {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}} {DateTime.Now.ToString("HHmmss:fff")}");
