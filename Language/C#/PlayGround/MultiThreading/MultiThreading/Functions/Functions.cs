@@ -28,5 +28,14 @@ namespace MultiThreading
             // Console.WriteLine($"DoSomethingLong   end {name} {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}} {DateTime.Now.ToString("HHmmss:fff")} {lResult}");
             Console.WriteLine($"DoSomethingLong   end {name} {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}} {DateTime.Now.ToString("HHmmss:fff")}");
         }
+
+        public static long DoSomethingLong2(long l)
+        {
+            long r = 0;
+            for (int i = 0; i < l; i++)
+                r += i;
+
+            return r;
+        }
     }
 }

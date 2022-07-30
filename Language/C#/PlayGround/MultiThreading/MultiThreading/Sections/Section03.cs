@@ -45,6 +45,31 @@ namespace MultiThreading
             Console.WriteLine("Completed.");
         }
 
+        /// <summary>
+        /// 获取一个异步操作是否完成
+        /// 尝试解决上面方法中UI进程卡死的问题
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnIAsyncResult2_Click(object sender, EventArgs e)
+        {
+            Action<string> action = Functions.DoSomethingLong;
+            IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
+
+            // 让上面的“等待”操作在子线程中执行
+            Action action_tail = () =>
+            {
+                int i = 0;
+                while (!asyncResult.IsCompleted)
+                {
+                    Thread.Sleep(100);
+                    Console.WriteLine(new string('.', ++i));
+                }
+                Console.WriteLine("Completed.");
+            };
+            action_tail.BeginInvoke(null, null);
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 10; i++)

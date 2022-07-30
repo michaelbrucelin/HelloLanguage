@@ -69,6 +69,36 @@ namespace MultiThreading
             Console.WriteLine("Completed.");
         }
 
+        /// <summary>
+        /// 通过信号量来探测多线程操作是否完成
+        /// 尝试解决上面方法“等待”时UI界面卡死的问题
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSignalReal2_Click(object sender, EventArgs e)
+        {
+            Action<string> action = Functions.DoSomethingLong;
+            IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
+
+            // （现在由主线程做另一件事），将这段代码也放到子线程中去执行
+            Action action2 = () => Enumerable.Range(1, 32).ToList().ForEach(i =>
+                                   {
+                                       Thread.Sleep(100);
+                                       Console.WriteLine($"{i}... ...");
+                                   });
+            IAsyncResult asyncResult2 = action2.BeginInvoke(null, null);
+
+            // 阻塞当前进程，直到收到信号量，信号量从asyncResult中发出，无延迟
+            // 将主线程的等待也放到子线程从去执行
+            Action action_tail = () =>
+            {
+                asyncResult.AsyncWaitHandle.WaitOne();
+                asyncResult2.AsyncWaitHandle.WaitOne();
+                Console.WriteLine("Completed.");
+            };
+            action_tail.BeginInvoke(null, null);
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 10; i++)
