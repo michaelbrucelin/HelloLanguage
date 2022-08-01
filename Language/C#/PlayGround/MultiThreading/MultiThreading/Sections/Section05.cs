@@ -40,7 +40,7 @@ namespace MultiThreading
                 Console.WriteLine($"{i}... ...");
             });
 
-            long result = func.EndInvoke(asyncResult);  // 获取异步操作的真实返回值
+            long result = func.EndInvoke(asyncResult);  // 获取异步操作的真实返回值，这里会阻塞，直到拿到子线程的结果为止
             Console.WriteLine($"执行结果为：{result}");
         }
 

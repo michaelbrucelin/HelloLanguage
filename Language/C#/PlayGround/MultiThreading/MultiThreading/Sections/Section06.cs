@@ -172,6 +172,25 @@ namespace MultiThreading
             Console.WriteLine($"Parallel 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
+        private void btnParallel2_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine($"Parallel 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+
+            Action<int> action = (pid) =>
+            {
+                Console.WriteLine($"This is Parallel {pid} Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+                Enumerable.Range(1, 4).ToList().ForEach(i => { Thread.Sleep(1000); Console.WriteLine($"{{{pid}}}=={i}... ..."); });
+                Console.WriteLine($"This is Parallel {pid} End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            };
+
+            Parallel.For(1, 5, action);
+            // Parallel.ForEach<int>(Enumerable.Range(1, 4), action);  // 与Parallel.For(1, 5, action)等价
+
+            // 下面的输出在Parallel全部执行完的时候输出，其实也好理解，因为主线程作为Parallel的一个子线程参与了运算
+            // 可以将整体看成是同步执行，而Parallel的内部是并行执行的
+            Console.WriteLine($"Parallel 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+        }
+
         /// <summary>
         /// await/async是个新语法，出现在.NetFramework 4.5中，只是一个语法糖，并不是一个全新的异步多线程方式
         /// async可以单独使用，但是await必须出现在Task前面，且必须和async同时使用；

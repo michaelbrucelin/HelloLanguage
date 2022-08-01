@@ -39,7 +39,7 @@ namespace MultiThreading
 
         /// <summary>
         /// 使用回调函数
-        /// 这样既实现了异步，有实现了再异步方法完成后，再打印完成
+        /// 这样既实现了异步，又实现了再异步方法完成后，再打印完成
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,7 +52,7 @@ namespace MultiThreading
                 Console.WriteLine($"********************Successed {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}}********************\r\n");
             };
 
-            action.BeginInvoke("DoSomethingLong", callback, "hello world");
+            action.BeginInvoke("DoSomethingLong", callback, "设定异步任务的执行状态，object类型的参数");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
