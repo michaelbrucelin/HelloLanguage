@@ -47,14 +47,16 @@ namespace MultiThreading
                 Enumerable.Range(1, 32).ToList().ForEach(i =>
                 {
                     Thread.Sleep(100);
-                    Console.WriteLine($"{i}... ...");
+                    Console.Write($"{i} ");
                 });
+                Console.WriteLine();
                 Console.WriteLine($"This is Thread End   {{{Thread.CurrentThread.ManagedThreadId}}}");
             };
 
             Thread thread = new Thread(threadStart);
             thread.Start();
 
+            // 下面的输出在子线程没执行完（甚至还没有开始执行）就输出了，典型的多线程执行现象
             Console.WriteLine($"Thread 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
@@ -83,13 +85,15 @@ namespace MultiThreading
                 Enumerable.Range(1, 32).ToList().ForEach(i =>
                 {
                     Thread.Sleep(100);
-                    Console.WriteLine($"{i}... ...");
+                    Console.Write($"{i} ");
                 });
+                Console.WriteLine();
                 Console.WriteLine($"This is ThreadPool End   {{{Thread.CurrentThread.ManagedThreadId}}}");
             };
 
             ThreadPool.QueueUserWorkItem(waitCallback);
 
+            // 下面的输出在子线程没执行完（甚至还没有开始执行）就输出了，典型的多线程执行现象
             Console.WriteLine($"ThreadPool 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
@@ -110,14 +114,16 @@ namespace MultiThreading
                 Enumerable.Range(1, 32).ToList().ForEach(i =>
                 {
                     Thread.Sleep(100);
-                    Console.WriteLine($"{i}... ...");
+                    Console.Write($"{i} ");
                 });
+                Console.WriteLine();
                 Console.WriteLine($"This is Task End   {{{Thread.CurrentThread.ManagedThreadId}}}");
             };
 
             Task task = new Task(action);
             task.Start();
 
+            // 下面的输出在子线程没执行完（甚至还没有开始执行）就输出了，典型的多线程执行现象
             Console.WriteLine($"Task 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
@@ -161,6 +167,8 @@ namespace MultiThreading
 
             Parallel.Invoke(action1, action2, action3, action4);
 
+            // 下面的输出在Parallel全部执行完的时候输出，其实也好理解，因为主线程作为Parallel的一个子线程参与了运算
+            // 可以将整体看成是同步执行，而Parallel的内部是并行执行的
             Console.WriteLine($"Parallel 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
@@ -191,18 +199,20 @@ namespace MultiThreading
                 Enumerable.Range(1, 32).ToList().ForEach(i =>
                 {
                     Thread.Sleep(100);
-                    Console.WriteLine($"{i}... ...");
+                    Console.Write($"{i} ");
                 });
+                Console.WriteLine();
                 Console.WriteLine($"This is await+async End   {{{Thread.CurrentThread.ManagedThreadId}}}");
             });
 
+            // 下面的输出是在await标记的Task完成后才输出的，而且不卡界面（不卡主线程）
+            // 类似于同步编程的方式，异步的执行效果
             Console.WriteLine($"await+async 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
-                Console.WriteLine();
+            Utils.ClearTerminal();
         }
     }
 }

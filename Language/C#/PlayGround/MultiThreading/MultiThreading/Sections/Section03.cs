@@ -72,8 +72,7 @@ namespace MultiThreading
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
-                Console.WriteLine();
+            Utils.ClearTerminal();
         }
     }
 }

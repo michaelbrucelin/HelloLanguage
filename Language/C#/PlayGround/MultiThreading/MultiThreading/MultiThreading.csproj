@@ -56,10 +56,10 @@
     <Compile Include="Sections\Section06.Designer.cs">
       <DependentUpon>Section06.cs</DependentUpon>
     </Compile>
-    <Compile Include="Section_template.cs">
+    <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Section_template.Designer.cs">
+    <Compile Include="Sections\Section_template.Designer.cs">
       <DependentUpon>Section_template.cs</DependentUpon>
     </Compile>
     <Compile Include="Sections\Section05.cs">
@@ -112,7 +112,7 @@
     <EmbeddedResource Include="Sections\Section06.resx">
       <DependentUpon>Section06.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Section_template.resx">
+    <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section05.resx">

@@ -37,5 +37,11 @@ namespace MultiThreading
 
             return r;
         }
+
+        public static void ClearTerminal()
+        {
+            for (int i = 0; i < 16; i++)
+                Console.WriteLine();
+        }
     }
 }
