@@ -24,7 +24,7 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 通过IAsyncResult来获取子线程的返回值
+        /// 在主线程中通过EndInvoke + IAsyncResult来获取子线程的返回值
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,7 +45,7 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 通过回调函数来获取子线程的返回值
+        /// 在回调函数中通过EndInvoke + IAsyncResult来获取子线程的返回值
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -53,7 +53,7 @@ namespace MultiThreading
         {
             // 获取异步操作的结果，也可以在回调函数中操作
             Func<long, long> func = Functions.DoSomethingLong2;
-            IAsyncResult asyncResult = func.BeginInvoke(100000000, ar =>
+            IAsyncResult asyncResult = func.BeginInvoke(100000000, ar =>  // 这里的lambda参数（ar）就是BeginInvoke()的返回值
                                        {
                                            long result = func.EndInvoke(ar);
                                            Console.WriteLine($"执行结果为：{result}");
