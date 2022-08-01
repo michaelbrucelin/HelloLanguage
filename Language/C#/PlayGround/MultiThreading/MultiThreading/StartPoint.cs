@@ -24,6 +24,7 @@ namespace MultiThreading
             lbl03.Text = "探测子线程是否完成1_IAsyncResult.IsCompleted";
             lbl04.Text = "探测子线程是否完成2_信号量";
             lbl05.Text = "获取多线程操作的返回值";
+            lbl06.Text = "版本演变历史";
         }
 
         // 下面的注册事件，稍后改为反射来完成
@@ -59,7 +60,8 @@ namespace MultiThreading
 
         private void lbl06_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section06 section = new Section06();
+            section.ShowDialog();
         }
 
         private void lbl07_MouseDoubleClick(object sender, MouseEventArgs e)
