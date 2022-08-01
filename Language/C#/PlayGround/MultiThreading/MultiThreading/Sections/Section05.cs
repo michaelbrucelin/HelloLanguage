@@ -30,7 +30,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnIAsyncResult_Click(object sender, EventArgs e)
         {
-            Func<long, long> func = Functions.DoSomethingLong2;
+            Func<long, long> func = Utils.DoSomethingLong2;
             IAsyncResult asyncResult = func.BeginInvoke(100000000, null, null);  // 这个异步调用结果，是用来描述异步操作的
 
             // 现在做另一件事
@@ -52,7 +52,7 @@ namespace MultiThreading
         private void btnCallback_Click(object sender, EventArgs e)
         {
             // 获取异步操作的结果，也可以在回调函数中操作
-            Func<long, long> func = Functions.DoSomethingLong2;
+            Func<long, long> func = Utils.DoSomethingLong2;
             IAsyncResult asyncResult = func.BeginInvoke(100000000, ar =>  // 这里的lambda参数（ar）就是BeginInvoke()的返回值
                                        {
                                            long result = func.EndInvoke(ar);

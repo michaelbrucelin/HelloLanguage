@@ -33,7 +33,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnSignalFake_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
 
             // 阻塞当前进程，直到收到信号量，信号量从asyncResult中发出，无延迟
@@ -54,7 +54,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnSignalReal_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
 
             // 现在由主线程做另一件事
@@ -77,7 +77,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnSignalReal2_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
 
             // （现在由主线程做另一件事），将这段代码也放到子线程中去执行

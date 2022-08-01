@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultiThreading
 {
-    public class Functions
+    public class Utils
     {
         private static Random random = new Random();
 

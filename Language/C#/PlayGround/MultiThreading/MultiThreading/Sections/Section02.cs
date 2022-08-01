@@ -31,7 +31,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnNoCallback_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             action.BeginInvoke("DoSomethingLong", null, null);
 
             Console.WriteLine($"\r\n********************Successed {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}}********************\r\n");
@@ -45,7 +45,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnCallback_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             AsyncCallback callback = ar =>
             {
                 Console.WriteLine($"AsyncState: {ar.AsyncState}");

@@ -33,7 +33,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnIAsyncResult_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
 
             int i = 0;
@@ -53,7 +53,7 @@ namespace MultiThreading
         /// <param name="e"></param>
         private void btnIAsyncResult2_Click(object sender, EventArgs e)
         {
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             IAsyncResult asyncResult = action.BeginInvoke("uploading...", null, null);
 
             // 让上面的“等待”操作在子线程中执行

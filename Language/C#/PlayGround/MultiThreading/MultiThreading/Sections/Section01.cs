@@ -32,7 +32,7 @@ namespace MultiThreading
         {
             Console.WriteLine($"\r\n********************Sync Function start {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}}********************\r\n");
 
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             for (int i = 0; i < 5; i++)
             {
                 string name = $"Sync Function_{i}";
@@ -52,7 +52,7 @@ namespace MultiThreading
         {
             Console.WriteLine($"\r\n********************Async Function start {{{Thread.CurrentThread.ManagedThreadId.ToString("00")}}}********************\r\n");
 
-            Action<string> action = Functions.DoSomethingLong;
+            Action<string> action = Utils.DoSomethingLong;
             for (int i = 0; i < 5; i++)
             {
                 string name = $"Async Function_{i}";
