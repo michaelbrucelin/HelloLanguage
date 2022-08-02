@@ -31,21 +31,27 @@ namespace MultiThreading
         {
             this.btnClear = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.btnTest2 = new System.Windows.Forms.Button();
+            this.btnTest3 = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 3);
+            this.btnClear.Location = new System.Drawing.Point(3, 90);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
-            this.btnClear.TabIndex = 2;
+            this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // flp1
             // 
+            this.flp1.Controls.Add(this.btnTest);
+            this.flp1.Controls.Add(this.btnTest2);
+            this.flp1.Controls.Add(this.btnTest3);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -53,6 +59,36 @@ namespace MultiThreading
             this.flp1.Name = "flp1";
             this.flp1.Size = new System.Drawing.Size(284, 262);
             this.flp1.TabIndex = 0;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(3, 3);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(100, 23);
+            this.btnTest.TabIndex = 1;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // btnTest2
+            // 
+            this.btnTest2.Location = new System.Drawing.Point(3, 32);
+            this.btnTest2.Name = "btnTest2";
+            this.btnTest2.Size = new System.Drawing.Size(100, 23);
+            this.btnTest2.TabIndex = 2;
+            this.btnTest2.Text = "Test2";
+            this.btnTest2.UseVisualStyleBackColor = true;
+            this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
+            // 
+            // btnTest3
+            // 
+            this.btnTest3.Location = new System.Drawing.Point(3, 61);
+            this.btnTest3.Name = "btnTest3";
+            this.btnTest3.Size = new System.Drawing.Size(100, 23);
+            this.btnTest3.TabIndex = 3;
+            this.btnTest3.Text = "Test3";
+            this.btnTest3.UseVisualStyleBackColor = true;
+            this.btnTest3.Click += new System.EventHandler(this.btnTest3_Click);
             // 
             // Section09
             // 
@@ -75,5 +111,8 @@ namespace MultiThreading
 
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.FlowLayoutPanel flp1;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnTest2;
+        private System.Windows.Forms.Button btnTest3;
     }
 }

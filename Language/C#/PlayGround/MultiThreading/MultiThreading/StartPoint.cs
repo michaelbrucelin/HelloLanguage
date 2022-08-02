@@ -82,12 +82,14 @@ namespace MultiThreading
 
         private void lbl09_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section09 section = new Section09();
+            section.ShowDialog();
         }
 
         private void lbl10_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section10 section = new Section10();
+            section.ShowDialog();
         }
 
         private void lbl11_MouseDoubleClick(object sender, MouseEventArgs e)
