@@ -18,7 +18,7 @@ namespace MultiThreading
             InitializeComponent();
         }
 
-        private void Section05_Load(object sender, EventArgs e)
+        private void Section06_Load(object sender, EventArgs e)
         {
 
         }

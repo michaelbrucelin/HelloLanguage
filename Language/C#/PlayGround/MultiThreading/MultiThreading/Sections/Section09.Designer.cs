@@ -1,7 +1,7 @@
 ﻿
 namespace MultiThreading
 {
-    partial class Section_template
+    partial class Section09
     {
         /// <summary>
         /// Required designer variable.
@@ -54,7 +54,7 @@ namespace MultiThreading
             this.flp1.Size = new System.Drawing.Size(284, 262);
             this.flp1.TabIndex = 0;
             // 
-            // Section_template
+            // Section09
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -62,10 +62,10 @@ namespace MultiThreading
             this.Controls.Add(this.flp1);
             this.MaximumSize = new System.Drawing.Size(300, 300);
             this.MinimumSize = new System.Drawing.Size(300, 300);
-            this.Name = "Section_template";
+            this.Name = "Section09";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Section_template";
-            this.Load += new System.EventHandler(this.Section_template_Load);
+            this.Text = "再次理解线程";
+            this.Load += new System.EventHandler(this.Section09_Load);
             this.flp1.ResumeLayout(false);
             this.ResumeLayout(false);
 

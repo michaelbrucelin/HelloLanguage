@@ -56,6 +56,30 @@
     <Compile Include="Sections\Section06.Designer.cs">
       <DependentUpon>Section06.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Section07.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section07.Designer.cs">
+      <DependentUpon>Section07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section08.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section08.Designer.cs">
+      <DependentUpon>Section08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section10.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section10.Designer.cs">
+      <DependentUpon>Section10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section09.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section09.Designer.cs">
+      <DependentUpon>Section09.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +135,18 @@
     </Compile>
     <EmbeddedResource Include="Sections\Section06.resx">
       <DependentUpon>Section06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section07.resx">
+      <DependentUpon>Section07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section08.resx">
+      <DependentUpon>Section08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section10.resx">
+      <DependentUpon>Section10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section09.resx">
+      <DependentUpon>Section09.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>

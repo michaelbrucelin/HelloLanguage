@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace MultiThreading
 {
-    public partial class Section_template : Form
+    public partial class Section09 : Form
     {
-        public Section_template()
+        public Section09()
         {
             InitializeComponent();
         }
 
-        private void Section_template_Load(object sender, EventArgs e)
+        private void Section09_Load(object sender, EventArgs e)
         {
 
         }

@@ -137,7 +137,7 @@ namespace MultiThreading
             this.Name = "Section06";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "版本演变历史";
-            this.Load += new System.EventHandler(this.Section05_Load);
+            this.Load += new System.EventHandler(this.Section06_Load);
             this.flp1.ResumeLayout(false);
             this.ResumeLayout(false);
 

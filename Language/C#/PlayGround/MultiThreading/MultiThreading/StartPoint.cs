@@ -25,6 +25,10 @@ namespace MultiThreading
             lbl04.Text = "探测子线程是否完成2_信号量";
             lbl05.Text = "获取多线程操作的返回值";
             lbl06.Text = "版本演变历史";
+            lbl07.Text = "Task示例01";
+            lbl08.Text = "Task示例02";
+            lbl09.Text = "再次理解线程";
+            lbl10.Text = "多线程安全问题";
         }
 
         // 下面的注册事件，稍后改为反射来完成
@@ -66,12 +70,14 @@ namespace MultiThreading
 
         private void lbl07_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section07 section = new Section07();
+            section.ShowDialog();
         }
 
         private void lbl08_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section08 section = new Section08();
+            section.ShowDialog();
         }
 
         private void lbl09_MouseDoubleClick(object sender, MouseEventArgs e)
