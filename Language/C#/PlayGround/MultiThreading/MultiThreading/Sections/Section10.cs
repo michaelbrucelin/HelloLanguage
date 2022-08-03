@@ -42,7 +42,6 @@ namespace MultiThreading
                 tasks.Add(Task.Run(() => list.Add(i)));
             }
 
-            // Thread.Sleep(1000);  // 这里没想到更好的办法，等待只是为了保证上面的多线程一定都完成了
             TaskFactory taskFactory = new TaskFactory();
             taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
         }
@@ -63,7 +62,7 @@ namespace MultiThreading
             List<int> list = new List<int>();
 
             List<Task> tasks = new List<Task>();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 tasks.Add(Task.Run(() =>
                 {
@@ -74,7 +73,6 @@ namespace MultiThreading
                 }));
             }
 
-            // Thread.Sleep(1000);  // 这里没想到更好的办法，等待只是为了保证上面的多线程一定都完成了
             TaskFactory taskFactory = new TaskFactory();
             taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
         }
@@ -93,7 +91,7 @@ namespace MultiThreading
             List<int> list = new List<int>();
 
             List<Task> tasks = new List<Task>();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 tasks.Add(Task.Run(() =>
                 {
@@ -103,7 +101,6 @@ namespace MultiThreading
                 }));
             }
 
-            // Thread.Sleep(1000);  // 这里没想到更好的办法，等待只是为了保证上面的多线程一定都完成了
             TaskFactory taskFactory = new TaskFactory();
             taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
         }
@@ -120,7 +117,7 @@ namespace MultiThreading
             List<int> list = new List<int>();
 
             List<Task> tasks = new List<Task>();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 10000; i++)
             {
 #if true
                 tasks.Add(Task.Run(() =>
@@ -148,7 +145,6 @@ namespace MultiThreading
 #endif
             }
 
-            // Thread.Sleep(1000);  // 这里没想到更好的办法，等待只是为了保证上面的多线程一定都完成了
             TaskFactory taskFactory = new TaskFactory();
             taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
         }

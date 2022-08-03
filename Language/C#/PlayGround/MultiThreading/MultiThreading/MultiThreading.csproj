@@ -80,6 +80,24 @@
     <Compile Include="Sections\Section09.Designer.cs">
       <DependentUpon>Section09.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Section11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section11.Designer.cs">
+      <DependentUpon>Section11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section12.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section12.Designer.cs">
+      <DependentUpon>Section12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section13.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section13.Designer.cs">
+      <DependentUpon>Section13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +165,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section09.resx">
       <DependentUpon>Section09.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section11.resx">
+      <DependentUpon>Section11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section12.resx">
+      <DependentUpon>Section12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section13.resx">
+      <DependentUpon>Section13.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>

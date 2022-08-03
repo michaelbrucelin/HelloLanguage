@@ -29,6 +29,9 @@ namespace MultiThreading
             lbl08.Text = "Task示例02";
             lbl09.Text = "再次理解线程";
             lbl10.Text = "多线程安全问题";
+            lbl11.Text = "锁的共用问题";
+            lbl12.Text = "锁的其它问题01";
+            lbl13.Text = "锁的其它问题02";
         }
 
         // 下面的注册事件，稍后改为反射来完成
@@ -94,17 +97,20 @@ namespace MultiThreading
 
         private void lbl11_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section11 section = new Section11();
+            section.ShowDialog();
         }
 
         private void lbl12_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section12 section = new Section12();
+            section.ShowDialog();
         }
 
         private void lbl13_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section13 section = new Section13();
+            section.ShowDialog();
         }
 
         private void lbl14_MouseDoubleClick(object sender, MouseEventArgs e)
