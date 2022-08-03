@@ -3,13 +3,13 @@
 # ${QUERY_STRING}是URL携带的参数
 SAVEIFS=${IFS}
 IFS='=&'
-paramarr=(${QUERY_STRING})
+paraarr=(${QUERY_STRING})
 IFS=${SAVEIFS}
 
 declare -A paradic
-for ((i=0; i<${#paramarr[@]}; i+=2))
+for ((i=0; i<${#paraarr[@]}; i+=2))
 do
-    paradic[${paramarr[i]}]=${paramarr[i+1]}
+    paradic[${paraarr[i]}]=${paraarr[i+1]}
 done
 
 
