@@ -33,15 +33,16 @@ namespace MultiThreading
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnThis = new System.Windows.Forms.Button();
             this.btnRecursion = new System.Windows.Forms.Button();
+            this.btnThis2 = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 61);
+            this.btnClear.Location = new System.Drawing.Point(3, 90);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
-            this.btnClear.TabIndex = 2;
+            this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -49,6 +50,7 @@ namespace MultiThreading
             // flp1
             // 
             this.flp1.Controls.Add(this.btnThis);
+            this.flp1.Controls.Add(this.btnThis2);
             this.flp1.Controls.Add(this.btnRecursion);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,13 +72,23 @@ namespace MultiThreading
             // 
             // btnRecursion
             // 
-            this.btnRecursion.Location = new System.Drawing.Point(3, 32);
+            this.btnRecursion.Location = new System.Drawing.Point(3, 61);
             this.btnRecursion.Name = "btnRecursion";
             this.btnRecursion.Size = new System.Drawing.Size(100, 23);
-            this.btnRecursion.TabIndex = 2;
+            this.btnRecursion.TabIndex = 3;
             this.btnRecursion.Text = "Recursion Lock";
             this.btnRecursion.UseVisualStyleBackColor = true;
             this.btnRecursion.Click += new System.EventHandler(this.btnRecursion_Click);
+            // 
+            // btnThis2
+            // 
+            this.btnThis2.Location = new System.Drawing.Point(3, 32);
+            this.btnThis2.Name = "btnThis2";
+            this.btnThis2.Size = new System.Drawing.Size(100, 23);
+            this.btnThis2.TabIndex = 2;
+            this.btnThis2.Text = "This Lock2";
+            this.btnThis2.UseVisualStyleBackColor = true;
+            this.btnThis2.Click += new System.EventHandler(this.btnThis2_Click);
             // 
             // Section13
             // 
@@ -101,5 +113,6 @@ namespace MultiThreading
         private System.Windows.Forms.FlowLayoutPanel flp1;
         private System.Windows.Forms.Button btnThis;
         private System.Windows.Forms.Button btnRecursion;
+        private System.Windows.Forms.Button btnThis2;
     }
 }
