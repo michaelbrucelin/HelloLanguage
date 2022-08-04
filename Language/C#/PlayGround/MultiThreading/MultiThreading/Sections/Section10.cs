@@ -106,9 +106,13 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 需要注意的是，有时候子线程抛异常，主线程并不异常，但是结果是错的，多线程有时候会有自己“吞异常”这种情况出现，
+        /// 需要注意的是，有时候子线程抛异常，主线程并不异常，即主线程不处理子线程抛出的异常，
+        /// 但是结果是错的，多线程有时候会有自己“吞异常”这种情况出现，
         /// 例如下面的例子，如果没有try catch的话，程序并不会异常，但是结果为0
         /// 在.Net Framrwork 4.8中运行，即使没有使用try catch也会异常，不确认是不是.Net做了调整；
+        /// 
+        /// 锁锁定的是引用，即变量所在栈到堆（真实值存储的位置）的引用，这里不报错是因为IDE检测不出来，
+        /// 但是null比较特殊，null在内存中没有东西，而不是指向一个特殊的内存空间，是一个特殊的存在，所以不能作为锁来使用
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -119,7 +123,7 @@ namespace MultiThreading
             List<Task> tasks = new List<Task>();
             for (int i = 0; i < 10000; i++)
             {
-#if true
+#if false
                 tasks.Add(Task.Run(() =>
                 {
                     lock (null)
@@ -137,9 +141,10 @@ namespace MultiThreading
                             list.Add(i);
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        throw;
+                        Console.WriteLine($"Exception in sub thread: {ex.Message}");
+                        throw ex;
                     }
                 }));
 #endif
