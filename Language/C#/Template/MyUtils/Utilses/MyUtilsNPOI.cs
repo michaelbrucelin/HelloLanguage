@@ -23,21 +23,55 @@ namespace WindowsFormsApp0
         /// <param name="file"></param>
         public static void WriteExcel(DataGridView dgv, string file)
         {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (!dgv.Columns[i].Visible) continue;
+                _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcel(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="colnames">需要导出的列</param>
+        /// <param name="file"></param>
+        public static void WriteExcel(DataGridView dgv, string[] colnames, string file)
+        {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (colnames.Contains(dgv.Columns[i].Name))
+                    _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcel(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="columns">需要导出的列的信息</param>
+        /// <param name="file"></param>
+        private static void WriteExcel(DataGridView dgv, IList<(string name, string headertext)> columns, string file)
+        {
             using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
             {
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet sheet = workbook.CreateSheet("Sheet1");
 
-                List<string> columns = new List<string>();
                 IRow header = sheet.CreateRow(0);
                 int colcnt = 0;
-                for (int i = 0; i < dgv.Columns.Count; i++)
-                {
-                    if (!dgv.Columns[i].Visible) continue;
-
-                    columns.Add(dgv.Columns[i].Name);
-                    header.CreateCell(colcnt++).SetCellValue(dgv.Columns[i].HeaderText);
-                }
+                for (int i = 0; i < columns.Count; i++)
+                    header.CreateCell(colcnt++).SetCellValue(columns[i].headertext);
 
                 int rowcnt = 1;
                 for (int i = 0; i < dgv.Rows.Count; i++)
@@ -46,9 +80,10 @@ namespace WindowsFormsApp0
 
                     IRow row = sheet.CreateRow(rowcnt++);
                     int colid = 0;
-                    foreach (string col in columns)
+                    foreach (var col in columns)
                     {
-                        row.CreateCell(colid++).SetCellValue(dgv.Rows[i].Cells[col].Value.ToString());
+                        if (dgv.Rows[i].Cells[col.name].Value != null)
+                            row.CreateCell(colid++).SetCellValue(dgv.Rows[i].Cells[col.name].Value.ToString());
                     }
                 }
 
@@ -69,15 +104,63 @@ namespace WindowsFormsApp0
         /// <param name="file"></param>
         public static void WriteExcelWithStyle(DataGridView dgv, string file)
         {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (!dgv.Columns[i].Visible) continue;
+                _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcelWithStyle(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// 2. 导出DataGridView的如下格式
+        ///     2.1 单元格的背景色
+        ///     2.2 字体、颜色、粗体、斜体、下划线、删除线
+        /// 3. 单元格带有边框
+        /// 4. 锁定首行并自动添加筛选
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="colnames">需要导出的列</param>
+        /// <param name="file"></param>
+        public static void WriteExcelWithStyle(DataGridView dgv, string[] colnames, string file)
+        {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (colnames.Contains(dgv.Columns[i].Name))
+                    _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcelWithStyle(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// 2. 导出DataGridView的如下格式
+        ///     2.1 单元格的背景色
+        ///     2.2 字体、颜色、粗体、斜体、下划线、删除线
+        /// 3. 单元格带有边框
+        /// 4. 锁定首行并自动添加筛选
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="columns">需要导出的列的信息</param>
+        /// <param name="file"></param>
+        private static void WriteExcelWithStyle(DataGridView dgv, IList<(string name, string headertext)> columns, string file)
+        {
             using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
             {
                 IWorkbook workbook = new XSSFWorkbook();
                 ISheet sheet = workbook.CreateSheet("Sheet1");
 
                 #region 表头
-                List<string> columns = new List<string>();
-                IRow header = sheet.CreateRow(0);
-
+                // 表头样式
                 XSSFCellStyle headerstyle = (XSSFCellStyle)workbook.CreateCellStyle();
                 // 单元格边框
                 headerstyle.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -90,14 +173,13 @@ namespace WindowsFormsApp0
                 headerfont.FontName = "微软雅黑";
                 headerfont.IsBold = true;
 
+                // 创建表头
+                IRow header = sheet.CreateRow(0);
                 int colcnt = 0;
-                for (int i = 0; i < dgv.Columns.Count; i++)
+                for (int i = 0; i < columns.Count; i++)
                 {
-                    if (!dgv.Columns[i].Visible) continue;
-
-                    columns.Add(dgv.Columns[i].Name);
                     ICell headercell = header.CreateCell(colcnt++);
-                    headercell.SetCellValue(dgv.Columns[i].HeaderText);
+                    headercell.SetCellValue(columns[i].headertext);
                     headercell.CellStyle = headerstyle;
                 }
                 #endregion
@@ -110,9 +192,9 @@ namespace WindowsFormsApp0
 
                     IRow row = sheet.CreateRow(rowcnt++);
                     int colid = 0;
-                    foreach (string col in columns)
+                    foreach (var col in columns)
                     {
-                        DataGridViewCell dgvcell = dgv.Rows[i].Cells[col];
+                        DataGridViewCell dgvcell = dgv.Rows[i].Cells[col.name];
 
                         XSSFCellStyle style = (XSSFCellStyle)workbook.CreateCellStyle();
                         // 单元格边框
@@ -150,7 +232,8 @@ namespace WindowsFormsApp0
                         }
 
                         ICell cell = row.CreateCell(colid++);
-                        cell.SetCellValue(dgvcell.Value.ToString());
+                        if (dgvcell.Value != null)
+                            cell.SetCellValue(dgvcell.Value.ToString());
                         cell.CellStyle = style;
                     }
                 }
@@ -172,14 +255,64 @@ namespace WindowsFormsApp0
         ///     2.2 字体、颜色、粗体、斜体、下划线、删除线
         /// 3. 单元格带有边框
         /// 4. 锁定首行并自动添加筛选
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="file"></param>
+        public static void WriteExcelWithStyle2(DataGridView dgv, string file)
+        {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (!dgv.Columns[i].Visible) continue;
+                _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcelWithStyle2(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// 2. 导出DataGridView的如下格式
+        ///     2.1 单元格的背景色
+        ///     2.2 字体、颜色、粗体、斜体、下划线、删除线
+        /// 3. 单元格带有边框
+        /// 4. 锁定首行并自动添加筛选
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="colnames">需要导出的列</param>
+        /// <param name="file"></param>
+        public static void WriteExcelWithStyle2(DataGridView dgv, string[] colnames, string file)
+        {
+            List<(string name, string headertext, int displayid)> _columns = new List<(string, string, int)>();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                if (colnames.Contains(dgv.Columns[i].Name))
+                    _columns.Add((dgv.Columns[i].Name, dgv.Columns[i].HeaderText, dgv.Columns[i].DisplayIndex));
+            }
+
+            var columns = _columns.OrderBy(item => item.displayid).Select(item => (item.name, item.headertext)).ToList();
+            WriteExcelWithStyle2(dgv, columns, file);
+        }
+
+        /// <summary>
+        /// 将DataGridView中的数据导出到Excel
+        /// 1. 只导出指定的列
+        /// 2. 导出DataGridView的如下格式
+        ///     2.1 单元格的背景色
+        ///     2.2 字体、颜色、粗体、斜体、下划线、删除线
+        /// 3. 单元格带有边框
+        /// 4. 锁定首行并自动添加筛选
         /// 
         /// 对WriteExcelWithStyle进行了内存优化
         /// WriteExcelWithStyle中由于每个单元格绑定了一个样式类（XSSFCellStyle），所以会占用大量内存（测试16列256行占用1GB左右的内存）
         /// 由于现实中大量的单元格样式是一样的，所以可以从这个角度来优化这个问题，实现后测试69MB内存，与不带样式导出基本一样
         /// </summary>
         /// <param name="dgv"></param>
+        /// <param name="columns">需要导出的列的信息</param>
         /// <param name="file"></param>
-        public static void WriteExcelWithStyle2(DataGridView dgv, string file)
+        private static void WriteExcelWithStyle2(DataGridView dgv, IList<(string name, string headertext)> columns, string file)
         {
             using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
             {
@@ -187,9 +320,7 @@ namespace WindowsFormsApp0
                 ISheet sheet = workbook.CreateSheet("Sheet1");
 
                 #region 表头
-                List<string> columns = new List<string>();
-                IRow header = sheet.CreateRow(0);
-
+                // 表头样式
                 XSSFCellStyle headerstyle = (XSSFCellStyle)workbook.CreateCellStyle();
                 // 单元格边框
                 headerstyle.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
@@ -202,14 +333,13 @@ namespace WindowsFormsApp0
                 headerfont.FontName = "微软雅黑";
                 headerfont.IsBold = true;
 
+                // 创建表头
+                IRow header = sheet.CreateRow(0);
                 int colcnt = 0;
-                for (int i = 0; i < dgv.Columns.Count; i++)
+                for (int i = 0; i < columns.Count; i++)
                 {
-                    if (!dgv.Columns[i].Visible) continue;
-
-                    columns.Add(dgv.Columns[i].Name);
                     ICell headercell = header.CreateCell(colcnt++);
-                    headercell.SetCellValue(dgv.Columns[i].HeaderText);
+                    headercell.SetCellValue(columns[i].headertext);
                     headercell.CellStyle = headerstyle;
                 }
                 #endregion
@@ -224,9 +354,9 @@ namespace WindowsFormsApp0
 
                     IRow row = sheet.CreateRow(rowcnt++);
                     int colid = 0;
-                    foreach (string col in columns)
+                    foreach (var col in columns)
                     {
-                        DataGridViewCell dgvcell = dgv.Rows[i].Cells[col];
+                        DataGridViewCell dgvcell = dgv.Rows[i].Cells[col.name];
 
                         #region 获取单元格样式
                         QCellStyle style_key = new QCellStyle();
@@ -296,7 +426,8 @@ namespace WindowsFormsApp0
                         #endregion
 
                         ICell cell = row.CreateCell(colid++);
-                        cell.SetCellValue(dgvcell.Value.ToString());
+                        if (dgvcell.Value != null)
+                            cell.SetCellValue(dgvcell.Value.ToString());
                         cell.CellStyle = styles[style_key];
                     }
                 }
@@ -318,6 +449,11 @@ namespace WindowsFormsApp0
         public static void MyToExcelWithStyle(this DataGridView dgv, string file)
         {
             WriteExcelWithStyle2(dgv, file);
+        }
+
+        public static void MyToExcelWithStyle(this DataGridView dgv, string[] colnames, string file)
+        {
+            WriteExcelWithStyle2(dgv, colnames, file);
         }
     }
 
