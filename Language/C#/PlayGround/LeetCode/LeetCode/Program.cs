@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank;
+﻿using LeetCode.QuestionBank.Question1403;
 using System;
 using System.Collections.Generic;
 

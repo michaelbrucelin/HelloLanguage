@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank
+namespace LeetCode.QuestionBank.Question1403
 {
     public class Question1403
     {

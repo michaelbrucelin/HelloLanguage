@@ -38,6 +38,50 @@ namespace MultiThreading
             return r;
         }
 
+        /// <summary>
+        /// 在一个没有返回值的方法内部开启一个Task线程
+        /// </summary>
+        public static void TaskInSyncFunc()
+        {
+            Console.WriteLine($"This is NoReturn Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+
+            Task.Run(() =>
+            {
+                Console.WriteLine($"This is NoReturn's Task Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+                Enumerable.Range(1, 32).ToList().ForEach(i =>
+                {
+                    Thread.Sleep(100);
+                    Console.Write($"{i} ");
+                });
+                Console.WriteLine();
+                Console.WriteLine($"This is NoReturn's Task End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            });
+
+            Console.WriteLine($"This is NoReturn End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+        }
+
+        /// <summary>
+        /// 在一个没有返回值的方法内部开启一个Task线程
+        /// </summary>
+        public async static void TaskInAsyncFunc()
+        {
+            Console.WriteLine($"This is NoReturn Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+
+            await Task.Run(() =>
+            {
+                Console.WriteLine($"This is NoReturn's Task Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+                Enumerable.Range(1, 32).ToList().ForEach(i =>
+                {
+                    Thread.Sleep(100);
+                    Console.Write($"{i} ");
+                });
+                Console.WriteLine();
+                Console.WriteLine($"This is NoReturn's Task End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            });
+
+            Console.WriteLine($"This is NoReturn End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+        }
+
         public static void ClearTerminal()
         {
             for (int i = 0; i < 16; i++)
