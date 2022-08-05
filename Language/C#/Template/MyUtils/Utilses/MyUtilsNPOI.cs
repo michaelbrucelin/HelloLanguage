@@ -446,6 +446,11 @@ namespace WindowsFormsApp0
             WriteExcel(dgv, file);
         }
 
+        public static void MyToExcel(this DataGridView dgv, string[] colnames, string file)
+        {
+            WriteExcel(dgv, colnames, file);
+        }
+
         public static void MyToExcelWithStyle(this DataGridView dgv, string file)
         {
             WriteExcelWithStyle2(dgv, file);
