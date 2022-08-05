@@ -13,7 +13,7 @@
 
 **示例 1:**
 
-![](./Question0623_1.png)
+![](./Question0623.png)
 
 ```
 输入: root = [4,2,6,3,1,5], val = 1, depth = 2
