@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1403
 {
-    public class Question1403
+    public class Solution1403
     {
         public void Test()
         {
-            Question1403 q1403 = new Question1403();
+            Solution1403 q1403 = new Solution1403();
 
             int[] nums = new int[] { 4, 3, 10, 9, 8 };
             IList<int> result = q1403.MinSubsequence(nums);

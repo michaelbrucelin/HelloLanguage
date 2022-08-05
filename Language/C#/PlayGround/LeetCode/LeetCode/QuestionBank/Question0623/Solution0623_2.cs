@@ -9,7 +9,7 @@ namespace LeetCode.QuestionBank.Question0623
     /// <summary>
     /// 深度优先解法2
     /// </summary>
-    public class Question0623_2
+    public class Solution0623_2
     {
         public TreeNode AddOneRow(TreeNode root, int val, int depth)
         {

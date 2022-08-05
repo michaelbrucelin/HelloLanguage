@@ -8,7 +8,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Question1403 question = new Question1403();
+            Solution1403 question = new Solution1403();
             question.Test();
         }
     }

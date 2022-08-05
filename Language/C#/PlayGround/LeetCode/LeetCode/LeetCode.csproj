@@ -5,4 +5,24 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="QuestionBank\Question0001\" />
+    <Folder Include="QuestionBank\Question0002\" />
+    <Folder Include="QuestionBank\Question0007\" />
+    <Folder Include="QuestionBank\Question0009\" />
+    <Folder Include="QuestionBank\Question0175\" />
+    <Folder Include="QuestionBank\Question0181\" />
+    <Folder Include="QuestionBank\Question0182\" />
+    <Folder Include="QuestionBank\Question0187\" />
+    <Folder Include="QuestionBank\Question0192\" />
+    <Folder Include="QuestionBank\Question0193\" />
+    <Folder Include="QuestionBank\Question0194\" />
+    <Folder Include="QuestionBank\Question0195\" />
+    <Folder Include="QuestionBank\Question0345\" />
+    <Folder Include="QuestionBank\Question0541\" />
+    <Folder Include="QuestionBank\Question0551\" />
+    <Folder Include="QuestionBank\Question0595\" />
+    <Folder Include="QuestionBank\Question0627\" />
+  </ItemGroup>
+
 </Project>
