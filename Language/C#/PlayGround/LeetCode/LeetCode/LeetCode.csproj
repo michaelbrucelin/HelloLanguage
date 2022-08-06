@@ -6,9 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="QuestionBank\Question0002\" />
-    <Folder Include="QuestionBank\Question0007\" />
-    <Folder Include="QuestionBank\Question0009\" />
     <Folder Include="QuestionBank\Question0175\" />
     <Folder Include="QuestionBank\Question0181\" />
     <Folder Include="QuestionBank\Question0182\" />
