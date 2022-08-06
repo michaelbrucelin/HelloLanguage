@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question1403;
+﻿using LeetCode.QuestionBank.Question0345;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution1403 question = new Solution1403();
-            question.Test();
+            Solution0345 question = new Solution0345();
+            question.ReverseVowels("hello");
         }
     }
 }

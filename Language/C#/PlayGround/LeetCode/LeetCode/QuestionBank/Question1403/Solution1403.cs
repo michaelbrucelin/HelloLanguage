@@ -8,22 +8,6 @@ namespace LeetCode.QuestionBank.Question1403
 {
     public class Solution1403
     {
-        public void Test()
-        {
-            Solution1403 q1403 = new Solution1403();
-
-            int[] nums = new int[] { 4, 3, 10, 9, 8 };
-            IList<int> result = q1403.MinSubsequence(nums);
-            foreach (int i in result)
-                Console.Write($"{i} ");
-
-            Console.WriteLine();
-            nums = new int[] { 4, 4, 7, 6, 7 };
-            result = q1403.MinSubsequence(nums);
-            foreach (int i in result)
-                Console.Write($"{i} ");
-        }
-
         public IList<int> MinSubsequence(int[] nums)
         {
             List<int> listTar = new List<int>();
