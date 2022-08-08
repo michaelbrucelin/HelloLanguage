@@ -20,7 +20,7 @@ namespace MultiThreading
 
         private void Section14_Load(object sender, EventArgs e)
         {
-
+            string info = "awite/async可以以同步的方式写异步多线程的代码；web中常用，winform中使用的比较少；";
         }
 
         /// <summary>
