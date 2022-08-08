@@ -1,7 +1,7 @@
 ﻿
 namespace MultiThreading
 {
-    partial class Section15
+    partial class Section20
     {
         /// <summary>
         /// Required designer variable.
@@ -31,27 +31,25 @@ namespace MultiThreading
         {
             this.btnClear = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAsync = new System.Windows.Forms.Button();
-            this.btnAwaitAsync = new System.Windows.Forms.Button();
-            this.btnAwaitAll = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 90);
+            this.btnClear.Location = new System.Drawing.Point(3, 61);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
-            this.btnClear.TabIndex = 4;
+            this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // flp1
             // 
-            this.flp1.Controls.Add(this.btnAsync);
-            this.flp1.Controls.Add(this.btnAwaitAsync);
-            this.flp1.Controls.Add(this.btnAwaitAll);
+            this.flp1.Controls.Add(this.button1);
+            this.flp1.Controls.Add(this.button2);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -60,35 +58,25 @@ namespace MultiThreading
             this.flp1.Size = new System.Drawing.Size(284, 262);
             this.flp1.TabIndex = 0;
             // 
-            // btnAsync
+            // button1
             // 
-            this.btnAsync.Location = new System.Drawing.Point(3, 3);
-            this.btnAsync.Name = "btnAsync";
-            this.btnAsync.Size = new System.Drawing.Size(100, 23);
-            this.btnAsync.TabIndex = 1;
-            this.btnAsync.Text = "Async";
-            this.btnAsync.UseVisualStyleBackColor = true;
-            this.btnAsync.Click += new System.EventHandler(this.btnAsync_Click);
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnAwaitAsync
+            // button2
             // 
-            this.btnAwaitAsync.Location = new System.Drawing.Point(3, 32);
-            this.btnAwaitAsync.Name = "btnAwaitAsync";
-            this.btnAwaitAsync.Size = new System.Drawing.Size(100, 23);
-            this.btnAwaitAsync.TabIndex = 2;
-            this.btnAwaitAsync.Text = "AwaitAsync";
-            this.btnAwaitAsync.UseVisualStyleBackColor = true;
-            this.btnAwaitAsync.Click += new System.EventHandler(this.btnAwaitAsync_Click);
-            // 
-            // btnAwaitAll
-            // 
-            this.btnAwaitAll.Location = new System.Drawing.Point(3, 61);
-            this.btnAwaitAll.Name = "btnAwaitAll";
-            this.btnAwaitAll.Size = new System.Drawing.Size(100, 23);
-            this.btnAwaitAll.TabIndex = 3;
-            this.btnAwaitAll.Text = "AwaitAll";
-            this.btnAwaitAll.UseVisualStyleBackColor = true;
-            this.btnAwaitAll.Click += new System.EventHandler(this.btnAwaitAll_Click);
+            this.button2.Location = new System.Drawing.Point(3, 32);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Section15
             // 
@@ -101,7 +89,7 @@ namespace MultiThreading
             this.Name = "Section15";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Await/Async示例02";
-            this.Load += new System.EventHandler(this.Section15_Load);
+            this.Load += new System.EventHandler(this.Section20_Load);
             this.flp1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -111,8 +99,7 @@ namespace MultiThreading
 
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.FlowLayoutPanel flp1;
-        private System.Windows.Forms.Button btnAsync;
-        private System.Windows.Forms.Button btnAwaitAsync;
-        private System.Windows.Forms.Button btnAwaitAll;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
