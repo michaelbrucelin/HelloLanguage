@@ -55,6 +55,17 @@ namespace TestCSharp
         }
 
         /// <summary>
+        /// 通过元组实现的通用的交换变量方法
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private static void swap2<T>(ref T x, ref T y)
+        {
+            (x, y) = (y, x);
+        }
+
+        /// <summary>
         /// 生成随机字符串用于测试
         /// </summary>
         /// <param name="length"></param>
