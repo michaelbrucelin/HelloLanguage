@@ -208,25 +208,25 @@ namespace MultiThreading
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnAwaitAsync_Click(object sender, EventArgs e)
+        private async void btnAsyncAwait_Click(object sender, EventArgs e)
         {
-            Console.WriteLine($"await+async 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
 
             await Task.Run(() =>
             {
-                Console.WriteLine($"This is await+async Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+                Console.WriteLine($"This is async+await Start {{{Thread.CurrentThread.ManagedThreadId}}}");
                 Enumerable.Range(1, 32).ToList().ForEach(i =>
                 {
                     Thread.Sleep(100);
                     Console.Write($"{i} ");
                 });
                 Console.WriteLine();
-                Console.WriteLine($"This is await+async End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+                Console.WriteLine($"This is async+await End   {{{Thread.CurrentThread.ManagedThreadId}}}");
             });
 
             // 下面的输出是在await标记的Task完成后才输出的，而且不卡界面（不卡主线程）
             // 类似于同步编程的方式，异步的执行效果
-            Console.WriteLine($"await+async 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
         private void btnClear_Click(object sender, EventArgs e)

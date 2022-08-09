@@ -32,8 +32,8 @@ namespace MultiThreading
             lbl11.Text = "锁的共用问题";
             lbl12.Text = "锁的其它问题01";
             lbl13.Text = "锁的其它问题02";
-            lbl14.Text = "Await/Async示例01";
-            lbl15.Text = "Await/Async示例02";
+            lbl14.Text = "Async/Await示例01";
+            lbl15.Text = "Async/Await示例02";
         }
 
         // 下面的注册事件，稍后改为反射来完成

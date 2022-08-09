@@ -20,7 +20,7 @@ namespace MultiThreading
 
         private void Section15_Load(object sender, EventArgs e)
         {
-
+            string info = "async/awite可以以同步的方式写异步多线程的代码；web中常用，winform中使用的比较少；";
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace MultiThreading
         /// <summary>
         /// 变成同步执行了
         /// 
-        /// > await+async 多线程的主线程 Start {1}
+        /// > async+await 多线程的主线程 Start {1}
         /// > DoSomethingLong start AsyncJob01 {01} 165827:752
         /// > Start sleep 1541 milliseconds;
         /// > DoSomethingLong   end AsyncJob01 {01} 165829:299
@@ -64,25 +64,25 @@ namespace MultiThreading
         /// > DoSomethingLong start AsyncJob03 {01} 165832:715
         /// > Start sleep 3294 milliseconds;
         /// > DoSomethingLong   end AsyncJob03 {01} 165836:013
-        /// > await+async 多线程的主线程 End   {1}
+        /// > async+await 多线程的主线程 End   {1}
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnAwaitAsync_Click(object sender, EventArgs e)
+        private async void btnAsyncAwait_Click(object sender, EventArgs e)
         {
-            Console.WriteLine($"await+async 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
 
             await Utils.DoSomethingLongAsync("AsyncJob01");
             await Utils.DoSomethingLongAsync("AsyncJob02");
             await Utils.DoSomethingLongAsync("AsyncJob03");
 
-            Console.WriteLine($"await+async 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
         /// <summary>
         /// Task.WhenAll()起到了Task.WaitAll()的作用，同时还不会导致卡界面
         /// 
-        /// > await+async 多线程的主线程 Start {1}
+        /// > async+await 多线程的主线程 Start {1}
         /// > DoSomethingLong start AsyncJob01 {01} 165852:050
         /// > Start sleep 3155 milliseconds;
         /// > DoSomethingLong start AsyncJob02 {01} 165852:052
@@ -92,13 +92,13 @@ namespace MultiThreading
         /// > DoSomethingLong   end AsyncJob03 {01} 165853:299
         /// > DoSomethingLong   end AsyncJob02 {01} 165853:552
         /// > DoSomethingLong   end AsyncJob01 {01} 165855:216
-        /// > await+async 多线程的主线程 End   {1}
+        /// > async+await 多线程的主线程 End   {1}
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void btnAwaitAll_Click(object sender, EventArgs e)
         {
-            Console.WriteLine($"await+async 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 Start {{{Thread.CurrentThread.ManagedThreadId}}}");
 
             await Task.WhenAll(
                 Utils.DoSomethingLongAsync("AsyncJob01"),
@@ -106,7 +106,7 @@ namespace MultiThreading
                 Utils.DoSomethingLongAsync("AsyncJob03")
             );
 
-            Console.WriteLine($"await+async 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
+            Console.WriteLine($"async+await 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
         private void btnClear_Click(object sender, EventArgs e)

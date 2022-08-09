@@ -35,8 +35,8 @@ namespace MultiThreading
             this.btnThreadPool = new System.Windows.Forms.Button();
             this.btnTask = new System.Windows.Forms.Button();
             this.btnParallel = new System.Windows.Forms.Button();
-            this.btnAwaitAsync = new System.Windows.Forms.Button();
             this.btnParallel2 = new System.Windows.Forms.Button();
+            this.btnAsyncAwait = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@ namespace MultiThreading
             this.flp1.Controls.Add(this.btnTask);
             this.flp1.Controls.Add(this.btnParallel);
             this.flp1.Controls.Add(this.btnParallel2);
-            this.flp1.Controls.Add(this.btnAwaitAsync);
+            this.flp1.Controls.Add(this.btnAsyncAwait);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -106,16 +106,6 @@ namespace MultiThreading
             this.btnParallel.UseVisualStyleBackColor = true;
             this.btnParallel.Click += new System.EventHandler(this.btnParallel_Click);
             // 
-            // btnAwaitAsync
-            // 
-            this.btnAwaitAsync.Location = new System.Drawing.Point(3, 148);
-            this.btnAwaitAsync.Name = "btnAwaitAsync";
-            this.btnAwaitAsync.Size = new System.Drawing.Size(100, 23);
-            this.btnAwaitAsync.TabIndex = 6;
-            this.btnAwaitAsync.Text = "Await/Async";
-            this.btnAwaitAsync.UseVisualStyleBackColor = true;
-            this.btnAwaitAsync.Click += new System.EventHandler(this.btnAwaitAsync_Click);
-            // 
             // btnParallel2
             // 
             this.btnParallel2.Location = new System.Drawing.Point(3, 119);
@@ -125,6 +115,16 @@ namespace MultiThreading
             this.btnParallel2.Text = "Parallel2";
             this.btnParallel2.UseVisualStyleBackColor = true;
             this.btnParallel2.Click += new System.EventHandler(this.btnParallel2_Click);
+            // 
+            // btnAsyncAwait
+            // 
+            this.btnAsyncAwait.Location = new System.Drawing.Point(3, 148);
+            this.btnAsyncAwait.Name = "btnAsyncAwait";
+            this.btnAsyncAwait.Size = new System.Drawing.Size(100, 23);
+            this.btnAsyncAwait.TabIndex = 6;
+            this.btnAsyncAwait.Text = "Async/Await";
+            this.btnAsyncAwait.UseVisualStyleBackColor = true;
+            this.btnAsyncAwait.Click += new System.EventHandler(this.btnAsyncAwait_Click);
             // 
             // Section06
             // 
@@ -151,7 +151,7 @@ namespace MultiThreading
         private System.Windows.Forms.Button btnThreadPool;
         private System.Windows.Forms.Button btnTask;
         private System.Windows.Forms.Button btnParallel;
-        private System.Windows.Forms.Button btnAwaitAsync;
+        private System.Windows.Forms.Button btnAsyncAwait;
         private System.Windows.Forms.Button btnParallel2;
     }
 }

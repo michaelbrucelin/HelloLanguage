@@ -32,7 +32,7 @@ namespace MultiThreading
             this.btnClear = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAsync = new System.Windows.Forms.Button();
-            this.btnAwaitAsync = new System.Windows.Forms.Button();
+            this.btnAsyncAwait = new System.Windows.Forms.Button();
             this.btnAwaitAll = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +50,7 @@ namespace MultiThreading
             // flp1
             // 
             this.flp1.Controls.Add(this.btnAsync);
-            this.flp1.Controls.Add(this.btnAwaitAsync);
+            this.flp1.Controls.Add(this.btnAsyncAwait);
             this.flp1.Controls.Add(this.btnAwaitAll);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,15 +70,15 @@ namespace MultiThreading
             this.btnAsync.UseVisualStyleBackColor = true;
             this.btnAsync.Click += new System.EventHandler(this.btnAsync_Click);
             // 
-            // btnAwaitAsync
+            // btnAsyncAwait
             // 
-            this.btnAwaitAsync.Location = new System.Drawing.Point(3, 32);
-            this.btnAwaitAsync.Name = "btnAwaitAsync";
-            this.btnAwaitAsync.Size = new System.Drawing.Size(100, 23);
-            this.btnAwaitAsync.TabIndex = 2;
-            this.btnAwaitAsync.Text = "AwaitAsync";
-            this.btnAwaitAsync.UseVisualStyleBackColor = true;
-            this.btnAwaitAsync.Click += new System.EventHandler(this.btnAwaitAsync_Click);
+            this.btnAsyncAwait.Location = new System.Drawing.Point(3, 32);
+            this.btnAsyncAwait.Name = "btnAsyncAwait";
+            this.btnAsyncAwait.Size = new System.Drawing.Size(100, 23);
+            this.btnAsyncAwait.TabIndex = 2;
+            this.btnAsyncAwait.Text = "AsyncAwait";
+            this.btnAsyncAwait.UseVisualStyleBackColor = true;
+            this.btnAsyncAwait.Click += new System.EventHandler(this.btnAsyncAwait_Click);
             // 
             // btnAwaitAll
             // 
@@ -100,7 +100,7 @@ namespace MultiThreading
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "Section15";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Await/Async示例02";
+            this.Text = "Async/Await示例02";
             this.Load += new System.EventHandler(this.Section15_Load);
             this.flp1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -112,7 +112,7 @@ namespace MultiThreading
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.FlowLayoutPanel flp1;
         private System.Windows.Forms.Button btnAsync;
-        private System.Windows.Forms.Button btnAwaitAsync;
+        private System.Windows.Forms.Button btnAsyncAwait;
         private System.Windows.Forms.Button btnAwaitAll;
     }
 }

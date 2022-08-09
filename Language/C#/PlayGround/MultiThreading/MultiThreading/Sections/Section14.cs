@@ -20,7 +20,7 @@ namespace MultiThreading
 
         private void Section14_Load(object sender, EventArgs e)
         {
-            string info = "awite/async可以以同步的方式写异步多线程的代码；web中常用，winform中使用的比较少；";
+            string info = "async/awite可以以同步的方式写异步多线程的代码；web中常用，winform中使用的比较少；";
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace MultiThreading
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void btnAwaitAsync_Click(object sender, EventArgs e)
+        private async void btnAsyncAwait_Click(object sender, EventArgs e)
         {
             Console.WriteLine($"This is Main Start {{{Thread.CurrentThread.ManagedThreadId}}}");
             await Utils.TaskInFuncAsync2();
