@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question2103;
+﻿using LeetCode.QuestionBank.Question0640;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution2103 question = new Solution2103();
-            Console.WriteLine(question.CountPoints("G3R3R7B7R5B1G8G4B3G6"));
+            Solution0640 question = new Solution0640();
+            Console.WriteLine(question.SolveEquation("2x=x"));
         }
     }
 }
