@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Contents.cs" />
     <Compile Include="Functions\AwaitAsyncTester.cs" />
     <Compile Include="Functions\Utils.cs" />
     <Compile Include="Sections\Section06.cs">
@@ -110,6 +111,12 @@
     </Compile>
     <Compile Include="Sections\Section15.Designer.cs">
       <DependentUpon>Section15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sections\Section16.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section16.Designer.cs">
+      <DependentUpon>Section16.cs</DependentUpon>
     </Compile>
     <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
@@ -193,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section15.resx">
       <DependentUpon>Section15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section16.resx">
+      <DependentUpon>Section16.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>

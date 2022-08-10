@@ -34,6 +34,7 @@ namespace MultiThreading
             lbl13.Text = "锁的其它问题02";
             lbl14.Text = "Async/Await示例01";
             lbl15.Text = "Async/Await示例02";
+            lbl16.Text = "Async/Await示例03";
         }
 
         // 下面的注册事件，稍后改为反射来完成
@@ -129,7 +130,8 @@ namespace MultiThreading
 
         private void lbl16_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section16 section = new Section16();
+            section.ShowDialog();
         }
 
         private void lbl17_MouseDoubleClick(object sender, MouseEventArgs e)
