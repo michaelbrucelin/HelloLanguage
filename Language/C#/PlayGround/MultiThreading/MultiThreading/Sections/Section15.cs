@@ -109,6 +109,48 @@ namespace MultiThreading
             Console.WriteLine($"async+await 多线程的主线程 End   {{{Thread.CurrentThread.ManagedThreadId}}}");
         }
 
+        /// <summary>
+        /// -+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNoAwait_Click(object sender, EventArgs e)
+        {
+            TestAsync();
+            for (int i = 0; i < 16; i++)
+            {
+                Console.Write("-");
+                Thread.Sleep(100);
+            }
+        }
+
+        /// <summary>
+        /// ++++++++++++++++----------------
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btnAwait_Click(object sender, EventArgs e)
+        {
+            await TestAsync();
+            for (int i = 0; i < 16; i++)
+            {
+                Console.Write("-");
+                Thread.Sleep(100);
+            }
+        }
+
+        private async static Task TestAsync()
+        {
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    Console.Write("+");
+                    Thread.Sleep(100);
+                }
+            });
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             Utils.ClearTerminal();
