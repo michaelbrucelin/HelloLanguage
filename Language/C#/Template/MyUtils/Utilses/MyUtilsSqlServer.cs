@@ -12,6 +12,7 @@ namespace WindowsFormsApp0
         private static readonly int defCmdTimeout = 30;
 
         #region 同步方法
+        #region ExecuteNonQuery
         public static int ExecuteNonQuery(string connStr, string sql, params SqlParameter[] pms)
         {
             return ExecuteNonQuery(connStr, defCmdType, sql, defCmdTimeout, pms);
@@ -52,7 +53,9 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
+        #region ExecuteScalar
         public static object ExecuteScalar(string connStr, string sql, params SqlParameter[] pms)
         {
             return ExecuteScalar(connStr, defCmdType, sql, defCmdTimeout, pms);
@@ -93,7 +96,9 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
+        #region ExecuteReader
         public static SqlDataReader ExecuteReader(string connStr, string sql, params SqlParameter[] pms)
         {
             return ExecuteReader(connStr, defCmdType, sql, defCmdTimeout, pms);
@@ -133,7 +138,9 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
+        #region ExecuteDataTable
         public static DataTable ExecuteDataTable(string connStr, string sql, params SqlParameter[] pms)
         {
             return ExecuteDataTable(connStr, defCmdType, sql, defCmdTimeout, pms);
@@ -173,7 +180,9 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
+        #region ExecuteDataSet
         public static DataSet ExecuteDataSet(string connStr, string sql, params SqlParameter[] pms)
         {
             return ExecuteDataSet(connStr, defCmdType, sql, defCmdTimeout, pms);
@@ -213,10 +222,20 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
+        #region ExecuteBulkCopy
         public enum BulkCopyOption { INSERT, TRUNCATE_INSERT };
 
-        //直接INSERT或者先执行TRUNCATE再执行INSERT
+        /// <summary>
+        /// 直接INSERT或者先执行TRUNCATE再执行INSERT
+        /// </summary>
+        /// <param name="connStr"></param>
+        /// <param name="tableName"></param>
+        /// <param name="dataTable"></param>
+        /// <param name="option"></param>
+        /// <param name="columnMappings"></param>
+        /// <returns></returns>
         public static bool ExecuteBulkCopy(string connStr, string tableName, DataTable dataTable, BulkCopyOption option, Dictionary<string, string> columnMappings = null)
         {
             return ExecuteBulkCopy(connStr, defCmdTimeout, tableName, dataTable, option, columnMappings);
@@ -259,7 +278,16 @@ namespace WindowsFormsApp0
             }
         }
 
-        //先执行指定语句，例如带有WHERE条件的DELETE语句，然后再INSERT
+        /// <summary>
+        /// 先执行指定语句，例如带有WHERE条件的DELETE语句，然后再INSERT
+        /// </summary>
+        /// <param name="connStr"></param>
+        /// <param name="tableName"></param>
+        /// <param name="dataTable"></param>
+        /// <param name="sql_dosomething"></param>
+        /// <param name="columnMappings"></param>
+        /// <param name="pms"></param>
+        /// <returns></returns>
         public static bool ExecuteBulkCopy(string connStr, string tableName, DataTable dataTable, string sql_dosomething, Dictionary<string, string> columnMappings = null, params SqlParameter[] pms)
         {
             return ExecuteBulkCopy(connStr, defCmdTimeout, tableName, dataTable, sql_dosomething, columnMappings, pms);
@@ -276,7 +304,7 @@ namespace WindowsFormsApp0
                     {
                         try
                         {
-                            //先执行指定的操作
+                            // 先执行指定的操作
                             using (SqlCommand cmd = conn.CreateCommand())
                             {
                                 cmd.Transaction = tran;
@@ -289,7 +317,7 @@ namespace WindowsFormsApp0
                                 cmd.ExecuteNonQuery();
                             }
 
-                            //然后将新的数据插入到目标表中
+                            // 然后将新的数据插入到目标表中
                             using (SqlBulkCopy sbc = new SqlBulkCopy(conn, SqlBulkCopyOptions.KeepIdentity, tran))
                             {
                                 sbc.BulkCopyTimeout = timeout;
@@ -331,24 +359,26 @@ namespace WindowsFormsApp0
             }
         }
         #endregion
+        #endregion
 
         #region 异步方法
-        public static Task<int> ExecuteNonQueryAsync(string connStr, string sql, params SqlParameter[] pms)
+        #region ExecuteNonQueryAsync
+        public async static Task<int> ExecuteNonQueryAsync(string connStr, string sql, params SqlParameter[] pms)
         {
-            return ExecuteNonQueryAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
+            return await ExecuteNonQueryAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<int> ExecuteNonQueryAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
+        public async static Task<int> ExecuteNonQueryAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
         {
-            return ExecuteNonQueryAsync(connStr, cmdType, sql, defCmdTimeout, pms);
+            return await ExecuteNonQueryAsync(connStr, cmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<int> ExecuteNonQueryAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<int> ExecuteNonQueryAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
-            return ExecuteNonQueryAsync(connStr, defCmdType, sql, cmdTimeout, pms);
+            return await ExecuteNonQueryAsync(connStr, defCmdType, sql, cmdTimeout, pms);
         }
 
-        public static Task<int> ExecuteNonQueryAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<int> ExecuteNonQueryAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
             try
             {
@@ -364,7 +394,7 @@ namespace WindowsFormsApp0
                         }
                         conn.Open();
 
-                        return cmd.ExecuteNonQueryAsync();
+                        return await cmd.ExecuteNonQueryAsync();
                     }
                 }
             }
@@ -373,23 +403,25 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
-        public static Task<object> ExecuteScalarAsync(string connStr, string sql, params SqlParameter[] pms)
+        #region ExecuteScalarAsync
+        public async static Task<object> ExecuteScalarAsync(string connStr, string sql, params SqlParameter[] pms)
         {
-            return ExecuteScalarAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
+            return await ExecuteScalarAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<object> ExecuteScalarAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
+        public async static Task<object> ExecuteScalarAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
         {
-            return ExecuteScalarAsync(connStr, cmdType, sql, defCmdTimeout, pms);
+            return await ExecuteScalarAsync(connStr, cmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<object> ExecuteScalarAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<object> ExecuteScalarAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
-            return ExecuteScalarAsync(connStr, defCmdType, sql, cmdTimeout, pms);
+            return await ExecuteScalarAsync(connStr, defCmdType, sql, cmdTimeout, pms);
         }
 
-        public static Task<object> ExecuteScalarAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<object> ExecuteScalarAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
             try
             {
@@ -405,7 +437,7 @@ namespace WindowsFormsApp0
                         }
                         conn.Open();
 
-                        return cmd.ExecuteScalarAsync();
+                        return await cmd.ExecuteScalarAsync();
                     }
                 }
             }
@@ -414,27 +446,29 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
-        public static Task<SqlDataReader> ExecuteReaderAsync(string connStr, string sql, params SqlParameter[] pms)
+        #region ExecuteReaderAsync
+        public async static Task<SqlDataReader> ExecuteReaderAsync(string connStr, string sql, params SqlParameter[] pms)
         {
-            return ExecuteReaderAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
+            return await ExecuteReaderAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<SqlDataReader> ExecuteReaderAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
+        public async static Task<SqlDataReader> ExecuteReaderAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
         {
-            return ExecuteReaderAsync(connStr, cmdType, sql, defCmdTimeout, pms);
+            return await ExecuteReaderAsync(connStr, cmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<SqlDataReader> ExecuteReaderAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<SqlDataReader> ExecuteReaderAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
-            return ExecuteReaderAsync(connStr, defCmdType, sql, cmdTimeout, pms);
+            return await ExecuteReaderAsync(connStr, defCmdType, sql, cmdTimeout, pms);
         }
 
-        public static Task<SqlDataReader> ExecuteReaderAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<SqlDataReader> ExecuteReaderAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
             try
             {
-                //由于SqlDataReader是面向连接的，所以SQLConnection不能Close，故没有写在using中
+                // 由于SqlDataReader是面向连接的，所以SQLConnection不能Close，故没有写在using中
                 SqlConnection conn = new SqlConnection(connStr);
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -446,7 +480,7 @@ namespace WindowsFormsApp0
                     }
                     conn.Open();
 
-                    return cmd.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+                    return await cmd.ExecuteReaderAsync(CommandBehavior.CloseConnection);
                 }
             }
             catch (Exception)
@@ -454,23 +488,25 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
-        public static Task<DataTable> ExecuteDataTableAsync(string connStr, string sql, params SqlParameter[] pms)
+        #region ExecuteDataTableAsync
+        public async static Task<DataTable> ExecuteDataTableAsync(string connStr, string sql, params SqlParameter[] pms)
         {
-            return ExecuteDataTableAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
+            return await ExecuteDataTableAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<DataTable> ExecuteDataTableAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
+        public async static Task<DataTable> ExecuteDataTableAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
         {
-            return ExecuteDataTableAsync(connStr, cmdType, sql, defCmdTimeout, pms);
+            return await ExecuteDataTableAsync(connStr, cmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<DataTable> ExecuteDataTableAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<DataTable> ExecuteDataTableAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
-            return ExecuteDataTableAsync(connStr, defCmdType, sql, cmdTimeout, pms);
+            return await ExecuteDataTableAsync(connStr, defCmdType, sql, cmdTimeout, pms);
         }
 
-        public static Task<DataTable> ExecuteDataTableAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<DataTable> ExecuteDataTableAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
             DataTable dt = new DataTable();
 
@@ -485,7 +521,7 @@ namespace WindowsFormsApp0
                         adapter.SelectCommand.Parameters.AddRange(pms);
                     }
 
-                    return Task.Run(() =>
+                    return await Task.Run(() =>
                     {
                         adapter.Fill(dt);
                         return dt;
@@ -497,23 +533,25 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
-        public static Task<DataSet> ExecuteDataSetAsync(string connStr, string sql, params SqlParameter[] pms)
+        #region ExecuteDataSetAsync
+        public async static Task<DataSet> ExecuteDataSetAsync(string connStr, string sql, params SqlParameter[] pms)
         {
-            return ExecuteDataSetAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
+            return await ExecuteDataSetAsync(connStr, defCmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<DataSet> ExecuteDataSetAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
+        public async static Task<DataSet> ExecuteDataSetAsync(string connStr, CommandType cmdType, string sql, params SqlParameter[] pms)
         {
-            return ExecuteDataSetAsync(connStr, cmdType, sql, defCmdTimeout, pms);
+            return await ExecuteDataSetAsync(connStr, cmdType, sql, defCmdTimeout, pms);
         }
 
-        public static Task<DataSet> ExecuteDataSetAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<DataSet> ExecuteDataSetAsync(string connStr, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
-            return ExecuteDataSetAsync(connStr, defCmdType, sql, cmdTimeout, pms);
+            return await ExecuteDataSetAsync(connStr, defCmdType, sql, cmdTimeout, pms);
         }
 
-        public static Task<DataSet> ExecuteDataSetAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
+        public async static Task<DataSet> ExecuteDataSetAsync(string connStr, CommandType cmdType, string sql, int cmdTimeout, params SqlParameter[] pms)
         {
             DataSet ds = new DataSet();
 
@@ -528,7 +566,7 @@ namespace WindowsFormsApp0
                         adapter.SelectCommand.Parameters.AddRange(pms);
                     }
 
-                    return Task.Run(() =>
+                    return await Task.Run(() =>
                     {
                         adapter.Fill(ds);
                         return ds;
@@ -540,121 +578,142 @@ namespace WindowsFormsApp0
                 throw;
             }
         }
+        #endregion
 
-        ////直接INSERT或者先执行TRUNCATE再执行INSERT
-        //public static bool ExecuteBulkCopy(string connStr, string tableName, DataTable dataTable, BulkCopyOption option, Dictionary<string, string> columnMappings = null)
-        //{
-        //    return ExecuteBulkCopy(connStr, defCmdTimeout, tableName, dataTable, option, columnMappings);
-        //}
+        #region ExecuteBulkCopyAsync
+        /// <summary>
+        /// 直接INSERT或者先执行TRUNCATE再执行INSERT
+        /// </summary>
+        /// <param name="connStr"></param>
+        /// <param name="tableName"></param>
+        /// <param name="dataTable"></param>
+        /// <param name="option"></param>
+        /// <param name="columnMappings"></param>
+        /// <returns></returns>
+        public async static Task<bool> ExecuteBulkCopyAsync(string connStr, string tableName, DataTable dataTable, BulkCopyOption option, Dictionary<string, string> columnMappings = null)
+        {
+            return await ExecuteBulkCopyAsync(connStr, defCmdTimeout, tableName, dataTable, option, columnMappings);
+        }
 
-        //public static bool ExecuteBulkCopy(string connStr, int timeout, string tableName, DataTable dataTable, BulkCopyOption option, Dictionary<string, string> columnMappings = null)
-        //{
-        //    try
-        //    {
-        //        if (option == BulkCopyOption.INSERT)
-        //        {
-        //            using (SqlBulkCopy sbc = new SqlBulkCopy(connStr, SqlBulkCopyOptions.UseInternalTransaction))
-        //            {
-        //                sbc.DestinationTableName = tableName;
-        //                if (columnMappings != null)
-        //                {
-        //                    foreach (KeyValuePair<string, string> item in columnMappings)
-        //                    {
-        //                        sbc.ColumnMappings.Add(item.Key, item.Value);
-        //                    }
-        //                }
+        public async static Task<bool> ExecuteBulkCopyAsync(string connStr, int timeout, string tableName, DataTable dataTable, BulkCopyOption option, Dictionary<string, string> columnMappings = null)
+        {
+            try
+            {
+                if (option == BulkCopyOption.INSERT)
+                {
+                    using (SqlBulkCopy sbc = new SqlBulkCopy(connStr, SqlBulkCopyOptions.UseInternalTransaction))
+                    {
+                        sbc.DestinationTableName = tableName;
+                        if (columnMappings != null)
+                        {
+                            foreach (KeyValuePair<string, string> item in columnMappings)
+                            {
+                                sbc.ColumnMappings.Add(item.Key, item.Value);
+                            }
+                        }
 
-        //                sbc.WriteToServer(dataTable);
-        //            }
+                        await sbc.WriteToServerAsync(dataTable);
+                    }
 
-        //            return true;
-        //        }
-        //        else if (option == BulkCopyOption.TRUNCATE_INSERT)
-        //        {
-        //            return ExecuteBulkCopy(connStr, timeout, tableName, dataTable, $"truncate table {tableName}", columnMappings);
-        //        }
-        //        else
-        //        {
-        //            throw new ArgumentException();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+                    return true;
+                }
+                else if (option == BulkCopyOption.TRUNCATE_INSERT)
+                {
+                    return await ExecuteBulkCopyAsync(connStr, timeout, tableName, dataTable, $"truncate table {tableName}", columnMappings);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-        ////先执行指定语句，例如带有WHERE条件的DELETE语句，然后再INSERT
-        //public static bool ExecuteBulkCopy(string connStr, string tableName, DataTable dataTable, string sql_dosomething, Dictionary<string, string> columnMappings = null, params SqlParameter[] pms)
-        //{
-        //    return ExecuteBulkCopy(connStr, defCmdTimeout, tableName, dataTable, sql_dosomething, columnMappings, pms);
-        //}
+        /// <summary>
+        /// 先执行指定语句，例如带有WHERE条件的DELETE语句，然后再INSERT
+        /// </summary>
+        /// <param name="connStr"></param>
+        /// <param name="tableName"></param>
+        /// <param name="dataTable"></param>
+        /// <param name="sql_dosomething"></param>
+        /// <param name="columnMappings"></param>
+        /// <param name="pms"></param>
+        /// <returns></returns>
+        public async static Task<bool> ExecuteBulkCopyAsync(string connStr, string tableName, DataTable dataTable, string sql_dosomething, Dictionary<string, string> columnMappings = null, params SqlParameter[] pms)
+        {
+            return await ExecuteBulkCopyAsync(connStr, defCmdTimeout, tableName, dataTable, sql_dosomething, columnMappings, pms);
+        }
 
-        //public static bool ExecuteBulkCopy(string connStr, int timeout, string tableName, DataTable dataTable, string sql_dosomething, Dictionary<string, string> columnMappings = null, params SqlParameter[] pms)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connStr))
-        //        {
-        //            conn.Open();
-        //            using (SqlTransaction tran = conn.BeginTransaction())
-        //            {
-        //                try
-        //                {
-        //                    //先执行指定的操作
-        //                    using (SqlCommand cmd = conn.CreateCommand())
-        //                    {
-        //                        cmd.Transaction = tran;
-        //                        cmd.CommandTimeout = timeout;
-        //                        cmd.CommandText = sql_dosomething;
-        //                        if (pms != null)
-        //                        {
-        //                            cmd.Parameters.AddRange(pms);
-        //                        }
-        //                        cmd.ExecuteNonQuery();
-        //                    }
+        public async static Task<bool> ExecuteBulkCopyAsync(string connStr, int timeout, string tableName, DataTable dataTable, string sql_dosomething, Dictionary<string, string> columnMappings = null, params SqlParameter[] pms)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    conn.Open();
+                    using (SqlTransaction tran = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            // 先执行指定的操作
+                            using (SqlCommand cmd = conn.CreateCommand())
+                            {
+                                cmd.Transaction = tran;
+                                cmd.CommandTimeout = timeout;
+                                cmd.CommandText = sql_dosomething;
+                                if (pms != null)
+                                {
+                                    cmd.Parameters.AddRange(pms);
+                                }
+                                await cmd.ExecuteNonQueryAsync();
+                            }
 
-        //                    //然后将新的数据插入到目标表中
-        //                    using (SqlBulkCopy sbc = new SqlBulkCopy(conn, SqlBulkCopyOptions.KeepIdentity, tran))
-        //                    {
-        //                        sbc.BulkCopyTimeout = timeout;
-        //                        sbc.DestinationTableName = tableName;
-        //                        if (columnMappings != null)
-        //                        {
-        //                            foreach (KeyValuePair<string, string> item in columnMappings)
-        //                            {
-        //                                sbc.ColumnMappings.Add(item.Key, item.Value);
-        //                            }
-        //                        }
+                            // 然后将新的数据插入到目标表中
+                            using (SqlBulkCopy sbc = new SqlBulkCopy(conn, SqlBulkCopyOptions.KeepIdentity, tran))
+                            {
+                                sbc.BulkCopyTimeout = timeout;
+                                sbc.DestinationTableName = tableName;
+                                if (columnMappings != null)
+                                {
+                                    foreach (KeyValuePair<string, string> item in columnMappings)
+                                    {
+                                        sbc.ColumnMappings.Add(item.Key, item.Value);
+                                    }
+                                }
 
-        //                        sbc.WriteToServer(dataTable);
-        //                    }
+                                await sbc.WriteToServerAsync(dataTable);
+                            }
 
-        //                    tran.Commit();
-        //                }
-        //                catch (Exception)
-        //                {
-        //                    try
-        //                    {
-        //                        tran.Rollback();
-        //                    }
-        //                    catch (Exception)
-        //                    {
-        //                        throw;
-        //                    }
+                            tran.Commit();
+                        }
+                        catch (Exception)
+                        {
+                            try
+                            {
+                                tran.Rollback();
+                            }
+                            catch (Exception)
+                            {
+                                throw;
+                            }
 
-        //                    throw;
-        //                }
-        //            }
-        //        }
+                            throw;
+                        }
+                    }
+                }
 
-        //        return true;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion
         #endregion
     }
 }
