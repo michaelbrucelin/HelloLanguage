@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0640;
+﻿using LeetCode.QuestionBank.Question1417;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution0640 question = new Solution0640();
-            Console.WriteLine(question.SolveEquation("2x=x"));
+            Solution1417_3 question = new Solution1417_3();
+            Console.WriteLine(question.Reformat("abc123"));
         }
     }
 }
