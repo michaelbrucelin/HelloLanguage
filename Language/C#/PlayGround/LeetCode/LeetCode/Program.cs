@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question1417;
+﻿using LeetCode.QuestionBank.Question1910;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution1417_3 question = new Solution1417_3();
-            Console.WriteLine(question.Reformat("abc123"));
+            Solution1910_2 question = new Solution1910_2();
+            Console.WriteLine(question.RemoveOccurrences("axxxxyyyyb", "xy"));
         }
     }
 }
