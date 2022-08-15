@@ -31,12 +31,14 @@ namespace MultiThreading
         {
             this.btnClear = new System.Windows.Forms.Button();
             this.flp1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCompare = new System.Windows.Forms.Button();
+            this.lblCompare = new System.Windows.Forms.Label();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 3);
+            this.btnClear.Location = new System.Drawing.Point(3, 32);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
             this.btnClear.TabIndex = 2;
@@ -46,13 +48,34 @@ namespace MultiThreading
             // 
             // flp1
             // 
+            this.flp1.Controls.Add(this.btnCompare);
             this.flp1.Controls.Add(this.btnClear);
+            this.flp1.Controls.Add(this.lblCompare);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp1.Location = new System.Drawing.Point(0, 0);
             this.flp1.Name = "flp1";
             this.flp1.Size = new System.Drawing.Size(284, 262);
             this.flp1.TabIndex = 0;
+            // 
+            // btnCompare
+            // 
+            this.btnCompare.Location = new System.Drawing.Point(3, 3);
+            this.btnCompare.Name = "btnCompare";
+            this.btnCompare.Size = new System.Drawing.Size(100, 23);
+            this.btnCompare.TabIndex = 1;
+            this.btnCompare.Text = "Compare";
+            this.btnCompare.UseVisualStyleBackColor = true;
+            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
+            // 
+            // lblCompare
+            // 
+            this.lblCompare.AutoSize = true;
+            this.lblCompare.Location = new System.Drawing.Point(3, 58);
+            this.lblCompare.Name = "lblCompare";
+            this.lblCompare.Size = new System.Drawing.Size(275, 24);
+            this.lblCompare.TabIndex = 3;
+            this.lblCompare.Text = "Benchmark需要在Release下执行，在Debug下执行会报错。";
             // 
             // Section18
             // 
@@ -67,6 +90,7 @@ namespace MultiThreading
             this.Text = "ValueTask示例";
             this.Load += new System.EventHandler(this.Section18_Load);
             this.flp1.ResumeLayout(false);
+            this.flp1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -75,5 +99,7 @@ namespace MultiThreading
 
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.FlowLayoutPanel flp1;
+        private System.Windows.Forms.Button btnCompare;
+        private System.Windows.Forms.Label lblCompare;
     }
 }
