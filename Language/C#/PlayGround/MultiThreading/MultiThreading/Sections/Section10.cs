@@ -106,6 +106,76 @@ namespace MultiThreading
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNoMonitor_Click(object sender, EventArgs e)
+        {
+            List<int> list = new List<int>();
+
+            List<Task> tasks = new List<Task>();
+            for (int i = 0; i < 100; i++)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    list.MyAdd(i);
+                }));
+            }
+
+            TaskFactory taskFactory = new TaskFactory();
+            taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMonitorEnter_Click(object sender, EventArgs e)
+        {
+            List<int> list = new List<int>();
+
+            List<Task> tasks = new List<Task>();
+            for (int i = 0; i < 100; i++)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    Monitor.Enter(LOCK);
+                    list.MyAdd(i);
+                    Monitor.Exit(LOCK);
+                }));
+            }
+
+            TaskFactory taskFactory = new TaskFactory();
+            taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMonitorTryEnter_Click(object sender, EventArgs e)
+        {
+            List<int> list = new List<int>();
+
+            List<Task> tasks = new List<Task>();
+            for (int i = 0; i < 100; i++)
+            {
+                tasks.Add(Task.Run(() =>
+                {
+                    Monitor.TryEnter(LOCK, 1);
+                    list.MyAdd(i);
+                    Monitor.Exit(LOCK);
+                }));
+            }
+
+            TaskFactory taskFactory = new TaskFactory();
+            taskFactory.ContinueWhenAll(tasks.ToArray(), task => { Console.WriteLine(list.Count); });
+        }
+
+        /// <summary>
         /// 需要注意的是，有时候子线程抛异常，主线程并不异常，即主线程不处理子线程抛出的异常，
         /// 但是结果是错的，多线程有时候会有自己“吞异常”这种情况出现，
         /// 例如下面的例子，如果没有try catch的话，程序并不会异常，但是结果为0

@@ -34,16 +34,19 @@ namespace MultiThreading
             this.btnUnLock = new System.Windows.Forms.Button();
             this.btnLock = new System.Windows.Forms.Button();
             this.btnMonitor = new System.Windows.Forms.Button();
+            this.btnMonitorEnter = new System.Windows.Forms.Button();
+            this.btnMonitorTryEnter = new System.Windows.Forms.Button();
             this.btnException = new System.Windows.Forms.Button();
+            this.btnNoMonitor = new System.Windows.Forms.Button();
             this.flp1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(3, 119);
+            this.btnClear.Location = new System.Drawing.Point(3, 206);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 23);
-            this.btnClear.TabIndex = 5;
+            this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -53,6 +56,9 @@ namespace MultiThreading
             this.flp1.Controls.Add(this.btnUnLock);
             this.flp1.Controls.Add(this.btnLock);
             this.flp1.Controls.Add(this.btnMonitor);
+            this.flp1.Controls.Add(this.btnNoMonitor);
+            this.flp1.Controls.Add(this.btnMonitorEnter);
+            this.flp1.Controls.Add(this.btnMonitorTryEnter);
             this.flp1.Controls.Add(this.btnException);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -92,15 +98,45 @@ namespace MultiThreading
             this.btnMonitor.UseVisualStyleBackColor = true;
             this.btnMonitor.Click += new System.EventHandler(this.btnMonitor_Click);
             // 
+            // btnMonitorEnter
+            // 
+            this.btnMonitorEnter.Location = new System.Drawing.Point(3, 119);
+            this.btnMonitorEnter.Name = "btnMonitorEnter";
+            this.btnMonitorEnter.Size = new System.Drawing.Size(120, 23);
+            this.btnMonitorEnter.TabIndex = 5;
+            this.btnMonitorEnter.Text = "Monitor Enter";
+            this.btnMonitorEnter.UseVisualStyleBackColor = true;
+            this.btnMonitorEnter.Click += new System.EventHandler(this.btnMonitorEnter_Click);
+            // 
+            // btnMonitorTryEnter
+            // 
+            this.btnMonitorTryEnter.Location = new System.Drawing.Point(3, 148);
+            this.btnMonitorTryEnter.Name = "btnMonitorTryEnter";
+            this.btnMonitorTryEnter.Size = new System.Drawing.Size(120, 23);
+            this.btnMonitorTryEnter.TabIndex = 6;
+            this.btnMonitorTryEnter.Text = "Monitor TryEnter";
+            this.btnMonitorTryEnter.UseVisualStyleBackColor = true;
+            this.btnMonitorTryEnter.Click += new System.EventHandler(this.btnMonitorTryEnter_Click);
+            // 
             // btnException
             // 
-            this.btnException.Location = new System.Drawing.Point(3, 90);
+            this.btnException.Location = new System.Drawing.Point(3, 177);
             this.btnException.Name = "btnException";
             this.btnException.Size = new System.Drawing.Size(100, 23);
-            this.btnException.TabIndex = 4;
+            this.btnException.TabIndex = 7;
             this.btnException.Text = "Exception";
             this.btnException.UseVisualStyleBackColor = true;
             this.btnException.Click += new System.EventHandler(this.btnException_Click);
+            // 
+            // btnNoMonitor
+            // 
+            this.btnNoMonitor.Location = new System.Drawing.Point(3, 90);
+            this.btnNoMonitor.Name = "btnNoMonitor";
+            this.btnNoMonitor.Size = new System.Drawing.Size(120, 23);
+            this.btnNoMonitor.TabIndex = 4;
+            this.btnNoMonitor.Text = "No Monitor";
+            this.btnNoMonitor.UseVisualStyleBackColor = true;
+            this.btnNoMonitor.Click += new System.EventHandler(this.btnNoMonitor_Click);
             // 
             // Section10
             // 
@@ -127,5 +163,8 @@ namespace MultiThreading
         private System.Windows.Forms.Button btnLock;
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.Button btnException;
+        private System.Windows.Forms.Button btnMonitorTryEnter;
+        private System.Windows.Forms.Button btnMonitorEnter;
+        private System.Windows.Forms.Button btnNoMonitor;
     }
 }
