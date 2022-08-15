@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultiThreading
 {
-    public static class Utils
+    public class Utils
     {
         private static Random random = new Random();
 
@@ -129,12 +129,6 @@ namespace MultiThreading
         {
             for (int i = 0; i < 16; i++)
                 Console.WriteLine();
-        }
-
-        public static void MyAdd<T>(this List<T> list, T item)
-        {
-            Thread.Sleep(100);
-            list.Add(item);
         }
     }
 }

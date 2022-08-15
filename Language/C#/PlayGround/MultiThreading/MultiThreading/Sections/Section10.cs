@@ -106,7 +106,7 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 
+        /// 没有使用Monitor，会出现线程安全问题
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -119,7 +119,8 @@ namespace MultiThreading
             {
                 tasks.Add(Task.Run(() =>
                 {
-                    list.MyAdd(i);
+                    Thread.Sleep(100);
+                    list.Add(i);
                 }));
             }
 
@@ -128,7 +129,7 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 
+        /// 使用Monitor.Enter()，会导致处理过变成顺序（同步）执行
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -142,7 +143,8 @@ namespace MultiThreading
                 tasks.Add(Task.Run(() =>
                 {
                     Monitor.Enter(LOCK);
-                    list.MyAdd(i);
+                    Thread.Sleep(100);
+                    list.Add(i);
                     Monitor.Exit(LOCK);
                 }));
             }
@@ -152,7 +154,7 @@ namespace MultiThreading
         }
 
         /// <summary>
-        /// 
+        /// 使用Monitor.TryEnter()，如果已经加锁，则退出，可以实现类似于“单例方法”的效果，即方法不可并行
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -165,9 +167,38 @@ namespace MultiThreading
             {
                 tasks.Add(Task.Run(() =>
                 {
-                    Monitor.TryEnter(LOCK, 1);
-                    list.MyAdd(i);
-                    Monitor.Exit(LOCK);
+                    if (Monitor.TryEnter(LOCK, 10))
+                    {
+                        try
+                        {
+                            Thread.Sleep(100);
+                            list.Add(i);
+                        }
+                        finally
+                        {
+                            Monitor.Exit(LOCK);
+                        }
+                    }
+
+                    // 下面的写法与上面语义一致，但是更安全，上面的写法可能会出现刚申请到锁，还没执行到内部的try块时，出现异常（内存溢出？）
+                    // 测试结果一致为0，不清楚为什么
+                    // bool lockAcquired = true;
+                    // try
+                    // {
+                    //     Monitor.TryEnter(LOCK, 10, ref lockAcquired);
+                    //     if (lockAcquired)
+                    //     {
+                    //         Thread.Sleep(100);
+                    //         list.Add(i);
+                    //     }
+                    // }
+                    // finally
+                    // {
+                    //     if (lockAcquired)
+                    //     {
+                    //         Monitor.Exit(LOCK);
+                    //     }
+                    // }
                 }));
             }
 
