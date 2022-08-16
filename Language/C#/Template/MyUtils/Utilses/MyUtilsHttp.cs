@@ -14,10 +14,35 @@ namespace WindowsFormsApp0
     {
         //https://stackoverflow.com/questions/4015324/how-to-make-http-post-web-request
 
-        //HttpRequest
+        #region HttpClient
+        private static readonly HttpClient client = new HttpClient();
+
+        public static async Task<string> GETWithHttpClientAsync(string url)
+        {
+            string responseString = await client.GetStringAsync(url);
+
+            return responseString;
+        }
+
+        public static async Task<string> PostWithHttpClientAsync(string url, Dictionary<string, string> values)
+        {
+            //POST，在.Net Framework 4.5下测试有效，配合async/await很不错
+            //Dictionary<string, string> values = new Dictionary<string, string>()
+            //{
+            //    { "thing1", "hello" },
+            //    { "thing2", "world" }
+            //};
+            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+            HttpResponseMessage response = await client.PostAsync(url, content);
+            string responseString = await response.Content.ReadAsStringAsync();
+
+            return responseString;
+        }
+        #endregion
+
+        #region HttpRequest
         public static string GETWithHttpRequest(string url)
         {
-            //GET，没有测试
             WebRequest request = (HttpWebRequest)WebRequest.Create(url);
             WebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -46,8 +71,9 @@ namespace WindowsFormsApp0
 
             return new StreamReader(response.GetResponseStream()).ReadToEnd();
         }
+        #endregion
 
-        //WebClient
+        #region WebClient
         public static string GETWithWebClient(string url, Encoding encoding = null)
         {
             string responseString = string.Empty;
@@ -416,32 +442,7 @@ namespace WindowsFormsApp0
 
             return responseString;
         }
-
-        //HttpClient
-        private static readonly HttpClient client = new HttpClient();
-
-        public static async Task<string> GETWithHttpClient(string url)
-        {
-            //GET，没有测试
-            string responseString = await client.GetStringAsync(url);
-
-            return responseString;
-        }
-
-        public static async Task<string> PostWithHttpClient(string url, Dictionary<string, string> values)
-        {
-            //POST，在.Net Framework 4.5下测试有效，配合async/await很不错
-            //Dictionary<string, string> values = new Dictionary<string, string>()
-            //{
-            //    { "thing1", "hello" },
-            //    { "thing2", "world" }
-            //};
-            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
-            HttpResponseMessage response = await client.PostAsync(url, content);
-            string responseString = await response.Content.ReadAsStringAsync();
-
-            return responseString;
-        }
+        #endregion
     }
 
     /// <summary>
