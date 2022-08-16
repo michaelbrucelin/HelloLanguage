@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question1422;
+﻿using LeetCode.QuestionBank.Question1656;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +8,9 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution1422 question = new Solution1422();
-            Console.WriteLine(question.MaxScore("001100111"));
+            Solution1656 question = new Solution1656();
+            // Console.WriteLine(question.Test());
+            question.Test();
         }
     }
 }
