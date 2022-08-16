@@ -30,7 +30,7 @@ namespace MultiThreading
         /// Thread就像给了一个四岁小孩一把热武器，威力很大，但是造成的破坏可能更大
         /// thread.Suspend();     // 挂起线程
         /// thread.Resume();      // 恢复线程
-        /// thread.Join();        // 等待线程
+        /// thread.Join();        // 等待线程，阻塞（暂停）调用线程，直到子线程销毁或终止
         /// thread.IsBackground;  // 设置前后台线程
         /// thread.Abort();       // 销毁线程
         /// Thread.ResetAbort();  // 将销毁的线程恢复
