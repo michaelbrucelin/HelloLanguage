@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp0.Classes.Utilses
+namespace WindowsFormsApp0
 {
     public static class MyUtilsDateTime
     {
@@ -60,6 +60,17 @@ namespace WindowsFormsApp0.Classes.Utilses
             dateTime = dateTime.AddMilliseconds(javaTimeStamp).ToUniversalTime();
 
             return dateTime;
+        }
+
+        /// <summary>
+        /// 计算指定日期是一周中的第几天
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="startOfWeek"></param>
+        /// <returns></returns>
+        public static int GetWeekday(DateTime dt, DayOfWeek startOfWeek = DayOfWeek.Monday)
+        {
+            return (dt.DayOfWeek - startOfWeek + 7) % 7 + 1;
         }
     }
 }

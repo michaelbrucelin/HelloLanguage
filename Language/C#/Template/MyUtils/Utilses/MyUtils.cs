@@ -36,14 +36,14 @@ namespace WindowsFormsApp0
             return new Random(iRoot);
         }
 
-        //随机枚举值
+        // 随机枚举值
         public static T GetRandomEnum<T>()
         {
             T[] values = (T[])Enum.GetValues(typeof(T));
             return values[random.Next(0, values.Length)];
         }
 
-        //生成随机字符串
+        // 生成随机字符串
         public static string GetRandomString(int length)
         {
             const string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -52,20 +52,20 @@ namespace WindowsFormsApp0
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        //生成随机字符串
+        // 生成随机字符串
         public static string GetRandomString(string chars, int length)
         {
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        //返回随机颜色
+        // 返回随机颜色
         public static Color GetRandomColor()
         {
             return Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256));
         }
 
-        //返回随机字体
+        // 返回随机字体
         public static Font GetRandomFont(int minFontSize, int maxFontSize)
         {
             string[] fonts = { "Arial", "Verdana", "Comic Sans MS", "Impact", "Haettenschweiler", "Lucida Sans Unicode", "Garamond", "Courier New", "Book Antiqua", "Arial Narrow" };
@@ -79,9 +79,9 @@ namespace WindowsFormsApp0
             }
         }
 
-        //字符串按照指定长度拆分为数组，如果最后一项长度不够，是否保留
+        // 字符串按照指定长度拆分为数组，如果最后一项长度不够，是否保留
         public enum StrSplitByChunkOption { keep, remove };
-        //字符串按照指定长度拆分为数组
+        // 字符串按照指定长度拆分为数组
         public static IEnumerable<string> StrSplitByChunk(string str, int chunkSize, StrSplitByChunkOption option)
         {
             if (option == StrSplitByChunkOption.keep)
@@ -178,7 +178,7 @@ namespace WindowsFormsApp0
             return filePath;
         }
 
-        //OpenFileDialog
+        // OpenFileDialog
         public static string OpenFile(string filter, string initDir)
         {
             string filePath = string.Empty;
@@ -195,7 +195,7 @@ namespace WindowsFormsApp0
             return filePath;
         }
 
-        //SaveFileDialog
+        // SaveFileDialog
         public static string SaveFile(string filter)
         {
             string filePath = string.Empty;
@@ -211,7 +211,7 @@ namespace WindowsFormsApp0
             return filePath;
         }
 
-        //SaveFileDialog
+        // SaveFileDialog
         public static string SaveFile(string filter, string initDir)
         {
             string filePath = string.Empty;
@@ -270,7 +270,7 @@ namespace WindowsFormsApp0
             return dt;
         }
 
-        //生成随机DataTable，纯字符串
+        // 生成随机DataTable，纯字符串
         public static DataTable GetRandomDataTable(int colCnt, int rowCnt, int strLength)
         {
             DataTable dt = new DataTable();
@@ -291,7 +291,7 @@ namespace WindowsFormsApp0
             return dt;
         }
 
-        //生成随机DataTable，纯数字
+        // 生成随机DataTable，纯数字
         public static DataTable GetRandomDataTable(int colCnt, int rowCnt, int intMin, int intMax)
         {
             //保证随机的时候可以取到上界
@@ -315,7 +315,7 @@ namespace WindowsFormsApp0
             return dt;
         }
 
-        //生成随机DataTable，随机字符串和数字
+        // 生成随机DataTable，随机字符串和数字
         public static DataTable GetRandomDataTable(int colCnt, int rowCnt, int strLength, int intMin, int intMax)
         {
             //true表示该字段为string，false表示该字段为int
@@ -328,7 +328,7 @@ namespace WindowsFormsApp0
             return GetRandomDataTable(colTypes, rowCnt, strLength, intMin, intMax);
         }
 
-        //List随机排序
+        // List随机排序
         public static void ListRandomOrder<T>(ref List<T> list)
         {
             int n = list.Count;
@@ -342,7 +342,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //List转DataTable
+        // List转DataTable
         public static DataTable ListToDataTable<T>(IList<T> data)
         {
             DataTable dt = new DataTable();
@@ -387,7 +387,7 @@ namespace WindowsFormsApp0
             return dt;
         }
 
-        //DataTable去重复，按照全局（所有列）去重复
+        // DataTable去重复，按照全局（所有列）去重复
         public static void DataTableDistinct(ref DataTable dt)
         {
             DataView view = new DataView(dt);
@@ -400,7 +400,7 @@ namespace WindowsFormsApp0
             dt = dtTemp;
         }
 
-        //DataTable去重复，按照全局（所有列）去重复
+        // DataTable去重复，按照全局（所有列）去重复
         public static DataTable DataTableDistinct(DataTable dt)
         {
             DataTable dtRs = new DataTable();
@@ -415,7 +415,7 @@ namespace WindowsFormsApp0
             return dtRs;
         }
 
-        //DataTable去重复，按照第n列去重复
+        // DataTable去重复，按照第n列去重复
         public enum DTDistinctKeep { first, last };
         public static void DataTableDistinct(ref DataTable dt, int keyIndex, DTDistinctKeep keep)
         {
@@ -457,7 +457,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataTable去重复，按照指定列去重复
+        // DataTable去重复，按照指定列去重复
         public static void DataTableDistinct(ref DataTable dt, string keyName, DTDistinctKeep keep)
         {
             int keyIndex = -1;
@@ -480,7 +480,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataTable去重复，按照第n列去重复
+        // DataTable去重复，按照第n列去重复
         public static DataTable DataTableDistinct(DataTable dt, int keyIndex, DTDistinctKeep keep)
         {
             DataTable dtRs = dt.Copy();
@@ -525,7 +525,7 @@ namespace WindowsFormsApp0
             return dtRs;
         }
 
-        //DataTable去重复，按照指定列去重复
+        // DataTable去重复，按照指定列去重复
         public static DataTable DataTableDistinct(DataTable dt, string keyName, DTDistinctKeep keep)
         {
             int keyIndex = -1;
@@ -548,7 +548,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataTable去重复，按照指定的几列（id）去重复，没做测试
+        // DataTable去重复，按照指定的几列（id）去重复，没做测试
         private static bool DataTableDistinctVerifyRow(Dictionary<int, string> dic, DataRow dr)
         {
             bool flag = true;
@@ -622,7 +622,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataTable去重复，按照指定的几列（列名）去重复，没做测试
+        // DataTable去重复，按照指定的几列（列名）去重复，没做测试
         public static void DataTableDistinct(ref DataTable dt, string[] keyNames, DTDistinctKeep keep)
         {
             List<int> list = new List<int>();
@@ -654,7 +654,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataTable去重复，按照指定的几列（id）去重复，没做测试
+        // DataTable去重复，按照指定的几列（id）去重复，没做测试
         public static DataTable DataTableDistinct(DataTable dt, int[] keyIndexes, DTDistinctKeep keep)
         {
             DataTable dtRs = dt.Copy();
@@ -719,7 +719,7 @@ namespace WindowsFormsApp0
             return dtRs;
         }
 
-        //DataTable去重复，按照指定的几列（列名）去重复，没做测试
+        // DataTable去重复，按照指定的几列（列名）去重复，没做测试
         public static DataTable DataTableDistinct(DataTable dt, string[] keyNames, DTDistinctKeep keep)
         {
             List<int> list = new List<int>();
@@ -761,7 +761,7 @@ namespace WindowsFormsApp0
             return DataTableDistinct(dt, keyIndexes, keep);
         }
 
-        //DataTable按照指定的条件删除行，不要用Delete，以免.Net版本升级增加了Delete方法导致冲突
+        // DataTable按照指定的条件删除行，不要用Delete，以免.Net版本升级增加了Delete方法导致冲突
         public static DataTable MyDelete(this DataTable table, string filter)
         {
             table.Select(filter).Delete();
@@ -773,7 +773,7 @@ namespace WindowsFormsApp0
                 row.Delete();
         }
 
-        //实现TextBox只能输入数字，或只能输入数字和.，应用于TextBox的KeyPress事件
+        // 实现TextBox只能输入数字，或只能输入数字和.，应用于TextBox的KeyPress事件
         public enum KeyControlOption { OnlyNumber, NumberAndDot }
         public static void TextBox_KeyControl(object sender, KeyPressEventArgs e, KeyControlOption keyControlOption)
         {
@@ -846,7 +846,7 @@ namespace WindowsFormsApp0
             TextBox_KeyControl(sender, e, chars, keyLimitedOption);
         }
 
-        //实现TextBox激活多行后可以Ctrl+A全选，应用于TextBox的KeyPress事件
+        // 实现TextBox激活多行后可以Ctrl+A全选，应用于TextBox的KeyPress事件
         public static void TextBox_MultiLine_CtrlA(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\x1')
@@ -856,7 +856,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //实现TextBox激活多行后可以Ctrl+A全选，应用于TextBox的KeyDown事件
+        // 实现TextBox激活多行后可以Ctrl+A全选，应用于TextBox的KeyDown事件
         public static void TextBox_MultiLine_CtrlA(object sender, KeyEventArgs e)
         {
             //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
@@ -866,10 +866,10 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataGridView行从源移到目标之后，源中是否删除选项
+        // DataGridView行从源移到目标之后，源中是否删除选项
         public enum DGVMoveOption { reserve, delete };
 
-        //DataGridViewRow移到另一个DataGridView中，针对两边的DataGridView都没有绑定数据源，而是代码直接写的数据的场景
+        // DataGridViewRow移到另一个DataGridView中，针对两边的DataGridView都没有绑定数据源，而是代码直接写的数据的场景
         public static void DGVSelectedRowsMove(DataGridView dgvSource, DataGridView dgvTarget, DGVMoveOption dgvMoveOption)
         {
             if (dgvMoveOption == DGVMoveOption.delete)
@@ -896,7 +896,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //DataGridViewRow移到另一个DataGridView中，针对两边的DataGridView都绑定数据源（DataTable）的场景
+        // DataGridViewRow移到另一个DataGridView中，针对两边的DataGridView都绑定数据源（DataTable）的场景
         public static void DGVSelectedRowsMove(DataGridView dgvSource, DataGridView dgvTarget, ref DataTable dtSource, ref DataTable dtTarget, DGVMoveOption dgvMoveOption)
         {
             DataRow[] rows = new DataRow[dgvSource.SelectedRows.Count];
@@ -920,7 +920,7 @@ namespace WindowsFormsApp0
             dgvTarget.DataSource = dtTarget;
         }
 
-        //直接移除DataGridViewRow，针对DataGridView没有绑定数据源，而是代码直接写的数据的场景
+        // 直接移除DataGridViewRow，针对DataGridView没有绑定数据源，而是代码直接写的数据的场景
         public static void DGVSelectedRowsMove(DataGridView dgvSource)
         {
             //dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
@@ -930,7 +930,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //直接移除DataGridViewRow，针对DataGridView绑定数据源（DataTable）的场景
+        // 直接移除DataGridViewRow，针对DataGridView绑定数据源（DataTable）的场景
         public static void DGVSelectedRowsMove(DataGridView dgvSource, DataTable dtSource)
         {
             DataRow[] rows = new DataRow[dgvSource.SelectedRows.Count];
@@ -946,14 +946,14 @@ namespace WindowsFormsApp0
             }
         }
 
-        //TreeView指定展开几个level
+        // TreeView指定展开几个level
         public static void TreeViewExpandLevels(TreeView treeview, int level)
         {
             TreeNodeCollection treenodes = treeview.Nodes;
             TreeViewExpandLevels(treenodes, level);
         }
 
-        //TreeView指定展开几个level
+        // TreeView指定展开几个level
         public static void TreeViewExpandLevels(TreeNodeCollection treenodes, int level)
         {
             foreach (TreeNode item in treenodes)
@@ -966,7 +966,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //ListView切换视图
+        // ListView切换视图
         public static void ListViewSwitchView(ListView listview)
         {
             switch (listview.View)
@@ -992,7 +992,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //汉字转拼音
+        // 汉字转拼音
         public enum CHS2PinYinOption { AllLetter, FirstUpper, FirstLetter };
         public static string CHS2PinYin(string str, CHS2PinYinOption convertOption)
         {
@@ -1006,7 +1006,7 @@ namespace WindowsFormsApp0
                     try
                     {
                         ChineseChar chChar = new ChineseChar(item);
-                        if (chChar.Pinyins.Count > 0)
+                        if (chChar.PinyinCount > 0)  // if (chChar.Pinyins.Count > 0)
                         {
                             sb.Append(chChar.Pinyins[0].Substring(0, chChar.Pinyins[0].Length - 1));
                         }
@@ -1024,7 +1024,7 @@ namespace WindowsFormsApp0
                     try
                     {
                         ChineseChar chChar = new ChineseChar(item);
-                        if (chChar.Pinyins.Count > 0)
+                        if (chChar.PinyinCount > 0)  // if (chChar.Pinyins.Count > 0)
                         {
                             sb.Append(chChar.Pinyins[0].Substring(0, 1));
                         }
@@ -1042,7 +1042,7 @@ namespace WindowsFormsApp0
                     try
                     {
                         ChineseChar chChar = new ChineseChar(item);
-                        if (chChar.Pinyins.Count > 0)
+                        if (chChar.PinyinCount > 0)  // if (chChar.Pinyins.Count > 0)
                         {
                             sb.Append(chChar.Pinyins[0].Substring(0, 1).ToUpper() + chChar.Pinyins[0].Substring(1, chChar.Pinyins[0].Length - 2).ToLower());
                         }
@@ -1061,13 +1061,13 @@ namespace WindowsFormsApp0
             return sb.ToString();
         }
 
-        //简体繁体转换
+        // 简体繁体转换
         public static string CHSCHTConverter(string str, ChineseConversionDirection direction)
         {
             return ChineseConverter.Convert(str.Trim(), direction);
         }
 
-        //随机汉字
+        // 随机汉字
         public static string GetRandomChineseLetters(Encoding encoding, int length)
         {
             //调用函数产生length个随机中文汉字编码
@@ -1160,13 +1160,13 @@ namespace WindowsFormsApp0
             return bytes;
         }
 
-        //随机一个中文姓氏
+        // 随机一个中文姓氏
         public static string GetRandomChineseFamilyName()
         {
             return MyUtilsResources.百家姓[random.Next(0, MyUtilsResources.百家姓.Length)];
         }
 
-        //随机一个中文名字
+        // 随机一个中文名字
         public static string GetRandomChineseFullName(int length)
         {
             return GetRandomChineseFamilyName() + GetRandomChineseLetters(Encoding.GetEncoding("gb2312"), length);
@@ -1234,7 +1234,7 @@ namespace WindowsFormsApp0
             return (1.0 - ((double)stepsToSame / (double)Math.Max(source.Length, target.Length)));
         }
 
-        //读取注册表的值？下面获取文件类型名称时调用
+        // 读取注册表的值？下面获取文件类型名称时调用
         public static string ReadDefaultValue(string regKey)
         {
             using (var key = Registry.ClassesRoot.OpenSubKey(regKey, false))
@@ -1247,8 +1247,8 @@ namespace WindowsFormsApp0
             return null;
         }
 
-        //获取文件类型名称
-        //read from the registry, use like GetFileDescription("xml") or GetFileDescription(".xml")
+        // 获取文件类型名称
+        // read from the registry, use like GetFileDescription("xml") or GetFileDescription(".xml")
         public static string GetFileDescription(string ext)
         {
             if (ext.StartsWith(".") && ext.Length > 1)
@@ -1287,7 +1287,7 @@ namespace WindowsFormsApp0
             return ext + " 文件";
         }
 
-        //获取文件大小
+        // 获取文件大小
         public static string GetHumanReadableFileLength(long length)
         {
             double readable = length;
@@ -1354,7 +1354,7 @@ namespace WindowsFormsApp0
             return readable.ToString("0.### ") + suffix;
         }
 
-        //根据handle获取进程
+        // 根据handle获取进程
         public static Process GetProcessByHandle(IntPtr handle)
         {
             return Process.GetProcesses().Single(p => p.Id != 0 && p.Handle == handle);
@@ -1363,130 +1363,6 @@ namespace WindowsFormsApp0
         public static Process GetProcessByHandle2(IntPtr handle)
         {
             return Process.GetProcessById(MyUtilsWin32.GetProcessId(handle));
-        }
-
-        //将字符串形式的ip地址转为uint
-        //https://stackoverflow.com/questions/461742/how-to-convert-an-ipv4-address-into-a-integer-in-c
-        public static uint ConvertIpStr2Int(string ipAddress)
-        {
-            IPAddress address = IPAddress.Parse(ipAddress);
-            byte[] bytes = address.GetAddressBytes();
-
-            // flip big-endian(network order) to little-endian
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(bytes);
-            }
-
-            return BitConverter.ToUInt32(bytes, 0);
-        }
-
-        //将uint形式的ip地址转为字符串
-        //https://stackoverflow.com/questions/461742/how-to-convert-an-ipv4-address-into-a-integer-in-c
-        public static string ConvertIpInt2Str(uint ipAddress)
-        {
-            byte[] bytes = BitConverter.GetBytes(ipAddress);
-
-            // flip little-endian to big-endian(network order)
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(bytes);
-            }
-
-            return new IPAddress(bytes).ToString();
-        }
-
-        //从指定的ntp服务器获取时间
-        //https://stackoverflow.com/questions/1193955/how-to-query-an-ntp-server-using-c
-        public static DateTime GetNTPTimeByDomain(string serverName = "time.windows.com", int timeout = 3000)
-        {
-            //default Windows time server
-            //const string ntpServer = "time.windows.com";
-
-            //NTP message size - 16 bytes of the digest (RFC 2030)
-            byte[] ntpData = new byte[48];
-
-            //Setting the Leap Indicator, Version Number and Mode values
-            ntpData[0] = 0x1B; //LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
-
-            IPAddress[] addresses = Dns.GetHostEntry(serverName).AddressList;
-
-            return GetNTPTimeByIp(addresses[0], timeout);
-        }
-
-        //从指定的ntp服务器获取时间
-        public static DateTime GetNTPTimeByIp(string serverIp, int timeout = 3000)
-        {
-            //NTP message size - 16 bytes of the digest (RFC 2030)
-            byte[] ntpData = new byte[48];
-
-            //Setting the Leap Indicator, Version Number and Mode values
-            ntpData[0] = 0x1B; //LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
-
-            return GetNTPTimeByIp(new IPAddress(ConvertIpStr2Int(serverIp)), timeout);
-        }
-
-        //从指定的ntp服务器获取时间
-        public static DateTime GetNTPTimeByIp(IPAddress serverIp, int timeout = 3000)
-        {
-            //NTP message size - 16 bytes of the digest (RFC 2030)
-            byte[] ntpData = new byte[48];
-
-            //Setting the Leap Indicator, Version Number and Mode values
-            ntpData[0] = 0x1B; //LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
-
-            //The UDP port number assigned to NTP is 123
-            IPEndPoint ipEndPoint = new IPEndPoint(serverIp, 123);
-
-            //NTP uses UDP
-            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
-            {
-                socket.Connect(ipEndPoint);
-
-                //Stops code hang if NTP is blocked
-                socket.ReceiveTimeout = timeout;
-
-                socket.Send(ntpData);
-                socket.Receive(ntpData);
-                socket.Close();
-            }
-
-            //Offset to get to the "Transmit Timestamp" field (time at which the reply 
-            //departed the server for the client, in 64-bit timestamp format."
-            const byte serverReplyTime = 40;
-
-            //Get the seconds part
-            ulong intPart = BitConverter.ToUInt32(ntpData, serverReplyTime);
-
-            //Get the seconds fraction
-            ulong fractPart = BitConverter.ToUInt32(ntpData, serverReplyTime + 4);
-
-            //Convert From big-endian to little-endian
-            intPart = SwapEndianness(intPart);
-            fractPart = SwapEndianness(fractPart);
-
-            ulong milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
-
-            //**UTC** time
-            DateTime networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
-
-            return networkDateTime.ToLocalTime();
-        }
-
-        //从指定的ntp服务器获取时间，辅助方法
-        // stackoverflow.com/a/3294698/162671
-        static uint SwapEndianness(ulong x)
-        {
-            return (uint)(((x & 0x000000ff) << 24) +
-                          ((x & 0x0000ff00) << 8) +
-                          ((x & 0x00ff0000) >> 8) +
-                          ((x & 0xff000000) >> 24));
-        }
-
-        //计算指定日期是一周中的第几天
-        public static int GetWeekday(DateTime dt, DayOfWeek startOfWeek = DayOfWeek.Monday)
-        {
-            return (dt.DayOfWeek - startOfWeek + 7) % 7 + 1;
         }
 
         //判断一个整数是否以另一个整数开头，1809123以1809开头，但是不以1829开头
