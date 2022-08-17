@@ -74,6 +74,7 @@ namespace WindowsFormsApp0
         #endregion
 
         #region WebClient
+        #region 同步方法
         public static string GETWithWebClient(string url, Encoding encoding = null)
         {
             string responseString = string.Empty;
@@ -89,7 +90,7 @@ namespace WindowsFormsApp0
                 {
                     responseString = client.DownloadString(url);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -115,7 +116,7 @@ namespace WindowsFormsApp0
                 {
                     responseString = client.DownloadString(url);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -140,7 +141,7 @@ namespace WindowsFormsApp0
                     responseString = client.DownloadString(url);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -167,7 +168,7 @@ namespace WindowsFormsApp0
                     responseString = client.DownloadString(url);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -194,7 +195,7 @@ namespace WindowsFormsApp0
                     //responseString = Encoding.Default.GetString(response);
                     responseString = client.Encoding.GetString(response);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -222,7 +223,7 @@ namespace WindowsFormsApp0
                 {
                     responseString = client.UploadString(url, json);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -261,7 +262,7 @@ namespace WindowsFormsApp0
                     {
                         responseString = client.UploadString(url, json);
                     }
-                    catch (System.Exception)
+                    catch (Exception)
                     {
                         throw;
                     }
@@ -291,7 +292,7 @@ namespace WindowsFormsApp0
                     //responseString = Encoding.Default.GetString(response);
                     responseString = client.Encoding.GetString(response);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -319,7 +320,7 @@ namespace WindowsFormsApp0
                 {
                     responseString = client.UploadString(url, json);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -347,7 +348,7 @@ namespace WindowsFormsApp0
                     responseString = client.Encoding.GetString(response);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -375,7 +376,7 @@ namespace WindowsFormsApp0
                     responseString = client.UploadString(url, json);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -405,7 +406,7 @@ namespace WindowsFormsApp0
                     responseString = client.Encoding.GetString(response);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -434,7 +435,7 @@ namespace WindowsFormsApp0
                     responseString = client.UploadString(url, json);
                     headers_out = client.ResponseHeaders;
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -442,6 +443,386 @@ namespace WindowsFormsApp0
 
             return responseString;
         }
+        #endregion
+
+        #region 异步方法
+        public async static Task<string> GETWithWebClientAsync(string url, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                try
+                {
+                    responseString = await client.DownloadStringTaskAsync(url);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        public async static Task<string> GETWithWebClientAsync(string url, NameValueCollection headers, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+
+                try
+                {
+                    responseString = await client.DownloadStringTaskAsync(url);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        public async static Task<(string, WebHeaderCollection)> GETWithWebClientAsync2(string url, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                try
+                {
+                    responseString = await client.DownloadStringTaskAsync(url);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+
+        public async static Task<(string, WebHeaderCollection)> GETWithWebClientAsync2(string url, NameValueCollection headers, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+
+                try
+                {
+                    responseString = await client.DownloadStringTaskAsync(url);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+
+        public async static Task<string> PostWithWebClientAsync(string url, NameValueCollection data, Encoding encoding = null)
+        {
+            //POST，在.Net Framework 4.0下测试有效
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                try
+                {
+                    byte[] response = await client.UploadValuesTaskAsync(url, data);
+                    //responseString = Encoding.Default.GetString(response);
+                    responseString = client.Encoding.GetString(response);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        public async static Task<string> PostWithWebClientAsync(string url, string json, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                //client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                //client.Headers[HttpRequestHeader.ContentType] = "application/json;charset=UTF-8";
+
+                try
+                {
+                    responseString = await client.UploadStringTaskAsync(url, json);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        /// <summary>
+        /// 允许服务端返回的gzip压缩的结果数据
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="json"></param>
+        /// <param name="isgzip">表示是否允许服务端返回gzip压缩的数据，而不是压缩上传的数据</param>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        public async static Task<string> PostWithWebClientAsync(string url, string json, bool isgzip, Encoding encoding = null)
+        {
+            if (!isgzip)
+            {
+                return await PostWithWebClientAsync(url, json, encoding);
+            }
+            else
+            {
+                string responseString = string.Empty;
+
+                using (QWebClient client = new QWebClient())
+                {
+                    if (encoding != null)
+                    {
+                        client.Encoding = encoding;
+                    }
+
+                    client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    //client.Headers[HttpRequestHeader.ContentType] = "application/json;charset=UTF-8";
+                    client.Headers[HttpRequestHeader.AcceptEncoding] = "gzip";
+                    try
+                    {
+                        responseString = await client.UploadStringTaskAsync(url, json);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+
+                return responseString;
+            }
+        }
+
+        public async static Task<string> PostWithWebClientAsync(string url, NameValueCollection headers, NameValueCollection data, Encoding encoding = null)
+        {
+            //POST，在.Net Framework 4.0下测试有效
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+
+                try
+                {
+                    byte[] response = await client.UploadValuesTaskAsync(url, data);
+                    //responseString = Encoding.Default.GetString(response);
+                    responseString = client.Encoding.GetString(response);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        public async static Task<string> PostWithWebClientAsync(string url, NameValueCollection headers, string json, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+                //client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+                try
+                {
+                    responseString = await client.UploadStringTaskAsync(url, json);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return responseString;
+        }
+
+        public async static Task<(string, WebHeaderCollection)> PostWithWebClientAsync2(string url, NameValueCollection data, Encoding encoding = null)
+        {
+            //POST，在.Net Framework 4.0下测试有效
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                try
+                {
+                    byte[] response = await client.UploadValuesTaskAsync(url, data);
+                    //responseString = Encoding.Default.GetString(response);
+                    responseString = client.Encoding.GetString(response);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+
+        public async static Task<(string, WebHeaderCollection)> PostWithWebClientAsync2(string url, string json, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                //client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+                try
+                {
+                    responseString = await client.UploadStringTaskAsync(url, json);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+
+        public async static Task<(string, WebHeaderCollection)> PostWithWebClientAsync2(string url, NameValueCollection headers, NameValueCollection data, Encoding encoding = null)
+        {
+            //POST，在.Net Framework 4.0下测试有效
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+
+                try
+                {
+                    byte[] response = await client.UploadValuesTaskAsync(url, data);
+                    //responseString = Encoding.Default.GetString(response);
+                    responseString = client.Encoding.GetString(response);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+
+        public async static Task<(string, WebHeaderCollection)> PostWithWebClientAsync2(string url, NameValueCollection headers, string json, Encoding encoding = null)
+        {
+            string responseString = string.Empty;
+            WebHeaderCollection headers_out;
+
+            using (WebClient client = new WebClient())
+            {
+                if (encoding != null)
+                {
+                    client.Encoding = encoding;
+                }
+
+                client.Headers.Add(headers);
+                //client.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
+
+                try
+                {
+                    responseString = await client.UploadStringTaskAsync(url, json);
+                    headers_out = client.ResponseHeaders;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            return (responseString, headers_out);
+        }
+        #endregion
         #endregion
     }
 
