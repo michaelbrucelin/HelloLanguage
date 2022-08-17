@@ -37,6 +37,20 @@ namespace MultiThreading
             lbl16.Text = "Async/Await示例03";
             lbl17.Text = "ConfigAwait示例";
             lbl18.Text = "ValueTask示例";
+            lbl19.Text = "Thread示例";
+            lbl20.Text = "";
+            lbl21.Text = "";
+            lbl22.Text = "";
+            lbl23.Text = "";
+            lbl24.Text = "";
+            lbl25.Text = "";
+            lbl26.Text = "";
+            lbl27.Text = "";
+            lbl28.Text = "";
+            lbl29.Text = "";
+            lbl30.Text = "";
+            lbl31.Text = "";
+            lbl32.Text = "";
         }
 
         // 下面的注册事件，稍后改为反射来完成
@@ -150,72 +164,86 @@ namespace MultiThreading
 
         private void lbl19_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            Section19 section = new Section19();
+            section.ShowDialog();
         }
 
         private void lbl20_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section20 section = new Section20();
+            //section.ShowDialog();
         }
 
         private void lbl21_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section21 section = new Section21();
+            //section.ShowDialog();
         }
 
         private void lbl22_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section22 section = new Section22();
+            //section.ShowDialog();
         }
 
         private void lbl23_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section23 section = new Section23();
+            //section.ShowDialog();
         }
 
         private void lbl24_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section24 section = new Section24();
+            //section.ShowDialog();
         }
 
         private void lbl25_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section25 section = new Section25();
+            //section.ShowDialog();
         }
 
         private void lbl26_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section26 section = new Section26();
+            //section.ShowDialog();
         }
 
         private void lbl27_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section27 section = new Section27();
+            //section.ShowDialog();
         }
 
         private void lbl28_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section28 section = new Section28();
+            //section.ShowDialog();
         }
 
         private void lbl29_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section29 section = new Section29();
+            //section.ShowDialog();
         }
 
         private void lbl30_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section30 section = new Section30();
+            //section.ShowDialog();
         }
 
         private void lbl31_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section31 section = new Section31();
+            //section.ShowDialog();
         }
 
         private void lbl32_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            //Section32 section = new Section32();
+            //section.ShowDialog();
         }
     }
 }
