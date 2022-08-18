@@ -38,7 +38,7 @@ namespace MultiThreading
             lbl17.Text = "ConfigAwait示例";
             lbl18.Text = "ValueTask示例";
             lbl19.Text = "Thread示例";
-            lbl20.Text = "";
+            lbl20.Text = "ThreadPool示例";
             lbl21.Text = "";
             lbl22.Text = "";
             lbl23.Text = "";
@@ -170,8 +170,8 @@ namespace MultiThreading
 
         private void lbl20_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Section20 section = new Section20();
-            //section.ShowDialog();
+            Section20 section = new Section20();
+            section.ShowDialog();
         }
 
         private void lbl21_MouseDoubleClick(object sender, MouseEventArgs e)
