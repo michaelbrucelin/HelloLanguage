@@ -1,7 +1,6 @@
 ﻿using Microsoft.International.Converters.PinYinConverter;
 using Microsoft.International.Converters.TraditionalChineseToSimplifiedConverter;
 using Microsoft.Win32;
-using Org.BouncyCastle.Asn1.Cms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,8 +8,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -99,12 +96,12 @@ namespace WindowsFormsApp0
             { return null; }
         }
 
-        //字符串替换
-        //[[0n]]—>n位随机数字；
-        //[[an]]—>n位随机小写字母；[[An]]—>n位随机大写字母；[[aAn]]—>n位随机字母（随机大小写）；
-        //[[n]] —>n位随机数字字母（随机大小写）；
-        //[[na]]—>n位随机数字字母（小写）；[[nA]]—>n位随机数字字母（大写）；
-        //以上结构不允许嵌套，即[[[0n]]]无效；
+        // 字符串替换
+        // [[0n]]—>n位随机数字；
+        // [[an]]—>n位随机小写字母；[[An]]—>n位随机大写字母；[[aAn]]—>n位随机字母（随机大小写）；
+        // [[n]] —>n位随机数字字母（随机大小写）；
+        // [[na]]—>n位随机数字字母（小写）；[[nA]]—>n位随机数字字母（大写）；
+        // 以上结构不允许嵌套，即[[[0n]]]无效；
         public static string ReplaceMaskStr(string input)
         {
             string chars_0 = "0123456789";
@@ -115,43 +112,43 @@ namespace WindowsFormsApp0
             string chars_0A = chars_0 + chars_A;
             string chars_0aA = chars_0 + chars_a + chars_A;
 
-            //[[0n]]
+            // [[0n]]
             input = Regex.Replace(input, @"(?<!\[)\[\[0(\d)\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_0, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[an]]
+            // [[an]]
             input = Regex.Replace(input, @"(?<!\[)\[\[a(\d)\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_a, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[An]]
+            // [[An]]
             input = Regex.Replace(input, @"(?<!\[)\[\[A(\d)\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_A, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[aAn]]
+            // [[aAn]]
             input = Regex.Replace(input, @"(?<!\[)\[\[aA(\d)\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_aA, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[n]]
+            // [[n]]
             input = Regex.Replace(input, @"(?<!\[)\[\[(\d)\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_0aA, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[na]]
+            // [[na]]
             input = Regex.Replace(input, @"(?<!\[)\[\[(\d)a\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_0a, Convert.ToInt32(match.Groups[1].Value))
                                   .Select(s => s[random.Next(s.Length)]).ToArray());
             }));
-            //[[nA]]
+            // [[nA]]
             input = Regex.Replace(input, @"(?<!\[)\[\[(\d)A\]\]", new MatchEvaluator(delegate (Match match)
             {
                 return new string(Enumerable.Repeat(chars_0A, Convert.ToInt32(match.Groups[1].Value))
@@ -161,7 +158,7 @@ namespace WindowsFormsApp0
             return input;
         }
 
-        //OpenFileDialog
+        // OpenFileDialog
         public static string OpenFile(string filter)
         {
             string filePath = string.Empty;
@@ -229,11 +226,11 @@ namespace WindowsFormsApp0
         }
 
 
-        //生成随机DataTable，基本方法
-        //colTypes表示列的数据类型，true表示该字段为string，false表示该字段为int
+        // 生成随机DataTable，基本方法
+        // colTypes表示列的数据类型，true表示该字段为string，false表示该字段为int
         public static DataTable GetRandomDataTable(bool[] colTypes, int rowCnt, int strLength, int intMin, int intMax)
         {
-            //保证随机的时候可以取到上界
+            // 保证随机的时候可以取到上界
             intMax++;
 
             DataTable dt = new DataTable();
@@ -294,7 +291,7 @@ namespace WindowsFormsApp0
         // 生成随机DataTable，纯数字
         public static DataTable GetRandomDataTable(int colCnt, int rowCnt, int intMin, int intMax)
         {
-            //保证随机的时候可以取到上界
+            // 保证随机的时候可以取到上界
             intMax++;
 
             DataTable dt = new DataTable();
@@ -318,7 +315,7 @@ namespace WindowsFormsApp0
         // 生成随机DataTable，随机字符串和数字
         public static DataTable GetRandomDataTable(int colCnt, int rowCnt, int strLength, int intMin, int intMax)
         {
-            //true表示该字段为string，false表示该字段为int
+            // true表示该字段为string，false表示该字段为int
             bool[] colTypes = new bool[colCnt];
             for (int i = 0; i < colCnt; i++)
             {
@@ -395,7 +392,7 @@ namespace WindowsFormsApp0
                                           .Select(x => x.ColumnName)
                                           .ToArray();
 
-            //dt = new DataTable();
+            // dt = new DataTable();
             DataTable dtTemp = view.ToTable(true, colNames);
             dt = dtTemp;
         }
@@ -859,7 +856,7 @@ namespace WindowsFormsApp0
         // 实现TextBox激活多行后可以Ctrl+A全选，应用于TextBox的KeyDown事件
         public static void TextBox_MultiLine_CtrlA(object sender, KeyEventArgs e)
         {
-            //if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
+            // if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
             if (e.Control && e.KeyCode == Keys.A)
             {
                 ((TextBox)sender).SelectAll();
@@ -874,7 +871,7 @@ namespace WindowsFormsApp0
         {
             if (dgvMoveOption == DGVMoveOption.delete)
             {
-                //dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
+                // dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
                 foreach (DataGridViewRow item in dgvSource.SelectedRows.OfType<DataGridViewRow>().Reverse().ToArray())
                 {
                     dgvSource.Rows.Remove(item);
@@ -905,7 +902,7 @@ namespace WindowsFormsApp0
                 rows[i] = ((DataRowView)dgvSource.SelectedRows[i].DataBoundItem).Row;
             }
 
-            //dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
+            // dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
             foreach (DataRow row in rows.Reverse())
             {
                 dtTarget.Rows.Add(row.ItemArray);
@@ -923,7 +920,7 @@ namespace WindowsFormsApp0
         // 直接移除DataGridViewRow，针对DataGridView没有绑定数据源，而是代码直接写的数据的场景
         public static void DGVSelectedRowsMove(DataGridView dgvSource)
         {
-            //dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
+            // dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
             foreach (DataGridViewRow item in dgvSource.SelectedRows.OfType<DataGridViewRow>().Reverse().ToArray())
             {
                 dgvSource.Rows.Remove(item);
@@ -939,7 +936,7 @@ namespace WindowsFormsApp0
                 rows[i] = ((DataRowView)dgvSource.SelectedRows[i].DataBoundItem).Row;
             }
 
-            //dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
+            // dgvSource.SelectedRows的顺序与前台看到的顺序是反的，所以需要使用Reverse函数反转一下
             foreach (DataRow row in rows.Reverse())
             {
                 dtSource.Rows.Remove(row);
@@ -1070,11 +1067,11 @@ namespace WindowsFormsApp0
         // 随机汉字
         public static string GetRandomChineseLetters(Encoding encoding, int length)
         {
-            //调用函数产生length个随机中文汉字编码
+            // 调用函数产生length个随机中文汉字编码
             object[] bytes = CreateRegionCode(length);
 
             StringBuilder sb = new StringBuilder();
-            //根据汉字编码的字节数组解码出中文汉字
+            // 根据汉字编码的字节数组解码出中文汉字
             for (int i = 0; i < length; i++)
             {
                 sb.Append(encoding.GetString((byte[])Convert.ChangeType(bytes[i], typeof(byte[]))));
@@ -1088,13 +1085,13 @@ namespace WindowsFormsApp0
          */
         private static object[] CreateRegionCode(int length)
         {
-            //定义一个字符串数组储存汉字编码的组成元素
+            // 定义一个字符串数组储存汉字编码的组成元素
             string[] rBase = new string[16] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
 
-            //利用GUID生成随机数
+            // 利用GUID生成随机数
             Random rnd = GetRandomWithGuid();
 
-            //定义一个object数组用来
+            // 定义一个object数组用来
             object[] bytes = new object[length];
 
             /* 每循环一次产生一个含两个元素的十六进制字节数组，并将其放入object数组中
@@ -1104,13 +1101,13 @@ namespace WindowsFormsApp0
              */
             for (int i = 0; i < length; i++)
             {
-                //区位码第1位
+                // 区位码第1位
                 int r1 = rnd.Next(11, 14);
                 string str_r1 = rBase[r1].Trim();
 
-                //区位码第2位
-                //更换随机数发生器的种子避免产生重复值
-                //rnd = new Random(r1 * unchecked((int)DateTime.Now.Ticks) + i);
+                // 区位码第2位
+                // 更换随机数发生器的种子避免产生重复值
+                // rnd = new Random(r1 * unchecked((int)DateTime.Now.Ticks) + i);
                 rnd = GetRandomWithGuid();
                 int r2;
                 if (r1 == 13)
@@ -1123,14 +1120,14 @@ namespace WindowsFormsApp0
                 }
                 string str_r2 = rBase[r2].Trim();
 
-                //区位码第3位
-                //rnd = new Random(r2 * unchecked((int)DateTime.Now.Ticks) + i);
+                // 区位码第3位
+                // rnd = new Random(r2 * unchecked((int)DateTime.Now.Ticks) + i);
                 rnd = GetRandomWithGuid();
                 int r3 = rnd.Next(10, 16);
                 string str_r3 = rBase[r3].Trim();
 
-                //区位码第4位
-                //rnd = new Random(r3 * unchecked((int)DateTime.Now.Ticks) + i);
+                // 区位码第4位
+                // rnd = new Random(r3 * unchecked((int)DateTime.Now.Ticks) + i);
                 rnd = GetRandomWithGuid();
                 int r4;
                 if (r3 == 10)
@@ -1147,13 +1144,13 @@ namespace WindowsFormsApp0
                 }
                 string str_r4 = rBase[r4].Trim();
 
-                //定义两个字节变量存储产生的随机汉字区位码
+                // 定义两个字节变量存储产生的随机汉字区位码
                 byte byte1 = Convert.ToByte(str_r1 + str_r2, 16);
                 byte byte2 = Convert.ToByte(str_r3 + str_r4, 16);
-                //将两个字节变量存储在字节数组中
+                // 将两个字节变量存储在字节数组中
                 byte[] str_r = new byte[] { byte1, byte2 };
 
-                //将产生的一个汉字的字节数组放入object数组中
+                // 将产生的一个汉字的字节数组放入object数组中
                 bytes.SetValue(str_r, i);
             }
 
@@ -1365,7 +1362,7 @@ namespace WindowsFormsApp0
             return Process.GetProcessById(MyUtilsWin32.GetProcessId(handle));
         }
 
-        //判断一个整数是否以另一个整数开头，1809123以1809开头，但是不以1829开头
+        // 判断一个整数是否以另一个整数开头，1809123以1809开头，但是不以1829开头
         public static bool IsIntStartsWith(uint x, uint y)
         {
             if (x == 0 && y == 0)
@@ -1400,7 +1397,7 @@ namespace WindowsFormsApp0
             }
         }
 
-        //计算整型长度
+        // 计算整型长度
         public static int GetIntLength(int i)
         {
             if (i < 0)
