@@ -8,7 +8,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution1224 question = new Solution1224();
+            Solution1224_2 question = new Solution1224_2();
             Console.WriteLine($"2 : {question.MaxEqualFreq(new int[] { 1, 1 })}");
             Console.WriteLine($"3 : {question.MaxEqualFreq(new int[] { 1, 1, 2 })}");
             Console.WriteLine($"5 : {question.MaxEqualFreq(new int[] { 1, 1, 1, 2, 2, 2 })}");
