@@ -346,6 +346,12 @@
     <Compile Include="Sections\Section19.Designer.cs">
       <DependentUpon>Section19.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Section20.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section20.Designer.cs">
+      <DependentUpon>Section20.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section19.resx">
       <DependentUpon>Section19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section20.resx">
+      <DependentUpon>Section20.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>
