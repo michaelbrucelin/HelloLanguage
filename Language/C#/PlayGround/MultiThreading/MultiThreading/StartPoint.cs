@@ -39,7 +39,7 @@ namespace MultiThreading
             lbl18.Text = "ValueTask示例";
             lbl19.Text = "Thread示例";
             lbl20.Text = "ThreadPool示例";
-            lbl21.Text = "";
+            lbl21.Text = "Task示例";
             lbl22.Text = "";
             lbl23.Text = "";
             lbl24.Text = "";
