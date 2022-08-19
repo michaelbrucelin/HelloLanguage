@@ -33,6 +33,47 @@ namespace MultiThreading
             Console.WriteLine("Hit <Enter> to end this program...");
         }
 
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            CancellationDemo.Go();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelCallback_Click(object sender, EventArgs e)
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            cts.Token.Register(() => Console.WriteLine("Canceled 1"));
+            cts.Token.Register(() => Console.WriteLine("Canceled 2"));
+
+            // 出于测试的目的，取消它，以便执行两个回调
+            cts.Cancel();
+        }
+
+        private void btnCancelCallback2_Click(object sender, EventArgs e)
+        {
+            // 创建一个CancellationTokenSource
+            CancellationTokenSource cts1 = new CancellationTokenSource();
+            cts1.Token.Register(() => Console.WriteLine("cts1 canceled"));
+
+            // 创建另一个CancellationTokenSource
+            CancellationTokenSource cts2 = new CancellationTokenSource();
+            cts2.Token.Register(() => Console.WriteLine("cts2 canceled"));
+
+            // 创建一个新的CancellationTokenSource，它在cts1或cts2取消时取消
+            CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cts1.Token, cts2.Token);
+            linkedCts.Token.Register(() => Console.WriteLine("linkedCts canceled"));
+
+            // 取消一个CancellationTokenSource对象（这里选择cts2）
+            cts2.Cancel();
+
+            // 显示具体哪些CancellationTokenSource对象被取消了
+            Console.WriteLine($"cts1 canceled={cts1.IsCancellationRequested}, cts2 canceled={cts2.IsCancellationRequested}, linkedCts canceled={linkedCts.IsCancellationRequested}");
+        }
+
         /// <summary>
         /// 默认情况下，CLR会自动将初始线程的执行上下文“流向”子线程，这个很方便，但是也有性能影响
         /// 如果子线程不需要调用线程的执行上下文，可以使用ExecutionContext类来阻止上下文的流动
@@ -77,6 +118,40 @@ namespace MultiThreading
         private void btnClear_Click(object sender, EventArgs e)
         {
             Utils.ClearTerminal();
+        }
+    }
+
+    internal static class CancellationDemo
+    {
+        public static void Go()
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            // 将 CancellationToken 和“要数到的数”（number-to-count-to）传入操作
+            ThreadPool.QueueUserWorkItem(o => Count(cts.Token, 1000));
+
+            Console.WriteLine("Press <Enter> to cancel the operation.");
+            Console.ReadLine();
+
+            cts.Cancel(); // 如果Count方法已返回，Cancel没有任何效果
+
+            // Cancel立即返回，方法从这里继续运行... ...
+            Console.ReadLine();
+        }
+
+        private static void Count(CancellationToken token, int countTo)
+        {
+            for (int count = 0; count < countTo; count++)
+            {
+                if (token.IsCancellationRequested)
+                {
+                    Console.WriteLine("Count is cancelled");
+                    break;          // 退出循环以停止操作
+                }
+                Console.WriteLine(count);
+                Thread.Sleep(200);  // 出于演示目的而浪费一些时间
+            }
+            Console.WriteLine("Count is done");
         }
     }
 }

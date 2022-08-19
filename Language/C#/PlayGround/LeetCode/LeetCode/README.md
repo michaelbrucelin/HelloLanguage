@@ -1,6 +1,6 @@
 # README
 
-本项目为本人在LeetCode上刷题的记录，其中没有SolutionXXXX.md对应的SolutionXXXX.cs是本人自己完全独立写出来的，而SolutionXXXX.md是看到的感觉不错的题解，就抄了下来，如果有时间，可以重新温习一遍。
+本项目为本人在LeetCode上刷题的记录，其中没有SolutionXXXX.md对应的SolutionXXXX.cs是本人自己完全独立写出来的，而SolutionXXXX.md是看到的思路不错的题解，或者题解比较精彩，就抄了下来，如果有时间，可以重新温习一遍。
 
 **例如：**
 
