@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0812;
+﻿using LeetCode.QuestionBank.Question0782;
 using System;
 using System.Collections.Generic;
 
@@ -8,9 +8,15 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Solution0812 question = new Solution0812();
-            Console.WriteLine(question.LargestTriangleArea(new int[][] { new int[] { 1, 0 }, new int[] { 0, 0 }, new int[] { 0, 1 } }));
-            // question.Test();
+            Solution0782 question = new Solution0782();
+            int[][] board = new int[][] {
+                new int[] { 0, 1, 1, 0 },
+                new int[] { 0, 1, 1, 0 },
+                new int[] { 1, 0, 0, 1 },
+                new int[] { 1, 0, 0, 1 } };
+
+            question.MovesToChessboard(board);
+            question.PrintBoard(board);
         }
     }
 }
