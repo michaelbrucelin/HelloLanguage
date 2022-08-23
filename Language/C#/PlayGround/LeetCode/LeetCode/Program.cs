@@ -9,14 +9,7 @@ namespace LeetCode
         static void Main(string[] args)
         {
             Solution0782 question = new Solution0782();
-            int[][] board = new int[][] {
-                new int[] { 0, 1, 1, 0 },
-                new int[] { 0, 1, 1, 0 },
-                new int[] { 1, 0, 0, 1 },
-                new int[] { 1, 0, 0, 1 } };
-
-            question.MovesToChessboard(board);
-            question.PrintBoard(board);
+            question.Test0782();
         }
     }
 }
