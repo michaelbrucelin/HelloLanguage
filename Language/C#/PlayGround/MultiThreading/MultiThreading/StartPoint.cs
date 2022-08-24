@@ -176,8 +176,8 @@ namespace MultiThreading
 
         private void lbl21_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Section21 section = new Section21();
-            //section.ShowDialog();
+            Section21 section = new Section21();
+            section.ShowDialog();
         }
 
         private void lbl22_MouseDoubleClick(object sender, MouseEventArgs e)

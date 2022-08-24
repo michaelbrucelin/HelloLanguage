@@ -1,6 +1,7 @@
 # README
 
-本项目为本人在LeetCode上刷题的记录，其中没有SolutionXXXX.md对应的SolutionXXXX.cs是本人自己完全独立写出来的，而SolutionXXXX.md是看到的思路不错的题解，或者题解比较精彩，就抄了下来，如果有时间，可以重新温习一遍。
+本项目为本人在LeetCode上刷题的记录，其中没有SolutionXXXX.md对应的SolutionXXXX.cs是本人自己完全独立写出来的，而SolutionXXXX.md是看到的思路不错的题解，或者题解比较精彩，又或者没看懂的题解，就抄了下来，如果有时间，可以重新温习一遍。
+SolutionXXXX[_Y]_my.md是自己的一些想法，通常自己的想法就写在代码注释中了，如果内容较多，就以这种命名的方式记录到markdown中。
 
 **例如：**
 
@@ -34,4 +35,11 @@ Question0641/
 └── Solution0641.cs
 
 0 directories, 6 files
+```
+
+**一些查询：**
+
+```bash
+cd Language/C#/PlayGround/LeetCode/LeetCode/QuestionBank/
+find . -name Solution*.md
 ```
