@@ -88,6 +88,59 @@ namespace MultiThreading
             }
         }
 
+        private void btnCancel2_Click(object sender, EventArgs e)
+        {
+            CancellationTokenSource cts = new CancellationTokenSource();
+            Task<int> task = Task.Run(() => SumTest2(cts.Token, 1000000000), cts.Token);
+
+            // 在之后的某个时间，取消CancellationTokenSource以取消Task
+            cts.Cancel();    // 这是异步请求，Task可能已经完成了
+            // task.Wait();  // 对一个Canceled的Task调用Wait()，会抛出System.AggregateException异常
+
+            // Console.WriteLine($"The Sum is: {task.Result}.");  // 仍然会抛出异常，没明白是什么原因
+
+            try
+            {
+                // 如果任务已经取消，Result会抛出一个AggregateException
+                Console.WriteLine($"The Sum is: {task.Result}.");
+            }
+            catch (AggregateException ex)
+            {
+                // 将任何OperationCanceledException对象都视为已处理
+                // 其它任何异常都造成抛出一个新的AggregateException
+                // 其中只包含未处理的异常
+                ex.Handle(x => x is OperationCanceledException);
+
+                // 所有异常都处理好之后，执行下面这一行
+                Console.WriteLine("Sum was canceled.");
+            }
+        }
+
+        private void btnContinue_Click(object sender, EventArgs e)
+        {
+            // 创建并启动一个Task，继续另一个任务
+            Task<int> task = Task.Run(() => SumTest(CancellationToken.None, 10000));
+
+            // ContinueWith返回一个Task，但一般都不需要再使用该对象（下例的cwt）
+            Task cwt = task.ContinueWith(t => Console.WriteLine($"The sum is: {t.Result}."));
+        }
+
+        private void btnContinue2_Click(object sender, EventArgs e)
+        {
+            // 创建并启动一个Task，它有多个延续任务
+            Task<int> task = Task.Run(() => SumTest(10000));
+
+            // 每个ContinueWith都返回一个Task，但这些Task一般都用不到了
+            task.ContinueWith(t => Console.WriteLine($"The sum is: {t.Result}."), TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith(t => Console.WriteLine($"Sum threw: {t.Exception.InnerException}."), TaskContinuationOptions.OnlyOnFaulted);
+            task.ContinueWith(t => Console.WriteLine($"Sum was canceled."), TaskContinuationOptions.OnlyOnCanceled);
+        }
+
+        private void btnSubTask_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private int SumTest(int n)
         {
             int sum = 0;
@@ -106,6 +159,22 @@ namespace MultiThreading
                 // 下面这行代码就会抛出OperationCanceledException
                 ct.ThrowIfCancellationRequested();  // 与ct.IsCancellationRequested属性类似，但是会抛出异常，
                                                     // 这样调用者就可以知道得到的结果是任务运行完的结果，还是任务出错的中途结果
+
+                checked { sum += n; }  // 如果n太大，会抛出System.OverflowException
+            }
+
+            return sum;
+        }
+
+        private int SumTest2(CancellationToken ct, int n)
+        {
+            int sum = 0;
+            for (; n > 0; n--)
+            {
+                // 这里不使用ThrowIfCancellationRequested()方法，而是使用IsCancellationRequested属性
+                // 也可以达到取消任务的目的，但是调用者不知道得到的结果是最终结果（取消时已经执行完了），还是中途结果（取消时没有执行完）
+                if (ct.IsCancellationRequested)
+                    return sum;
 
                 checked { sum += n; }  // 如果n太大，会抛出System.OverflowException
             }
