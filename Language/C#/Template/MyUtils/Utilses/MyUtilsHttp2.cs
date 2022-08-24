@@ -34,6 +34,14 @@ namespace WindowsFormsApp0
 
         public static async Task<string> PostWithHttpClientAsync(string url, Dictionary<string, string> values)
         {
+            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+            string responseString = await PostWithHttpClientAsync(url, content);
+
+            return responseString;
+        }
+
+        public static async Task<string> PostWithHttpClientAsync(string url, FormUrlEncodedContent content)
+        {
             // Dictionary<string, string> values = new Dictionary<string, string>()
             // {
             //     { "thing1", "hello" },
@@ -45,7 +53,8 @@ namespace WindowsFormsApp0
             //     new KeyValuePair<string, string>("thing2", "world")
             // };
 
-            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+            // FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+
             HttpResponseMessage response = await client.PostAsync(url, content);
             string responseString = await response.Content.ReadAsStringAsync();
 
@@ -77,6 +86,13 @@ namespace WindowsFormsApp0
 
         public static string PostWithHttpClient(string url, Dictionary<string, string> values)
         {
+            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+
+            return PostWithHttpClient(url, content);
+        }
+
+        public static string PostWithHttpClient(string url, FormUrlEncodedContent content)
+        {
             // Dictionary<string, string> values = new Dictionary<string, string>()
             // {
             //     { "thing1", "hello" },
@@ -88,7 +104,8 @@ namespace WindowsFormsApp0
             //     new KeyValuePair<string, string>("thing2", "world")
             // };
 
-            FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+            // FormUrlEncodedContent content = new FormUrlEncodedContent(values);
+
             Task<HttpResponseMessage> task1 = client.PostAsync(url, content);
             task1.Wait();
             Task<string> task2 = task1.Result.Content.ReadAsStringAsync();
