@@ -8,6 +8,11 @@ namespace LeetCode.LCP.LCP0030
 {
     public class Solution0030_2
     {
+        /// <summary>
+        /// 用栈模拟的优先队列性能太低，这里用List重新模拟一个
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
         public int MagicTower(int[] nums)
         {
             // if (nums.Sum() < 0) return -1;
@@ -17,7 +22,7 @@ namespace LeetCode.LCP.LCP0030
 
             int result = 0;
 
-            int current = 1;
+            long current = 1;
             Queue<int> queue = new Queue<int>(nums);
             PriorityQueue buffer = new PriorityQueue();  // .NetFramework没有内建优先队列，这里用最小堆简单模拟
             while (queue.Count > 0)
