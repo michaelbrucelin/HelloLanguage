@@ -37,7 +37,13 @@ namespace MultiThreading
             this.btnContinue = new System.Windows.Forms.Button();
             this.btnContinue2 = new System.Windows.Forms.Button();
             this.btnSubTask = new System.Windows.Forms.Button();
+            this.btnFactory = new System.Windows.Forms.Button();
+            this.btnScheduler = new System.Windows.Forms.Button();
+            this.flp01 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flp02 = new System.Windows.Forms.FlowLayoutPanel();
             this.flp1.SuspendLayout();
+            this.flp01.SuspendLayout();
+            this.flp02.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClear
@@ -53,11 +59,11 @@ namespace MultiThreading
             // flp1
             // 
             this.flp1.Controls.Add(this.btnException);
-            this.flp1.Controls.Add(this.btnCancel);
-            this.flp1.Controls.Add(this.btnCancel2);
-            this.flp1.Controls.Add(this.btnContinue);
-            this.flp1.Controls.Add(this.btnContinue2);
+            this.flp1.Controls.Add(this.flp01);
+            this.flp1.Controls.Add(this.flp02);
             this.flp1.Controls.Add(this.btnSubTask);
+            this.flp1.Controls.Add(this.btnFactory);
+            this.flp1.Controls.Add(this.btnScheduler);
             this.flp1.Controls.Add(this.btnClear);
             this.flp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -78,53 +84,95 @@ namespace MultiThreading
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(3, 32);
+            this.btnCancel.Location = new System.Drawing.Point(0, 0);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 23);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnCancel2
             // 
-            this.btnCancel2.Location = new System.Drawing.Point(3, 61);
+            this.btnCancel2.Location = new System.Drawing.Point(106, 0);
+            this.btnCancel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnCancel2.Name = "btnCancel2";
             this.btnCancel2.Size = new System.Drawing.Size(100, 23);
-            this.btnCancel2.TabIndex = 3;
+            this.btnCancel2.TabIndex = 2;
             this.btnCancel2.Text = "Cancel2";
             this.btnCancel2.UseVisualStyleBackColor = true;
             this.btnCancel2.Click += new System.EventHandler(this.btnCancel2_Click);
             // 
             // btnContinue
             // 
-            this.btnContinue.Location = new System.Drawing.Point(3, 90);
+            this.btnContinue.Location = new System.Drawing.Point(0, 0);
+            this.btnContinue.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(100, 23);
-            this.btnContinue.TabIndex = 4;
+            this.btnContinue.TabIndex = 1;
             this.btnContinue.Text = "Continue";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
             // btnContinue2
             // 
-            this.btnContinue2.Location = new System.Drawing.Point(3, 119);
+            this.btnContinue2.Location = new System.Drawing.Point(106, 0);
+            this.btnContinue2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.btnContinue2.Name = "btnContinue2";
             this.btnContinue2.Size = new System.Drawing.Size(100, 23);
-            this.btnContinue2.TabIndex = 5;
+            this.btnContinue2.TabIndex = 2;
             this.btnContinue2.Text = "Continue2";
             this.btnContinue2.UseVisualStyleBackColor = true;
             this.btnContinue2.Click += new System.EventHandler(this.btnContinue2_Click);
             // 
             // btnSubTask
             // 
-            this.btnSubTask.Location = new System.Drawing.Point(3, 148);
+            this.btnSubTask.Location = new System.Drawing.Point(3, 90);
             this.btnSubTask.Name = "btnSubTask";
             this.btnSubTask.Size = new System.Drawing.Size(100, 23);
-            this.btnSubTask.TabIndex = 6;
+            this.btnSubTask.TabIndex = 4;
             this.btnSubTask.Text = "SubTask";
             this.btnSubTask.UseVisualStyleBackColor = true;
             this.btnSubTask.Click += new System.EventHandler(this.btnSubTask_Click);
+            // 
+            // btnFactory
+            // 
+            this.btnFactory.Location = new System.Drawing.Point(3, 119);
+            this.btnFactory.Name = "btnFactory";
+            this.btnFactory.Size = new System.Drawing.Size(100, 23);
+            this.btnFactory.TabIndex = 5;
+            this.btnFactory.Text = "Factory";
+            this.btnFactory.UseVisualStyleBackColor = true;
+            this.btnFactory.Click += new System.EventHandler(this.btnFactory_Click);
+            // 
+            // btnScheduler
+            // 
+            this.btnScheduler.Location = new System.Drawing.Point(3, 148);
+            this.btnScheduler.Name = "btnScheduler";
+            this.btnScheduler.Size = new System.Drawing.Size(100, 23);
+            this.btnScheduler.TabIndex = 6;
+            this.btnScheduler.Text = "Scheduler";
+            this.btnScheduler.UseVisualStyleBackColor = true;
+            this.btnScheduler.Click += new System.EventHandler(this.btnScheduler_Click);
+            // 
+            // flp01
+            // 
+            this.flp01.Controls.Add(this.btnCancel);
+            this.flp01.Controls.Add(this.btnCancel2);
+            this.flp01.Location = new System.Drawing.Point(3, 32);
+            this.flp01.Name = "flp01";
+            this.flp01.Size = new System.Drawing.Size(228, 23);
+            this.flp01.TabIndex = 2;
+            // 
+            // flp02
+            // 
+            this.flp02.Controls.Add(this.btnContinue);
+            this.flp02.Controls.Add(this.btnContinue2);
+            this.flp02.Location = new System.Drawing.Point(3, 61);
+            this.flp02.Name = "flp02";
+            this.flp02.Size = new System.Drawing.Size(228, 23);
+            this.flp02.TabIndex = 3;
             // 
             // Section21
             // 
@@ -139,6 +187,8 @@ namespace MultiThreading
             this.Text = "Task示例";
             this.Load += new System.EventHandler(this.Section21_Load);
             this.flp1.ResumeLayout(false);
+            this.flp01.ResumeLayout(false);
+            this.flp02.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -153,5 +203,9 @@ namespace MultiThreading
         private System.Windows.Forms.Button btnContinue;
         private System.Windows.Forms.Button btnContinue2;
         private System.Windows.Forms.Button btnSubTask;
+        private System.Windows.Forms.FlowLayoutPanel flp01;
+        private System.Windows.Forms.FlowLayoutPanel flp02;
+        private System.Windows.Forms.Button btnFactory;
+        private System.Windows.Forms.Button btnScheduler;
     }
 }

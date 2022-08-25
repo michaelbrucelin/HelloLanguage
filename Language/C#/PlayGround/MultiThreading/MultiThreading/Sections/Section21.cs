@@ -138,7 +138,77 @@ namespace MultiThreading
 
         private void btnSubTask_Click(object sender, EventArgs e)
         {
-            
+            // 在一个任务内部启动子任务
+            Task<int[]> parent = new Task<int[]>(() =>
+            {
+                int[] results = new int[3];  // 创建一个数组来存储结果
+
+                // 这个任务创建并启动了3个子任务
+                // 一个任务创建的Task对象默认是顶级对象，与创建它们的任务无关，但TaskCreationOptions.AttachedToParent标识可以将一个Task与创建它的Task关联
+                // 结果就是除非所有子任务（以及子任务的子任务）结束运行，否则创建任务（父任务）不认为已经结束
+                new Task(() => results[0] = SumTest(10000), TaskCreationOptions.AttachedToParent).Start();
+                new Task(() => results[1] = SumTest(20000), TaskCreationOptions.AttachedToParent).Start();
+                new Task(() => results[2] = SumTest(30000), TaskCreationOptions.AttachedToParent).Start();
+
+                // 返回对数组的引用（即使数组元素可能还没有初始化）
+                return results;
+            });
+
+            // 父任务及其子任务运行完成后，用一个延续任务显示结果
+            // 调用ContinueWith方法创建Task时，可指定TaskContinuationOptions.AttachedToParent标志将延续任务指定为子任务（不会死锁？）
+            // Task cwt = parent.ContinueWith(parentTask => Array.ForEach(parentTask.Result, Console.WriteLine), TaskContinuationOptions.AttachedToParent);
+            Task cwt = parent.ContinueWith(parentTask => Array.ForEach(parentTask.Result, Console.WriteLine));
+
+            // 启动父任务，便于它启动它的子任务
+            parent.Start();
+        }
+
+        private void btnFactory_Click(object sender, EventArgs e)
+        {
+            Task parent = new Task(() =>
+            {
+                CancellationTokenSource cts = new CancellationTokenSource();
+                TaskFactory<int> tf = new TaskFactory<int>(cts.Token, TaskCreationOptions.AttachedToParent,
+                TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+                // This task creates and starts 3 child tasks
+                var childTasks = new[] {
+                    tf.StartNew(() => SumTest(cts.Token, 10000)),
+                    tf.StartNew(() => SumTest(cts.Token, 20000)),
+                    tf.StartNew(() => SumTest(cts.Token, int.MaxValue)) // Too big, throws OverflowException
+                };
+                // If any of the child tasks throw, cancel the rest of them
+                for (int task = 0; task < childTasks.Length; task++)
+                    childTasks[task].ContinueWith(t => cts.Cancel(), TaskContinuationOptions.OnlyOnFaulted);
+                // When all children are done, get the maximum value returned from the
+                // non-faulting/canceled tasks. Then pass the maximum value to another
+                // task that displays the maximum result
+                tf.ContinueWhenAll(childTasks, completedTasks => completedTasks
+                        .Where(t => t.Status == TaskStatus.RanToCompletion)
+                        .Max(t => t.Result), CancellationToken.None)
+                    .ContinueWith(t => Console.WriteLine($"The maximum is: {t.Result}"),
+                TaskContinuationOptions.ExecuteSynchronously);
+            });
+
+            // When the children are done, show any unhandled exceptions too
+            parent.ContinueWith(p =>
+            {
+                // I put all this text in a StringBuilder and call Console.WriteLine just once
+                // because this task could execute concurrently with the task above & I don't
+                // want the tasks' output interspersed
+                StringBuilder sb = new StringBuilder(
+                "The following exception(s) occurred:" + Environment.NewLine);
+                foreach (var ex in p.Exception.Flatten().InnerExceptions)
+                    sb.AppendLine(" " + e.GetType().ToString());
+                Console.WriteLine(sb.ToString());
+            }, TaskContinuationOptions.OnlyOnFaulted);
+
+            // Start the parent Task so it can start its children
+            parent.Start();
+        }
+
+        private void btnScheduler_Click(object sender, EventArgs e)
+        {
+
         }
 
         private int SumTest(int n)
