@@ -8,6 +8,13 @@ namespace LeetCode.Utilses
 {
     public static class Utils
     {
+        static Utils()
+        {
+            random = new Random();
+        }
+
+        private static readonly Random random;
+
         /// <summary>
         /// 输出一维数组
         /// </summary>
@@ -33,6 +40,20 @@ namespace LeetCode.Utilses
             sb.Append(" ]");
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// 生成随机测试用例
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GenerateRandomIntArray(int length, int min, int max)
+        {
+            int[] array = new int[length];
+            for (int i = 0; i < length; i++)
+                array[i] = random.Next(min, max + 1);
+
+            return ArrayToString(array);
         }
     }
 }
