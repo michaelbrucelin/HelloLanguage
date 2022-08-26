@@ -168,47 +168,47 @@ namespace MultiThreading
             Task parent = new Task(() =>
             {
                 CancellationTokenSource cts = new CancellationTokenSource();
-                TaskFactory<int> tf = new TaskFactory<int>(cts.Token, TaskCreationOptions.AttachedToParent,
-                TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
-                // This task creates and starts 3 child tasks
-                var childTasks = new[] {
+                TaskFactory<int> tf = new TaskFactory<int>(cts.Token, TaskCreationOptions.AttachedToParent, TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+
+                // 这个任务创建并启动了3个子任务
+                Task<int>[] childTasks = new[] {
                     tf.StartNew(() => SumTest(cts.Token, 10000)),
                     tf.StartNew(() => SumTest(cts.Token, 20000)),
-                    tf.StartNew(() => SumTest(cts.Token, int.MaxValue)) // Too big, throws OverflowException
+                    tf.StartNew(() => SumTest(cts.Token, int.MaxValue))  // 太大, 会抛出OverflowException异常
                 };
-                // If any of the child tasks throw, cancel the rest of them
-                for (int task = 0; task < childTasks.Length; task++)
-                    childTasks[task].ContinueWith(t => cts.Cancel(), TaskContinuationOptions.OnlyOnFaulted);
-                // When all children are done, get the maximum value returned from the
-                // non-faulting/canceled tasks. Then pass the maximum value to another
-                // task that displays the maximum result
-                tf.ContinueWhenAll(childTasks, completedTasks => completedTasks
-                        .Where(t => t.Status == TaskStatus.RanToCompletion)
-                        .Max(t => t.Result), CancellationToken.None)
-                    .ContinueWith(t => Console.WriteLine($"The maximum is: {t.Result}"),
-                TaskContinuationOptions.ExecuteSynchronously);
+
+                // 任何子任务抛出异常，就取消其余子任务
+                for (int i = 0; i < childTasks.Length; i++)
+                    childTasks[i].ContinueWith(t => cts.Cancel(), TaskContinuationOptions.OnlyOnFaulted);
+
+                // 所有子任务完成后，从未出错/未取消的任务获取返回的最大值，然后将最大值传递给另一个任务来显示最大结果
+                tf.ContinueWhenAll(
+                    childTasks,
+                    completedTasks => completedTasks.Where(t => t.Status == TaskStatus.RanToCompletion).Max(t => t.Result),
+                    CancellationToken.None
+                )
+                .ContinueWith(t => Console.WriteLine($"The maximum is: {t.Result}"), TaskContinuationOptions.ExecuteSynchronously);
             });
 
-            // When the children are done, show any unhandled exceptions too
+            // 子任务完成后，也显示任何未处理的异常
             parent.ContinueWith(p =>
             {
-                // I put all this text in a StringBuilder and call Console.WriteLine just once
-                // because this task could execute concurrently with the task above & I don't
-                // want the tasks' output interspersed
-                StringBuilder sb = new StringBuilder(
-                "The following exception(s) occurred:" + Environment.NewLine);
-                foreach (var ex in p.Exception.Flatten().InnerExceptions)
-                    sb.AppendLine(" " + e.GetType().ToString());
+                // 我将所有文本放在一个StringBuilder中，并只调用Console.WriteLine一次，
+                // 因为这个任务可能和上面的任务并行执行，而我不希望任务的输出变得不连续
+                StringBuilder sb = new StringBuilder("The following exception(s) occurred:" + Environment.NewLine);
+                foreach (Exception ex in p.Exception.Flatten().InnerExceptions)
+                    sb.AppendLine($" {e.GetType()}");
                 Console.WriteLine(sb.ToString());
             }, TaskContinuationOptions.OnlyOnFaulted);
 
-            // Start the parent Task so it can start its children
+            // 启动父任务，使它能启动子任务
             parent.Start();
         }
 
         private void btnScheduler_Click(object sender, EventArgs e)
         {
-
+            Section21_Scheduler scheduler = new Section21_Scheduler();
+            scheduler.ShowDialog();
         }
 
         private int SumTest(int n)
