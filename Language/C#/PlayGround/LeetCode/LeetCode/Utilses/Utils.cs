@@ -43,7 +43,7 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 生成随机测试用例
+        /// 生成随机测试用例，整数数组
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -55,5 +55,15 @@ namespace LeetCode.Utilses
 
             return ArrayToString(array);
         }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="arrayString"></param>
+        ///// <returns></returns>
+        //public static TreeNode GetTreeNodeFromArray(string arrayString)
+        //{ 
+        
+        //}
     }
 }
