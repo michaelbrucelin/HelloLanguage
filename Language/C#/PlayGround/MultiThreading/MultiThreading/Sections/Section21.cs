@@ -208,6 +208,8 @@ namespace MultiThreading
         private void btnScheduler_Click(object sender, EventArgs e)
         {
             Section21_Scheduler scheduler = new Section21_Scheduler();
+            scheduler.Visible = false;  // 从模态窗口打开一个新的模态窗口，需要先把新的模态Visible设置为false
+
             scheduler.ShowDialog();
         }
 

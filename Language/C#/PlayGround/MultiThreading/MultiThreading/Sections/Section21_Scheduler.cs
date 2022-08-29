@@ -17,10 +17,11 @@ namespace MultiThreading
         {
             InitializeComponent();
 
-            // Get a reference to a synchronization context task scheduler
+            // 获得对一个同步上下文任务调度器的引用
             m_syncContextTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
             Text = "Synchronization Context Task Scheduler Demo";
-            Visible = true; Width = 600; Height = 100;
+            Visible = true; Width = 400; Height = 100;
         }
 
         private readonly TaskScheduler m_syncContextTaskScheduler;
@@ -33,33 +34,30 @@ namespace MultiThreading
 
         private void btnScheduler_Click(object sender, EventArgs e)
         {
-
+            // OnMouseClick(null);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
-            if (m_cts != null)
-            { // An operation is in flight, cancel it
+            if (m_cts != null)  // 如果一个操作正在进行，取消它
+            {
                 m_cts.Cancel();
                 m_cts = null;
             }
-            else
-            { // An operation is not in flight, start it
+            else                // 如果操作还没有开始，启动它
+            {
                 Text = "Operation running";
                 m_cts = new CancellationTokenSource();
-                // This task uses the default task scheduler and executes on a thread pool thread
-                Task<Int32> t = Task.Run(() => SumTest(m_cts.Token, 20000), m_cts.Token);
-                // These tasks use the sync context task scheduler and execute on the GUI thread
-                t.ContinueWith(task => Text = "Result: " + task.Result,
-                CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion,
-                m_syncContextTaskScheduler);
-                t.ContinueWith(task => Text = "Operation canceled",
-                CancellationToken.None, TaskContinuationOptions.OnlyOnCanceled,
-                m_syncContextTaskScheduler);
-                t.ContinueWith(task => Text = "Operation faulted",
-                CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted,
-                m_syncContextTaskScheduler);
+
+                // 这个任务使用默认任务调度器，在一个线程池线程上执行
+                Task<int> t = Task.Run(() => SumTest(m_cts.Token, 20000), m_cts.Token);
+
+                // 这些任务使用同步上下文任务调度器，在GUI线程上执行
+                t.ContinueWith(task => Text = "Result: " + task.Result, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, m_syncContextTaskScheduler);
+                t.ContinueWith(task => Text = "Operation canceled", CancellationToken.None, TaskContinuationOptions.OnlyOnCanceled, m_syncContextTaskScheduler);
+                t.ContinueWith(task => Text = "Operation faulted", CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted, m_syncContextTaskScheduler);
             }
+
             base.OnMouseClick(e);
         }
 

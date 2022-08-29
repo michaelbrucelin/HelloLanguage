@@ -53,7 +53,7 @@ namespace MultiThreading
             this.flp1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flp1.Location = new System.Drawing.Point(0, 0);
             this.flp1.Name = "flp1";
-            this.flp1.Size = new System.Drawing.Size(284, 262);
+            this.flp1.Size = new System.Drawing.Size(384, 62);
             this.flp1.TabIndex = 0;
             // 
             // btnScheduler
@@ -70,10 +70,10 @@ namespace MultiThreading
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(384, 62);
             this.Controls.Add(this.flp1);
-            this.MaximumSize = new System.Drawing.Size(300, 300);
-            this.MinimumSize = new System.Drawing.Size(300, 300);
+            this.MaximumSize = new System.Drawing.Size(400, 100);
+            this.MinimumSize = new System.Drawing.Size(400, 100);
             this.Name = "Section21_Scheduler";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Scheduler";
