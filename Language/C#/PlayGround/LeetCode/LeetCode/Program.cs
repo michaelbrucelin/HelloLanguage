@@ -11,13 +11,19 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test1582 test = new Test1582();
-            test.Test();
+            //Test1582 test = new Test1582();
+            //test.Test();
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
             //bool[] arr = new bool[10];
             //Console.WriteLine(arr[8]);
+
+            Tuple<int, int, int> tuple = new Tuple<int, int, int>(1, 2, 3);
+            Console.WriteLine(tuple.ToString());
+
+            (int, int, int) tuple2 = (1, 2, 3);
+            Console.WriteLine(tuple2.ToString());
         }
     }
 }
