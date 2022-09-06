@@ -56,6 +56,18 @@ namespace LeetCode.Utilses
             return ArrayToString(array);
         }
 
+        /// <summary>
+        /// 生成随机字符串
+        /// </summary>
+        /// <param name="chars"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GetRandomString(string chars, int length)
+        {
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>
@@ -63,7 +75,7 @@ namespace LeetCode.Utilses
         ///// <returns></returns>
         //public static TreeNode GetTreeNodeFromArray(string arrayString)
         //{ 
-        
+
         //}
     }
 }
