@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0828;
+﻿using LeetCode.QuestionBank.Question1592;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -11,7 +11,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0828 test = new Test0828();
+            Test1592 test = new Test1592();
             test.Test();
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
