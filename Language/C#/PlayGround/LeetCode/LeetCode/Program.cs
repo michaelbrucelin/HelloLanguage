@@ -11,8 +11,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test1262 test = new Test1262();
-            test.Test();
+            //Test1262 test = new Test1262();
+            //test.Test();
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
@@ -38,6 +38,14 @@ namespace LeetCode
             //sortedset.Add(8);
             //sortedset.Add(10);
             //foreach (int i in sortedset) Console.WriteLine(i);
+
+            //Stack<int> stack = new Stack<int>();
+            //stack.Push(3);
+            //stack.Push(2);
+            //stack.Push(1);
+            //stack.Push(9);
+            //List<int> list = new List<int>(stack);
+            //Utils.PrintArray(list);
         }
     }
 }
