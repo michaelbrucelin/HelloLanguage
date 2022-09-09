@@ -1,6 +1,6 @@
 #### [1598\. 文件夹操作日志搜集器](https://leetcode.cn/problems/crawler-log-folder/)
 
-难度简单30收藏分享切换为英文接收动态反馈
+难度：简单
 
 每当用户执行变更文件夹操作时，LeetCode 文件系统都会保存一条日志记录。
 
