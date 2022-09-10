@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question1262;
+﻿using LeetCode.QuestionBank.Question0003;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -13,6 +13,9 @@ namespace LeetCode
         {
             //Test1262 test = new Test1262();
             //test.Test();
+
+            Interface0003 solution = new Solution0003_2();
+            Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
