@@ -46,6 +46,10 @@ namespace LeetCode
             //stack.Push(9);
             //List<int> list = new List<int>(stack);
             //Utils.PrintArray(list);
+
+            int x = 0, y = 0;
+            x = y = y + 1;
+            Console.WriteLine($"x={x}, y={y}");
         }
     }
 }
