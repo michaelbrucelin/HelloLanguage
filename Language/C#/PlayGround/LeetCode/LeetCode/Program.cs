@@ -14,8 +14,8 @@ namespace LeetCode
             //Test1262 test = new Test1262();
             //test.Test();
 
-            Interface0003 solution = new Solution0003_2();
-            Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
+            //Interface0003 solution = new Solution0003_2();
+            //Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
@@ -49,6 +49,14 @@ namespace LeetCode
             //stack.Push(9);
             //List<int> list = new List<int>(stack);
             //Utils.PrintArray(list);
+
+            //int[] arr1 = new int[] { 1, 3, 5, 7, 9 };
+            //int[] arr2 = new int[] { 0, 2, 4, 6, 8 };
+            //Console.WriteLine(arr1[0]);
+            //Console.WriteLine(arr2[0]);
+            //(arr1, arr2) = (arr2, arr1);
+            //Console.WriteLine(arr1[0]);
+            //Console.WriteLine(arr2[0]);
         }
     }
 }
