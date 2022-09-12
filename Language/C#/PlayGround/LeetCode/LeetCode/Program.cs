@@ -1,9 +1,10 @@
-﻿using LeetCode.QuestionBank.Question0003;
+﻿using LeetCode.QuestionBank.Question0004;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
 using System.Collections.Generic;
 using LeetCode.Utilses;
+using System.Linq;
 
 namespace LeetCode
 {
@@ -11,8 +12,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            //Test1262 test = new Test1262();
-            //test.Test();
+            Test0004 test = new Test0004();
+            test.Test();
+
+            // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
             //Interface0003 solution = new Solution0003_2();
             //Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
