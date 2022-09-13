@@ -13,7 +13,7 @@ namespace LeetCode
         static void Main(string[] args)
         {
             Test0004 test = new Test0004();
-            test.Test();
+            // test.Test();
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
@@ -22,7 +22,7 @@ namespace LeetCode
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
-            //bool[] arr = new bool[10];
+            //bool[] arr = new bool[10];  // 默认值是false
             //Console.WriteLine(arr[8]);
 
             //Tuple<int, int, int> tuple = new Tuple<int, int, int>(1, 2, 3);
