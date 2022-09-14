@@ -22,6 +22,15 @@ namespace LeetCode
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
+            //SortedList<int, int> list = new SortedList<int, int>();
+            //list.Add(5, 5);
+            //list.Add(4, 4);
+            //list.Add(1, 1);
+            //list.Add(2, 2);
+            //list.Add(0, 0);
+            //list.Add(2, 2);  // 报错
+            //Console.WriteLine($"{list.Values[0]}, {list.Values[1]}, {list.Values[2]}, {list.Values[3]}, {list.Values[4]}");
+
             //bool[] arr = new bool[10];  // 默认值是false
             //Console.WriteLine(arr[8]);
 
