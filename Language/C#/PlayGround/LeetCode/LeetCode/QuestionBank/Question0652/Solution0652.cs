@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0652
 {
-    public class Solution0652
+    public class Solution0652 : Interface0652
     {
         /// <summary>
         /// 暴力解，提交会内存溢出

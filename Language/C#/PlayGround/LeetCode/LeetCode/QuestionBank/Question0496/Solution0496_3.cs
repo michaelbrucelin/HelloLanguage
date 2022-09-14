@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0496
 {
-    public class Solution0496_3
+    public class Solution0496_3 : Interface0496
     {
         public int[] NextGreaterElement(int[] nums1, int[] nums2)
         {

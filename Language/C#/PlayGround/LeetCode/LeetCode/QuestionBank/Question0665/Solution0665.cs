@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0665
 {
-    public class Solution0665
+    public class Solution0665 : Interface0665
     {
         /// <summary>
         /// 当第一次出现两个相邻的元素（k k+1）递减时，有下面几种可能：

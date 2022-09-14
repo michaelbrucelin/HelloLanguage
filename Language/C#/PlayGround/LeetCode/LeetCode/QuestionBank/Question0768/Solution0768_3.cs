@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0768
 {
-    public class Solution0768_3
+    public class Solution0768_3 : Interface0768
     {
         /// <summary>
         /// 单调栈

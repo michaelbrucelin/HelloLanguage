@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0984
 {
-    public class Solution0984
+    public class Solution0984 : Interface0984
     {
         public string StrWithout3a3b(int a, int b)
         {

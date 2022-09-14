@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0652
 {
-    public class Solution0652_2
+    public class Solution0652_2 : Interface0652
     {
         private List<(TreeNode node, string key)> buffer;
 

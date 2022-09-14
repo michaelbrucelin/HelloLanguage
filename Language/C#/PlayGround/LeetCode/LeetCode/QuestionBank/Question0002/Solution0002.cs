@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0002
 {
-    public class Solution0002
+    public class Solution0002 : Interface0002
     {
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {

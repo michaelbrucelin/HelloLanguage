@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0998
 {
-    public class Solution0998_2
+    public class Solution0998_2 : Interface0998
     {
         public TreeNode InsertIntoMaxTree(TreeNode root, int val)
         {

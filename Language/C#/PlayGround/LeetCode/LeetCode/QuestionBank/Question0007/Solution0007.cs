@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0007
 {
-    public class Solution0007
+    public class Solution0007 : Interface0007
     {
         public int Reverse(int x)
         {

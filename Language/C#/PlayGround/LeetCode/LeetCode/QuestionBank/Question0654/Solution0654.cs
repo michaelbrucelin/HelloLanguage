@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0654
 {
-    public class Solution0654
+    public class Solution0654 : Interface0654
     {
         public TreeNode ConstructMaximumBinaryTree(int[] nums)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0946
 {
-    public class Solution0946
+    public class Solution0946 : Interface0946
     {
         /// <summary>
         /// 使用是个栈模拟一下操作的过程即可

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0551
 {
-    public class Solution0551
+    public class Solution0551 : Interface0551
     {
         public bool CheckRecord(string s)
         {

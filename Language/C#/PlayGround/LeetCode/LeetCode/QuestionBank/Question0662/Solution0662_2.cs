@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0662
 {
-    public class Solution0662_2
+    public class Solution0662_2 : Interface0662
     {
         /// <summary>
         /// BFS再来一次

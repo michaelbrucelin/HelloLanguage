@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0054
 {
-    public class Solution0054
+    public class Solution0054 : Interface0054
     {
         public IList<int> SpiralOrder(int[][] matrix)
         {

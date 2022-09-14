@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0812
 {
-    public class Solution0812
+    public class Solution0812 : Interface0812
     {
         /// <summary>
         /// 海伦公式：|x1y2+x2y3+x3y1−x1y3−x2y1−x3y2|/2

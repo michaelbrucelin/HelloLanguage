@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0640
 {
-    public class Solution0640
+    public class Solution0640 : Interface0640
     {
         /// <summary>
         /// 逐个字符分析即可，将X的系数和常数分别聚合成一个值，再分析结果

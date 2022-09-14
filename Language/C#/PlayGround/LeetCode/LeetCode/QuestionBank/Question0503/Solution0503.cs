@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0503
 {
-    public class Solution0503
+    public class Solution0503 : Interface0503
     {
         /// <summary>
         /// 与Question0496基本一样，循环2圈即可

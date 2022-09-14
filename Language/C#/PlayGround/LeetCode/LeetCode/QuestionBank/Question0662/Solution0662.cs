@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0662
 {
-    public class Solution0662
+    public class Solution0662 : Interface0662
     {
         private Dictionary<int, (int minid, int maxid)> buffer = new Dictionary<int, (int minid, int maxid)>();
 

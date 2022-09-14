@@ -18,7 +18,7 @@ namespace LeetCode.QuestionBank.Question0641
     * bool param_7 = obj.IsEmpty();
     * bool param_8 = obj.IsFull();
     */
-    public class MyCircularDeque
+    public class MyCircularDeque : Interface0641
     {
 
         public MyCircularDeque(int k)

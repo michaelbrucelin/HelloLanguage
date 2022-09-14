@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0496
 {
-    public class Solution0496_2
+    public class Solution0496_2 : Interface0496
     {
         /// <summary>
         /// 在题目的提示下，确实有O(m+n)的解法，只需要针对nums2构建一个字典即可

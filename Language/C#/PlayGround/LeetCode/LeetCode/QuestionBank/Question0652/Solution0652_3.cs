@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0652
 {
-    public class Solution0652_3
+    public class Solution0652_3 : Interface0652
     {
         private Dictionary<string, TreeNode> dic;
         private HashSet<TreeNode> set;

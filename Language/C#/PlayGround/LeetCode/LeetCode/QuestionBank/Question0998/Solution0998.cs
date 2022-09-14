@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0998
 {
-    public class Solution0998
+    public class Solution0998 : Interface0998
     {
         /// <summary>
         /// 题目实在难懂

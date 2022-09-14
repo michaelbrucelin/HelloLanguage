@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0745
 {
-    public class WordFilter_2
+    public class WordFilter_2 : Interface0745
     {
         public WordFilter_2(string[] words)
         {

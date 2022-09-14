@@ -9,7 +9,7 @@ namespace LeetCode.QuestionBank.Question0745
     /// <summary>
     /// 暴力求解，超时了
     /// </summary>
-    public class WordFilter
+    public class WordFilter : Interface0745
     {
         public WordFilter(string[] words)
         {

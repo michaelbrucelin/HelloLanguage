@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0187
 {
-    public class Solution0187
+    public class Solution0187 : Interface0187
     {
         public IList<string> FindRepeatedDnaSequences(string s)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0226
 {
-    public class Solution0226
+    public class Solution0226 : Interface0226
     {
         public TreeNode InvertTree(TreeNode root)
         {

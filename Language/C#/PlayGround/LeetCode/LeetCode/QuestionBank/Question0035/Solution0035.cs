@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0035
 {
-    public class Solution0035
+    public class Solution0035 : Interface0035
     {
         public int SearchInsert(int[] nums, int target)
         {

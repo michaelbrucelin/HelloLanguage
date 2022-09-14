@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0658
 {
-    public class Solution0658_3
+    public class Solution0658_3 : Interface0658
     {
         public IList<int> FindClosestElements(int[] arr, int k, int x)
         {

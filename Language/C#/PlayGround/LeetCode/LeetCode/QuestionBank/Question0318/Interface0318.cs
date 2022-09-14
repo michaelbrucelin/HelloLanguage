@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0793
+namespace LeetCode.QuestionBank.Question0318
 {
-    public class Solution0793_2
+    public interface Interface0318
     {
+        public int MaxProduct(string[] words);
     }
 }

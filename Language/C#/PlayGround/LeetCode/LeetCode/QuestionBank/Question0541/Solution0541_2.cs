@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0541
 {
-    public class Solution0541_2
+    public class Solution0541_2 : Interface0541
     {
         public string ReverseStr(string s, int k)
         {

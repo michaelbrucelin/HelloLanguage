@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0793
 {
-    public class Solution0793
+    public class Solution0793 : Interface0793
     {
         /// <summary>
         /// 结果只能是5和0两种

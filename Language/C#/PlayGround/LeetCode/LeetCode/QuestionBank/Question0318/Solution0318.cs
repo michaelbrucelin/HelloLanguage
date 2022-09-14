@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0318
 {
-    public class Solution0318
+    public class Solution0318 : Interface0318
     {
         public int MaxProduct(string[] words)
         {

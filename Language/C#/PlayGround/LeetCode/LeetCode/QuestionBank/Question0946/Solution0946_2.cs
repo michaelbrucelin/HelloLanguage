@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0946
 {
-    public class Solution0946_2
+    public class Solution0946_2 : Interface0946
     {
         /// <summary>
         /// 原地操作（利用pushed数组模拟栈），性能不一定好，就是练习
