@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1356
 {
-    public class Solution1356
+    public class Solution1356 : Interface1356
     {
         public int[] SortByBits(int[] arr)
         {

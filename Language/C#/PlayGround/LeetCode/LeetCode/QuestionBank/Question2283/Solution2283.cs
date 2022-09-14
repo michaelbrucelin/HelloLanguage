@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2283
 {
-    public class Solution2283
+    public class Solution2283 : Interface2283
     {
         public bool DigitCount(string num)
         {

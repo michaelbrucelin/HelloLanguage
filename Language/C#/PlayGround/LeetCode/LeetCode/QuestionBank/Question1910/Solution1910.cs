@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1910
 {
-    public class Solution1910
+    public class Solution1910 : Interface1910
     {
         public string RemoveOccurrences(string s, string part)
         {

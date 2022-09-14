@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1450
 {
-    public class Solution1450
+    public class Solution1450 : Interface1450
     {
         public int BusyStudent(int[] startTime, int[] endTime, int queryTime)
         {

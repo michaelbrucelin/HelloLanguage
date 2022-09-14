@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2331
 {
-    public class Solution2331
+    public class Solution2331 : Interface2331
     {
         public bool EvaluateTree(TreeNode root)
         {

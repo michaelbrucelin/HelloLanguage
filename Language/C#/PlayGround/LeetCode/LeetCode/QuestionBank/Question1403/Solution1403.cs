@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1403
 {
-    public class Solution1403
+    public class Solution1403 : Interface1403
     {
         public IList<int> MinSubsequence(int[] nums)
         {

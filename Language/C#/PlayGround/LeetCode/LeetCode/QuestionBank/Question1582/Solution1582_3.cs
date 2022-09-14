@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1582
 {
-    public class Solution1582_3
+    public class Solution1582_3 : Interface1582
     {
         public int NumSpecial(int[][] mat)
         {

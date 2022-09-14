@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1332
 {
-    public class Solution1332
+    public class Solution1332 : Interface1332
     {
         public int RemovePalindromeSub(string s)
         {

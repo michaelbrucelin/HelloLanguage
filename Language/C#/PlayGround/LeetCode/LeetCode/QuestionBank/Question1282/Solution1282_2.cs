@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1282
 {
-    public class Solution1282_2
+    public class Solution1282_2 : Interface1282
     {
         public IList<IList<int>> GroupThePeople(int[] groupSizes)
         {

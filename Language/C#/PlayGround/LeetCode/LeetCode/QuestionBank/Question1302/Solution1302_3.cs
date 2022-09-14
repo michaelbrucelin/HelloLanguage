@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1302
 {
-    public class Solution1302_3
+    public class Solution1302_3 : Interface1302
     {
         public int DeepestLeavesSum(TreeNode root)
         {

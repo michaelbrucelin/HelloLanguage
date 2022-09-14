@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1460
 {
-    public class Solution1460
+    public class Solution1460 : Interface1460
     {
         /// <summary>
         /// 只要两个数组中的元素完全相同，就一定有解

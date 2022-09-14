@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1910
 {
-    public class Solution1910_2
+    public class Solution1910_2 : Interface1910
     {
         /// <summary>
         /// 暴力破解法，应该调用API或使用KMP，这里只是试着用一下双向链表

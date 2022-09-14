@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1475
 {
-    public class Solution1475_2
+    public class Solution1475_2 : Interface1475
     {
         public int[] FinalPrices(int[] prices)
         {

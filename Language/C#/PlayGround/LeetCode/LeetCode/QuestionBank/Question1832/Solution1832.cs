@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1832
 {
-    public class Solution1832
+    public class Solution1832 : Interface1832
     {
         public bool CheckIfPangram(string sentence)
         {

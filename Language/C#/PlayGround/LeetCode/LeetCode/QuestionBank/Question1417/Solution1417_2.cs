@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1417
 {
-    public class Solution1417_2
+    public class Solution1417_2 : Interface1417
     {
         /// <summary>
         /// 原地操作

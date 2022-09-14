@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1302
 {
-    public class Solution1302_2
+    public class Solution1302_2 : Interface1302
     {
         private int result = 0;
         private int maxLevel = -1;

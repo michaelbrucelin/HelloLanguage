@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1422
 {
-    public class Solution1422_2
+    public class Solution1422_2 : Interface1422
     {
         public int MaxScore(string s)
         {

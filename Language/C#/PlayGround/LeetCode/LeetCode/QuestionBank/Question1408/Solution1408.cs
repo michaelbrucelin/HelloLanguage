@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1408
 {
-    public class Solution1408
+    public class Solution1408 : Interface1408
     {
         public IList<string> StringMatching(string[] words)
         {

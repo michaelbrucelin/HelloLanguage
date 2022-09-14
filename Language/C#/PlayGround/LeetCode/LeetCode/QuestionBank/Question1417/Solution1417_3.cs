@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1417
 {
-    public class Solution1417_3
+    public class Solution1417_3 : Interface1417
     {
         public string Reformat(string s)
         {

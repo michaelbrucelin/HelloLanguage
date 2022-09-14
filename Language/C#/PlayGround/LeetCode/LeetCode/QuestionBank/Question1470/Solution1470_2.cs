@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1470
 {
-    public class Solution1470_2
+    public class Solution1470_2 : Interface1470
     {
         public int[] Shuffle(int[] nums, int n)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1413
 {
-    public class Solution1413
+    public class Solution1413 : Interface1413
     {
         public int MinStartValue(int[] nums)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1224
 {
-    public class Solution1224_2
+    public class Solution1224_2 : Interface1224
     {
         /// <summary>
         /// 从前向后逐位分析，使用两个字典做辅助

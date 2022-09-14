@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1582
 {
-    public class Solution1582
+    public class Solution1582 : Interface1582
     {
         /// <summary>
         /// 暴力解

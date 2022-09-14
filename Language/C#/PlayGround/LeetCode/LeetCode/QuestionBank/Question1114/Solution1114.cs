@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1114
 {
-    public class Foo
+    public class Foo : Interface1114
     {
 
         public Foo()

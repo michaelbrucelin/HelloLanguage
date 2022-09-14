@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question2103
 {
-    public class Solution2103
+    public class Solution2103 : Interface2103
     {
         private Dictionary<char, int> bin = new Dictionary<char, int> { { 'R', 1 }, { 'G', 2 }, { 'B', 4 } };
 

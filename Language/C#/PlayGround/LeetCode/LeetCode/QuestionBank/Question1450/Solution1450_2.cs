@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1450
 {
-    public class Solution1450_2
+    public class Solution1450_2 : Interface1450
     {
         /// <summary>
         /// 利用差分数组法求解

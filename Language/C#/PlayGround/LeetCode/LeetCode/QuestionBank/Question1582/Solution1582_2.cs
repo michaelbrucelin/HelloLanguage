@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1582
 {
-    public class Solution1582_2
+    public class Solution1582_2 : Interface1582
     {
         /// <summary>
         /// 在暴力解的基础上进行优化，在判断一个单元格结果的基础上，可以排除一些单元格，减少外层的循环次数

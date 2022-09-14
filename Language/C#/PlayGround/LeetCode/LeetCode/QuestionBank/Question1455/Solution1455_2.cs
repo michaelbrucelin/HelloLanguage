@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question1455
 {
-    public class Solution1455_2
+    public class Solution1455_2 : Interface1455
     {
         public int IsPrefixOfWord(string sentence, string searchWord)
         {
