@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCP.LCP0030
 {
-    public class Solution0030_2
+    public class Solution0030_2 : Interface0030
     {
         /// <summary>
         /// 用栈模拟的优先队列性能太低，这里用List重新模拟一个

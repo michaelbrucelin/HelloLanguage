@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0053
+namespace LeetCode.LCP.LCP0030
 {
-    public class Solution0053
+    public interface Interface0030
     {
+        public int MagicTower(int[] nums);
     }
 }

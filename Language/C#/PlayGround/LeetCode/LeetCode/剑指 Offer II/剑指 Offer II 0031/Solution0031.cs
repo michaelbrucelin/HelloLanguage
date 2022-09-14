@@ -10,7 +10,7 @@ namespace LeetCode.剑指_Offer_II.剑指_Offer_II_0031
     /// 使用字典+链表模拟
     /// 字典可以保证获取数据的时间复杂度是O(1)，链表可以保证移动和删除数据的时间复杂度是O(1)
     /// </summary>
-    public class LRUCache
+    public class LRUCache : Interface0031
     {
         public LRUCache(int capacity)
         {

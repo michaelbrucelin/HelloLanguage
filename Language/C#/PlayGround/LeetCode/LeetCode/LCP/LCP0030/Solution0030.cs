@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.LCP.LCP0030
 {
-    public class Solution0030
+    public class Solution0030 : Interface0030
     {
         public int MagicTower(int[] nums)
         {
