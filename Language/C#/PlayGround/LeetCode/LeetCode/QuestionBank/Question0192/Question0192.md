@@ -1,5 +1,7 @@
 ﻿#### [192\. 统计词频](https://leetcode.cn/problems/word-frequency/)
 
+难度：中等
+
 写一个 bash 脚本以统计一个文本文件 `words.txt` 中每个单词出现的频率。
 
 为了简单起见，你可以假设：

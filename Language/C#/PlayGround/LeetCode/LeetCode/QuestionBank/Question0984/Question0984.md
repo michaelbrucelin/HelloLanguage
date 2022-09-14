@@ -1,5 +1,7 @@
 ﻿#### [984\. 不含 AAA 或 BBB 的字符串](https://leetcode.cn/problems/string-without-aaa-or-bbb/)
 
+难度：中等
+
 给定两个整数 `a` 和 `b` ，返回 **任意** 字符串 `s` ，要求满足：
 
 -   `s` 的长度为 `a + b`，且正好包含`a` 个 `'a'` 字母与 `b` 个 `'b'` 字母；

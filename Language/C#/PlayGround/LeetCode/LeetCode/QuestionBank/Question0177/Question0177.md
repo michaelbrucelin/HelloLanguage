@@ -1,5 +1,7 @@
 ﻿#### [177\. 第N高的薪水](https://leetcode.cn/problems/nth-highest-salary/)
 
+难度：中等
+
 SQL架构
 
 表: `Employee`

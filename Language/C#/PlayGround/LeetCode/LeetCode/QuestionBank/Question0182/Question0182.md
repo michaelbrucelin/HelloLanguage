@@ -1,5 +1,7 @@
 ﻿#### [182\. 查找重复的电子邮箱](https://leetcode.cn/problems/duplicate-emails/)
 
+难度：简单
+
 SQL架构
 
 编写一个 SQL 查询，查找 `Person` 表中所有重复的电子邮箱。

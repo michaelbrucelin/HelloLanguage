@@ -1,5 +1,7 @@
 #### [551\. 学生出勤记录 I](https://leetcode.cn/problems/student-attendance-record-i/)
 
+难度：简单
+
 给你一个字符串 `s` 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：
 
 -   `'A'`：Absent，缺勤

@@ -1,5 +1,7 @@
 ﻿#### [175\. 组合两个表](https://leetcode.cn/problems/combine-two-tables/)
 
+难度：简单
+
 SQL架构
 
 表: `Person`

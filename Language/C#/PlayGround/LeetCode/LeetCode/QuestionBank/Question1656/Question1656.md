@@ -1,5 +1,6 @@
 ﻿#### [1656\. 设计有序流](https://leetcode.cn/problems/design-an-ordered-stream/)
 
+难度：简单
 
 有 `n` 个 `(id, value)` 对，其中 `id` 是 `1` 到 `n` 之间的一个整数，`value` 是一个字符串。不存在 `id` 相同的两个 `(id, value)` 对。
 

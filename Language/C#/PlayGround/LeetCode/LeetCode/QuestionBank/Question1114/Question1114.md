@@ -1,5 +1,7 @@
 ﻿#### [1114\. 按序打印](https://leetcode.cn/problems/print-in-order/)
 
+难度：简单
+
 给你一个类：
 
 ```

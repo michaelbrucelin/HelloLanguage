@@ -1,5 +1,7 @@
 ﻿#### [745\. 前缀和后缀搜索](https://leetcode.cn/problems/prefix-and-suffix-search/)
 
+难度：困难
+
 设计一个包含一些单词的特殊词典，并能够通过前缀和后缀来检索单词。
 
 实现 `WordFilter` 类：

@@ -1,5 +1,7 @@
 ﻿#### [176\. 第二高的薪水](https://leetcode.cn/problems/second-highest-salary/)
 
+难度：中等
+
 SQL架构
 
 `Employee` 表：

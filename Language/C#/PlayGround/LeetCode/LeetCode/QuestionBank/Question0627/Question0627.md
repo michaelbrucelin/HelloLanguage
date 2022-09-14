@@ -1,5 +1,7 @@
 #### [627\. 变更性别](https://leetcode.cn/problems/swap-salary/)
 
+难度：简单
+
 SQL架构
 
 `Salary` 表：

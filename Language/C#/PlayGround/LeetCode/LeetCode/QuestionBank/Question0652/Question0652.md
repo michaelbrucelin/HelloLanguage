@@ -1,5 +1,7 @@
 #### [652\. 寻找重复的子树](https://leetcode.cn/problems/find-duplicate-subtrees/)
 
+难度：中等
+
 给定一棵二叉树 `root`，返回所有**重复的子树**。
 
 对于同一类的重复子树，你只需要返回其中任意**一棵**的根结点即可。

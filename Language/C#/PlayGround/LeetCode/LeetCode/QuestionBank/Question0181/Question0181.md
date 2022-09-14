@@ -1,5 +1,7 @@
 ﻿#### [181\. 超过经理收入的员工](https://leetcode.cn/problems/employees-earning-more-than-their-managers/)
 
+难度：简单
+
 SQL架构
 
 表：`Employee` 

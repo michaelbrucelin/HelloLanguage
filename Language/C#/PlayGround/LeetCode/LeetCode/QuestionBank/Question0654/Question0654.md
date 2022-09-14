@@ -1,5 +1,7 @@
 ﻿#### [654\. 最大二叉树](https://leetcode.cn/problems/maximum-binary-tree/)
 
+难度：中等
+
 给定一个不重复的整数数组 `nums` 。 **最大二叉树** 可以用下面的算法从 `nums` 递归地构建:
 
 1.  创建一个根节点，其值为 `nums` 中的最大值。

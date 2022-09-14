@@ -1,5 +1,7 @@
 ﻿#### [剑指 Offer II 031. 最近最少使用缓存](https://leetcode.cn/problems/OrIXps/)
 
+难度：中等
+
 运用所掌握的数据结构，设计和实现一个  [LRU (Least Recently Used，最近最少使用) 缓存机制](https://baike.baidu.com/item/LRU) 。
 
 实现 `LRUCache` 类：

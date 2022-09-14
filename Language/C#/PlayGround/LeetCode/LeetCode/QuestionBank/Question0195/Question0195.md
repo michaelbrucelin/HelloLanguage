@@ -1,5 +1,7 @@
 ﻿#### [195\. 第十行](https://leetcode.cn/problems/tenth-line/)
 
+难度：简单
+
 给定一个文本文件 `file.txt`，请只打印这个文件中的第十行。
 
 **示例:**

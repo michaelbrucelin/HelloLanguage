@@ -1,5 +1,7 @@
 ﻿#### [623\. 在二叉树中增加一行](https://leetcode.cn/problems/add-one-row-to-tree/)
 
+难度：中等
+
 给定一个二叉树的根 `root` 和两个整数 `val` 和 `depth` ，在给定的深度 `depth` 处添加一个值为 `val` 的节点行。
 
 注意，根节点 `root` 位于深度 `1` 。

@@ -1,5 +1,7 @@
 ﻿#### [2331\. 计算布尔二叉树的值](https://leetcode.cn/problems/evaluate-boolean-binary-tree/)
 
+难度：简单
+
 给你一棵 **完整二叉树** 的根，这棵树有以下特征：
 
 -   **叶子节点** 要么值为 `0` 要么值为 `1` ，其中 `0` 表示 `False` ，`1` 表示 `True` 。

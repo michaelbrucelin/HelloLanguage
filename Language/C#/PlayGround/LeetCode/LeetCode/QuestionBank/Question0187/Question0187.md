@@ -1,5 +1,7 @@
 ﻿#### [187\. 重复的DNA序列](https://leetcode.cn/problems/repeated-dna-sequences/)
 
+难度：中等
+
 **DNA序列** 由一系列核苷酸组成，缩写为 `'A'`, `'C'`, `'G'` 和 `'T'`.。
 
 -   例如，`"ACGAATTCCG"` 是一个 **DNA序列** 。

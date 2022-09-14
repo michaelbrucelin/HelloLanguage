@@ -1,5 +1,7 @@
 ﻿#### [1910\. 删除一个字符串中所有出现的给定子字符串](https://leetcode.cn/problems/remove-all-occurrences-of-a-substring/)
 
+难度：中等
+
 给你两个字符串 `s` 和 `part` ，请你对 `s` 反复执行以下操作直到 **所有** 子字符串 `part` 都被删除：
 
 -   找到 `s` 中 **最左边** 的子字符串 `part` ，并将它从 `s` 中删除。

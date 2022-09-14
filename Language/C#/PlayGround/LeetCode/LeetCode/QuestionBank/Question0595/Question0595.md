@@ -1,5 +1,7 @@
 #### [595\. 大的国家](https://leetcode.cn/problems/big-countries/)
 
+难度：简单
+
 SQL架构
 
 `World` 表：

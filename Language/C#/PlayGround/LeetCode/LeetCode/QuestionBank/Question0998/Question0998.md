@@ -1,5 +1,7 @@
 #### [998\. 最大二叉树 II](https://leetcode.cn/problems/maximum-binary-tree-ii/)
 
+难度：中等
+
 **最大树** 定义：一棵树，并满足：其中每个节点的值都大于其子树中的任何其他值。
 
 给你最大树的根节点 `root` 和一个整数 `val` 。

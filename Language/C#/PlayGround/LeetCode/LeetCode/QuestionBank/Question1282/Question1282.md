@@ -1,5 +1,7 @@
 ﻿#### [1282\. 用户分组](https://leetcode.cn/problems/group-the-people-given-the-group-size-they-belong-to/)
 
+难度：中等
+
 有 `n` 个人被分成数量未知的组。每个人都被标记为一个从 `0` 到 `n - 1` 的**唯一ID** 。
 
 给定一个整数数组 `groupSizes` ，其中 `groupSizes[i]` 是第 `i` 个人所在的组的大小。例如，如果 `groupSizes[1] = 3` ，则第 `1` 个人必须位于大小为 `3` 的组中。

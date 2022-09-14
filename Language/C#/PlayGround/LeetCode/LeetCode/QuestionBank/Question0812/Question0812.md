@@ -1,5 +1,7 @@
 ﻿#### [812\. 最大三角形面积](https://leetcode.cn/problems/largest-triangle-area/)
 
+难度：简单
+
 给定包含多个点的集合，从其中取三个点组成三角形，返回能组成的最大三角形的面积。
 
 ```
