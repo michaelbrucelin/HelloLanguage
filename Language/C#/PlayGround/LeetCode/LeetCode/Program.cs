@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0004;
+﻿using LeetCode.QuestionBank.Question0672;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -12,8 +12,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0004 test = new Test0004();
-            // test.Test();
+            Test0672 test = new Test0672();
+            test.Test();
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
