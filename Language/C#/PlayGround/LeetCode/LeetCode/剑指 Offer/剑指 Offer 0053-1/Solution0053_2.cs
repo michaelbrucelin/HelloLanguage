@@ -18,7 +18,7 @@ namespace LeetCode.剑指_Offer.剑指_Offer_0053_1
         {
             int leftborder;
             int low = 0, high = nums.Length - 1;
-            while (low < high)  // 寻找目标值的左边界
+            while (low <= high)  // 寻找目标值的左边界
             {
                 int mid = low + (high - low) / 2;
                 if (nums[mid] < target) low = mid + 1; else high = mid;
@@ -26,7 +26,7 @@ namespace LeetCode.剑指_Offer.剑指_Offer_0053_1
             if (low > high) return 0; else leftborder = low;
 
             low = 0; high = nums.Length - 1;
-            while (low < high)  // 寻找目标值的右边界
+            while (low <= high)  // 寻找目标值的右边界
             {
                 int mid = low + (high - low) / 2;
                 if (nums[mid] <= target) low = mid; else high = mid - 1;
