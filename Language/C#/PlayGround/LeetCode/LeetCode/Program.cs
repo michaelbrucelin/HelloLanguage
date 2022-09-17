@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0009;
+﻿using LeetCode.QuestionBank.Question0010;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -12,8 +12,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0009 test = new Test0009();
+            Test0010 test = new Test0010();
             test.Test();
+
+            //var list = PatternSplit("aa..*d");
+            //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
+            //Console.WriteLine(Utils.ArrayToString(PatternSplit("aa..*d")));
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
@@ -79,6 +83,36 @@ namespace LeetCode
             //(arr1, arr2) = (arr2, arr1);
             //Console.WriteLine(arr1[0]);
             //Console.WriteLine(arr2[0]);
+        }
+
+        private static List<(int type, string pattern)> PatternSplit(string pattern)
+        {
+            List<(int type, string pattern)> patterns = new List<(int, string)>();
+            List<char> buffer = new List<char>();
+            for (int i = 0; i < pattern.Length; i++)
+            {
+                switch (pattern[i])
+                {
+                    case '.':
+                        if (buffer.Count > 0) { patterns.Add((1, new string(buffer.ToArray()))); buffer = new List<char>(); }
+                        if (i + 1 < pattern.Length && pattern[i + 1] == '*') { patterns.Add((4, ".*")); i++; }
+                        else patterns.Add((3, "."));
+                        break;
+                    case '*':
+                        if (buffer.Count == 0) throw new Exception("Invalid Input.");  // 题目不允许 * 前面没有其他字符
+                        string item = $"{buffer.Last()}*";
+                        buffer.RemoveAt(buffer.Count - 1);
+                        if (buffer.Count > 0) { patterns.Add((1, new string(buffer.ToArray()))); buffer = new List<char>(); }
+                        patterns.Add((2, item));
+                        break;
+                    default:  // 小写字母
+                        buffer.Add(pattern[i]);
+                        break;
+                }
+            }
+            if (buffer.Count > 0) patterns.Add((1, new string(buffer.ToArray())));
+
+            return patterns;
         }
     }
 }
