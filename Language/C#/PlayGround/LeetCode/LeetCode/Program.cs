@@ -13,7 +13,7 @@ namespace LeetCode
         static void Main(string[] args)
         {
             Test0672 test = new Test0672();
-            test.Test();
+            // test.Test();
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
@@ -21,6 +21,10 @@ namespace LeetCode
             //Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
+
+            //int[] helper = new int[26];
+            //Array.Fill(helper, -100);
+            //Console.WriteLine(helper[3]);
 
             //SortedList<int, int> list = new SortedList<int, int>();
             //list.Add(5, 5);
