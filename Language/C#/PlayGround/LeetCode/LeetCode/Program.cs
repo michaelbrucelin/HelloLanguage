@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0672;
+﻿using LeetCode.QuestionBank.Question0008;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -12,8 +12,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0672 test = new Test0672();
-            // test.Test();
+            Test0008 test = new Test0008();
+            test.Test();
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
@@ -21,6 +21,12 @@ namespace LeetCode
             //Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
+
+            // 检查整型是否溢出
+            //int x = int.MaxValue;
+            //Console.WriteLine(x);
+            //Console.WriteLine($"checked(x-1): {checked(x - 1)}");
+            //Console.WriteLine($"checked(x+1): {checked(x + 1)}");
 
             //int[] helper = new int[26];
             //Array.Fill(helper, -100);
