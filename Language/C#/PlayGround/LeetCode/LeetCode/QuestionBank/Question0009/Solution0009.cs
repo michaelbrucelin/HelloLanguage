@@ -8,6 +8,11 @@ namespace LeetCode.QuestionBank.Question0009
 {
     public class Solution0009 : Interface0009
     {
+        /// <summary>
+        /// 转为字符串来求解
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public bool IsPalindrome(int x)
         {
             if (x < 0) return false;
