@@ -1,4 +1,4 @@
-﻿using LeetCode.QuestionBank.Question0010;
+﻿using LeetCode.QuestionBank.Question0698;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
@@ -12,7 +12,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0010 test = new Test0010();
+            Test0698 test = new Test0698();
             test.Test();
 
             //var list = PatternSplit("aa..*d");
