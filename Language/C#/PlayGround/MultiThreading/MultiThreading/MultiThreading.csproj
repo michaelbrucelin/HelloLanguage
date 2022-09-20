@@ -364,6 +364,12 @@
     <Compile Include="Sections\Section21_Scheduler.Designer.cs">
       <DependentUpon>Section21_Scheduler.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\Section22.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sections\Section22.Designer.cs">
+      <DependentUpon>Section22.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sections\Section_template.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section21_Scheduler.resx">
       <DependentUpon>Section21_Scheduler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sections\Section22.resx">
+      <DependentUpon>Section22.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sections\Section_template.resx">
       <DependentUpon>Section_template.cs</DependentUpon>
