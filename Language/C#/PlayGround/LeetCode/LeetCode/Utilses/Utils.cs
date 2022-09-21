@@ -68,6 +68,11 @@ namespace LeetCode.Utilses
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        public static string ShuffleString(string str)
+        {
+            return new string(str.OrderBy(i => random.Next()).ToArray());
+        }
+
         ///// <summary>
         ///// 
         ///// </summary>
