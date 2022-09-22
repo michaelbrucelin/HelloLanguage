@@ -41,8 +41,8 @@ namespace MultiThreading
             lbl20.Text = "ThreadPool示例";
             lbl21.Text = "Task示例";
             lbl22.Text = "Parallel示例";
-            lbl23.Text = "";
-            lbl24.Text = "";
+            lbl23.Text = "PLINQ示例";
+            lbl24.Text = "Timer示例";
             lbl25.Text = "";
             lbl26.Text = "";
             lbl27.Text = "";
@@ -188,14 +188,14 @@ namespace MultiThreading
 
         private void lbl23_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Section23 section = new Section23();
-            //section.ShowDialog();
+            Section23 section = new Section23();
+            section.ShowDialog();
         }
 
         private void lbl24_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //Section24 section = new Section24();
-            //section.ShowDialog();
+            Section24 section = new Section24();
+            section.ShowDialog();
         }
 
         private void lbl25_MouseDoubleClick(object sender, MouseEventArgs e)
