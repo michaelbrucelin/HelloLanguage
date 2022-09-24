@@ -25,7 +25,8 @@ namespace MultiThreading
 
         private async void btnSample01_Click(object sender, EventArgs e)
         {
-            // IssueClientRequestAsync();
+            // await IssueClientRequestAsync("127.0.0.1", "hello");  // 连接会失败
+            Console.WriteLine("done");
         }
 
         private async Task<string> IssueClientRequestAsync(string serverName, string message)
