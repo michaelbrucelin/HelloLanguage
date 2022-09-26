@@ -25,6 +25,25 @@ namespace LeetCode.Utilses
             Console.WriteLine(ArrayToString(list));
         }
 
+        /// <summary>
+        /// 忽略数组中元素的顺序，比较两个数组是否相等
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
+        public static bool CompareArray<T>(IList<T> list1, IList<T> list2) where T : IComparable
+        {
+            if (list1.Count != list2.Count) return false;
+
+            list1 = list1.OrderBy(t => t).ToList();
+            list2 = list2.OrderBy(t => t).ToList();
+            for (int i = 0; i < list1.Count; i++)
+                if (list1[i].CompareTo(list2[i]) != 0) return false;
+
+            return true;
+        }
+
         public static string ArrayToString<T>(IList<T> list)
         {
             if (list == null) return "null";

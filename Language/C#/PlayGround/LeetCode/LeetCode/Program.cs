@@ -1,5 +1,7 @@
-﻿using LeetCode.QuestionBank.Question0788;
+﻿using LeetCode.Interview.Interview1719;
+using LeetCode.QuestionBank.Question0788;
 using LeetCode.LCP.LCP0030;
+using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
 using System.Collections.Generic;
@@ -12,17 +14,15 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0788 test = new Test0788();
+            Test0788 test = new();
             test.Test();
+            // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             //var list = PatternSplit("aa..*d");
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
             //Console.WriteLine(Utils.ArrayToString(PatternSplit("aa..*d")));
 
             // Console.WriteLine(Math.Floor((2 - 3) / 2d));
-
-            //Interface0003 solution = new Solution0003_2();
-            //Console.WriteLine(solution.LengthOfLongestSubstring("abcabcbb"));
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 

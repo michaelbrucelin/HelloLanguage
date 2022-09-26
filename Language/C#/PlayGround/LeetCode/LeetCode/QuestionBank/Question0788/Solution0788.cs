@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0788
 {
-    public class Solution0778 : Interface0788
+    public class Solution0788 : Interface0788
     {
         private readonly HashSet<int> allRotatedDigits = new HashSet<int>() { 0, 1, 2, 5, 6, 8, 9 };
         private readonly HashSet<int> trueRotatedDigits = new HashSet<int>() { 2, 5, 6, 9 };
