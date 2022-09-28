@@ -1,4 +1,4 @@
-﻿using LeetCode.Interview.Interview1719;
+﻿using LeetCode.Interview.Interview1709;
 using LeetCode.QuestionBank.Question0788;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
@@ -14,7 +14,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0788 test = new();
+            Test1709 test = new();
             test.Test();
             // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
