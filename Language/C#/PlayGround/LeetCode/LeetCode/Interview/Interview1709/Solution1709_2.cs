@@ -26,9 +26,9 @@ namespace LeetCode.Interview.Interview1709
             {
                 int v = GetSmallest(helper[pos3 + 1] * 3, helper[pos5 + 1] * 5, helper[pos7 + 1] * 7);
                 helper.Add(v);
-                if (v % 3 == 0) pos3++;
-                if (v % 5 == 0) pos5++;
-                if (v % 7 == 0) pos7++;
+                if (helper[pos3 + 1] * 3 == v) pos3++;
+                if (helper[pos5 + 1] * 5 == v) pos5++;
+                if (helper[pos7 + 1] * 7 == v) pos7++;
             }
 
             return helper[k - 1];
