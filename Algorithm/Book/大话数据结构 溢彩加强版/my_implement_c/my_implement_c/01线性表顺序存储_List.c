@@ -13,6 +13,7 @@ typedef struct
 
 typedef int Status;          // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
+
 /* 获取元素操作 */
 // 初始条件：顺序线性表L已存在，1≤i≤ListLength(L)
 // 操作结果：用e返回L中第个元素的值，注意i是指位置，第1个位置的数组是从0开始
@@ -24,6 +25,7 @@ Status GetElem(SqList L, int i, ElemType* e)
 
 	return OK;
 }
+
 
 /* 插入操作 */
 // 初始条件：顺序线性表L已存在,1≤i≤ListLength(L)
@@ -46,6 +48,7 @@ Status ListInsert(SqList* L, int i, ElemType e)
 
 	return OK;
 }
+
 
 /* 删除操作 */
 // 初始条件：顺序线性表L已存在，1≤i≤ListLength(L)
