@@ -10,6 +10,7 @@ namespace LeetCode.QuestionBank.Question0015
     {
         /// <summary>
         /// 排序，2层循环 + 二分查找
+        /// 两层循环遍历所有前两个值的可能性，然后二分查找第三个值是否存在
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
