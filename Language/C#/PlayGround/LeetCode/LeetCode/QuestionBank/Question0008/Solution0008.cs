@@ -31,7 +31,7 @@ namespace LeetCode.QuestionBank.Question0008
                 }
                 return result;
             }
-            catch (OverflowException ex)
+            catch (OverflowException)
             {
                 if (sign == 1) return int.MaxValue;
                 else return int.MinValue;

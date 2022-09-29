@@ -30,7 +30,7 @@ namespace LeetCode.QuestionBank.Question0707
 
         private void Test02(Interface0707 solution)
         {
-            int val;
+            // int val;
 
             solution.AddAtHead(1);
             solution.DeleteAtIndex(0);
