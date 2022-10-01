@@ -37,7 +37,7 @@ namespace LeetCode.QuestionBank.Question0018
                         if (right < nums.Length - 1 && nums[right] == nums[right + 1]) { right--; continue; }  // 如果与上一个值相同，... ...
                         try
                         {
-                            checked
+                            checked  // 像上面那样转为long处理就行，这里就是试一下checked关键字的用法
                             {
                                 int fourSum = nums[i] + nums[j] + nums[left] + nums[right];
                                 if (fourSum == target) { result.Add(new List<int>() { nums[i], nums[j], nums[left], nums[right] }); left++; right--; }

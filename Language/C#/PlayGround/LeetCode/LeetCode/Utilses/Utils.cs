@@ -128,7 +128,7 @@ namespace LeetCode.Utilses
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append(list[0].ToString());
+            sb.Append(ArrayToString<T>(list[0]));
             for (int i = 1; i < list.Count; i++)
                 sb.Append($", {ArrayToString<T>(list[i])}");
             sb.Append(" ]");
