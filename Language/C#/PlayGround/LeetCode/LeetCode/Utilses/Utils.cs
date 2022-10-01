@@ -26,7 +26,17 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 忽略数组中元素的顺序，比较两个数组是否相等
+        /// 输出二维数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        public static void PrintArray<T>(IList<IList<T>> list)
+        {
+            Console.WriteLine(ArrayToString(list));
+        }
+
+        /// <summary>
+        /// 忽略一维数组中元素的顺序，比较两个一维数组是否相等
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
@@ -44,6 +54,48 @@ namespace LeetCode.Utilses
             return true;
         }
 
+        /// <summary>
+        /// 忽略二维数组中元素的顺序，比较两个二维数组是否相等
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list1"></param>
+        /// <param name="list2"></param>
+        /// <returns></returns>
+        public static bool CompareArray<T>(IList<IList<T>> list1, IList<IList<T>> list2) where T : IComparable
+        {
+            if (list1.Count != list2.Count) return false;
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                list1[i] = list1[i].OrderBy(t => t).ToList();
+                list2[i] = list2[i].OrderBy(t => t).ToList();
+            }
+
+            bool[] mask = new bool[list2.Count];
+            for (int i = 0; i < list1.Count; i++)
+            {
+                bool flag = true;
+                for (int j = 0; j < list2.Count; j++)
+                {
+                    if (!mask[j] && list1[i].Count == list2[j].Count)
+                    {
+                        for (int k = 0; k > list1[i].Count; k++)
+                            if (list1[i][k].CompareTo(list2[j][k]) != 0) { flag = false; break; }
+                        mask[j] = true;
+                    }
+                }
+                if (!flag) return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 将一维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static string ArrayToString<T>(IList<T> list)
         {
             if (list == null) return "null";
@@ -56,6 +108,29 @@ namespace LeetCode.Utilses
             sb.Append(list[0].ToString());
             for (int i = 1; i < list.Count; i++)
                 sb.Append($", {list[i]}");
+            sb.Append(" ]");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 将二维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string ArrayToString<T>(IList<IList<T>> list)
+        {
+            if (list == null) return "null";
+            if (list.Count == 0) return "[ ]";
+            if (list.Count == 1) return $"[ {ArrayToString<T>(list[0])} ]";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[ ");
+            sb.Append(list[0].ToString());
+            for (int i = 1; i < list.Count; i++)
+                sb.Append($", {ArrayToString<T>(list[i])}");
             sb.Append(" ]");
 
             return sb.ToString();
