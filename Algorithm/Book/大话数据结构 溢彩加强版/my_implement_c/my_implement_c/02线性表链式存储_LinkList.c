@@ -56,6 +56,11 @@ Status ListInsert(LinkList* L, int i, ElemType e)
 		return ERROR;                    // 第i个元素不存在
 
 	s = (LinkList)malloc(sizeof(Node));  // 生成新结点(C语言标准函数)
+	if (s == NULL)
+	{
+		printf("Memory allocation failed");
+		return ERROR;
+	}
 	s->data = e;
 	s->next = p->next;                   // 将p的后继结点赋值给s的后继
 	p->next = s;                         // 将s赋值给p的后继
@@ -99,10 +104,20 @@ void CreateListHead(LinkList* L, int n)
 	int i;
 	srand(time(0));                          // 初始化随机数种子
 	*L = (LinkList)malloc(sizeof(Node));
+	if (*L == NULL)
+	{
+		printf("Memory allocation failed");
+		return ERROR;
+	}
 	(*L)->next = NULL;                       // 先建立一个带头结点的单链表
 	for (i = 0; i < n; i++)
 	{
 		p = (LinkList)malloc(sizeof(Node));  // 生成新结点
+		if (p == NULL)
+		{
+			printf("Memory allocation failed");
+			return ERROR;
+		}
 		p->data = rand() % 100 + 1;          // 随机生成100以内的数字
 		p->next = (*L)->next;
 		(*L)->next = p;                      // 插入到表头
@@ -116,10 +131,20 @@ void CreateListTail(LinkList* L, int n)
 	int i;
 	srand(time(0));                       // 初始化随机数种子
 	*L = (LinkList)malloc(sizeof(Node));  // L为整个线性表
+	if (*L == NULL)
+	{
+		printf("Memory allocation failed");
+		return ERROR;
+	}
 	r = *L;                               // r为指向尾部的结点
 	for (i = 0; i < n; i++)
 	{
 		p = (Node*)malloc(sizeof(Node));  // 生成新结点
+		if (p == NULL)
+		{
+			printf("Memory allocation failed");
+			return ERROR;
+		}
 		p->data = rand() % 100 + 1;       // 随机生成100以内的数字
 		r->next = p;                      // 将表尾终端结点的指针指向新结点
 		r = p;                            // 将当前的新结点定义为表尾终端结点

@@ -27,5 +27,8 @@
     <ClCompile Include="02线性表链式存储_LinkList.c">
       <Filter>源文件\第3章 线性表</Filter>
     </ClCompile>
+    <ClCompile Include="03静态链表_StaticLinkList.c">
+      <Filter>源文件\第3章 线性表</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
