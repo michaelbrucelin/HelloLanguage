@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0865
+namespace LeetCode.QuestionBank.Question0856
 {
-    public class Solution0865 : Interface0865
+    public class Solution0856 : Interface0856
     {
         /// <summary>
         /// ( 就入栈，) 就计算一次，如果栈顶是两个数字，就相加

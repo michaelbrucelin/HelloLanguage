@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.QuestionBank.Question0865
+namespace LeetCode.QuestionBank.Question0856
 {
-    public class Test0865
+    public class Test0856
     {
         public void Test()
         {
-            Interface0865 solution = new Solution0865();
+            Interface0856 solution = new Solution0856();
             string s;
             int result, answer;
             int id = 0;
