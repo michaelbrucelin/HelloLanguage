@@ -16,6 +16,9 @@
     <Filter Include="源文件\第3章 线性表">
       <UniqueIdentifier>{5d8c3fc0-f84c-4b61-b826-7669fb9d3e4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\第4章 栈与队列">
+      <UniqueIdentifier>{55aa7e57-dc90-46f4-9ecc-469ae714c35a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01线性表顺序存储_List.c">
@@ -29,6 +32,15 @@
     </ClCompile>
     <ClCompile Include="03静态链表_StaticLinkList.c">
       <Filter>源文件\第3章 线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="01顺序栈_Stack.c">
+      <Filter>源文件\第4章 栈与队列</Filter>
+    </ClCompile>
+    <ClCompile Include="02两栈共享空间_DoubleStack.c">
+      <Filter>源文件\第4章 栈与队列</Filter>
+    </ClCompile>
+    <ClCompile Include="03链栈_LinkStack.c">
+      <Filter>源文件\第4章 栈与队列</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
