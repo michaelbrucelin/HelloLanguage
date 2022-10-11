@@ -16,6 +16,13 @@ function MyAdd-AccessRule() {
     $type = 'Allow'                                   # Other options: [enum]::GetValues('System.Securit y.AccessControl.AccessControlType')
     $ACE = New-Object System.Security.AccessControl.FileSystemAccessRule($identity, $rights, $inheritance, $propagation, $type)
 
+    # 给$dir添加权限
+    $ACL = Get-Acl -Path $dir
+    $ACL.AddAccessRule($ACE)
+    Set-Acl -Path $dir -AclObject $ACL
+    Write-Host $dir" is done."
+
+    # 递归添加权限
     # Get-ChildItem $dir -Directory -Recurse | Select-Object -ExcludeProperty FullName | ForEach-Object {
     Get-ChildItem $dir -Directory -Recurse -Force | ForEach-Object {  # -Force可以对隐藏文件生效
         $ACL = Get-Acl -Path $_.FullName
