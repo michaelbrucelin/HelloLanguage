@@ -17,10 +17,10 @@ function MyAdd-AccessRule() {
     $ACE = New-Object System.Security.AccessControl.FileSystemAccessRule($identity, $rights, $inheritance, $propagation, $type)
 
     # Get-ChildItem $dir -Directory -Recurse | Select-Object -ExcludeProperty FullName | ForEach-Object {
-    Get-ChildItem $dir -Directory -Recurse | ForEach-Object {
-            $ACL = Get-Acl -Path $_.FullName
-            $ACL.AddAccessRule($ACE)
-            Set-Acl -Path $_.FullName -AclObject $ACL
-            Write-Host "$_.FullName is done."
-        }
+    Get-ChildItem $dir -Directory -Recurse -Force | ForEach-Object {  # -Force可以对隐藏文件生效
+        $ACL = Get-Acl -Path $_.FullName
+        $ACL.AddAccessRule($ACE)
+        Set-Acl -Path $_.FullName -AclObject $ACL
+        Write-Host $_.FullName" is done."
+    }
 }
