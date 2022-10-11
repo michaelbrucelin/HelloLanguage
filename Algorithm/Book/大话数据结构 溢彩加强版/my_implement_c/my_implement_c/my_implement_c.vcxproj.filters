@@ -19,6 +19,9 @@
     <Filter Include="源文件\第4章 栈与队列">
       <UniqueIdentifier>{55aa7e57-dc90-46f4-9ecc-469ae714c35a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\第5章 串">
+      <UniqueIdentifier>{1d7d0408-a8ee-4d6e-b9e4-80eb12680fb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01线性表顺序存储_List.c">
@@ -41,6 +44,15 @@
     </ClCompile>
     <ClCompile Include="03链栈_LinkStack.c">
       <Filter>源文件\第4章 栈与队列</Filter>
+    </ClCompile>
+    <ClCompile Include="04顺序队列_Queue.c">
+      <Filter>源文件\第3章 线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="05链队列_LinkQueue.c">
+      <Filter>源文件\第3章 线性表</Filter>
+    </ClCompile>
+    <ClCompile Include="01串_String.c">
+      <Filter>源文件\第5章 串</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

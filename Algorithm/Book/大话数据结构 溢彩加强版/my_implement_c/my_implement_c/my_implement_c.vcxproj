@@ -139,12 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="01串_String.c" />
     <ClCompile Include="01线性表顺序存储_List.c" />
     <ClCompile Include="01顺序栈_Stack.c" />
     <ClCompile Include="02两栈共享空间_DoubleStack.c" />
     <ClCompile Include="02线性表链式存储_LinkList.c" />
     <ClCompile Include="03链栈_LinkStack.c" />
     <ClCompile Include="03静态链表_StaticLinkList.c" />
+    <ClCompile Include="04顺序队列_Queue.c" />
+    <ClCompile Include="05链队列_LinkQueue.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
