@@ -1,5 +1,6 @@
 # 递归查找所有文件夹，并添加权限
 # 场景：将一块装有操作系统的磁盘，挂载到另一台电脑上，想要删除磁盘上原C盘的文件，但是删不掉，需要将当前用户设置为有文件夹的全部权限，才可以删除文件夹
+# MyAdd-AccessRule -dir C:\Windows -identity DOMAIN\USER
 
 function MyAdd-AccessRule() {
     param(
