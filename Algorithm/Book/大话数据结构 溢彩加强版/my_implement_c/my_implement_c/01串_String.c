@@ -1,4 +1,4 @@
-/*字符串的存储结构*/
+/* 字符串的存储结构 */
 #define MAXSIZE 40                 // 存储空间初始分配量
 
 typedef char String[MAXSIZE + 1];  // 0号单元存放串的长度
@@ -41,9 +41,8 @@ Status SubString(String Sub, String S, int pos, int len)
 }
 
 
-/*Index操作*/
-// 返回子串T在主串S中第pos个字符之后的位置。若不存在,则函数返回值为0。
-// 其中，T非空，1≤pos≤StrLength(S)。
+/* Index操作，借助其他函数实现 */
+// T为非空串。若主串S中第pos个字符之后存在与T相等的子串，则返回第一个这样的子串在S中的位置，否则返回0
 int Index(String S, String T, int pos)
 {
 	int n, m, i;
@@ -64,4 +63,31 @@ int Index(String S, String T, int pos)
 	}
 
 	return 0;                             // 若无子串与T相等，返回0
+}
+
+
+/* Index操作，独立实现 */
+// 返回子串T在主串S中第pos个字符之后的位置。若不存在,则函数返回值为0。其中，T非空，1≤pos≤StrLength(S)。
+int Index(String S, String T, int pos)
+{
+	int i = pos;                    // i用于主串S中当前位置下标值，从pos位置开始匹配
+	int j = 1;                      // j用于子串T中当前位置下标值
+	while (i <= S[0] && j <= T[0])  // 若i小于S的长度并且j小于T的长度时，循环继续
+	{
+		if (S[i] == T[j])           // 两字母相等则继续
+		{
+			++i;
+			++j;
+		}
+		else                        // 指针后退重新开始匹配
+		{
+			i = i - j + 2;          // i退回到上次匹配首位的下一位
+			j = 1;                  // j退回到子串T的首位
+		}
+	}
+
+	if (j > T[0])
+		return i - T[0];
+	else
+		return 0;
 }

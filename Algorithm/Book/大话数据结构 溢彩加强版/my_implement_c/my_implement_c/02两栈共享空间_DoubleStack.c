@@ -15,7 +15,7 @@ typedef struct
 typedef int Status;           // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 
-/*进栈操作*/
+/* 进栈操作 */
 // 插入元素e为新的栈顶元素
 Status Push(SqDoubleStack* S, SElemType e, int stackNumber)
 {
@@ -30,7 +30,7 @@ Status Push(SqDoubleStack* S, SElemType e, int stackNumber)
 }
 
 
-/*出栈操作*/
+/* 出栈操作 */
 // 若栈不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR
 Status Pop(SqDoubleStack* S, SElemType* e, int stackNumber)
 {

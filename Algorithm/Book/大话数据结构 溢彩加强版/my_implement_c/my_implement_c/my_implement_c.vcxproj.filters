@@ -54,5 +54,8 @@
     <ClCompile Include="01串_String.c">
       <Filter>源文件\第5章 串</Filter>
     </ClCompile>
+    <ClCompile Include="02模式匹配_KMP.c">
+      <Filter>源文件\第5章 串</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

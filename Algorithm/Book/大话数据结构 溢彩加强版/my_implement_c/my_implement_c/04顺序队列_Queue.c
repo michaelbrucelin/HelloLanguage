@@ -15,7 +15,7 @@ typedef struct
 typedef int Status;           // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 
-/*初始化操作*/
+/* 初始化操作 */
 // 初始化一个空队列Q
 Status InitQueue(SqQueue* Q)
 {
@@ -25,7 +25,7 @@ Status InitQueue(SqQueue* Q)
 }
 
 
-/*获取队列的长度*/
+/* 获取队列的长度 */
 // 返回Q的元素个数，也就是队列的当前长度
 int QueueLength(SqQueue Q)
 {
@@ -33,7 +33,7 @@ int QueueLength(SqQueue Q)
 }
 
 
-/*入队操作*/
+/* 入队操作 */
 // 若队列未满，则插入元素e为Q新的队尾元素
 Status EnQueue(SqQueue* Q, QElemType e)
 {
@@ -46,7 +46,7 @@ Status EnQueue(SqQueue* Q, QElemType e)
 }
 
 
-/*出队操作*/
+/* 出队操作 */
 // 若队列不空，则删除Q中队头元素，用e返回其值
 Status DeQueue(SqQueue* Q, QElemType* e)
 {

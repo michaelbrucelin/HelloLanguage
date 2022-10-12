@@ -20,7 +20,7 @@ typedef int Status;        // Status是函数的类型，其值是函数结果的状态代码，如OK
 
 #define OVERFLOW -2        // 堆溢出
 
-/*入队操作*/
+/* 入队操作 */
 // 插入元素e为Q的新的队尾元素
 Status EnQueue(LinkQueue* Q, QElemType e)
 {
@@ -41,7 +41,7 @@ Status EnQueue(LinkQueue* Q, QElemType e)
 }
 
 
-/*出队操作*/
+/* 出队操作 */
 // 若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回ERROR
 Status DeQueue(LinkQueue* Q, QElemType* e)
 {
