@@ -41,5 +41,31 @@ namespace LeetCode.QuestionBank.Question0769
 
             return result;
         }
+
+        /// <summary>
+        /// 对上面的MaxChunksToSorted()进行优化，
+        /// 由于数组中的元素是连续的，所以块的最小值与最大值是正确的即可，不需要Hash表记录块的全部元素
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public int MaxChunksToSorted2(int[] arr)
+        {
+            int result = 0;
+
+            int left = 0, min = arr.Length, max = -1;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                min = Math.Min(min, arr[i]);
+                max = Math.Max(max, arr[i]);
+
+                if (min == left && max == i)
+                {
+                    result++;
+                    left = i + 1; min = arr.Length; max = -1;
+                }
+            }
+
+            return result;
+        }
     }
 }
