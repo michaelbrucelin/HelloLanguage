@@ -162,6 +162,22 @@ namespace LeetCode.Utilses
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        /// <summary>
+        /// 乱序数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T[] ShuffleArray<T>(IList<T> list)
+        {
+            return list.OrderBy(i => random.Next()).ToArray();
+        }
+
+        /// <summary>
+        /// 乱序字符串
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string ShuffleString(string str)
         {
             return new string(str.OrderBy(i => random.Next()).ToArray());

@@ -14,11 +14,14 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Test0856 test = new();
-            test.Test();
+            Random random = new Random();
+
+            //Test0856 test = new();
+            //test.Test();
             // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
+            Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             //var list = PatternSplit("aa..*d");
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
