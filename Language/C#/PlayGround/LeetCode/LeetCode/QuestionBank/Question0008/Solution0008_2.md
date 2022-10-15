@@ -68,7 +68,6 @@ class Solution:
         for c in str:
             automaton.get(c)
         return automaton.sign * automaton.ans
-
 ```
 
 ```C++
@@ -111,7 +110,6 @@ public:
         return automaton.sign * automaton.ans;
     }
 };
-
 ```
 
 ```Java
@@ -160,11 +158,9 @@ class Automaton {
         return 3;
     }
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 为字符串的长度。我们只需要依次处理所有的字符，处理每个字符需要的时间为 O(1)。
-
 -   空间复杂度：O(1)。自动机的状态只需要常数空间存储。

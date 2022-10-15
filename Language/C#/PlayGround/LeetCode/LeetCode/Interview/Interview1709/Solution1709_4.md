@@ -46,7 +46,6 @@ class Solution {
         return dp[k];
     }
 }
-
 ```
 
 ```C#
@@ -71,7 +70,6 @@ public class Solution {
         return dp[k];
     }
 }
-
 ```
 
 ```JavaScript
@@ -94,7 +92,6 @@ var getKthMagicNumber = function(k) {
     }
     return dp[k];
 };
-
 ```
 
 ```Go
@@ -124,7 +121,6 @@ func min(a, b int) int {
     }
     return b
 }
-
 ```
 
 ```Python
@@ -145,7 +141,6 @@ class Solution:
                 p7 += 1
         
         return dp[k]
-
 ```
 
 ```C++
@@ -171,7 +166,6 @@ public:
         return dp[k];
     }
 };
-
 ```
 
 ```C
@@ -194,11 +188,9 @@ int getKthMagicNumber(int k) {
     }
     return dp[k];
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(k)。需要计算数组 dp 中的 k 个元素，每个元素的计算都可以在 O(1) 的时间内完成。
-
 -   空间复杂度：O(k)。空间复杂度主要取决于数组 dp 的大小。

@@ -9,7 +9,6 @@
 ```
  输入：s1 = "waterbottle", s2 = "erbottlewat"
  输出：True
-
 ```
 
 **示例2:**
@@ -17,7 +16,6 @@
 ```
  输入：s1 = "aa", s2 = "aba"
  输出：False
-
 ```
 
 **提示：**

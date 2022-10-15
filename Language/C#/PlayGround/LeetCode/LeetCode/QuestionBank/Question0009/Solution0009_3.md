@@ -50,7 +50,6 @@ public:
         return x == revertedNumber || x == revertedNumber / 10;
     }
 };
-
 ```
 
 ```C#
@@ -77,7 +76,6 @@ public class Solution {
         return x == revertedNumber || x == revertedNumber / 10;
     }
 }
-
 ```
 
 ```Java
@@ -104,7 +102,6 @@ class Solution {
         return x == revertedNumber || x == revertedNumber / 10;
     }
 }
-
 ```
 
 ```TypeScript
@@ -129,7 +126,6 @@ var isPalindrome = function(x: number): boolean {
     // 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。
     return x === revertedNumber || x === Math.floor(revertedNumber / 10);
 };
-
 ```
 
 ```Go
@@ -154,7 +150,6 @@ func isPalindrome(x int) bool {
     // 由于处于中位的数字不影响回文（它总是与自己相等），所以我们可以简单地将其去除。
     return x == revertedNumber || x == revertedNumber / 10
 }
-
 ```
 
 **复杂度分析**

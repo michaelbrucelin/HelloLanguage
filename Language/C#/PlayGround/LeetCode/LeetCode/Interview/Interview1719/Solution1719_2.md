@@ -17,7 +17,6 @@ x=x1⊕x2
 这样一来，我们就可以把从 1 到 n 的所有整数分成两类，其中一类包含所有二进制表示的第 l 位为 0 的数，另一类包含所有二进制表示的第 l 位为 1 的数。可以发现：
 
 -   对于任意一个在数组 nums 中出现一次的数字，这些数字在上述 2n−2 个数字中出现两次，两次出现会被包含在同一类中；
-
 -   对于任意一个在数组 nums 中消失的数字，即 x1 和 x2，这些数字在上述 2n−2 个数字中出现一次，会被包含在不同类中。
 
 
@@ -57,7 +56,6 @@ public:
         return {type1, type2};
     }
 };
-
 ```
 
 ```Java
@@ -91,7 +89,6 @@ class Solution {
         return new int[]{type1, type2};
     }
 }
-
 ```
 
 ```C#
@@ -125,7 +122,6 @@ public class Solution {
         return new int[]{type1, type2};
     }
 }
-
 ```
 
 ```Python
@@ -152,7 +148,6 @@ class Solution:
                 type2 ^= i
         
         return [type1, type2]
-
 ```
 
 ```JavaScript
@@ -183,7 +178,6 @@ var missingTwo = function(nums) {
     }
     return [type1, type2];
 };
-
 ```
 
 ```Go
@@ -214,7 +208,6 @@ func missingTwo(nums []int) []int {
     }
     return []int{type1, type2}
 }
-
 ```
 
 ```C
@@ -252,11 +245,9 @@ int* missingTwo(int* nums, int numsSize, int* returnSize) {
     *returnSize = 2;
     return ans;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是最大的整数。需要遍历的数字有 2n−2 个，共遍历两次。
-
 -   空间复杂度：O(1)。

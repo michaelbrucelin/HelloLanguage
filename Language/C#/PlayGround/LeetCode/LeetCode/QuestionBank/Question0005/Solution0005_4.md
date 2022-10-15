@@ -75,7 +75,6 @@ class Solution {
         return (right - left - 2) / 2;
     }
 }
-
 ```
 
 ```Python
@@ -107,7 +106,6 @@ class Solution:
                 start = i - cur_arm_len
                 end = i + cur_arm_len
         return s[start+1:end+1:2]
-
 ```
 
 ```C++
@@ -162,7 +160,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 ```Go
@@ -215,11 +212,9 @@ func min(x, y int) int {
     }
     return y
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是字符串的长度。由于对于每个位置，扩展要么从当前的最右侧臂长 `right` 开始，要么只会进行一步，而 `right` 最多向前走 O(n) 步，因此算法的复杂度为 O(n)。
-
 -   空间复杂度：O(n)，我们需要 O(n) 的空间记录每个位置的臂长。

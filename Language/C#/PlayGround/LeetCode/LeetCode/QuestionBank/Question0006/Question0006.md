@@ -25,7 +25,6 @@ string convert(string s, int numRows);
 ```
 输入：s = "PAYPALISHIRING", numRows = 3
 输出："PAHNAPLSIIGYIR"
-
 ```
 
 **示例 2：**
@@ -38,7 +37,6 @@ P     I    N
 A   L S  I G
 Y A   H R
 P     I
-
 ```
 
 **示例 3：**
@@ -46,7 +44,6 @@ P     I
 ```
 输入：s = "A", numRows = 1
 输出："A"
-
 ```
 
 **提示：**

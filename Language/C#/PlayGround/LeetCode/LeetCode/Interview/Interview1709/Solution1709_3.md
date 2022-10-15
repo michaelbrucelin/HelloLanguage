@@ -44,7 +44,6 @@ class Solution {
         return magic;
     }
 }
-
 ```
 
 ```C#
@@ -69,7 +68,6 @@ public class Solution {
         return magic;
     }
 }
-
 ```
 
 ```JavaScript
@@ -118,7 +116,7 @@ class MinHeap {
         if(this.heap[parentIndex] > this.heap[index]){
             this.swap(parentIndex, index);
             this.shiftUp(parentIndex);
-        }  
+        }
     }
 
     swap(i1, i2) {
@@ -159,7 +157,6 @@ class MinHeap {
         return this.heap.length;
     }
 }
-
 ```
 
 ```Go
@@ -186,7 +183,6 @@ func getKthMagicNumber(k int) int {
         }
     }
 }
-
 ```
 
 ```Python
@@ -204,7 +200,6 @@ class Solution:
                     heapq.heappush(heap, nxt)
 
         return heapq.heappop(heap)
-
 ```
 
 ```C++
@@ -232,7 +227,6 @@ public:
         return magic;
     }
 };
-
 ```
 
 ```C
@@ -340,11 +334,9 @@ int getKthMagicNumber(int k) {
     }
     return magic;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(klogk)。得到第 k 个数需要进行 k 次循环，每次循环都要从最小堆中取出 1 个元素以及向最小堆中加入最多 3 个元素，因此每次循环的时间复杂度是 O(log(3k)+3log(3k))=O(logk)，总时间复杂度是 O(klogk)。
-
 -   空间复杂度：O(k)。空间复杂度主要取决于最小堆和哈希集合的大小，最小堆和哈希集合的大小都不会超过 3k。

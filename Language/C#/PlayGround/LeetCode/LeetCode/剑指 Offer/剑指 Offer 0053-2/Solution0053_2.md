@@ -22,7 +22,6 @@ class Solution {
         return xor;
     }
 }
-
 ```
 
 ```C#
@@ -39,7 +38,6 @@ public class Solution {
         return xor;
     }
 }
-
 ```
 
 ```C++
@@ -57,7 +55,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```JavaScript
@@ -72,7 +69,6 @@ var missingNumber = function(nums) {
     }
     return xor;
 };
-
 ```
 
 ```TypeScript
@@ -87,31 +83,27 @@ var missingNumber = function(nums) {
     }
     return xor;
 };
-
 ```
 
-```Golang
+```Go
 func missingNumber(nums []int) (xor int) {
     for i, num := range nums {
         xor ^= i ^ num
     }
     return xor ^ len(nums)
 }
-
 ```
 
-```Python3
+```Python
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         xor = 0
         for i, num in enumerate(nums):
             xor ^= i ^ num
         return xor ^ len(nums)
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是数组 nums 的长度加 1。需要对 2n−1 个数字计算按位异或的结果。
-
 -   空间复杂度：O(1)。

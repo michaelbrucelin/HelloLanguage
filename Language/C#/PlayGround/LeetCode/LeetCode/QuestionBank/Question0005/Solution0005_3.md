@@ -45,7 +45,6 @@ class Solution {
         return right - left - 1;
     }
 }
-
 ```
 
 ```Python
@@ -66,7 +65,6 @@ class Solution:
             if right2 - left2 > end - start:
                 start, end = left2, right2
         return s[start: end + 1]
-
 ```
 
 ```C++
@@ -97,7 +95,6 @@ public:
         return s.substr(start, end - start + 1);
     }
 };
-
 ```
 
 ```Go
@@ -123,11 +120,9 @@ func expandAroundCenter(s string, left, right int) (int, int) {
     for ; left >= 0 && right < len(s) && s[left] == s[right]; left, right = left-1 , right+1 { }
     return left + 1, right - 1
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n^2^)，其中 n 是字符串的长度。长度为 1 和 2 的回文中心分别有 n 和 n−1 个，每个回文中心最多会向外扩展 O(n) 次。
-
 -   空间复杂度：O(1)。
