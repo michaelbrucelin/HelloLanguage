@@ -21,7 +21,7 @@ namespace LeetCode
             // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
-            Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+            // Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             //var list = PatternSplit("aa..*d");
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
@@ -52,6 +52,9 @@ namespace LeetCode
 
             //bool[] arr = new bool[10];  // 默认值是false
             //Console.WriteLine(arr[8]);
+
+            //(int a, int b)[] tuples = new (int, int)[10];
+            //Console.WriteLine($"a={tuples[0].a}, b={tuples[0].b}");  // 值元组有默认值，默认值为0
 
             //Tuple<int, int, int> tuple = new Tuple<int, int, int>(1, 2, 3);
             //Console.WriteLine(tuple.ToString());
