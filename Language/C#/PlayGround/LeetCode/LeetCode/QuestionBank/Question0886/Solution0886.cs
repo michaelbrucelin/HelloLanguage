@@ -17,6 +17,8 @@ namespace LeetCode.QuestionBank.Question0886
         /// <exception cref="NotImplementedException"></exception>
         public bool PossibleBipartition(int n, int[][] dislikes)
         {
+            if (dislikes.Length <= 1) return true;
+
             Dictionary<int, HashSet<int>> helper = new Dictionary<int, HashSet<int>>();
             for (int i = 0; i < dislikes.Length; i++)
             {
