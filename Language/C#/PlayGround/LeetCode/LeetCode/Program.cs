@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0856;
+using LeetCode.QuestionBank.Question0886;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,8 +16,8 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            //Test0856 test = new();
-            //test.Test();
+            Test0886 test = new();
+            test.Test();
             // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
