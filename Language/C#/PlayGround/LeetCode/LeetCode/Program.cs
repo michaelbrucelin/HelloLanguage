@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0886;
+using LeetCode.QuestionBank.Question0904;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,7 +16,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0886 test = new();
+            Test0904 test = new();
             test.Test();
             // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
@@ -27,9 +27,12 @@ namespace LeetCode
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
             //Console.WriteLine(Utils.ArrayToString(PatternSplit("aa..*d")));
 
-            // Console.WriteLine(Math.Floor((2 - 3) / 2d));
+            //Console.WriteLine(Math.Floor((2 - 3) / 2d));
 
-            // Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
+
+            //List<int> list = Enumerable.Range(0, 10).ToList();
+            //Console.WriteLine(list[-1]);
 
             // 检查整型是否溢出
             //int x = int.MaxValue;
