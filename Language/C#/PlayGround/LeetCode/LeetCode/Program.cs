@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0902;
+using LeetCode.QuestionBank.Question1700;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,18 +16,25 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0902 test = new();
+            Test1700 test = new();
             test.Test();
-            // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+            //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
-            // Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
-            // Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
+            //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             //var list = PatternSplit("aa..*d");
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
             //Console.WriteLine(Utils.ArrayToString(PatternSplit("aa..*d")));
 
             //Console.WriteLine(Math.Floor((2 - 3) / 2d));
+
+            //C#中的指针
+            //unsafe
+            //{
+            //    int x = 10, y = 100;
+            //    int* addx = &x;
+            //}
 
             //Console.WriteLine(Utils.GenerateRandomIntArray(30, 0, 1000));
 
