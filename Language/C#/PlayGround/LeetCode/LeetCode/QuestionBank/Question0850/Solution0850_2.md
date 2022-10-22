@@ -69,7 +69,6 @@ public:
         return ans % static_cast<int>(1e9 + 7);
     }
 };
-
 ```
 
 ```Java
@@ -140,7 +139,6 @@ class Solution {
         return (int) (ans % MOD);
     }
 }
-
 ```
 
 ```C#
@@ -203,7 +201,6 @@ public class Solution {
         return (int) (ans % MOD);
     }
 }
-
 ```
 
 ```Python
@@ -254,7 +251,6 @@ class Solution:
             i = j + 1
         
         return ans % (10**9 + 7)
-
 ```
 
 ```C
@@ -373,7 +369,6 @@ int rectangleArea(int** rectangles, int rectanglesSize, int* rectanglesColSize){
     }
     return ans % (long long)(1e9 + 7);
 }
-
 ```
 
 ```Go
@@ -431,11 +426,9 @@ func rectangleArea(rectangles [][]int) (ans int) {
     }
     return ans % (1e9 + 7)
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n^2^)，其中 n 是矩形的个数。
-
 -   空间复杂度：O(n)，即为扫描线需要使用的空间。

@@ -4,25 +4,25 @@
 
 我们也可以用迭代的方式实现方法一的递归函数，两种方式是等价的，区别在于递归的时候隐式地维护了一个栈，而我们在迭代的时候需要显式地将这个栈模拟出来，其余的实现与细节都相同，具体可以参考下面的代码。
 
-![](./Solution0145_4_01.png)
-![](./Solution0145_4_02.png)
-![](./Solution0145_4_03.png)
-![](./Solution0145_4_04.png)
-![](./Solution0145_4_05.png)
-![](./Solution0145_4_06.png)
-![](./Solution0145_4_07.png)
-![](./Solution0145_4_08.png)
-![](./Solution0145_4_09.png)
-![](./Solution0145_4_10.png)
-![](./Solution0145_4_11.png)
-![](./Solution0145_4_12.png)
-![](./Solution0145_4_13.png)
-![](./Solution0145_4_14.png)
-![](./Solution0145_4_15.png)
-![](./Solution0145_4_16.png)
-![](./Solution0145_4_17.png)
-![](./Solution0145_4_18.png)
-![](./Solution0145_4_19.png)
+![](./assets/img/Solution0145_4_01.png)
+![](./assets/img/Solution0145_4_02.png)
+![](./assets/img/Solution0145_4_03.png)
+![](./assets/img/Solution0145_4_04.png)
+![](./assets/img/Solution0145_4_05.png)
+![](./assets/img/Solution0145_4_06.png)
+![](./assets/img/Solution0145_4_07.png)
+![](./assets/img/Solution0145_4_08.png)
+![](./assets/img/Solution0145_4_09.png)
+![](./assets/img/Solution0145_4_10.png)
+![](./assets/img/Solution0145_4_11.png)
+![](./assets/img/Solution0145_4_12.png)
+![](./assets/img/Solution0145_4_13.png)
+![](./assets/img/Solution0145_4_14.png)
+![](./assets/img/Solution0145_4_15.png)
+![](./assets/img/Solution0145_4_16.png)
+![](./assets/img/Solution0145_4_17.png)
+![](./assets/img/Solution0145_4_18.png)
+![](./assets/img/Solution0145_4_19.png)
 
 **代码**
 
@@ -56,7 +56,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -87,10 +86,9 @@ class Solution {
         return res;
     }
 }
-
 ```
 
-```Python3
+```Python
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
@@ -114,10 +112,9 @@ class Solution:
                 root = root.right
         
         return res
-
 ```
 
-```Golang
+```Go
 func postorderTraversal(root *TreeNode) (res []int) {
     stk := []*TreeNode{}
     var prev *TreeNode
@@ -139,7 +136,6 @@ func postorderTraversal(root *TreeNode) (res []int) {
     }
     return
 }
-
 ```
 
 ```C
@@ -169,11 +165,9 @@ int *postorderTraversal(struct TreeNode *root, int *returnSize) {
     }
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是二叉搜索树的节点数。每一个节点恰好被遍历一次。
-
 -   空间复杂度：O(n)，为迭代过程中显式栈的开销，平均情况下为 O(log⁡n)，最坏情况下树呈现链状，为 O(n)。

@@ -5,7 +5,6 @@
 我们可以先预处理 nums2，使查询 nums1 中的每个元素在 nums2 中对应位置的右边的第一个更大的元素值时不需要再遍历 nums2。于是，我们将题目分解为两个子问题：
 
 -   第 1 个子问题：如何更高效地计算 nums2 中每个元素右边的第一个更大的值；
-    
 -   第 2 个子问题：如何存储第 1 个子问题的结果。
     
 
@@ -17,19 +16,19 @@
 
 可以结合以下例子来理解。
 
-![](./Solution0496_3_01.png)
-![](./Solution0496_3_02.png)
-![](./Solution0496_3_03.png)
-![](./Solution0496_3_04.png)
-![](./Solution0496_3_05.png)
-![](./Solution0496_3_06.png)
-![](./Solution0496_3_07.png)
-![](./Solution0496_3_08.png)
-![](./Solution0496_3_09.png)
-![](./Solution0496_3_10.png)
-![](./Solution0496_3_11.png)
-![](./Solution0496_3_12.png)
-![](./Solution0496_3_13.png)
+![](./assets/img/Solution0496_3_01.png)
+![](./assets/img/Solution0496_3_02.png)
+![](./assets/img/Solution0496_3_03.png)
+![](./assets/img/Solution0496_3_04.png)
+![](./assets/img/Solution0496_3_05.png)
+![](./assets/img/Solution0496_3_06.png)
+![](./assets/img/Solution0496_3_07.png)
+![](./assets/img/Solution0496_3_08.png)
+![](./assets/img/Solution0496_3_09.png)
+![](./assets/img/Solution0496_3_10.png)
+![](./assets/img/Solution0496_3_11.png)
+![](./assets/img/Solution0496_3_12.png)
+![](./assets/img/Solution0496_3_13.png)
 
 因为题目规定了 nums2 是没有重复元素的，所以我们可以使用哈希表来解决第 2 个子问题，将元素值与其右边第一个更大的元素值的对应关系存入哈希表。
 
@@ -39,7 +38,7 @@
 
 **代码**
 
-```Python3
+```Python
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         res = {}
@@ -50,7 +49,6 @@ class Solution:
             res[num] = stack[-1] if stack else -1
             stack.append(num)
         return [res[num] for num in nums1]
-
 ```
 
 ```Java
@@ -73,7 +71,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```C#
@@ -96,7 +93,6 @@ public class Solution {
         return res;
     }
 }
-
 ```
 
 ```C++
@@ -120,7 +116,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```JavaScript
@@ -138,10 +133,9 @@ var nextGreaterElement = function(nums1, nums2) {
     const res = new Array(nums1.length).fill(0).map((_, i) => map.get(nums1[i]));
     return res;
 };
-
 ```
 
-```Golang
+```Go
 func nextGreaterElement(nums1, nums2 []int) []int {
     mp := map[int]int{}
     stack := []int{}
@@ -163,11 +157,9 @@ func nextGreaterElement(nums1, nums2 []int) []int {
     }
     return res
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(m+n)，其中 m 是 nums1 的长度，n 是 nums2 的长度。我们需要遍历 nums2 以计算 nums2 中每个元素右边的第一个更大的值；需要遍历 nums1 以生成查询结果。
-    
 -   空间复杂度：O(n)，用于存储哈希表。

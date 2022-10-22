@@ -22,7 +22,7 @@
 
 **示例 1：**
 
-**![](./Question0998_01.png)**
+**![](./assets/img/Question0998_01.png)**
 
 ```
 输入：root = [4,1,3,null,null,2], val = 5
@@ -31,7 +31,7 @@
 ```
 
 **示例 2：  
-![](./Question0998_02.png)**
+![](./assets/img/Question0998_02.png)**
 
 ```
 输入：root = [5,2,4,null,1], val = 3
@@ -40,13 +40,12 @@
 ```
 
 **示例 3：  
-![](./Question0998_03.png)**
+![](./assets/img/Question0998_03.png)**
 
 ```
 输入：root = [5,2,3,null,1], val = 4
 输出：[5,2,4,null,1,3]
 解释：a = [2,1,5,3], b = [2,1,5,3,4]
-
 ```
 
 **提示：**

@@ -10,7 +10,7 @@
 
 **示例 1:**
 
-![](./Question0782.jpg)
+![](./assets/img/Question0782.jpg)
 
 ```
 输入: board = [[0,1,1,0],[0,1,1,0],[1,0,0,1],[1,0,0,1]]
@@ -23,7 +23,7 @@
 
 **示例 2:**
 
-![](./Question0782_2.jpg)
+![](./assets/img/Question0782_2.jpg)
 
 ```
 输入: board = [[0, 1], [1, 0]]
@@ -34,7 +34,7 @@
 
 **示例 3:**
 
-![](./Question0782_3.jpg)
+![](./assets/img/Question0782_3.jpg)
 
 ```
 输入: board = [[1, 0], [1, 0]]

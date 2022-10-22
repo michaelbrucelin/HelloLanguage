@@ -9,8 +9,7 @@
 如果两棵树具有**相同的结构**和**相同的结点值**，则它们是**重复**的。
 
 **示例 1：**
-s
-![](./Question0652_1.jpg)
+![](./assets/img/Question0652_1.jpg)
 
 ```
 输入：root = [1,2,3,4,null,2,4,null,null,4]
@@ -19,7 +18,7 @@ s
 
 **示例 2：**
 
-![](./Question0652_2.jpg)
+![](./assets/img/Question0652_2.jpg)
 
 ```
 输入：root = [2,1,1]
@@ -28,7 +27,7 @@ s
 
 **示例 3：**
 
-**![](./Question0652_3.jpg)**
+**![](./assets/img/Question0652_3.jpg)**
 
 ```
 输入：root = [2,2,2,3,null,3,null]

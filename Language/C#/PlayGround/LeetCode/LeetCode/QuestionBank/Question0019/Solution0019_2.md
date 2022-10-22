@@ -16,7 +16,7 @@
 
 为了方便删除操作，我们可以从哑节点开始遍历 L−n+1 个节点。当遍历到第 L−n+1 个节点时，**它的下一个节点**就是我们需要删除的节点，这样我们只需要修改一次指针，就能完成删除操作。
 
-![](./Solution0019_2.png)
+![](./assets/img/Solution0019_2.png)
 
 **代码**
 
@@ -45,7 +45,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 ```Java
@@ -71,7 +70,6 @@ class Solution {
         return length;
     }
 }
-
 ```
 
 ```Python
@@ -91,7 +89,6 @@ class Solution:
             cur = cur.next
         cur.next = cur.next.next
         return dummy.next
-
 ```
 
 ```Go
@@ -112,7 +109,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
     cur.Next = cur.Next.Next
     return dummy.Next
 }
-
 ```
 
 ```C
@@ -138,11 +134,9 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     free(dummy);
     return ans;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(L)，其中 L 是链表的长度。
-
 -   空间复杂度：O(1)。

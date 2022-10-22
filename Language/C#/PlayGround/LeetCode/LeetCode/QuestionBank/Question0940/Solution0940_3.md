@@ -9,7 +9,7 @@
 于是我们只需要计算`newCount`和`repeatCount`即可
 
 `newCount`的值比较好计算，就是`dp[i - 1]`。  
-![](./Solution0940_3.png)
+![](./assets/img/Solution0940_3.png)
 然后我们计算`repeatCount`，我们观察遍历到的第二个字符`b`，出现重复的序列为`b`和`ab`，而这两个序列正好是上一次添加`b`（也就是第②步）的时候新增的两个序列。于是我们可以使用数组`preCount`来记录上一次该字符新增的个数，该个数就是`repeatCount`。
 
 由于`dp[i]`仅和`dp[i-1]`有关，我们可以滚动存储。

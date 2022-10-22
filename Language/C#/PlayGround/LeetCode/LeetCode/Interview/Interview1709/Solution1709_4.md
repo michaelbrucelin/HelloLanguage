@@ -18,11 +18,11 @@
 
 在计算 dp[i] 之后，会更新三个指针 p3,p5,p7，更新之后的指针将用于计算 dp[i+1]，同样满足 dp[i+1]>dp[i] 且 dp[i+1] 是大于 dp[i] 的最小的数。
 
-![](./Solution1709_4_01.png)
-![](./Solution1709_4_02.png)
-![](./Solution1709_4_03.png)
-![](./Solution1709_4_04.png)
-![](./Solution1709_4_05.png)
+![](./assets/img/Solution1709_4_01.png)
+![](./assets/img/Solution1709_4_02.png)
+![](./assets/img/Solution1709_4_03.png)
+![](./assets/img/Solution1709_4_04.png)
+![](./assets/img/Solution1709_4_05.png)
 
 ```Java
 class Solution {

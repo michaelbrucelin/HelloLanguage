@@ -15,7 +15,7 @@
 
 **示例 1:**
 
-![](./Question0623.png)
+![](./assets/img/Question0623.png)
 
 ```
 输入: root = [4,2,6,3,1,5], val = 1, depth = 2
@@ -24,12 +24,11 @@
 
 **示例 2:**
 
-![](./Question0623_2.png)
+![](./assets/img/Question0623_2.png)
 
 ```
 输入: root = [4,2,null,3,1], val = 1, depth = 3
 输出:  [4,2,null,1,1,3,null,null,1]
-
 ```
 
 **提示:**

@@ -12,25 +12,25 @@
     -   如果 predecessor 的右孩子不为空，则此时其右孩子指向 x，说明我们已经遍历完 x 的左子树，我们将 predecessor 的右孩子置空，将 x 的值加入答案数组，然后访问 x 的右孩子，即 x\=x.right。
 3.  重复上述操作，直至访问完整棵树。
 
-![](./Solution0094_5_01.png)
-![](./Solution0094_5_02.png)
-![](./Solution0094_5_03.png)
-![](./Solution0094_5_04.png)
-![](./Solution0094_5_05.png)
-![](./Solution0094_5_06.png)
-![](./Solution0094_5_07.png)
-![](./Solution0094_5_08.png)
-![](./Solution0094_5_09.png)
-![](./Solution0094_5_10.png)
-![](./Solution0094_5_11.png)
-![](./Solution0094_5_12.png)
-![](./Solution0094_5_13.png)
-![](./Solution0094_5_14.png)
-![](./Solution0094_5_15.png)
-![](./Solution0094_5_16.png)
-![](./Solution0094_5_17.png)
-![](./Solution0094_5_18.png)
-![](./Solution0094_5_19.png)
+![](./assets/img/Solution0094_5_01.png)
+![](./assets/img/Solution0094_5_02.png)
+![](./assets/img/Solution0094_5_03.png)
+![](./assets/img/Solution0094_5_04.png)
+![](./assets/img/Solution0094_5_05.png)
+![](./assets/img/Solution0094_5_06.png)
+![](./assets/img/Solution0094_5_07.png)
+![](./assets/img/Solution0094_5_08.png)
+![](./assets/img/Solution0094_5_09.png)
+![](./assets/img/Solution0094_5_10.png)
+![](./assets/img/Solution0094_5_11.png)
+![](./assets/img/Solution0094_5_12.png)
+![](./assets/img/Solution0094_5_13.png)
+![](./assets/img/Solution0094_5_14.png)
+![](./assets/img/Solution0094_5_15.png)
+![](./assets/img/Solution0094_5_16.png)
+![](./assets/img/Solution0094_5_17.png)
+![](./assets/img/Solution0094_5_18.png)
+![](./assets/img/Solution0094_5_19.png)
 
 其实整个过程我们就多做一步：假设当前遍历到的节点为 x，将 x 的左子树中最右边的节点的右孩子指向 x，这样在左子树遍历完成后我们通过这个指向走回了 x，且能通过这个指向知晓我们已经遍历完成了左子树，而不用再通过栈来维护，省去了栈的空间复杂度。
 
@@ -72,7 +72,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -110,7 +109,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```JavaScript
@@ -147,7 +145,6 @@ var inorderTraversal = function(root) {
 
     return res;
 };
-
 ```
 
 ```Golang
@@ -181,7 +178,6 @@ root = root.Right
 }
 return
 }
-
 ```
 
 ```C
@@ -218,11 +214,9 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {
     }
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 为二叉搜索树的节点个数。Morris 遍历中每个节点会被访问两次，因此总时间复杂度为 O(2n)\=O(n)。
-
 -   空间复杂度：O(1)。

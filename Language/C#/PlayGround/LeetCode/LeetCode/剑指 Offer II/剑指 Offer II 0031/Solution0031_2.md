@@ -57,7 +57,6 @@ LRU 缓存机制可以通过哈希表辅以双向链表实现，我们用一个�
 -   双向链表按照被使用的顺序存储了这些键值对，靠近头部的键值对是最近使用的，而靠近尾部的键值对是最久未使用的。
 -   哈希表即为普通的哈希映射（HashMap），通过缓存数据的键映射到其在双向链表中的位置。
 
-
 这样以来，我们首先使用哈希表进行定位，找出缓存项在双向链表中的位置，随后将其移动到双向链表的头部，即可在 O(1) 的时间内完成 `get` 或者 `put` 操作。具体的方法如下：
 
 -   对于 `get` 操作，首先判断 `key` 是否存在：
@@ -73,16 +72,16 @@ LRU 缓存机制可以通过哈希表辅以双向链表实现，我们用一个�
 
 在双向链表的实现中，使用一个**伪头部**（dummy head）和**伪尾部**（dummy tail）标记界限，这样在添加节点和删除节点的时候就不需要检查相邻的节点是否存在。
 
-![](./Question0031_01.png)
-![](./Question0031_02.png)
-![](./Question0031_03.png)
-![](./Question0031_04.png)
-![](./Question0031_05.png)
-![](./Question0031_06.png)
-![](./Question0031_07.png)
-![](./Question0031_08.png)
-![](./Question0031_09.png)
-![](./Question0031_10.png)
+![](./assets/img/Solution0031_2_01.png)
+![](./assets/img/Solution0031_2_02.png)
+![](./assets/img/Solution0031_2_03.png)
+![](./assets/img/Solution0031_2_04.png)
+![](./assets/img/Solution0031_2_05.png)
+![](./assets/img/Solution0031_2_06.png)
+![](./assets/img/Solution0031_2_07.png)
+![](./assets/img/Solution0031_2_08.png)
+![](./assets/img/Solution0031_2_09.png)
+![](./assets/img/Solution0031_2_10.png)
 
 ```Python
 class DLinkedNode:

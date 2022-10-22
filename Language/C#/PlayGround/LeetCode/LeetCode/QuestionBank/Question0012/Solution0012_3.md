@@ -2,7 +2,7 @@
 
 **思路**
 
-![](./Solution0012_3_1.png)
+![](./assets/img/Solution0012_3_1.png)
 
 回顾前言中列出的这 1 个符号，可以发现：
 
@@ -15,7 +15,7 @@
 
 进一步地，我们可以计算出每个数字在每个位上的表示形式，整理成一张硬编码表。如下图所示，其中 0 对应的是空字符串。
 
-![](Solution0012_3_2.png)
+![](./assets/img/Solution0012_3_2.png)
 
 利用模运算和除法运算，我们可以得到 num 每个位上的数字：
 
@@ -24,7 +24,6 @@ thousands_digit = num / 1000
 hundreds_digit = (num % 1000) / 100
 tens_digit = (num % 100) / 10
 ones_digit = num % 10
-
 ```
 
 最后，根据 num 每个位上的数字，在硬编码表中查找对应的罗马字符，并将结果拼接在一起，即为 num 对应的罗马数字。
@@ -43,7 +42,6 @@ public:
         return thousands[num / 1000] + hundreds[num % 1000 / 100] + tens[num % 100 / 10] + ones[num % 10];
     }
 };
-
 ```
 
 ```Java
@@ -62,7 +60,6 @@ class Solution {
         return roman.toString();
     }
 }
-
 ```
 
 ```C#
@@ -81,7 +78,6 @@ public class Solution {
         return roman.ToString();
     }
 }
-
 ```
 
 ```Go
@@ -112,7 +108,6 @@ var intToRoman = function(num) {
     roman.push(ones[num % 10]);
     return roman.join('');
 };
-
 ```
 
 ```Python
@@ -128,7 +123,6 @@ class Solution:
             Solution.HUNDREDS[num % 1000 // 100] + \
             Solution.TENS[num % 100 // 10] + \
             Solution.ONES[num % 10]
-
 ```
 
 ```C
@@ -146,11 +140,9 @@ char* intToRoman(int num) {
     strcpy(roman + strlen(roman), ones[num % 10]);
     return roman;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(1)。计算量与输入数字的大小无关。
-
 -   空间复杂度：O(1)。

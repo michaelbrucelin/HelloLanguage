@@ -10,17 +10,17 @@
 
 在排除重复元素的情况下，第 k 次从最小堆中取出的元素即为第 k 个数。
 
-![](./Solution1709_3_01.png)
-![](./Solution1709_3_02.png)
-![](./Solution1709_3_03.png)
-![](./Solution1709_3_04.png)
-![](./Solution1709_3_05.png)
-![](./Solution1709_3_06.png)
-![](./Solution1709_3_07.png)
-![](./Solution1709_3_08.png)
-![](./Solution1709_3_09.png)
-![](./Solution1709_3_10.png)
-![](./Solution1709_3_11.png)
+![](./assets/img/Solution1709_3_01.png)
+![](./assets/img/Solution1709_3_02.png)
+![](./assets/img/Solution1709_3_03.png)
+![](./assets/img/Solution1709_3_04.png)
+![](./assets/img/Solution1709_3_05.png)
+![](./assets/img/Solution1709_3_06.png)
+![](./assets/img/Solution1709_3_07.png)
+![](./assets/img/Solution1709_3_08.png)
+![](./assets/img/Solution1709_3_09.png)
+![](./assets/img/Solution1709_3_10.png)
+![](./assets/img/Solution1709_3_11.png)
 
 ```Java
 class Solution {

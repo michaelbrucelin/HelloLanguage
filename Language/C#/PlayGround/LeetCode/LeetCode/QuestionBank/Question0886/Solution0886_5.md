@@ -2,7 +2,7 @@
 
 首先，创建一个二维数组，用来记录1到n个数之间的互斥关系。我们以n = `10`，dislikes = `[[1,2],[3,4],[5,6],[6,7],[8,9],[7,8]]`为例，那么我们就可以得出如下矩阵图，如下图所示：
 
-![](./Solution0886_5_1.png)
+![](./assets/img/Solution0886_5_1.png)
 
 然后我们从第1行（row1）开始遍历，如果发现有“**红色**”，即表示发生了**排斥**，那么我们在对其进行深度遍历，如下图所示，我们遍历第1行的时候，发现2与其排斥，那么我们深度遍历第2行，由于第二行中没有与2排斥的数字了，所以我们得出结论，即：`1在a组`，`2在b组`。
 
@@ -20,7 +20,7 @@
 
 最终结论就是，**a组里有[1,3,5,7,9]**，**b组里有[2,4,6,8]**，具体详情请见下图：
 
-![](./Solution0886_5_2.png)
+![](./assets/img/Solution0886_5_2.png)
 
 #### [](https://leetcode.cn/problems/possible-bipartition/solution/zhua-wa-mou-si-tu-jie-leetcode-by-muse-7-ac1o//#代码实现)代码实现
 
@@ -46,7 +46,6 @@ class Solution {
         return true;
     }
 }
-
 ```
 
 ```
@@ -74,5 +73,4 @@ class Solution {
         return true;
     }
 }
-
 ```

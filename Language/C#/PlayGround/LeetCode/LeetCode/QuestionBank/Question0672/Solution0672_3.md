@@ -65,7 +65,6 @@ class Solution {
         return seen.size();
     }
 }
-
 ```
 
 ```C#
@@ -95,7 +94,6 @@ public class Solution {
         return seen.Count;
     }
 }
-
 ```
 
 ```C++
@@ -126,7 +124,6 @@ public:
         return seen.size();
     }
 };
-
 ```
 
 ```C
@@ -185,7 +182,6 @@ int flipLights(int n, int presses){
     hashFree(&seen);
     return ret;
 }
-
 ```
 
 ```JavaScript
@@ -213,7 +209,6 @@ var flipLights = function(n, presses) {
     }
     return seen.size;
 };
-
 ```
 
 ```Go
@@ -242,11 +237,9 @@ func flipLights(n, presses int) int {
     }
     return len(seen)
 }
-
 ```
 
 **复杂度分析**
 
--   时间复杂度：O(1)O(1)O(1)。只需要使用常数时间即可完成计算。
-    
--   空间复杂度：O(1)O(1)O(1)。只需要使用常数空间即可完成计算。
+-   时间复杂度：O(1)。只需要使用常数时间即可完成计算。
+-   空间复杂度：O(1)。只需要使用常数空间即可完成计算。

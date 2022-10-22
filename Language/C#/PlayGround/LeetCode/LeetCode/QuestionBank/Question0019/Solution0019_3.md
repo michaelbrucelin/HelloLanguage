@@ -4,16 +4,16 @@
 
 我们也可以在遍历链表的同时将所有节点依次入栈。根据栈「先进后出」的原则，我们弹出栈的第 n 个节点就是需要删除的节点，并且目前栈顶的节点就是待删除节点的前驱节点。这样一来，删除操作就变得十分方便了。
 
-![](./Solution0019_3_01.png)
-![](./Solution0019_3_02.png)
-![](./Solution0019_3_03.png)
-![](./Solution0019_3_04.png)
-![](./Solution0019_3_05.png)
-![](./Solution0019_3_06.png)
-![](./Solution0019_3_07.png)
-![](./Solution0019_3_08.png)
-![](./Solution0019_3_09.png)
-![](./Solution0019_3_10.png)
+![](./assets/img/Solution0019_3_01.png)
+![](./assets/img/Solution0019_3_02.png)
+![](./assets/img/Solution0019_3_03.png)
+![](./assets/img/Solution0019_3_04.png)
+![](./assets/img/Solution0019_3_05.png)
+![](./assets/img/Solution0019_3_06.png)
+![](./assets/img/Solution0019_3_07.png)
+![](./assets/img/Solution0019_3_08.png)
+![](./assets/img/Solution0019_3_09.png)
+![](./assets/img/Solution0019_3_10.png)
 
 **代码**
 
@@ -38,7 +38,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 ```Java
@@ -60,7 +59,6 @@ class Solution {
         return ans;
     }
 }
-
 ```
 
 ```Python
@@ -79,7 +77,6 @@ class Solution:
         prev = stack[-1]
         prev.next = prev.next.next
         return dummy.next
-
 ```
 
 ```Go
@@ -93,7 +90,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
     prev.Next = prev.Next.Next
     return dummy.Next
 }
-
 ```
 
 ```C
@@ -124,11 +120,9 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     free(dummy);
     return ans;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(L)，其中 L 是链表的长度。
-
 -   空间复杂度：O(L)，其中 L 是链表的长度。主要为栈的开销。

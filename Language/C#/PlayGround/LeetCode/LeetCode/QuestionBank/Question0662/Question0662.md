@@ -12,35 +12,32 @@
 
 **示例 1：**
 
-![](./Question0662_1.jpg)
+![](./assets/img/Question0662_1.jpg)
 
 ```
 输入：root = [1,3,2,5,3,null,9]
 输出：4
 解释：最大宽度出现在树的第 3 层，宽度为 4 (5,3,null,9) 。
-
 ```
 
 **示例 2：**
 
-![](Question0662_2.jpg)
+![](./assets/img/Question0662_2.jpg)
 
 ```
 输入：root = [1,3,2,5,null,null,9,6,null,7]
 输出：7
 解释：最大宽度出现在树的第 4 层，宽度为 7 (6,null,null,null,null,null,7) 。
-
 ```
 
 **示例 3：**
 
-![](Question0662_3.jpg)
+![](./assets/img/Question0662_3.jpg)
 
 ```
 输入：root = [1,3,2,5]
 输出：2
 解释：最大宽度出现在树的第 2 层，宽度为 2 (3,2) 。
-
 ```
 
 **提示：**

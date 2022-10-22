@@ -4,13 +4,13 @@
 
 罗马数字由 7 个不同的单字母符号组成，每个符号对应一个具体的数值。此外，减法规则（如问题描述中所述）给出了额外的 6 个复合符号。这给了我们总共 13 个独特的符号（每个符号由 1 个或 2 个字母组成），如下图所示。
 
-![](./Solution0012_2_1.png)
+![](./assets/img/Solution0012_2_1.png)
 
 **罗马数字的唯一表示法**
 
 让我们从一个例子入手。考虑 140 的罗马数字表示，下面哪一个是正确的？
 
-![](./Solution0012_2_2.svg)
+![](./assets/img/Solution0012_2_2.svg)
 
 我们用来确定罗马数字的规则是：对于罗马数字从左到右的每一位，选择尽可能大的符号值。对于 140，最大可以选择的符号值为 C=100。接下来，对于剩余的数字 40，最大可以选择的符号值为 XL=40。因此，140 的对应的罗马数字为 C+XL=CXL。
 
@@ -57,7 +57,6 @@ public:
         return roman;
     }
 };
-
 ```
 
 ```Java
@@ -81,7 +80,6 @@ class Solution {
         return roman.toString();
     }
 }
-
 ```
 
 ```C#
@@ -118,7 +116,6 @@ public class Solution {
         return roman.ToString();
     }
 }
-
 ```
 
 ```Go
@@ -154,7 +151,6 @@ func intToRoman(num int) string {
     }
     return string(roman)
 }
-
 ```
 
 ```JavaScript
@@ -172,7 +168,6 @@ var intToRoman = function(num) {
     }
     return roman.join('');
 };
-
 ```
 
 ```Python
@@ -203,7 +198,6 @@ class Solution:
             if num == 0:
                 break
         return "".join(roman)
-
 ```
 
 ```C
@@ -224,11 +218,9 @@ char* intToRoman(int num) {
     }
     return roman;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(1)。由于 valueSymbols 长度是固定的，且这 13 字符中的每个字符的出现次数均不会超过 3，因此循环次数有一个确定的上限。对于本题给出的数据范围，循环次数不会超过 15 次。
-
 -   空间复杂度：O(1)。

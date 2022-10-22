@@ -8,7 +8,7 @@
 
 **示例 1：**
 
-![](./Question0817_1.jpg)
+![](./assets/img/Question0817_1.jpg)
 
 ```
 输入: head = [0,1,2,3], nums = [0,1,3]
@@ -18,7 +18,7 @@
 
 **示例 2：**
 
- ![](./Question0817_2.jpg)
+ ![](./assets/img/Question0817_2.jpg)
 
 ```
 输入: head = [0,1,2,3,4], nums = [0,3,1,4]

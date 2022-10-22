@@ -58,14 +58,14 @@
 
 下面的动画也给出了这个示例的过程：
 
-![](Solution0011_2_01.png)
-![](Solution0011_2_02.png)
-![](Solution0011_2_03.png)
-![](Solution0011_2_04.png)
-![](Solution0011_2_05.png)
-![](Solution0011_2_06.png)
-![](Solution0011_2_07.png)
-![](Solution0011_2_08.png)
+![](./assets/img/Solution0011_2_01.png)
+![](./assets/img/Solution0011_2_02.png)
+![](./assets/img/Solution0011_2_03.png)
+![](./assets/img/Solution0011_2_04.png)
+![](./assets/img/Solution0011_2_05.png)
+![](./assets/img/Solution0011_2_06.png)
+![](./assets/img/Solution0011_2_07.png)
+![](./assets/img/Solution0011_2_08.png)
 
 **证明**
 

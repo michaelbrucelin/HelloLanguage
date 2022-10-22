@@ -4,20 +4,20 @@
 
 方法一的递归函数我们也可以用迭代的方式实现，两种方式是等价的，区别在于递归的时候隐式地维护了一个栈，而我们在迭代的时候需要显式地将这个栈模拟出来，其他都相同，具体实现可以看下面的代码。
 
-![](./Solution0094_4_01.png)
-![](./Solution0094_4_02.png)
-![](./Solution0094_4_03.png)
-![](./Solution0094_4_04.png)
-![](./Solution0094_4_05.png)
-![](./Solution0094_4_06.png)
-![](./Solution0094_4_07.png)
-![](./Solution0094_4_08.png)
-![](./Solution0094_4_09.png)
-![](./Solution0094_4_10.png)
-![](./Solution0094_4_11.png)
-![](./Solution0094_4_12.png)
-![](./Solution0094_4_13.png)
-![](./Solution0094_4_14.png)
+![](./assets/img/Solution0094_4_01.png)
+![](./assets/img/Solution0094_4_02.png)
+![](./assets/img/Solution0094_4_03.png)
+![](./assets/img/Solution0094_4_04.png)
+![](./assets/img/Solution0094_4_05.png)
+![](./assets/img/Solution0094_4_06.png)
+![](./assets/img/Solution0094_4_07.png)
+![](./assets/img/Solution0094_4_08.png)
+![](./assets/img/Solution0094_4_09.png)
+![](./assets/img/Solution0094_4_10.png)
+![](./assets/img/Solution0094_4_11.png)
+![](./assets/img/Solution0094_4_12.png)
+![](./assets/img/Solution0094_4_13.png)
+![](./assets/img/Solution0094_4_14.png)
 
 **代码**
 
@@ -40,7 +40,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -60,7 +59,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```JavaScript
@@ -78,7 +76,6 @@ var inorderTraversal = function(root) {
     }
     return res;
 };
-
 ```
 
 ```Golang
@@ -96,7 +93,6 @@ root = root.Right
 }
 return
 }
-
 ```
 
 ```C
@@ -116,11 +112,9 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {
     }
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 为二叉树节点的个数。二叉树的遍历中每个节点会被访问一次且只会被访问一次。
-
 -   空间复杂度：O(n)。空间复杂度取决于栈深度，而栈深度在二叉树为一条链的情况下会达到 O(n) 的级别。

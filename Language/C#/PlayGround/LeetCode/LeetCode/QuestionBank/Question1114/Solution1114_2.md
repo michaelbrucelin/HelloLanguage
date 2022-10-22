@@ -7,9 +7,7 @@
 并发主要为多任务情况设计。但如果应用不当，可能会引发一些漏洞。按照情况不同，可以分为三种：
 
 -   **竞态条件**：由于多进程之间的竞争执行，导致程序未按照期望的顺序输出。
-    
 -   **死锁**：并发程序等待一些必要资源，导致没有程序可以执行。
-    
 -   **资源不足**：进程被永久剥夺了运行所需的资源。
     
 
@@ -17,16 +15,15 @@
 
 假设有一个方法 `withdraw(amount)`，如果请求量小于当前余额，则从当前余额中减去请求量，然后返回余额。方法定义如下：
 
-```
+```Python
 balance = 500
 def withdraw(amount):
     if (amount < balance):
         balance -= amount
     return balance
-
 ```
 
-```
+```C
 int balance = 500;
 int withdraw(int amount) {
   if (amount < balance) {
@@ -34,14 +31,13 @@ int withdraw(int amount) {
   }
   return balance;
 }
-
 ```
 
 我们 _期望_ 该方法执行后余额永远不会为负。
 
 但是有可能出现竞态条件，使得余额变为负数。假设两个线程同时使用不同的参数执行该方法。例如：线程 1 执行 `withdraw(amount=400)`，线程 2 执行 `withdraw(amount=200)`。这两个线程的执行顺序如下图所示。在每个时刻只执行一条语句。
 
-![](./Solution1114_2.png)
+![](./assets/img/Solution1114_2.png)
 
 上述流程执行结束后，余额变成负数，这并不是期望的输出。
 
@@ -55,7 +51,7 @@ int withdraw(int amount) {
 
 可以将这种机制看做限制关键部分代码访问的锁。在前面示例的关键部分代码加锁，即检查余额和减少余额的语句。然后重新运行两个线程，会有下图的执行顺序：
 
-![](./Solution1114_2_2.png)
+![](./assets/img/Solution1114_2_2.png)
 
 在该机制下，一旦一个线程进入关键部分，它就可以阻止其他线程进入该关键部分。例如，在时间点 3，`线程 2` 进入关键部分，那么在时间点 4，如果没有锁保护，`线程 1` 就可能进入关键部分。最后两个线程同时运行，保证系统的一致性，并确保余额正确。
 
@@ -73,21 +69,18 @@ int withdraw(int amount) {
 
 > 方法对之间的依赖关系形成了所有方法的特定的执行顺序。例如 `A < B`, `B < C`，则所有方法的执行顺序为 `A < B < C`。
 
-![](Solution1114_2_3.png)
+![](./assets/img/Solution1114_2_3.png)
 
 依赖关系可以通过并发机制实现。使用一个共享变量 `firstJobDone` 协调第一个方法与第二个方法的执行顺序，使用另一个共享变量 `secondJobDone` 协调第二个方法与第三个方法的执行顺序。
 
 **算法**
 
 -   首先初始化共享变量 `firstJobDone` 和 `secondJobDone`，初始值表示所有方法未执行。
-    
 -   方法 `first()` 没有依赖关系，可以直接执行。在方法最后更新变量 `firstJobDone` 表示该方法执行完成。
-    
--   方法 `second()` 中，检查 `firstJobDone` 的状态。如果未更新则进入等待状态，否则执行方法 `second()`。在方法末尾，更新变量 `secondJobDone` 表示方法 `second()` 执行完成。
-    
+-   方法 `second()` 中，检查 `firstJobDone` 的状态。如果未更新则进入等待状态，否则执行方法 `second()`。在方法末尾，更新变量 `secondJobDone` 表示方法 `second()` 执行完成。 
 -   方法 `third()` 中，检查 `secondJobDone` 的状态。与方法 `second()` 类似，执行 `third()` 之前，需要先等待 `secondJobDone` 的状态。
 
-![](./Solution1114_2_4.png)
+![](./assets/img/Solution1114_2_4.png)
 
 **实现**
 
@@ -123,10 +116,9 @@ class Foo:
         with self.secondJobDone:
             # printThird() outputs "third".
             printThird()
-
 ```
 
-```Cpp
+```C++
 #include <semaphore.h>
 
 class Foo {
@@ -162,7 +154,6 @@ public:
         printThird();
     }
 };
-
 ```
 
 ```Java
@@ -198,6 +189,4 @@ class Foo {
     printThird.run();
   }
 }
-
-
 ```

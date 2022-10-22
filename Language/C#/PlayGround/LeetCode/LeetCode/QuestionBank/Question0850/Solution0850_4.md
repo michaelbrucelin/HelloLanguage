@@ -1,16 +1,16 @@
-﻿## [](https://leetcode.cn/problems/rectangle-area-ii/solution/ju-xing-mian-ji-ii-by-leetcode-solution-ulqz//#扫描线)扫描线
+﻿#### [](https://leetcode.cn/problems/rectangle-area-ii/solution/ju-xing-mian-ji-ii-by-leetcode-solution-ulqz//#扫描线)扫描线
 
 这是一道「扫描线」模板题。
 
 将所有给定的矩形的左右边对应的 `x` 端点提取出来并排序，每个端点可看作是一条竖直的线段（红色），问题转换为求解「由多条竖直线段分割开」的多个矩形的面积总和（黄色）：
 
-![](./Solution0850_3_01.png)
+![](./assets/img/Solution0850_4_01.png)
 
 相邻线段之间的宽度为单个矩形的「宽度」（通过 `x` 差值直接算得），问题转换为求该区间内高度的并集（即矩形的高度）。
 
 由于数据范围只有 200，我们可以对给定的所有矩形进行遍历，统计所有对该矩形有贡献的 `y` 值线段（即有哪些 `rs[i]` 落在该矩形中），再对线段进行求交集（总长度），即可计算出该矩形的「高度」，从而计算出来该矩形的面积。
 
-![](./Solution0850_3_02.png)
+![](./assets/img/Solution0850_4_02.png)
 
 **代码（感谢 [@Benhao](https://leetcode.cn/u/himymben/) 总提供的其他语言版本）：**
 
@@ -50,7 +50,6 @@ class Solution {
         return (int) ans;
     }
 }
-
 ```
 
 ```TypeScript
@@ -87,7 +86,6 @@ function rectangleArea(rs: number[][]): number {
     }
     return Number(ans)
 };
-
 ```
 
 ```Python
@@ -116,7 +114,6 @@ class Solution:
             height += r - l
             ans += height * width
         return ans % 1000000007
-
 ```
 
 ```Go
@@ -161,7 +158,6 @@ func rectangleArea(rectangles [][]int) int {
     }
     return int(ans)
 }
-
 ```
 
 -   时间复杂度：预处理所有扫描线的复杂度为 O(nlog⁡n)；处理所有相邻的扫描线，并计算相邻扫描线形成的矩形面积复杂度为 O(nlog⁡n) 。整体复杂度为 O(n^2^logn)

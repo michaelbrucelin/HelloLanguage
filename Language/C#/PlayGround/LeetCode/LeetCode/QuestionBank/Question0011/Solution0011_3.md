@@ -4,7 +4,7 @@
 
 S(i,j)=min(h[i],h[j])×(j−i)
 
-![](./Solution0011_3_00.png)
+![](./assets/img/Solution0011_3_00.png)
 
 在每个状态下，无论长板或短板向中间收窄一格，都会导致水槽 **底边宽度** −1 变短：
 
@@ -32,14 +32,14 @@ S(i,j)=min(h[i],h[j])×(j−i)
 
 因此，每轮向内移动短板，所有消去的状态都 **不会导致面积最大值丢失** ，证毕。
 
-![](./Solution0011_3_01.png)
-![](./Solution0011_3_02.png)
-![](./Solution0011_3_03.png)
-![](./Solution0011_3_04.png)
-![](./Solution0011_3_05.png)
-![](./Solution0011_3_06.png)
-![](./Solution0011_3_07.png)
-![](./Solution0011_3_08.png)
+![](./assets/img/Solution0011_3_01.png)
+![](./assets/img/Solution0011_3_02.png)
+![](./assets/img/Solution0011_3_03.png)
+![](./assets/img/Solution0011_3_04.png)
+![](./assets/img/Solution0011_3_05.png)
+![](./assets/img/Solution0011_3_06.png)
+![](./assets/img/Solution0011_3_07.png)
+![](./assets/img/Solution0011_3_08.png)
 
 #### [](https://leetcode.cn/problems/container-with-most-water/solution/container-with-most-water-shuang-zhi-zhen-fa-yi-do//#复杂度分析：)复杂度分析：
 
@@ -60,7 +60,6 @@ class Solution:
                 res = max(res, height[j] * (j - i))
                 j -= 1
         return res
-
 ```
 
 ```Java
@@ -75,7 +74,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```C++
@@ -91,5 +89,4 @@ public:
         return res;
     }
 };
-
 ```

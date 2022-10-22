@@ -4,20 +4,20 @@
 
 我们也可以用迭代的方式实现方法一的递归函数，两种方式是等价的，区别在于递归的时候隐式地维护了一个栈，而我们在迭代的时候需要显式地将这个栈模拟出来，其余的实现与细节都相同，具体可以参考下面的代码。
 
-![](Solution0144_4_01.png)
-![](Solution0144_4_02.png)
-![](Solution0144_4_03.png)
-![](Solution0144_4_04.png)
-![](Solution0144_4_05.png)
-![](Solution0144_4_06.png)
-![](Solution0144_4_07.png)
-![](Solution0144_4_08.png)
-![](Solution0144_4_09.png)
-![](Solution0144_4_10.png)
-![](Solution0144_4_11.png)
-![](Solution0144_4_12.png)
-![](Solution0144_4_13.png)
-![](Solution0144_4_14.png)
+![](./assets/img/Solution0144_4_01.png)
+![](./assets/img/Solution0144_4_02.png)
+![](./assets/img/Solution0144_4_03.png)
+![](./assets/img/Solution0144_4_04.png)
+![](./assets/img/Solution0144_4_05.png)
+![](./assets/img/Solution0144_4_06.png)
+![](./assets/img/Solution0144_4_07.png)
+![](./assets/img/Solution0144_4_08.png)
+![](./assets/img/Solution0144_4_09.png)
+![](./assets/img/Solution0144_4_10.png)
+![](./assets/img/Solution0144_4_11.png)
+![](./assets/img/Solution0144_4_12.png)
+![](./assets/img/Solution0144_4_13.png)
+![](./assets/img/Solution0144_4_14.png)
 
 **代码**
 
@@ -45,7 +45,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -70,7 +69,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```Python3
@@ -90,7 +88,6 @@ class Solution:
             node = stack.pop()
             node = node.right
         return res
-
 ```
 
 ```Golang
@@ -108,7 +105,6 @@ func preorderTraversal(root *TreeNode) (vals []int) {
     }
     return
 }
-
 ```
 
 ```C
@@ -133,11 +129,9 @@ int* preorderTraversal(struct TreeNode* root, int* returnSize) {
     }
     return res;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是二叉树的节点数。每一个节点恰好被遍历一次。
-
 -   空间复杂度：O(n)，为迭代过程中显式栈的开销，平均情况下为 O(log⁡n)，最坏情况下树呈现链状，为 O(n)。

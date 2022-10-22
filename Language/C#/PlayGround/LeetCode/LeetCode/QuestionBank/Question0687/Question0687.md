@@ -8,22 +8,20 @@
 
 **示例 1:**
 
-![](./Question0687_01.jpg)
+![](./assets/img/Question0687_01.jpg)
 
 ```
 输入：root = [5,4,5,1,1,5]
 输出：2
-
 ```
 
 **示例 2:**
 
-![](./Question0687_02.jpg)
+![](./assets/img/Question0687_02.jpg)
 
 ```
 输入：root = [1,4,5,4,4,5]
 输出：2
-
 ```
 
 **提示:**

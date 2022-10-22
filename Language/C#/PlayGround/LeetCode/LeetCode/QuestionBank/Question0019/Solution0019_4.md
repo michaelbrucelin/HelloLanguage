@@ -12,7 +12,7 @@
 
 根据方法一和方法二，如果我们能够得到的是倒数第 n 个节点的前驱节点而不是倒数第 n 个节点的话，删除操作会更加方便。因此我们可以考虑在初始时将 second 指向哑节点，其余的操作步骤不变。这样一来，当 first 遍历到链表的末尾时，second 的**下一个节点**就是我们需要删除的节点。
 
-![](./Solution0019_4.png)
+![](./assets/img/Solution0019_4.png)
 
 **代码**
 
@@ -36,7 +36,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 ```Java
@@ -57,7 +56,6 @@ class Solution {
         return ans;
     }
 }
-
 ```
 
 ```Python
@@ -75,7 +73,6 @@ class Solution:
         
         second.next = second.next.next
         return dummy.next
-
 ```
 
 ```Go
@@ -91,7 +88,6 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
     second.Next = second.Next.Next
     return dummy.Next
 }
-
 ```
 
 ```C
@@ -112,11 +108,9 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     free(dummy);
     return ans;
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(L)，其中 L 是链表的长度。
-
 -   空间复杂度：O(1)。

@@ -10,7 +10,7 @@
 
 **示例 1：**
 
-![](./Question0002.png)
+![](./assets/img/Question0002.png)
 
 ```
 输入：l1 = [2,4,3], l2 = [5,6,4]

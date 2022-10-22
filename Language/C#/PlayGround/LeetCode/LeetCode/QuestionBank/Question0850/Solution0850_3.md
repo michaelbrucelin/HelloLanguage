@@ -5,16 +5,13 @@
 方法一中对于数组 seg 的所有操作都可以使用线段树进行维护。线段树中需要存储：
 
 -   该节点对应的区间被完整覆盖的次数；
-
 -   该节点对应的区间被覆盖的线段长度。
 
 
 线段树需要支持：
 
 -   区间增加 1；
-
 -   区间减少 1，并且保证每个被增加 1 的区间在之后一定会减少 1；
-
 -   对于所有非 0 的位置，根据它们的权值进行求和。
 
 
@@ -121,7 +118,6 @@ private:
     vector<Segtree> tree;
     vector<int> hbound;
 };
-
 ```
 
 ```Java
@@ -243,7 +239,6 @@ class Segtree {
     int length = 0;
     int maxLength = 0;
 }
-
 ```
 
 ```C#
@@ -357,7 +352,6 @@ class Segtree {
     public int Length = 0;
     public int MaxLength = 0;
 }
-
 ```
 
 ```Python
@@ -444,7 +438,6 @@ class Solution:
             i = j + 1
         
         return ans % (10**9 + 7)
-
 ```
 
 ```C
@@ -616,7 +609,6 @@ int rectangleArea(int** rectangles, int rectanglesSize, int* rectanglesColSize){
     }
     return ans % (long long)(1e9 + 7);
 }
-
 ```
 
 ```Go
@@ -705,11 +697,9 @@ func rectangleArea(rectangles [][]int) (ans int) {
     }
     return ans % (1e9 + 7)
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(nlog⁡n)，其中 n 是矩形的个数。
-
 -   空间复杂度：O(n)，即为线段树需要使用的空间。

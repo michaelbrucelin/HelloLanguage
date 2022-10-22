@@ -8,7 +8,7 @@
 -   第一轮合并以后， k 个链表被合并成了 k/2 个链表，平均长度为 2n/k，然后是 k/4 个链表， k/8 个链表等等；
 -   重复这一过程，直到我们得到了最终的有序链表。
 
-![](./Solution0023_3.png)
+![](./assets/img/Solution0023_3.png)
 
 **代码**
 
@@ -41,7 +41,6 @@ public:
         return merge(lists, 0, lists.size() - 1);
     }
 };
-
 ```
 
 ```Java
@@ -81,7 +80,6 @@ class Solution {
         return head.next;
     }
 }
-
 ```
 
 **复杂度分析**

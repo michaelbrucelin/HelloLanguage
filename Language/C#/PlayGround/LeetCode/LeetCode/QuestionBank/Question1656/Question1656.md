@@ -16,7 +16,7 @@
 
 **示例：**
 
-**![](./Question1656.gif)**
+**![](./assets/img/Question1656.gif)**
 
 ```
 输入
@@ -32,7 +32,6 @@ os.insert(1, "aaaaa"); // 插入 (1, "aaaaa")，返回 ["aaaaa"]
 os.insert(2, "bbbbb"); // 插入 (2, "bbbbb")，返回 ["bbbbb", "ccccc"]
 os.insert(5, "eeeee"); // 插入 (5, "eeeee")，返回 []
 os.insert(4, "ddddd"); // 插入 (4, "ddddd")，返回 ["ddddd", "eeeee"]
-
 ```
 
 **提示：**

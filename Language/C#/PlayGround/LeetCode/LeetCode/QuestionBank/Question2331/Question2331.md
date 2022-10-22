@@ -20,7 +20,7 @@
 
 **示例 1：**
 
-![](./Question2331.png)
+![](./assets/img/Question2331.png)
 
 ```
 输入：root = [2,1,3,null,null,0,1]
@@ -37,7 +37,6 @@ OR 运算节点的值为 True OR False = True 。
 输入：root = [0]
 输出：false
 解释：根节点是叶子节点，且值为 false，所以我们返回 false 。
-
 ```
 
 **提示：**

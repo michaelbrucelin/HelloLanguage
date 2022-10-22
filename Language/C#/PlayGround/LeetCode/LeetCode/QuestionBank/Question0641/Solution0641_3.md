@@ -2,7 +2,7 @@
 
 我们同样可以使用双向链表来模拟双端队列，实现双端队列队首与队尾元素的添加、删除。双向链表实现比较简单，双向链表支持 O(1)O(1)O(1) 时间复杂度内在指定节点的前后插入新的节点或者删除新的节点。
 
-![1](./Solution0641_3.png)
+![1](./assets/img/Solution0641_3.png)
 
 循环双端队列的属性如下:
 
@@ -23,7 +23,7 @@
 -   isEmpty()：检测当前 size 是否为 0。
 -   isFull()：检测当前 size 是否为 capacity。
 
-```Python3
+```Python
 class Node:
     __slots__ = 'prev', 'next', 'val'
 
@@ -95,7 +95,6 @@ class MyCircularDeque:
 
     def isFull(self) -> bool:
         return self.size == self.capacity
-
 ```
 
 ```C++
@@ -200,7 +199,6 @@ public:
         return size == capacity;
     }
 };
-
 ```
 
 ```Java
@@ -301,7 +299,6 @@ class MyCircularDeque {
         return size == capacity;
     }
 }
-
 ```
 
 ```C#
@@ -402,7 +399,6 @@ public class MyCircularDeque {
         return size == capacity;
     }
 }
-
 ```
 
 ```C
@@ -523,10 +519,9 @@ void myCircularDequeFree(MyCircularDeque* obj) {
     }
     free(obj);
 }
-
 ```
 
-```Golang
+```Go
 type node struct {
     prev, next *node
     val        int
@@ -620,11 +615,9 @@ func (q MyCircularDeque) IsEmpty() bool {
 func (q MyCircularDeque) IsFull() bool {
     return q.size == q.capacity
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：初始化和每项操作的时间复杂度均为 O(1)。
-    
 -   空间复杂度：O(k)，其中 k 为给定的队列元素数目。
