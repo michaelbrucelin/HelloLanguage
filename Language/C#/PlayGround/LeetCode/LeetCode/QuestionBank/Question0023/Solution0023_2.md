@@ -25,7 +25,6 @@ ListNode* mergeTwoLists(ListNode *a, ListNode *b) {
     tail->next = (aPtr ? aPtr : bPtr);
     return head.next;
 }
-
 ```
 
 ```Java
@@ -48,7 +47,6 @@ public ListNode mergeTwoLists(ListNode a, ListNode b) {
     tail.next = (aPtr != null ? aPtr : bPtr);
     return head.next;
 }
-
 ```
 
 **复杂度分析**
@@ -90,7 +88,6 @@ public:
         return ans;
     }
 };
-
 ```
 
 ```Java
@@ -123,10 +120,9 @@ class Solution {
         return head.next;
     }
 }
-
 ```
 
 **复杂度分析**
 
--   时间复杂度：假设每个链表的最长长度是 n。在第一次合并后，ans 的长度为 n；第二次合并后，ans 的长度为 2×n，第 i 次合并后，ans 的长度为 i×n。第 i 次合并的时间代价是 O(n+(i−1)×n)\=O(i×n)，那么总的时间代价为 O(∑i\=1k(i×n))\=O((1+k)⋅k2×n)\=O(k2n)，故渐进时间复杂度为 O(k2n)。
+-   时间复杂度：假设每个链表的最长长度是 n。在第一次合并后，ans 的长度为 n；第二次合并后，ans 的长度为 2×n，第 i 次合并后，ans 的长度为 i×n。第 i 次合并的时间代价是 O(n+(i−1)×n)\=O(i×n)，那么总的时间代价为 $O(\sum_{i=1}^{k}(i \times n))=O(\frac{(i+k) \times k}{2} \times n)=O(k^2n)$，故渐进时间复杂度为 $O(k^2n)$。
 -   空间复杂度：没有用到与 k 和 n 规模相关的辅助空间，故渐进空间复杂度为 O(1)。

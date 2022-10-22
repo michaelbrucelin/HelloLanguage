@@ -33,7 +33,6 @@ public:
         return head.next;
     }
 };
-
 ```
 
 ```Java
@@ -73,7 +72,6 @@ class Solution {
         return head.next;
     }
 }
-
 ```
 
 **复杂度分析**
