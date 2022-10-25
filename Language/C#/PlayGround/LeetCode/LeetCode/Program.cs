@@ -17,7 +17,7 @@ namespace LeetCode
             Random random = new Random();
 
             Test0934 test = new();
-            test.TestGetIslang();
+            test.Test();
             //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // Console.WriteLine(Utils.GenerateRandomIntArray(15, 0, 100));

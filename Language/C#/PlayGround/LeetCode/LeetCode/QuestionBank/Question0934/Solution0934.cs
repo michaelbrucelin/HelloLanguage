@@ -36,18 +36,45 @@ namespace LeetCode.QuestionBank.Question0934
             int result = 0;
             while (true)
             {
-                int cnt = queue.Count
+                int cnt = queue.Count;
+                for (int i = 0; i < cnt; i++)
+                {
+                    var point = queue.Dequeue();
+                    row = point.row; col = point.col;
+                    if (row > 0)
+                    {
+                        if (grid[row - 1][col] == 1) goto Find;
+                        if (grid[row - 1][col] == 0) { grid[row - 1][col] = 2; queue.Enqueue((row - 1, col)); }
+                    }
+                    if (row < grid.Length - 1)
+                    {
+                        if (grid[row + 1][col] == 1) goto Find;
+                        if (grid[row + 1][col] == 0) { grid[row + 1][col] = 2; queue.Enqueue((row + 1, col)); }
+                    }
+                    if (col > 0)
+                    {
+                        if (grid[row][col - 1] == 1) goto Find;
+                        if (grid[row][col - 1] == 0) { grid[row][col - 1] = 2; queue.Enqueue((row, col - 1)); }
+                    }
+                    if (col < grid[0].Length - 1)
+                    {
+                        if (grid[row][col + 1] == 1) goto Find;
+                        if (grid[row][col + 1] == 0) { grid[row][col + 1] = 2; queue.Enqueue((row, col + 1)); }
+                    }
+                }
+                result++;
             }
+            Find:
 
             return result;
         }
 
         private bool IsShore(int[][] grid, int row, int col)
         {
-            if (row > 0 && grid[row - 1][col] == 0) return true;                     // 上边缘
-            else if (row < grid.Length - 1 && grid[row + 1][col] == 0) return true;  // 下边缘
-            else if (col > 0 && grid[row][col - 1] == 0) return true;                // 左边缘
-            else if (col < grid[0].Length && grid[row][col + 1] == 0) return true;   // 右边缘
+            if (row > 0 && grid[row - 1][col] == 0) return true;                        // 上边缘
+            else if (row < grid.Length - 1 && grid[row + 1][col] == 0) return true;     // 下边缘
+            else if (col > 0 && grid[row][col - 1] == 0) return true;                   // 左边缘
+            else if (col < grid[0].Length - 1 && grid[row][col + 1] == 0) return true;  // 右边缘
 
             return false;
         }

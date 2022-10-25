@@ -11,6 +11,29 @@ namespace LeetCode.QuestionBank.Question0934
 {
     public class Test0934
     {
+        public void Test()
+        {
+            Interface0934 solution = new Solution0934();
+            int[][] grid;
+            int result, answer;
+            int id = 0;
+
+            // 1.
+            grid = new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 } };
+            answer = 1; result = solution.ShortestBridge(grid);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 2.
+            grid = new int[][] { new int[] { 0, 1, 0 }, new int[] { 0, 0, 0 }, new int[] { 0, 0, 1 } };
+            answer = 2; result = solution.ShortestBridge(grid);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 3.
+            grid = new int[][] { new int[] { 1, 1, 1, 1, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 0, 1, 0, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 1, 1, 1, 1 } };
+            answer = 1; result = solution.ShortestBridge(grid);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+        }
+
         public void TestGetIslang()
         {
             Action<int[][], bool[][], HashSet<(int row, int col)>, int, int> action;
