@@ -30,9 +30,9 @@ namespace LeetCode.Utilses
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
-        public static void PrintArray<T>(IList<IList<T>> list)
+        public static void PrintArray<T>(IList<IList<T>> list, bool multiline)
         {
-            Console.WriteLine(ArrayToString(list));
+            Console.WriteLine(ArrayToString(list, multiline));
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace LeetCode.Utilses
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static string ArrayToString<T>(IList<IList<T>> list)
+        public static string ArrayToString<T>(IList<IList<T>> list, bool multiline)
         {
             if (list == null) return "null";
             if (list.Count == 0) return "[ ]";
@@ -128,9 +128,10 @@ namespace LeetCode.Utilses
             StringBuilder sb = new StringBuilder();
 
             sb.Append("[ ");
-            sb.Append(ArrayToString<T>(list[0]));
-            for (int i = 1; i < list.Count; i++)
-                sb.Append($", {ArrayToString<T>(list[i])}");
+            sb.Append($"{ArrayToString<T>(list[0])}, "); if (multiline) sb.Append(Environment.NewLine);
+            for (int i = 1; i < list.Count - 1; i++)
+            { if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[i])}, "); if (multiline) sb.Append(Environment.NewLine); }
+            if (multiline) sb.Append("  "); sb.Append($"{ArrayToString<T>(list[list.Count - 1])}");
             sb.Append(" ]");
 
             return sb.ToString();
