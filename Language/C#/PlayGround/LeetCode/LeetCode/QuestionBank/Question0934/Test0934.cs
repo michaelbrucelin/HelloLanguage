@@ -13,43 +13,46 @@ namespace LeetCode.QuestionBank.Question0934
     {
         public void TestGetIslang()
         {
-            Action<int[][], bool[][], List<(int row, int col)>, int, int> action;
+            Action<int[][], bool[][], HashSet<(int row, int col)>, int, int> action;
             // Solution0934 solution = new Solution0934(); action = solution.FindIsland_DFS;
             Solution0934_2 solution = new Solution0934_2(); action = solution.FindIsland_BFS;
             int[][] grid;
             bool[][] mask;
-            List<(int row, int col)> island;
+            HashSet<(int row, int col)> island;
             int r = 0, c = 0;
 
             // 1.
             grid = new int[][] { new int[] { 0, 1 }, new int[] { 1, 0 } };
             mask = new bool[][] { new bool[2], new bool[2] };
-            island = new List<(int row, int col)>();
+            island = new HashSet<(int row, int col)>();
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End1;
             End1:
             action(grid, mask, island, r, c);
-            Utils.PrintArray<int>(grid, true);
-            Utils.PrintArray(island);
+            Utils.PrintArray(grid, true);
+            Utils.PrintArray(mask, true);
+            Utils.PrintArray(new List<(int, int)>(island));
 
             // 2.
             grid = new int[][] { new int[] { 0, 1, 0 }, new int[] { 0, 0, 0 }, new int[] { 0, 0, 1 } };
             mask = new bool[][] { new bool[3], new bool[3], new bool[3] };
-            island = new List<(int row, int col)>();
+            island = new HashSet<(int row, int col)>();
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End2;
             End2:
             action(grid, mask, island, r, c);
-            Utils.PrintArray<int>(grid, true);
-            Utils.PrintArray(island);
+            Utils.PrintArray(grid, true);
+            Utils.PrintArray(mask, true);
+            Utils.PrintArray(new List<(int, int)>(island));
 
             // 3.
             grid = new int[][] { new int[] { 1, 1, 1, 1, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 0, 1, 0, 1 }, new int[] { 1, 0, 0, 0, 1 }, new int[] { 1, 1, 1, 1, 1 } };
             mask = new bool[][] { new bool[5], new bool[5], new bool[5], new bool[5], new bool[5] };
-            island = new List<(int row, int col)>();
+            island = new HashSet<(int row, int col)>();
             for (r = 0; r < grid.Length; r++) for (c = 0; c < grid[r].Length; c++) if (grid[r][c] == 1) goto End3;
             End3:
             action(grid, mask, island, r, c);
-            Utils.PrintArray<int>(grid, true);
-            Utils.PrintArray(island);
+            Utils.PrintArray(grid, true);
+            Utils.PrintArray(mask, true);
+            Utils.PrintArray(new List<(int, int)>(island));
         }
     }
 }

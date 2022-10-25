@@ -15,13 +15,21 @@ namespace LeetCode.QuestionBank.Question0934
         /// <returns></returns>
         public int ShortestBridge(int[][] grid)
         {
-            List<(int row, int col)> island1 = new List<(int, int)>();
-            List<(int row, int col)> island2 = new List<(int, int)>();
+            HashSet<(int row, int col)> island1 = new HashSet<(int, int)>();
+            HashSet<(int row, int col)> island2 = new HashSet<(int, int)>();
 
             return -1;
         }
 
-        public void FindIsland_BFS(int[][] grid, bool[][] mask, List<(int row, int col)> island, int row, int col)
+        /// <summary>
+        /// BFS查找一座岛
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="mask"></param>
+        /// <param name="island"></param>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        public void FindIsland_BFS(int[][] grid, bool[][] mask, HashSet<(int row, int col)> island, int row, int col)
         {
             Queue<(int row, int col)> queue = new Queue<(int row, int col)>();
             queue.Enqueue((row, col));

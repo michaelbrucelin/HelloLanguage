@@ -90,6 +90,11 @@ namespace LeetCode.Utilses
             return true;
         }
 
+        public static string ArrayToString<T>(IEnumerable<T> list)
+        {
+            return ArrayToString<T>(new List<T>(list));
+        }
+
         /// <summary>
         /// 将一维数组转为字符串
         /// </summary>
