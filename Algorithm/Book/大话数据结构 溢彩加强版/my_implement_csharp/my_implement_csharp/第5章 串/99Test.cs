@@ -35,54 +35,38 @@ namespace my_implement_csharp.第5章_串
             Utils.PrintArray(func(s));
 
             // 4.
-            s = "aaaaax";
+            s = "aaaaaaaab";
             Console.WriteLine($"{++id,2}, {s}");
             Utils.PrintArray(func(s));
         }
 
-        public void TestKMP()
+        public void TestKMP(int type)
         {
             _02模式匹配_KMP test = new _02模式匹配_KMP();
+            Func<string, string, int> func;
+            if (type == 2) func = test.KMP2; else func = test.KMP;
             string s, t;
             int result, answer;
             int id = 0;
 
             // 1.
             s = "ababababca"; t = "abababca";
-            result = test.KMP(s, t); answer = s.IndexOf(t);
+            result = func(s, t); answer = s.IndexOf(t);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // 2.
             s = "abcabcabdabba"; t = "abcabd";
-            result = test.KMP(s, t); answer = s.IndexOf(t);
+            result = func(s, t); answer = s.IndexOf(t);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
             // 3.
             s = "000000000200000000020000000002000000000200000000020000000001"; t = "0000000001";
-            result = test.KMP(s, t); answer = s.IndexOf(t);
-            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
-        }
-
-        public void TestKMP2()
-        {
-            _02模式匹配_KMP test = new _02模式匹配_KMP();
-            string s, t;
-            int result, answer;
-            int id = 0;
-
-            // 1.
-            s = "ababababca"; t = "abababca";
-            result = test.KMP2(s, t); answer = s.IndexOf(t);
+            result = func(s, t); answer = s.IndexOf(t);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
-            // 2.
-            s = "abcabcabdabba"; t = "abcabd";
-            result = test.KMP2(s, t); answer = s.IndexOf(t);
-            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
-
-            // 3.
-            s = "000000000200000000020000000002000000000200000000020000000001"; t = "0000000001";
-            result = test.KMP2(s, t); answer = s.IndexOf(t);
+            // 4.
+            s = "aaaaaaaaaacaaaaaaaaaaaabaaa"; t = "aaaaaaaab";
+            result = func(s, t); answer = s.IndexOf(t);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
         }
     }

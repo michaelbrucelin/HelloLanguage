@@ -7,5 +7,5 @@ Console.WriteLine("Hello, World!");
 // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
 _99Test tester = new _99Test();
-tester.TestNext(2);
-// tester.TestKMP();
+// tester.TestNext(2);
+tester.TestKMP(2);
