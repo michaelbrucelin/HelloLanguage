@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01串_String.c" />
+    <ClCompile Include="01树的存储结构.c" />
     <ClCompile Include="01线性表顺序存储_List.c" />
     <ClCompile Include="01顺序栈_Stack.c" />
     <ClCompile Include="02两栈共享空间_DoubleStack.c" />

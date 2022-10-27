@@ -22,6 +22,9 @@
     <Filter Include="源文件\第5章 串">
       <UniqueIdentifier>{1d7d0408-a8ee-4d6e-b9e4-80eb12680fb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\第6章 树">
+      <UniqueIdentifier>{dc2491c4-560d-43f6-ad94-a898974b60e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01线性表顺序存储_List.c">
@@ -56,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="02模式匹配_KMP.c">
       <Filter>源文件\第5章 串</Filter>
+    </ClCompile>
+    <ClCompile Include="01树的存储结构.c">
+      <Filter>源文件\第6章 树</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
