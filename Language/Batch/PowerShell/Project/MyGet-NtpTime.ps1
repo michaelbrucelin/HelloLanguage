@@ -32,9 +32,9 @@ Read the server response
 Record the current local time after reception.  This is time t4.
 
 The received packet now contains:
-  t1 - Originate Timestamp (the time the request packet was sent from the client)
-  t2 - Receive Timestamp (the time the request packet arrived at the server)
-  t3 - Transmit Timestamp (the time the response packet left the server)
+    t1 - Originate Timestamp (the time the request packet was sent from the client)
+    t2 - Receive Timestamp (the time the request packet arrived at the server)
+    t3 - Transmit Timestamp (the time the response packet left the server)
 (Note that we don't send the originate timestamp (t1) so this will be 0 in the response)
 
 Calculate clock offset and delay:
@@ -47,9 +47,8 @@ then the clock difference minus the network latency will be 0.
 Assuming symetric send/receive delays, the average of the out and return times will 
 equal the offset.
 
-   Offset = (OutTime+ReturnTime)/2
-
-   Offset = ((t2 - t1) + (t3 - t4))/2      
+    Offset = (OutTime+ReturnTime)/2
+    Offset = ((t2 - t1) + (t3 - t4))/2
 
 Adding the offset to the local clock will give the correct time.
 
@@ -58,7 +57,7 @@ Round Trip Delay (= the time actually spent on the network)
 This is the total transaction time (between t1..t4) minus the server 'thinking 
 time' (between t2..t3)
 
-   Delay = (t4 - t1) - (t3 - t2)
+    Delay = (t4 - t1) - (t3 - t2)
 
 This value is useful for NTP servers because the most accurate offsets will be obtained from
 responses with lower network delays.  When considering the single response obtained by this
@@ -75,28 +74,28 @@ Function MyGet-NtpTime {
 
     <#
 .Synopsis
-   Gets (Simple) Network Time Protocol time (SNTP/NTP, rfc-1305, rfc-2030) from a specified server
+    Gets (Simple) Network Time Protocol time (SNTP/NTP, rfc-1305, rfc-2030) from a specified server
 .DESCRIPTION
-   This function connects to an NTP server on UDP port 123 and retrieves the current NTP time.
-   Selected components of the returned time information are decoded and returned in a PSObject.
+    This function connects to an NTP server on UDP port 123 and retrieves the current NTP time.
+    Selected components of the returned time information are decoded and returned in a PSObject.
 .PARAMETER Server
-   The NTP Server to contact.  Uses pool.ntp.org by default.
+    The NTP Server to contact.  Uses pool.ntp.org by default.
 .PARAMETER MaxOffset
-   The maximum acceptable offset between the local clock and the NTP Server, in milliseconds.
-   The script will throw an exception if the time difference exceeds this value (on the assumption
-   that the returned time may be incorrect).  Default = 10000 (10s).
+    The maximum acceptable offset between the local clock and the NTP Server, in milliseconds.
+    The script will throw an exception if the time difference exceeds this value (on the assumption
+    that the returned time may be incorrect).  Default = 10000 (10s).
 .PARAMETER NoDns
-   (Switch) If specified do not attempt to resolve Version 3 Secondary Server ReferenceIdentifiers.
+    (Switch) If specified do not attempt to resolve Version 3 Secondary Server ReferenceIdentifiers.
 .EXAMPLE
-   Get-NtpTime uk.pool.ntp.org
-   Gets time from the specified server.
+    Get-NtpTime uk.pool.ntp.org
+    Gets time from the specified server.
 .EXAMPLE
-   Get-NtpTime | fl *
-   Get time from default server (pool.ntp.org) and displays all output object attributes.
+    Get-NtpTime | fl *
+    Get time from default server (pool.ntp.org) and displays all output object attributes.
 .OUTPUTS
    A PSObject containing decoded values from the NTP server.  Pipe to fl * to see all attributes.
 .FUNCTIONALITY
-   Gets NTP time from a specified server.
+    Gets NTP time from a specified server.
 #>
 
     [CmdletBinding()]
@@ -192,7 +191,7 @@ Function MyGet-NtpTime {
     # Calculate values for t1 and t4 as milliseconds since 1/1/1900 (NTP format)
     $t1ms = ([TimeZoneInfo]::ConvertTimeToUtc($t1) - $StartOfEpoch).TotalMilliseconds
     $t4ms = ([TimeZoneInfo]::ConvertTimeToUtc($t4) - $StartOfEpoch).TotalMilliseconds
- 
+
     # Calculate the NTP Offset and Delay values
     $Offset = (($t2ms - $t1ms) + ($t3ms - $t4ms)) / 2
     $Delay = ($t4ms - $t1ms) - ($t3ms - $t2ms)
@@ -257,36 +256,36 @@ Function MyGet-NtpTime {
 
     <# Reference Identifier, notes: 
 
-   This is a 32-bit bitstring identifying the particular reference source. 
-   
-   In the case of NTP Version 3 or Version 4 stratum-0 (unspecified) or 
-   stratum-1 (primary) servers, this is a four-character ASCII string, 
-   left justified and zero padded to 32 bits. NTP primary (stratum 1) 
-   servers should set this field to a code identifying the external reference 
-   source according to the following list. If the external reference is one 
-   of those listed, the associated code should be used. Codes for sources not
-   listed can be contrived as appropriate.
+    This is a 32-bit bitstring identifying the particular reference source. 
 
-      Code     External Reference Source
-      ----------------------------------------------------------------
-      LOCL     uncalibrated local clock used as a primary reference for
-               a subnet without external means of synchronization
-      PPS      atomic clock or other pulse-per-second source
-               individually calibrated to national standards
-      DCF      Mainflingen (Germany) Radio 77.5 kHz
-      MSF      Rugby (UK) Radio 60 kHz
-      GPS      Global Positioning Service
-   
-   In NTP Version 3 secondary servers, this is the 32-bit IPv4 address of the 
-   reference source. 
-   
-   In NTP Version 4 secondary servers, this is the low order 32 bits of the 
-   latest transmit timestamp of the reference source. 
+    In the case of NTP Version 3 or Version 4 stratum-0 (unspecified) or 
+    stratum-1 (primary) servers, this is a four-character ASCII string, 
+    left justified and zero padded to 32 bits. NTP primary (stratum 1) 
+    servers should set this field to a code identifying the external reference 
+    source according to the following list. If the external reference is one 
+    of those listed, the associated code should be used. Codes for sources not
+    listed can be contrived as appropriate.
+
+        Code     External Reference Source
+        ----------------------------------------------------------------
+        LOCL     uncalibrated local clock used as a primary reference for
+                 a subnet without external means of synchronization
+        PPS      atomic clock or other pulse-per-second source
+                 individually calibrated to national standards
+        DCF      Mainflingen (Germany) Radio 77.5 kHz
+        MSF      Rugby (UK) Radio 60 kHz
+        GPS      Global Positioning Service
+
+    In NTP Version 3 secondary servers, this is the 32-bit IPv4 address of the 
+    reference source.
+
+    In NTP Version 4 secondary servers, this is the low order 32 bits of the 
+    latest transmit timestamp of the reference source. 
 
 #>
 
     # Determine the format of the ReferenceIdentifier field and decode
-    
+
     If ($Stratum -le 1) {
         # Response from Primary Server.  RefId is ASCII string describing source
         $ReferenceIdentifier = [String]([Char[]]$NtpData[12..15] -join '')
@@ -412,122 +411,122 @@ Bytes       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
             +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 
-   Leap Indicator (LI): This is a two-bit code warning of an impending
-   leap second to be inserted/deleted in the last minute of the current
-   day, with bit 0 and bit 1, respectively, coded as follows:
+    Leap Indicator (LI): This is a two-bit code warning of an impending
+    leap second to be inserted/deleted in the last minute of the current
+    day, with bit 0 and bit 1, respectively, coded as follows:
 
-      LI       Value     Meaning
-      -------------------------------------------------------
-      00       0         no warning
-      01       1         last minute has 61 seconds
-      10       2         last minute has 59 seconds)
-      11       3         alarm condition (clock not synchronized)
+        LI       Value     Meaning
+        -------------------------------------------------------
+        00       0         no warning
+        01       1         last minute has 61 seconds
+        10       2         last minute has 59 seconds)
+        11       3         alarm condition (clock not synchronized)
 
-   Version Number (VN): This is a three-bit integer indicating the
-   NTP/SNTP version number. The version number is 3 for Version 3 (IPv4
-   only) and 4 for Version 4 (IPv4, IPv6 and OSI). If necessary to
-   distinguish between IPv4, IPv6 and OSI, the encapsulating context
-   must be inspected.
+    Version Number (VN): This is a three-bit integer indicating the
+    NTP/SNTP version number. The version number is 3 for Version 3 (IPv4
+    only) and 4 for Version 4 (IPv4, IPv6 and OSI). If necessary to
+    distinguish between IPv4, IPv6 and OSI, the encapsulating context
+    must be inspected.
 
-   Mode: This is a three-bit integer indicating the mode, with values
-   defined as follows:
+    Mode: This is a three-bit integer indicating the mode, with values
+    defined as follows:
 
-      Mode     Meaning
-      ------------------------------------
-      0        reserved
-      1        symmetric active
-      2        symmetric passive
-      3        client
-      4        server
-      5        broadcast
-      6        reserved for NTP control message
-      7        reserved for private use
+        Mode     Meaning
+        ------------------------------------
+        0        reserved
+        1        symmetric active
+        2        symmetric passive
+        3        client
+        4        server
+        5        broadcast
+        6        reserved for NTP control message
+        7        reserved for private use
 
-   In unicast and anycast modes, the client sets this field to 3
-   (client) in the request and the server sets it to 4 (server) in the
-   reply. In multicast mode, the server sets this field to 5
-   (broadcast).
+    In unicast and anycast modes, the client sets this field to 3
+    (client) in the request and the server sets it to 4 (server) in the
+    reply. In multicast mode, the server sets this field to 5
+    (broadcast).
 
-   Stratum: This is a eight-bit unsigned integer indicating the stratum
-   level of the local clock, with values defined as follows:
+    Stratum: This is a eight-bit unsigned integer indicating the stratum
+    level of the local clock, with values defined as follows:
 
-      Stratum  Meaning
-      ----------------------------------------------
-      0        unspecified or unavailable
-      1        primary reference (e.g., radio clock)
-      2-15     secondary reference (via NTP or SNTP)
-      16-255   reserved
+        Stratum  Meaning
+        ----------------------------------------------
+        0        unspecified or unavailable
+        1        primary reference (e.g., radio clock)
+        2-15     secondary reference (via NTP or SNTP)
+        16-255   reserved
 
-   Poll Interval: This is an eight-bit signed integer indicating the
-   maximum interval between successive messages, in seconds to the
-   nearest power of two. The values that can appear in this field
-   presently range from 4 (16 s) to 14 (16284 s); however, most
-   applications use only the sub-range 6 (64 s) to 10 (1024 s).
+    Poll Interval: This is an eight-bit signed integer indicating the
+    maximum interval between successive messages, in seconds to the
+    nearest power of two. The values that can appear in this field
+    presently range from 4 (16 s) to 14 (16284 s); however, most
+    applications use only the sub-range 6 (64 s) to 10 (1024 s).
 
-   Precision: This is an eight-bit signed integer indicating the
-   precision of the local clock, in seconds to the nearest power of two.
-   The values that normally appear in this field range from -6 for
-   mains-frequency clocks to -20 for microsecond clocks found in some
-   workstations.
+    Precision: This is an eight-bit signed integer indicating the
+    precision of the local clock, in seconds to the nearest power of two.
+    The values that normally appear in this field range from -6 for
+    mains-frequency clocks to -20 for microsecond clocks found in some
+    workstations.
 
-   Root Delay: This is a 32-bit signed fixed-point number indicating the
-   total roundtrip delay to the primary reference source, in seconds
-   with fraction point between bits 15 and 16. Note that this variable
-   can take on both positive and negative values, depending on the
-   relative time and frequency offsets. The values that normally appear
-   in this field range from negative values of a few milliseconds to
-   positive values of several hundred milliseconds.
+    Root Delay: This is a 32-bit signed fixed-point number indicating the
+    total roundtrip delay to the primary reference source, in seconds
+    with fraction point between bits 15 and 16. Note that this variable
+    can take on both positive and negative values, depending on the
+    relative time and frequency offsets. The values that normally appear
+    in this field range from negative values of a few milliseconds to
+    positive values of several hundred milliseconds.
 
-   Root Dispersion: This is a 32-bit unsigned fixed-point number
-   indicating the nominal error relative to the primary reference
-   source, in seconds with fraction point between bits 15 and 16. The
-   values that normally appear in this field range from 0 to several
-   hundred milliseconds.
+    Root Dispersion: This is a 32-bit unsigned fixed-point number
+    indicating the nominal error relative to the primary reference
+    source, in seconds with fraction point between bits 15 and 16. The
+    values that normally appear in this field range from 0 to several
+    hundred milliseconds.
 
-   Reference Identifier: This is a 32-bit bitstring identifying the
-   particular reference source. In the case of NTP Version 3 or Version
-   4 stratum-0 (unspecified) or stratum-1 (primary) servers, this is a
-   four-character ASCII string, left justified and zero padded to 32
-   bits. In NTP Version 3 secondary servers, this is the 32-bit IPv4
-   address of the reference source. In NTP Version 4 secondary servers,
-   this is the low order 32 bits of the latest transmit timestamp of the
-   reference source. NTP primary (stratum 1) servers should set this
-   field to a code identifying the external reference source according
-   to the following list. If the external reference is one of those
-   listed, the associated code should be used. Codes for sources not
-   listed can be contrived as appropriate.
+    Reference Identifier: This is a 32-bit bitstring identifying the
+    particular reference source. In the case of NTP Version 3 or Version
+    4 stratum-0 (unspecified) or stratum-1 (primary) servers, this is a
+    four-character ASCII string, left justified and zero padded to 32
+    bits. In NTP Version 3 secondary servers, this is the 32-bit IPv4
+    address of the reference source. In NTP Version 4 secondary servers,
+    this is the low order 32 bits of the latest transmit timestamp of the
+    reference source. NTP primary (stratum 1) servers should set this
+    field to a code identifying the external reference source according
+    to the following list. If the external reference is one of those
+    listed, the associated code should be used. Codes for sources not
+    listed can be contrived as appropriate.
 
-      Code     External Reference Source
-      ----------------------------------------------------------------
-      LOCL     uncalibrated local clock used as a primary reference for
-               a subnet without external means of synchronization
-      PPS      atomic clock or other pulse-per-second source
-               individually calibrated to national standards
-      ACTS     NIST dialup modem service
-      USNO     USNO modem service
-      PTB      PTB (Germany) modem service
-      TDF      Allouis (France) Radio 164 kHz
-      DCF      Mainflingen (Germany) Radio 77.5 kHz
-      MSF      Rugby (UK) Radio 60 kHz
-      WWV      Ft. Collins (US) Radio 2.5, 5, 10, 15, 20 MHz
-      WWVB     Boulder (US) Radio 60 kHz
-      WWVH     Kaui Hawaii (US) Radio 2.5, 5, 10, 15 MHz
-      CHU      Ottawa (Canada) Radio 3330, 7335, 14670 kHz
-      LORC     LORAN-C radionavigation system
-      OMEG     OMEGA radionavigation system
-      GPS      Global Positioning Service
-      GOES     Geostationary Orbit Environment Satellite
+        Code     External Reference Source
+        ----------------------------------------------------------------
+        LOCL     uncalibrated local clock used as a primary reference for
+                 a subnet without external means of synchronization
+        PPS      atomic clock or other pulse-per-second source
+                 individually calibrated to national standards
+        ACTS     NIST dialup modem service
+        USNO     USNO modem service
+        PTB      PTB (Germany) modem service
+        TDF      Allouis (France) Radio 164 kHz
+        DCF      Mainflingen (Germany) Radio 77.5 kHz
+        MSF      Rugby (UK) Radio 60 kHz
+        WWV      Ft. Collins (US) Radio 2.5, 5, 10, 15, 20 MHz
+        WWVB     Boulder (US) Radio 60 kHz
+        WWVH     Kaui Hawaii (US) Radio 2.5, 5, 10, 15 MHz
+        CHU      Ottawa (Canada) Radio 3330, 7335, 14670 kHz
+        LORC     LORAN-C radionavigation system
+        OMEG     OMEGA radionavigation system
+        GPS      Global Positioning Service
+        GOES     Geostationary Orbit Environment Satellite
 
-   Reference Timestamp: This is the time at which the local clock was
-   last set or corrected, in 64-bit timestamp format.
+    Reference Timestamp: This is the time at which the local clock was
+    last set or corrected, in 64-bit timestamp format.
 
-   Originate Timestamp: This is the time at which the request departed
-   the client for the server, in 64-bit timestamp format.
+    Originate Timestamp: This is the time at which the request departed
+    the client for the server, in 64-bit timestamp format.
 
-   Receive Timestamp: This is the time at which the request arrived at
-   the server, in 64-bit timestamp format.
+    Receive Timestamp: This is the time at which the request arrived at
+    the server, in 64-bit timestamp format.
 
-   Transmit Timestamp: This is the time at which the reply departed the
-   server for the client, in 64-bit timestamp format.
+    Transmit Timestamp: This is the time at which the reply departed the
+    server for the client, in 64-bit timestamp format.
 
 #>

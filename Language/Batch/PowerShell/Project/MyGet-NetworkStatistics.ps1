@@ -94,13 +94,12 @@ function MyGet-NetworkStatistics {
     [OutputType('System.Management.Automation.PSObject')]
     [CmdletBinding()]
     param(
-        
         [Parameter(Position = 0)]
         [System.String]$ProcessName = '*',
         
         [Parameter(Position = 1)]
-        [System.String]$Address = '*',        
-        
+        [System.String]$Address = '*',
+
         [Parameter(Position = 2)]
         $Port = '*',
 
@@ -117,7 +116,7 @@ function MyGet-NetworkStatistics {
 
         [switch]$ShowHostnames,
         
-        [switch]$ShowProcessNames = $true,    
+        [switch]$ShowProcessNames = $true,
 
         [System.String]$TempFile = "C:\netstat.txt",
 
@@ -145,12 +144,12 @@ function MyGet-NetworkStatistics {
                     $ShowProcessNames = $false
                 }
             }
-        
+
             #Handle remote systems
             if ($Computer -ne $env:COMPUTERNAME) {
                 #define command
                 [string]$cmd = "cmd /c c:\windows\system32\netstat.exe -ano >> $tempFile"
-            
+
                 #define remote file path - computername, drive, folder path
                 $remoteTempFile = "\\{0}\{1}`${2}" -f "$Computer", (split-path $tempFile -qualifier).TrimEnd(":"), (Split-Path $tempFile -noqualifier)
 
@@ -186,7 +185,7 @@ function MyGet-NetworkStatistics {
                 ) {
                     start-sleep -seconds 2 
                 }
-            
+
                 #gather results
                 if (test-path $remoteTempFile) {
                     Try {
@@ -212,14 +211,13 @@ function MyGet-NetworkStatistics {
             #initialize counter for progress
             $totalCount = $results.count
             $count = 0
-    
+
             #Loop through each line of results    
             foreach ($result in $results) {
-            
                 $item = $result.line.split(' ', [System.StringSplitOptions]::RemoveEmptyEntries)
-    
+
                 if ($item[1] -notmatch '^\[::') {
-                    
+
                     #parse the netstat line for local address and port
                     if (($la = $item[1] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6') {
                         $localAddress = $la.IPAddressToString
@@ -229,7 +227,7 @@ function MyGet-NetworkStatistics {
                         $localAddress = $item[1].split(':')[0]
                         $localPort = $item[1].split(':')[-1]
                     }
-                    
+
                     #parse the netstat line for remote address and port
                     if (($ra = $item[2] -as [ipaddress]).AddressFamily -eq 'InterNetworkV6') {
                         $remoteAddress = $ra.IPAddressToString
@@ -253,11 +251,11 @@ function MyGet-NetworkStatistics {
                             continue
                         }
                     }
-                    
+
                     #parse the netstat line for other properties
                     $procId = $item[-1]
                     $proto = $item[0]
-                    $status = if ($item[0] -eq 'tcp') { $item[3] } else { $null }    
+                    $status = if ($item[0] -eq 'tcp') { $item[3] } else { $null }
 
                     #Filter the object
                     if ($remotePort -notlike $Port -and $localPort -notlike $Port) {
@@ -285,7 +283,7 @@ function MyGet-NetworkStatistics {
                     Write-Progress  -Activity "Resolving host and process names"`
                         -Status "Resolving process ID $procId with remote address $remoteAddress and local address $localAddress"`
                         -PercentComplete (( $count / $totalCount ) * 100)
-                    
+
                     #If we are running showprocessnames, get the matching name
                     if ($ShowProcessNames -or $PSBoundParameters.ContainsKey -eq 'ProcessName') {
                         
@@ -300,7 +298,7 @@ function MyGet-NetworkStatistics {
                         Write-Verbose "Filtered by ProcessName:`n$result"
                         continue
                     }
-                                    
+
                     #if the showhostnames switch is specified, try to map IP to hostname
                     if ($showHostnames) {
                         $tmpAddress = $null
@@ -348,7 +346,7 @@ function MyGet-NetworkStatistics {
                         catch { }
                     }
 
-                    #Write the object    
+                    #Write the object
                     New-Object -TypeName PSObject -Property @{
                         ComputerName  = $Computer
                         PID           = $procId
@@ -359,7 +357,7 @@ function MyGet-NetworkStatistics {
                         RemoteAddress = $remoteAddress
                         RemotePort    = $remotePort
                         State         = $status
-                    } | Select-Object -Property $properties                                
+                    } | Select-Object -Property $properties
 
                     #Increment the progress counter
                     $count++

@@ -1,8 +1,15 @@
+<#
+    计算位图的十进制权限值。
+    MyGet-BitmapDecimal -inputDec 23
+    > 0,1,2,4
+    MyGet-BitmapDecimal -inputDec 535822336
+    > 20,21,22,23,24,25,26,27,28
+#>
 function MyGet-BitmapDecimal() {
     param(
         [int64]$inputDec
     )
- 
+
     $inputBinStr = [System.Convert]::ToString($inputDec, 2)
     $inputArray = $inputBinStr.ToCharArray()
     [System.Array]::Reverse($inputArray)

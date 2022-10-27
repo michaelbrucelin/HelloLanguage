@@ -1,3 +1,6 @@
+<#
+    ip地址与十进制转换。
+#>
 function MyConvert-IpAndDec() {
     param(
         [string]$InputVal
