@@ -1,3 +1,10 @@
+<#
+    脚本调用了WMI的ping状态来判断，最后结合参数配合调用输出结果。
+    参数说明：
+        loop：   循环运行ping脚本
+        online： 只显示ping通的server
+        offline：只显示未ping通的server
+#>
 function MyStart-MultiPing() {
     param(
         [switch]$online,
@@ -8,11 +15,11 @@ function MyStart-MultiPing() {
     $filepath = Read-Host "Please enter the file location"
     $ComPList = Get-Content "$filepath"
 
-    function script:Ping_Test {   
+    function script:Ping_Test {
         <#
         The Process statement list runs one time for each object in the pipeline.
         While the Process block is running, each pipeline object is assigned to 
-        the $_ automatic variable, one pipeline object at a time. 
+        the $_ automatic variable, one pipeline object at a time.
         #>
         PROCESS {
             $results = Get-WmiObject -query "SELECT * FROM Win32_PingStatus WHERE Address = '$_'"
@@ -31,7 +38,7 @@ function MyStart-MultiPing() {
     }
 
     #call procedure output results
-    do {   
+    do {
         $time = Measure-Command {
             foreach ($Server in $ComPList) {
                 $Server | Ping_Test

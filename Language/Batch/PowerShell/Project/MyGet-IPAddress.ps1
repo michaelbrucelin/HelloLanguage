@@ -1,3 +1,6 @@
+<#
+    获取所有网卡的IP地址。
+#>
 function MyGet-IPAddress {
     Get-CimInstance -ClassName Win32_NetworkAdapterConfiguration |
     Where-Object { $_.IPEnabled -eq $true } |
