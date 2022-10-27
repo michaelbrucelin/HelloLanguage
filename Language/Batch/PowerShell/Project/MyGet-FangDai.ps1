@@ -1,3 +1,6 @@
+<#
+    计算房贷，房贷计算器。
+#>
 function MyGet-FangDai() {
     param(
         [int]$total,

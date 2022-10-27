@@ -1,17 +1,14 @@
+<#
+    使用powershell进行任意进制转换。
+#>
 function MyConvert-10ToBase() {
     [CmdletBinding()]
     [OutputType([string])]
     param(
-        [Parameter(
-            Position = 0,
-            Mandatory,
-            ValueFromPipelineByPropertyName)]
+        [Parameter(Position = 0, Mandatory, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int]$Number,
-        [Parameter(
-            Position = 1,
-            Mandatory,
-            ValueFromPipelineByPropertyName)]
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [ValidateRange(2, 36)]
         [int]$Base
@@ -39,16 +36,10 @@ function MyConvert-BaseTo10() {
     [CmdletBinding()]
     [OutputType([string])]
     param(
-        [Parameter(
-            Position = 0,
-            Mandatory,
-            ValueFromPipelineByPropertyName)]
+        [Parameter(Position = 0, Mandatory, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [string]$Number,
-        [Parameter(
-            Position = 1,
-            Mandatory,
-            ValueFromPipelineByPropertyName)]
+        [Parameter(Position = 1, Mandatory, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [ValidateRange(2, 36)]
         [int]$Base

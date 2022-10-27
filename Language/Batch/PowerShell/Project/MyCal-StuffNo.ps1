@@ -1,4 +1,6 @@
-# 员工号简单加密并转16进制
+<#
+    员工号简单加密并转16进制
+#>
 function MyCal-StuffNo() {
     param(
         [string]$stuffNo,

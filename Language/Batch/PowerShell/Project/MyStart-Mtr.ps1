@@ -2,7 +2,7 @@
 .SYNOPSIS
 An MTR clone for PowerShell.
 Written by Tyler Applebaum.
-Version 2.0
+Version 2.1
 
 .LINK
 https://gist.github.com/tylerapplebaum/dc527a3bd875f11871e2
@@ -33,12 +33,16 @@ PS C:\> Get-Traceroute 8.8.4.4 -b 512
 Runs a traceroute to 8.8.4.4 with 512-byte ICMP packets.
 
 .EXAMPLE
-PS C:\> Get-Traceroute amazon.com -s 75.75.75.75 -f amazon.com
-Runs a traceroute to amazon.com using 75.75.75.75 as the DNS resolver and saves the output as amazon.com.txt.
+PS C:\> Get-Traceroute amazon.com -s 75.75.75.75 -f amazon.com -h 45
+Runs a traceroute to amazon.com using 75.75.75.75 as the DNS resolver and saves the output as amazon.com.txt. 
+Increase max hop count from default of 30 to 45.
 #>
 
-#Requires -version 4
+# 链接：https://gist.github.com/tylerapplebaum/dc527a3bd875f11871e2
+# 原脚本名：Get-Traceroute，这里为了与本地命名一致，用 function MyStart-Mtr() {} 封装了一下。
+
 function MyStart-Mtr() {
+    #Requires -version 4
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $True, ValueFromPipeline = $True)]
@@ -57,27 +61,32 @@ function MyStart-Mtr() {
         [Parameter(ValueFromPipeline)]
         [Alias("s")]
         [IPAddress]$DNSServer = $Null,
-
+	
+        [Parameter(ValueFromPipeline)]
+        [Alias("h")]
+        [ValidateRange(30, 120)]
+        [Int]$Hops = 60,
+	
         [Parameter(ValueFromPipeline)]
         [Alias("f")]
         [String]$Filename = "Traceroute_$Target"
-    )
 
-    Function MySet-Variables {
+    )
+    Function script:Set-Variables {
         $PerTraceArr = @()
-        $ASNOwnerArr = @()
+        $script:ASNOwnerArr = @()
         $ASNOwnerObj = New-Object PSObject
         $ASNOwnerObj | Add-Member NoteProperty "ASN"("AS0")
         $ASNOwnerObj | Add-Member NoteProperty "ASN Owner"("EvilCorp")
         $ASNOwnerArr += $ASNOwnerObj #Add some values so the array isn't empty when first checked.
-        $i = 0
-        $x = 0
-        $z = 0
-        $WHOIS = ".origin.asn.cymru.com"
-        $ASNWHOIS = ".asn.cymru.com"
-    } #End MySet-Variables
+        $script:i = 0
+        $script:x = 0
+        $script:z = 0
+        $script:WHOIS = ".origin.asn.cymru.com"
+        $script:ASNWHOIS = ".asn.cymru.com"
+    } #End Set-Variables
 
-    Function MySet-WindowSize {
+    Function script:Set-WindowSize {
         $Window = $Host.UI.RawUI
         If ($Window.BufferSize.Width -lt 175 -OR $Window.WindowSize.Width -lt 175) {
             $NewSize = $Window.BufferSize
@@ -90,13 +99,13 @@ function MyStart-Mtr() {
             $NewSize.Width = 175
             $Window.WindowSize = $NewSize
         }
-    } #End MySet-WindowSize
+    } #End Set-WindowSize
 
-    Function MyGet-Traceroute {
-        $TraceResults = Test-NetConnection $Target -InformationLevel Detailed -TraceRoute | Select -ExpandProperty TraceRoute
-    } #End MyGet-Traceroute
+    Function script:Get-Traceroute {
+        $script:TraceResults = Test-NetConnection $Target -Hops $Hops -InformationLevel Detailed -TraceRoute | Select -ExpandProperty TraceRoute
+    } #End Get-Traceroute
 
-    Function MyResolve-ASN {
+    Function script:Resolve-ASN {
         $HopASN = $null #Reset to null each time
         $HopASNRecord = $null #Reset to null each time
         If ($Hop -notlike "TimedOut" -AND $Hop -notmatch "^(?:10|127|172\.(?:1[6-9]|2[0-9]|3[01])|192\.168)\..*") {
@@ -124,13 +133,13 @@ function MyStart-Mtr() {
         Else {
             $HopASN = "-"
         }
-    } #End MyResolve-ASN
+    } #End Resolve-ASN
 
-    Function MyResolve-ASNOwner {
+    Function script:Resolve-ASNOwner {
         If ($HopASN -notlike "-") {  
             $IndexNo = $ASNOwnerArr.ASN.IndexOf($HopASN)
             Write-Verbose "Current object: $ASNOwnerObj"
-  
+
             If (!($ASNOwnerArr.ASN.Contains($HopASN)) -OR ($ASNOwnerArr."ASN Owner"[$IndexNo].Contains('-'))) {
                 #Keep "ASNOwnerArr.ASN" in double quotes so it will be treated as a string and not an object
                 Write-Verbose "ASN $HopASN not previously resolved; performing lookup" #Check the previous lookups before running this unnecessarily
@@ -163,43 +172,43 @@ function MyStart-Mtr() {
             $HopASNOwner = "-"
             Write-Verbose "ASN Owner lookup not performed - RFC1918 IP found or hop TimedOut"
         }
-    } #End MyResolve-ASNOwner
+    } #End Resolve-ASNOwner
 
-    Function MyResolve-DNS {
+    Function script:Resolve-DNS {
         $HopNameArr = $null
-        $HopName = New-Object psobject
+        $script:HopName = New-Object psobject
         If ($Hop -notlike "TimedOut" -and $Hop -notlike "0.0.0.0") {
             $z++ #Increment the count for the progress bar
-            $HopNameArr = Resolve-DnsName -Server $DNSServer -Type PTR $Hop -ErrorAction SilentlyContinue | Select NameHost
+            $script:HopNameArr = Resolve-DnsName -Server $DNSServer -Type PTR $Hop -ErrorAction SilentlyContinue | Select NameHost
             Write-Verbose "Hop = $Hop"
 
             If ($HopNameArr.NameHost -AND $HopNameArr.NameHost.GetType().IsArray) {
                 #Check for array first; sometimes resolvers are stupid and return NS records with the PTR in an array.
-                $HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $HopNameArr.NameHost[0] #If Resolve-DNS brings back an array containing NS records, select just the PTR
+                $script:HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $HopNameArr.NameHost[0] #If Resolve-DNS brings back an array containing NS records, select just the PTR
                 Write-Verbose "Object found $HopName"
             }
 
             ElseIf ($HopNameArr.NameHost -AND $HopNameArr.NameHost.GetType().FullName -like "System.String") {
                 #Normal case. One PTR record. Will break up an array of multiple PTRs separated with a comma.
-                $HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $HopNameArr.NameHost.Split(',')[0].Trim() #In the case of multiple PTRs select the first one
+                $script:HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $HopNameArr.NameHost.Split(',')[0].Trim() #In the case of multiple PTRs select the first one
                 Write-Verbose "String found $HopName"
             }
 
             ElseIf ($HopNameArr.NameHost -like $null) {
                 #Check for null last because when an array is returned with PTR and NS records, it contains null values.
-                $HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $Hop #If there's no PTR record, set name equal to IP
+                $script:HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $Hop #If there's no PTR record, set name equal to IP
                 Write-Verbose "HopNameArr apparently empty for $HopName"
             }
             Write-Progress -Activity "Resolving PTR Record" -Status "Looking up $Hop, Hop #$z of $($TraceResults.length)" -PercentComplete ($z / $($TraceResults.length) * 100)
         }
         Else {
             $z++
-            $HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $Hop #If the hop times out, set name equal to TimedOut
+            $script:HopName | Add-Member -MemberType NoteProperty -Name NameHost -Value $Hop #If the hop times out, set name equal to TimedOut
             Write-Verbose "Hop = $Hop"
         }
-    } #End MyResolve-DNS
+    } #End Resolve-DNS
 
-    Function MyGet-PerHopRTT {
+    Function script:Get-PerHopRTT {
         $PerHopRTTArr = @() #Store all RTT values per hop
         $SAPSObj = $null #Clear the array each cycle
         $SendICMP = New-Object System.Net.NetworkInformation.Ping
@@ -207,7 +216,7 @@ function MyStart-Mtr() {
         $x = 0 #Reset x for the next hop count. X tracks packet loss percentage.
         $BufferData = "a" * $BufLen #Send the UTF-8 letter "a"
         $ByteArr = [Text.Encoding]::UTF8.GetBytes($BufferData)
-        If ($Hop -notlike "TimedOut" -and $Hop -notlike "0.0.0.0") {
+        If ($Hop -notlike "TimedOut" -and $Hop -notlike "0.0.0.0" -and $Hop -notlike "::") {
             #Normal case, attempt to ping hop
             For ($y = 1; $y -le $PingCycles; $y++) {
                 $HopResults = $SendICMP.Send($Hop, 1000, $ByteArr) #Send the packet with a 1 second timeout
@@ -244,7 +253,7 @@ function MyStart-Mtr() {
             $HopRTTMin = "-"
             $HopRTTMax = "-"
         } #End TimedOut condition
-        $SAPSObj = [PSCustomObject]@{
+        $script:SAPSObj = [PSCustomObject]@{
             "Hop"       = $i
             "Hop Name"  = $HopName.NameHost
             "ASN"       = $HopASN
@@ -256,18 +265,18 @@ function MyStart-Mtr() {
             "Max RTT"   = $HopRTTMax
         }
         $PerTraceArr += $SAPSObj #Add the object to the array
-    } #End MyGet-PerHopRTT
+    } #End Get-PerHopRTT
 
-    . MySet-Variables
-    #. MySet-WindowSize
-    . MyGet-Traceroute
+    . Set-Variables
+    . Set-WindowSize
+    . Get-Traceroute
     ForEach ($Hop in $TraceResults) {
-        . MyResolve-ASN
-        . MyResolve-ASNOwner
-        . MyResolve-DNS
-        . MyGet-PerHopRTT
+        . Resolve-ASN
+        . Resolve-ASNOwner
+        . Resolve-DNS
+        . Get-PerHopRTT
     }
 
     $PerTraceArr | Format-Table -Autosize
-    #$PerTraceArr | Format-Table -Autosize | Out-File $env:UserProfile\Desktop\$Filename.txt -encoding UTF8
+    $PerTraceArr | Format-Table -Autosize | Out-File $env:UserProfile\Desktop\$Filename.txt -encoding UTF8
 }

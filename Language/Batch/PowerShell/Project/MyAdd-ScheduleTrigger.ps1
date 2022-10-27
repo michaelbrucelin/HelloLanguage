@@ -1,3 +1,7 @@
+<#
+    # 使用
+    MyAdd-ScheduleTrigger -scheFolder '\' -scheName 'WorkAtHomeTriggerWorkflow' -scheTime '2020-01-31T17:59:00'
+#>
 function MyAdd-ScheduleTrigger() {
     param(
         [Parameter(Mandatory = $true)]

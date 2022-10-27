@@ -1,3 +1,6 @@
+<#
+    Excel列标特殊26进制与10进制换算，这里的26进制由1~26组成，而非常规的0~25。
+#>
 function MyCal-26JinZhi() {
     param(
         [string]$inputDigit,
