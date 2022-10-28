@@ -19,7 +19,6 @@ class Solution:
             for i in range(1, len(arr) - 1):
                 res += (arr[i] - arr[i - 1]) * (arr[i + 1] - arr[i])
         return res
-
 ```
 
 ```C++
@@ -41,7 +40,6 @@ public:
         return res;
     }
 };
-
 ```
 
 ```Java
@@ -67,7 +65,6 @@ class Solution {
         return res;
     }
 }
-
 ```
 
 ```C#
@@ -92,7 +89,6 @@ public class Solution {
         return res;
     }
 }
-
 ```
 
 ```C
@@ -144,7 +140,6 @@ int uniqueLetterString(char * s){
     }
     return res;
 }
-
 ```
 
 ```JavaScript
@@ -167,7 +162,6 @@ var uniqueLetterString = function(s) {
         }
         return res;
 };
-
 ```
 
 ```Golang
@@ -184,11 +178,9 @@ func uniqueLetterString(s string) (ans int) {
     }
     return
 }
-
 ```
 
 **复杂度分析**
 
 -   时间复杂度：O(n)，其中 n 是 s 的长度。每个下标会被计算一次。
-
 -   空间复杂度：O(n)，哈希表占用 O(n) 空间。
