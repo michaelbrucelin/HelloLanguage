@@ -68,7 +68,7 @@ int Index(String S, String T, int pos)
 
 /* Index操作，独立实现 */
 // 返回子串T在主串S中第pos个字符之后的位置。若不存在,则函数返回值为0。其中，T非空，1≤pos≤StrLength(S)。
-int Index(String S, String T, int pos)
+int Index2(String S, String T, int pos)
 {
 	int i = pos;                    // i用于主串S中当前位置下标值，从pos位置开始匹配
 	int j = 1;                      // j用于子串T中当前位置下标值

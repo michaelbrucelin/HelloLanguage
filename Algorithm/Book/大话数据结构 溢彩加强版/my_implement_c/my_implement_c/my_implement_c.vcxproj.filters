@@ -63,5 +63,11 @@
     <ClCompile Include="01树的存储结构.c">
       <Filter>源文件\第6章 树</Filter>
     </ClCompile>
+    <ClCompile Include="02二叉树的遍历.c">
+      <Filter>源文件\第6章 树</Filter>
+    </ClCompile>
+    <ClCompile Include="03二叉树的建立.c">
+      <Filter>源文件\第6章 树</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

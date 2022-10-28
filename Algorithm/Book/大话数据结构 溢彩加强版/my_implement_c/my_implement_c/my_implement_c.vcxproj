@@ -144,8 +144,10 @@
     <ClCompile Include="01线性表顺序存储_List.c" />
     <ClCompile Include="01顺序栈_Stack.c" />
     <ClCompile Include="02两栈共享空间_DoubleStack.c" />
+    <ClCompile Include="02二叉树的遍历.c" />
     <ClCompile Include="02模式匹配_KMP.c" />
     <ClCompile Include="02线性表链式存储_LinkList.c" />
+    <ClCompile Include="03二叉树的建立.c" />
     <ClCompile Include="03链栈_LinkStack.c" />
     <ClCompile Include="03静态链表_StaticLinkList.c" />
     <ClCompile Include="04顺序队列_Queue.c" />
