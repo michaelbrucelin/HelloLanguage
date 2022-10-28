@@ -1,6 +1,7 @@
 Function MyInvoke-RegExHelper {
     <#
         .SYNOPSIS
+            GUI正则表达式验证工具
             Tool to help with writing Regular Expressions
         .DESCRIPTION
             Tool to help with writing Regular Expressions
