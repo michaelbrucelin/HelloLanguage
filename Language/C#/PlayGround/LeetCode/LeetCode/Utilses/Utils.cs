@@ -95,6 +95,11 @@ namespace LeetCode.Utilses
             return ArrayToString<T>(new List<T>(list));
         }
 
+        public static string ArrayToString<T>(IEnumerable<T> list, int start, int len)
+        {
+            return ArrayToString<T>(new List<T>(list), start, len);
+        }
+
         /// <summary>
         /// 将一维数组转为字符串
         /// </summary>
@@ -112,6 +117,29 @@ namespace LeetCode.Utilses
             sb.Append("[ ");
             sb.Append(list[0].ToString());
             for (int i = 1; i < list.Count; i++)
+                sb.Append($", {list[i]}");
+            sb.Append(" ]");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 将一维数组转为字符串
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string ArrayToString<T>(IList<T> list, int start, int len)
+        {
+            if (list == null) return "null";
+            if (len == 0) return "[ ]";
+            if (len == 1) return $"[ {list[start]} ]";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("[ ");
+            sb.Append(list[start].ToString());
+            for (int i = start + 1; i < len; i++)
                 sb.Append($", {list[i]}");
             sb.Append(" ]");
 
