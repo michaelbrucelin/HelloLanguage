@@ -18,9 +18,8 @@ namespace LeetCode.QuestionBank.Question0904
             if (fruits.Length <= 2) return fruits.Length;
 
             int result = 0;
-            int id1 = 0, kind1 = fruits[0], id2 = -1, kind2 = -1;
-            int id = 1, lastkind = fruits[0];
-
+            //int id1 = 0, kind1 = fruits[0], id2 = -1, kind2 = -1;
+            //int id = 1, lastkind = fruits[0];
 
             return result;
         }

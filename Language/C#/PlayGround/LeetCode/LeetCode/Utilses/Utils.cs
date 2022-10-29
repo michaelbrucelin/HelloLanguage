@@ -190,12 +190,12 @@ namespace LeetCode.Utilses
         }
 
         ///// <summary>
-        ///// 
+        ///// Question0025里面有写，稍后统一
         ///// </summary>
         ///// <param name="arrayString"></param>
         ///// <returns></returns>
-        //public static TreeNode GetTreeNodeFromArray(string arrayString)
-        //{ 
+        //public static SinglyListNode GetTreeNodeFromArray(string arrayString)
+        //{
 
         //}
     }
