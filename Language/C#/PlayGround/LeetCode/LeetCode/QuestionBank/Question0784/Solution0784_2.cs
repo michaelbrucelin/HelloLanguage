@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LeetCode.QuestionBank.Question0784
 {
-    internal class Solution0784_2
+    public class Solution0784_2 : Interface0784
     {
+        public IList<string> LetterCasePermutation(string s)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
