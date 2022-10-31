@@ -17,9 +17,12 @@ namespace LeetCode
             Random random = new Random();
 
             Test0481 test = new();
-            test.Test();
+            //test.Test();
             //test.TestReverse();
             //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            //char c = 'A';
+            //Console.WriteLine((char)(c ^ 32));
 
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 30000));
 
