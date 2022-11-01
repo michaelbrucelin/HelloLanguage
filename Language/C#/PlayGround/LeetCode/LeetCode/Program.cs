@@ -21,6 +21,10 @@ namespace LeetCode
             //test.TestReverse();
             //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
+            //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
+            //var flat = strs.SelectMany(arr => arr);
+            //Console.WriteLine();
+
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));
 
