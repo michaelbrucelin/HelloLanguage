@@ -36,18 +36,22 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 忽略一维数组中元素的顺序，比较两个一维数组是否相等
+        /// 比较两个一维数组是否相等
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
         /// <param name="list2"></param>
         /// <returns></returns>
-        public static bool CompareArray<T>(IList<T> list1, IList<T> list2) where T : IComparable
+        public static bool CompareArray<T>(IList<T> list1, IList<T> list2, bool ignoreOrder = false) where T : IComparable
         {
             if (list1.Count != list2.Count) return false;
 
-            list1 = list1.OrderBy(t => t).ToList();
-            list2 = list2.OrderBy(t => t).ToList();
+            if (ignoreOrder)
+            {
+                list1 = list1.OrderBy(t => t).ToList();
+                list2 = list2.OrderBy(t => t).ToList();
+            }
+
             for (int i = 0; i < list1.Count; i++)
                 if (list1[i].CompareTo(list2[i]) != 0) return false;
 
@@ -55,20 +59,23 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
-        /// 忽略二维数组中元素的顺序，比较两个二维数组是否相等
+        /// 比较两个二维数组是否相等
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
         /// <param name="list2"></param>
         /// <returns></returns>
-        public static bool CompareArray<T>(IList<IList<T>> list1, IList<IList<T>> list2) where T : IComparable
+        public static bool CompareArray<T>(IList<IList<T>> list1, IList<IList<T>> list2, bool ignoreOrder = false) where T : IComparable
         {
             if (list1.Count != list2.Count) return false;
 
-            for (int i = 0; i < list1.Count; i++)
+            if (ignoreOrder)
             {
-                list1[i] = list1[i].OrderBy(t => t).ToList();
-                list2[i] = list2[i].OrderBy(t => t).ToList();
+                for (int i = 0; i < list1.Count; i++)
+                {
+                    list1[i] = list1[i].OrderBy(t => t).ToList();
+                    list2[i] = list2[i].OrderBy(t => t).ToList();
+                }
             }
 
             bool[] mask = new bool[list2.Count];
