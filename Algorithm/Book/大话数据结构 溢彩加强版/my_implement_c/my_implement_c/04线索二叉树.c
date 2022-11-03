@@ -40,8 +40,8 @@ void InThreading(BiThrTree p)
 }
 
 
-/* T指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的*/
-/* 最后一个结点。中序遍历二叉线索链表表示的二叉树T */
+/* T指向头结点，头结点左链lchild指向根结点，头结点右链rchild指向中序遍历的最后一个结点。 */
+/* 中序遍历二叉线索链表表示的二叉树T */
 Status InOrderTraverse_Thr(BiThrTree T)
 {
 	BiThrTree p;
