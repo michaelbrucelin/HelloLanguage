@@ -16,9 +16,11 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test1106 test = new();
-            test.Test();
+            //Test1106 test = new();
+            //test.Test();
             //test.TestReverse();
+
+            // Console.WriteLine((int)'a');
 
             //Utils0754 utils = new Utils0754();
             //utils.GetReachNumbers();
