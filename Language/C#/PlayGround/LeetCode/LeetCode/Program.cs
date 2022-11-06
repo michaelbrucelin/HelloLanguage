@@ -16,8 +16,8 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0029 test = new();
-            test.Test();
+            //Test0029 test = new();
+            //test.Test();
             //test.TestReverse();
 
             //Utils0754 utils = new Utils0754();
@@ -28,6 +28,9 @@ namespace LeetCode
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);
             //Console.WriteLine();
+
+            Console.WriteLine("wjAC".CompareTo("Zpi"));
+            Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));
 
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));
