@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0029;
+using LeetCode.QuestionBank.Question0816;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -16,21 +16,22 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            //Test0029 test = new();
-            //test.Test();
+            Test0816 test = new();
+            test.Test();
             //test.TestReverse();
 
             //Utils0754 utils = new Utils0754();
             //utils.GetReachNumbers();
 
             //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer)}, result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
 
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);
             //Console.WriteLine();
 
-            Console.WriteLine("wjAC".CompareTo("Zpi"));
-            Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));
+            // Console.WriteLine("wjAC".CompareTo("Zpi"));
+            // Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));
 
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));
