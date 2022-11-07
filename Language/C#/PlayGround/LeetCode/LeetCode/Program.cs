@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using LeetCode.Utilses;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace LeetCode
 {
@@ -17,7 +18,7 @@ namespace LeetCode
             Random random = new Random();
 
             Test0816 test = new();
-            test.Test();
+            //test.Test();
             //test.TestReverse();
 
             //Utils0754 utils = new Utils0754();
@@ -29,6 +30,8 @@ namespace LeetCode
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);
             //Console.WriteLine();
+
+            Console.WriteLine(Regex.IsMatch("IloveLe33tcode!", @"([a-zA-Z0-9!@#$%^&*()+-])\1+"));
 
             // Console.WriteLine("wjAC".CompareTo("Zpi"));
             // Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));
