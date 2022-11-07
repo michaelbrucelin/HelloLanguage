@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestCSharp
+namespace AlgorithmCSharp.Algorithm.BinarySearch
 {
-    public static class BinarySearch
+    public class BinarySearch
     {
         #region 整型数组
         /// <summary>
