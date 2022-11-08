@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0816;
+using LeetCode.QuestionBank.Question0029;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -17,9 +17,9 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0816 test = new();
-            //test.Test();
-            //test.TestReverse();
+            Test0029 test = new();
+            test.Test();
+            //test.TestMulti();
 
             //Utils0754 utils = new Utils0754();
             //utils.GetReachNumbers();
@@ -30,8 +30,6 @@ namespace LeetCode
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);
             //Console.WriteLine();
-
-            Console.WriteLine(Regex.IsMatch("IloveLe33tcode!", @"([a-zA-Z0-9!@#$%^&*()+-])\1+"));
 
             // Console.WriteLine("wjAC".CompareTo("Zpi"));
             // Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));

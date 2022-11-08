@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace LeetCode.QuestionBank.Question0029
     {
         public void Test()
         {
-            Interface0029 solution = new Solution0029();
+            Interface0029 solution = new Solution0029_3();
             int dividend, divisor;
             int result, answer;
             int id = 0;
@@ -39,6 +40,15 @@ namespace LeetCode.QuestionBank.Question0029
             dividend = 2048; divisor = -2; answer = -1024;
             result = solution.Divide(dividend, divisor);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestMulti()
+        {
+            Type type = typeof(Solution0029_2_2);
+            MethodInfo method = type.GetMethod("Multi", BindingFlags.NonPublic | BindingFlags.Instance);
+            object obj = Activator.CreateInstance(type);
+
+            Console.WriteLine(method.Invoke(obj, new object[] { 33, 66 }));
         }
     }
 }
