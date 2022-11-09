@@ -11,4 +11,5 @@ Console.WriteLine("Hello, World!");
 _99Test tester = new _99Test();
 // tester.TestNext(2);
 // tester.TestKMP(2);
-tester.TestTraverse();
+// tester.TestTraverse();
+tester.TestPrint();

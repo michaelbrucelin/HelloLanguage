@@ -19,7 +19,12 @@ function MyRecord-SSDSmart() {
 
     # We start CrystalDiskInfo with the COPYEXIT parameter. This just collects the SMART information in DiskInfo.txt
     Start-Process "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo64.exe" -ArgumentList "/CopyExit" -Wait
+
+
     $DiskInfoRaw = Get-Content "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo.txt" | Select-String "-- S.M.A.R.T. --------------------------------------------------------------" -Context 0, 16
+    $StartLine = (Get-Content "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo.txt" | Select-String "-- S.M.A.R.T. --------------------------------------------------------------")[1].LineNumber
+
+
     $diskinfo = $DiskInfoRaw -Split "`n" | Select-Object -Skip 2 | Out-String | ConvertFrom-Csv -Delimiter " " -Header "NOTUSED1", "NOTUSED2", "ID", "RawValue" | Select-Object ID, RawValue
 
     [int64]$CriticalWarnings = "0x" + ($diskinfo | Where-Object { $_.ID -eq "01" }).rawvalue
