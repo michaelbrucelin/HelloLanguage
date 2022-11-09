@@ -10,7 +10,7 @@ namespace LeetCode.QuestionBank.Question0764
     {
         public void Test()
         {
-            Interface0764 solution = new Solution0764();
+            Interface0764 solution = new Solution0764_3();
             int n; int[][] mines;
             int result, answer;
             int id = 0;
@@ -37,6 +37,11 @@ namespace LeetCode.QuestionBank.Question0764
 
             // 5.
             n = 5; mines = new int[][] { new int[] { 4, 1 } };
+            answer = 3; result = solution.OrderOfLargestPlusSign(n, mines);
+            Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
+
+            // 6.
+            n = 5; mines = new int[][] { new int[] { 3, 0 }, new int[] { 3, 3 } };
             answer = 3; result = solution.OrderOfLargestPlusSign(n, mines);
             Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
         }
