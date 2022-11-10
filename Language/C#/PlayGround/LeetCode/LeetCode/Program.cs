@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0764;
+using LeetCode.QuestionBank.Question0864;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using LeetCode.Utilses;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Runtime.Intrinsics.X86;
 
 namespace LeetCode
 {
@@ -17,7 +18,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0764 test = new();
+            Test0864 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -36,6 +37,10 @@ namespace LeetCode
 
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));
+
+            //HashSet<int>[,] states = new HashSet<int>[3, 3];
+            //states[1, 1].Add(1024);
+            //Console.WriteLine(1024);
 
             //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 30000));
 

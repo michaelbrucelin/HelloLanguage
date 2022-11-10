@@ -34,8 +34,9 @@ namespace my_implement_csharp.第6章_树
 
         public void TestPrint()
         {
-            TreeNode tree = GetTree();
-            PrintTree(tree);
+            TreeNode tree;
+            tree = GetTree(); PrintTree(tree);
+            tree = GetTree2(); PrintTree(tree);
         }
 
         /// <summary>
@@ -47,10 +48,10 @@ namespace my_implement_csharp.第6章_树
         ///   D   E   F
         ///  / \   \
         /// G   H   I
-        /// 前序：ABDGHCEIF
-        /// 中序：GDHBAEICF
-        /// 后续：GHDBIEFCA
-        /// 层序：ABCDEFGHI
+        /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
+        /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
+        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
         public TreeNode GetTree()
@@ -87,10 +88,10 @@ namespace my_implement_csharp.第6章_树
         /// H       I       J
         ///  \
         ///   K
-        /// 前序：ABDHKECFIGJ
-        /// 中序：HKDBEAIFCGJ
-        /// 后续：KHDEBIFJGCA
-        /// 层序：ABCDEFGHIJK
+        /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
+        /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
+        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
         public TreeNode GetTree2()
@@ -152,7 +153,7 @@ namespace my_implement_csharp.第6章_树
                 {
                     TreeNode node = queue.Dequeue();
                     if (node.Left != null) { Console.Write($"{node.Value}/{node.Left.Value}  "); queue.Enqueue(node.Left); }
-                    if (node.Right != null) { Console.Write($"{node.Value}/{node.Right.Value}  "); queue.Enqueue(node.Right); }
+                    if (node.Right != null) { Console.Write($"{node.Value}\\{node.Right.Value}  "); queue.Enqueue(node.Right); }
                 }
                 Console.WriteLine();
             }
