@@ -31,17 +31,17 @@ function MyRecord-SSDSmart() {
     }
 
     $record = @()
-    $summary = $DiskInfoRaw -split "`n" | Select-Object -Skip 9 -First 6 | Out-String | ConvertFrom-Csv -Delimiter ":" -Header "Key", "Value"
+    $summary = $DiskInfoRaw -split "`n" | Select-Object -Skip 9 -First 6 | ForEach-Object { $_.Trim().Replace(" : ", ":") } | Out-String | ConvertFrom-Csv -Delimiter ":" -Header "Key", "Value"
     $record += Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
-    $record += ($summary | Where-Object { $_.Key -eq "PowerOnHours" }).Value
-    $record += ($summary | Where-Object { $_.Key -eq "PowerOnCount" }).Value
-    $record += ($summary | Where-Object { $_.Key -eq "HostReads" }).Value
-    $record += ($summary | Where-Object { $_.Key -eq "HostWrites" }).Value
+    $record += ($summary | Where-Object { $_.Key -eq "Power On Hours" }).Value
+    $record += ($summary | Where-Object { $_.Key -eq "Power On Count" }).Value
+    $record += ($summary | Where-Object { $_.Key -eq "Host Reads" }).Value
+    $record += ($summary | Where-Object { $_.Key -eq "Host Writes" }).Value
     $record += ($summary | Where-Object { $_.Key -eq "Temperature" }).Value
-    $record += ($summary | Where-Object { $_.Key -eq "HealthStatus" }).Value
+    $record += ($summary | Where-Object { $_.Key -eq "Health Status" }).Value
 
     $smart = $DiskInfoRaw -split "`n" | Select-Object -Skip 20 | Out-String | ConvertFrom-Csv -Delimiter " " -Header "BLANK1", "BLANK2", "ID", "RawValues", "Attribute" |
-    ForEach-Object { $_.ID + "-" + $_.Attribute, $_.RawValues } | Out-String | ConvertFrom-Csv -Delimiter " " -Header "key", "Value"
+                ForEach-Object { $_.ID + "-" + $_.Attribute, $_.RawValues } | Out-String | ConvertFrom-Csv -Delimiter " " -Header "Key", "Value"
     $record += [int64]("0x" + ($smart | Where-Object { $_.Key -eq "01-严重警告标志" }).Value)
     $record += [int64]("0x" + ($smart | Where-Object { $_.Key -eq "02-综合温度" }).Value - 273.15)
     $record += [int64]("0x" + ($smart | Where-Object { $_.Key -eq "03-可用备用空间" }).Value)
