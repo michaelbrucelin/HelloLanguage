@@ -1,6 +1,14 @@
 ﻿#### [181\. 超过经理收入的员工](https://leetcode.cn/problems/employees-earning-more-than-their-managers/)
 
 难度：简单
+```sql
+Create table If Not Exists Employee (id int, name varchar(255), salary int, managerId int)
+Truncate table Employee
+insert into Employee (id, name, salary, managerId) values ('1', 'Joe', '70000', '3')
+insert into Employee (id, name, salary, managerId) values ('2', 'Henry', '80000', '4')
+insert into Employee (id, name, salary, managerId) values ('3', 'Sam', '60000', 'None')
+insert into Employee (id, name, salary, managerId) values ('4', 'Max', '90000', 'None')
+```
 
 SQL架构
 
@@ -17,7 +25,6 @@ SQL架构
 +-------------+---------+
 Id是该表的主键。
 该表的每一行都表示雇员的ID、姓名、工资和经理的ID。
-
 ```
 
 编写一个SQL查询来查找收入比经理高的员工。

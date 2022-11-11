@@ -19,7 +19,7 @@ namespace LeetCode
             Random random = new Random();
 
             Test0864 test = new();
-            test.Test();
+            //test.Test();
             //test.TestDivergentTraverse();
 
             //Utils0754 utils = new Utils0754();
@@ -34,6 +34,8 @@ namespace LeetCode
 
             // Console.WriteLine("wjAC".CompareTo("Zpi"));
             // Console.WriteLine(StringComparer.Ordinal.Compare("wjAC", "Zpi"));
+            // Console.WriteLine(StringComparer.Ordinal.Compare("abc", "ABC"));
+            // Console.WriteLine(string.Compare("abc", "ABC"));
 
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));

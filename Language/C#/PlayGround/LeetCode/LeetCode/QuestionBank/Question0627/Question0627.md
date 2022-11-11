@@ -3,6 +3,14 @@
 难度：简单
 
 SQL架构
+```sql
+Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salary int)
+Truncate table Salary
+insert into Salary (id, name, sex, salary) values ('1', 'A', 'm', '2500')
+insert into Salary (id, name, sex, salary) values ('2', 'B', 'f', '1500')
+insert into Salary (id, name, sex, salary) values ('3', 'C', 'm', '5500')
+insert into Salary (id, name, sex, salary) values ('4', 'D', 'f', '500')
+```
 
 `Salary` 表：
 
@@ -18,7 +26,6 @@ SQL架构
 id 是这个表的主键。
 sex 这一列的值是 ENUM 类型，只能从 ('m', 'f') 中取。
 本表包含公司雇员的信息。
-
 ```
 
 请你编写一个 SQL 查询来交换所有的 `'f'` 和 `'m'` （即，将所有 `'f'` 变为 `'m'` ，反之亦然），仅使用 **单个 update 语句** ，且不产生中间临时表。

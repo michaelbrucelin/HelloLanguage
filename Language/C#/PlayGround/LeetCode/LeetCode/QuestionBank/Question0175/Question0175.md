@@ -3,6 +3,16 @@
 难度：简单
 
 SQL架构
+```sql
+Create table If Not Exists Person (personId int, firstName varchar(255), lastName varchar(255))
+Create table If Not Exists Address (addressId int, personId int, city varchar(255), state varchar(255))
+Truncate table Person
+insert into Person (personId, lastName, firstName) values ('1', 'Wang', 'Allen')
+insert into Person (personId, lastName, firstName) values ('2', 'Alice', 'Bob')
+Truncate table Address
+insert into Address (addressId, personId, city, state) values ('1', '2', 'New York City', 'New York')
+insert into Address (addressId, personId, city, state) values ('2', '3', 'Leetcode', 'California')
+```
 
 表: `Person`
 
@@ -16,7 +26,6 @@ SQL架构
 +-------------+---------+
 personId 是该表的主键列。
 该表包含一些人的 ID 和他们的姓和名的信息。
-
 ```
 
 表: `Address`
@@ -32,7 +41,6 @@ personId 是该表的主键列。
 +-------------+---------+
 addressId 是该表的主键列。
 该表的每一行都包含一个 ID = PersonId 的人的城市和州的信息。
-
 ```
 
 编写一个SQL查询来报告 `Person` 表中每个人的姓、名、城市和州。如果 `personId` 的地址不在 `Address` 表中，则报告为空  `null` 。

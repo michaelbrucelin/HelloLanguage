@@ -3,6 +3,13 @@
 难度：中等
 
 SQL架构
+```sql
+Create table If Not Exists Employee (Id int, Salary int)
+Truncate table Employee
+insert into Employee (id, salary) values ('1', '100')
+insert into Employee (id, salary) values ('2', '200')
+insert into Employee (id, salary) values ('3', '300')
+```
 
 表: `Employee`
 
@@ -15,7 +22,6 @@ SQL架构
 +-------------+------+
 Id是该表的主键列。
 该表的每一行都包含有关员工工资的信息。
-
 ```
 
 编写一个SQL查询来报告 `Employee` 表中第 `n` 高的工资。如果没有第 `n` 个最高工资，查询应该报告为 `null` 。
@@ -41,7 +47,6 @@ n = 2
 +------------------------+
 | 200                    |
 +------------------------+
-
 ```
 
 **示例 2:**
