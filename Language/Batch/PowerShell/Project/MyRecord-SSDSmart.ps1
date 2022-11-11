@@ -2,6 +2,7 @@
     记录SSD每天的写入量及其他关键性SMART信息
     本想用powershell命令去做，用powershell命令获取HDD的SMART信息时，体验不错，但是获取PCIE转M.2的NVME SSD时，体验不好，这里直接使用CrystalDiskInfo来抓取数据
     参考：https://www.cyberdrain.com/monitoring-with-powershell-smart-status-via-crystaldiskinfo/
+    注意：需要使用pwsh.exe(powershell v7.3.0)调用，不能使用powershell.exe(powershell v5.1.19041.1682)调用，powershell v5中调用，Get-Content的结果中中文乱码，暂时不知道应该怎样处理。
 #>
 function MyRecord-SSDSmart() {
     # Replace the Download URL to where you've uploaded the ZIP file yourself. We will only download this file once.
