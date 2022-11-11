@@ -9,7 +9,14 @@ Console.WriteLine("Hello, World!");
 // Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
 
 _99Test tester = new _99Test();
+
+#region KMP
 // tester.TestNext(2);
 // tester.TestKMP(2);
-// tester.TestTraverse();
-tester.TestPrint();
+#endregion
+
+#region 二叉树
+// tester.TestTraverse_2_2();
+tester.TestPreOrderBuilder();  // ABDG##H###CE#I##F##  ABDH#K###E##CFI###G#J##
+// tester.TestPrint();
+#endregion

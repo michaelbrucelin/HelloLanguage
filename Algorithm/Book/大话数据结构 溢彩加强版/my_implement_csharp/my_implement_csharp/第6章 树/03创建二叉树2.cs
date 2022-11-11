@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace my_implement_csharp.第6章_树
 {
-    public class _03创建二叉树
+    public class _03创建二叉树2
     {
         /// <summary>
         /// 前序遍历的顺序创建二叉树，DFS
@@ -19,17 +19,11 @@ namespace my_implement_csharp.第6章_树
         /// 前序遍历：ABDC
         /// 前序输入：AB#D##C##
         /// </summary>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public TreeNode PreOrderBuilder()
+        public TreeNode PreOrderBuilder(string s)
         {
-            char c = Console.ReadKey().KeyChar;
-            if (c == '#') return null;
-
-            TreeNode root = new TreeNode(c);
-            root.Left = PreOrderBuilder();
-            root.Right = PreOrderBuilder();
-
-            return root;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -43,8 +37,9 @@ namespace my_implement_csharp.第6章_树
         /// BDAC         BDAC
         /// #B#D#A#C#    #B#D#A#C#
         /// </summary>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public TreeNode InOrderBuilder()
+        public TreeNode InOrderBuilder(string s)
         {
             throw new NotImplementedException();
         }
@@ -61,8 +56,9 @@ namespace my_implement_csharp.第6章_树
         /// 后续遍历：DBCA
         /// 后续输入：###DB##CA
         /// </summary>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public TreeNode PostOrderBuilder()
+        public TreeNode PostOrderBuilder(string s)
         {
             throw new NotImplementedException();
         }
@@ -78,8 +74,9 @@ namespace my_implement_csharp.第6章_树
         /// 层序遍历：ABCD
         /// 层序输入：ABC#D##
         /// </summary>
+        /// <param name="s"></param>
         /// <returns></returns>
-        public TreeNode LevelOrderBuilder()
+        public TreeNode LevelOrderBuilder(string s)
         {
             throw new NotImplementedException();
         }

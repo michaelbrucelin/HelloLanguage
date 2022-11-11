@@ -8,7 +8,45 @@ namespace my_implement_csharp.第6章_树
 {
     public class _99Test
     {
-        public void TestTraverse()
+        public void TestTraverse_1_1()
+        {
+            _02遍历二叉树 traverser = new _02遍历二叉树();
+            TreeNode tree = GetTree();
+            int id = 0;
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历：ABDGHCEIF");
+            traverser.PreOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历：GDHBAEICF");
+            traverser.InOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历：GHDBIEFCA");
+            traverser.PostOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历：ABCDEFGHI");
+            traverser.LevelOrderTraverse(tree);
+        }
+
+        public void TestTraverse_1_2()
+        {
+            _02遍历二叉树 traverser = new _02遍历二叉树();
+            TreeNode tree = GetTree2();
+            int id = 0;
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历：ABDHKECFIGJ");
+            traverser.PreOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历：HKDBEAIFCGJ");
+            traverser.InOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历：KHDEBIFJGCA");
+            traverser.PostOrderTraverse(tree);
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历：ABCDEFGHIJK");
+            traverser.LevelOrderTraverse(tree);
+        }
+
+        public void TestTraverse_2_1()
         {
             _02遍历二叉树2 traverser = new _02遍历二叉树2();
             TreeNode tree = GetTree();
@@ -30,6 +68,37 @@ namespace my_implement_csharp.第6章_树
             Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHI";
             result = traverser.LevelOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestTraverse_2_2()
+        {
+            _02遍历二叉树2 traverser = new _02遍历二叉树2();
+            TreeNode tree = GetTree2();
+            string result, answer;
+            int id = 0;
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历："); answer = "ABDHKECFIGJ";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历："); answer = "HKDBEAIFCGJ";
+            result = traverser.InOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历："); answer = "KHDEBIFJGCA";
+            result = traverser.PostOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHIJK";
+            result = traverser.LevelOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestPreOrderBuilder()
+        {
+            _03创建二叉树 builder = new _03创建二叉树();
+            TreeNode tree = builder.PreOrderBuilder();
+            PrintTree(tree);
         }
 
         public void TestPrint()
