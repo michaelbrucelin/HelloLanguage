@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0864;
+using LeetCode.QuestionBank.Question0805;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -18,15 +18,21 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0864 test = new();
-            //test.Test();
+            Test0805 test = new();
+            test.Test();
             //test.TestDivergentTraverse();
 
             //Utils0754 utils = new Utils0754();
             //utils.GetReachNumbers();
 
-            //Console.WriteLine($"{++id,2}: {result == answer}, result: {result}, answer: {answer}");
-            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer)}, result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //Console.WriteLine($"{++id,2}: {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+            //Console.WriteLine($"{++id,2}: In {stopwatch.Elapsed}, {Utils.CompareArray(result, answer) + ",",-6} result: {Utils.ArrayToString(result)}, answer: {Utils.ArrayToString(answer)}");
+
+            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 10000));
+            //Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
+            //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);
@@ -43,11 +49,6 @@ namespace LeetCode
             //HashSet<int>[,] states = new HashSet<int>[3, 3];
             //states[1, 1].Add(1024);
             //Console.WriteLine(1024);
-
-            //Console.WriteLine(Utils.GenerateRandomIntArray(100, 1, 30000));
-
-            //Console.WriteLine(Utils.GenerateRandomIntArray(32, 0, 1000));
-            //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
 
             //var list = PatternSplit("aa..*d");
             //Utils.ArrayToString(list.Select(item => item.pattern).ToArray());
