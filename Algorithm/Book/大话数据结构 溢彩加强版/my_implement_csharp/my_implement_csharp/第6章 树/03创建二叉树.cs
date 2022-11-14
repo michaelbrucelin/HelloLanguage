@@ -22,7 +22,8 @@ namespace my_implement_csharp.第6章_树
         /// <returns></returns>
         public TreeNode PreOrderBuilder()
         {
-            char c = Console.ReadKey().KeyChar;
+            Console.WriteLine("Enter the node values in the order of the previous traversal:");
+            char c = Console.ReadKey().KeyChar; Console.WriteLine();
             if (c == '#') return null;
 
             TreeNode root = new TreeNode(c);
@@ -59,12 +60,34 @@ namespace my_implement_csharp.第6章_树
         ///  \
         ///   D
         /// 后续遍历：DBCA
-        /// 后续输入：###DB##CA
+        /// 后续输入：###DB##CA$  $表示已经输入结束
         /// </summary>
         /// <returns></returns>
         public TreeNode PostOrderBuilder()
         {
-            throw new NotImplementedException();
+            Stack<char> buffer = new Stack<char>();
+            Console.WriteLine("Enter the values of the nodes in the order of back-order traversal:");
+            char c = Console.ReadKey().KeyChar; Console.WriteLine();
+            while (c != '$')
+            {
+                buffer.Push(c);
+                Console.WriteLine("Enter the values of the nodes in the order of back-order traversal:");
+                c = Console.ReadKey().KeyChar; Console.WriteLine();
+            }
+
+            return PostOrderBuilder(buffer);
+        }
+
+        public TreeNode PostOrderBuilder(Stack<char> stack)
+        {
+            if (stack.Count == 0) return null;
+            char c = stack.Pop();
+            if (c == '#') return null;
+
+            TreeNode node = new TreeNode(c);
+            node.Right = PostOrderBuilder(stack);
+            node.Left = PostOrderBuilder(stack);
+            return node;
         }
 
         /// <summary>
@@ -81,7 +104,28 @@ namespace my_implement_csharp.第6章_树
         /// <returns></returns>
         public TreeNode LevelOrderBuilder()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter the node values in the order of the sequential traversal:");
+            char c = Console.ReadKey().KeyChar; Console.WriteLine();
+            if (c == '#') return null;
+
+            TreeNode root = new TreeNode(c);
+            Queue<TreeNode> buffer = new Queue<TreeNode>(); buffer.Enqueue(root);
+            while (buffer.Count > 0)
+            {
+                int cnt = buffer.Count;
+                for (int i = 0; i < cnt; i++)
+                {
+                    TreeNode node = buffer.Dequeue();
+                    Console.WriteLine("Enter the node values in the order of the sequential traversal:");
+                    c = Console.ReadKey().KeyChar; Console.WriteLine();
+                    if (c != '#') { TreeNode left = new TreeNode(c); node.Left = left; buffer.Enqueue(left); }
+                    Console.WriteLine("Enter the node values in the order of the sequential traversal:");
+                    c = Console.ReadKey().KeyChar; Console.WriteLine();
+                    if (c != '#') { TreeNode right = new TreeNode(c); node.Right = right; buffer.Enqueue(right); }
+                }
+            }
+
+            return root;
         }
     }
 }

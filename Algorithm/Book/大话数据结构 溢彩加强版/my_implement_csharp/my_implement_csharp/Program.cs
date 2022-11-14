@@ -17,6 +17,8 @@ _99Test tester = new _99Test();
 
 #region 二叉树
 // tester.TestTraverse_2_2();
-tester.TestPreOrderBuilder();  // ABDG##H###CE#I##F##  ABDH#K###E##CFI###G#J##
+// tester.TestPreOrderBuilder();    // ABDG##H###CE#I##F##   ABDH#K###E##CFI###G#J##
+// tester.TestPostOrderBuilder();   // ##G##HD#B###IE##FCA$  ###KH#D##EB##I#F###JGCA$
+tester.TestLevelOrderBuilder();  // ABCD#EFGH#I########   ABCDEFGH###I##J#K######
 // tester.TestPrint();
 #endregion

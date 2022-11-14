@@ -98,6 +98,26 @@ namespace my_implement_csharp.第6章_树
         {
             _03创建二叉树 builder = new _03创建二叉树();
             TreeNode tree = builder.PreOrderBuilder();
+
+            Console.WriteLine("Print Tree:");
+            PrintTree(tree);
+        }
+
+        public void TestPostOrderBuilder()
+        {
+            _03创建二叉树 builder = new _03创建二叉树();
+            TreeNode tree = builder.PostOrderBuilder();
+
+            Console.WriteLine("Print Tree:");
+            PrintTree(tree);
+        }
+
+        public void TestLevelOrderBuilder()
+        {
+            _03创建二叉树 builder = new _03创建二叉树();
+            TreeNode tree = builder.LevelOrderBuilder();
+
+            Console.WriteLine("Print Tree:");
             PrintTree(tree);
         }
 
