@@ -23,7 +23,21 @@ namespace my_implement_csharp.第6章_树
         /// <returns></returns>
         public TreeNode PreOrderBuilder(string s)
         {
-            throw new NotImplementedException();
+            if (s.Length == 0 || s[0] == '#') return null;
+            Queue<char> queue = new Queue<char>(s);
+            return PreOrderBuilder(queue);
+        }
+
+        public TreeNode PreOrderBuilder(Queue<char> queue)
+        {
+            if (queue.Count == 0) return null;
+
+            char c = queue.Dequeue(); if (c == '#') return null;
+            TreeNode node = new TreeNode(c);
+            node.Left = PreOrderBuilder(queue);
+            node.Right = PreOrderBuilder(queue);
+
+            return node;
         }
 
         /// <summary>
@@ -60,7 +74,21 @@ namespace my_implement_csharp.第6章_树
         /// <returns></returns>
         public TreeNode PostOrderBuilder(string s)
         {
-            throw new NotImplementedException();
+            if (s.Length == 0 || s[0] == '#') return null;
+            Stack<char> stack = new Stack<char>(s);
+            return PostOrderBuilder(stack);
+        }
+
+        public TreeNode PostOrderBuilder(Stack<char> stack)
+        {
+            if (stack.Count == 0) return null;
+
+            char c = stack.Pop(); if (c == '#') return null;
+            TreeNode node = new TreeNode(c);
+            node.Right = PostOrderBuilder(stack);
+            node.Left = PostOrderBuilder(stack);
+
+            return node;
         }
 
         /// <summary>
@@ -78,7 +106,41 @@ namespace my_implement_csharp.第6章_树
         /// <returns></returns>
         public TreeNode LevelOrderBuilder(string s)
         {
-            throw new NotImplementedException();
+            if (s.Length == 0 || s[0] == '#') return null;
+
+            TreeNode root = new TreeNode(s[0]);
+            Queue<TreeNode> queue = new Queue<TreeNode>(); queue.Enqueue(root);
+            int id = 0;
+            while (queue.Count > 0)
+            {
+                int cnt = queue.Count;
+                for (int i = 0; i < cnt; i++)
+                {
+                    TreeNode node = queue.Dequeue();
+                    if (++id < s.Length)
+                    {
+                        char c = s[id];
+                        if (c != '#')
+                        {
+                            TreeNode left = new TreeNode(c);
+                            node.Left = left;
+                            queue.Enqueue(left);
+                        }
+                    }
+                    if (++id < s.Length)
+                    {
+                        char c = s[id];
+                        if (c != '#')
+                        {
+                            TreeNode right = new TreeNode(c);
+                            node.Right = right;
+                            queue.Enqueue(right);
+                        }
+                    }
+                }
+            }
+
+            return root;
         }
     }
 }

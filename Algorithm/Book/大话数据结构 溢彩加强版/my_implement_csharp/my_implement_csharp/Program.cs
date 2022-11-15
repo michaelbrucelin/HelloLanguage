@@ -18,7 +18,22 @@ _99Test tester = new _99Test();
 #region 二叉树
 // tester.TestTraverse_2_2();
 // tester.TestPreOrderBuilder();    // ABDG##H###CE#I##F##   ABDH#K###E##CFI###G#J##
-// tester.TestPostOrderBuilder();   // ##G##HD#B###IE##FCA$  ###KH#D##EB##I#F###JGCA$
-tester.TestLevelOrderBuilder();  // ABCD#EFGH#I########   ABCDEFGH###I##J#K######
+// tester.TestPostOrderBuilder();   // ##G##HD#B###IE##FCA$  ###KH#D##EB##I#F###JGCA$  结尾的$表示录入结束
+// tester.TestLevelOrderBuilder();  // ABCD#EFGH#I########   ABCDEFGH###I##J#K######
+// tester.TestPreOrderBuilder("ABDG##H###CE#I##F##");
+// tester.TestPostOrderBuilder("##G##HD#B###IE##FCA");
+tester.TestLevelOrderBuilder("ABCD#EFGH#I########");
 // tester.TestPrint();
+#endregion
+
+#region PlayGround
+//string s = "ABCDEFGH";
+//Queue<char> queue = new Queue<char>(s);
+//while (queue.Count > 0) Console.WriteLine(queue.Dequeue());
+//Console.WriteLine();
+
+//string s = "ABCDEFGH";
+//Stack<char> stack = new Stack<char>(s);
+//while (stack.Count > 0) Console.WriteLine(stack.Pop());
+//Console.WriteLine();
 #endregion

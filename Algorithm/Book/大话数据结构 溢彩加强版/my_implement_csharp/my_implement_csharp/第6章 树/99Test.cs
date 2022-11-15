@@ -103,6 +103,15 @@ namespace my_implement_csharp.第6章_树
             PrintTree(tree);
         }
 
+        public void TestPreOrderBuilder(string s)
+        {
+            _03创建二叉树2 builder = new _03创建二叉树2();
+            TreeNode tree = builder.PreOrderBuilder(s);
+
+            Console.WriteLine("Print Tree:");
+            PrintTree(tree);
+        }
+
         public void TestPostOrderBuilder()
         {
             _03创建二叉树 builder = new _03创建二叉树();
@@ -112,10 +121,28 @@ namespace my_implement_csharp.第6章_树
             PrintTree(tree);
         }
 
+        public void TestPostOrderBuilder(string s)
+        {
+            _03创建二叉树2 builder = new _03创建二叉树2();
+            TreeNode tree = builder.PostOrderBuilder(s);
+
+            Console.WriteLine("Print Tree:");
+            PrintTree(tree);
+        }
+
         public void TestLevelOrderBuilder()
         {
             _03创建二叉树 builder = new _03创建二叉树();
             TreeNode tree = builder.LevelOrderBuilder();
+
+            Console.WriteLine("Print Tree:");
+            PrintTree(tree);
+        }
+
+        public void TestLevelOrderBuilder(string s)
+        {
+            _03创建二叉树2 builder = new _03创建二叉树2();
+            TreeNode tree = builder.LevelOrderBuilder(s);
 
             Console.WriteLine("Print Tree:");
             PrintTree(tree);
