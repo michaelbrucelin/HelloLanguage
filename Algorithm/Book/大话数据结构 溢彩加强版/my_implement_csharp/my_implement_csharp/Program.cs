@@ -22,7 +22,7 @@ _99Test tester = new _99Test();
 // tester.TestLevelOrderBuilder();  // ABCD#EFGH#I########   ABCDEFGH###I##J#K######
 // tester.TestPreOrderBuilder("ABDG##H###CE#I##F##");
 // tester.TestPostOrderBuilder("##G##HD#B###IE##FCA");
-tester.TestLevelOrderBuilder("ABCD#EFGH#I########");
+// tester.TestLevelOrderBuilder("ABCD#EFGH#I########");
 // tester.TestPrint();
 #endregion
 
