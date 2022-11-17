@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace my_implement_csharp.第6章_树
 {
+    public class _01二叉树的定义
+    {
+    }
+
     public class TreeNode
     {
         public TreeNode(char value, TreeNode left = null, TreeNode right = null)

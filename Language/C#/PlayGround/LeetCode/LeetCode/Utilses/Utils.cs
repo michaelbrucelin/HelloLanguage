@@ -14,6 +14,21 @@ namespace LeetCode.Utilses
         }
 
         private static readonly Random random;
+        public static readonly string chars_0 = "0123456789";
+        public static readonly string chars_a = "abcdefghijklmnopqrstuvwxyz";
+        public static readonly string chars_A = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static readonly string chars_0a = "0123456789abcdefghijklmnopqrstuvwxyz";
+        public static readonly string chars_0A = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static readonly string chars_aA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static readonly string chars_0aA = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        [Flags]
+        public enum GenStrChars
+        {
+            digit = 1 << 0,
+            lower = 1 << 1,
+            upper = 1 << 2
+        }
 
         /// <summary>
         /// 输出一维数组
@@ -192,6 +207,34 @@ namespace LeetCode.Utilses
         }
 
         /// <summary>
+        /// 生成随机测试用例，字符串数组
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GenerateRandomStringArray(int length, int min_len, int max_len, string chars)
+        {
+            string[] array = new string[length];
+            for (int i = 0; i < length; i++)
+                array[i] = GetRandomString(chars, random.Next(min_len, max_len + 1));
+
+            return ArrayToString(array);
+        }
+
+        /// <summary>
+        /// 生成随机测试用例，字符串数组
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GenerateRandomStringArray(int length, int min_len, int max_len, GenStrChars flag)
+        {
+            string[] array = new string[length];
+            for (int i = 0; i < length; i++)
+                array[i] = GetRandomString(flag, random.Next(min_len, max_len + 1));
+
+            return ArrayToString(array);
+        }
+
+        /// <summary>
         /// 生成随机字符串
         /// </summary>
         /// <param name="chars"></param>
@@ -199,6 +242,23 @@ namespace LeetCode.Utilses
         /// <returns></returns>
         public static string GetRandomString(string chars, int length)
         {
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        /// <summary>
+        /// 生成随机字符串
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string GetRandomString(GenStrChars flag, int length)
+        {
+            string chars = "";
+            if ((flag & GenStrChars.digit) == GenStrChars.digit) chars = $"{chars}{chars_0}";
+            if ((flag & GenStrChars.lower) == GenStrChars.lower) chars = $"{chars}{chars_a}";
+            if ((flag & GenStrChars.upper) == GenStrChars.upper) chars = $"{chars}{chars_A}";
+
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }

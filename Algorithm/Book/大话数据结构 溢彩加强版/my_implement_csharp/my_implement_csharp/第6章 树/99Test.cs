@@ -155,6 +155,7 @@ namespace my_implement_csharp.第6章_树
             tree = GetTree2(); PrintTree(tree);
         }
 
+        #region 手动生成测试用的二叉树
         /// <summary>
         /// 手动创建一个如下所示的二叉树，用于测试遍历结果
         ///       A
@@ -274,5 +275,30 @@ namespace my_implement_csharp.第6章_树
                 Console.WriteLine();
             }
         }
+        #endregion
+
+        #region 手动生成测试用的前序线索二叉树（未初始化线索）
+        #endregion
+
+        #region 手动生成测试用的中序线索二叉树（未初始化线索）
+        #endregion
+
+        #region 手动生成测试用的后序线索二叉树（未初始化线索）
+        #endregion
+
+        #region 手动生成测试用的层序线索二叉树（未初始化线索）
+        #endregion
+
+        #region 手动生成测试用的前序线索二叉树（已初始化线索）
+        #endregion
+
+        #region 手动生成测试用的中序线索二叉树（已初始化线索）
+        #endregion
+
+        #region 手动生成测试用的后序线索二叉树（已初始化线索）
+        #endregion
+
+        #region 手动生成测试用的层序线索二叉树（已初始化线索）
+        #endregion
     }
 }
