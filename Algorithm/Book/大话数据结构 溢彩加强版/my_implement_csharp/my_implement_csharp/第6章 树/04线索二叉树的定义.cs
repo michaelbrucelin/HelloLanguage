@@ -12,13 +12,6 @@ namespace my_implement_csharp.第6章_树
 
     public class ThreadTreeNode
     {
-        public ThreadTreeNode(char value, ThreadTreeNode left = null, ThreadTreeNode right = null)
-        {
-            Value = value;
-            Left = left;
-            Right = right;
-        }
-
         public ThreadTreeNode(char value, ThreadTreeNode left = null, ThreadTreeNode right = null, int ltag = 0, int rtag = 0)
         {
             Value = value;
