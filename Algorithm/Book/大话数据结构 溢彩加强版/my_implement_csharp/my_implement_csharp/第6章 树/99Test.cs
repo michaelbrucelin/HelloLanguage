@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace my_implement_csharp.第6章_树
 {
@@ -405,6 +406,18 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_J = new ThreadTreeNode('J');
             ThreadTreeNode node_K = new ThreadTreeNode('K');
 
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 0; node_B.Right = node_E;
+            node_C.LTag = 0; node_C.Left = node_F; node_C.RTag = 0; node_C.Right = node_G;
+            node_D.LTag = 0; node_D.Left = node_H; node_D.RTag = 1; node_D.Right = node_H;
+            node_E.LTag = 1; node_E.Left = node_K; node_E.RTag = 1; node_E.Right = node_C;
+            node_F.LTag = 0; node_F.Left = node_I; node_F.RTag = 1; node_F.Right = node_I;
+            node_G.LTag = 1; node_G.Left = node_I; node_G.RTag = 0; node_G.Right = node_J;
+            node_H.LTag = 1; node_H.Left = node_D; node_H.RTag = 0; node_H.Right = node_K;
+            node_I.LTag = 1; node_I.Left = node_F; node_I.RTag = 1; node_I.Right = node_G;
+            node_J.LTag = 1; node_J.Left = node_G; node_J.RTag = 1; node_J.Right = null;
+            node_K.LTag = 1; node_K.Left = node_H; node_K.RTag = 1; node_K.Right = node_E;
+
             return node_A;
         }
         #endregion
@@ -436,6 +449,16 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_G = new ThreadTreeNode('G');
             ThreadTreeNode node_H = new ThreadTreeNode('H');
             ThreadTreeNode node_I = new ThreadTreeNode('I');
+
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 1; node_B.Right = node_A;
+            node_C.LTag = 0; node_C.Left = node_E; node_C.RTag = 0; node_C.Right = node_F;
+            node_D.LTag = 0; node_D.Left = node_G; node_D.RTag = 0; node_D.Right = node_H;
+            node_E.LTag = 1; node_E.Left = node_A; node_E.RTag = 0; node_E.Right = node_I;
+            node_F.LTag = 1; node_F.Left = node_C; node_F.RTag = 1; node_F.Right = null;
+            node_G.LTag = 1; node_G.Left = null; node_G.RTag = 1; node_G.Right = node_D;
+            node_H.LTag = 1; node_H.Left = node_D; node_H.RTag = 1; node_H.Right = node_B;
+            node_I.LTag = 1; node_I.Left = node_E; node_I.RTag = 1; node_I.Right = node_C;
 
             return node_A;
         }
@@ -471,6 +494,18 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_J = new ThreadTreeNode('J');
             ThreadTreeNode node_K = new ThreadTreeNode('K');
 
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 0; node_B.Right = node_E;
+            node_C.LTag = 0; node_C.Left = node_F; node_C.RTag = 0; node_C.Right = node_G;
+            node_D.LTag = 0; node_D.Left = node_H; node_D.RTag = 1; node_D.Right = node_B;
+            node_E.LTag = 1; node_E.Left = node_B; node_E.RTag = 1; node_E.Right = node_A;
+            node_F.LTag = 0; node_F.Left = node_I; node_F.RTag = 1; node_F.Right = node_C;
+            node_G.LTag = 1; node_G.Left = node_C; node_G.RTag = 0; node_G.Right = node_J;
+            node_H.LTag = 1; node_H.Left = null; node_H.RTag = 0; node_H.Right = node_K;
+            node_I.LTag = 1; node_I.Left = node_A; node_I.RTag = 1; node_I.Right = node_F;
+            node_J.LTag = 1; node_J.Left = node_G; node_J.RTag = 1; node_J.Right = null;
+            node_K.LTag = 1; node_K.Left = node_H; node_K.RTag = 1; node_K.Right = node_D;
+
             return node_A;
         }
         #endregion
@@ -502,6 +537,16 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_G = new ThreadTreeNode('G');
             ThreadTreeNode node_H = new ThreadTreeNode('H');
             ThreadTreeNode node_I = new ThreadTreeNode('I');
+
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 1; node_B.Right = node_I;
+            node_C.LTag = 0; node_C.Left = node_E; node_C.RTag = 0; node_C.Right = node_F;
+            node_D.LTag = 0; node_D.Left = node_G; node_D.RTag = 0; node_D.Right = node_H;
+            node_E.LTag = 1; node_E.Left = node_I; node_E.RTag = 0; node_E.Right = node_I;
+            node_F.LTag = 1; node_F.Left = node_E; node_F.RTag = 1; node_F.Right = node_C;
+            node_G.LTag = 1; node_G.Left = null; node_G.RTag = 1; node_G.Right = node_H;
+            node_H.LTag = 1; node_H.Left = node_G; node_H.RTag = 1; node_H.Right = node_D;
+            node_I.LTag = 1; node_I.Left = node_B; node_I.RTag = 1; node_I.Right = node_E;
 
             return node_A;
         }
@@ -537,6 +582,18 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_J = new ThreadTreeNode('J');
             ThreadTreeNode node_K = new ThreadTreeNode('K');
 
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 0; node_B.Right = node_E;
+            node_C.LTag = 0; node_C.Left = node_F; node_C.RTag = 0; node_C.Right = node_G;
+            node_D.LTag = 0; node_D.Left = node_H; node_D.RTag = 1; node_D.Right = node_E;
+            node_E.LTag = 1; node_E.Left = node_D; node_E.RTag = 1; node_E.Right = node_B;
+            node_F.LTag = 0; node_F.Left = node_I; node_F.RTag = 1; node_F.Right = node_J;
+            node_G.LTag = 1; node_G.Left = node_J; node_G.RTag = 0; node_G.Right = node_J;
+            node_H.LTag = 1; node_H.Left = node_K; node_H.RTag = 0; node_H.Right = node_K;
+            node_I.LTag = 1; node_I.Left = node_B; node_I.RTag = 1; node_I.Right = node_F;
+            node_J.LTag = 1; node_J.Left = node_F; node_J.RTag = 1; node_J.Right = node_G;
+            node_K.LTag = 1; node_K.Left = null; node_K.RTag = 1; node_K.Right = node_H;
+
             return node_A;
         }
         #endregion
@@ -568,6 +625,16 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_G = new ThreadTreeNode('G');
             ThreadTreeNode node_H = new ThreadTreeNode('H');
             ThreadTreeNode node_I = new ThreadTreeNode('I');
+
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 1; node_B.Right = node_C;
+            node_C.LTag = 0; node_C.Left = node_E; node_C.RTag = 0; node_C.Right = node_F;
+            node_D.LTag = 0; node_D.Left = node_G; node_D.RTag = 0; node_D.Right = node_H;
+            node_E.LTag = 1; node_E.Left = node_D; node_E.RTag = 0; node_E.Right = node_I;
+            node_F.LTag = 1; node_F.Left = node_E; node_F.RTag = 1; node_F.Right = node_G;
+            node_G.LTag = 1; node_G.Left = node_F; node_G.RTag = 1; node_G.Right = node_H;
+            node_H.LTag = 1; node_H.Left = node_G; node_H.RTag = 1; node_H.Right = node_I;
+            node_I.LTag = 1; node_I.Left = node_H; node_I.RTag = 1; node_I.Right = null;
 
             return node_A;
         }
@@ -602,6 +669,18 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode node_I = new ThreadTreeNode('I');
             ThreadTreeNode node_J = new ThreadTreeNode('J');
             ThreadTreeNode node_K = new ThreadTreeNode('K');
+
+            node_A.LTag = 0; node_A.Left = node_B; node_A.RTag = 0; node_A.Right = node_C;
+            node_B.LTag = 0; node_B.Left = node_D; node_B.RTag = 0; node_B.Right = node_E;
+            node_C.LTag = 0; node_C.Left = node_F; node_C.RTag = 0; node_C.Right = node_G;
+            node_D.LTag = 0; node_D.Left = node_H; node_D.RTag = 1; node_D.Right = node_E;
+            node_E.LTag = 1; node_E.Left = node_D; node_E.RTag = 1; node_E.Right = node_F;
+            node_F.LTag = 0; node_F.Left = node_I; node_F.RTag = 1; node_F.Right = node_G;
+            node_G.LTag = 1; node_G.Left = node_F; node_G.RTag = 0; node_G.Right = node_J;
+            node_H.LTag = 1; node_H.Left = node_G; node_H.RTag = 0; node_H.Right = node_K;
+            node_I.LTag = 1; node_I.Left = node_H; node_I.RTag = 1; node_I.Right = node_J;
+            node_J.LTag = 1; node_J.Left = node_I; node_J.RTag = 1; node_J.Right = node_K;
+            node_K.LTag = 1; node_K.Left = node_J; node_K.RTag = 1; node_K.Right = null;
 
             return node_A;
         }
