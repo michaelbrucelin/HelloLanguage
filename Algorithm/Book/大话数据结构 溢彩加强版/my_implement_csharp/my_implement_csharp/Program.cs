@@ -23,7 +23,12 @@ _99Test tester = new _99Test();
 // tester.TestPreOrderBuilder("ABDG##H###CE#I##F##");
 // tester.TestPostOrderBuilder("##G##HD#B###IE##FCA");
 // tester.TestLevelOrderBuilder("ABCD#EFGH#I########");
+
 // tester.TestPrint();
+tester.TestPrint_PreOrderThreadTree();
+// tester.TestPrint_InOrderThreadTree();
+// tester.TestPrint_PostOrderThreadTree();
+// tester.TestPrint_LevelOrderThreadTree();
 #endregion
 
 #region PlayGround

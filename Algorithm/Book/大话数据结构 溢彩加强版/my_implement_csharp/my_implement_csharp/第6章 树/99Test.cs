@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -15,6 +16,34 @@ namespace my_implement_csharp.第6章_树
             TreeNode tree;
             tree = GetTree(); PrintTree(tree);
             tree = GetTree2(); PrintTree(tree);
+        }
+
+        public void TestPrint_PreOrderThreadTree()
+        {
+            ThreadTreeNode tree;
+            tree = GetPreOrderThreadTree(); PrintTree(tree);
+            tree = GetPreOrderThreadTree2(); PrintTree(tree);
+        }
+
+        public void TestPrint_InOrderThreadTree()
+        {
+            ThreadTreeNode tree;
+            tree = GetInOrderThreadTree(); PrintTree(tree);
+            tree = GetInOrderThreadTree2(); PrintTree(tree);
+        }
+
+        public void TestPrint_PostOrderThreadTree()
+        {
+            ThreadTreeNode tree;
+            tree = GetPostOrderThreadTree(); PrintTree(tree);
+            tree = GetPostOrderThreadTree2(); PrintTree(tree);
+        }
+
+        public void TestPrint_LevelOrderThreadTree()
+        {
+            ThreadTreeNode tree;
+            tree = GetLevelOrderThreadTree(); PrintTree(tree);
+            tree = GetLevelOrderThreadTree2(); PrintTree(tree);
         }
         #endregion
 
@@ -725,10 +754,44 @@ namespace my_implement_csharp.第6章_树
 
         /// <summary>
         /// 简单的输出一棵线索二叉树
+        /// A(B/)   表示A的左孩子是B
+        /// A(\B)   表示A的右孩子是B
+        /// A(B<-)  表示A的前驱是B
+        /// A(->B)  表示A的后继是B
         /// </summary>
         /// <param name="root"></param>
         public void PrintTree(ThreadTreeNode root)
         {
+            if (root == null) { Console.WriteLine("Empty Thread Binary Tree."); return; }
+
+            string left = "", right = "";
+            if (root.Left != null) { if (root.LTag == 0) left = $"{root.Left.Value}/"; else left = $"{root.Left.Value}<-"; }
+            if (root.Right != null) { if (root.RTag == 0) right = $"\\{root.Right.Value}"; else right = $"->{root.Right.Value}"; }
+            Console.WriteLine($"{root.Value}({left} {right})");
+            Queue<ThreadTreeNode> queue = new Queue<ThreadTreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
+            {
+                int cnt = queue.Count;
+                for (int i = 0; i < cnt; i++)
+                {
+                    ThreadTreeNode node = queue.Dequeue();
+                    string _left = "", _right = "";
+                    if (node.Left != null)
+                    {
+                        if (node.LTag == 0) _left = $"{node.Left.Value}/"; else _left = $"{node.Left.Value}<-";
+                        Console.Write($"{node.Value}({_left} {_right})  ");
+                        queue.Enqueue(node.Left);
+                    }
+                    if (node.Right != null)
+                    {
+                        if (node.RTag == 0) _right = $"\\{node.Right.Value}"; else _right = $"->{node.Right.Value}";
+                        Console.Write($"{node.Value}({_left} {_right})  ");
+                        queue.Enqueue(node.Right);
+                    }
+                }
+                Console.WriteLine();
+            }
         }
         #endregion
     }

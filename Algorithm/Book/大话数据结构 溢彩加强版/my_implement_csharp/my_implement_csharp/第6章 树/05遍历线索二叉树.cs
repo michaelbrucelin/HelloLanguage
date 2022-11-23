@@ -46,6 +46,7 @@ namespace my_implement_csharp.第6章_树
 
         /// <summary>
         /// 遍历层序线索二叉树，BFS
+        /// 没有找到遍历的方法。
         /// </summary>
         /// <param name="root"></param>
         public void LevelOrderTraverse(ThreadTreeNode root)
