@@ -22,6 +22,7 @@ namespace my_implement_csharp.第6章_树
         {
             ThreadTreeNode tree;
             tree = GetPreOrderThreadTree(); PrintTree(tree);
+            Console.WriteLine();
             tree = GetPreOrderThreadTree2(); PrintTree(tree);
         }
 
@@ -29,6 +30,7 @@ namespace my_implement_csharp.第6章_树
         {
             ThreadTreeNode tree;
             tree = GetInOrderThreadTree(); PrintTree(tree);
+            Console.WriteLine();
             tree = GetInOrderThreadTree2(); PrintTree(tree);
         }
 
@@ -36,6 +38,7 @@ namespace my_implement_csharp.第6章_树
         {
             ThreadTreeNode tree;
             tree = GetPostOrderThreadTree(); PrintTree(tree);
+            Console.WriteLine();
             tree = GetPostOrderThreadTree2(); PrintTree(tree);
         }
 
@@ -43,6 +46,7 @@ namespace my_implement_csharp.第6章_树
         {
             ThreadTreeNode tree;
             tree = GetLevelOrderThreadTree(); PrintTree(tree);
+            Console.WriteLine();
             tree = GetLevelOrderThreadTree2(); PrintTree(tree);
         }
         #endregion
@@ -764,10 +768,6 @@ namespace my_implement_csharp.第6章_树
         {
             if (root == null) { Console.WriteLine("Empty Thread Binary Tree."); return; }
 
-            string left = "", right = "";
-            if (root.Left != null) { if (root.LTag == 0) left = $"{root.Left.Value}/"; else left = $"{root.Left.Value}<-"; }
-            if (root.Right != null) { if (root.RTag == 0) right = $"\\{root.Right.Value}"; else right = $"->{root.Right.Value}"; }
-            Console.WriteLine($"{root.Value}({left} {right})");
             Queue<ThreadTreeNode> queue = new Queue<ThreadTreeNode>();
             queue.Enqueue(root);
             while (queue.Count > 0)
@@ -776,19 +776,24 @@ namespace my_implement_csharp.第6章_树
                 for (int i = 0; i < cnt; i++)
                 {
                     ThreadTreeNode node = queue.Dequeue();
-                    string _left = "", _right = "";
-                    if (node.Left != null)
+                    string left = "", right = "";
+                    if (node.LTag == 0)
                     {
-                        if (node.LTag == 0) _left = $"{node.Left.Value}/"; else _left = $"{node.Left.Value}<-";
-                        Console.Write($"{node.Value}({_left} {_right})  ");
-                        queue.Enqueue(node.Left);
+                        left = $"{node.Left.Value}/"; queue.Enqueue(node.Left);
                     }
-                    if (node.Right != null)
+                    else
                     {
-                        if (node.RTag == 0) _right = $"\\{node.Right.Value}"; else _right = $"->{node.Right.Value}";
-                        Console.Write($"{node.Value}({_left} {_right})  ");
-                        queue.Enqueue(node.Right);
+                        left = $"{(node.Left == null ? "NULL" : node.Left.Value)}<-";
                     }
+                    if (node.RTag == 0)
+                    {
+                        right = $"\\{node.Right.Value}"; queue.Enqueue(node.Right);
+                    }
+                    else
+                    {
+                        right = $"->{(node.Right == null ? "NULL" : node.Right.Value)}";
+                    }
+                    Console.Write($"{node.Value}({left} {right})  ");
                 }
                 Console.WriteLine();
             }
