@@ -436,6 +436,7 @@
     <Compile Include="Sections\Section01.Designer.cs">
       <DependentUpon>Section01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sections\SingletonMethod.cs" />
     <Compile Include="StartPoint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -553,6 +554,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Sections\SingletonMethod.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

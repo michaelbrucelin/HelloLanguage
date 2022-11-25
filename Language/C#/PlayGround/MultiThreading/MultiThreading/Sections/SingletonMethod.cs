@@ -10,25 +10,13 @@ namespace TestCSharp
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            Test33("tag01");
-            Test33("tag02");
+        //public static void Main(string[] args)
+        //{
+        //    Test33("tag01");
+        //    Test33("tag02");
 
-            Console.ReadKey();
-        }
-
-        /// <summary>
-        /// 两次调用会并发执行
-        /// </summary>
-        /// <param name="tag"></param>
-        private async static void Test1(string tag)
-        {
-            await Task.Run(() =>
-            {
-                JobSync(tag);
-            });
-        }
+        //    Console.ReadKey();
+        //}
 
         private static readonly object LOCK = new object();
 
