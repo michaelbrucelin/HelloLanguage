@@ -17,6 +17,13 @@ namespace my_implement_csharp.第6章_树
         /// <param name="root"></param>
         public void PreOrderTraverse(ThreadTreeNode root)
         {
+            if (root == null) return;
+
+            Console.Write(root.Value);
+            if (root.LTag == 0)
+                PreOrderTraverse(root.Left);
+            else if (root.Right != null)
+                PreOrderTraverse(root.Right);
         }
 
         /// <summary>
@@ -29,6 +36,13 @@ namespace my_implement_csharp.第6章_树
         /// <param name="root"></param>
         public void InOrderTraverse(ThreadTreeNode root)
         {
+            if (root == null) return;
+
+            ThreadTreeNode ptr = root;
+            while (ptr.LTag == 0 && ptr.Left != null) ptr = ptr.Left;  // 遍历的起点
+            Console.Write(ptr.Value);
+            while (ptr.RTag == 1 && ptr.Right != null) { ptr = ptr.Right; Console.Write(ptr.Value); }
+            if (ptr.Right != null) InOrderTraverse(ptr.Right);
         }
 
         /// <summary>
@@ -42,6 +56,21 @@ namespace my_implement_csharp.第6章_树
         /// <param name="root"></param>
         public void PostOrderTraverse(ThreadTreeNode root)
         {
+            if (root == null) return;
+            Stack<ThreadTreeNode> stack = new Stack<ThreadTreeNode>();
+            PostOrderTraverse(root, stack);
+
+            while (stack.Count > 0) Console.Write(stack.Pop().Value);
+        }
+
+        private void PostOrderTraverse(ThreadTreeNode node, Stack<ThreadTreeNode> stack)
+        {
+            if (node == null) return;
+            stack.Push(node);
+            if (node.RTag == 0)
+                PostOrderTraverse(node.Right, stack);
+            else if (node.Left != null)
+                PostOrderTraverse(node.Left, stack);
         }
 
         /// <summary>

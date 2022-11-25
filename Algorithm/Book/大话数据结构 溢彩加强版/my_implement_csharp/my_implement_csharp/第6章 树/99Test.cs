@@ -17,7 +17,9 @@ namespace my_implement_csharp.第6章_树
             tree = GetTree(); PrintTree(tree);
             tree = GetTree2(); PrintTree(tree);
         }
+        #endregion
 
+        #region 测试线索二叉树的输出
         public void TestPrint_PreOrderThreadTree()
         {
             ThreadTreeNode tree;
@@ -136,6 +138,31 @@ namespace my_implement_csharp.第6章_树
             Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHIJK";
             result = traverser.LevelOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+        #endregion
+
+        #region 测试线索二叉树的遍历
+        public void TestTraverse_ThreadTree_1_1()
+        {
+            _05遍历线索二叉树 traverser = new _05遍历线索二叉树();
+            ThreadTreeNode tree;
+            int id = 0;
+
+            tree = GetPreOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历：ABDGHCEIF");
+            traverser.PreOrderTraverse(tree);
+
+            tree = GetInOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历：GDHBAEICF");
+            traverser.InOrderTraverse(tree);
+
+            tree = GetPostOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历：GHDBIEFCA");
+            traverser.PostOrderTraverse(tree);
+
+            tree = GetLevelOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历：ABCDEFGHI");
+            traverser.LevelOrderTraverse(tree);
         }
         #endregion
 

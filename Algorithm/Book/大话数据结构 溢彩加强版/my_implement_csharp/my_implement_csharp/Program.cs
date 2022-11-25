@@ -16,19 +16,41 @@ _99Test tester = new _99Test();
 #endregion
 
 #region 二叉树
+#region 二叉树的遍历
+// tester.TestTraverse_1_1();
+// tester.TestTraverse_1_2();
+// tester.TestTraverse_2_1();
 // tester.TestTraverse_2_2();
+#endregion
+
+#region 二叉树的构建
 // tester.TestPreOrderBuilder();    // ABDG##H###CE#I##F##   ABDH#K###E##CFI###G#J##
 // tester.TestPostOrderBuilder();   // ##G##HD#B###IE##FCA$  ###KH#D##EB##I#F###JGCA$  结尾的$表示录入结束
 // tester.TestLevelOrderBuilder();  // ABCD#EFGH#I########   ABCDEFGH###I##J#K######
 // tester.TestPreOrderBuilder("ABDG##H###CE#I##F##");
 // tester.TestPostOrderBuilder("##G##HD#B###IE##FCA");
 // tester.TestLevelOrderBuilder("ABCD#EFGH#I########");
+#endregion
 
+#region 二叉树的输出
 // tester.TestPrint();
+#endregion
+#endregion
+
+#region 线索二叉树
+#region 线索二叉树的遍历
+tester.TestTraverse_ThreadTree_1_1();
+#endregion
+
+#region 线索二叉树的构建
+#endregion
+
+#region 线索二叉树的输出
 // tester.TestPrint_PreOrderThreadTree();
 // tester.TestPrint_InOrderThreadTree();
 // tester.TestPrint_PostOrderThreadTree();
-tester.TestPrint_LevelOrderThreadTree();
+// tester.TestPrint_LevelOrderThreadTree();
+#endregion
 #endregion
 
 #region PlayGround
