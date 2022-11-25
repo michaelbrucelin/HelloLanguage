@@ -36,7 +36,7 @@ namespace MultiThreading
         private void btnSample01_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 3; i++)
-                Sample01($"tag{i + 1}", 5, 2);
+                Sample01($"tag0{i + 1}", 5, 2);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace MultiThreading
         private void btnSample02_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 3; i++)
-                Sample02($"tag{i + 1}", 5, 2);
+                Sample02($"tag0{i + 1}", 5, 2);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace MultiThreading
         private void btnSample03_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 3; i++)
-                Sample03($"tag{i + 1}", 5, 2);
+                Sample03($"tag0{i + 1}", 5, 2);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace MultiThreading
         private void btnSample04_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 3; i++)
-                Sample04($"tag{i + 1}", 3);
+                Sample04($"tag0{i + 1}", 3);
         }
 
         /// <summary>
