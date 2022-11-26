@@ -1,8 +1,8 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0809;
+using LeetCode.QuestionBank.Question0031;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
-using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
+// using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
 using System;
 using System.Collections.Generic;
 using LeetCode.Utilses;
@@ -18,7 +18,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0809 test = new();
+            Test0031 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -46,6 +46,11 @@ namespace LeetCode
 
             //char c = 'A';
             //Console.WriteLine((char)(c ^ 32));
+
+            //int[] arr = new int[] { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            //Utils.PrintArray(arr);  // [ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+            //Array.Sort(arr, 3, 4);
+            //Utils.PrintArray(arr);  // [ 9, 8, 7, 3, 4, 5, 6, 2, 1, 0 ]
 
             //HashSet<int>[,] states = new HashSet<int>[3, 3];
             //states[1, 1].Add(1024);
