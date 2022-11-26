@@ -31,7 +31,7 @@
 
 **提示：**
 
--   `0 <= nums.length <= 10<sup>5</sup>`
--   `-10<sup>9</sup> <= nums[i] <= 10<sup>9</sup>`
--   `nums` 是一个非递减数组
--   `-10<sup>9</sup> <= target <= 10<sup>9</sup>`
+-   $0 \le nums.length \le 10^5$
+-   $-10^9 \le nums[i] \le 10^9$
+-   $nums$ 是一个非递减数组
+-   $-10^9 \le target \le 10^9$
