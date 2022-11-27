@@ -75,6 +75,7 @@ namespace LeetCode.Utilses
 
         /// <summary>
         /// 比较两个二维数组是否相等
+        /// TODO：方法是错误的，需要改
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list1"></param>
@@ -150,6 +151,8 @@ namespace LeetCode.Utilses
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
+        /// <param name="start"></param>
+        /// <param name="len"></param>
         /// <returns></returns>
         public static string ArrayToString<T>(IList<T> list, int start, int len)
         {

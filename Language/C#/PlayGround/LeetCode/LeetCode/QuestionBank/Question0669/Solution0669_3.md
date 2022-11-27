@@ -1,6 +1,6 @@
 #### [](https://leetcode.cn/problems/trim-a-binary-search-tree/solution/xiu-jian-er-cha-sou-suo-shu-by-leetcode-qe7q1//#方法二：迭代)方法二：迭代
 
-如果一个结点 node 符合要求，即它的值位于区间 \[low,high\]，那么它的左子树与右子树应该如何修剪？
+如果一个结点 node 符合要求，即它的值位于区间 [low,high]，那么它的左子树与右子树应该如何修剪？
 
 我们先讨论左子树的修剪：
 

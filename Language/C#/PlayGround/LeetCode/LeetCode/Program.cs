@@ -1,5 +1,5 @@
 ﻿using LeetCode.Interview.Interview1709;
-using LeetCode.QuestionBank.Question0034;
+using LeetCode.QuestionBank.Question0040;
 using LeetCode.LCP.LCP0030;
 using LeetCode.剑指_Offer.剑指_Offer_0053_1;
 using LeetCode.剑指_Offer_II.剑指_Offer_II_0031;
@@ -9,6 +9,8 @@ using LeetCode.Utilses;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Runtime.Intrinsics.X86;
+using System.Text;
+using System.Threading;
 
 namespace LeetCode
 {
@@ -18,7 +20,7 @@ namespace LeetCode
         {
             Random random = new Random();
 
-            Test0034 test = new();
+            Test0040 test = new();
             test.Test();
             //test.TestDivergentTraverse();
 
@@ -34,6 +36,16 @@ namespace LeetCode
             //Console.WriteLine(Utils.GetRandomString("()", 1234));
             //Console.WriteLine(Utils.GenerateRandomIntArray(1000, 0, 10000));
             //Utils.PrintArray(Utils.ShuffleArray(Enumerable.Range(0, 10).ToArray()));
+
+            //HashSet<int[]> hash = new HashSet<int[]>();
+            //hash.Add(new int[] { 1, 2, 3 });
+            //hash.Add(new int[] { 1, 2, 3 });
+            //hash.Add(new int[] { 1, 2, 3 });
+            //Console.WriteLine($"hash.Count is: {hash.Count}");
+
+            //StringBuilder sb = new StringBuilder();
+            //sb.Append("hello"); sb.Append(','); sb.Append(' '); sb.Append("world"); sb.Append(".");
+            //for (int i = 0; i < sb.Length; i++) Console.WriteLine(sb[i]);
 
             //string[][] strs = new string[][] { new string[] { "A1" }, new string[] { "B1", "B2" }, new string[] { "C1", "C2", "C3" } };
             //var flat = strs.SelectMany(arr => arr);

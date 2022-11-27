@@ -1,6 +1,6 @@
 ﻿#### 方法三：二分查找
 
-对于每个学生的作业时间 \[startTime\[i\],endTime\[i\]\]，一定满足 startTime\[i\]≤endTime\[i\]。如果第 i 名学生在 queryTime 时正在作业，则一定满足 startTime\[i\]≤queryTime≤endTime\[i\]。设起始时间小于等于 queryTime 的学生集合为 lessStart，设结束时间小于 queryTime 的学生集合为 lessEnd，则根据上述推理可以知道 lessEnd∈lessStart，我们从 lessStart 去除 lessEnd 的子集部分即为符合条件的学生集合。因此我们通过二分查找找到始时间小于等于 queryTime 的学生人数，然后减去结束时间小于 queryTime 的学生人数，最终结果即为符合条件要求。
+对于每个学生的作业时间 [startTime[i],endTime[i]]，一定满足 startTime[i]≤endTime[i]。如果第 i 名学生在 queryTime 时正在作业，则一定满足 startTime[i]≤queryTime≤endTime[i]。设起始时间小于等于 queryTime 的学生集合为 lessStart，设结束时间小于 queryTime 的学生集合为 lessEnd，则根据上述推理可以知道 lessEnd∈lessStart，我们从 lessStart 去除 lessEnd 的子集部分即为符合条件的学生集合。因此我们通过二分查找找到始时间小于等于 queryTime 的学生人数，然后减去结束时间小于 queryTime 的学生人数，最终结果即为符合条件要求。
 
 ```Python3
 class Solution:
