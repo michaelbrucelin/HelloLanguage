@@ -12,7 +12,7 @@ namespace LeetCode.QuestionBank.Question0040
     {
         public void Test()
         {
-            Interface0040 solution = new Solution0040();
+            Interface0040 solution = new Solution0040_2();
             int[] candidates; int target;
             IList<IList<int>> result, answer;
             int id = 0;
