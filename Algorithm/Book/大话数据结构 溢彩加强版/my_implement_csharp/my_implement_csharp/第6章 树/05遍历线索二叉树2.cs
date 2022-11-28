@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace my_implement_csharp.第6章_树
 {
-    public class _05遍历线索二叉树
+    public class _05遍历线索二叉树2
     {
         /// <summary>
         /// 遍历前序线索二叉树，DFS
@@ -15,15 +15,25 @@ namespace my_implement_csharp.第6章_树
         /// 3. 没有左孩子，“右XX”里面是null，遍历结束
         /// </summary>
         /// <param name="root"></param>
-        public void PreOrderTraverse(ThreadTreeNode root)
+        public string PreOrderTraverse(ThreadTreeNode root)
         {
-            if (root == null) return;
+            if (root == null) return "";
 
-            Console.Write(root.Value);
-            if (root.LTag == 0)
-                PreOrderTraverse(root.Left);
-            else if (root.Right != null)
-                PreOrderTraverse(root.Right);
+            StringBuilder sb = new StringBuilder();
+            PreOrderTraverse(root, sb);
+
+            return sb.ToString();
+        }
+
+        private void PreOrderTraverse(ThreadTreeNode node, StringBuilder sb)
+        {
+            if (node == null) return;
+
+            sb.Append(node.Value);
+            if (node.LTag == 0)
+                PreOrderTraverse(node.Left, sb);
+            else if (node.Right != null)
+                PreOrderTraverse(node.Right, sb);
         }
 
         /// <summary>
@@ -34,15 +44,25 @@ namespace my_implement_csharp.第6章_树
         /// 4. 到达没有右孩子且后继为null的节点，遍历结束
         /// </summary>
         /// <param name="root"></param>
-        public void InOrderTraverse(ThreadTreeNode root)
+        public string InOrderTraverse(ThreadTreeNode root)
         {
-            if (root == null) return;
+            if (root == null) return "";
 
-            ThreadTreeNode ptr = root;
+            StringBuilder sb = new StringBuilder();
+            InOrderTraverse(root, sb);
+
+            return sb.ToString();
+        }
+
+        public void InOrderTraverse(ThreadTreeNode node, StringBuilder sb)
+        {
+            if (node == null) return;
+
+            ThreadTreeNode ptr = node;
             while (ptr.LTag == 0) ptr = ptr.Left;  // 遍历的起点，不需要ptr.Left != null，左XX为null的节点，LTag为1
-            Console.Write(ptr.Value);
-            while (ptr.RTag == 1 && ptr.Right != null) { ptr = ptr.Right; Console.Write(ptr.Value); }
-            if (ptr.Right != null) InOrderTraverse(ptr.Right);
+            sb.Append(ptr.Value);
+            while (ptr.RTag == 1 && ptr.Right != null) { ptr = ptr.Right; sb.Append(ptr.Value); }
+            if (ptr.Right != null) InOrderTraverse(ptr.Right, sb);
         }
 
         /// <summary>
@@ -54,13 +74,17 @@ namespace my_implement_csharp.第6章_树
         /// 4. 依次弹栈获得真正遍历的序列
         /// </summary>
         /// <param name="root"></param>
-        public void PostOrderTraverse(ThreadTreeNode root)
+        public string PostOrderTraverse(ThreadTreeNode root)
         {
-            if (root == null) return;
+            if (root == null) return "";
+
             Stack<ThreadTreeNode> stack = new Stack<ThreadTreeNode>();
             PostOrderTraverse(root, stack);
 
-            while (stack.Count > 0) Console.Write(stack.Pop().Value);
+            StringBuilder sb = new StringBuilder();
+            while (stack.Count > 0) sb.Append(stack.Pop().Value);
+
+            return sb.ToString();
         }
 
         private void PostOrderTraverse(ThreadTreeNode node, Stack<ThreadTreeNode> stack)

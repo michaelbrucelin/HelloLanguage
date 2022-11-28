@@ -164,6 +164,85 @@ namespace my_implement_csharp.第6章_树
             Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历：ABCDEFGHI");
             traverser.LevelOrderTraverse(tree);
         }
+
+        public void TestTraverse_ThreadTree_1_2()
+        {
+            _05遍历线索二叉树 traverser = new _05遍历线索二叉树();
+            ThreadTreeNode tree;
+            int id = 0;
+
+            tree = GetPreOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历：ABDHKECFIGJ");
+            traverser.PreOrderTraverse(tree);
+
+            tree = GetInOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历：HKDBEAIFCGJ");
+            traverser.InOrderTraverse(tree);
+
+            tree = GetPostOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历：KHDEBIFJGCA");
+            traverser.PostOrderTraverse(tree);
+
+            tree = GetLevelOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历：ABCDEFGHIJK");
+            traverser.LevelOrderTraverse(tree);
+        }
+
+        public void TestTraverse_ThreadTree_2_1()
+        {
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+            int id = 0;
+
+            tree = GetPreOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历："); answer = "ABDGHCEIF";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetInOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历："); answer = "GDHBAEICF";
+            result = traverser.InOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetPostOrderThreadTree();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历："); answer = "GHDBIEFCA";
+            result = traverser.PostOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            //tree = GetLevelOrderThreadTree();
+            //Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHI";
+            //result = traverser.LevelOrderTraverse(tree);
+            //Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestTraverse_ThreadTree_2_2()
+        {
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+            int id = 0;
+
+            tree = GetPreOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历："); answer = "ABDGHCEIF";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetInOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历："); answer = "GDHBAEICF";
+            result = traverser.InOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetPostOrderThreadTree2();
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历："); answer = "GHDBIEFCA";
+            result = traverser.PostOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            //tree = GetLevelOrderThreadTree();
+            //Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHI";
+            //result = traverser.LevelOrderTraverse(tree);
+            //Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
         #endregion
 
         #region 测试二叉树的创建
@@ -234,7 +313,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -274,7 +353,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
@@ -320,7 +399,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -360,7 +439,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
@@ -406,7 +485,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -448,7 +527,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
@@ -494,7 +573,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -536,7 +615,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
@@ -582,7 +661,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -624,7 +703,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
@@ -670,7 +749,7 @@ namespace my_implement_csharp.第6章_树
         /// G   H   I
         /// 前序：ABDGHCEIF  ABDG##H###CE#I##F##
         /// 中序：GDHBAEICF  #G#D#H#B#A#E#I#C#F#
-        /// 后续：GHDBIEFCA  ##G##HD#B###IE##FCA
+        /// 后序：GHDBIEFCA  ##G##HD#B###IE##FCA
         /// 层序：ABCDEFGHI  ABCD#EFGH#I########
         /// </summary>
         /// <returns></returns>
@@ -712,7 +791,7 @@ namespace my_implement_csharp.第6章_树
         ///   K
         /// 前序：ABDHKECFIGJ  ABDH#K###E##CFI###G#J##
         /// 中序：HKDBEAIFCGJ  #H#K#D#B#E#A#I#F#C#G#J#
-        /// 后续：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
+        /// 后序：KHDEBIFJGCA  ###KH#D##EB##I#F###JGCA
         /// 层序：ABCDEFGHIJK  ABCDEFGH###I##J#K######
         /// </summary>
         /// <returns></returns>
