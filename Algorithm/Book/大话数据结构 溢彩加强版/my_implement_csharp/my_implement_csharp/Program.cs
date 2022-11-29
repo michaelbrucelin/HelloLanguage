@@ -46,7 +46,10 @@ _99Test tester = new _99Test();
 #endregion
 
 #region 线索二叉树的构建
-tester.TestPreOrderThreadTreeBuilder();
+// tester.TestPreOrderThreadTreeBuilder();
+// tester.TestPreOrderThreadTreeBuilder2();
+// tester.TestInOrderThreadTreeBuilder();
+// tester.TestPostOrderThreadTreeBuilder();
 #endregion
 
 #region 线索二叉树的输出

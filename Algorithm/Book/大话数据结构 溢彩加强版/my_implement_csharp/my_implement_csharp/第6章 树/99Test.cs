@@ -309,17 +309,97 @@ namespace my_implement_csharp.第6章_树
             ThreadTreeNode tree;
             string result, answer;
 
-            tree = GetPreOrderThreadTree();
+            tree = GetThreadTree_NoInit();
             builder.PreOrderBuilder(tree);
             answer = "ABDGHCEIF";
             result = traverser.PreOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
 
-            tree = GetPreOrderThreadTree2();
+            tree = GetThreadTree2_NoInit();
             builder.PreOrderBuilder(tree);
+            answer = "ABDHKECFIGJ";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestPreOrderThreadTreeBuilder2()
+        {
+            _06创建线索二叉树 builder = new _06创建线索二叉树();
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+
+            tree = GetThreadTree_NoInit();
+            builder.PreOrderBuilder2(tree);
             answer = "ABDGHCEIF";
             result = traverser.PreOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetThreadTree2_NoInit();
+            builder.PreOrderBuilder2(tree);
+            answer = "ABDHKECFIGJ";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestInOrderThreadTreeBuilder()
+        {
+            _06创建线索二叉树 builder = new _06创建线索二叉树();
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+
+            tree = GetThreadTree_NoInit();
+            builder.InOrderBuilder(tree);
+            answer = "GDHBAEICF";
+            result = traverser.InOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetThreadTree2_NoInit();
+            builder.InOrderBuilder(tree);
+            answer = "HKDBEAIFCGJ";
+            result = traverser.InOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestPostOrderThreadTreeBuilder()
+        {
+            _06创建线索二叉树 builder = new _06创建线索二叉树();
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+
+            tree = GetThreadTree_NoInit();
+            builder.PostOrderBuilder(tree);
+            answer = "GHDBIEFCA";
+            result = traverser.PostOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetThreadTree2_NoInit();
+            builder.PostOrderBuilder(tree);
+            answer = "KHDEBIFJGCA";
+            result = traverser.PostOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+        }
+
+        public void TestLevelOrderThreadTreeBuilder()
+        {
+            //_06创建线索二叉树 builder = new _06创建线索二叉树();
+            //_05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            //ThreadTreeNode tree;
+            //string result, answer;
+
+            //tree = GetThreadTree_NoInit();
+            //builder.LevelOrderBuilder(tree);
+            //answer = "ABCDEFGHI";
+            //result = traverser.LevelOrderTraverse(tree);
+            //Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            //tree = GetThreadTree2_NoInit();
+            //builder.LevelOrderBuilder(tree);
+            //answer = "ABCDEFGHIJK";
+            //result = traverser.LevelOrderTraverse(tree);
+            //Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
         }
         #endregion
 

@@ -95,9 +95,9 @@ namespace my_implement_csharp.第6章_树
             StringBuilder sb = new StringBuilder();
             Queue<TreeNode> queue = new Queue<TreeNode>();
             queue.Enqueue(root);
-            while (queue.Count > 0)
+            int cnt;
+            while ((cnt = queue.Count) > 0)
             {
-                int cnt = queue.Count;
                 for (int i = 0; i < cnt; i++)
                 {
                     TreeNode node = queue.Dequeue();

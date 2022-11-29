@@ -110,9 +110,9 @@ namespace my_implement_csharp.第6章_树
 
             TreeNode root = new TreeNode(c);
             Queue<TreeNode> buffer = new Queue<TreeNode>(); buffer.Enqueue(root);
-            while (buffer.Count > 0)
+            int cnt;
+            while ((cnt = buffer.Count) > 0)
             {
-                int cnt = buffer.Count;
                 for (int i = 0; i < cnt; i++)
                 {
                     TreeNode node = buffer.Dequeue();
