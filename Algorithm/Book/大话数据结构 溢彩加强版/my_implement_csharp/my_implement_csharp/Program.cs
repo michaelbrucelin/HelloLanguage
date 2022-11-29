@@ -41,10 +41,12 @@ _99Test tester = new _99Test();
 #region 线索二叉树的遍历
 // tester.TestTraverse_ThreadTree_1_1();
 // tester.TestTraverse_ThreadTree_1_2();
-tester.TestTraverse_ThreadTree_2_1();
+// tester.TestTraverse_ThreadTree_2_1();
+// tester.TestTraverse_ThreadTree_2_2();
 #endregion
 
 #region 线索二叉树的构建
+tester.TestPreOrderThreadTreeBuilder();
 #endregion
 
 #region 线索二叉树的输出

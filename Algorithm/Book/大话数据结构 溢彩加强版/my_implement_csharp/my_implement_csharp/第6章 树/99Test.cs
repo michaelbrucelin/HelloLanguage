@@ -224,22 +224,22 @@ namespace my_implement_csharp.第6章_树
             int id = 0;
 
             tree = GetPreOrderThreadTree2();
-            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历："); answer = "ABDGHCEIF";
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 前序遍历："); answer = "ABDHKECFIGJ";
             result = traverser.PreOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
 
             tree = GetInOrderThreadTree2();
-            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历："); answer = "GDHBAEICF";
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 中序遍历："); answer = "HKDBEAIFCGJ";
             result = traverser.InOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
 
             tree = GetPostOrderThreadTree2();
-            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历："); answer = "GHDBIEFCA";
+            Console.WriteLine($"{Environment.NewLine}{++id,2}. 后序遍历："); answer = "KHDEBIFJGCA";
             result = traverser.PostOrderTraverse(tree);
             Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
 
             //tree = GetLevelOrderThreadTree();
-            //Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHI";
+            //Console.WriteLine($"{Environment.NewLine}{++id,2}. 层序遍历："); answer = "ABCDEFGHIJK";
             //result = traverser.LevelOrderTraverse(tree);
             //Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
         }
@@ -298,6 +298,28 @@ namespace my_implement_csharp.第6章_树
 
             Console.WriteLine("Print Tree:");
             PrintTree(tree);
+        }
+        #endregion
+
+        #region 测试线索二叉树的创建
+        public void TestPreOrderThreadTreeBuilder()
+        {
+            _06创建线索二叉树 builder = new _06创建线索二叉树();
+            _05遍历线索二叉树2 traverser = new _05遍历线索二叉树2();
+            ThreadTreeNode tree;
+            string result, answer;
+
+            tree = GetPreOrderThreadTree();
+            builder.PreOrderBuilder(tree);
+            answer = "ABDGHCEIF";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
+
+            tree = GetPreOrderThreadTree2();
+            builder.PreOrderBuilder(tree);
+            answer = "ABDGHCEIF";
+            result = traverser.PreOrderTraverse(tree);
+            Console.WriteLine($"{result == answer}, result: {result}, answer: {answer}");
         }
         #endregion
 
