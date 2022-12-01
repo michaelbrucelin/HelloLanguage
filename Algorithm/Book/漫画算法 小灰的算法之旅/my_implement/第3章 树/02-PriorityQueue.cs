@@ -88,10 +88,10 @@ namespace TestCSharp
             int index = list.Count - 1;
             int value = list[index];
 
-            while (index > 0 && value < list[(index - 1) / 2])
+            while (index > 0 && value < list[(index - 1) >> 1])
             {
-                list[index] = list[(index - 1) / 2];
-                index = (index - 1) / 2;
+                list[index] = list[(index - 1) >> 1];
+                index = (index - 1) >> 1;
             }
             list[index] = value;
         }
@@ -104,11 +104,11 @@ namespace TestCSharp
         /// <param name="index"></param>
         private void DownAdjust(IList<int> list, int index)
         {
-            if (index > list.Count - 1) return;
+            if (index >= (list.Count >> 1)) return;
 
             int value = list[index];
 
-            int childIndex = index * 2 + 1;  // 需要上浮的孩子，先假定是左孩子
+            int childIndex = (index << 1) + 1;  // 需要上浮的孩子，先假定是左孩子
             while (childIndex < list.Count)
             {
                 if (childIndex + 1 < list.Count && list[childIndex + 1] < list[childIndex])
@@ -118,7 +118,7 @@ namespace TestCSharp
                 {
                     list[index] = list[childIndex];
                     index = childIndex;
-                    childIndex = childIndex * 2 + 1;
+                    childIndex = (childIndex << 1) + 1;
                 }
                 else
                     break;
@@ -133,7 +133,7 @@ namespace TestCSharp
         /// <param name="list"></param>
         private void HeapBuilder(IList<int> list)
         {
-            for (int i = list.Count / 2 - 1; i >= 0; i--)
+            for (int i = (list.Count >> 1) - 1; i >= 0; i--)
                 DownAdjust(list, i);
         }
     }
