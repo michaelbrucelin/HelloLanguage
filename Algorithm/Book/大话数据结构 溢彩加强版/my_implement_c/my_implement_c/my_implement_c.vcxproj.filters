@@ -25,6 +25,9 @@
     <Filter Include="源文件\第6章 树">
       <UniqueIdentifier>{dc2491c4-560d-43f6-ad94-a898974b60e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\第7章 图">
+      <UniqueIdentifier>{e9e813c7-c8bf-4f9b-b6d8-1ee411ee4ff1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01线性表顺序存储_List.c">
