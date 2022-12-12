@@ -21,3 +21,10 @@ Console.WriteLine("中序遍历测试"); test.TestTraverse_InOrder();
 Console.WriteLine("后序遍历测试"); test.TestTraverse_PostOrder();
 Console.WriteLine("层序遍历测试"); test.TestTraverse_LevelOrder();
 #endregion
+
+#region TEST
+//Stack<char> stack = new Stack<char>();
+//stack.Push('a'); stack.Push('b'); stack.Push('c'); stack.Push('d'); stack.Push('e');
+//List<char> list = stack.ToList();
+//for (int i = 0; i < list.Count; i++) Console.WriteLine(list[i]);  // edcba
+#endregion

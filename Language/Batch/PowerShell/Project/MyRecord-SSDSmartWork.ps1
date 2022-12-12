@@ -18,6 +18,9 @@ function MyRecord-SSDSmart() {
         Expand-Archive "$($DownloadLocation)\CrystalDiskInfo.zip" -DestinationPath $DownloadLocation -Force
     }
 
+    Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.ini" -Force
+    Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.txt" -Force
+
     # We start CrystalDiskInfo with the COPYEXIT parameter. This just collects the SMART information in DiskInfo.txt
     Start-Process "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo64.exe" -ArgumentList "/CopyExit" -Wait
     # $DiskInfoRaw = Get-Content "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo.txt" | Select-String "-- S.M.A.R.T. ----------" -Context 0, 16
