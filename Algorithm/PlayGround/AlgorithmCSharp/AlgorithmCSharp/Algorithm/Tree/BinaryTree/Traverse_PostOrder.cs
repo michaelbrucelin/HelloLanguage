@@ -97,6 +97,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         /// 迭代2
         /// 用迭代的方式实现Traverse_Recursive2()的递归函数，两种方式是等价的，
         /// 区别在于递归的时候隐式地维护了一个栈，而这里在迭代的时候需要显式地将这个栈模拟出来，其余的实现与细节都相同。
+        /// 具体步骤见：Traverse_PostOrder_Iteration2_01.png - Traverse_PostOrder_Iteration2_19.png
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
