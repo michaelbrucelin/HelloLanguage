@@ -4,11 +4,13 @@
     参考：https://www.cyberdrain.com/monitoring-with-powershell-smart-status-via-crystaldiskinfo/
     注意：需要使用pwsh.exe(powershell v7.3.0)调用，不能使用powershell.exe(powershell v5.1.19041.1682)调用，powershell v5中调用，Get-Content的结果中中文乱码，暂时不知道应该怎样处理。
     调用：pwsh /PATH/TO/MyRecord-SSDSmartWork.ps1    PCIE 3.0
+
+    由于第一次运行会将PC的硬盘信息记录在DiskInfo.ini文件中，所以公司电脑与家里电脑的配置文件就经常冲突，可以在运行前将配置文件清空来解决，不过总觉得会不会不合适，反正文件不大，直接分两个文件夹来干。
 #>
 function MyRecord-SSDSmart() {
     # Replace the Download URL to where you've uploaded the ZIP file yourself. We will only download this file once.
     $DownloadURL = "https://free.nchc.org.tw/osdn//crystaldiskinfo/77877/CrystalDiskInfo8_17_8.zip"
-    $DownloadLocation = "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo"
+    $DownloadLocation = "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo_Work"
 
     # Script:
     $TestDownloadLocation = Test-Path $DownloadLocation
@@ -18,14 +20,14 @@ function MyRecord-SSDSmart() {
         Expand-Archive "$($DownloadLocation)\CrystalDiskInfo.zip" -DestinationPath $DownloadLocation -Force
     }
 
-    Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.ini" -Force
-    Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.txt" -Force
+    # Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.ini" -Force
+    # Remove-Item -Path "$($DownloadLocation)\DiskInfo*" -Filter "DiskInfo*.txt" -Force
 
     # We start CrystalDiskInfo with the COPYEXIT parameter. This just collects the SMART information in DiskInfo.txt
-    Start-Process "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo64.exe" -ArgumentList "/CopyExit" -Wait
-    # $DiskInfoRaw = Get-Content "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo.txt" | Select-String "-- S.M.A.R.T. ----------" -Context 0, 16
+    Start-Process "$($DownloadLocation)\DiskInfo64.exe" -ArgumentList "/CopyExit" -Wait
+    # $DiskInfoRaw = Get-Content "$($DownloadLocation)\DiskInfo.txt" | Select-String "-- S.M.A.R.T. ----------" -Context 0, 16
     # $diskinfo = $DiskInfoRaw -Split "`n" | Select-Object -Skip 2 | Out-String | ConvertFrom-Csv -Delimiter " " -Header "NOTUSED1", "NOTUSED2", "ID", "RawValue" | Select-Object ID, RawValue
-    $DiskInfoRaw = Get-Content "$($Env:OneDrive)\文档\powershell\CrystalDiskInfo\DiskInfo.txt" | Select-String "^ \(02\) Samsung SSD 970 EVO Plus 1TB$" -Context 0, 34
+    $DiskInfoRaw = Get-Content "$($DownloadLocation)\DiskInfo.txt" | Select-String "^ \(02\) Samsung SSD 970 EVO Plus 1TB$" -Context 0, 34
 
     $LogLocation = "$($Env:OneDrive)\文档\powershell\log\SSDSmartRecord_work.csv"
     $TestlogLocation = Test-Path $LogLocation
