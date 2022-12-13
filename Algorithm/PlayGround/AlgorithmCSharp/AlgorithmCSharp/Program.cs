@@ -16,10 +16,11 @@ Test test = new Test();
 
 #region Binary Tree
 // test.TestPrint();
-Console.WriteLine("前序遍历测试"); test.TestTraverse_PreOrder();
-Console.WriteLine("中序遍历测试"); test.TestTraverse_InOrder();
-Console.WriteLine("后序遍历测试"); test.TestTraverse_PostOrder();
-Console.WriteLine("层序遍历测试"); test.TestTraverse_LevelOrder();
+Console.WriteLine("二叉树遍历测试");
+Console.WriteLine($"{Environment.NewLine}前序遍历测试"); test.TestTraverse_PreOrder();
+Console.WriteLine($"{Environment.NewLine}中序遍历测试"); test.TestTraverse_InOrder();
+Console.WriteLine($"{Environment.NewLine}后序遍历测试"); test.TestTraverse_PostOrder();
+//Console.WriteLine($"{Environment.NewLine}层序遍历测试"); test.TestTraverse_LevelOrder();
 #endregion
 
 #region TEST

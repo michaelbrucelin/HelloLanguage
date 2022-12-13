@@ -106,6 +106,22 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> result = new List<char>();
             if (root == null) return result;
 
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            TreeNode ptr = root, prev = null;
+            while (ptr != null || stack.Count > 0)
+            {
+                while (ptr != null) { stack.Push(ptr); ptr = ptr.Left; }
+                ptr = stack.Pop();
+                if (ptr.Right == null || ptr.Right == prev)
+                {
+                    result.Add(ptr.Value); prev = ptr; ptr = null;
+                }
+                else
+                {
+                    stack.Push(ptr); ptr = ptr.Right;
+                }
+            }
+
             return result;
         }
 

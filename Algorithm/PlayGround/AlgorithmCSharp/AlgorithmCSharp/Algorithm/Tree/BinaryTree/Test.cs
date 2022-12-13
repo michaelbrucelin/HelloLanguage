@@ -51,6 +51,15 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "ABDHKECFIGJ";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            Console.WriteLine("迭代2");
+            tree = GetTree(); answer = "ABDGHCEIF";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABDHKECFIGJ";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
 
         public void TestTraverse_InOrder()
@@ -78,13 +87,22 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             list = traverse.Traverse_Recursive2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
-            Console.WriteLine("遍历");
+            Console.WriteLine("迭代");
             tree = GetTree(); answer = "GDHBAEICF";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             tree = GetTree2(); answer = "HKDBEAIFCGJ";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            Console.WriteLine("迭代2");
+            tree = GetTree(); answer = "GDHBAEICF";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "HKDBEAIFCGJ";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
 
@@ -120,6 +138,15 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
 
             tree = GetTree2(); answer = "KHDEBIFJGCA";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            Console.WriteLine("迭代2");
+            tree = GetTree(); answer = "GHDBIEFCA";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "KHDEBIFJGCA";
+            list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
         }
 
