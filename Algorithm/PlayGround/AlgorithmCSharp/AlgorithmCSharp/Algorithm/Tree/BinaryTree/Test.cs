@@ -25,6 +25,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> list; string result, answer;
             int id = 0;
 
+            #region 递归
             Console.WriteLine("递归");
             tree = GetTree(); answer = "ABDGHCEIF";
             list = traverse.Traverse_Recursive(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -42,7 +43,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "ABDHKECFIGJ";
             list = traverse.Traverse_Recursive2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
 
+            #region 迭代
             Console.WriteLine("迭代");
             tree = GetTree(); answer = "ABDGHCEIF";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -60,6 +63,29 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "ABDHKECFIGJ";
             list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region Morris
+            Console.WriteLine("Morris");
+            tree = GetTree(); answer = "ABDGHCEIF";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABDHKECFIGJ";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 染色法
+            Console.WriteLine("染色法");
+            tree = GetTree(); answer = "ABDGHCEIF";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABDHKECFIGJ";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
 
         public void TestTraverse_InOrder()
@@ -69,6 +95,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> list; string result, answer;
             int id = 0;
 
+            #region 递归
             Console.WriteLine("递归");
             tree = GetTree(); answer = "GDHBAEICF";
             list = traverse.Traverse_Recursive(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -86,7 +113,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "HKDBEAIFCGJ";
             list = traverse.Traverse_Recursive2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
 
+            #region 迭代
             Console.WriteLine("迭代");
             tree = GetTree(); answer = "GDHBAEICF";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -104,6 +133,29 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "HKDBEAIFCGJ";
             list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region Morris
+            Console.WriteLine("Morris");
+            tree = GetTree(); answer = "GDHBAEICF";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "HKDBEAIFCGJ";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 染色法
+            Console.WriteLine("染色法");
+            tree = GetTree(); answer = "GDHBAEICF";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "HKDBEAIFCGJ";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
 
         public void TestTraverse_PostOrder()
@@ -113,6 +165,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> list; string result, answer;
             int id = 0;
 
+            #region 递归
             Console.WriteLine("递归");
             tree = GetTree(); answer = "GHDBIEFCA";
             list = traverse.Traverse_Recursive(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -130,7 +183,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "KHDEBIFJGCA";
             list = traverse.Traverse_Recursive2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
 
+            #region 迭代
             Console.WriteLine("迭代");
             tree = GetTree(); answer = "GHDBIEFCA";
             list = traverse.Traverse_Iteration(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
@@ -148,6 +203,29 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "KHDEBIFJGCA";
             list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region Morris
+            Console.WriteLine("Morris");
+            tree = GetTree(); answer = "GHDBIEFCA";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "KHDEBIFJGCA";
+            list = traverse.Traverse_Morris(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 染色法
+            Console.WriteLine("染色法");
+            tree = GetTree(); answer = "GHDBIEFCA";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "KHDEBIFJGCA";
+            list = traverse.Traverse_Dyeing(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
 
         public void TestTraverse_LevelOrder()
@@ -157,6 +235,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> list; string result, answer;
             int id = 0;
 
+            #region BFS
             Console.WriteLine("BFS");
             tree = GetTree(); answer = "ABCDEFGHI";
             list = traverse.Traverse(tree); result = list.Select(c => c.ToString()).Aggregate((c1, c2) => $"{c1}{c2}");
@@ -165,6 +244,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "ABCDEFGHIJK";
             list = traverse.Traverse(tree); result = list.Select(c => c.ToString()).Aggregate((c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
         #endregion
 

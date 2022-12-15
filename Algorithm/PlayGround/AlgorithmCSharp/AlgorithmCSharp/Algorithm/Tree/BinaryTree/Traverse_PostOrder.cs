@@ -11,6 +11,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
     /// </summary>
     public class Traverse_PostOrder
     {
+        #region 递归
         /// <summary>
         /// 递归
         /// </summary>
@@ -51,7 +52,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             dfs(node.Right, buffer);
             buffer.Add(node.Value);
         }
+        #endregion
 
+        #region 迭代
         /// <summary>
         /// 迭代
         /// 本质上就是采用“根->右->左”的伪前序遍历方式进行前序遍历，只不过操作节点改为入栈，最后整体弹栈（反序）
@@ -98,6 +101,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         /// 用迭代的方式实现Traverse_Recursive2()的递归函数，两种方式是等价的，
         /// 区别在于递归的时候隐式地维护了一个栈，而这里在迭代的时候需要显式地将这个栈模拟出来，其余的实现与细节都相同。
         /// 具体步骤见：Traverse_PostOrder_Iteration2_01.png - Traverse_PostOrder_Iteration2_19.png
+        /// 
+        /// 与Traverse_Iteration()的差异在于，这个是模拟递归
+        /// 具体二者的性能如何没有测试
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
@@ -114,7 +120,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
                 ptr = stack.Pop();
                 if (ptr.Right == null || ptr.Right == prev)
                 {
-                    result.Add(ptr.Value); prev = ptr; ptr = null;
+                    result.Add(ptr.Value); prev = ptr; ptr = null;  // 处理了ptr，将prev更新为ptr
                 }
                 else
                 {
@@ -124,7 +130,9 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
 
             return result;
         }
+        #endregion
 
+        #region Morris
         /// <summary>
         /// 迭代，Morris
         /// </summary>
@@ -137,5 +145,38 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
 
             return result;
         }
+        #endregion
+
+        #region 染色法
+        /// <summary>
+        /// 染色法
+        /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，具体细节见Traverse_Dyeing.md
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public List<char> Traverse_Dyeing(TreeNode root)
+        {
+            List<char> result = new List<char>();
+            if (root == null) return result;
+
+            Stack<(bool tag, TreeNode node)> stack = new Stack<(bool, TreeNode)>();  // true:白色, false:灰色
+            stack.Push((true, root));
+            while (stack.Count > 0)
+            {
+                var item = stack.Pop();
+                if (item.node == null) continue;
+                if (item.tag)
+                {
+                    stack.Push((false, item.node));
+                    stack.Push((true, item.node.Right));
+                    stack.Push((true, item.node.Left));
+                }
+                else
+                    result.Add(item.node.Value);
+            }
+
+            return result;
+        }
+        #endregion
     }
 }
