@@ -46,10 +46,10 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
 
         private void dfs(TreeNode node, List<char> buffer)
         {
-            if (node == null) return;
+            // if (node == null) return;  // null不会进来
 
-            dfs(node.Left, buffer);
-            dfs(node.Right, buffer);
+            if (node.Left != null) dfs(node.Left, buffer);
+            if (node.Right != null) dfs(node.Right, buffer);
             buffer.Add(node.Value);
         }
         #endregion
@@ -149,7 +149,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
 
         #region 染色法
         /// <summary>
-        /// 染色法
+        /// 迭代，染色法
         /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，具体细节见Traverse_Dyeing.md
         /// </summary>
         /// <param name="root"></param>

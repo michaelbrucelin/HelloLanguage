@@ -232,17 +232,70 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         {
             Traverse_LevelOrder traverse = new Traverse_LevelOrder();
             TreeNode tree;
-            List<char> list; string result, answer;
+            List<List<char>> list; string result, answer;
             int id = 0;
 
             #region BFS
             Console.WriteLine("BFS");
             tree = GetTree(); answer = "ABCDEFGHI";
-            list = traverse.Traverse(tree); result = list.Select(c => c.ToString()).Aggregate((c1, c2) => $"{c1}{c2}");
+            list = traverse.Traverse_BFS(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             tree = GetTree2(); answer = "ABCDEFGHIJK";
-            list = traverse.Traverse(tree); result = list.Select(c => c.ToString()).Aggregate((c1, c2) => $"{c1}{c2}");
+            list = traverse.Traverse_BFS(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 递归
+            Console.WriteLine("递归");
+            tree = GetTree(); answer = "ABCDEFGHI";
+            list = traverse.Traverse_Recursive(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABCDEFGHIJK";
+            list = traverse.Traverse_Recursive(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 迭代
+            Console.WriteLine("迭代");
+            tree = GetTree(); answer = "ABCDEFGHI";
+            list = traverse.Traverse_Iteration(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABCDEFGHIJK";
+            list = traverse.Traverse_Iteration(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            Console.WriteLine("迭代2");
+            tree = GetTree(); answer = "ABCDEFGHI";
+            list = traverse.Traverse_Iteration2(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABCDEFGHIJK";
+            list = traverse.Traverse_Iteration2(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region Morris
+            Console.WriteLine("Morris");
+            tree = GetTree(); answer = "ABCDEFGHI";
+            list = traverse.Traverse_Morris(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABCDEFGHIJK";
+            list = traverse.Traverse_Morris(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region 染色法
+            Console.WriteLine("染色法");
+            tree = GetTree(); answer = "ABCDEFGHI";
+            list = traverse.Traverse_Dyeing(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "ABCDEFGHIJK";
+            list = traverse.Traverse_Dyeing(tree); result = list.SelectMany(list => list).Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }

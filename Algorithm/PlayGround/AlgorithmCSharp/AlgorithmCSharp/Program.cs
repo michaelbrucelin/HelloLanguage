@@ -20,7 +20,7 @@ Console.WriteLine("二叉树遍历测试");
 Console.WriteLine($"{Environment.NewLine}前序遍历测试"); test.TestTraverse_PreOrder();
 Console.WriteLine($"{Environment.NewLine}中序遍历测试"); test.TestTraverse_InOrder();
 Console.WriteLine($"{Environment.NewLine}后序遍历测试"); test.TestTraverse_PostOrder();
-//Console.WriteLine($"{Environment.NewLine}层序遍历测试"); test.TestTraverse_LevelOrder();
+Console.WriteLine($"{Environment.NewLine}层序遍历测试"); test.TestTraverse_LevelOrder();
 #endregion
 
 #region TEST
