@@ -47,9 +47,13 @@ namespace AlgorithmCSharp.Algorithm.KMP
             {
                 while (j >= 0 && s[i - 1] != s[j]) j = next[j];
                 if (j == -1)
-                { if (s[i] != s[0]) next[i] = 0; else next[i] = -1; }
+                {
+                    if (s[i] != s[0]) next[i] = 0; else next[i] = -1;
+                }
                 else
-                { if (s[i] != s[j]) next[i] = j + 1; else next[i] = next[j]; }
+                {
+                    if (s[i] != s[j]) next[i] = j + 1; else next[i] = next[j];
+                }
                 i++; j++;
             }
 
