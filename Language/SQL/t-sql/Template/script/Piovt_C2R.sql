@@ -32,14 +32,9 @@ union all
 select [name], [period], 语文 as 分数, '语文' as 课程 from #temp
 union all
 select [name], [period], 音乐 as 分数, '音乐' as 课程 from #temp
---T-SQL标准写法
-select * from(
-select empid, custid
-       , case custid when 'A' then A
-                     when 'B' then B
-                     when 'C' then C
-                     when 'D' then D
-         end as qty
-from dbo.EmpCustOrders a
-cross join (values('A'),('B'),('C'),('D')) as b(custid)) as D
-where qty is not null
+
+-- 解决方案3
+select a.[name], a.[period], b.课程
+       , case b.课程 when '数学' then a.数学 when '语文' then a.语文 when '音乐' then a.音乐 end as 分数
+from #temp as a
+cross join (values('数学'),('语文'),('音乐')) as b(课程)
