@@ -116,8 +116,8 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             while (ptr != null || stack.Count > 0)
             {
                 while (ptr != null) { result.Add(ptr.Value); stack.Push(ptr); ptr = ptr.Left; }
-                ptr = stack.Pop();
-                ptr = ptr.Right;
+                ptr = stack.Pop();  // 与Traverse_Iteration()的主要差异就在这两行代码，
+                ptr = ptr.Right;    // 这里由于是将父节点入栈，所以弹栈之后还要指向其右孩子，而Traverse_Iteration()由于是直接将右孩子入栈，所以弹栈后直接可用
             }
 
             return result;
@@ -142,7 +142,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         #region 染色法
         /// <summary>
         /// 迭代，染色法
-        /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，具体细节见Traverse_Dyeing.md
+        /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，但是代码结构还是挺漂亮的，具体细节见Traverse_Dyeing.md
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>

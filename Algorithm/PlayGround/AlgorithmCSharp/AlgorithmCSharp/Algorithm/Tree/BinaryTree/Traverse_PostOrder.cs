@@ -113,7 +113,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             if (root == null) return result;
 
             Stack<TreeNode> stack = new Stack<TreeNode>();
-            TreeNode ptr = root, prev = null;
+            TreeNode ptr = root, prev = null;                       // prev记录上一次处理的节点
             while (ptr != null || stack.Count > 0)
             {
                 while (ptr != null) { stack.Push(ptr); ptr = ptr.Left; }
@@ -150,7 +150,7 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         #region 染色法
         /// <summary>
         /// 迭代，染色法
-        /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，具体细节见Traverse_Dyeing.md
+        /// 这种方法的本质是每个节点都要入栈两次后才能访问其元素值，但是代码结构还是挺漂亮的，具体细节见Traverse_Dyeing.md
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
