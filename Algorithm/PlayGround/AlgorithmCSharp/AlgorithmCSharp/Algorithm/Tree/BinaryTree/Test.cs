@@ -203,6 +203,15 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             tree = GetTree2(); answer = "KHDEBIFJGCA";
             list = traverse.Traverse_Iteration2(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            Console.WriteLine("迭代3");
+            tree = GetTree(); answer = "GHDBIEFCA";
+            list = traverse.Traverse_Iteration3(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            tree = GetTree2(); answer = "KHDEBIFJGCA";
+            list = traverse.Traverse_Iteration3(tree); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
 
             #region Morris
