@@ -6,7 +6,7 @@
 // @author       You
 // @match        *://fanyi.youdao.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=youdao.com
-// @grant        none
+// @grant        GM_addStyle
 // ==/UserScript==
 
 (function() {
@@ -27,9 +27,39 @@
         if(item) item.remove();
         // 菜单
         item = document.querySelector("#app > div.index.os_Windows > div.top-nav.top > div > ul");
-        if(item) item.remove();
+        // if(item) item.remove();
+        if(item) {
+            let lis = item.getElementsByTagName('li');
+            for(let i = 0; i < lis.length; i++) {
+                if(lis[i]) lis[i].remove();
+            }
+        }
         // footer
         item = document.querySelector("#app > div.index.os_Windows > div.footer");
         if(item) item.remove();
     });
+
+    const css = `
+                @media (max-width: 1920px) {
+                    :root {
+                        --main-container-width: 70% !important;
+                    }
+                }
+
+                @media (max-width: 1280px) {
+                    :root {
+                        --main-container-width: 70% !important;
+                    }
+                }
+
+                :root {
+                    --main-container-width: 70% !important;
+                }
+
+                .tab-item {
+                    height: 36px !important;
+                    width: 108px !important;
+                }
+                `;
+    GM_addStyle(css);
 })();
