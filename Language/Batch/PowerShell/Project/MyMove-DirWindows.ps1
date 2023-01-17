@@ -18,9 +18,9 @@ function MyMove-DirWindows() {
     }
 
     if ($explorer = Get-Process -Name explorer -ErrorAction SilentlyContinue) {
-        [int]$width = 856; [int]$height = 556;
-        [int]$startX = 190; [int]$startY = 196;
-        [int]$moveX = 25; [int]$moveY = 25
+        [int]$width = 911; [int]$height = 555;
+        [int]$startX = 63; [int]$startY = 63;
+        [int]$moveX = 26; [int]$moveY = 26;
 
         $curps = Select-UIElement -PID $PID
         $windows = Select-UIElement -PID $explorer.Id -ControlType Window -ClassName CabinetWClass
