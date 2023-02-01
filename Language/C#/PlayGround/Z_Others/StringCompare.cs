@@ -11,7 +11,7 @@ namespace TestCSharp
     {
         /// <summary>
         /// char与string的比较方法
-        /// char默认按照ASCII码表排序
+        /// char默认按照ASCII码表排序，实际上不是ASCII，而是每个char的Unicode码位。
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
