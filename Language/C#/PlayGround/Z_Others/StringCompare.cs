@@ -19,7 +19,7 @@ namespace TestCSharp
             {   // char
                 Console.WriteLine("char");
                 char[] chars = new char[] { '(', '2', '<', 'Z', 'x', ')', '=', '[', 'y', '*', '>', '\\', 'z', '!', '+', '?', ']', '{', '"', ',', '6', '@', '^', '|', '\'',
-                                        '#', '-', 'A', '_', '}', '$', '.',  'B', '`', '~', '%', '/', '9', 'C', 'a', '&', '0', ':', 'X', 'b', '1', ';', 'Y', 'c' };
+                                            '#', '-', 'A', '_', '}', '$', '.',  'B', '`', '~', '%', '/', '9', 'C', 'a', '&', '0', ':', 'X', 'b', '1', ';', 'Y', 'c' };
 
                 Array.Sort(chars);
                 foreach (char c in chars) Console.Write($"{c} "); Console.WriteLine();
@@ -30,7 +30,7 @@ namespace TestCSharp
             {   // string
                 Console.WriteLine("string");
                 string[] strs = new string[] { "(", "2", "<", "Z", "x", ")", "=", "[", "y", "*", ">", "\\", "z", "!", "+", "?", "]", "{", "\"", ",", "6", "@", "^", "|", "'",
-                                           "#", "-", "A", "_", "}", "$", ".",  "B", "`", "~", "%", "/", "9", "C", "a", "&", "0", ":", "X",  "b", "1", ";", "Y", "c" };
+                                               "#", "-", "A", "_", "}", "$", ".",  "B", "`", "~", "%", "/", "9", "C", "a", "&", "0", ":", "X",  "b", "1", ";", "Y", "c" };
 
                 string[] copy = strs.ToArray(); Array.Sort(copy);
                 foreach (string s in copy) Console.Write($"{s} "); Console.WriteLine();
