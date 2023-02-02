@@ -51,13 +51,15 @@ namespace TestCSharp
                 query = strs.OrderBy(c => c, compare);
                 foreach (string s in query) Console.Write($"{s} "); Console.WriteLine();
 
-                Console.Write("StringComparer.Ordinal.Compare(s1, s2):           ");  // 按照ASCII码排序
-                compare = Comparer<string>.Create((s1, s2) => StringComparer.Ordinal.Compare(s1, s2));
+                Console.Write("StringComparison.Ordinal:           ");                // 按照Unicode码位排序
+                // compare = Comparer<string>.Create((s1, s2) => StringComparer.Ordinal.Compare(s1, s2));
+                compare = Comparer<string>.Create((s1, s2) => string.Compare(s1, s2, StringComparison.Ordinal));
                 query = strs.OrderBy(c => c, compare);
                 foreach (string s in query) Console.Write($"{s} "); Console.WriteLine();
 
-                Console.Write("StringComparer.OrdinalIgnoreCase.Compare(s1, s2): ");  // 按照ASCII码排序，不区分大小写（将小写提前，即大小写中间的放后面）
-                compare = Comparer<string>.Create((s1, s2) => StringComparer.OrdinalIgnoreCase.Compare(s1, s2));
+                Console.Write("StringComparison.OrdinalIgnoreCase: ");                // 按照Unicode码位排序，不区分大小写（将小写提前，即大小写中间的放后面）
+                // compare = Comparer<string>.Create((s1, s2) => StringComparer.OrdinalIgnoreCase.Compare(s1, s2));
+                compare = Comparer<string>.Create((s1, s2) => string.Compare(s1, s2, StringComparison.OrdinalIgnoreCase));
                 query = strs.OrderBy(c => c, compare);
                 foreach (string s in query) Console.Write($"{s} "); Console.WriteLine();
                 // ! " # $ % & ' ( ) * + , - . / 0 1 2 6 9 : ; < = > ? @ A a B b C c x X y Y Z z [ \ ] ^ _ ` { | } ~
