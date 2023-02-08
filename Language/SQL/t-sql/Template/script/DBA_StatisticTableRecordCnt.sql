@@ -18,7 +18,7 @@ order by p.rows desc
 --3、使用系统视图sys.dm_db_partition_stats
 --这个不仅仅会查出数据库中每张表的数据条数，还会查出占用磁盘空间，未使用的磁盘等信息
 ;with c0 as(
-select s.name as [schema_name], o.name as obj_name
+select s.name as [schema_name], o.[type], o.name as obj_name
        , SUM(p.used_page_count * 8.0 / 1024) as used_size_mb
        , SUM(case when (p.index_id <= 1)
                   then (p.in_row_data_page_count + p.lob_used_page_count + p.row_overflow_used_page_count)
@@ -28,10 +28,10 @@ select s.name as [schema_name], o.name as obj_name
 from sys.dm_db_partition_stats as p
 inner join sys.objects as o on p.[object_id] = o.[object_id]
 inner join sys.schemas as s on s.[schema_id] = o.[schema_id]
-where o.[type] = 'U'
-group by s.name ,o.name
+where o.[type] in ('V', 'U', 'S')
+group by s.name, o.[type], o.name
 )
-select [schema_name], obj_name, row_count
+select [schema_name], [type], obj_name, row_count
        , CAST(used_size_mb as decimal(18, 2)) as used_size_mb
        , CAST(data_size_mb as decimal(18, 2)) as data_size_mb
 from c0
