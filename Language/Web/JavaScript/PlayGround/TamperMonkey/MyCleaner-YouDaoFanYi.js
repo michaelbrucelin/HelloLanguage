@@ -12,6 +12,7 @@
 (function() {
     'use strict';
 
+    document.title = "有道翻译";
     var item;
 
     // 侧边
