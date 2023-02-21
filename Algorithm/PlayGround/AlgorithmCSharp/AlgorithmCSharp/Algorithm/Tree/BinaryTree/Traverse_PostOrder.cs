@@ -204,6 +204,16 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
         #region Morris
         /// <summary>
         /// 迭代，Morris
+        /// 类似于线索二叉树的方式迭代，时间复杂度为O(n)，空间复杂度为O(1)，但是由于在遍历的过程中会更改树的结构，所以不适合并发的场景
+        /// 具体步骤见：Traverse_PostOrder_Morris.jpg
+        /// 
+        /// 下面是前序遍历的描述
+        /// 1. 将指针指向根节点
+        /// 2. 指针无左孩子，指针指向其右孩子
+        /// 3. 指针有左孩子，找到指针中序遍历的前驱节点，即左子树中最右边的节点（顺着左孩子一直找右孩子，直至右孩子为空或右孩子是指针）
+        ///     3.1. 如果前驱节点的右孩子为空，将前驱的右孩子指向指针，指针指向其左孩子
+        ///     3.2. 如果前驱节点的右孩子是指针，将前驱的右孩子设置为空（恢复树的形状），倒序输出从指针的左孩子到前驱节点这条路径上的所有节点，指针指向其右孩子
+        /// 4. 重复2、3直至指针为空
         /// </summary>
         /// <param name="root"></param>
         /// <returns></returns>
@@ -212,7 +222,42 @@ namespace AlgorithmCSharp.Algorithm.Tree.BinaryTree
             List<char> result = new List<char>();
             if (root == null) return result;
 
+            TreeNode ptr = root, pre;
+            while (ptr != null)
+            {
+                if (ptr.Left == null) ptr = ptr.Right;
+                else
+                {
+                    pre = ptr.Left; while (pre.Right != null && pre.Right != ptr) pre = pre.Right;
+                    if (pre.Right == null)
+                    {
+                        pre.Right = ptr; ptr = ptr.Left;
+                    }
+                    else
+                    {
+                        pre.Right = null; Traverse_Morris_AddPath(result, ptr.Left); ptr = ptr.Right;
+                    }
+                }
+            }
+            Traverse_Morris_AddPath(result, root);
+
             return result;
+        }
+
+        private void Traverse_Morris_AddPath(List<char> list, TreeNode node)
+        {
+            int cnt = 0;
+            while (node != null)
+            {
+                list.Add(node.Value); cnt++; node = node.Right;
+            }
+
+            int left = list.Count - cnt, right = list.Count - 1;
+            while (left < right)
+            {
+                char t = list[left]; list[left] = list[right]; list[right] = t;
+                left++; right--;
+            }
         }
         #endregion
 
