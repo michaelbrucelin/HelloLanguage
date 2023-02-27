@@ -4,6 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
+// @match        *://leetcode.com/*
 // @match        *://leetcode.cn/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
@@ -21,7 +22,7 @@
             // alert("the"+times+"times");  // 检查是否重复执行了多次
             var btns = document.getElementsByTagName("button");
             for (let i = 0; i < btns.length; i++) {
-                if (btns[i].innerText == '运行') {
+                if (btns[i].innerText == '运行' || btns[i].innerText == 'Run') {
                     btn_run = btns[i]; break;
                 }
             }
