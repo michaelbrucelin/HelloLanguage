@@ -75,5 +75,11 @@
     <ClCompile Include="04线索二叉树.c">
       <Filter>源文件\第6章 树</Filter>
     </ClCompile>
+    <ClCompile Include="01图的存储结构01_邻接矩阵.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
+    <ClCompile Include="01图的存储结构02_邻接表.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
