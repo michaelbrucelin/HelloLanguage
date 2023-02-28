@@ -1,9 +1,9 @@
 /* 二叉树的建立 */
-#include <cstddef>
+#include <stddef.h>
+#include "my_macro.h"
 
 typedef int TElemType;                 // 树结点的数据类型，目前暂定为整型
 
-#define OVERFLOW -2                    // 堆溢出
 
 /* 二叉树的二叉链表结点结构定义 */
 typedef struct BiTNode                 // 结点结构

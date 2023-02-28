@@ -1,4 +1,5 @@
 #include <malloc.h>
+#include "01顺序栈_Stack.c"
 
 /* 队列的链表结构 */
 typedef int QElemType;     // QElemType类型根据实际情况而定，这里假设为int
@@ -13,12 +14,6 @@ typedef struct             // 队列的链表结构
 	QueuePtr front, rear;  // 队头、队尾指针
 }LinkQueue;
 
-#define OK 1
-#define ERROR 0
-
-typedef int Status;        // Status是函数的类型，其值是函数结果的状态代码，如OK等
-
-#define OVERFLOW -2        // 堆溢出
 
 /* 入队操作 */
 // 插入元素e为Q的新的队尾元素

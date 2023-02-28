@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "my_macro.h"
 
 /* 线性表的单链表存储结构 */
 typedef int ElemType;           // ElemType类型根据具体情况而定，这里为int
@@ -7,11 +8,6 @@ typedef struct Node {
 	struct Node* next;
 }Node;
 typedef struct Node* LinkList;  // 定义LinkList
-
-#define OK 1
-#define ERROR 0
-
-typedef int Status;          // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 
 /* 获取元素操作 */

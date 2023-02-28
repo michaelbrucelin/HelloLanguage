@@ -75,11 +75,19 @@
     <ClCompile Include="04线索二叉树.c">
       <Filter>源文件\第6章 树</Filter>
     </ClCompile>
-    <ClCompile Include="01图的存储结构01_邻接矩阵.c">
+    <ClCompile Include="01图的存储结构.c">
       <Filter>源文件\第7章 图</Filter>
     </ClCompile>
-    <ClCompile Include="01图的存储结构02_邻接表.c">
+    <ClCompile Include="02图的建立.c">
       <Filter>源文件\第7章 图</Filter>
     </ClCompile>
+    <ClCompile Include="03图的遍历.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="my_macro.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

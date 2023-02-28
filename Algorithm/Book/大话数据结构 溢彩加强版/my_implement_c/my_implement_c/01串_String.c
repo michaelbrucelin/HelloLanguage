@@ -1,12 +1,9 @@
 /* 字符串的存储结构 */
+#include "my_macro.h"
+
 #define MAXSIZE 40                 // 存储空间初始分配量
 
 typedef char String[MAXSIZE + 1];  // 0号单元存放串的长度
-
-#define OK 1
-#define ERROR 0
-
-typedef int Status;                // Status是函数的类型,其值是函数结果状态代码，如OK等
 
 
 /* 初始条件: 串S和T存在 */

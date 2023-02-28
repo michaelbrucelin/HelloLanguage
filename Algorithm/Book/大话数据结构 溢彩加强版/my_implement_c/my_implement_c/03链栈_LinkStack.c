@@ -1,4 +1,5 @@
 #include <malloc.h>
+#include "my_macro.h"
 
 /* 链栈结构 */
 typedef int SElemType;        // SElemType类型根据实际情况而定，这里假设为int
@@ -13,13 +14,6 @@ typedef struct
 	LinkStackPtr top;
 	int count;
 }LinkStack;
-
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-
-typedef int Status;           // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 
 /* 进栈操作 */

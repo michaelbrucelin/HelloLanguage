@@ -1,4 +1,6 @@
 /* 线性表的顺序存储结构 */
+#include "my_macro.h"
+
 #define MAXSIZE 20           // 存储空间初始分配量
 
 typedef int ElemType;        // ElemType类型根据具体情况而定，这里为int
@@ -7,11 +9,6 @@ typedef struct
 	ElemType data[MAXSIZE];  // 数组，存储数据元素
 	int length;              // 线性表当前长度
 }SqList;
-
-#define OK 1
-#define ERROR 0
-
-typedef int Status;          // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 
 /* 获取元素操作 */

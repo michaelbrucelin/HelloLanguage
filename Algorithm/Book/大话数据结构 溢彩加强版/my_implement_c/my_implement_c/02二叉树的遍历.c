@@ -1,9 +1,7 @@
 /* 二叉树的遍历 */
-#include <cstddef>
+#include <stddef.h>
 
 typedef int TElemType;                 // 树结点的数据类型，目前暂定为整型
-
-#define OVERFLOW -2                    // 堆溢出
 
 /* 二叉树的二叉链表结点结构定义 */
 typedef struct BiTNode                 // 结点结构

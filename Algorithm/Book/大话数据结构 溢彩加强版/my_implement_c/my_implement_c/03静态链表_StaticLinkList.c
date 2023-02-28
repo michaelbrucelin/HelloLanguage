@@ -1,4 +1,6 @@
 /* 线性表的静态链表存储结构 */
+#include "my_macro.h"
+
 #define MAXSIZE 1000    // 存储空间初始分配量
 
 typedef char ElemType;  // ElemType类型根据具体情况而定，这里为char
@@ -8,10 +10,6 @@ typedef struct
 	int cur;            // 游标(Cursor) ，为0时表示无指向
 }Component, StaticLinkList[MAXSIZE];
 
-#define OK 1
-#define ERROR 0
-
-typedef int Status;     // Status是函数的类型，其值是函数结果的状态代码，如OK等
 
 /* 初始化 */
 // 将一维数组space中各分量链成一个备用链表，space[0].cur为头指针，"0"表示空指针
