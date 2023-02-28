@@ -32,5 +32,5 @@ Test test = new Test();
 
 //BinaryEnum.EnumSet(4);
 //BinaryEnum.EnumSubSet(21);  // 21:10101
-BinaryEnum.EnumKSet(8, 2);
+BinaryEnum.EnumKSet(8, 1);
 #endregion

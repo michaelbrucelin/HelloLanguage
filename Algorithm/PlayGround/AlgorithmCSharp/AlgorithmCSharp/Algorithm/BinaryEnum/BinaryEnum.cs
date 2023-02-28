@@ -36,7 +36,7 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
         /// 一个集合中有n个元素，需要从其中选择k个元素，枚举所有可能的子集，可以使用回溯，这里使用二进制枚举
         /// 原理：根据当前的符合要求的状态求出第一个大于该状态的符合要求的状态
         /// 输出：升序输出
-        /// 算法描述：按照字典序的话，最小的子集是(1<<k)-1，所以用它作为初始值。
+        /// 算法描述：按照字典序的话，最小的子集是(1<<k)-1（连续k个1），所以用它作为初始值。
         ///           现在我们求出kset其后的二进制码
         ///               1. 求出最低位的1开始连续的1的区间，（x&(-x)的值就是将最低位的1独立出来的值）
         ///               2. 将这一区间全部变为0，并将区间最左侧的0变为1
@@ -47,6 +47,8 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
         /// <param name="k"></param>
         public static void EnumKSet(int n, int k)
         {
+            if (k == 0) throw new Exception("一个元素都不选需要单独处理");
+
             int kset = (1 << k) - 1, i = 0;
             while (kset < 1 << n)
             {
