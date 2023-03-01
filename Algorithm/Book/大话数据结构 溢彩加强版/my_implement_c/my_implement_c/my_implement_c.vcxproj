@@ -153,10 +153,12 @@
     <ClCompile Include="03二叉树的建立.c" />
     <ClCompile Include="03链栈_LinkStack.c" />
     <ClCompile Include="03静态链表_StaticLinkList.c" />
+    <ClCompile Include="04图的最小生成树.c" />
     <ClCompile Include="04线索二叉树.c" />
     <ClCompile Include="04顺序队列_Queue.c" />
     <ClCompile Include="05链队列_LinkQueue.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="05图的最短路径.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_macro.h" />

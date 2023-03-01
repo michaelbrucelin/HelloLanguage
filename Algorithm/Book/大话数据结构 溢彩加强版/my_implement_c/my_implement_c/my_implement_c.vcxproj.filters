@@ -84,6 +84,12 @@
     <ClCompile Include="03图的遍历.c">
       <Filter>源文件\第7章 图</Filter>
     </ClCompile>
+    <ClCompile Include="04图的最小生成树.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
+    <ClCompile Include="05图的最短路径.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_macro.h">

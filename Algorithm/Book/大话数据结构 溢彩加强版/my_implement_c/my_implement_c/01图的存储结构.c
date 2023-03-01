@@ -2,7 +2,8 @@
 typedef char VertexType;  // 顶点类型应由用户定义
 typedef int EdgeType;     // 边上的权值类型应由用户定义
 
-#define MAXVEX 100        // 最大顶点数，应由用户定义
+#define MAXVEX   100      // 最大顶点数，应由用户定义
+#define MAXEDGE  100      // 最大边数，应由用户定义
 #define INFINITY 65535    // 用65535来代表∞
 
 
@@ -36,3 +37,13 @@ typedef struct
 	AdjList adjList;
 	int numNodes, numEdges;        // 图中当前顶点数和边数
 } GraphAdjList;
+
+
+/* 对边集数组Edge结构的定义 */
+// 某些图论的算法，例如Kruskal（克鲁斯卡尔）算法就需要用此数据结构
+typedef struct
+{
+	int begin;
+	int end;
+	int weight;
+} Edge;
