@@ -16,8 +16,8 @@ typedef struct
 typedef int Patharc[MAXVEX];        /* 用于存储最短路径下标的数组 */
 typedef int ShortPathTable[MAXVEX]; /* 用于存储到各点最短路径的权值和 */
 
-/*  Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */
-/*  P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */
+/* Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */
+/* P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */
 void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)
 {
     int v, w, k, min;

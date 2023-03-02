@@ -10,17 +10,17 @@ void MiniSpanTree_Prim(MGraph G)
 	int lowcost[MAXVEX];                                      // 保存相关顶点间边的权值
 	lowcost[0] = 0;                                           // 初始化第一个权值为0，即v0加入生成树
 	adjvex[0] = 0;                                            // 初始化第一个顶点下标为0
-	for (i = 1; i < G.numNodes; i++)                          // 循环除下标为0外的全部顶点
+	for (i = 1; i < G.numVertexes; i++)                       // 循环除下标为0外的全部顶点
 	{
 		lowcost[i] = G.arc[0][i];                             // 将v0顶点与之有边的权值存入数组
 		adjvex[i] = 0;                                        // 初始化都为v0的下标
 	}
-	for (i = 1; i < G.numNodes; i++)
+	for (i = 1; i < G.numVertexes; i++)
 	{
 		min = INFINITY;                                       // 初始化最小权值为∞，可以是较大数字如65535等
 		j = 1;
 		k = 0;
-		while (j < G.numNodes)                                // 循环全部顶点
+		while (j < G.numVertexes)                             // 循环全部顶点
 		{
 			if (lowcost[j] != 0 && lowcost[j] < min)
 			{                                                 // 如果权值不为0且权值小于min
@@ -31,7 +31,7 @@ void MiniSpanTree_Prim(MGraph G)
 		}
 		printf("(%d, %d)\n", adjvex[k], k);                   // 打印当前顶点边中权值最小的边
 		lowcost[k] = 0;                                       // 将当前顶点权值设置为0,此顶点已完成任务
-		for (j = 1; j < G.numNodes; j++)                      // 循环所有顶点
+		for (j = 1; j < G.numVertexes; j++)                      // 循环所有顶点
 		{                                                     // 如果下标为k顶点各边权值小于此前这些顶点未被加入生成树权值
 			if (lowcost[j] != 0 && G.arc[k][j] < lowcost[j])
 			{
@@ -52,7 +52,7 @@ void MiniSpanTree_Kruskal(MGraph G)
 
 	/* 此处省略将邻接矩阵G转化为边集数组edges并按权由小到大排序的代码*/
 
-	for (i = 0; i < G.numNodes; i++)
+	for (i = 0; i < G.numVertexes; i++)
 		parent[i] = 0;                                        // 初始化数组值为0
 	for (i = 0; i < G.numEdges; i++)                          // 循环每一条边
 	{

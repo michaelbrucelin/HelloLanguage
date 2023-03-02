@@ -8,11 +8,11 @@ void CreateMGraph(MGraph* G)
 {
 	int i, j, k, w;
 	printf("输入顶点数和边数:\n");
-	scanf("%d,%d", &G->numNodes, &G->numEdges);           // 输入顶点数和边数
-	for (i = 0; i < G->numNodes; i++)                     // 读入顶点信息,建立顶点表
+	scanf("%d,%d", &G->numVertexes, &G->numEdges);        // 输入顶点数和边数
+	for (i = 0; i < G->numVertexes; i++)                  // 读入顶点信息,建立顶点表
 		scanf(&G->vexs[i]);
-	for (i = 0; i < G->numNodes; i++)
-		for (j = 0; j < G->numNodes; j++)
+	for (i = 0; i < G->numVertexes; i++)
+		for (j = 0; j < G->numVertexes; j++)
 			G->arc[i][j] = INFINITY;                      // 邻接矩阵初始化
 	for (k = 0; k < G->numEdges; k++)                     // 读入numEdges条边，建立邻接矩阵
 	{
@@ -30,8 +30,8 @@ void CreateALGraph(GraphAdjList* G)
 	int i, j, k;
 	EdgeNode* e;
 	printf("输入顶点数和边数:\n");
-	scanf("%d,%d", &G->numNodes, &G->numEdges);           // 输入顶点数和边数
-	for (i = 0; i < G->numNodes; i++)                     // 读入顶点信息,建立顶点表
+	scanf("%d,%d", &G->numVertexes, &G->numEdges);        // 输入顶点数和边数
+	for (i = 0; i < G->numVertexes; i++)                  // 读入顶点信息,建立顶点表
 	{
 		scanf(&G->adjList[i].data);                       // 输入顶点信息
 		G->adjList[i].firstedge = NULL;                   // 将边表置为空表

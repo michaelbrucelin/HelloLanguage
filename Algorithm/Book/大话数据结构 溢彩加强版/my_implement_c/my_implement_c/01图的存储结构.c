@@ -13,7 +13,7 @@ typedef struct
 {
 	VertexType vexs[MAXVEX];       // 顶点表
 	EdgeType arc[MAXVEX][MAXVEX];  // 邻接矩阵，可看作边表
-	int numNodes, numEdges;        // 图中当前的顶点数和边数
+	int numVertexes, numEdges;     // 图中当前的顶点数和边数
 } MGraph;
 
 
@@ -35,7 +35,7 @@ typedef struct VertexNode          // 顶点表结点 */
 typedef struct
 {
 	AdjList adjList;
-	int numNodes, numEdges;        // 图中当前顶点数和边数
+	int numVertexes, numEdges;     // 图中当前顶点数和边数
 } GraphAdjList;
 
 
