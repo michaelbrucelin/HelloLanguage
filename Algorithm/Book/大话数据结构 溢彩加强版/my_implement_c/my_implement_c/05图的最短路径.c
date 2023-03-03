@@ -4,10 +4,10 @@
 
 /* Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */
 /* P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */
-typedef int Patharc1[MAXVEX];                                // 用于存储最短路径下标的数组
-typedef int ShortPathTable1[MAXVEX];                         // 用于存储到各点最短路径的权值和
+typedef int Patharc_Dijkstra[MAXVEX];                        // 用于存储最短路径下标的数组
+typedef int ShortPathTable_Dijkstra[MAXVEX];                 // 用于存储到各点最短路径的权值和
 
-void ShortestPath_Dijkstra(MGraph G, int v0, Patharc1* P, ShortPathTable1* D)
+void ShortestPath_Dijkstra(MGraph G, int v0, Patharc_Dijkstra* P, ShortPathTable_Dijkstra* D)
 {
 	int v, w, k, min;
 	int final[MAXVEX];                                       // final[w]=1表示求得顶点v0至vw的最短路径
@@ -47,10 +47,10 @@ void ShortestPath_Dijkstra(MGraph G, int v0, Patharc1* P, ShortPathTable1* D)
 
 
 /* Floyd算法，求网图G中各顶点v到其余顶点w的最短路径P[v][w]及带权长度D[v][w]。 */
-typedef int Patharc2[MAXVEX][MAXVEX];
-typedef int ShortPathTable2[MAXVEX][MAXVEX];
+typedef int Patharc_Floyd[MAXVEX][MAXVEX];
+typedef int ShortPathTable_Floyd[MAXVEX][MAXVEX];
 
-void ShortestPath_Floyd(MGraph G, Patharc2* P, ShortPathTable2* D)
+void ShortestPath_Floyd(MGraph G, Patharc_Floyd* P, ShortPathTable_Floyd* D)
 {
 	int v, w, k;
 	for (v = 0; v < G.numVertexes; ++v)                      // 初始化D与P
@@ -74,5 +74,32 @@ void ShortestPath_Floyd(MGraph G, Patharc2* P, ShortPathTable2* D)
 				}
 			}
 		}
+	}
+}
+
+int main()
+{
+	int v, w, k;
+	MGraph G;
+
+	Patharc_Floyd P;
+	ShortPathTable_Floyd D;                                  // 求某点到其余各点的最短路径
+
+	printf("各顶点间最短路径如下:\n");
+	for (v = 0; v < G.numVertexes; ++v)
+	{
+		for (w = v + 1; w < G.numVertexes; w++)
+		{
+			printf("v%d-v%d weight: %d ", v, w, D[v][w]);
+			k = P[v][w];                                     // 获得第一个路径顶点下标
+			printf(" path: %d", v);                          // 打印源点
+			while (k != w)                                   // 如果路径顶点下标不是终点
+			{
+				printf(" -> %d", k);                         // 打印路径顶点
+				k = P[k][w];                                 // 获得下一个路径顶点下标
+			}
+			printf(" -> %d\n", w);                           // 打印终点
+		}
+		printf("\n");
 	}
 }
