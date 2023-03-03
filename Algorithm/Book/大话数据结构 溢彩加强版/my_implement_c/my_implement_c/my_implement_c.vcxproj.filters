@@ -93,6 +93,9 @@
     <ClCompile Include="06图的拓扑排序.c">
       <Filter>源文件\第7章 图</Filter>
     </ClCompile>
+    <ClCompile Include="07图的关键路径.c">
+      <Filter>源文件\第7章 图</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_macro.h">

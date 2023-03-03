@@ -158,6 +158,7 @@
     <ClCompile Include="04顺序队列_Queue.c" />
     <ClCompile Include="05链队列_LinkQueue.c" />
     <ClCompile Include="06图的拓扑排序.c" />
+    <ClCompile Include="07图的关键路径.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="05图的最短路径.c" />
   </ItemGroup>
