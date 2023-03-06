@@ -21,14 +21,15 @@ typedef struct
 // 邻接表表示法结点结构定义
 typedef struct EdgeNode            // 边表结点
 {
-	int adjvex;                    // 邻接点域,存储该顶点对应的下标
-	EdgeType info;                 // 用于存储权值,对于非网图可以不需要
-	struct EdgeNode* next;         // 链域,指向下一个邻接点
+	int adjvex;                    // 邻接点域，存储该顶点对应的下标
+	EdgeType weight;               // 用于存储权值，对于非网图可以不需要
+	struct EdgeNode* next;         // 链域，指向下一个邻接点
 } EdgeNode;
 
 typedef struct VertexNode          // 顶点表结点 */
 {
-	VertexType data;               // 顶点域,存储顶点信息
+	int in;                        // 顶点入度，拓扑排序中会用到，其它场景不需要
+	VertexType data;               // 顶点域，存储顶点信息
 	EdgeNode* firstedge;           // 边表头指针
 } VertexNode, AdjList[MAXVEX];
 
@@ -36,7 +37,7 @@ typedef struct
 {
 	AdjList adjList;
 	int numVertexes, numEdges;     // 图中当前顶点数和边数
-} GraphAdjList;
+} GraphAdjList, * GraphAdjList;
 
 
 /* 对边集数组Edge结构的定义 */
