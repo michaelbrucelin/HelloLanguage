@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Algorithm\Tree\ThreadBinaryTree\" />
+    <Folder Include="Algorithm\Graph\" />
   </ItemGroup>
 
 </Project>
