@@ -31,6 +31,7 @@ Test test = new Test();
 //for (int i = 0; i < list.Count; i++) Console.WriteLine(list[i]);  // edcba
 
 //BinaryEnum.EnumSet(4);
-//BinaryEnum.EnumSubSet(21);  // 21:10101
+//BinaryEnum.EnumSubSet(21);   // 21:10101
+//BinaryEnum.EnumSubSet2(21);  // 21:10101
 BinaryEnum.EnumKSet(8, 1);
 #endregion

@@ -33,6 +33,18 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
         }
 
         /// <summary>
+        /// for版本
+        /// </summary>
+        /// <param name="sup"></param>
+        public static void EnumSubSet2(int sup)
+        {
+            int i = 0, n = Convert.ToString(sup, 2).Length;
+            for (int sub = sup; sub != 0; sub = (sub - 1) & sup)
+                Console.WriteLine($"{i++}:\t{Convert.ToString(sub, 2).PadLeft(n, '0')}");
+            Console.WriteLine($"{i++}:\t{Convert.ToString(0, 2).PadLeft(n, '0')}");        // for版本需要单独处理0（一个都不选）
+        }
+
+        /// <summary>
         /// 一个集合中有n个元素，需要从其中选择k个元素，枚举所有可能的子集，可以使用回溯，这里使用二进制枚举
         /// 原理：根据当前的符合要求的状态求出第一个大于该状态的符合要求的状态
         /// 输出：升序输出
