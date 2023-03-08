@@ -11,9 +11,9 @@ typedef int EdgeType;     // 边上的权值类型应由用户定义
 // 邻接矩阵表示法结点结构定义
 typedef struct
 {
-	VertexType vexs[MAXVEX];       // 顶点表
-	EdgeType arc[MAXVEX][MAXVEX];  // 邻接矩阵，可看作边表
-	int numVertexes, numEdges;     // 图中当前的顶点数和边数
+    VertexType vexs[MAXVEX];       // 顶点表
+    EdgeType arc[MAXVEX][MAXVEX];  // 邻接矩阵，可看作边表
+    int numVertexes, numEdges;     // 图中当前的顶点数和边数
 } MGraph;
 
 
@@ -21,22 +21,22 @@ typedef struct
 // 邻接表表示法结点结构定义
 typedef struct EdgeNode            // 边表结点
 {
-	int adjvex;                    // 邻接点域，存储该顶点对应的下标
-	EdgeType weight;               // 用于存储权值，对于非网图可以不需要
-	struct EdgeNode* next;         // 链域，指向下一个邻接点
+    int adjvex;                    // 邻接点域，存储该顶点对应的下标
+    EdgeType weight;               // 用于存储权值，对于非网图可以不需要
+    struct EdgeNode* next;         // 链域，指向下一个邻接点
 } EdgeNode;
 
 typedef struct VertexNode          // 顶点表结点 */
 {
-	int in;                        // 顶点入度，拓扑排序中会用到，其它场景不需要
-	VertexType data;               // 顶点域，存储顶点信息
-	EdgeNode* firstedge;           // 边表头指针
+    int in;                        // 顶点入度，拓扑排序中会用到，其它场景不需要
+    VertexType data;               // 顶点域，存储顶点信息
+    EdgeNode* firstedge;           // 边表头指针
 } VertexNode, AdjList[MAXVEX];
 
 typedef struct
 {
-	AdjList adjList;
-	int numVertexes, numEdges;     // 图中当前顶点数和边数
+    AdjList adjList;
+    int numVertexes, numEdges;     // 图中当前顶点数和边数
 } GraphAdjList, * GraphAdjList;
 
 
@@ -44,7 +44,7 @@ typedef struct
 // 某些图论的算法，例如Kruskal（克鲁斯卡尔）算法就需要用此数据结构
 typedef struct
 {
-	int begin;
-	int end;
-	int weight;
+    int begin;
+    int end;
+    int weight;
 } Edge;

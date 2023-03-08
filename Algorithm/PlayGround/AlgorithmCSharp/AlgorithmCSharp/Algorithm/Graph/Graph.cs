@@ -71,14 +71,16 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
     }
 
-    public struct Vertex<TVertex>
+    public class Vertex<TVertex>
     {
 
     }
 
-    public struct Edge<TEdge>
+    public class Edge<TEdge>
     {
-
+        int adjvex;                    // 邻接点域，存储该顶点对应的下标
+        TEdge weight;                  // 用于存储权值，对于非网图可以不需要
+        Edge<TEdge> next;              // 链域，指向下一个邻接点
     }
     #endregion
 }

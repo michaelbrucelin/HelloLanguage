@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("hello 大话数据结构。");
+    printf("hello 大话数据结构。");
 }
