@@ -68,19 +68,23 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class ALGraph<TVertex, TEdge>
     {
-
+        public List<Vertex<TVertex, TEdge>> AdjList;
+        public int VertexCnt;                         // 图中当前顶点数
+        public int EdgesCnt;                          // 图中当前边数
     }
 
-    public class Vertex<TVertex>
+    public class Vertex<TVertex, TEdge>               // 顶点表结点
     {
-
+        public int @in;                               // 顶点入度，拓扑排序中会用到，其它场景不需要
+        public TVertex data;                          // 顶点域，存储顶点信息
+        public Edge<TEdge> firstedge;                 // 边表头指针
     }
 
-    public class Edge<TEdge>
+    public class Edge<TEdge>                          // 边表结点
     {
-        int adjvex;                    // 邻接点域，存储该顶点对应的下标
-        TEdge weight;                  // 用于存储权值，对于非网图可以不需要
-        Edge<TEdge> next;              // 链域，指向下一个邻接点
+        public int adjvex;                            // 邻接点域，存储该顶点对应的下标
+        public TEdge weight;                          // 用于存储权值，对于非网图可以不需要
+        public Edge<TEdge> next;                      // 链域，指向下一个邻接点
     }
     #endregion
 }

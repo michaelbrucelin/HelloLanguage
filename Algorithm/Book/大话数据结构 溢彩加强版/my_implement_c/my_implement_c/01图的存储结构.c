@@ -26,7 +26,7 @@ typedef struct EdgeNode            // 边表结点
     struct EdgeNode* next;         // 链域，指向下一个邻接点
 } EdgeNode;
 
-typedef struct VertexNode          // 顶点表结点 */
+typedef struct VertexNode          // 顶点表结点
 {
     int in;                        // 顶点入度，拓扑排序中会用到，其它场景不需要
     VertexType data;               // 顶点域，存储顶点信息
