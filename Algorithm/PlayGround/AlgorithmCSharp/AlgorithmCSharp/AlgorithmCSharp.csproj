@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Algorithm\Graph\" />
+    <Folder Include="Algorithm\Graph\assets\att\" />
+    <Folder Include="Algorithm\Graph\assets\img\" />
   </ItemGroup>
 
 </Project>
