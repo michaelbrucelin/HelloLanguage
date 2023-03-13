@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Algorithm\Graph\assets\att\" />
     <Folder Include="Algorithm\Graph\assets\img\" />
+    <Folder Include="Algorithm\Tree\BinaryTree\assets\att\" />
   </ItemGroup>
 
 </Project>
