@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,47 +17,79 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
     /// <typeparam name="TEdge"></typeparam>
-    public class MGraph<TVertex, TEdge>
+    public class MGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
-        public MGraph(int VertexCnt, TEdge Infinity)
+        public MGraph(int VertexCnt, TEdge Infinity, bool Directed)
         {
             this.Infinity = Infinity;
-            this.VertexCnt = VertexCnt;
-            this.EdgeCnt = 0;
+            this.Directed = Directed;
             this.Vexs = new TVertex[VertexCnt];
             this.Arc = new TEdge[VertexCnt, VertexCnt];
         }
 
-        public MGraph(TVertex[] Vexs, TEdge Infinity)
+        public MGraph(TVertex[] Vexs, TEdge Infinity, bool Directed)
         {
             this.Infinity = Infinity;
-            this.VertexCnt = Vexs.Length;
-            this.EdgeCnt = 0;
+            this.Directed = Directed;
             this.Vexs = Vexs;
             this.Arc = new TEdge[Vexs.Length, Vexs.Length];
         }
 
-        public MGraph(TVertex[] Vexs, TEdge[,] Arc, TEdge Infinity)
+        public MGraph(TVertex[] Vexs, TEdge[,] Arc, TEdge Infinity, bool Directed)
         {
             if (Vexs.Length != Arc.GetLength(0) || Arc.GetLength(0) != Arc.GetLength(1))
                 throw new Exception("Vexs or Arc data error.");
 
             this.Infinity = Infinity;
-            this.VertexCnt = Vexs.Length;
-            // this.EdgeCnt = 0;  // 需要计算
+            this.Directed = Directed;
             this.Vexs = Vexs;
             this.Arc = Arc;
         }
 
-        public TEdge Infinity { get; }  // 不存在的边的权值，可以设置为-1, int.Max等不可能的权值
+        /// <summary>
+        /// bool: 有向图; false: 无向图
+        /// </summary>
+        public bool Directed { get; }
 
-        public int VertexCnt { get; }   // 图中当前的顶点数
+        /// <summary>
+        /// 不存在的边的权值，可以设置为-1, int.Max等不可能的权值
+        /// </summary>
+        public TEdge Infinity { get; }
 
-        public int EdgeCnt { get; }     // 图中当前的边数
+        /// <summary>
+        /// 图中当前的顶点数
+        /// </summary>
+        public int VertexCnt { get { return Vexs.Length; } }
 
-        public TVertex[] Vexs { get; }  // 顶点表
+        /// <summary>
+        /// 图中当前的边数
+        /// </summary>
+        public int EdgeCnt
+        {
+            get
+            {
+                int cnt = 0;
+                if (Directed)
+                {
+                    foreach (TEdge edge in Arc) if (edge.CompareTo(Infinity) != 0) cnt++;
+                }
+                else
+                {
+                    for (int r = 0; r < VertexCnt; r++) for (int c = 0; c <= r; c++) if (Arc[r, c].CompareTo(Infinity) != 0) cnt++;
+                }
+                return cnt;
+            }
+        }
 
-        public TEdge[,] Arc { get; }    // 边表
+        /// <summary>
+        /// 顶点表
+        /// </summary>
+        public TVertex[] Vexs { get; }
+
+        /// <summary>
+        /// 边表
+        /// </summary>
+        public TEdge[,] Arc { get; }
     }
     #endregion
 
