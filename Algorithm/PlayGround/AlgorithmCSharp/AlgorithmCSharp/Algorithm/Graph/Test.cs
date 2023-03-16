@@ -47,12 +47,36 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
         public ALGraph<int, int> GetALGraph()
         {
-            throw new NotImplementedException();
+            ALGraph<int, int> graph = new ALGraph<int, int>(9);
+            for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
+            graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 10) { Next = new Edge<int, int>(5, 11) };
+            graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 10) { Next = new Edge<int, int>(2, 18) { Next = new Edge<int, int>(6, 16) { Next = new Edge<int, int>(8, 12) } } };
+            graph.AdjList[2].FirstEdge = new Edge<int, int>(1, 18) { Next = new Edge<int, int>(3, 22) { Next = new Edge<int, int>(8, 8) } };
+            graph.AdjList[3].FirstEdge = new Edge<int, int>(2, 22) { Next = new Edge<int, int>(4, 20) { Next = new Edge<int, int>(6, 24) { Next = new Edge<int, int>(7, 16) { Next = new Edge<int, int>(8, 21) } } } };
+            graph.AdjList[4].FirstEdge = new Edge<int, int>(3, 20) { Next = new Edge<int, int>(5, 26) { Next = new Edge<int, int>(7, 7) } };
+            graph.AdjList[5].FirstEdge = new Edge<int, int>(0, 11) { Next = new Edge<int, int>(4, 26) { Next = new Edge<int, int>(6, 17) } };
+            graph.AdjList[6].FirstEdge = new Edge<int, int>(1, 16) { Next = new Edge<int, int>(3, 24) { Next = new Edge<int, int>(5, 17) { Next = new Edge<int, int>(7, 19) } } };
+            graph.AdjList[7].FirstEdge = new Edge<int, int>(3, 16) { Next = new Edge<int, int>(4, 7) { Next = new Edge<int, int>(6, 19) } };
+            graph.AdjList[8].FirstEdge = new Edge<int, int>(1, 12) { Next = new Edge<int, int>(2, 8) { Next = new Edge<int, int>(3, 21) } };
+
+            return graph;
         }
 
         public ALGraph<int, int> GetALGraph2()
         {
-            throw new NotImplementedException();
+            ALGraph<int, int> graph = new ALGraph<int, int>();
+            for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
+            graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 1) { Next = new Edge<int, int>(2, 5) };
+            graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 1) { Next = new Edge<int, int>(2, 3) { Next = new Edge<int, int>(3, 7) { Next = new Edge<int, int>(4, 5) } } };
+            graph.AdjList[2].FirstEdge = new Edge<int, int>(0, 5) { Next = new Edge<int, int>(1, 3) { Next = new Edge<int, int>(4, 1) { Next = new Edge<int, int>(5, 7) } } };
+            graph.AdjList[3].FirstEdge = new Edge<int, int>(1, 7) { Next = new Edge<int, int>(4, 2) { Next = new Edge<int, int>(6, 3) } };
+            graph.AdjList[4].FirstEdge = new Edge<int, int>(1, 5) { Next = new Edge<int, int>(2, 1) { Next = new Edge<int, int>(3, 2) { Next = new Edge<int, int>(5, 3) { Next = new Edge<int, int>(6, 6) { Next = new Edge<int, int>(7, 9) } } } } };
+            graph.AdjList[5].FirstEdge = new Edge<int, int>(2, 7) { Next = new Edge<int, int>(4, 3) { Next = new Edge<int, int>(7, 5) } };
+            graph.AdjList[6].FirstEdge = new Edge<int, int>(3, 3) { Next = new Edge<int, int>(4, 6) { Next = new Edge<int, int>(7, 2) { Next = new Edge<int, int>(8, 7) } } };
+            graph.AdjList[7].FirstEdge = new Edge<int, int>(4, 9) { Next = new Edge<int, int>(5, 5) { Next = new Edge<int, int>(6, 2) { Next = new Edge<int, int>(8, 4) } } };
+            graph.AdjList[8].FirstEdge = new Edge<int, int>(6, 7) { Next = new Edge<int, int>(7, 4) };
+
+            return graph;
         }
         #endregion
     }

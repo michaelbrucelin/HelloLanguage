@@ -19,31 +19,31 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class MGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
-        public MGraph(int VertexCnt, TEdge Infinity, bool Directed)
+        public MGraph(int vertexCnt, TEdge infinity, bool directed)
         {
-            this.Infinity = Infinity;
-            this.Directed = Directed;
-            this.Vexs = new TVertex[VertexCnt];
-            this.Arc = new TEdge[VertexCnt, VertexCnt];
+            Infinity = infinity;
+            Directed = directed;
+            Vexs = new TVertex[vertexCnt];
+            Arc = new TEdge[vertexCnt, vertexCnt];
         }
 
-        public MGraph(TVertex[] Vexs, TEdge Infinity, bool Directed)
+        public MGraph(TVertex[] vexs, TEdge infinity, bool directed)
         {
-            this.Infinity = Infinity;
-            this.Directed = Directed;
-            this.Vexs = Vexs;
-            this.Arc = new TEdge[Vexs.Length, Vexs.Length];
+            Infinity = infinity;
+            Directed = directed;
+            Vexs = vexs;
+            Arc = new TEdge[vexs.Length, vexs.Length];
         }
 
-        public MGraph(TVertex[] Vexs, TEdge[,] Arc, TEdge Infinity, bool Directed)
+        public MGraph(TVertex[] vexs, TEdge[,] arc, TEdge infinity, bool directed)
         {
-            if (Vexs.Length != Arc.GetLength(0) || Arc.GetLength(0) != Arc.GetLength(1))
+            if (vexs.Length != arc.GetLength(0) || arc.GetLength(0) != arc.GetLength(1))
                 throw new Exception("Vexs or Arc data error.");
 
-            this.Infinity = Infinity;
-            this.Directed = Directed;
-            this.Vexs = Vexs;
-            this.Arc = Arc;
+            Infinity = infinity;
+            Directed = directed;
+            Vexs = vexs;
+            Arc = arc;
         }
 
         /// <summary>
@@ -101,9 +101,48 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class ALGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
+        public ALGraph()
+        {
+            AdjList = new List<Vertex<TVertex, TEdge>>();
+        }
+
+        public ALGraph(int vertexCnt)
+        {
+            AdjList = new List<Vertex<TVertex, TEdge>>(vertexCnt);
+        }
+
+        public ALGraph(List<Vertex<TVertex, TEdge>> adjList)
+        {
+            AdjList = adjList;
+        }
+
+        /// <summary>
+        /// 顶点列表
+        /// </summary>
         public List<Vertex<TVertex, TEdge>> AdjList;
-        public int VertexCnt;                         // 图中当前顶点数
-        public int EdgesCnt;                          // 图中当前边数
+
+        /// <summary>
+        /// 图中当前顶点数
+        /// </summary>
+        public int VertexCnt { get { return AdjList.Count; } }
+
+        /// <summary>
+        /// 图中当前边数
+        /// </summary>
+        public int EdgesCnt
+        {
+            get
+            {
+                int cnt = 0; Edge<TVertex, TEdge> ptr;
+                for (int i = 0, _cnt = 0; i < AdjList.Count; i++, _cnt = 0)
+                {
+                    ptr = AdjList[i].FirstEdge;
+                    while (ptr != null) { _cnt++; ptr = ptr.Next; }
+                    cnt += _cnt;
+                }
+                return cnt;
+            }
+        }
     }
 
     /// <summary>
@@ -113,20 +152,57 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class Vertex<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
-        public int @in;                               // 顶点入度，某些场景（例如拓扑排序）中会用到，一般不需要
-        public TVertex data;                          // 顶点域，存储顶点信息
-        public Edge<TEdge> firstedge;                 // 边表头指针
+        public Vertex() { }
+
+        public Vertex(TVertex data)
+        {
+            Data = data;
+        }
+
+        /// <summary>
+        /// 顶点入度，某些场景（例如拓扑排序）中会用到，一般不需要
+        /// </summary>
+        public int @In;
+
+        /// <summary>
+        /// 顶点域，存储顶点信息
+        /// </summary>
+        public TVertex Data;
+
+        /// <summary>
+        /// 边表头指针
+        /// </summary>
+        public Edge<TVertex, TEdge> FirstEdge;
     }
 
     /// <summary>
     /// 邻接表，边表结点
     /// </summary>
     /// <typeparam name="TEdge"></typeparam>
-    public class Edge<TEdge> where TEdge : IComparable<TEdge>
+    public class Edge<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
-        public int adjvex;                            // 邻接点域，存储该顶点对应的下标
-        public TEdge weight;                          // 用于存储权值，对于非网图可以不需要
-        public Edge<TEdge> next;                      // 链域，指向下一个邻接点
+        public Edge() { }
+
+        public Edge(TVertex adjvex, TEdge weight)
+        {
+            Adjvex = adjvex;
+            Weight = weight;
+        }
+
+        /// <summary>
+        /// 邻接点域，存储该顶点对应的下标
+        /// </summary>
+        public TVertex Adjvex;
+
+        /// <summary>
+        /// 用于存储权值，对于非网图可以不需要
+        /// </summary>
+        public TEdge Weight;
+
+        /// <summary>
+        /// 链域，指向下一个邻接点
+        /// </summary>
+        public Edge<TVertex, TEdge> Next;
     }
     #endregion
 }
