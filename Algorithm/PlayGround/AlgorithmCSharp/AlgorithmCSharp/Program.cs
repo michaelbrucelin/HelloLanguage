@@ -3,7 +3,8 @@
 
 // using AlgorithmCSharp.Algorithm.KMP;
 using AlgorithmCSharp.Algorithm.BinaryEnum;
-using AlgorithmCSharp.Algorithm.Tree.BinaryTree;
+// using AlgorithmCSharp.Algorithm.Tree.BinaryTree;
+using AlgorithmCSharp.Algorithm.Graph;
 
 Test test = new Test();
 // Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
@@ -24,6 +25,10 @@ Test test = new Test();
 // Console.WriteLine($"{Environment.NewLine}层序遍历测试"); test.TestTraverse_LevelOrder();
 #endregion
 
+#region Graph
+test.ShowInfo();
+#endregion
+
 #region TEST
 //Stack<char> stack = new Stack<char>();
 //stack.Push('a'); stack.Push('b'); stack.Push('c'); stack.Push('d'); stack.Push('e');
@@ -33,5 +38,5 @@ Test test = new Test();
 //BinaryEnum.EnumSet(4);
 //BinaryEnum.EnumSubSet(21);   // 21:10101
 //BinaryEnum.EnumSubSet2(21);  // 21:10101
-BinaryEnum.EnumKSet(8, 1);
+//BinaryEnum.EnumKSet(8, 1);
 #endregion

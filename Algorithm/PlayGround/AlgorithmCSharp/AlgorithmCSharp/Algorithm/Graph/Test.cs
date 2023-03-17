@@ -8,6 +8,23 @@ namespace AlgorithmCSharp.Algorithm.Graph
 {
     public class Test
     {
+        #region 一些基本测试
+        public void ShowInfo()
+        {
+            MGraph<int, int> mgraph;
+            mgraph = GetMGraph();
+            Console.WriteLine($"mgraph01的顶点数：{mgraph.VertexCnt}，边数：{mgraph.EdgeCnt}");
+            mgraph = GetMGraph2();
+            Console.WriteLine($"mgraph02的顶点数：{mgraph.VertexCnt}，边数：{mgraph.EdgeCnt}");
+
+            ALGraph<int, int> algraph;
+            algraph = GetALGraph();
+            Console.WriteLine($"algraph01的顶点数：{algraph.VertexCnt}，边数：{algraph.EdgeCnt}");
+            algraph = GetALGraph2();
+            Console.WriteLine($"algraph02的顶点数：{algraph.VertexCnt}，边数：{algraph.EdgeCnt}");
+        }
+        #endregion
+
         #region 手动生成测试用的二叉树
         public MGraph<int, int> GetMGraph()
         {
@@ -15,13 +32,13 @@ namespace AlgorithmCSharp.Algorithm.Graph
             for (int i = 0; i < 9; i++) graph.Vexs[i] = i;
             int[,] _arc = new int[9, 9] {{ -1, 10, -1, -1, -1, 11, -1, -1, -1 },
                                          { 10, -1, 18, -1, -1, -1, 16, -1, 12 },
-                                         { -1, 18, -1, 22, -1, -1, -1, -1, -1 },
+                                         { -1, 18, -1, 22, -1, -1, -1, -1,  8 },
                                          { -1, -1, 22, -1, 20, -1, 24, 16, 21 },
                                          { -1, -1, -1, 20, -1, 26, -1,  7, -1 },
                                          { 11, -1, -1, -1, 26, -1, 17, -1, -1 },
                                          { -1, 16, -1, 24, -1, 17, -1, 19, -1 },
                                          { -1, -1, -1, 16,  7, -1, 19, -1, -1 },
-                                         { -1, 12, -1, 21, -1, -1, -1, -1, -1 }};
+                                         { -1, 12,  8, 21, -1, -1, -1, -1, -1 }};
             for (int r = 0; r < 9; r++) for (int c = 0; c < 9; c++) graph.Arc[r, c] = _arc[r, c];
 
             return graph;
@@ -47,7 +64,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
         public ALGraph<int, int> GetALGraph()
         {
-            ALGraph<int, int> graph = new ALGraph<int, int>(9);
+            ALGraph<int, int> graph = new ALGraph<int, int>(9, false);
             for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
             graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 10) { Next = new Edge<int, int>(5, 11) };
             graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 10) { Next = new Edge<int, int>(2, 18) { Next = new Edge<int, int>(6, 16) { Next = new Edge<int, int>(8, 12) } } };
@@ -64,7 +81,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
         public ALGraph<int, int> GetALGraph2()
         {
-            ALGraph<int, int> graph = new ALGraph<int, int>();
+            ALGraph<int, int> graph = new ALGraph<int, int>(9, false);
             for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
             graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 1) { Next = new Edge<int, int>(2, 5) };
             graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 1) { Next = new Edge<int, int>(2, 3) { Next = new Edge<int, int>(3, 7) { Next = new Edge<int, int>(4, 5) } } };

@@ -101,20 +101,28 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class ALGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
     {
-        public ALGraph()
+        public ALGraph(bool directed)
         {
             AdjList = new List<Vertex<TVertex, TEdge>>();
+            Directed = directed;
         }
 
-        public ALGraph(int vertexCnt)
+        public ALGraph(int vertexCnt, bool directed)
         {
             AdjList = new List<Vertex<TVertex, TEdge>>(vertexCnt);
+            Directed = directed;
         }
 
-        public ALGraph(List<Vertex<TVertex, TEdge>> adjList)
+        public ALGraph(List<Vertex<TVertex, TEdge>> adjList, bool directed)
         {
             AdjList = adjList;
+            Directed = directed;
         }
+
+        /// <summary>
+        /// bool: 有向图; false: 无向图
+        /// </summary>
+        public bool Directed { get; }
 
         /// <summary>
         /// 顶点列表
@@ -129,7 +137,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <summary>
         /// 图中当前边数
         /// </summary>
-        public int EdgesCnt
+        public int EdgeCnt
         {
             get
             {
@@ -140,6 +148,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                     while (ptr != null) { _cnt++; ptr = ptr.Next; }
                     cnt += _cnt;
                 }
+                if (!Directed) cnt >>= 1;
                 return cnt;
             }
         }
