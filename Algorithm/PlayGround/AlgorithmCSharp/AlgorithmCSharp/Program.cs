@@ -26,7 +26,9 @@ Test test = new Test();
 #endregion
 
 #region Graph
-test.ShowInfo();
+// test.ShowInfo();
+Console.WriteLine("图遍历测试");
+Console.WriteLine($"{Environment.NewLine}邻接矩阵DFS遍历测试"); test.TestTraverse_MGraph();
 #endregion
 
 #region TEST

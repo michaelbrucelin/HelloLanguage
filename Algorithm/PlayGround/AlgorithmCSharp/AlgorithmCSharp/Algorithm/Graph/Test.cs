@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlgorithmCSharp.Algorithm.Tree.BinaryTree;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,23 @@ namespace AlgorithmCSharp.Algorithm.Graph
             Console.WriteLine($"algraph01的顶点数：{algraph.VertexCnt}，边数：{algraph.EdgeCnt}");
             algraph = GetALGraph2();
             Console.WriteLine($"algraph02的顶点数：{algraph.VertexCnt}，边数：{algraph.EdgeCnt}");
+        }
+        #endregion
+
+        #region 测试图的遍历
+        public void TestTraverse_MGraph()
+        {
+            Traverse_MGraph traverse = new Traverse_MGraph();
+            MGraph<int, int> graph;
+            List<int> list; string result, answer;
+            int id = 0;
+
+            #region DFS
+            Console.WriteLine("DFS");
+            graph = GetMGraph(); answer = "012345678";
+            list = traverse.Traverse_DFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
         #endregion
 
