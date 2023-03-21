@@ -192,16 +192,16 @@ namespace AlgorithmCSharp.Algorithm.Graph
     {
         public Edge() { }
 
-        public Edge(TVertex adjvex, TEdge weight)
+        public Edge(int adjid, TEdge weight)
         {
-            Adjvex = adjvex;
+            AdjId = adjid;
             Weight = weight;
         }
 
         /// <summary>
         /// 邻接点域，存储该顶点对应的下标
         /// </summary>
-        public TVertex Adjvex;
+        public int AdjId;
 
         /// <summary>
         /// 用于存储权值，对于非网图可以不需要

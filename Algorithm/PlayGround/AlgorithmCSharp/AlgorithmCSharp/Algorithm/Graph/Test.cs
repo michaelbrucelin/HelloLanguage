@@ -39,6 +39,43 @@ namespace AlgorithmCSharp.Algorithm.Graph
             graph = GetMGraph(); answer = "012345678";
             list = traverse.Traverse_DFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetMGraph2(); answer = "012436758";
+            list = traverse.Traverse_DFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region BFS
+            Console.WriteLine("BFS");
+            graph = GetMGraph(); answer = "015268437";
+            list = traverse.Traverse_BFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetMGraph2(); answer = "012345678";
+            list = traverse.Traverse_BFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+        }
+
+        public void TestTraverse_ALGraph()
+        {
+            Traverse_ALGraph traverse = new Traverse_ALGraph();
+            ALGraph<int, int> graph;
+            List<int> list; string result, answer;
+            int id = 0;
+
+            #region DFS
+            Console.WriteLine("DFS");
+            graph = GetALGraph(); answer = "012345678";
+            list = traverse.Traverse_DFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetALGraph2(); answer = "012436758";
+            list = traverse.Traverse_DFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region BFS
             #endregion
         }
         #endregion
