@@ -28,8 +28,8 @@ Test test = new Test();
 #region Graph
 // test.ShowInfo();
 Console.WriteLine("图遍历测试");
-Console.WriteLine($"{Environment.NewLine}邻接矩阵DFS遍历测试"); test.TestTraverse_MGraph();
-Console.WriteLine($"{Environment.NewLine}邻接表  DFS遍历测试"); test.TestTraverse_ALGraph();
+Console.WriteLine($"{Environment.NewLine}邻接矩阵遍历测试"); test.TestTraverse_MGraph();
+Console.WriteLine($"{Environment.NewLine}邻接表  遍历测试"); test.TestTraverse_ALGraph();
 #endregion
 
 #region TEST

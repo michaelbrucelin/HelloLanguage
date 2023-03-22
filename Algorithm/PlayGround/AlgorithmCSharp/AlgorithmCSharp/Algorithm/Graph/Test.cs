@@ -55,6 +55,17 @@ namespace AlgorithmCSharp.Algorithm.Graph
             list = traverse.Traverse_BFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
             Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
+
+            #region BFS2
+            Console.WriteLine("BFS2");
+            graph = GetMGraph(); answer = "015268437";
+            list = traverse.Traverse_BFS2(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetMGraph2(); answer = "012345678";
+            list = traverse.Traverse_BFS2(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
         }
 
         public void TestTraverse_ALGraph()
@@ -76,6 +87,25 @@ namespace AlgorithmCSharp.Algorithm.Graph
             #endregion
 
             #region BFS
+            Console.WriteLine("BFS");
+            graph = GetALGraph(); answer = "015268437";
+            list = traverse.Traverse_BFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetALGraph2(); answer = "012345678";
+            list = traverse.Traverse_BFS(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region BFS2
+            Console.WriteLine("BFS2");
+            graph = GetALGraph(); answer = "015268437";
+            list = traverse.Traverse_BFS2(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetALGraph2(); answer = "012345678";
+            list = traverse.Traverse_BFS2(graph); result = list.Select(c => c.ToString()).Aggregate("", (c1, c2) => $"{c1}{c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }
         #endregion
