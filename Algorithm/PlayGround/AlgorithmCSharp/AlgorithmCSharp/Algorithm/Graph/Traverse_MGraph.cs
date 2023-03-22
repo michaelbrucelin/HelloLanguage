@@ -45,8 +45,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                 {
                     for (int j = 0, vexid; j < cnt; j++)
                     {
-                        vexid = queue.Dequeue();
-                        if (!visited[vexid])
+                        if (!visited[vexid = queue.Dequeue()])
                         {
                             result.Add(graph.Vexs[vexid]);
                             visited[vexid] = true;
