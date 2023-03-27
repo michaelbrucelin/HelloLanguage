@@ -42,6 +42,12 @@
         //}
     });
 
+    // 关闭跳转到中文版的提示
+    // item = document.querySelector("#__next > div.\\!hidden.md\\:\\!flex.css-1vvfvd7");
+    // if(item) item.remove();
+    var btn = document.querySelector("#cn-banner > div > div > div.cn-close-btn");
+    if(btn) btn.click();
+
     /* 采用这种方式设置没有生效，但是同样的方式在“有道云翻译”页面是生效的，究竟是为什么没弄明白，使用下面自定义的GM_addStyle(css)是好用的
         // @grant        GM_addStyle
         const css = `#my_id_run:hover {

@@ -47,6 +47,8 @@
         // app ad
         item = document.querySelector("#app > div > div.translate-tab-container > div.tab-body-border-box > div > div.box_ch");
         if(item) item.remove();
+        item = document.querySelector("#inner-box");
+        if(item) item.remove();
     });
 
     // 也可以使用Setinterval来进行循环判断，当获取元素不为空的时候继续执行，但需要注意不要创建过多的定时器，以及不使用的时候可以考虑销毁定时器
