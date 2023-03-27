@@ -110,6 +110,31 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
         #endregion
 
+        #region 测试图的最小生成树
+        public void TestMST_MGraph()
+        {
+            MST_MGraph mst = new MST_MGraph();
+            MGraph<int, int> graph;
+            List<(int v1, int v2)> list; string result, answer;
+            int id = 0;
+
+            #region Prim
+            Console.WriteLine("Prim");
+            graph = GetMGraph(); answer = "(0, 1), (0, 5), (1, 8), (8, 2), (1, 6), (6, 7), (7, 4), (7, 3)";
+            list = mst.MST_Prim(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetMGraph2(); answer = "(0, 1), (1, 2), (2, 4), (4, 3), (4, 5), (3, 6), (6, 7), (7, 8)";
+            list = mst.MST_Prim(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            #endregion
+
+            #region Kruskal
+            Console.WriteLine("Kruskal");
+            #endregion
+        }
+        #endregion
+
         #region 手动生成测试用的二叉树
         public MGraph<int, int> GetMGraph()
         {
