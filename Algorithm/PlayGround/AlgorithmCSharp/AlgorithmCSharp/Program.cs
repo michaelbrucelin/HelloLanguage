@@ -36,13 +36,17 @@ Console.WriteLine($"{Environment.NewLine}邻接矩阵最小生成树测试"); te
 #endregion
 
 #region TEST
-//Stack<char> stack = new Stack<char>();
-//stack.Push('a'); stack.Push('b'); stack.Push('c'); stack.Push('d'); stack.Push('e');
-//List<char> list = stack.ToList();
-//for (int i = 0; i < list.Count; i++) Console.WriteLine(list[i]);  // edcba
+{
+    //Stack<char> stack = new Stack<char>();
+    //stack.Push('a'); stack.Push('b'); stack.Push('c'); stack.Push('d'); stack.Push('e');
+    //List<char> list = stack.ToList();
+    //for (int i = 0; i < list.Count; i++) Console.WriteLine(list[i]);  // edcba
+}
 
-//BinaryEnum.EnumSet(4);
-//BinaryEnum.EnumSubSet(21);   // 21:10101
-//BinaryEnum.EnumSubSet2(21);  // 21:10101
-//BinaryEnum.EnumKSet(8, 1);
+{
+    //BinaryEnum.EnumSet(4);
+    //BinaryEnum.EnumSubSet(21);   // 21:10101
+    //BinaryEnum.EnumSubSet2(21);  // 21:10101
+    //BinaryEnum.EnumKSet(8, 1);
+}
 #endregion

@@ -8,6 +8,21 @@ namespace AlgorithmCSharp.Algorithm.Graph
 {
     public class MST_MGraph
     {
+        /// <summary>
+        /// 这里借助了最小堆来实现，但是最小堆中会有冗余的数据，
+        ///     例如，有一条顶点1到顶点9的边，还有一条顶点9到顶点1的边，其实二者留其一（小的）即可
+        ///     还有，如果堆顶就是到顶点9的边，这是堆顶出队列，原则上另一条到顶点9的边就没用了，但是没有一起出队列
+        /// 以上两点导致最小堆中有冗余的数据，这样会增加最小堆入队与出队的时间复杂度
+        /// 如果可以有一种数据结构，有3个维度：<key, value, priority>就好了
+        ///     key是字典的key，这里记录目标顶点
+        ///     value是字典的值，这里记录起始顶点，或者边都可以
+        ///     priority是排序依据，这样字典就相当于堆了
+        /// 没有找到这样的数据结构
+        /// </summary>
+        /// <typeparam name="TVertex"></typeparam>
+        /// <typeparam name="TEdge"></typeparam>
+        /// <param name="graph"></param>
+        /// <returns></returns>
         public List<(int v1, int v2)> MST_Prim<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
             where TEdge : IComparable<TEdge>
         {
@@ -37,6 +52,21 @@ namespace AlgorithmCSharp.Algorithm.Graph
                     }
                 }
             }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 这里借助了最小堆来实现，但是最小堆中会有冗余的数据，详情见MST_Prim()的描述
+        /// </summary>
+        /// <typeparam name="TVertex"></typeparam>
+        /// <typeparam name="TEdge"></typeparam>
+        /// <param name="graph"></param>
+        /// <returns></returns>
+        public List<(int v1, int v2)> MST_Kruskal<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
+            where TEdge : IComparable<TEdge>
+        {
+            List<(int v1, int v2)> result = new List<(int v1, int v2)>();
 
             return result;
         }
