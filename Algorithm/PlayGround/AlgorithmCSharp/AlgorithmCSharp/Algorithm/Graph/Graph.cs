@@ -97,6 +97,14 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// 边表
         /// </summary>
         public TEdge[,] Arc { get; }
+
+        /// <summary>
+        /// 边表的索引器
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        public TEdge this[int row, int col] { get { return Arc[row, col]; } }
     }
     #endregion
 

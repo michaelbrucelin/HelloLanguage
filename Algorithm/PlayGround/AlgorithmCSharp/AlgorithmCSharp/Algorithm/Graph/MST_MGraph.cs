@@ -36,8 +36,8 @@ namespace AlgorithmCSharp.Algorithm.Graph
                 {
                     visited[i] = true; visitcnt++; minpq.Clear();
                     for (int j = 0; j < graph.VertexCnt; j++)
-                        if (!visited[j] && graph.Arc[i, j].CompareTo(graph.Infinity) != 0)
-                            minpq.Enqueue((i, j), graph.Arc[i, j]);
+                        if (!visited[j] && graph[i, j].CompareTo(graph.Infinity) != 0)
+                            minpq.Enqueue((i, j), graph[i, j]);
 
                     while (visitcnt < graph.VertexCnt && minpq.Count > 0)
                     {
@@ -46,8 +46,8 @@ namespace AlgorithmCSharp.Algorithm.Graph
                         {
                             result.Add(edge); visited[edge.v2] = true; visitcnt++;
                             for (int k = 0; k < graph.VertexCnt; k++)
-                                if (!visited[k] && graph.Arc[edge.v2, k].CompareTo(graph.Infinity) != 0)
-                                    minpq.Enqueue((edge.v2, k), graph.Arc[edge.v2, k]);
+                                if (!visited[k] && graph[edge.v2, k].CompareTo(graph.Infinity) != 0)
+                                    minpq.Enqueue((edge.v2, k), graph[edge.v2, k]);
                         }
                     }
                 }

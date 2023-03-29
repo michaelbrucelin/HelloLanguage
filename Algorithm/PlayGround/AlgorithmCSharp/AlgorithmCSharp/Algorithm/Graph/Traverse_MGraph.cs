@@ -26,7 +26,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
             result.Add(graph[vexid]);
             visited[vexid] = true;
             for (int i = 0; i < graph.VertexCnt; i++)
-                if (graph.Arc[vexid, i].CompareTo(graph.Infinity) != 0 && !visited[i])
+                if (graph[vexid, i].CompareTo(graph.Infinity) != 0 && !visited[i])
                     dfs(i, graph, visited, result);
         }
         #endregion
@@ -55,7 +55,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                     {
                         vexid = queue.Dequeue();
                         for (int k = 0; k < graph.VertexCnt; k++)
-                            if (graph.Arc[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
+                            if (graph[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
                             {
                                 result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                             }
@@ -88,7 +88,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                 {
                     vexid = queue.Dequeue();
                     for (int k = 0; k < graph.VertexCnt; k++)
-                        if (graph.Arc[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
+                        if (graph[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
                         {
                             result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                         }
