@@ -87,6 +87,13 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public TVertex[] Vexs { get; }
 
         /// <summary>
+        /// 顶点表的索引器
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public TVertex this[int index] { get { return Vexs[index]; } }
+
+        /// <summary>
         /// 边表
         /// </summary>
         public TEdge[,] Arc { get; }
@@ -128,6 +135,13 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// 顶点列表
         /// </summary>
         public List<Vertex<TVertex, TEdge>> AdjList;
+
+        /// <summary>
+        /// 顶点列表的索引器
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public Vertex<TVertex, TEdge> this[int index] { get { return AdjList[index]; } }
 
         /// <summary>
         /// 图中当前顶点数
@@ -199,7 +213,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
 
         /// <summary>
-        /// 邻接点域，存储该顶点对应的下标
+        /// 邻接点域，存储该边连接顶点在顶点表中的id
         /// </summary>
         public int AdjId;
 
@@ -209,7 +223,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public TEdge Weight;
 
         /// <summary>
-        /// 链域，指向下一个邻接点
+        /// 链域，指向下一个边
         /// </summary>
         public Edge<TVertex, TEdge> Next;
     }

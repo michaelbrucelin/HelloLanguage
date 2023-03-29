@@ -22,7 +22,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <typeparam name="TVertex"></typeparam>
         /// <typeparam name="TEdge"></typeparam>
         /// <param name="graph"></param>
-        /// <returns></returns>
+        /// <returns>(int v1, int v2)记录的是起点与终点的id</returns>
         public List<(int v1, int v2)> MST_Prim<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
             where TEdge : IComparable<TEdge>
         {
@@ -57,7 +57,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
 
         /// <summary>
-        /// 这里借助了最小堆来实现，但是最小堆中会有冗余的数据，详情见MST_Prim()的描述
+        /// 
         /// </summary>
         /// <typeparam name="TVertex"></typeparam>
         /// <typeparam name="TEdge"></typeparam>
