@@ -32,7 +32,7 @@ Test test = new Test();
 // Console.WriteLine($"{Environment.NewLine}邻接表  遍历测试"); test.TestTraverse_ALGraph();
 Console.WriteLine("图最小生成树测试");
 Console.WriteLine($"{Environment.NewLine}邻接矩阵最小生成树测试"); test.TestMST_MGraph();
-Console.WriteLine($"{Environment.NewLine}邻接表  最小生成树测试"); test.TestMST_ALGraph();
+Console.WriteLine($"{Environment.NewLine}邻接表最小生成树测试"); test.TestMST_ALGraph();
 #endregion
 
 #region TEST

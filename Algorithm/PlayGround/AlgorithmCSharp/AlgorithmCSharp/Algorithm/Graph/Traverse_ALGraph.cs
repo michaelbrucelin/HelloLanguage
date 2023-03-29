@@ -23,9 +23,9 @@ namespace AlgorithmCSharp.Algorithm.Graph
         private void dfs<TVertex, TEdge>(int vexid, ALGraph<TVertex, TEdge> graph, bool[] visited, List<TVertex> result)
             where TEdge : IComparable<TEdge>
         {
-            result.Add(graph.AdjList[vexid].Data);
+            result.Add(graph[vexid].Data);
             visited[vexid] = true;
-            Edge<TVertex, TEdge> edge = graph.AdjList[vexid].FirstEdge;
+            Edge<TVertex, TEdge> edge = graph[vexid].FirstEdge;
             while (edge != null)
             {
                 if (!visited[edge.AdjId]) dfs(edge.AdjId, graph, visited, result);
@@ -51,17 +51,17 @@ namespace AlgorithmCSharp.Algorithm.Graph
             for (int i = 0; i < graph.VertexCnt; i++)
             {
                 if (visited[i]) continue;
-                result.Add(graph.AdjList[i].Data); visited[i] = true; queue.Enqueue(i);
+                result.Add(graph[i].Data); visited[i] = true; queue.Enqueue(i);
                 int cnt; while ((cnt = queue.Count) > 0)
                 {
                     for (int j = 0, vexid; j < cnt; j++)
                     {
-                        ptr = graph.AdjList[queue.Dequeue()].FirstEdge;
+                        ptr = graph[queue.Dequeue()].FirstEdge;
                         while (ptr != null)
                         {
                             if (!visited[vexid = ptr.AdjId])
                             {
-                                result.Add(graph.AdjList[vexid].Data); visited[vexid] = true; queue.Enqueue(vexid);
+                                result.Add(graph[vexid].Data); visited[vexid] = true; queue.Enqueue(vexid);
                             }
                             ptr = ptr.Next;
                         }
@@ -89,15 +89,15 @@ namespace AlgorithmCSharp.Algorithm.Graph
             for (int i = 0; i < graph.VertexCnt; i++)
             {
                 if (visited[i]) continue;
-                result.Add(graph.AdjList[i].Data); visited[i] = true; queue.Enqueue(i);
+                result.Add(graph[i].Data); visited[i] = true; queue.Enqueue(i);
                 int vexid; while (queue.Count > 0)
                 {
-                    ptr = graph.AdjList[queue.Dequeue()].FirstEdge;
+                    ptr = graph[queue.Dequeue()].FirstEdge;
                     while (ptr != null)
                     {
                         if (!visited[vexid = ptr.AdjId])
                         {
-                            result.Add(graph.AdjList[vexid].Data); visited[vexid] = true; queue.Enqueue(vexid);
+                            result.Add(graph[vexid].Data); visited[vexid] = true; queue.Enqueue(vexid);
                         }
                         ptr = ptr.Next;
                     }

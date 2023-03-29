@@ -28,7 +28,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                 if (!visited[i])
                 {
                     visited[i] = true; visitcnt++; minpq.Clear();
-                    ptr = graph.AdjList[i].FirstEdge;
+                    ptr = graph[i].FirstEdge;
                     while (ptr != null)
                     {
                         if (!visited[ptr.AdjId]) minpq.Enqueue((i, ptr.AdjId), ptr.Weight);
@@ -41,7 +41,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                         if (!visited[edge.v2])
                         {
                             result.Add(edge); visited[edge.v2] = true; visitcnt++;
-                            ptr = graph.AdjList[edge.v2].FirstEdge;
+                            ptr = graph[edge.v2].FirstEdge;
                             while (ptr != null)
                             {
                                 if (!visited[ptr.AdjId]) minpq.Enqueue((edge.v2, ptr.AdjId), ptr.Weight);

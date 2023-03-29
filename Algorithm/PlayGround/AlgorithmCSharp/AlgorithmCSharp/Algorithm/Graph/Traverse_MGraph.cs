@@ -23,7 +23,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         private void dfs<TVertex, TEdge>(int vexid, MGraph<TVertex, TEdge> graph, bool[] visited, List<TVertex> result)
             where TEdge : IComparable<TEdge>
         {
-            result.Add(graph.Vexs[vexid]);
+            result.Add(graph[vexid]);
             visited[vexid] = true;
             for (int i = 0; i < graph.VertexCnt; i++)
                 if (graph.Arc[vexid, i].CompareTo(graph.Infinity) != 0 && !visited[i])
@@ -48,7 +48,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
             for (int i = 0; i < graph.VertexCnt; i++)
             {
                 if (visited[i]) continue;
-                result.Add(graph.Vexs[i]); visited[i] = true; queue.Enqueue(i);
+                result.Add(graph[i]); visited[i] = true; queue.Enqueue(i);
                 int cnt; while ((cnt = queue.Count) > 0)
                 {
                     for (int j = 0, vexid; j < cnt; j++)
@@ -57,7 +57,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                         for (int k = 0; k < graph.VertexCnt; k++)
                             if (graph.Arc[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
                             {
-                                result.Add(graph.Vexs[k]); visited[k] = true; queue.Enqueue(k);
+                                result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                             }
                     }
                 }
@@ -83,14 +83,14 @@ namespace AlgorithmCSharp.Algorithm.Graph
             for (int i = 0; i < graph.VertexCnt; i++)
             {
                 if (visited[i]) continue;
-                result.Add(graph.Vexs[i]); visited[i] = true; queue.Enqueue(i);
+                result.Add(graph[i]); visited[i] = true; queue.Enqueue(i);
                 int vexid; while (queue.Count > 0)
                 {
                     vexid = queue.Dequeue();
                     for (int k = 0; k < graph.VertexCnt; k++)
                         if (graph.Arc[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
                         {
-                            result.Add(graph.Vexs[k]); visited[k] = true; queue.Enqueue(k);
+                            result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                         }
                 }
             }
