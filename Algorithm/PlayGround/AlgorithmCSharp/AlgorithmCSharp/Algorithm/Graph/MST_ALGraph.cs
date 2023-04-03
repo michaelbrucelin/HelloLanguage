@@ -54,5 +54,20 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
             return result;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TVertex"></typeparam>
+        /// <typeparam name="TEdge"></typeparam>
+        /// <param name="graph"></param>
+        /// <returns></returns>
+        public List<(int v1, int v2)> MST_Kruskal<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
+            where TEdge : IComparable<TEdge>
+        {
+            List<(int v1, int v2)> result = new List<(int v1, int v2)>();
+
+            return result;
+        }
     }
 }

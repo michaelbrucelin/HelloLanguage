@@ -131,6 +131,13 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
             #region Kruskal
             Console.WriteLine("Kruskal");
+            graph = GetMGraph(); answer = "(4, 7), (2, 8), (0, 1), (0, 5), (1, 8), (1, 6), (3, 7), (6, 7)";
+            list = mst.MST_Kruskal(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetMGraph2(); answer = "(0, 1), (2, 4), (3, 4), (6, 7), (1, 2), (3, 6), (4, 5), (7, 8)";
+            list = mst.MST_Kruskal(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }
 
@@ -154,6 +161,13 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
             #region Kruskal
             Console.WriteLine("Kruskal");
+            graph = GetALGraph(); answer = "(4, 7), (2, 8), (0, 1), (0, 5), (1, 8), (1, 6), (3, 7), (6, 7)";
+            list = mst.MST_Kruskal(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+
+            graph = GetALGraph2(); answer = "(0, 1), (2, 4), (3, 4), (6, 7), (1, 2), (3, 6), (4, 5), (7, 8)";
+            list = mst.MST_Kruskal(graph); result = list.Select(c => c.ToString()).DefaultIfEmpty("").Aggregate((c1, c2) => $"{c1}, {c2}");
+            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }
         #endregion
