@@ -51,6 +51,10 @@
         if(item) item.remove();
     });
 
+    // 弹窗广告
+    let ad = document.querySelector("body > div.pop-up-comp.mask > div > img.close");
+    if(ad) ad.click();
+
     // 也可以使用Setinterval来进行循环判断，当获取元素不为空的时候继续执行，但需要注意不要创建过多的定时器，以及不使用的时候可以考虑销毁定时器
     // 百度云中等待window中的videojs加载完成的代码，补充一下，油猴中要注意unsafeWindow和window是不一样的... 注意调用的范围
     // const w = unsafeWndow || window,
