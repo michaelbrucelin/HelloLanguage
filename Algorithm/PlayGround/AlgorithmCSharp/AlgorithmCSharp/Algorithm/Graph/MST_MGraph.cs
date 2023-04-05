@@ -72,7 +72,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
             where TEdge : IComparable<TEdge>
         {
             List<(int v1, int v2)> result = new List<(int v1, int v2)>();
-            int[] disjoint = new int[graph.VertexCnt]; for (int i = 0; i < graph.VertexCnt; i++) disjoint[i] = i;
+            int[] disjoint = new int[graph.VertexCnt]; for (int i = 0; i < disjoint.Length; i++) disjoint[i] = i;
             int edgecnt = 0;
             IComparer<(TEdge, int, int)> comparer = Comparer<(TEdge, int, int)>.Create((t1, t2) =>
             {
@@ -116,7 +116,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
             if (!result)
             {
                 int v = Math.Min(_v1, _v2);
-                disjoint[_v1] = v; disjoint[_v2] = v; disjoint[v1] = v; disjoint[v2] = v;
+                disjoint[_v1] = disjoint[_v2] = disjoint[v1] = disjoint[v2] = v;
             }
 
             return result;
