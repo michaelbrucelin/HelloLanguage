@@ -172,6 +172,36 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
         #endregion
 
+        #region 测试图的最短路径
+        public void TestSP_MGraph()
+        {
+            SP_MGraph sp = new SP_MGraph();
+            MGraph<int, int> graph;
+            List<(int v1, int v2)> list; string result, answer;
+            int id = 0;
+
+            #region Dijkstra
+            #endregion
+
+            #region Floyd
+            #endregion
+        }
+
+        public void TestSP_ALGraph()
+        {
+            SP_ALGraph mst = new SP_ALGraph();
+            ALGraph<int, int> graph;
+            List<(int v1, int v2)> list; string result, answer;
+            int id = 0;
+
+            #region Dijkstra
+            #endregion
+
+            #region Floyd
+            #endregion
+        }
+        #endregion
+
         #region 手动生成测试用的二叉树
         public MGraph<int, int> GetMGraph()
         {
