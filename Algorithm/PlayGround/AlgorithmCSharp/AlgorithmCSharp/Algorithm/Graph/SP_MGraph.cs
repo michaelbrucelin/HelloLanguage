@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,8 +10,10 @@ namespace AlgorithmCSharp.Algorithm.Graph
     public class SP_MGraph
     {
         public (TEdge[] weights, List<int>[] paths) MST_Prim<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
+            //TEdge e1 = 1, e2 = 2;
+            //TEdge e = e1 + e2;
             throw new NotImplementedException();
         }
     }

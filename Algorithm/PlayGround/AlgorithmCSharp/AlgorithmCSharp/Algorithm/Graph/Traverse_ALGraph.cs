@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     {
         #region DFS
         public List<TVertex> Traverse_DFS<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];
@@ -21,7 +22,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
 
         private void dfs<TVertex, TEdge>(int vexid, ALGraph<TVertex, TEdge> graph, bool[] visited, List<TVertex> result)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             result.Add(graph[vexid].Data);
             visited[vexid] = true;
@@ -43,7 +44,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns></returns>
         public List<TVertex> Traverse_BFS<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];
@@ -81,7 +82,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns></returns>
         public List<TVertex> Traverse_BFS2<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     {
         #region DFS
         public List<TVertex> Traverse_DFS<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];
@@ -21,12 +22,12 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
 
         private void dfs<TVertex, TEdge>(int vexid, MGraph<TVertex, TEdge> graph, bool[] visited, List<TVertex> result)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             result.Add(graph[vexid]);
             visited[vexid] = true;
             for (int i = 0; i < graph.VertexCnt; i++)
-                if (graph[vexid, i].CompareTo(graph.Infinity) != 0 && !visited[i])
+                if (graph[vexid, i] != graph.Infinity && !visited[i])
                     dfs(i, graph, visited, result);
         }
         #endregion
@@ -40,7 +41,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns></returns>
         public List<TVertex> Traverse_BFS<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];
@@ -55,7 +56,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                     {
                         vexid = queue.Dequeue();
                         for (int k = 0; k < graph.VertexCnt; k++)
-                            if (graph[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
+                            if (graph[vexid, k] != graph.Infinity && !visited[k])
                             {
                                 result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                             }
@@ -75,7 +76,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns></returns>
         public List<TVertex> Traverse_BFS2<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<TVertex> result = new List<TVertex>();
             bool[] visited = new bool[graph.VertexCnt];
@@ -88,7 +89,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                 {
                     vexid = queue.Dequeue();
                     for (int k = 0; k < graph.VertexCnt; k++)
-                        if (graph[vexid, k].CompareTo(graph.Infinity) != 0 && !visited[k])
+                        if (graph[vexid, k] != graph.Infinity && !visited[k])
                         {
                             result.Add(graph[k]); visited[k] = true; queue.Enqueue(k);
                         }

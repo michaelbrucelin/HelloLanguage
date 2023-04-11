@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
     /// <typeparam name="TEdge"></typeparam>
-    public class MGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
+    public class MGraph<TVertex, TEdge> where TEdge : INumber<TEdge>
     {
         public MGraph(int vertexCnt, TEdge infinity, bool directed)
         {
@@ -114,7 +115,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
     /// <typeparam name="TEdge"></typeparam>
-    public class ALGraph<TVertex, TEdge> where TEdge : IComparable<TEdge>
+    public class ALGraph<TVertex, TEdge> where TEdge : INumber<TEdge>
     {
         public ALGraph(bool directed)
         {
@@ -181,7 +182,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
     /// <typeparam name="TEdge"></typeparam>
-    public class Vertex<TVertex, TEdge> where TEdge : IComparable<TEdge>
+    public class Vertex<TVertex, TEdge> where TEdge : INumber<TEdge>
     {
         public Vertex() { }
 
@@ -210,7 +211,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// 邻接表，边表结点
     /// </summary>
     /// <typeparam name="TEdge"></typeparam>
-    public class Edge<TVertex, TEdge> where TEdge : IComparable<TEdge>
+    public class Edge<TVertex, TEdge> where TEdge : INumber<TEdge>
     {
         public Edge() { }
 

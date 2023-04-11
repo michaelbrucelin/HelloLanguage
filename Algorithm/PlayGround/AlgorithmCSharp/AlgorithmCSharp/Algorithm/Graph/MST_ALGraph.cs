@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns>(int v1, int v2)记录的是起点与终点的id</returns>
         public List<(int v1, int v2)> MST_Prim<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<(int v1, int v2)> result = new List<(int v1, int v2)>();
             bool[] visited = new bool[graph.VertexCnt]; int visitcnt = 0;
@@ -65,16 +66,15 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// <param name="graph"></param>
         /// <returns></returns>
         public List<(int v1, int v2)> MST_Kruskal<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
-            where TEdge : IComparable<TEdge>
+            where TEdge : INumber<TEdge>
         {
             List<(int v1, int v2)> result = new List<(int v1, int v2)>();
             int[] disjoint = new int[graph.VertexCnt]; for (int i = 0; i < disjoint.Length; i++) disjoint[i] = i;
             int edgecnt = 0;
             IComparer<(TEdge, int, int)> comparer = Comparer<(TEdge, int, int)>.Create((t1, t2) =>
             {
-                int priority;
-                priority = t1.Item1.CompareTo(t2.Item1); if (priority != 0) return priority;
-                priority = t1.Item2 - t2.Item2; if (priority != 0) return priority;
+                if (t1.Item1 - t2.Item1 > TEdge.Zero) return 1; else if (t1.Item1 - t2.Item1 < TEdge.Zero) return -1;
+                if (t1.Item2 - t2.Item2 != 0) return t1.Item2 - t2.Item2;
                 return t1.Item3 - t2.Item3;
             });
             PriorityQueue<(int v1, int v2), (TEdge, int v1, int v2)> minpq = new PriorityQueue<(int v1, int v2), (TEdge, int v1, int v2)>(comparer);
