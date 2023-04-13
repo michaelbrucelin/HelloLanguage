@@ -9,11 +9,23 @@ namespace AlgorithmCSharp.Algorithm.Graph
 {
     public class SP_MGraph
     {
-        public (TEdge[] weights, List<int>[] paths) MST_Prim<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TVertex"></typeparam>
+        /// <typeparam name="TEdge"></typeparam>
+        /// <param name="graph"></param>
+        /// <param name="start"></param>
+        /// <returns>TEdge[] weights: 每个顶点的最短路径总权重, int[] paths: 每个顶点的最短路径的前一个顶点的id</returns>
+        public (TEdge[] weights, int[] paths) SP_Dijkstra<TVertex, TEdge>(MGraph<TVertex, TEdge> graph, int start)
             where TEdge : INumber<TEdge>
         {
-            //TEdge e1 = 1, e2 = 2;
-            //TEdge e = e1 + e2;
+            throw new NotImplementedException();
+        }
+
+        public (TEdge[] weights, int[] paths) SP_Floyd<TVertex, TEdge>(MGraph<TVertex, TEdge> graph, int start)
+            where TEdge : INumber<TEdge>
+        {
             throw new NotImplementedException();
         }
     }
