@@ -30,12 +30,12 @@ Test test = new Test();
 // Console.WriteLine("图遍历测试");
 // Console.WriteLine($"{Environment.NewLine}邻接矩阵遍历测试"); test.TestTraverse_MGraph();
 // Console.WriteLine($"{Environment.NewLine}邻接表  遍历测试"); test.TestTraverse_ALGraph();
-Console.WriteLine("图最小生成树测试");
-Console.WriteLine($"{Environment.NewLine}邻接矩阵最小生成树测试"); test.TestMST_MGraph();
-Console.WriteLine($"{Environment.NewLine}邻接表最小生成树测试"); test.TestMST_ALGraph();
-// Console.WriteLine("图最短路径测试");
-// Console.WriteLine($"{Environment.NewLine}邻接矩阵最短路径测试"); test.TestSP_MGraph();
-// Console.WriteLine($"{Environment.NewLine}邻接表最短路径测试"); test.TestSP_ALGraph();
+// Console.WriteLine("图最小生成树测试");
+// Console.WriteLine($"{Environment.NewLine}邻接矩阵最小生成树测试"); test.TestMST_MGraph();
+// Console.WriteLine($"{Environment.NewLine}邻接表最小生成树测试"); test.TestMST_ALGraph();
+Console.WriteLine("图最短路径测试");
+Console.WriteLine($"{Environment.NewLine}邻接矩阵最短路径测试"); test.TestSP_MGraph();
+Console.WriteLine($"{Environment.NewLine}邻接表最短路径测试"); test.TestSP_ALGraph();
 #endregion
 
 #region TEST

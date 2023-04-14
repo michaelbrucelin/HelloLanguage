@@ -20,12 +20,14 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public (TEdge[] weights, int[] paths) SP_Dijkstra<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph, int start)
             where TEdge : INumber<TEdge>
         {
+            return (null, null);  // for test
             throw new NotImplementedException();
         }
 
-        public (TEdge[] weights, int[] paths) SP_Floyd<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph, int start)
+        public (TEdge[] weights, int[] paths) SP_Floyd<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
             where TEdge : INumber<TEdge>
         {
+            return (null, null);  // for test
             throw new NotImplementedException();
         }
     }

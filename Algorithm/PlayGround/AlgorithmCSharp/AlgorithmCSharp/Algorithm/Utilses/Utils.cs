@@ -10,11 +10,13 @@ namespace AlgorithmCSharp.Algorithm.Utilses
     {
         public static string ArrayToString<T>(IEnumerable<T> list)
         {
+            if (list == null) return "null";
             return ArrayToString<T>(new List<T>(list));
         }
 
         public static string ArrayToString<T>(IEnumerable<T> list, int start, int length)
         {
+            if (list == null) return "null";
             return ArrayToString<T>(new List<T>(list), start, length);
         }
 
@@ -26,6 +28,7 @@ namespace AlgorithmCSharp.Algorithm.Utilses
         /// <returns></returns>
         public static string ArrayToString<T>(IList<T> list)
         {
+            if (list == null) return "null";
             return ArrayToString<T>(list, 0, list.Count);
         }
 
