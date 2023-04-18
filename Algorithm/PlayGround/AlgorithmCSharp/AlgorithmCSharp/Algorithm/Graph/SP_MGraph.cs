@@ -20,10 +20,12 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public (TEdge[] weights, int[] paths) SP_Dijkstra<TVertex, TEdge>(MGraph<TVertex, TEdge> graph, int start)
             where TEdge : INumber<TEdge>
         {
-            TEdge[] weights = new TEdge[graph.VertexCnt]; Array.Fill(weights, graph.Infinity); weights[start] = TEdge.Zero;
-            int[] paths = new int[graph.VertexCnt]; Array.Fill(paths, -1); paths[start] = start;
-            bool[] visited = new bool[graph.VertexCnt]; visited[start] = true; int visitcnt = 1;
+            TEdge[] weights = new TEdge[graph.VertexCnt]; Array.Fill(weights, graph.Infinity);
+            int[] paths = new int[graph.VertexCnt]; Array.Fill(paths, -1);
+            bool[] visited = new bool[graph.VertexCnt]; int visitcnt;
             PriorityQueue<(TEdge weight, int vid), TEdge> minpq = new PriorityQueue<(TEdge weight, int vid), TEdge>();
+
+            weights[start] = TEdge.Zero; paths[start] = start; visited[start] = true; visitcnt = 1;
             int ptr = start;  // 最新找到最短路径的顶点
             while (visitcnt < graph.VertexCnt)
             {
