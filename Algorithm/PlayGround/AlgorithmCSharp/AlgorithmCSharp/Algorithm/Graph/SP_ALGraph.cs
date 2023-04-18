@@ -25,23 +25,22 @@ namespace AlgorithmCSharp.Algorithm.Graph
             bool[] visited = new bool[graph.VertexCnt]; int visitcnt = 0;
             PriorityQueue<(TEdge weight, int vid), TEdge> minpq = new PriorityQueue<(TEdge weight, int vid), TEdge>();
 
-            weights[start] = TEdge.Zero; paths[start] = start;
-            minpq.Enqueue((TEdge.Zero, start), TEdge.Zero);
+            weights[start] = TEdge.Zero; paths[start] = start; minpq.Enqueue((TEdge.Zero, start), TEdge.Zero);
             while (visitcnt < graph.VertexCnt && minpq.Count > 0)
             {
-                var info = minpq.Dequeue();
-                if (visited[info.vid]) continue;
-                visited[info.vid] = true; visitcnt++; if (visitcnt == graph.VertexCnt) break;
-                Edge<TVertex, TEdge> edge = graph[info.vid].FirstEdge;
+                while (minpq.Count > 0 && visited[minpq.Peek().vid]) minpq.Dequeue();
+                if (minpq.Count == 0) break;
+                var next = minpq.Dequeue();
+                visited[next.vid] = true; visitcnt++; if (visitcnt == graph.VertexCnt) break;
+                Edge<TVertex, TEdge> edge = graph[next.vid].FirstEdge;
                 while (edge != null)
                 {
                     if (!visited[edge.AdjId])
                     {
-                        TEdge _weight = weights[info.vid] + edge.Weight;
+                        TEdge _weight = weights[next.vid] + edge.Weight;
                         if (weights[edge.AdjId] == graph.Infinity || _weight < weights[edge.AdjId])
                         {
-                            weights[edge.AdjId] = _weight; paths[edge.AdjId] = info.vid;
-                            minpq.Enqueue((_weight, edge.AdjId), _weight);
+                            weights[edge.AdjId] = _weight; paths[edge.AdjId] = next.vid; minpq.Enqueue((_weight, edge.AdjId), _weight);
                         }
                     }
                     edge = edge.Next;
