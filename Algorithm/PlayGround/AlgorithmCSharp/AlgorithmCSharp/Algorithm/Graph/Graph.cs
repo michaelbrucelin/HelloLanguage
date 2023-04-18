@@ -117,21 +117,24 @@ namespace AlgorithmCSharp.Algorithm.Graph
     /// <typeparam name="TEdge"></typeparam>
     public class ALGraph<TVertex, TEdge> where TEdge : INumber<TEdge>
     {
-        public ALGraph(bool directed)
+        public ALGraph(TEdge infinity, bool directed)
         {
             AdjList = new List<Vertex<TVertex, TEdge>>();
+            Infinity = infinity;
             Directed = directed;
         }
 
-        public ALGraph(int vertexCnt, bool directed)
+        public ALGraph(int vertexCnt, TEdge infinity, bool directed)
         {
             AdjList = new List<Vertex<TVertex, TEdge>>(vertexCnt);
+            Infinity = infinity;
             Directed = directed;
         }
 
-        public ALGraph(List<Vertex<TVertex, TEdge>> adjList, bool directed)
+        public ALGraph(List<Vertex<TVertex, TEdge>> adjList, TEdge infinity, bool directed)
         {
             AdjList = adjList;
+            Infinity = infinity;
             Directed = directed;
         }
 
@@ -139,6 +142,11 @@ namespace AlgorithmCSharp.Algorithm.Graph
         /// bool: 有向图; false: 无向图
         /// </summary>
         public bool Directed { get; }
+
+        /// <summary>
+        /// 不存在的边的权值，可以设置为-1, int.Max等不可能的权值
+        /// </summary>
+        public TEdge Infinity { get; }
 
         /// <summary>
         /// 顶点列表

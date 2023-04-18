@@ -290,7 +290,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
         public ALGraph<int, int> GetALGraph()
         {
-            ALGraph<int, int> graph = new ALGraph<int, int>(9, false);
+            ALGraph<int, int> graph = new ALGraph<int, int>(9, -1, false);
             for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
             graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 10) { Next = new Edge<int, int>(5, 11) };
             graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 10) { Next = new Edge<int, int>(2, 18) { Next = new Edge<int, int>(6, 16) { Next = new Edge<int, int>(8, 12) } } };
@@ -307,7 +307,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
 
         public ALGraph<int, int> GetALGraph2()
         {
-            ALGraph<int, int> graph = new ALGraph<int, int>(9, false);
+            ALGraph<int, int> graph = new ALGraph<int, int>(9, -1, false);
             for (int i = 0; i < 9; i++) graph.AdjList.Add(new Vertex<int, int>(i));
             graph.AdjList[0].FirstEdge = new Edge<int, int>(1, 1) { Next = new Edge<int, int>(2, 5) };
             graph.AdjList[1].FirstEdge = new Edge<int, int>(0, 1) { Next = new Edge<int, int>(2, 3) { Next = new Edge<int, int>(3, 7) { Next = new Edge<int, int>(4, 5) } } };
