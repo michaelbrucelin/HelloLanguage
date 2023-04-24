@@ -53,8 +53,25 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public (TEdge[,] weights, int[,] paths) SP_Floyd<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
             where TEdge : INumber<TEdge>
         {
-            return (null, null);  // for test
-            throw new NotImplementedException();
+            int vcnt = graph.VertexCnt;
+            TEdge[,] weights = new TEdge[vcnt, vcnt]; int[,] paths = new int[vcnt, vcnt];
+            for (int r = 0; r < vcnt; r++) for (int c = 0; c < vcnt; c++)
+                {
+                    weights[r, c] = graph[r, c]; paths[r, c] = r == c ? r : -1;
+                }
+
+            for (int k = 0; k < vcnt; k++) for (int r = 0; r < vcnt; r++) for (int c = 0; c < vcnt; c++)
+                    {
+                        if (graph[r, k] != graph.Infinity && graph[k, c] != graph.Infinity)
+                        {
+                            if (graph[r, c] == graph.Infinity || graph[r, k] + graph[k, c] < graph[r, c])
+                            {
+                                weights[r, c] = graph[r, k] + graph[k, c]; paths[r, c] = k;
+                            }
+                        }
+                    }
+
+            return (weights, paths);
         }
     }
 }

@@ -178,31 +178,37 @@ namespace AlgorithmCSharp.Algorithm.Graph
         {
             SP_MGraph sp = new SP_MGraph();
             MGraph<int, int> graph;
-            (int[] weight, int[] paths) info; string result, answer;
+            (int[] weight, int[] paths) info; (int[,] weight, int[,] paths) info2; string result, answer;
             int id = 0;
 
             #region Dijkstra
             Console.WriteLine("Dijkstra");
             graph = GetMGraph(); info = sp.SP_Dijkstra(graph, 0);
             answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"{++id,2}, Weight: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"      Path: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             graph = GetMGraph2(); info = sp.SP_Dijkstra(graph, 0);
             answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"{++id,2}, Weight: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"      Path: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
 
             #region Floyd
-            //Console.WriteLine("Floyd");
-            //graph = GetMGraph(); info = sp.SP_Floyd(graph);
-            //answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
-            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-            //answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
-            //Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine("Floyd");
+            graph = GetMGraph(); info2 = sp.SP_Floyd(graph);
+            for (int i = 0; i < graph.VertexCnt; i++)
+            {
+                Console.WriteLine($"StartPoint: {i}");
+                answer = Utils.ArrayToString(sp.SP_Dijkstra(graph, i).weights);
+                result = Utils.ArrayToString(Enumerable.Range(0, graph.VertexCnt).Select(j => info2.weight[i, j]));
+                Console.WriteLine($"{++id,2}, Weight: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+                answer = Utils.ArrayToString(sp.SP_Dijkstra(graph, i).paths);
+                result = Utils.ArrayToString(Enumerable.Range(0, graph.VertexCnt).Select(j => info2.paths[i, j]));
+                Console.WriteLine($"      Path: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            }
 
             //graph = GetMGraph2(); info = sp.SP_Floyd(graph);
             //answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
@@ -223,30 +229,30 @@ namespace AlgorithmCSharp.Algorithm.Graph
             Console.WriteLine("Dijkstra");
             graph = GetALGraph(); info = sp.SP_Dijkstra(graph, 0);
             answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"{++id,2}, Weight: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"      Path: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
             graph = GetALGraph2(); info = sp.SP_Dijkstra(graph, 0);
             answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"{++id,2}, Weight: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            Console.WriteLine($"      Path: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
 
             #region Floyd
-            Console.WriteLine("Floyd");
-            graph = GetALGraph(); info = sp.SP_Floyd(graph);
-            answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-            answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //Console.WriteLine("Floyd");
+            //graph = GetALGraph(); info = sp.SP_Floyd(graph);
+            //answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
+            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
+            //Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
-            graph = GetALGraph2(); info = sp.SP_Floyd(graph);
-            answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-            answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //graph = GetALGraph2(); info = sp.SP_Floyd(graph);
+            //answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
+            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
+            //Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }
         #endregion
