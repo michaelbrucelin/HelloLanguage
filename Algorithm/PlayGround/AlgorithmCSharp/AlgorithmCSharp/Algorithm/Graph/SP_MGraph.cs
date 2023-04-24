@@ -50,7 +50,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
             return (weights, paths);
         }
 
-        public (TEdge[] weights, int[] paths) SP_Floyd<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
+        public (TEdge[,] weights, int[,] paths) SP_Floyd<TVertex, TEdge>(MGraph<TVertex, TEdge> graph)
             where TEdge : INumber<TEdge>
         {
             return (null, null);  // for test

@@ -197,18 +197,18 @@ namespace AlgorithmCSharp.Algorithm.Graph
             #endregion
 
             #region Floyd
-            Console.WriteLine("Floyd");
-            graph = GetMGraph(); info = sp.SP_Floyd(graph);
-            answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-            answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //Console.WriteLine("Floyd");
+            //graph = GetMGraph(); info = sp.SP_Floyd(graph);
+            //answer = "[ 0, 10, 28, 43, 37, 11, 26, 44, 22 ]"; result = Utils.ArrayToString(info.weight);
+            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //answer = "[ 0, 0, 1, 8, 5, 0, 1, 4, 1 ]"; result = Utils.ArrayToString(info.paths);
+            //Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
 
-            graph = GetMGraph2(); info = sp.SP_Floyd(graph);
-            answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
-            Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
-            answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
-            Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //graph = GetMGraph2(); info = sp.SP_Floyd(graph);
+            //answer = "[ 0, 1, 4, 7, 5, 8, 10, 12, 16 ]"; result = Utils.ArrayToString(info.weight);
+            //Console.WriteLine($"{++id,2}: {(result == answer) + ",",-6} result: {result}, answer: {answer}");
+            //answer = "[ 0, 0, 1, 4, 2, 4, 3, 6, 7 ]"; result = Utils.ArrayToString(info.paths);
+            //Console.WriteLine($"    {(result == answer) + ",",-6} result: {result}, answer: {answer}");
             #endregion
         }
 
