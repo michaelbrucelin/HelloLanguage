@@ -57,7 +57,8 @@ namespace AlgorithmCSharp.Algorithm.Graph
             TEdge[,] weights = new TEdge[vcnt, vcnt]; int[,] paths = new int[vcnt, vcnt];
             for (int r = 0; r < vcnt; r++) for (int c = 0; c < vcnt; c++)
                 {
-                    weights[r, c] = r == c ? TEdge.Zero : graph[r, c]; paths[r, c] = r == c ? r : -1;
+                    weights[r, c] = r == c ? TEdge.Zero : graph[r, c];
+                    paths[r, c] = graph[r, c] != graph.Infinity || r == c ? r : -1;
                 }
 
             for (int k = 0; k < vcnt; k++) for (int r = 0; r < vcnt; r++)
