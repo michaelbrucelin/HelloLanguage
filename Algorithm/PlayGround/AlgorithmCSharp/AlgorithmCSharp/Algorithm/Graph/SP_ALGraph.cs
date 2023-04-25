@@ -55,6 +55,33 @@ namespace AlgorithmCSharp.Algorithm.Graph
         {
             int vcnt = graph.VertexCnt;
             TEdge[,] weights = new TEdge[vcnt, vcnt]; int[,] paths = new int[vcnt, vcnt];
+            for (int r = 0; r < vcnt; r++) for (int c = 0; c < vcnt; c++)
+                {
+                    weights[r, c] = r == c ? TEdge.Zero : graph.Infinity;
+                    paths[r, c] = r == c ? r : -1;
+                }
+            for (int i = 0; i < vcnt; i++)
+            {
+                Edge<TVertex, TEdge> edge = graph[i].FirstEdge;
+                while (edge != null)
+                {
+                    weights[i, edge.AdjId] = edge.Weight; paths[i, edge.AdjId] = i;
+                    edge = edge.Next;
+                }
+            }
+
+            for (int k = 0; k < vcnt; k++) for (int r = 0; r < vcnt; r++)
+                {
+                    if (weights[r, k] == graph.Infinity) continue;
+                    for (int c = 0; c < vcnt; c++)
+                    {
+                        if (weights[k, c] == graph.Infinity) continue;
+                        if (weights[r, c] == graph.Infinity || weights[r, k] + weights[k, c] < weights[r, c])
+                        {
+                            weights[r, c] = weights[r, k] + weights[k, c]; paths[r, c] = paths[k, c];
+                        }
+                    }
+                }
 
             return (weights, paths);
         }
