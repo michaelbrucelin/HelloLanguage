@@ -66,7 +66,7 @@ namespace AlgorithmCSharp.Algorithm.Graph
                         {
                             if (weights[r, c] == graph.Infinity || weights[r, k] + weights[k, c] < weights[r, c])
                             {
-                                weights[r, c] = weights[r, k] + weights[k, c]; paths[r, c] = k;
+                                weights[r, c] = weights[r, k] + weights[k, c]; paths[r, c] = paths[k, c];
                             }
                         }
                     }
