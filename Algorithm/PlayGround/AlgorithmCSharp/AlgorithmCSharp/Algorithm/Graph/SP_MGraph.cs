@@ -60,16 +60,18 @@ namespace AlgorithmCSharp.Algorithm.Graph
                     weights[r, c] = r == c ? TEdge.Zero : graph[r, c]; paths[r, c] = r == c ? r : -1;
                 }
 
-            for (int k = 0; k < vcnt; k++) for (int r = 0; r < vcnt; r++) for (int c = 0; c < vcnt; c++)
+            for (int k = 0; k < vcnt; k++) for (int r = 0; r < vcnt; r++)
+                {
+                    if (weights[r, k] == graph.Infinity) continue;
+                    for (int c = 0; c < vcnt; c++)
                     {
-                        if (weights[r, k] != graph.Infinity && weights[k, c] != graph.Infinity)
+                        if (weights[k, c] == graph.Infinity) continue;
+                        if (weights[r, c] == graph.Infinity || weights[r, k] + weights[k, c] < weights[r, c])
                         {
-                            if (weights[r, c] == graph.Infinity || weights[r, k] + weights[k, c] < weights[r, c])
-                            {
-                                weights[r, c] = weights[r, k] + weights[k, c]; paths[r, c] = paths[k, c];
-                            }
+                            weights[r, c] = weights[r, k] + weights[k, c]; paths[r, c] = paths[k, c];
                         }
                     }
+                }
 
             return (weights, paths);
         }
