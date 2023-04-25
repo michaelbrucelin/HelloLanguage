@@ -53,8 +53,10 @@ namespace AlgorithmCSharp.Algorithm.Graph
         public (TEdge[,] weights, int[,] paths) SP_Floyd<TVertex, TEdge>(ALGraph<TVertex, TEdge> graph)
             where TEdge : INumber<TEdge>
         {
-            return (null, null);  // for test
-            throw new NotImplementedException();
+            int vcnt = graph.VertexCnt;
+            TEdge[,] weights = new TEdge[vcnt, vcnt]; int[,] paths = new int[vcnt, vcnt];
+
+            return (weights, paths);
         }
     }
 }
