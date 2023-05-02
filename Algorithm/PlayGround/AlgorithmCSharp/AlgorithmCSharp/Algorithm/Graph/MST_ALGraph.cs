@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AlgorithmCSharp.Algorithm.Graph
 {
+    /// <summary>
+    /// 最小生成树（Minimum Weight Spanning Tree, Minimum Cost Spanning Tree, Minimum Spanning Tree）
+    /// </summary>
     public class MST_ALGraph
     {
         /// <summary>

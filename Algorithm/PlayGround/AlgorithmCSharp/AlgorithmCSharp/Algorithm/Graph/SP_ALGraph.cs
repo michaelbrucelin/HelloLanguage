@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace AlgorithmCSharp.Algorithm.Graph
 {
+    /// <summary>
+    /// 最短路径（Shortest Paths）
+    /// </summary>
     public class SP_ALGraph
     {
         /// <summary>

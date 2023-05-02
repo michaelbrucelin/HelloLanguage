@@ -200,11 +200,6 @@ namespace AlgorithmCSharp.Algorithm.Graph
         }
 
         /// <summary>
-        /// 顶点入度，某些场景（例如拓扑排序）中会用到，一般不需要
-        /// </summary>
-        public int @In;
-
-        /// <summary>
         /// 顶点域，存储顶点信息
         /// </summary>
         public TVertex Data;
