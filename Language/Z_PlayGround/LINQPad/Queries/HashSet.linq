@@ -9,6 +9,11 @@ hashset.Add(8);
 hashset.Add(10);
 hashset.Dump("HashSet");
 
+HashSet<int> hashset2 = new HashSet<int>(hashset);
+hashset2.Add(10);
+hashset2.Add(8);
+hashset2.Dump("HashSet2");
+
 SortedSet<int> sortedset = new SortedSet<int>();
 sortedset.Add(10);
 sortedset.Add(6);
