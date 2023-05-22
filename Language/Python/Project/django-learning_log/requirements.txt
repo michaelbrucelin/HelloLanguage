@@ -91,7 +91,7 @@ pyzmq==22.0.3
 qtconsole==5.1.0
 QtPy==1.9.0
 reportbug===7.5.3-deb10u1
-requests==2.21.0
+requests==2.31.0
 retrying==1.3.3
 SecretStorage==2.3.1
 Send2Trash==1.5.0
