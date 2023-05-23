@@ -6,7 +6,7 @@
 // @author       You
 // @match        *://leetcode.com/*
 // @match        *://leetcode.cn/*
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=leetcode.cn
 // @grant        none
 // ==/UserScript==
 
