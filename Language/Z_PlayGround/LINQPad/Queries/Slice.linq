@@ -2,6 +2,8 @@
 
 
 string s = "abcdefghijklmnopqrstuvwxyz";
+// s[^0].Dump("s[^0]");     // 异常：Index was outside the bounds of the array.
+s[^1].Dump("s[^1]");        // z
 s[1..].Dump("s[1..]");      // bcdefghijklmnopqrstuvwxyz
 s[1..^0].Dump("s[1..^0]");  // bcdefghijklmnopqrstuvwxyz
 s[1..^0].Dump("s[1..]");    // bcdefghijklmnopqrstuvwxyz

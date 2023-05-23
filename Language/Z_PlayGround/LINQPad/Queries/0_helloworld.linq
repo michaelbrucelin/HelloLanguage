@@ -19,9 +19,6 @@ sb.Append("abc");
 sb.Append("xyz");
 Console.WriteLine($"sb.length: {sb.Length}");  // 6
 
-
-
-
 {
 	// 将字符串拆分为数组，同时保留拆分符号
 	//string str = "{a,b}{c,{d,e}{f,g}}";
@@ -41,7 +38,6 @@ Console.WriteLine($"sb.length: {sb.Length}");  // 6
 	//strs = Utils.SplitAndKeep(str, new char[] { ',', '{', '}' }).ToArray();
 	//for (int i = 0; i < strs.Length; i++) Console.WriteLine($"{i}\t{strs[i]}");
 }
-
 
 {
 	//Console.WriteLine(int.Parse("03"));        // 3，不异常
@@ -148,9 +144,6 @@ Console.WriteLine($"sb.length: {sb.Length}");  // 6
 //Console.WriteLine($"checked(x-1): {checked(x - 1)}");
 //Console.WriteLine($"checked(x+1): {checked(x + 1)}");
 
-
-
-
 {
 	//bool[] arr = new bool[10];  // 默认值是false
 	//Console.WriteLine(arr[8]);
@@ -169,19 +162,3 @@ Console.WriteLine($"sb.length: {sb.Length}");  // 6
 
 //(int, int, int) tuple2 = (1, 2, 3);
 //Console.WriteLine(tuple2.ToString());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
