@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPath = new System.Windows.Forms.TextBox();
+            this.txtSrcPath = new System.Windows.Forms.TextBox();
             this.BtnBrowse = new System.Windows.Forms.Button();
             this.btnGen = new System.Windows.Forms.Button();
+            this.txtTgtPath = new System.Windows.Forms.TextBox();
+            this.BtnBrowse2 = new System.Windows.Forms.Button();
+            this.lblTip = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtPath
+            // txtSrcPath
             // 
-            this.txtPath.AllowDrop = true;
-            this.txtPath.Location = new System.Drawing.Point(12, 12);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(479, 21);
-            this.txtPath.TabIndex = 0;
-            this.txtPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtPath_DragDrop);
-            this.txtPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtPath_DragEnter);
+            this.txtSrcPath.AllowDrop = true;
+            this.txtSrcPath.Location = new System.Drawing.Point(12, 12);
+            this.txtSrcPath.Name = "txtSrcPath";
+            this.txtSrcPath.ReadOnly = true;
+            this.txtSrcPath.Size = new System.Drawing.Size(479, 21);
+            this.txtSrcPath.TabIndex = 0;
+            this.txtSrcPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtSrcPath_DragDrop);
+            this.txtSrcPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtSrcPath_DragEnter);
             // 
             // BtnBrowse
             // 
@@ -56,7 +59,7 @@
             // 
             // btnGen
             // 
-            this.btnGen.Location = new System.Drawing.Point(497, 39);
+            this.btnGen.Location = new System.Drawing.Point(497, 66);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(75, 21);
             this.btnGen.TabIndex = 2;
@@ -64,16 +67,50 @@
             this.btnGen.UseVisualStyleBackColor = true;
             this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
             // 
+            // txtTgtPath
+            // 
+            this.txtTgtPath.AllowDrop = true;
+            this.txtTgtPath.Location = new System.Drawing.Point(12, 39);
+            this.txtTgtPath.Name = "txtTgtPath";
+            this.txtTgtPath.ReadOnly = true;
+            this.txtTgtPath.Size = new System.Drawing.Size(479, 21);
+            this.txtTgtPath.TabIndex = 3;
+            this.txtTgtPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtTgtPath_DragDrop);
+            this.txtTgtPath.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtTgtPath_DragEnter);
+            // 
+            // BtnBrowse2
+            // 
+            this.BtnBrowse2.Location = new System.Drawing.Point(497, 39);
+            this.BtnBrowse2.Name = "BtnBrowse2";
+            this.BtnBrowse2.Size = new System.Drawing.Size(75, 21);
+            this.BtnBrowse2.TabIndex = 4;
+            this.BtnBrowse2.Text = "浏览";
+            this.BtnBrowse2.UseVisualStyleBackColor = true;
+            this.BtnBrowse2.Click += new System.EventHandler(this.BtnBrowse2_Click);
+            // 
+            // lblTip
+            // 
+            this.lblTip.AutoSize = true;
+            this.lblTip.Location = new System.Drawing.Point(12, 90);
+            this.lblTip.Name = "lblTip";
+            this.lblTip.Size = new System.Drawing.Size(29, 12);
+            this.lblTip.TabIndex = 5;
+            this.lblTip.Text = "Tips";
+            this.lblTip.Click += new System.EventHandler(this.lblTip_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 201);
+            this.ClientSize = new System.Drawing.Size(584, 161);
+            this.Controls.Add(this.lblTip);
+            this.Controls.Add(this.BtnBrowse2);
+            this.Controls.Add(this.txtTgtPath);
             this.Controls.Add(this.btnGen);
             this.Controls.Add(this.BtnBrowse);
-            this.Controls.Add(this.txtPath);
-            this.MaximumSize = new System.Drawing.Size(600, 240);
-            this.MinimumSize = new System.Drawing.Size(600, 240);
+            this.Controls.Add(this.txtSrcPath);
+            this.MaximumSize = new System.Drawing.Size(600, 200);
+            this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
@@ -85,9 +122,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.TextBox txtSrcPath;
         private System.Windows.Forms.Button BtnBrowse;
         private System.Windows.Forms.Button btnGen;
+        private System.Windows.Forms.TextBox txtTgtPath;
+        private System.Windows.Forms.Button BtnBrowse2;
+        private System.Windows.Forms.Label lblTip;
     }
 }
 

@@ -15,23 +15,26 @@ namespace HrmSalaryFmt
     {
         public static DataTable ReadExcel_NPOI(string file, string sheetName)
         {
-            IWorkbook wb;
+            IWorkbook workbook;
+            string fileExtension = Path.GetExtension(file).ToLower();
             using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
-                if (Path.GetExtension(file).ToLower() == ".xlsx")
+                //XSSFWorkbook适用xlsx格式，HSSFWorkbook适用xls格式
+                if (fileExtension == ".xlsx")
                 {
-                    wb = new XSSFWorkbook(fs);
+                    workbook = new XSSFWorkbook(fs);
                 }
-                else if (Path.GetExtension(file).ToLower() == ".xls")
+                else if (fileExtension == ".xls")
                 {
-                    wb = new HSSFWorkbook(fs);
+                    workbook = new HSSFWorkbook(fs);
                 }
                 else
                 {
                     return null;
                 }
             }
-            ISheet sheet = wb.GetSheet(sheetName);
+
+            ISheet sheet = workbook.GetSheet(sheetName);
 
             return ISheet2DataTable(sheet);
         }
@@ -40,36 +43,179 @@ namespace HrmSalaryFmt
         {
             DataTable dt = new DataTable();
 
-            // 获取标题
+            // 表头及列的数据类型
             IRow header = sheet.GetRow(sheet.FirstRowNum);
+            List<int> columns = new List<int>();
 
-            // 获取列的数量，也可以遍历所有行，取最大的列数，这里就不展开了
-            int colA = header.FirstCellNum;
-            int colZ = header.LastCellNum;
-            for (int i = colA; i < colZ; i++)
-                dt.Columns.Add(header.GetCell(i).StringCellValue, typeof(string));
+            IRow firstrow = sheet.GetRow(sheet.FirstRowNum + 1);
+            for (int i = 0; i < header.LastCellNum; i++)
+            {
+                object obj = ReadExcelCellValue_NPOI(header.GetCell(i));
+                if (obj == null || obj.ToString().Length == 0)
+                {
+                    dt.Columns.Add(new DataColumn("Columns" + i.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                }
+                else
+                {
+                    dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                }
+                columns.Add(i);
+            }
+
 
             // 获取数据
-            IRow row;
-            for (int rowIndex = sheet.FirstRowNum + 1; rowIndex <= sheet.LastRowNum; rowIndex++)
+            for (int i = sheet.FirstRowNum + 1; i <= sheet.LastRowNum; i++)
             {
-                if ((row = sheet.GetRow(rowIndex)) != null)  //null is when the row only contains empty cells
+                DataRow dr = dt.NewRow();
+                bool hasValue = false;
+                foreach (int j in columns)
                 {
-                    // 这种用法，兼容性较高，例如第一行（标题）只有5列，第三行有6列时会只读取第三行的前5列，不会报错
-                    DataRow dr = dt.NewRow();
-                    int i = 0;
-                    for (int colIndex = colA; colIndex < colZ; colIndex++)
+                    // 判断非空行 非空格
+                    if (sheet.GetRow(i) != null && sheet.GetRow(i).GetCell(j) != null)
                     {
-                        dr[i] = row.GetCell(colIndex).StringCellValue;
-                        i++;
+                        dr[j] = ReadExcelCellValue_NPOI(sheet.GetRow(i).GetCell(j));
+                        if (dr[j] != null && dr[j].ToString().Length > 0)
+                        {
+                            hasValue = true;
+                        }
                     }
+                }
+                if (hasValue)
+                {
                     dt.Rows.Add(dr);
-                    // 这种用法，当表格不规范，例如第一行只有5列（标题），第三行有6列时会报错
-                    // dt.Rows.Add(row.Cells.ToArray());
                 }
             }
 
             return dt;
+        }
+
+        /// <summary>
+        /// NPOI 读取Cell中的值；公式没有错的时候，取公式计算的值，公式有错的时候，使用公式
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <returns></returns>
+        private static object ReadExcelCellValue_NPOI(ICell cell)
+        {
+            if (cell == null)
+            {
+                return null;
+            }
+            switch (cell.CellType)
+            {
+                case CellType.Blank:
+                    return null;
+                case CellType.Boolean:
+                    return cell.BooleanCellValue;
+                case CellType.Numeric:
+                    return cell.NumericCellValue;
+                case CellType.String:
+                    return cell.StringCellValue;
+                case CellType.Error:
+                    return cell.ErrorCellValue;
+                case CellType.Formula:
+                default:
+                    try
+                    {
+                        return cell.NumericCellValue;
+                    }
+                    catch
+                    {
+                        return "=" + cell.CellFormula;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// NPOI 读取Cell中的值的数据类型
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <returns></returns>
+        private static Type ReadExcelCellDataType_NPOI(ICell cell)
+        {
+            if (cell == null)
+            {
+                return null;
+            }
+            switch (cell.CellType)
+            {
+                case CellType.Blank:
+                    return typeof(string);
+                case CellType.Boolean:
+                    return typeof(bool);
+                case CellType.Numeric:
+                    return typeof(decimal);
+                case CellType.String:
+                    return typeof(string);
+                case CellType.Error:
+                    return typeof(string);
+                case CellType.Formula:
+                default:
+                    return typeof(string);
+            }
+        }
+
+        public static void WriteExcel_NPOI(DataTable dt, string file, string sheetName)
+        {
+            // 创建workbook
+            IWorkbook workbook;
+            string fileExt = Path.GetExtension(file).ToLower();
+            if (fileExt == ".xlsx")
+            {
+                workbook = new XSSFWorkbook();
+            }
+            else if (fileExt == ".xls")
+            {
+                workbook = new HSSFWorkbook();
+            }
+            else
+            {
+                throw new Exception("This format is not supported.");
+                // return;
+            }
+
+            // 创建sheet
+            AddExcelSheet_NPOI(dt, ref workbook, sheetName);
+
+            // 保存为Excel文件  
+            using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
+            {
+                workbook.Write(fs);
+                // fs.Flush();
+                // fs.Close();
+            }
+        }
+
+        private static ISheet AddExcelSheet_NPOI(DataTable dt, ref IWorkbook workbook, string sheetName)
+        {
+            ISheet sheet = workbook.CreateSheet(sheetName);
+
+            // 不确认ICreationHelper这个对象是做什么用的，暂时没有启用
+            // ICreationHelper chelper = workbook.GetCreationHelper();
+
+            // 表头
+            IRow head = sheet.CreateRow(0);
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                ICell cell = head.CreateCell(i);
+                cell.SetCellValue(dt.Columns[i].ColumnName);
+                // cell.SetCellValue(chelper.CreateRichTextString(dt.Columns[i].ColumnName));
+            }
+
+            // 数据
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                IRow row = sheet.CreateRow(i + 1);
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    ICell cell = row.CreateCell(j);
+                    cell.SetCellValue(dt.Rows[i][j].ToString());
+                    // cell.SetCellValue(chelper.CreateRichTextString(dt.Rows[i][j].ToString()));
+
+                    cell.SetCellType(CellType.String);
+                }
+            }
+
+            return sheet;
         }
     }
 }
