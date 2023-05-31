@@ -1,5 +1,6 @@
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF.Util;
+using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.Streaming;
@@ -98,7 +99,7 @@ namespace WindowsFormsApp0
             IRow row;
             for (int rowIndex = sheet.FirstRowNum + 1; rowIndex <= sheet.LastRowNum; rowIndex++)
             {
-                if ((row = sheet.GetRow(rowIndex)) != null) //null is when the row only contains empty cells 
+                if ((row = sheet.GetRow(rowIndex)) != null)  // null is when the row only contains empty cells
                 {
                     // 这种用法，兼容性较高，例如第一行（标题）只有5列，第三行有6列时会只读取第三行的前5列，不会报错
                     DataRow dr = dt.NewRow();
@@ -188,12 +189,12 @@ namespace WindowsFormsApp0
 
             // 表头及列的数据类型
             IRow header = sheet.GetRow(sheet.FirstRowNum);
-            List<int> columns = new List<int>();
+            int colcnt = 0;  // List<int> columns = new List<int>();
             if (excelColumnDataType == ExcelColumnDataType.AllString)
             {
                 for (int i = 0; i < header.LastCellNum; i++)
                 {
-                    object obj = ReadExcelCellValue_NPOI(header.GetCell(i));
+                    object obj = ReadExcelCellValue(header.GetCell(i));
                     if (obj == null || obj.ToString().Length == 0)
                     {
                         dt.Columns.Add(new DataColumn("Columns" + i.ToString()));
@@ -202,7 +203,7 @@ namespace WindowsFormsApp0
                     {
                         dt.Columns.Add(new DataColumn(obj.ToString()));
                     }
-                    columns.Add(i);
+                    colcnt++;  // columns.Add(i);
                 }
             }
             else if (excelColumnDataType == ExcelColumnDataType.ActualDataType)
@@ -210,16 +211,16 @@ namespace WindowsFormsApp0
                 IRow firstrow = sheet.GetRow(sheet.FirstRowNum + 1);
                 for (int i = 0; i < header.LastCellNum; i++)
                 {
-                    object obj = ReadExcelCellValue_NPOI(header.GetCell(i));
+                    object obj = ReadExcelCellValue(header.GetCell(i));
                     if (obj == null || obj.ToString().Length == 0)
                     {
-                        dt.Columns.Add(new DataColumn("Columns" + i.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                        dt.Columns.Add(new DataColumn("Columns" + i.ToString(), ReadExcelCellDataType(firstrow.GetCell(i))));
                     }
                     else
                     {
-                        dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                        dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType(firstrow.GetCell(i))));
                     }
-                    columns.Add(i);
+                    colcnt++;  // columns.Add(i);
                 }
             }
             else
@@ -230,14 +231,15 @@ namespace WindowsFormsApp0
             // 获取数据
             for (int i = sheet.FirstRowNum + 1; i <= sheet.LastRowNum; i++)
             {
+                if (sheet.GetRow(i) == null) continue;
+
                 DataRow dr = dt.NewRow();
                 bool hasValue = false;
-                foreach (int j in columns)
+                for (int j = 0; j < colcnt; j++)  // foreach (int j in columns)
                 {
-                    // 判断非空行 非空格
-                    if (sheet.GetRow(i) != null && sheet.GetRow(i).GetCell(j) != null)
+                    if (sheet.GetRow(i).GetCell(j) != null)  // 判断非空行 非空格
                     {
-                        dr[j] = ReadExcelCellValue_NPOI(sheet.GetRow(i).GetCell(j));
+                        dr[j] = ReadExcelCellValue(sheet.GetRow(i).GetCell(j));
                         if (dr[j] != null && dr[j].ToString().Length > 0)
                         {
                             hasValue = true;
@@ -258,7 +260,7 @@ namespace WindowsFormsApp0
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
-        private static object ReadExcelCellValue_NPOI(ICell cell)
+        private static object ReadExcelCellValue(ICell cell)
         {
             if (cell == null) return null;
 
@@ -292,7 +294,7 @@ namespace WindowsFormsApp0
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
-        private static Type ReadExcelCellDataType_NPOI(ICell cell)
+        private static Type ReadExcelCellDataType(ICell cell)
         {
             if (cell == null) return null;
 
