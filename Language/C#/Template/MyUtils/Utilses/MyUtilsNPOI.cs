@@ -254,16 +254,14 @@ namespace WindowsFormsApp0
         }
 
         /// <summary>
-        /// NPOI 读取Cell中的值；公式没有错的时候，取公式计算的值，公式有错的时候，使用公式
+        /// 读取Cell中的值；公式没有错的时候，取公式计算的值，公式有错的时候，使用公式
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
         private static object ReadExcelCellValue_NPOI(ICell cell)
         {
-            if (cell == null)
-            {
-                return null;
-            }
+            if (cell == null) return null;
+
             switch (cell.CellType)
             {
                 case CellType.Blank:
@@ -290,20 +288,18 @@ namespace WindowsFormsApp0
         }
 
         /// <summary>
-        /// NPOI 读取Cell中的值的数据类型
+        /// 读取Cell中的值的数据类型
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
         private static Type ReadExcelCellDataType_NPOI(ICell cell)
         {
-            if (cell == null)
-            {
-                return null;
-            }
+            if (cell == null) return null;
+
             switch (cell.CellType)
             {
                 case CellType.Blank:
-                    return null;
+                    return typeof(string);  // return null;
                 case CellType.Boolean:
                     return typeof(bool);
                 case CellType.Numeric:
