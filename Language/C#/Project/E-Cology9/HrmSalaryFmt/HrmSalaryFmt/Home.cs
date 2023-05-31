@@ -156,10 +156,5 @@ namespace HrmSalaryFmt
                 senderTextbox.Text = string.Empty;
             senderTextbox.Cursor = Cursors.IBeam;
         }
-
-        private void lblTip_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

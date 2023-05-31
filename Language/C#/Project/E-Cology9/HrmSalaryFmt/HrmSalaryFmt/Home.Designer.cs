@@ -34,7 +34,7 @@
             this.txtTgtPath = new System.Windows.Forms.TextBox();
             this.BtnBrowse2 = new System.Windows.Forms.Button();
             this.lblTip = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPlaceHolder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSrcPath
@@ -97,24 +97,23 @@
             this.lblTip.Size = new System.Drawing.Size(29, 12);
             this.lblTip.TabIndex = 5;
             this.lblTip.Text = "Tips";
-            this.lblTip.Click += new System.EventHandler(this.lblTip_Click);
             // 
-            // button1
+            // btnPlaceHolder
             // 
-            this.button1.Location = new System.Drawing.Point(12, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(479, 21);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "placeholder";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.btnPlaceHolder.Location = new System.Drawing.Point(12, 66);
+            this.btnPlaceHolder.Name = "btnPlaceHolder";
+            this.btnPlaceHolder.Size = new System.Drawing.Size(479, 21);
+            this.btnPlaceHolder.TabIndex = 6;
+            this.btnPlaceHolder.Text = "place holder";
+            this.btnPlaceHolder.UseVisualStyleBackColor = true;
+            this.btnPlaceHolder.Visible = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 161);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnPlaceHolder);
             this.Controls.Add(this.lblTip);
             this.Controls.Add(this.BtnBrowse2);
             this.Controls.Add(this.txtTgtPath);
@@ -140,7 +139,7 @@
         private System.Windows.Forms.TextBox txtTgtPath;
         private System.Windows.Forms.Button BtnBrowse2;
         private System.Windows.Forms.Label lblTip;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPlaceHolder;
     }
 }
 
