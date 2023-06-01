@@ -1,6 +1,4 @@
 using NPOI.HSSF.UserModel;
-using NPOI.HSSF.Util;
-using NPOI.SS.Formula.Functions;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 using NPOI.XSSF.Streaming;
@@ -8,13 +6,9 @@ using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static WindowsFormsApp0.MyUtilsExcel;
 
 namespace WindowsFormsApp0
 {

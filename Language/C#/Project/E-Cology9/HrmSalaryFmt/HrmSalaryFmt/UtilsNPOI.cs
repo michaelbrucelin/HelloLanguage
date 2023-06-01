@@ -13,7 +13,7 @@ namespace HrmSalaryFmt
 {
     public static class UtilsNPOI
     {
-        public static DataTable ReadExcel_NPOI(string file, string sheetName)
+        public static DataTable ReadExcel(string file, string sheetName)
         {
             IWorkbook workbook;
             string fileExtension = Path.GetExtension(file).ToLower();
@@ -50,14 +50,14 @@ namespace HrmSalaryFmt
             IRow firstrow = sheet.GetRow(sheet.FirstRowNum + 1);
             for (int i = 0; i < header.LastCellNum; i++)
             {
-                object obj = ReadExcelCellValue_NPOI(header.GetCell(i));
+                object obj = ReadExcelCellValue(header.GetCell(i));
                 if (obj == null || obj.ToString().Length == 0)
                 {
-                    dt.Columns.Add(new DataColumn("Columns" + i.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                    dt.Columns.Add(new DataColumn("Columns" + i.ToString(), ReadExcelCellDataType(firstrow.GetCell(i))));
                 }
                 else
                 {
-                    dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType_NPOI(firstrow.GetCell(i))));
+                    dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType(firstrow.GetCell(i))));
                 }
                 columns.Add(i);
             }
@@ -73,7 +73,7 @@ namespace HrmSalaryFmt
                     // 判断非空行 非空格
                     if (sheet.GetRow(i) != null && sheet.GetRow(i).GetCell(j) != null)
                     {
-                        dr[j] = ReadExcelCellValue_NPOI(sheet.GetRow(i).GetCell(j));
+                        dr[j] = ReadExcelCellValue(sheet.GetRow(i).GetCell(j));
                         if (dr[j] != null && dr[j].ToString().Length > 0)
                         {
                             hasValue = true;
@@ -94,7 +94,7 @@ namespace HrmSalaryFmt
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
-        private static object ReadExcelCellValue_NPOI(ICell cell)
+        private static object ReadExcelCellValue(ICell cell)
         {
             if (cell == null)
             {
@@ -130,7 +130,7 @@ namespace HrmSalaryFmt
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
-        private static Type ReadExcelCellDataType_NPOI(ICell cell)
+        private static Type ReadExcelCellDataType(ICell cell)
         {
             if (cell == null)
             {
@@ -154,7 +154,7 @@ namespace HrmSalaryFmt
             }
         }
 
-        public static void WriteExcel_NPOI(DataTable dt, string file, string sheetName)
+        public static void WriteExcel(DataTable dt, string file, string sheetName)
         {
             // 创建workbook
             IWorkbook workbook;
@@ -174,7 +174,7 @@ namespace HrmSalaryFmt
             }
 
             // 创建sheet
-            AddExcelSheet_NPOI(dt, ref workbook, sheetName);
+            AddExcelSheet(dt, ref workbook, sheetName);
 
             // 保存为Excel文件  
             using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
@@ -185,7 +185,7 @@ namespace HrmSalaryFmt
             }
         }
 
-        private static ISheet AddExcelSheet_NPOI(DataTable dt, ref IWorkbook workbook, string sheetName)
+        private static ISheet AddExcelSheet(DataTable dt, ref IWorkbook workbook, string sheetName)
         {
             ISheet sheet = workbook.CreateSheet(sheetName);
 

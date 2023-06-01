@@ -28,14 +28,14 @@ namespace HrmSalaryFmt
         private static readonly Dictionary<string, string> colmap = new Dictionary<string, string>() {
             { "实发工资", "实发工资" }, { "基本工资", "基本工资" }, { "绩效奖金", "绩效奖金" }, { "加班工资", "加班工资" },
             { "月度满勤", "月度满勤奖" }, { "年度满勤", "年度满勤奖" }, { "车补", "车补" }, { "餐补", "餐补" },
-            { "保险补贴", "保险补贴" }, { "公积金补贴", "公积金补贴" }, { "补发", "补发" }, { "绩效亏款", "绩效扣款" }, { "考勤扣款", "考勤扣款" },
+            { "保险补贴", "保险补贴" }, { "公积金补贴", "公积金补贴" }, { "补发", "补发" }, { "绩效扣款", "绩效扣款" }, { "考勤扣款", "考勤扣款" },
             { "其他扣款", "其他扣款" }, { "公司垫付款", "公司垫付款" }, { "应发工资", "应发工资" },
             { "养老（公司）", "养老保险(公司)" }, { "医疗（公司）", "医疗保险(公司)" }, { "生育（公司）", "生育保险(公司)" }, { "失业（公司）", "失业保险(公司)" },
-            { "工伤（公司）", "工伤保险(公司)" }, { "补充医疗（公司）", "补充医疗" }, { "补充工伤（公司）", "补充工伤" }, { "大病保险（公司）", "大病保险" },
+            { "工伤（公司）", "工伤保险(公司)" }, { "补充医疗（公司）", "补充医疗" }, { "补充工伤（公司）", "补充工伤" }, { "大病保险（公司）", "大病保险（公司）" },
             { "采暖（公司）", "采暖(公司)" }, { "公积金（公司）", "住房公积金(公司)" }, { "合计（公司）", "合计（公司）" },
             { "养老（个人）", "养老保险(个人)" }, { "医疗（个人）", "医疗保险(个人)" }, { "生育（个人）", "生育保险(个人)" }, { "失业（个人）", "失业保险(个人)" },
-            { "工伤（个人）", "工伤保险(个人)" }, { "采暖（个人）", "采暖(个人)" }, { "公积金（个人）", "住房公积金(个人)" }, { "合计（个人）", "合计（个人）" },
-            { "个人所得税", "个人所得税" }, { "总计", "总计" }, { "备注", "备注" } };
+            { "工伤（个人）", "工伤保险(个人)" }, { "采暖（个人）", "采暖(个人)" }, { "大病保险（个人）", "大病保险（个人）" },
+            { "公积金（个人）", "住房公积金(个人)" }, { "合计（个人）", "合计（个人）" }, { "个人所得税", "个人所得税" }, { "总计", "总计" }, { "备注", "备注" } };
 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace HrmSalaryFmt
                 return;
             }
 
-            DataTable dtSrc = UtilsNPOI.ReadExcel_NPOI(txtSrcPath.Text, "导入OA");
+            DataTable dtSrc = UtilsNPOI.ReadExcel(txtSrcPath.Text, "导入OA");
             Dictionary<string, Dictionary<string, string>> dic = new Dictionary<string, Dictionary<string, string>>();
             for (int r = 0; r < dtSrc.Rows.Count; r++)
             {
@@ -87,7 +87,7 @@ namespace HrmSalaryFmt
                 }
             }
 
-            DataTable dtTgt = UtilsNPOI.ReadExcel_NPOI(txtTgtPath.Text, "CompensationTarget");
+            DataTable dtTgt = UtilsNPOI.ReadExcel(txtTgtPath.Text, "CompensationTarget");
             for (int r = 0; r < dtTgt.Rows.Count; r++)
             {
                 string key = dtTgt.Rows[r]["员工编号"].ToString();
@@ -102,7 +102,7 @@ namespace HrmSalaryFmt
             }
 
             string filename = Path.Combine(Path.GetDirectoryName(txtSrcPath.Text), $"CompensationTarget-{DateTime.Now.ToString("yyyyMMddHHmmss")}.xls");
-            UtilsNPOI.WriteExcel_NPOI(dtTgt, filename, "CompensationTarget");
+            UtilsNPOI.WriteExcel(dtTgt, filename, "CompensationTarget");
 
             MessageBox.Show("Done");
         }
