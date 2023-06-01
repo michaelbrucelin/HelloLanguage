@@ -45,8 +45,7 @@ namespace HrmSalaryFmt
 
             // 表头及列的数据类型
             IRow header = sheet.GetRow(sheet.FirstRowNum);
-            List<int> columns = new List<int>();
-
+            int colcnt = 0;
             IRow firstrow = sheet.GetRow(sheet.FirstRowNum + 1);
             for (int i = 0; i < header.LastCellNum; i++)
             {
@@ -59,19 +58,20 @@ namespace HrmSalaryFmt
                 {
                     dt.Columns.Add(new DataColumn(obj.ToString(), ReadExcelCellDataType(firstrow.GetCell(i))));
                 }
-                columns.Add(i);
+                colcnt++;
             }
 
 
             // 获取数据
             for (int i = sheet.FirstRowNum + 1; i <= sheet.LastRowNum; i++)
             {
+                if (sheet.GetRow(i) == null) continue;
+
                 DataRow dr = dt.NewRow();
                 bool hasValue = false;
-                foreach (int j in columns)
+                for (int j = 0; j < colcnt; j++)
                 {
-                    // 判断非空行 非空格
-                    if (sheet.GetRow(i) != null && sheet.GetRow(i).GetCell(j) != null)
+                    if (sheet.GetRow(i).GetCell(j) != null)
                     {
                         dr[j] = ReadExcelCellValue(sheet.GetRow(i).GetCell(j));
                         if (dr[j] != null && dr[j].ToString().Length > 0)
