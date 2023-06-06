@@ -113,14 +113,29 @@ namespace HrmSalaryFmt
                 case CellType.Error:
                     return cell.ErrorCellValue;
                 case CellType.Formula:
-                default:
                     try
                     {
                         return cell.NumericCellValue;
                     }
                     catch
                     {
-                        return "=" + cell.CellFormula;
+                        try
+                        {
+                            return cell.StringCellValue;
+                        }
+                        catch
+                        {
+                            return "=" + cell.CellFormula;
+                        }
+                    }
+                default:
+                    try
+                    {
+                        return cell.StringCellValue;
+                    }
+                    catch
+                    {
+                        return cell.ErrorCellValue;
                     }
             }
         }
@@ -149,6 +164,7 @@ namespace HrmSalaryFmt
                 case CellType.Error:
                     return typeof(string);
                 case CellType.Formula:
+                    return typeof(string);
                 default:
                     return typeof(string);
             }
