@@ -7,9 +7,12 @@ This script applies color theme on saved sessions in PuTTY
 3. Drag'n'Drop reg-file on `_puttycolor.js` in Windows Explorer for applying theme on saved PuTTY sessions
 4. Enjoy it!
 
+---
 
-
-----
 Original [putty.org.ru](http://putty.org.ru/themes/index.html)
 
 Now avaliable on [webarchive]( https://web.archive.org/web/20151122030926/http://putty.org.ru:80/themes/index.html)
+
+---
+
+当前用的是第2套配色。
