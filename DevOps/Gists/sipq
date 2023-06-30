@@ -1,0 +1,56 @@
+#!/bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+export PATH
+LANG=C
+
+usage() { echo "Usage: $0 -z callere164 -b calleee164 -x xxx.xml -f file -l limit -r cps -p cps_unit" 1>&2; exit 1; }
+
+while getopts ":z:b:x:f:l:r:p:" arg; do
+    case "${arg}" in
+        z)
+            er=${OPTARG}
+            ;;
+        b)
+            ee=${OPTARG}
+            ;;
+        x)
+            sf=${OPTARG}
+            ;;
+        f)
+            inf=${OPTARG}
+            ;;
+        l)
+            l=${OPTARG}
+            ;;
+        r)
+            r=${OPTARG}
+            ;;
+        p)
+            rp=${OPTARG}
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ -z "${er}" ] || [ -z "${ee}" ] || [ -z "${sf}" ] || [ -z "${inf}" ] || [ -z "${l}" ] || [ -z "${r}" ] || [ -z "${rp}" ]; then
+    usage
+fi
+
+if [ ! -f "${inf}" ]; then
+    echo "file ${inf} does not exist or unable to open file ${inf}."
+    usage
+fi
+
+uuiq=$(uuidgen)
+filq=".${inf%.*}-${uuiq}.csv"
+cp "${inf}" "${filq}"
+
+echo "${er};${ee};[authentication username=1234 password=1234]" >> "${filq}"
+./sipp -sf "${sf}" -inf "${filq}" -m $(($(grep '' "${filq}" | wc -l)-1)) 111.222.333.444:5555 -l "${l}" -r "${r}" -rp "${rp}"
+
+sleep 3
+rm -f "${filq}"
