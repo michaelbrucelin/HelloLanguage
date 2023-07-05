@@ -18,7 +18,7 @@ cryptography==41.0.0
 cycler==0.10.0
 decorator==5.0.7
 defusedxml==0.7.1
-Django==3.2.19
+Django==3.2.20
 django-bootstrap4==3.0.1
 entrypoints==0.3
 httplib2==0.19.0
