@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorithmCSharp.Algorithm.KMP
+namespace AlgorithmCSharp.Algorithm.String.KMP
 {
-    public class KMP2
+    public class KMP
     {
         public int CharIndex_KMP(string s, string t)
         {
@@ -28,10 +28,10 @@ namespace AlgorithmCSharp.Algorithm.KMP
         }
 
         /// <summary>
-        /// 优化next数组，具体的比较KMP2.GetNext()与KMP.GetNext()
+        /// 由于C#中字符串与书中C定义的字符串结构不同，这里实现的是C#中字符串的next数组
         /// 索引：  012345678    012345678    01234567    012345678
         /// 字符串：ababaaaba    ababaaxba    abababca    aaaaaaaab
-        /// next：  -0-12--12    -0-12-10-    -0-1234-    -0-0-0-07    // 初始为-1，只是为了编程上的方便，没有特别的意义
+        /// next：  -00123112    -00123100    -0012340    -01234567    // 初始为-1，只是为了编程上的方便，没有特别的意义
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -46,14 +46,7 @@ namespace AlgorithmCSharp.Algorithm.KMP
             while (i < s.Length)
             {
                 while (j >= 0 && s[i - 1] != s[j]) j = next[j];
-                if (j == -1)
-                {
-                    if (s[i] != s[0]) next[i] = 0; else next[i] = -1;
-                }
-                else
-                {
-                    if (s[i] != s[j]) next[i] = j + 1; else next[i] = next[j];
-                }
+                next[i] = j + 1;  // next[i] = j == -1 ? 0 : j + 1;
                 i++; j++;
             }
 

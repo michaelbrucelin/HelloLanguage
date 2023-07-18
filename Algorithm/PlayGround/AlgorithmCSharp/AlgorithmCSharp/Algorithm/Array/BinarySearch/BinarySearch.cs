@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorithmCSharp.Algorithm.BinarySearch
+namespace AlgorithmCSharp.Algorithm.Array.BinarySearch
 {
     public class BinarySearch
     {
@@ -76,7 +76,7 @@ namespace AlgorithmCSharp.Algorithm.BinarySearch
             while (left <= right)
             {
                 int mid = left + (right - left) / 2;
-                if (arr[mid] < target || (equal && arr[mid] <= target))
+                if (arr[mid] < target || equal && arr[mid] <= target)
                 {
                     left = mid + 1;
                     result = mid;
@@ -122,7 +122,7 @@ namespace AlgorithmCSharp.Algorithm.BinarySearch
             while (left <= right)
             {
                 int mid = left + (right - left) / 2;
-                if (arr[mid] > target || (equal && arr[mid] >= target))
+                if (arr[mid] > target || equal && arr[mid] >= target)
                 {
                     right = mid - 1;
                     result = mid;
@@ -148,7 +148,7 @@ namespace AlgorithmCSharp.Algorithm.BinarySearch
         /// <returns></returns>
         public static int Search<T>(IList<T> list, T target) where T : IComparable
         {
-            return Search<T>(list, 0, list.Count - 1, target);
+            return Search(list, 0, list.Count - 1, target);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace AlgorithmCSharp.Algorithm.BinarySearch
             while (left <= right)
             {
                 int mid = left + (right - left) / 2;
-                if (list[mid].CompareTo(target) < 0 || (equal && list[mid].CompareTo(target) <= 0))
+                if (list[mid].CompareTo(target) < 0 || equal && list[mid].CompareTo(target) <= 0)
                 {
                     left = mid + 1;
                     result = mid;
@@ -253,7 +253,7 @@ namespace AlgorithmCSharp.Algorithm.BinarySearch
             while (left <= right)
             {
                 int mid = left + (right - left) / 2;
-                if (list[mid].CompareTo(target) > 0 || (equal && list[mid].CompareTo(target) >= 0))
+                if (list[mid].CompareTo(target) > 0 || equal && list[mid].CompareTo(target) >= 0)
                 {
                     right = mid - 1;
                     result = mid;

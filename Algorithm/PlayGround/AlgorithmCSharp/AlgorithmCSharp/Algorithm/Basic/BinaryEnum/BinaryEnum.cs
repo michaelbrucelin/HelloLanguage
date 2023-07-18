@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorithmCSharp.Algorithm.BinaryEnum
+namespace AlgorithmCSharp.Algorithm.Basic.BinaryEnum
 {
     public class BinaryEnum
     {
@@ -14,7 +14,7 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
         /// <param name="n"></param>
         public static void EnumSet(int n)
         {
-            for (int i = 0; i < (1 << n); i++) Console.WriteLine($"{i}:\t{Convert.ToString(i, 2).PadLeft(n, '0')}");
+            for (int i = 0; i < 1 << n; i++) Console.WriteLine($"{i}:\t{Convert.ToString(i, 2).PadLeft(n, '0')}");
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
             do
             {
                 Console.WriteLine($"{i++}:\t{Convert.ToString(sub, 2).PadLeft(n, '0')}");
-            } while ((sub = (sub - 1) & sup) != sup);
+            } while ((sub = sub - 1 & sup) != sup);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
         public static void EnumSubSet2(int sup)
         {
             int i = 0, n = Convert.ToString(sup, 2).Length;
-            for (int sub = sup; sub != 0; sub = (sub - 1) & sup)
+            for (int sub = sup; sub != 0; sub = sub - 1 & sup)
                 Console.WriteLine($"{i++}:\t{Convert.ToString(sub, 2).PadLeft(n, '0')}");
             Console.WriteLine($"{i++}:\t{Convert.ToString(0, 2).PadLeft(n, '0')}");        // for版本需要单独处理0（一个都不选）
         }
@@ -66,7 +66,7 @@ namespace AlgorithmCSharp.Algorithm.BinaryEnum
             {
                 Console.WriteLine($"{i++}:\t{Convert.ToString(kset, 2).PadLeft(n, '0')}");
                 int x = kset & -kset, y = kset + x;
-                kset = ((kset & ~y) / x >> 1) | y;
+                kset = (kset & ~y) / x >> 1 | y;
             }
         }
     }

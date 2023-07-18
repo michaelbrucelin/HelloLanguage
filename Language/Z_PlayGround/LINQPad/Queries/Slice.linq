@@ -8,8 +8,8 @@ s[1..].Dump("s[1..]");      // bcdefghijklmnopqrstuvwxyz
 s[1..^0].Dump("s[1..^0]");  // bcdefghijklmnopqrstuvwxyz
 s[1..^0].Dump("s[1..]");    // bcdefghijklmnopqrstuvwxyz
 s[1..^1].Dump("s[1..^1]");  // bcdefghijklmnopqrstuvwxy
-s[2..^2].Dump("s[2..^2]");  // bcdefghijklmnopqrstuvwxy
+s[2..^2].Dump("s[2..^2]");  //  cdefghijklmnopqrstuvwx
 
 List<int> list = Enumerable.Range(0, 100).ToList();
-list[^1].Dump("list[^1]");
-list[^10].Dump("list[^10]");
+list[^1].Dump("list[^1]");    // 99
+list[^10].Dump("list[^10]");  // 90

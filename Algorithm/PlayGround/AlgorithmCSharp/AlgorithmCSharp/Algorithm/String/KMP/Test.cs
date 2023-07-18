@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlgorithmCSharp.Algorithm.KMP
+namespace AlgorithmCSharp.Algorithm.String.KMP
 {
     public class Test
     {
