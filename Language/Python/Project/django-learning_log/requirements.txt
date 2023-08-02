@@ -14,7 +14,7 @@ chardet==3.0.4
 cli-helpers==2.1.0
 click==8.0.1
 configobj==5.0.6
-cryptography==41.0.2
+cryptography==41.0.3
 cycler==0.10.0
 decorator==5.0.7
 defusedxml==0.7.1
