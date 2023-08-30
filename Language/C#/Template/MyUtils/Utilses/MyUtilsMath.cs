@@ -132,6 +132,7 @@ namespace TestCSharp
             int move = 0;
             while (x != y)
             {
+                /* 改为switch写法
                 if ((x & 1) == 0 && (y & 1) == 0)
                 {
                     x >>= 1; y >>= 1; move++;
@@ -141,6 +142,16 @@ namespace TestCSharp
                 else
                 {
                     if (x > y) x = (x - y) >> 1; else y = (y - x) >> 1;
+                }
+                */
+                switch ((x & 1, y & 1))
+                {
+                    case (0, 0): x >>= 1; y >>= 1; move++; break;
+                    case (0, 1): x >>= 1; break;
+                    case (1, 0): y >>= 1; break;
+                    default:  // (1, 1)
+                        if (x > y) x = (x - y) >> 1; else y = (y - x) >> 1;
+                        break;
                 }
             }
 
