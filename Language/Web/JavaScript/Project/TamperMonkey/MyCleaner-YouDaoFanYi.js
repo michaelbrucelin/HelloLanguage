@@ -43,7 +43,9 @@
         // footer
         item = document.querySelector("#app > div.index.os_Windows > div.footer");
         if(item) item.remove();
-
+        // banner
+        item = document.querySelector("#app > div > div.banner");
+        if(item) item.remove();
         // app ad
         item = document.querySelector("#app > div > div.translate-tab-container > div.tab-body-border-box > div > div.box_ch");
         if(item) item.remove();
