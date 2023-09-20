@@ -2,6 +2,14 @@
 # Install-Module -Name Wasp
 
 function MyClose-RTXMessage() {
+    $modules = Get-Module
+    if (!$modules.Name.Contains('Wasp')) {
+        $execplcy = Get-ExecutionPolicy
+        Set-ExecutionPolicy RemoteSigned -Force
+        Import-Module Wasp
+        Set-ExecutionPolicy $execplcy -Force
+    }
+
     $rtx=Get-Process -Name RTX
     $rtxmsg=Select-UIElement -ControlType 'Pane' -PID $rtx.id -ClassName Afx*
 
