@@ -6,7 +6,6 @@ string s = "abcdefghijklmnopqrstuvwxyz";
 s[^1].Dump("s[^1]");        // z
 s[1..].Dump("s[1..]");      // bcdefghijklmnopqrstuvwxyz
 s[1..^0].Dump("s[1..^0]");  // bcdefghijklmnopqrstuvwxyz
-s[1..^0].Dump("s[1..]");    // bcdefghijklmnopqrstuvwxyz
 s[1..^1].Dump("s[1..^1]");  // bcdefghijklmnopqrstuvwxy
 s[2..^2].Dump("s[2..^2]");  //  cdefghijklmnopqrstuvwx
 s[3..9].Dump("s[3..9]");    //   defghi
