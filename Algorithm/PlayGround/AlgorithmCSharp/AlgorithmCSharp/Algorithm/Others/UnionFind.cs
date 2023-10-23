@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,53 +7,88 @@ using System.Threading.Tasks;
 
 namespace AlgorithmCSharp.Algorithm.Others
 {
-    public class UnionFind
+    public class UnionFind<T> : IEnumerable<T> where T : IComparable<T>
     {
-        public UnionFind(int n)
+        public UnionFind()
         {
-            parents = new int[n];
-            for (int i = 0; i < n; i++) parents[i] = i;
-            sizes = new int[n];
-            Array.Fill(sizes, 1);
+            nodes = new Dictionary<T, UnionFindNode<T>>();
         }
 
-        private int[] parents;
-        private int[] sizes;
+        private Dictionary<T, UnionFindNode<T>> nodes;
 
-        public int Find(int x)
+        public int Count { get { return nodes.Count; } }
+
+        public IEnumerator<T> GetEnumerator()
         {
-            if (parents[x] == x)
+            return nodes.Keys.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return nodes.Keys.GetEnumerator();
+        }
+
+        public bool Contains(T data)
+        {
+            return nodes.ContainsKey(data);
+        }
+
+        public bool Make(T data)
+        {
+            if (Contains(data)) return false;
+
+            nodes.Add(data, new UnionFindNode<T>(data));
+
+            return true;
+        }
+
+        public bool Union(T dataA, T dataB)
+        {
+            var nodeA = nodes[dataA];
+            var nodeB = nodes[dataB];
+
+            var parentA = nodeA.Parent;
+            var parentB = nodeB.Parent;
+
+            if (parentA == parentB) return false;
+
+            if (parentA.Rank >= parentB.Rank)
             {
-                return x;
+                if (parentA.Rank == parentB.Rank) ++parentA.Rank;
+
+                parentB.Parent = parentA;
             }
             else
             {
-                parents[x] = Find(parents[x]);
-                return parents[x];
+                parentA.Parent = parentB;
             }
+
+            return true;
         }
 
-        public void Union(int x, int y)
+        public T Find(T data)
         {
-            int rx = Find(x), ry = Find(y);
-            if (rx != ry)
-            {
-                if (sizes[rx] > sizes[ry])
-                {
-                    parents[ry] = rx;
-                    sizes[rx] += sizes[ry];
-                }
-                else
-                {
-                    parents[rx] = ry;
-                    sizes[ry] += sizes[rx];
-                }
-            }
+            return Find(nodes[data]).Data;
         }
 
-        public int GetSize(int x)
+        public bool IsEmpty()
         {
-            return sizes[x];
+            return Count == 0;
+        }
+
+        public void Clear()
+        {
+            nodes.Clear();
+        }
+
+        private UnionFindNode<T> Find(UnionFindNode<T> node)
+        {
+            var parent = node.Parent;
+            if (parent == node) return node;
+
+            node.Parent = Find(node.Parent);
+
+            return node.Parent;
         }
     }
 }
