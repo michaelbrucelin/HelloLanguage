@@ -2,7 +2,7 @@
 // Console.WriteLine("Hello, World!");
 
 // using AlgorithmCSharp.Algorithm.KMP;
-using AlgorithmCSharp.Algorithm.BinaryEnum;
+using AlgorithmCSharp.Algorithm.Basic.BinaryEnum;
 // using AlgorithmCSharp.Algorithm.Tree.BinaryTree;
 using AlgorithmCSharp.Algorithm.Graph;
 
