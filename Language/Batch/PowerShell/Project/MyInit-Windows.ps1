@@ -24,7 +24,7 @@ Stop-Service AdobeUpdateService
 
 # 4. 更新我的文档中的文件，用于阿里云盘自动同步用
 $MyDocPath='C:\Users\Administrator\Documents\'
-$DateStr=Get-Date -Format 'yyyyMMdd'
+$DateStr=Get-Date -Format 'yyyyMMdd_HHmmss'
 Get-ChildItem -Path $MyDocPath -Filter aaliyppj*.txt | ForEach-Object { Remove-Item $_.FullName }
 Get-Date    > $MyDocPath'aaliyppj_date_'$DateStr'.txt'
 Get-Service > $MyDocPath'aaliyppj_service_'$DateStr'.txt'
