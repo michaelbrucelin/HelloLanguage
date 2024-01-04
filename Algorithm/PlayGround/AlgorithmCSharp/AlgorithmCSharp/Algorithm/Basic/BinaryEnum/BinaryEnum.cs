@@ -61,8 +61,8 @@ namespace AlgorithmCSharp.Algorithm.Basic.BinaryEnum
         {
             if (k == 0) throw new Exception("一个元素都不选需要单独处理");
 
-            int kset = (1 << k) - 1, i = 0;
-            while (kset < 1 << n)
+            int kset = (1 << k) - 1, limit = 1 << n, i = 0;
+            while (kset < limit)
             {
                 Console.WriteLine($"{i++}:\t{Convert.ToString(kset, 2).PadLeft(n, '0')}");
                 int x = kset & -kset, y = kset + x;
