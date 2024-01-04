@@ -54,6 +54,7 @@ namespace AlgorithmCSharp.Algorithm.Basic.BinaryEnum
         ///               2. 将这一区间全部变为0，并将区间最左侧的0变为1
         ///               3. 将第1步取出的区间右移，知道剩下的1的个数少了1个
         ///               4. 将第2步和第3步的结果按位取或
+        /// 参考：https://programmingforinsomniacs.blogspot.com/2018/03/gospers-hack-explained.html
         /// </summary>
         /// <param name="n"></param>
         /// <param name="k"></param>
@@ -61,13 +62,13 @@ namespace AlgorithmCSharp.Algorithm.Basic.BinaryEnum
         {
             if (k == 0) throw new Exception("一个元素都不选需要单独处理");
 
-            int kset = (1 << k) - 1, limit = 1 << n, x, y, i = 0;
+            int kset = (1 << k) - 1, limit = 1 << n, c, r, i = 0;
             while (kset < limit)
             {
-                Console.WriteLine($"{i++}:\t{Convert.ToString(kset, 2).PadLeft(n, '0')}");
-                x = kset & -kset;
-                y = kset + x;
-                kset = (kset & ~y) / x >> 1 | y;
+                Console.WriteLine($"{i++}:\t{Convert.ToString(kset, 2).PadLeft(n, '0')}");  // 业务逻辑
+                c = kset & -kset;
+                r = kset + c;
+                kset = (((r ^ kset) >> 2) / c) | r;  // kset = (kset & ~r) / c >> 1 | r; 这样也可以，具体有没有差异没分析
             }
         }
     }
