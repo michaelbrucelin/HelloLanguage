@@ -65,7 +65,8 @@ namespace AlgorithmCSharp.Algorithm.Basic.BinaryEnum
             while (kset < limit)
             {
                 Console.WriteLine($"{i++}:\t{Convert.ToString(kset, 2).PadLeft(n, '0')}");
-                x = kset & -kset, y = kset + x;
+                x = kset & -kset;
+                y = kset + x;
                 kset = (kset & ~y) / x >> 1 | y;
             }
         }
