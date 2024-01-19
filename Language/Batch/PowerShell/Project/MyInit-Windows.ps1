@@ -26,6 +26,6 @@ Stop-Service AdobeUpdateService
 $MyDocPath='C:\Users\Administrator\Documents\'
 $DateStr=Get-Date -Format 'yyyyMMdd_HHmmss'
 Get-ChildItem -Path $MyDocPath -Filter aaliyppj*.txt | ForEach-Object { Remove-Item $_.FullName }
-Get-Date    > $MyDocPath'aaliyppj_date_'$DateStr'.txt'
-Get-Service > $MyDocPath'aaliyppj_service_'$DateStr'.txt'
-Get-Process > $MyDocPath'aaliyppj_process_'$DateStr'.txt'
+Get-Date    -ErrorAction SilentlyContinue > $MyDocPath'aaliyppj_date_'$DateStr'.txt'
+Get-Service -ErrorAction SilentlyContinue > $MyDocPath'aaliyppj_service_'$DateStr'.txt'
+Get-Process -ErrorAction SilentlyContinue > $MyDocPath'aaliyppj_process_'$DateStr'.txt'
