@@ -1,4 +1,6 @@
-<Query Kind="Statements" />
+<Query Kind="Statements">
+  <RuntimeVersion>7.0</RuntimeVersion>
+</Query>
 
 
 // 1. stack to list
@@ -34,3 +36,8 @@ for (int i = 0; i < 100; i++)
 	Console.Write($"{stack.Peek()}  ");
 	stack.Peek()--;  // 不支持这样操作
 }
+
+
+// 4. stack集合初始化
+Stack<int> stack = new Stack<int>() { 1, 2, 3 };  // .Net8开始支持这种写法
+stack.Dump("stack");
