@@ -28,6 +28,13 @@ function MyMove-IMWindows() {
         $em_w | Invoke-Transform.Resize -width 1000 -height 788 -ErrorAction SilentlyContinue
     }
 
+    # DingTalk
+    if ($dd_p = Get-Process -Name 'DingTalk' -ErrorAction SilentlyContinue) {
+        $dd_w = Select-UIElement -PID $dd_p.Id -WindowName '钉钉' -ControlType Window
+        $dd_w | Invoke-Transform.Move -x 923 -y 106 -ErrorAction SilentlyContinue
+        $dd_w | Invoke-Transform.Resize -width 1000 -height 788 -ErrorAction SilentlyContinue
+    }
+
     # QQ
     if ($qq_p = Get-Process -Name 'QQ' -ErrorAction SilentlyContinue) {
         # 主窗体
