@@ -34,7 +34,6 @@ namespace AlgorithmCSharp.Algorithm.Maths
         public static List<int> GetPrimes(int n)
         {
             List<int> result = new List<int>();
-
             bool[] mask = new bool[n]; Array.Fill(mask, true);
             for (int i = 2, boundary = (int)Math.Floor(Math.Sqrt(n)); i < n; i++) if (mask[i])
                 {
