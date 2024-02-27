@@ -27,7 +27,7 @@ namespace AlgorithmCSharp.Algorithm.Maths
         }
 
         /// <summary>
-        /// 返回[1, n]之间的全部质数，埃氏筛，时间复杂度：O(nlog⁡log⁡n)
+        /// 返回[1, n)之间的全部质数，埃氏筛，时间复杂度：O(nlog⁡log⁡n)
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace AlgorithmCSharp.Algorithm.Maths
         }
 
         /// <summary>
-        /// 返回[1, n]之间的全部质数，线性筛，时间复杂度：O(n)
+        /// 返回[1, n)之间的全部质数，线性筛，时间复杂度：O(n)
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
