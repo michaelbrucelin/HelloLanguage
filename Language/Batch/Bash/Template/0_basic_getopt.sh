@@ -9,39 +9,30 @@ function usage() {
     exit 1;
 }
 
-while getopts ":I:i:c:lr:" arg; do
-    case "${arg}" in
-        I)
-            I=${OPTARG}
-            ;;
-        i)
-            i=${OPTARG}
-            ;;
-        c)
-            c=${OPTARG}
-            ;;
-        l)
-            l="list"
-            ;;
-        r)
-            r=${OPTARG}
-            ;;
-        *)
-            usage
-            ;;
+parameters=$(getopt -o ab:c:: -l longa,longb:,longc:: -n "$0" -- "$@")
+[ $? != 0 ] && usage                            # [ $? != 0 ] && exit 1
+eval set -- "${parameters}"                     # 将$parameters设置为位置参数
+while true ; do                                 # 循环解析位置参数
+    case "$1" in
+        -a|--longa) arga='y';  shift ;;         # 不带参数的选项-a或--longa
+        -b|--longb) argb=$2; shift 2 ;;         #   带参数的选项-b或--longb
+        -c|--longc)                             # 参数可选的选项-c或--longc
+            case "$2" in 
+                "") argc='not set'; shift 2 ;;  # 没有给可选参数
+                *) argc=$2;       shift 2 ;;    #   给了可选参数
+            esac ;;
+        --) shift; break ;;                     # 开始解析非选项类型的参数，break后，它们都保留在$@中
+        *) usage ;;                             # exit 1 ;;
     esac
 done
-shift $((OPTIND-1))
 
-# if [ -z "${I}" ] || [ -z "${i}" ] || [ -z "${c}" ] || [ -z "${l}" ] || [ -z "${r}" ]; then
+# if [ -z "${arga}" ] || [ -z "${argb}" ] || [ -z "${argc}" ]; then
 #     usage
 # fi
 
-if [ -n "${I}" ]; then echo "\$I is: ${I}"; else echo "\$I is not exists"; fi
-if [ -n "${i}" ]; then echo "\$i is: ${i}"; else echo "\$i is not exists"; fi
-if [ -n "${c}" ]; then echo "\$c is: ${c}"; else echo "\$c is not exists"; fi
-if [ -n "${l}" ]; then echo "\$l is: ${l}"; else echo "\$l is not exists"; fi
-if [ -n "${r}" ]; then echo "\$r is: ${r}"; else echo "\$r is not exists"; fi
+if [ -n "${arga}" ]; then echo "\$arga is: ${arga}"; else echo "\$arga is not exists"; fi
+if [ -n "${argb}" ]; then echo "\$argb is: ${argb}"; else echo "\$argb is not exists"; fi
+if [ -n "${argc}" ]; then echo "\$argc is: ${argc}"; else echo "\$argc is not exists"; fi
 if [ -n "${1}" ]; then echo "\$1 is: ${1}"; else echo "\$1 is not exists"; fi
 if [ -n "${2}" ]; then echo "\$2 is: ${2}"; else echo "\$2 is not exists"; fi
 if [ -n "${3}" ]; then echo "\$3 is: ${3}"; else echo "\$3 is not exists"; fi
