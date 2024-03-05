@@ -14,8 +14,8 @@ parameters=$(getopt -o ab:c:: -l longa,longb:,longc:: -n "$0" -- "$@")
 eval set -- "${parameters}"                     # 将$parameters设置为位置参数
 while true ; do                                 # 循环解析位置参数
     case "$1" in
-        -a|--longa) arga='y';  shift ;;         # 不带参数的选项-a或--longa
-        -b|--longb) argb=$2; shift 2 ;;         #   带参数的选项-b或--longb
+        -a|--longa) arga='y'; shift ;;          # 不带参数的选项-a或--longa
+        -b|--longb) argb=$2;  shift 2 ;;        #   带参数的选项-b或--longb
         -c|--longc)                             # 参数可选的选项-c或--longc
             case "$2" in 
                 "") argc='not set'; shift 2 ;;  # 没有给可选参数
