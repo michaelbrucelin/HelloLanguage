@@ -46,24 +46,3 @@ echo "the count of parameters is $#"
 
 
 # test
-# 这种使用方法命名的参数必须全部放在非命名参数的前面，参数的数量统计的是非命名参数的数量
-# ./test.sh -I eth0 -i 1 -l 100 -r remote 100 200
-# > $I is: eth0
-# > $i is: 1
-# > $c is not exists
-# > $l is: list
-# > $r is not exists
-# > $1 is: 100
-# > $2 is: -r
-# > $3 is: remote
-# > $4 is: 100
-# > $5 is: 200
-# > $6 is not exists
-# > $7 is not exists
-# > $8 is not exists
-# > $9 is not exists
-# > the count of parameters is 5
-# 
-# -i参数没有给值，直接报错
-# ./test.sh -I eth0 -i   
-# > Usage: ./test.sh ... ...
