@@ -19,7 +19,7 @@ while true ; do                                 # 循环解析位置参数
         -c|--longc)                             # 参数可选的选项-c或--longc
             case "$2" in 
                 "") argc='not set'; shift 2 ;;  # 没有给可选参数
-                *) argc=$2;       shift 2 ;;    #   给了可选参数
+                *)  argc=$2;        shift 2 ;;  #   给了可选参数
             esac ;;
         --) shift; break ;;                     # 开始解析非选项类型的参数，break后，它们都保留在$@中
         *) usage ;;                             # exit 1 ;;
