@@ -9,32 +9,55 @@ export PATH
 LANG=C
 
 function usage() {
-    echo "Usage: $0 {ping args}"       # 执行ping命令，这里之接受 -I, -i, -c 以及 host|ip
-    echo "Usage: $0 -l"                # 列出当前的窗口
-    echo "Usage: $0 -r <window-name>"  # 连接指定的窗口
+    echo "Usage: $0 --name <name> {ping args}"  # 执行ping命令，这里只接受 -I, -i, -c 以及 host|ip
+    echo "Usage: $0 --list [match]"             # 列出当前的窗口
+    echo "Usage: $0 --remote <name>"            # 连接指定的窗口
     exit 1;
 }
 
-while getopts ":I:i:c:lr:" arg; do
-    case "${arg}" in
-        I)
-            I=${OPTARG}
-            ;;
-        i)
-            i=${OPTARG}
-            ;;
-        c)
-            c=${OPTARG}
-            ;;
-        l)
-            l="list"
-            ;;
-        r)
-            r=${OPTARG}
-            ;;
-        *)
-            usage
-            ;;
+parameters=$(getopt -o I:i:c: -l name:,list::,remote: -n "$0" -- "$@")
+[ $? != 0 ] && usage 
+
+or_op=$(echo "$parameters" | grep -Eo '\-\-name|\-\-list' | wc -l)
+[ "$or_op" -gt 1 ] && { echo "--name and --list cannot be together"; usage; }
+or_op=$(echo "$parameters" | grep -Eo '\-\-name|\-\-remote' | wc -l)
+[ "$or_op" -gt 1 ] && { echo "--name and --remote cannot be together"; usage; }
+or_op=$(echo "$parameters" | grep -Eo '\-\-list|\-\-remote' | wc -l)
+[ "$or_op" -gt 1 ] && { echo "--list and --remote cannot be together"; usage; }
+
+eval set -- "${parameters}"
+while true ; do
+    case "$1" in
+        --list)
+            case "$2" in
+                "") list=''; shift 2 ;;
+                *)  list=$2; shift 2 ;;
+            esac ;;
+        --remote) remote=$2; shift 2 ;;
+        --name)   name=$2;   shift 2 ;;
+        -I)       I=$2;      shift 2 ;;
+        -i)       i=$2;      shift 2 ;;
+        -c)       c=$2;      shift 2 ;;
+        --) shift; break ;;
+        *) usage ;;
     esac
 done
-shift $((OPTIND-1))
+
+if [ -n "${list}" ]; then
+    screen -list "${list}"
+    exit 0
+fi
+
+if [ -n "${remote}" ]; then
+    screen -r "${remote}"
+    exit 0
+fi
+
+if [ -z "${name}" ] || [ -z "${I}" ] || [ -z "${i}" ] || [ -z "${c}" ] || [ $# -gt 1 ]; then
+    usage
+fi
+
+if ! screen -list | grep -q "myscreen"; then
+    echo "new"
+    # run bash script
+fi

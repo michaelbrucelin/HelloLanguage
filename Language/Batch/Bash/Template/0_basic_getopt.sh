@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 使用可以参考auto_screen.sh
+
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 export PATH
 LANG=C
@@ -10,7 +12,7 @@ function usage() {
 }
 
 parameters=$(getopt -o ab:c:: -l longa,longb:,longc:: -n "$0" -- "$@")
-[ $? != 0 ] && usage                            # [ $? != 0 ] && exit 1
+[ $? -ne 0 ] && usage                           # [ $? -ne 0 ] && exit 1，getopt会报错误信息
 eval set -- "${parameters}"                     # 将$parameters设置为位置参数
 while true ; do                                 # 循环解析位置参数
     case "$1" in
