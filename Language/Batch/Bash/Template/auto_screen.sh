@@ -65,7 +65,7 @@ if ! screen -list | grep -q "${name}"; then
     screen -S "${name}" bash -c "ping $1 -I ${I} -i ${i} -c ${c}"
 else
     echo "a remote window with the same name already exists"
-    exit 1
+    usage
 fi
 
 # if [ -n "${list}" ]; then echo "\$list is: ${list}"; else echo "\$list is not exists"; fi
