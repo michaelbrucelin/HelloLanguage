@@ -7,10 +7,8 @@ age1 = 10
 print("this is the var: ", age1)
 # 格式化字符串的两种方式：
 print("格式化字符串的两种方式：")
-print("my name is %s, I am from %s, I am %d age now." %
-      (name1, country1, age1))
-print("my name is {0}, I am from {1}, I am {2} age now.".format(
-    name1, country1, age1))
+print("my name is %s, I am from %s, I am %d age now." %(name1, country1, age1))
+print("my name is {0}, I am from {1}, I am {2} age now.".format(name1, country1, age1))
 
 # 2. 其他设定
 s1 = "www"
