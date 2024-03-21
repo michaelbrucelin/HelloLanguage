@@ -74,29 +74,29 @@ for c in all_ascii_digits:
 all_ascii_letter = ["a", "b", "c", "x", "y", "z", "i", "j", "k", "m", "n", "p", "q"]
 for c1 in all_ascii_letter:
     for c2 in all_ascii_letter:
-        for s in ['(%s)(%s)' % (c1, c2), '(%s),(%s)' % (c1, c2), '(%s)+(%s)' % (c1, c2), '(%s)-(%s)' % (c1, c2), '(%s)>(%s)' % (c1, c2), '(%s)<(%s)' % (c1, c2)]:
-            editor.replace(r'%s%s%s' % (s, s, s), r'$%s$' % (s))
-            editor.replace(r'%s\\text{%s}%s' % (s, s, s), r'$\\text{%s}$' % (s))
-            editor.replace(r'%s\\textit{%s}%s' % (s, s, s), r'$\\textit{%s}$' % (s))
-            editor.replace(r'O(%s)O(%s)O(%s)' % (s, s, s), r'$O(%s)$' % (s))
-            editor.replace(r'O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), r'$\mathcal{O}(%s)$' % (s))
+        for s in ['%s%s' % (c1, c2), '%s,%s' % (c1, c2), '%s+%s' % (c1, c2), '%s-%s' % (c1, c2), '%s>%s' % (c1, c2), '%s<%s' % (c1, c2)]:
+            editor.replace('%s%s%s' % (s, s, s), '$%s$' % (s))
+            editor.replace('%s\\text{%s}%s' % (s, s, s), r'$\\text{%s}$' % (s))
+            editor.replace('%s\\textit{%s}%s' % (s, s, s), r'$\\textit{%s}$' % (s))
+            editor.replace('O(%s)O(%s)O(%s)' % (s, s, s), '$O(%s)$' % (s))
+            editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}\(%s\)$' % (s))
 
+'''
+# 实在是太慢
 for c1 in all_ascii_letter:
     for c2 in all_ascii_letter:
         for c3 in all_ascii_letter:
-            for s in ['(%s)(%s)(%s)' % (c1, c2, c3), '(%s),(%s),(%s)' % (c1, c2, c3), '(%s)+(%s)+(%s)' % (c1, c2, c3), '(%s)-(%s)-(%s)' % (c1, c2, c3), '(%s)>(%s)>(%s)' % (c1, c2, c3), '(%s)<(%s)<(%s)' % (c1, c2, c3)]:
-                editor.replace('%s%s%s' % (s, s, s), '$%s$' % (s))
-                editor.replace('%s\\text{%s}%s' % (s, s, s), '$\\text{%s}$' % (s))
-                editor.replace('%s\\textit{%s}%s' % (s, s, s), '$\\textit{%s}$' % (s))
-                editor.replace('O(%s)O(%s)O(%s)' % (s, s, s), '$O(%s)$' % (s))
-                editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}(%s)$' % (s))
+            for s in ['%s%s%s' % (c1, c2, c3), '%s,%s,%s' % (c1, c2, c3), '%s+%s+%s' % (c1, c2, c3), '%s-%s-%s' % (c1, c2, c3), '%s>%s>%s' % (c1, c2, c3), '%s<%s<%s' % (c1, c2, c3)]:
+                editor.replace(... ...)
+'''
 
-items = ["num", "nums", "number", "numbers", r"\\Sigma", r"\|\\Sigma\|"]
+items = ["num", "nums", "number", "numbers", "\Sigma", "|\Sigma|", "|\Sigma|=26", "|\Sigma|=32"]
 for s in items:
     editor.replace('%s%s%s' % (s, s, s), '$%s$' % (s))
-    editor.replace('%s\\text{%s}%s' % (s, s, s), '$\\text{%s}$' % (s))
-    editor.replace('%s\\textit{%s}%s' % (s, s, s), '$\\textit{%s}$' % (s))
+    editor.replace('%s\\text{%s}%s' % (s, s, s), r'$\\text{%s}$' % (s))
+    editor.replace('%s\\textit{%s}%s' % (s, s, s), r'$\\textit{%s}$' % (s))
     editor.replace('O(%s)O(%s)O(%s)' % (s, s, s), '$O(%s)$' % (s))
-    editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}(%s)$' % (s))
+    editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}\(%s\)$' % (s))
 
 # tuples = [("", "")]
+editor.appendText("\r\ndone\r\n")
