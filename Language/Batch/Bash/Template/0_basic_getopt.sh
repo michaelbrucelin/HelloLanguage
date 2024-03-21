@@ -11,12 +11,12 @@ function usage() {
     exit 1;
 }
 
-parameters=$(getopt -o ab:c:: -l longa,longb:,longc:: -n "$0" -- "$@")
+parameters=$(getopt -o ab:c:: -l longa,longb:,longc:: -n "$0" -- "$@")  # 即使没有-o或者-l，也要写一个-o f与-l fakearg放那里，否则报错
 [ $? -ne 0 ] && usage                           # [ $? -ne 0 ] && exit 1，getopt会报错误信息
 eval set -- "${parameters}"                     # 将$parameters设置为位置参数
 while true ; do                                 # 循环解析位置参数
     case "$1" in
-        -a|--longa) arga='y'; shift ;;          # 不带参数的选项-a或--longa
+        -a|--longa) arga='y'; shift   ;;        # 不带参数的选项-a或--longa
         -b|--longb) argb=$2;  shift 2 ;;        #   带参数的选项-b或--longb
         -c|--longc)                             # 参数可选的选项-c或--longc
             case "$2" in 
