@@ -12,6 +12,7 @@ s[1..^0].Dump("s[1..^0]");     //  bcdefghijklmnopqrstuvwxyz
 s[1..^1].Dump("s[1..^1]");     //  bcdefghijklmnopqrstuvwxy
 s[2..^2].Dump("s[2..^2]");     //   cdefghijklmnopqrstuvwx
 s[3..9].Dump("s[3..9]");       //    defghi
+// s[9..3].Dump("s[9..3]");    // Exception: Length cannot be less than zero. (Parameter 'length')
 
 List<int> list = Enumerable.Range(0, 100).ToList();
 list[^1].Dump("list[^1]");     // 99

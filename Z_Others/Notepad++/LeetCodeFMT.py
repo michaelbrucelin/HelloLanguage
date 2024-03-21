@@ -51,27 +51,52 @@ editor.rereplace("^思路与算法$", "##### 思路与算法")
 editor.rereplace("^代码$", "##### 代码")
 editor.rereplace("^复杂度分析$", "##### 复杂度分析")
 
+editor.replace("\t", "    ")
+editor.replace("−", "-")
+editor.replace(" ", " ")       # THSP
+editor.replace("\n​\n ", "")    # ZWSP
+editor.replace("​", "")         # ZWSP
+editor.replace("∣", "|")
+editor.replace("Σ", r"\\Sigma")
+editor.replace("×", r"\\times")
+
 all_ascii_digits = string.digits + string.ascii_lowercase + string.ascii_uppercase
 all_ascii_letter = string.ascii_lowercase + string.ascii_uppercase
 
 for c in all_ascii_digits:
     # editor.rereplace(f'([^{c}])({c})({c})({c})([^{c}])', r'\1$\3$\5')  # python 2.7.18 不支持此用法
     editor.rereplace(r'([^%s])(%s)(%s)(%s)([^%s])' % (c, c, c, c, c), r'\1$\3$\5')
-    editor.rereplace(r'(O\(%s\))(O\(%s\))(O\(%s\))' % (c, c, c), r'$\2$')
+    editor.replace('O(%s)O(%s)O(%s)' % (c, c, c), '$O(%s)$' % (c))
+    editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (c, c, c), '$\mathcal{O}(%s)$')
 
-editor.replace("−", "-")
-editor.replace(' ', " ")     # THSP
-editor.replace('\n​\n ', '')  # ZWSP
-editor.replace('​', "")       # ZWSP
-editor.replace("ababab", "$ab$")
-editor.replace("bcbcbc", "$bc$")
-editor.replace("acacac", "$ac$")
-editor.replace("abcabcabc", "$abc$")
-editor.replace("a,ba,ba,b", "$a,b$")
-editor.replace("b,cb,cb,c", "$b,c$")
-editor.replace("a,ca,ca,c", "$a,c$")
-editor.replace("a,b,ca,b,ca,b,c", "$a,b,c$")
-editor.replace("a<ba < ba<b", "$a < b$")
-editor.replace("b<cb < cb<c", "$b < c$")
-editor.replace("a<ca < ca<c", "$a < c$")
-editor.replace("a<b<ca < b < ca<b<c", "$a < b < c$")
+
+# 使用all_ascii_letter太慢，python的效率还是太低
+all_ascii_letter = ["a", "b", "c", "x", "y", "z", "i", "j", "k", "m", "n", "p", "q"]
+for c1 in all_ascii_letter:
+    for c2 in all_ascii_letter:
+        for s in ['(%s)(%s)' % (c1, c2), '(%s),(%s)' % (c1, c2), '(%s)+(%s)' % (c1, c2), '(%s)-(%s)' % (c1, c2), '(%s)>(%s)' % (c1, c2), '(%s)<(%s)' % (c1, c2)]:
+            editor.replace(r'%s%s%s' % (s, s, s), r'$%s$' % (s))
+            editor.replace(r'%s\\text{%s}%s' % (s, s, s), r'$\\text{%s}$' % (s))
+            editor.replace(r'%s\\textit{%s}%s' % (s, s, s), r'$\\textit{%s}$' % (s))
+            editor.replace(r'O(%s)O(%s)O(%s)' % (s, s, s), r'$O(%s)$' % (s))
+            editor.replace(r'O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), r'$\mathcal{O}(%s)$' % (s))
+
+for c1 in all_ascii_letter:
+    for c2 in all_ascii_letter:
+        for c3 in all_ascii_letter:
+            for s in ['(%s)(%s)(%s)' % (c1, c2, c3), '(%s),(%s),(%s)' % (c1, c2, c3), '(%s)+(%s)+(%s)' % (c1, c2, c3), '(%s)-(%s)-(%s)' % (c1, c2, c3), '(%s)>(%s)>(%s)' % (c1, c2, c3), '(%s)<(%s)<(%s)' % (c1, c2, c3)]:
+                editor.replace('%s%s%s' % (s, s, s), '$%s$' % (s))
+                editor.replace('%s\\text{%s}%s' % (s, s, s), '$\\text{%s}$' % (s))
+                editor.replace('%s\\textit{%s}%s' % (s, s, s), '$\\textit{%s}$' % (s))
+                editor.replace('O(%s)O(%s)O(%s)' % (s, s, s), '$O(%s)$' % (s))
+                editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}(%s)$' % (s))
+
+items = ["num", "nums", "number", "numbers", r"\\Sigma", r"\|\\Sigma\|"]
+for s in items:
+    editor.replace('%s%s%s' % (s, s, s), '$%s$' % (s))
+    editor.replace('%s\\text{%s}%s' % (s, s, s), '$\\text{%s}$' % (s))
+    editor.replace('%s\\textit{%s}%s' % (s, s, s), '$\\textit{%s}$' % (s))
+    editor.replace('O(%s)O(%s)O(%s)' % (s, s, s), '$O(%s)$' % (s))
+    editor.replace('O(%s)\mathcal{O}(%s)O(%s)' % (s, s, s), '$\mathcal{O}(%s)$' % (s))
+
+# tuples = [("", "")]
