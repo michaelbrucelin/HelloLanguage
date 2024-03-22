@@ -53,9 +53,11 @@ editor.rereplace("^复杂度分析$", "##### 复杂度分析")
 
 editor.replace("\t", "    ")
 editor.replace("−", "-")
+editor.replace(" ", " ")       # NBSP
 editor.replace(" ", " ")       # THSP
 editor.replace("\n​\n ", "")    # ZWSP
 editor.replace("​", "")         # ZWSP
+editor.replace("⁡", "")         # FA
 editor.replace("∣", "|")
 editor.replace("Σ", r"\\Sigma")
 editor.replace("×", r"\\times")
