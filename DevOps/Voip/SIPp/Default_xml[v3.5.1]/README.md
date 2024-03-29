@@ -1,5 +1,7 @@
 # SIPp默认场景文件
 
+这里记录了SIPp默认的场景文件，可以作为模板编写自己的场景文件。
+
 SIPp v3.5.1
 
 Default scenarios:
