@@ -3,17 +3,19 @@
 SIPp v3.5.1
 
 Default scenarios:
-- 'uac'      : Standard SipStone UAC (default).
-- 'uas'      : Simple UAS responder.
-- 'regexp'   : Standard SipStone UAC - with regexp and variables.
-- 'branchc'  : Branching and conditional branching in scenarios - client.
-- 'branchs'  : Branching and conditional branching in scenarios - server.
+
+- `uac`      : Standard SipStone UAC (default).
+- `uas`      : Simple UAS responder.
+- `regexp`   : Standard SipStone UAC - with regexp and variables.
+- `branchc`  : Branching and conditional branching in scenarios - client.
+- `branchs`  : Branching and conditional branching in scenarios - server.
 
 Default 3pcc scenarios (see -3pcc option):
-- '3pcc-C-A' : Controller A side (must be started after all other 3pcc scenarios)
-- '3pcc-C-B' : Controller B side.
-- '3pcc-A'   : A side.
-- '3pcc-B'   : B side.
+
+- `3pcc-C-A` : Controller A side (must be started after all other 3pcc scenarios)
+- `3pcc-C-B` : Controller B side.
+- `3pcc-A`   : A side.
+- `3pcc-B`   : B side.
 
 ```bash
 sipp -v
