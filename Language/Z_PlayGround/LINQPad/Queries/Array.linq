@@ -19,3 +19,9 @@ arr2d_new.Dump("arr2d_new");
 // 内置的二分法
 arr = new int[] { 1, 2, 3, 3, 3, 4, 5, 6, 6, 6, 7, 8, 9 };
 Array.BinarySearch(arr, 3).Dump();
+
+// 排序
+int[] array = new int[] { 3, 6, 7, 1, 9, 7, 8, 2, 4, 5, 0 };
+Comparer<int> comparer = Comparer<int>.Create((i, j) => (i - j) switch { > 0 => 1, < 0 => -1, _ => 0 });
+Array.Sort(array);
+array.Dump();       // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
