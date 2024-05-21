@@ -13,14 +13,20 @@ namespace AlgorithmCSharp.Algorithm.Others
     {
         public Trie()
         {
-            _root = new TrieNode('\0');  // 根节点值可以是任意字符，这里使用 '\0' 表示
+            Root = new TrieNode('\0');  // 根节点值可以是任意字符，这里使用 '\0' 表示
         }
 
-        private readonly TrieNode _root;
+        public readonly TrieNode Root;
 
         public void Insert(string word)
         {
-            TrieNode ptr = _root;
+            if (string.IsNullOrEmpty(word))
+            {
+                Root.IsEndOfWord = true;
+                return;
+            }
+
+            TrieNode ptr = Root;
             foreach (char c in word)
             {
                 if (!ptr.Children.ContainsKey(c)) ptr.Children[c] = new TrieNode(c);
@@ -31,23 +37,29 @@ namespace AlgorithmCSharp.Algorithm.Others
 
         public bool Search(string word)
         {
+            if (string.IsNullOrEmpty(word)) return Root.IsEndOfWord;
+
             TrieNode node = FindNode(word);
+
             return node != null && node.IsEndOfWord;
         }
 
         public bool StartsWith(string prefix)
         {
+            if (string.IsNullOrEmpty(prefix)) return true;  // 所有字符串都以空字符串作为前缀
+
             return FindNode(prefix) != null;
         }
 
         private TrieNode FindNode(string word)
         {
-            TrieNode ptr = _root;
+            TrieNode ptr = Root;
             foreach (char c in word)
             {
                 if (!ptr.Children.ContainsKey(c)) return null;
                 ptr = ptr.Children[c];
             }
+
             return ptr;
         }
     }
