@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace AlgorithmCSharp.Algorithm.Others
 {
     /// <summary>
-    /// 代码示例，求整型数组最大值的线段树
+    /// 实现了构建线段树和查询区间最大值的功能
     /// </summary>
-    public class SegmentTree_Sample
+    public class SegmentTree_INT_MAX
     {
-        public SegmentTree_Sample(int[] nums)
+        public SegmentTree_INT_MAX(int[] nums)
         {
             this.nums = nums;
             int len = nums.Length;
@@ -60,7 +60,7 @@ namespace AlgorithmCSharp.Algorithm.Others
     public static void Main(string[] args)
     {
         int[] nums = { 1, 3, 2, 7, 9, 11 };
-        SegmentTree_Sample segTree = new SegmentTree_Sample(nums);
+        SegmentTree_INT_MAX segTree = new SegmentTree_INT_MAX(nums);
 
         // Example queries
         int startIndex = 1;
@@ -70,5 +70,5 @@ namespace AlgorithmCSharp.Algorithm.Others
 
         Console.WriteLine($"The maximum value in range [{startIndex}, {endIndex}] is: {maxInRange}");
     }
-     */
+    */
 }

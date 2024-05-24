@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace AlgorithmCSharp.Algorithm.Others
 {
+    /// <summary>
+    /// 实现了通用的线段树，它可以用于存储任意类型的区间信息，并支持自定义的区间查询操作
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class SegmentTree<T>
     {
         public SegmentTree(T[] nums, Func<T, T, T> mergeFunction)
@@ -87,5 +91,5 @@ namespace AlgorithmCSharp.Algorithm.Others
 
         Console.WriteLine($"The sum of values in range [{startIndex}, {endIndex}] is: {sumInRange}");
     }
-     */
+    */
 }

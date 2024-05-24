@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AlgorithmCSharp.Algorithm.Others
 {
     /// <summary>
-    /// 字典树，前缀树，Trie
+    /// 实现了字典树，前缀树，Trie
     /// </summary>
     public class Trie
     {
@@ -63,4 +63,25 @@ namespace AlgorithmCSharp.Algorithm.Others
             return ptr;
         }
     }
+    /*
+    public static void Main(string[] args)
+    {
+        Trie trie = new Trie();
+        
+        // 插入单词
+        trie.Insert("apple");
+        trie.Insert("banana");
+        trie.Insert("orange");
+
+        // 搜索单词
+        Console.WriteLine(trie.Search("apple"));   // 输出: True
+        Console.WriteLine(trie.Search("orange"));  // 输出: True
+        Console.WriteLine(trie.Search("pear"));    // 输出: False
+
+        // 搜索前缀
+        Console.WriteLine(trie.StartsWith("app"));    // 输出: True
+        Console.WriteLine(trie.StartsWith("ban"));    // 输出: True
+        Console.WriteLine(trie.StartsWith("peach"));  // 输出: False
+    }
+    */
 }
