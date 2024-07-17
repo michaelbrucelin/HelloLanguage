@@ -26,3 +26,17 @@ sub = "aaa";
 // str.IndexOf(sub).Dump();
 // Regex.Matches(str, sub).Cast<Match>().Select(m => m.Index).Dump();
 AllIndexesOf(str, sub, true).Dump();
+
+
+StringBuilder sb = new StringBuilder();
+sb.Append("this");
+sb.Append(" ");
+sb.Append("a");
+sb.Append(" ");
+sb.Append("test");
+sb.Append(" ");
+sb.Append("sentence.");
+sb.Append(" ");
+
+sb.ToString().Dump();
+sb.Length.Dump();      // 22

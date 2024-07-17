@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
+PATH="$PATH:/root/bin"
+# PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
 export PATH
 
 LANG=C
