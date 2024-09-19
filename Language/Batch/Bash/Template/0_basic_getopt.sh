@@ -18,7 +18,7 @@ while true ; do                                 # 循环解析位置参数
     case "$1" in
         -a|--longa) arga='y'; shift   ;;        # 不带参数的选项-a或--longa
         -b|--longb) argb=$2;  shift 2 ;;        #   带参数的选项-b或--longb
-        -c|--longc)                             # 参数可选的选项-c或--longc
+        -c|--longc)                             # 参数可选的选项-c或--longc，可选参数短选项需要将值是选项连写，如 -cvalue，长选项需要用=连接，如 -longc=value
             case "$2" in 
                 "") argc='not set'; shift 2 ;;  # 没有给可选参数
                 *)  argc=$2;        shift 2 ;;  #   给了可选参数
