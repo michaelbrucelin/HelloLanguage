@@ -1,7 +1,8 @@
 # 使用Credential对象验证域用户的账号密码的有效性
 # https://www.powershellgallery.com/packages/WFTools/0.1.39/Content/Test-Credential.ps1
 
-function Test-Credential { 
+# function Test-Credential { 
+function Test-ADAuthentication2 {
     <#
     .SYNOPSIS
         Takes a PSCredential object and validates it
