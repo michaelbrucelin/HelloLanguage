@@ -27,6 +27,7 @@ foreach ($user in $USERS) {
                 DisplayName    = $user.DisplayName
                 Password       = $pwd
             }
+            break
         }
     }
 }
@@ -34,7 +35,7 @@ foreach ($user in $USERS) {
 # 输出结果并保存到文件
 if ($Results.Count -gt 0) {
     $Results | Format-Table -AutoSize
-    $Results | Export-Csv -Path "MatchedUsers.csv" -NoTypeInformation -Encoding UTF8
+    # $Results | Export-Csv -Path "MatchedUsers.csv" -NoTypeInformation -Encoding UTF8
 } else {
     Write-Host "没有用户匹配提供的密码。" -ForegroundColor Yellow
 }
