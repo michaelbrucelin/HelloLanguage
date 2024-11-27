@@ -2,7 +2,7 @@
 # https://www.powershellgallery.com/packages/WFTools/0.1.39/Content/Test-Credential.ps1
 
 # function Test-Credential { 
-function Test-ADAuthentication2 {
+function Test-ADCredential2 {
     <#
     .SYNOPSIS
         Takes a PSCredential object and validates it

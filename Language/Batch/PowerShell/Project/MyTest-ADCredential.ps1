@@ -1,6 +1,6 @@
 # 使用明文密码验证域用户的账号密码的有效性
 
-function Test-ADAuthentication {
+function Test-ADCredential {
     param(
         $username,
         $password
