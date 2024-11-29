@@ -15,7 +15,7 @@ $IgnoreUsers = @("Q0000", "Q8888", "Q9999")
 $USERS = Get-ADUser -SearchBase $OU -Filter {Enabled -eq $true} -Properties DisplayName |`
     Where-Object { $_.SamAccountName -notin $IgnoreUsers } |`
     Select-Object SamAccountName, DisplayName, DistinguishedName
-$PWDS = @("123qweQWE", "123qweASD", "q1w2E#R$")
+$PWDS = @("123qweQWE", "123qweASD")
 
 # 验证用户
 $Results = @()
@@ -39,3 +39,9 @@ if ($Results.Count -gt 0) {
 } else {
     Write-Host "没有用户匹配提供的密码。" -ForegroundColor Yellow
 }
+
+# 敏感信息，清除记录
+Clear-History
+Clear-Content $(Get-PSReadlineOption).HistorySavePath
+[Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
+Clear-Host
