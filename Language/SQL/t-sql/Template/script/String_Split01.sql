@@ -6,9 +6,10 @@ declare @str as nvarchar(max) = '北京,天津,河北,山西,内蒙古,辽宁,�
 declare @sep as char(1) = ','
 
 -- 1. SQL Server 2016+
-select ROW_NUMBER() over (order by (select null)) as id
-       , [value] as item
-from string_split(@str, @sep)
+-- select ROW_NUMBER() over (order by (select null)) as id
+--        , [value] as item
+-- from string_split(@str, @sep)
+select orddinal as id, [value] as item from string_split(@str, @sep)
 
 -- 2. 通过动态sql语句实现，通过select+union all的方式形成派生表
 set @str = 'select item = ''' + REPLACE(@str,@sep,''' union all select ''') + ''''
