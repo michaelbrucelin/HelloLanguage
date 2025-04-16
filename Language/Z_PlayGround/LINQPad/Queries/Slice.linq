@@ -10,6 +10,7 @@ s[1..26].Dump("s[1..26]");     //  bcdefghijklmnopqrstuvwxyz
 // s[1..27].Dump("s[1..27]");  // Exception: Index and length must refer to a location within the string. (Parameter 'length')
 s[1..^0].Dump("s[1..^0]");     //  bcdefghijklmnopqrstuvwxyz
 s[1..^1].Dump("s[1..^1]");     //  bcdefghijklmnopqrstuvwxy
+s[..^1].Dump("s[..^1]");       // abcdefghijklmnopqrstuvwxy
 s[2..^2].Dump("s[2..^2]");     //   cdefghijklmnopqrstuvwx
 s[3..9].Dump("s[3..9]");       //    defghi
 // s[9..3].Dump("s[9..3]");    // Exception: Length cannot be less than zero. (Parameter 'length')
@@ -17,3 +18,5 @@ s[3..9].Dump("s[3..9]");       //    defghi
 List<int> list = Enumerable.Range(0, 100).ToList();
 list[^1].Dump("list[^1]");     // 99
 list[^10].Dump("list[^10]");   // 90
+
+
