@@ -7,6 +7,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+HOST=hostname
 IFACE="$1"
 THRESHOLD=$((100 * 1024 * 1024))  # 100MB/s
 INTERVAL=1                        # 检测间隔秒
@@ -25,7 +26,7 @@ while true; do
 
     if [ ${RATE} -ge ${THRESHOLD} ]; then
         TS=$(date +%Y%m%d%H%M%S)
-        FILE="capture_${IFACE}_${TS}.pcap"
+        FILE="/root/${HOST}_capture_${IFACE}_${TS}.pcap"
         timeout ${CAPTURE_DURATION} tcpdump -i ${IFACE} -w "${FILE}" -Z root
         sleep ${COOLDOWN}
     fi
