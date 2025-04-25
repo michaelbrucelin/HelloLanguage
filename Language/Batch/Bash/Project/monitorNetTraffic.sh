@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 监控网卡inbound的流量，如果达到100mbts，则认为是被工具，抓包60秒
+# 监控网卡inbound的流量，如果达到100mbps，则认为是被工具，抓包60秒
 
 if [ -z "$1" ]; then
     echo "Usage: $0 interface"
