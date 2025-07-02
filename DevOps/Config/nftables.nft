@@ -1,0 +1,172 @@
+table ip filter {
+	chain INPUT {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority filter; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip6 filter {
+	chain INPUT {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority filter; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table bridge filter {
+	chain INPUT {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority filter; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip security {
+	chain INPUT {
+		type filter hook input priority 150; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority 150; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority 150; policy accept;
+	}
+}
+table ip raw {
+	chain PREROUTING {
+		type filter hook prerouting priority raw; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority raw; policy accept;
+	}
+}
+table ip mangle {
+	chain PREROUTING {
+		type filter hook prerouting priority mangle; policy accept;
+	}
+
+	chain INPUT {
+		type filter hook input priority mangle; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority mangle; policy accept;
+	}
+
+	chain OUTPUT {
+		type route hook output priority mangle; policy accept;
+	}
+
+	chain POSTROUTING {
+		type filter hook postrouting priority mangle; policy accept;
+	}
+}
+table ip nat {
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+	}
+
+	chain INPUT {
+		type nat hook input priority 100; policy accept;
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+	}
+}
+table ip6 security {
+	chain INPUT {
+		type filter hook input priority 150; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority 150; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority 150; policy accept;
+	}
+}
+table ip6 raw {
+	chain PREROUTING {
+		type filter hook prerouting priority raw; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority raw; policy accept;
+	}
+}
+table ip6 mangle {
+	chain PREROUTING {
+		type filter hook prerouting priority mangle; policy accept;
+	}
+
+	chain INPUT {
+		type filter hook input priority mangle; policy accept;
+	}
+
+	chain FORWARD {
+		type filter hook forward priority mangle; policy accept;
+	}
+
+	chain OUTPUT {
+		type route hook output priority mangle; policy accept;
+	}
+
+	chain POSTROUTING {
+		type filter hook postrouting priority mangle; policy accept;
+	}
+}
+table ip6 nat {
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+	}
+
+	chain INPUT {
+		type nat hook input priority 100; policy accept;
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+	}
+}
+table bridge nat {
+	chain PREROUTING {
+		type filter hook prerouting priority dstnat; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority out; policy accept;
+	}
+
+	chain POSTROUTING {
+		type filter hook postrouting priority srcnat; policy accept;
+	}
+}
