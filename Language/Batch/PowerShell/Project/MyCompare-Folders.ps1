@@ -90,10 +90,16 @@ function MyCompare-Files {
             }
         }
 
-        return $null
+        return [PSCustomObject]@{
+            Success = $true
+            Message = "文件相同"
+        }
     }
     catch {
-        return "读取失败: $_"
+        return [PSCustomObject]@{
+            Success = $false
+            Message = "文件读取失败: $_"
+        }
     }
 }
 
