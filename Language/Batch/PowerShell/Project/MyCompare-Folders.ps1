@@ -3,6 +3,8 @@
 # 2. 文件大小相同
 #     2.1. 随机抽样字节对比
 #     2.2. 比较文件头尾是否一致
+#          比较的是同一个文件，也报错，而且已经有上面的比较代码，头部和尾部的比较意义也就不大了，
+#          所以代码把这两部分比较临时给取消了
 #     2.3. 比较文件的MD5
 
 function MyCompare-Files {
@@ -47,35 +49,35 @@ function MyCompare-Files {
                 }
             }
 
-            # 比较文件的头部
-            $headSize = [Math]::Min(512, [int]($length / 2))
-            $buf1 = New-Object byte[] $headSize
-            $buf2 = New-Object byte[] $headSize
+            # # 比较文件的头部
+            # $headSize = [Math]::Min(512, [int]($length / 2))
+            # $buf1 = New-Object byte[] $headSize
+            # $buf2 = New-Object byte[] $headSize
 
-            $fs1.Seek(0, 'Begin') | Out-Null
-            $fs2.Seek(0, 'Begin') | Out-Null
-            $fs1.Read($buf1, 0, $headSize) | Out-Null
-            $fs2.Read($buf2, 0, $headSize) | Out-Null
-            if (-not ($buf1 -ceq $buf2)) {
-                $fs1.Close(); $fs2.Close();
-                return [PSCustomObject]@{
-                    Success = $false
-                    Message = "文件头不同"
-                }
-            }
+            # $fs1.Seek(0, 'Begin') | Out-Null
+            # $fs2.Seek(0, 'Begin') | Out-Null
+            # $fs1.Read($buf1, 0, $headSize) | Out-Null
+            # $fs2.Read($buf2, 0, $headSize) | Out-Null
+            # if (-not ($buf1 -ceq $buf2)) {
+            #     $fs1.Close(); $fs2.Close();
+            #     return [PSCustomObject]@{
+            #         Success = $false
+            #         Message = "文件头不同"
+            #     }
+            # }
 
-            # 比较文件的尾部
-            $fs1.Seek(-1 * $headSize, 'End') | Out-Null
-            $fs2.Seek(-1 * $headSize, 'End') | Out-Null
-            $fs1.Read($buf1, 0, $headSize) | Out-Null
-            $fs2.Read($buf2, 0, $headSize) | Out-Null
-            $fs1.Close(); $fs2.Close();
-            if (-not ($buf1 -ceq $buf2)) {
-                return [PSCustomObject]@{
-                    Success = $false
-                    Message = "文件尾不同"
-                }
-            }
+            # # 比较文件的尾部
+            # $fs1.Seek(-1 * $headSize, 'End') | Out-Null
+            # $fs2.Seek(-1 * $headSize, 'End') | Out-Null
+            # $fs1.Read($buf1, 0, $headSize) | Out-Null
+            # $fs2.Read($buf2, 0, $headSize) | Out-Null
+            # $fs1.Close(); $fs2.Close();
+            # if (-not ($buf1 -ceq $buf2)) {
+            #     return [PSCustomObject]@{
+            #         Success = $false
+            #         Message = "文件尾不同"
+            #     }
+            # }
         }
 
         # 比较文件的MD5
