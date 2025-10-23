@@ -1,4 +1,5 @@
---取消某一用户的对某些表的访问权限
+-- 取消某一用户的对某些表的访问权限
+-- 如果需要一个用户对某张表只有查询权限，那么需要具有“选择(SELECT)”权限，不要操作“控制(CONTROL)”权限，其余的权限全部DENY掉。
 declare @sql as nvarchar(max), @table as nvarchar(max), @user as nvarchar(max) = 'user4dev'
 
 declare c cursor fast_forward for
