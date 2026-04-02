@@ -16,12 +16,14 @@ A UDF library with functions to interact with the operating system. These functi
     NOTE: If 32-bit OS replace -m64 with -m32 in the above command.
 - Execute the following in mysql shell:
     > `mysql -uroot -e "SHOW VARIABLES LIKE 'plugin_dir'"`  
-    This is an example of successful output:  
-    +---------------+--------------------------+  
-    | Variable_name | Value                    |  
-    +---------------+--------------------------+  
-    | plugin_dir    | /usr/lib64/mysql/plugin/ |  
-    +---------------+--------------------------+
+    > This is an example of successful output:
+    > ```c
+    > +---------------+--------------------------+  
+    > | Variable_name | Value                    |  
+    > +---------------+--------------------------+  
+    > | plugin_dir    | /usr/lib64/mysql/plugin/ |  
+    > +---------------+--------------------------+
+    > ```
 - Copy the lib_mysqludf_sys.so file to the above path.
     > `cp lib_mysqludf_sys.so /usr/lib64/mysql/plugin`
 - Execute the following in mysql shell
