@@ -16,3 +16,9 @@ end
 
 close c
 deallocate c
+
+-- 验证
+select USER_NAME(dp.grantee_principal_id) as [user_name], dp.state_desc as permission_state, dp.permission_name, OBJECT_SCHEMA_NAME(dp.major_id) as schema_name, OBJECT_NAME(dp.major_id) as table_name
+from sys.database_permissions dp
+where dp.class = 1 and OBJECTPROPERTY(dp.major_id, 'IsUserTable') = 1
+order by table_name, user_name;
