@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-d:\我的代码\github\HelloLanguage\Jupyter\DotNet\DotNet\connect-wpf\obj\Debug\net5.0-windows\
+C:\Users\Administrator\数据\Data\MyCode\github\HelloLanguage\Jupyter\DotNet\DotNet\connect-wpf\obj\Debug\net5.0-windows\
 WpfConnect
 none
 false
-TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-d:\我的代码\github\HelloLanguage\Jupyter\DotNet\DotNet\connect-wpf\App.xaml
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\Administrator\数据\Data\MyCode\github\HelloLanguage\Jupyter\DotNet\DotNet\connect-wpf\App.xaml
 11407045341
 
 71642790952
-193-1891726104
+221-1267681554
 MainWindow.xaml;
 
 False

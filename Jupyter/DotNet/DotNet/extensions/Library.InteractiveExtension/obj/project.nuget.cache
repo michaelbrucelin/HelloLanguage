@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "+QstRRTqvjA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\Library.InteractiveExtension\\Library.InteractiveExtension.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,216 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\SampleExtensions.Tests\\SampleExtensions.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\ClockExtension.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\ClockExtension.csproj",
+        "projectName": "ClockExtension",
+        "projectPath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\ClockExtension.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "microsoft.dotnet.interactive": {
+              "target": "Package",
+              "version": "[1.0.0-beta.21357.1, )"
+            },
+            "microsoft.dotnet.interactive.csharp": {
+              "target": "Package",
+              "version": "[1.0.0-beta.21357.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\SampleExtensions.Tests\\SampleExtensions.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\SampleExtensions.Tests\\SampleExtensions.Tests.csproj",
+        "projectName": "SampleExtensions.Tests",
+        "projectPath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\SampleExtensions.Tests\\SampleExtensions.Tests.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\SampleExtensions.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\ClockExtension.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\数据\\Data\\MyCode\\github\\HelloLanguage\\Jupyter\\DotNet\\DotNet\\extensions\\ClockExtension\\ClockExtension.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.10.3, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.10.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
+            "microsoft.dotnet.interactive.csharp": {
+              "target": "Package",
+              "version": "[1.0.0-beta.21357.1, )"
+            },
+            "microsoft.dotnet.interactive.fsharp": {
+              "target": "Package",
+              "version": "[1.0.0-beta.21357.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
